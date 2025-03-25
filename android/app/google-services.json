@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1094148577193",
+    "project_id": "anisphere-27f83",
+    "storage_bucket": "anisphere-27f83.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094148577193:android:527b282048b8bcf9a9d6b8",
+        "android_client_info": {
+          "package_name": "com.example.anisphere"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1094148577193-esqukmkdqkutq2vbrr39qt3pr91d74u7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmQ4HV6sGCXgQr5RkKjkI93ObMfMTxWms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1094148577193-esqukmkdqkutq2vbrr39qt3pr91d74u7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1094148577193-7v1lj0ieskkl8han4va7hitk76c6a0b5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.anisphere"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
