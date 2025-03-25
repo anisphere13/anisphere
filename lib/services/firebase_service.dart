@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
-import 'package:anisphere/models/user_model.dart';
-import 'package:anisphere/models/animal_model.dart';
+import 'package:anisphere/modules/noyau/models/user_model.dart';
+import 'package:anisphere/modules/noyau/models/animal_model.dart';
 
 class FirebaseService {
   static final FirebaseFirestore _db = FirebaseFirestore.instance;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:anisphere/providers/user_provider.dart';
-import 'package:anisphere/screens/login_screen.dart';
+import 'package:anisphere/modules/noyau/providers/user_provider.dart';
+import 'package:anisphere/modules/noyau/screens/login_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

@@ -5,12 +5,12 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 // ✅ Utilisation des bons chemins d'import
 import 'package:anisphere/firebase_options.dart';
-import 'package:anisphere/screens/main_screen.dart';
-import 'package:anisphere/screens/login_screen.dart';
-import 'package:anisphere/services/local_storage_service.dart';
-import 'package:anisphere/services/user_service.dart';
-import 'package:anisphere/services/auth_service.dart';
-import 'package:anisphere/providers/user_provider.dart';
+import 'package:anisphere/modules/noyau/screens/main_screen.dart';
+import 'package:anisphere/modules/noyau/screens/login_screen.dart';
+import 'package:anisphere/modules/noyau/services/local_storage_service.dart';
+import 'package:anisphere/modules/noyau/services/user_service.dart';
+import 'package:anisphere/modules/noyau/services/auth_service.dart';
+import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

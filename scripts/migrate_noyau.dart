@@ -17,9 +17,9 @@ void main() {
     moveFile(entry.key, entry.value);
   }
 
-  print('\n✅ Migration terminée. Maintenant, correction des imports...');
+  print('\\n✅ Migration terminée. Maintenant, correction des imports...');
   updateImports();
-  print('\n🎉 Migration du noyau terminée avec succès !');
+  print('\\n🎉 Migration du noyau terminée avec succès !');
 }
 
 void moveFile(String oldPath, String newPath) {
@@ -37,14 +37,25 @@ void moveFile(String oldPath, String newPath) {
 
 void updateImports() {
   final projectDir = Directory('lib/');
-  final dartFiles = projectDir.listSync(recursive: true).whereType<File>().where((file) => file.path.endsWith('.dart'));
+  final dartFiles = projectDir
+      .listSync(recursive: true)
+      .whereType<File>()
+      .where((file) => file.path.endsWith('.dart'));
 
   for (var file in dartFiles) {
     String content = file.readAsStringSync();
-    content = content.replaceAll("import 'package:anisphere/models/", "import 'package:anisphere/modules/noyau/models/");
-    content = content.replaceAll("import 'package:anisphere/screens/", "import 'package:anisphere/modules/noyau/screens/");
-    content = content.replaceAll("import 'package:anisphere/services/", "import 'package:anisphere/modules/noyau/services/");
-    content = content.replaceAll("import 'package:anisphere/providers/", "import 'package:anisphere/modules/noyau/providers/");
+    content = content.replaceAll(
+        "import 'package:anisphere/models/",
+        "import 'package:anisphere/modules/noyau/models/");
+    content = content.replaceAll(
+        "import 'package:anisphere/screens/",
+        "import 'package:anisphere/modules/noyau/screens/");
+    content = content.replaceAll(
+        "import 'package:anisphere/services/",
+        "import 'package:anisphere/modules/noyau/services/");
+    content = content.replaceAll(
+        "import 'package:anisphere/providers/",
+        "import 'package:anisphere/modules/noyau/providers/");
     file.writeAsStringSync(content);
   }
   print('🔄 Imports mis à jour !');
