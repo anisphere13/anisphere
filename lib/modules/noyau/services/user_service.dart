@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hive/hive.dart';
 import 'package:flutter/foundation.dart';
-import '../models/user_model.dart';
+import 'package:anisphere/modules/noyau/models/user_model.dart';
 
 class UserService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;

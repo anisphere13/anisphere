@@ -1,6 +1,6 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import '../models/user_model.dart';
-import '../models/animal_model.dart';
+import 'package:anisphere/modules/noyau/models/user_model.dart';
+import 'package:anisphere/modules/noyau/models/animal_model.dart';
 import 'package:flutter/foundation.dart';
 
 class LocalStorageService {
