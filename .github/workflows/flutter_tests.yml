@@ -12,8 +12,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2
+
+      - name: 📦 Installer Flutter 3.19 (Dart 3.7)
+        uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.19.0"
-      - run: flutter pub get
-      - run: flutter test
+          flutter-version: "3.19.0"   # ✅ Dart 3.7 inclus
+
+      - name: 🔄 Récupérer les packages
+        run: flutter pub get
+
+      - name: 🧪 Lancer les tests
+        run: flutter test
