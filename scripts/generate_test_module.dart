@@ -1,9 +1,10 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 
 void main(List<String> args) {
   if (args.isEmpty) {
-    print('❌ Merci de fournir un nom de module :');
-    print('   Exemple : dart run scripts/generate_test_module.dart sante');
+    debugPrint('❌ Merci de fournir un nom de module :');
+    debugPrint('   Exemple : dart run scripts/generate_test_module.dart sante');
     exit(1);
   }
 
@@ -53,11 +54,12 @@ void main() {
   for (final type in types) {
     final dir = Directory('$basePath/$type');
     dir.createSync(recursive: true);
+const String typeTest = 'widget'; // ✅ camelCase recommandé
 
     final file = File('$basePath/$type/${moduleName}_$type_test.dart');
     file.writeAsStringSync(templates[type]!);
-    print('✅ Fichier créé : ${file.path}');
+    debugPrint('✅ Fichier créé : ${file.path}');
   }
 
-  print('\n🎉 Le module "$moduleName" est prêt dans test/$moduleName');
+  debugPrint('\n🎉 Le module "$moduleName" est prêt dans test/$moduleName');
 }
