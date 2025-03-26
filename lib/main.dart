@@ -37,7 +37,7 @@ void main() async {
   // 🔄 Initialisation des services
   final userService = UserService();
   final authService = AuthService();
-  
+
   try {
     await userService.init(); // ✅ Ajout de la gestion des erreurs
   } catch (e) {
@@ -98,13 +98,14 @@ class SplashScreenState extends State<SplashScreen> {
 
     if (!mounted) return;
 
-    final Widget nextScreen = userProvider.user != null
-        ? const MainScreen()
-        : const LoginScreen();
+    final Widget nextScreen =
+        userProvider.user != null ? const MainScreen() : const LoginScreen();
 
-    debugPrint(userProvider.user != null
-        ? "✅ Utilisateur connecté, redirection vers MainScreen"
-        : "❌ Aucun utilisateur connecté, redirection vers LoginScreen");
+    debugPrint(
+      userProvider.user != null
+          ? "✅ Utilisateur connecté, redirection vers MainScreen"
+          : "❌ Aucun utilisateur connecté, redirection vers LoginScreen",
+    );
 
     if (mounted) {
       Navigator.pushReplacement(
