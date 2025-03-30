@@ -1,368 +1,130 @@
-# 9- Planification Photos
+📸 9__planification_photos.md — Module Photos & Partage visuel dans AniSphère
 
-|   Jour | Catégorie    | Thème                              | Description                                                                | Utilisation prévue   | Reconnaissance IA   | Monétisation Potentielle   |
-|-------:|:-------------|:-----------------------------------|:---------------------------------------------------------------------------|:---------------------|:--------------------|:---------------------------|
-|      1 | Saisonnier   | Neige                              | Votre animal dans la neige ou avec un bonnet de Noël.                      | Partage & Souvenirs  | Non                 | Oui                        |
-|      2 | Interaction  | Avec une balle                     | Prenez une photo de votre animal jouant avec une balle.                    | IA & Analyse         | Oui                 | Non                        |
-|      3 | Ludique      | Position bizarre                   | Capturez une position rigolote de votre animal.                            | IA & Analyse         | Oui                 | Non                        |
-|      4 | Nature       | Parc                               | Votre animal explorant un parc.                                            | IA & Analyse         | Oui                 | Non                        |
-|      5 | Événementiel | Anniversaire                       | Fêtez l'anniversaire de votre animal avec un gâteau !                      | IA & Analyse         | Oui                 | Oui                        |
-|      6 | Insolite     | Déguisé                            | Votre animal avec un déguisement amusant.                                  | IA & Analyse         | Oui                 | Non                        |
-|      7 | Emotions     | Regard curieux                     | Prenez une photo de votre animal regardant fixement un objet.              | IA & Analyse         | Oui                 | Non                        |
-|      8 | Saisonnier   | Feuilles d'automne                 | Votre animal jouant dans un tas de feuilles.                               | Partage & Souvenirs  | Non                 | Oui                        |
-|      9 | Interaction  | Avec un autre animal               | Votre animal jouant avec un autre compagnon.                               | IA & Analyse         | Oui                 | Non                        |
-|     10 | Ludique      | Saut en l'air                      | Capturez votre animal en train de sauter.                                  | IA & Analyse         | Oui                 | Non                        |
-|     11 | Nature       | Rivière                            | Votre animal profitant d'une rivière ou d'un lac.                          | IA & Analyse         | Oui                 | Non                        |
-|     12 | Événementiel | Pâques                             | Votre animal avec des décorations de Pâques ou un œuf.                     | IA & Analyse         | Oui                 | Oui                        |
-|     13 | Insolite     | Dans un panier                     | Votre animal dans un panier ou une boîte amusante.                         | IA & Analyse         | Oui                 | Non                        |
-|     14 | Emotions     | Regard d'amour                     | Un moment de tendresse capturé avec votre animal.                          | IA & Analyse         | Oui                 | Non                        |
-|     16 | Saisonnier   | Dans la neige                      | Capturez votre animal jouant dans la neige.                                | Partage & Souvenirs  | Non                 | Oui                        |
-|     17 | Interaction  | Regard complice                    | Prenez un selfie avec votre animal.                                        | IA & Analyse         | Oui                 | Non                        |
-|     18 | Ludique      | Cache-cache                        | Photographiez votre animal caché dans un endroit drôle.                    | IA & Analyse         | Oui                 | Non                        |
-|     19 | Nature       | Forêt                              | Votre animal explorant une forêt.                                          | IA & Analyse         | Oui                 | Non                        |
-|     20 | Événementiel | Halloween                          | Votre animal avec un costume d’Halloween.                                  | IA & Analyse         | Oui                 | Oui                        |
-|     21 | Insolite     | Sur un lit                         | Votre animal profitant de la douceur d’un lit.                             | IA & Analyse         | Oui                 | Non                        |
-|     22 | Emotions     | Bâillement                         | Capturez un bâillement amusant.                                            | IA & Analyse         | Oui                 | Non                        |
-|     23 | Saisonnier   | Sur la plage                       | Votre animal sur le sable ou dans les vagues.                              | Partage & Souvenirs  | Non                 | Oui                        |
-|     24 | Interaction  | Avec un jouet préféré              | Prenez une photo avec son jouet favori.                                    | IA & Analyse         | Oui                 | Non                        |
-|     25 | Ludique      | En équilibre                       | Capturez votre animal en équilibre sur un objet.                           | IA & Analyse         | Oui                 | Non                        |
-|     26 | Nature       | Coucher de soleil                  | Votre animal devant un magnifique coucher de soleil.                       | IA & Analyse         | Oui                 | Non                        |
-|     27 | Événementiel | Noël                               | Votre animal avec des décorations ou cadeaux de Noël.                      | IA & Analyse         | Oui                 | Oui                        |
-|     28 | Insolite     | Regard en coin                     | Capturez un regard malicieux ou drôle.                                     | IA & Analyse         | Oui                 | Non                        |
-|     29 | Emotions     | Surpris                            | Votre animal dans un moment de surprise.                                   | IA & Analyse         | Oui                 | Non                        |
-|     30 | Saisonnier   | Fleurs d’été                       | Votre animal parmi des fleurs estivales.                                   | Partage & Souvenirs  | Non                 | Oui                        |
-|     31 | Saisonnier   | Pluie                              | Votre animal avec un imperméable ou sous la pluie.                         | Partage & Souvenirs  | Non                 | Oui                        |
-|     32 | Interaction  | Câlin                              | Capturez un moment câlin avec votre animal.                                | IA & Analyse         | Oui                 | Non                        |
-|     33 | Ludique      | À l'envers                         | Prenez une photo de votre animal couché sur le dos.                        | IA & Analyse         | Oui                 | Non                        |
-|     34 | Nature       | Dans les bois                      | Votre animal en pleine exploration d’un sous-bois.                         | IA & Analyse         | Oui                 | Non                        |
-|     35 | Événementiel | Fête nationale                     | Votre animal avec un drapeau ou décor patriotique.                         | IA & Analyse         | Oui                 | Oui                        |
-|     36 | Insolite     | Avec des lunettes                  | Votre animal portant des lunettes pour une touche d’humour.                | IA & Analyse         | Oui                 | Non                        |
-|     37 | Emotions     | Joyeux                             | Capturez un moment de pure joie chez votre animal.                         | IA & Analyse         | Oui                 | Non                        |
-|     38 | Saisonnier   | Feuilles mortes                    | Votre animal jouant dans des feuilles mortes.                              | Partage & Souvenirs  | Non                 | Oui                        |
-|     39 | Interaction  | Avec un enfant                     | Votre animal avec un enfant dans une scène adorable.                       | IA & Analyse         | Oui                 | Non                        |
-|     40 | Ludique      | Tourner en rond                    | Capturez votre animal en mouvement.                                        | IA & Analyse         | Oui                 | Non                        |
-|     41 | Nature       | Montagne                           | Votre animal devant un paysage de montagne.                                | IA & Analyse         | Oui                 | Non                        |
-|     42 | Événementiel | Nouvel an                          | Votre animal célébrant la nouvelle année.                                  | IA & Analyse         | Oui                 | Oui                        |
-|     43 | Insolite     | Dans un panier à linge             | Une photo amusante de votre animal dans un panier.                         | IA & Analyse         | Oui                 | Non                        |
-|     44 | Emotions     | Concentration                      | Capturez un moment intense d’attention chez votre animal.                  | IA & Analyse         | Oui                 | Non                        |
-|     45 | Saisonnier   | Neige tombante                     | Votre animal sous les flocons de neige.                                    | Partage & Souvenirs  | Non                 | Oui                        |
-|     46 | Saisonnier   | Sable chaud                        | Votre animal sur une plage ensoleillée.                                    | Partage & Souvenirs  | Non                 | Oui                        |
-|     47 | Interaction  | Jeu de frisbee                     | Capturez un moment de jeu avec un frisbee.                                 | IA & Analyse         | Oui                 | Non                        |
-|     48 | Ludique      | Derrière un rideau                 | Votre animal jouant à se cacher.                                           | IA & Analyse         | Oui                 | Non                        |
-|     49 | Nature       | Cascade                            | Votre animal devant une cascade magnifique.                                | IA & Analyse         | Oui                 | Non                        |
-|     50 | Événementiel | Fête locale                        | Votre animal dans un décor de fête locale.                                 | IA & Analyse         | Oui                 | Oui                        |
-|     51 | Insolite     | Avec un chapeau                    | Votre animal avec un chapeau amusant.                                      | IA & Analyse         | Oui                 | Non                        |
-|     52 | Emotions     | Regard doux                        | Capturez un regard tendre de votre animal.                                 | IA & Analyse         | Oui                 | Non                        |
-|     53 | Saisonnier   | Fleurs de printemps                | Votre animal dans un champ fleuri.                                         | Partage & Souvenirs  | Non                 | Oui                        |
-|     54 | Interaction  | Avec un ami animal                 | Votre animal jouant avec un autre animal.                                  | IA & Analyse         | Oui                 | Non                        |
-|     55 | Ludique      | Attraper une friandise             | Capturez votre animal en train d'attraper une friandise.                   | IA & Analyse         | Oui                 | Non                        |
-|     56 | Nature       | Forêt tropicale                    | Votre animal dans une végétation luxuriante.                               | IA & Analyse         | Oui                 | Non                        |
-|     57 | Événementiel | Soirée pyjama                      | Votre animal dans un contexte cosy ou avec une couverture.                 | IA & Analyse         | Oui                 | Oui                        |
-|     58 | Insolite     | Regard à travers une vitre         | Votre animal regardant par une fenêtre.                                    | IA & Analyse         | Oui                 | Non                        |
-|     59 | Emotions     | Moment d’inquiétude                | Capturez une expression perplexe ou curieuse.                              | IA & Analyse         | Oui                 | Non                        |
-|     60 | Saisonnier   | Feuilles d'automne                 | Votre animal entouré de feuilles d'automne.                                | Partage & Souvenirs  | Non                 | Oui                        |
-|     61 | Saisonnier   | Ruisseau glacé                     | Votre animal observant ou près d'un ruisseau gelé.                         | Partage & Souvenirs  | Non                 | Oui                        |
-|     62 | Interaction  | Apprentissage d'un tour            | Capturez un moment d'éducation.                                            | IA & Analyse         | Oui                 | Non                        |
-|     63 | Ludique      | Dans un carton                     | Votre animal explorant un carton.                                          | IA & Analyse         | Oui                 | Non                        |
-|     64 | Nature       | Arbre majestueux                   | Votre animal près d’un arbre imposant.                                     | IA & Analyse         | Oui                 | Non                        |
-|     65 | Événementiel | Défilé déguisé                     | Votre animal en costume pour un événement.                                 | IA & Analyse         | Oui                 | Oui                        |
-|     66 | Insolite     | Sur une chaise                     | Votre animal assis sur une chaise humaine.                                 | IA & Analyse         | Oui                 | Non                        |
-|     67 | Emotions     | Regard pensif                      | Capturez une expression songeuse.                                          | IA & Analyse         | Oui                 | Non                        |
-|     68 | Saisonnier   | Sous un parapluie                  | Votre animal protégé sous un parapluie coloré.                             | Partage & Souvenirs  | Non                 | Oui                        |
-|     69 | Interaction  | Caresse                            | Capturez un moment d’affection entre vous et votre animal.                 | IA & Analyse         | Oui                 | Non                        |
-|     70 | Ludique      | Saute à travers un cerceau         | Votre animal sautant avec agilité.                                         | IA & Analyse         | Oui                 | Non                        |
-|     71 | Nature       | Sur un rocher                      | Votre animal dominant un paysage.                                          | IA & Analyse         | Oui                 | Non                        |
-|     72 | Événementiel | Pâques                             | Votre animal et un panier rempli d’œufs.                                   | IA & Analyse         | Oui                 | Oui                        |
-|     73 | Insolite     | Regard dans un miroir              | Votre animal face à son reflet.                                            | IA & Analyse         | Oui                 | Non                        |
-|     74 | Emotions     | Détendu                            | Capturez un moment de repos ou de sieste.                                  | IA & Analyse         | Oui                 | Non                        |
-|     75 | Saisonnier   | Printemps                          | Votre animal entouré de verdure florissante.                               | Partage & Souvenirs  | Non                 | Oui                        |
-|     76 | Saisonnier   | Été ensoleillé                     | Votre animal au soleil avec des lunettes de soleil.                        | Partage & Souvenirs  | Non                 | Oui                        |
-|     77 | Interaction  | Avec un bébé                       | Capturez un moment tendre avec un bébé.                                    | IA & Analyse         | Oui                 | Non                        |
-|     78 | Ludique      | En équilibre sur un pied           | Votre animal dans une position drôle ou acrobatique.                       | IA & Analyse         | Oui                 | Non                        |
-|     79 | Nature       | Cascade                            | Votre animal face à une cascade.                                           | IA & Analyse         | Oui                 | Non                        |
-|     80 | Événementiel | Carnaval                           | Votre animal déguisé pour une fête de carnaval.                            | IA & Analyse         | Oui                 | Oui                        |
-|     81 | Insolite     | Dans un sac à dos                  | Votre animal porté ou dans un sac.                                         | IA & Analyse         | Oui                 | Non                        |
-|     82 | Emotions     | Regard curieux                     | Capturez votre animal examinant un nouvel objet.                           | IA & Analyse         | Oui                 | Non                        |
-|     83 | Saisonnier   | Lune et étoiles                    | Votre animal sous le ciel nocturne.                                        | Partage & Souvenirs  | Non                 | Oui                        |
-|     84 | Interaction  | Jeu dans le jardin                 | Capturez une activité ludique dans un jardin.                              | IA & Analyse         | Oui                 | Non                        |
-|     85 | Ludique      | Dans un panier de fleurs           | Votre animal niché parmi des fleurs.                                       | IA & Analyse         | Oui                 | Non                        |
-|     86 | Nature       | Sentier boisé                      | Votre animal marchant sur un chemin.                                       | IA & Analyse         | Oui                 | Non                        |
-|     87 | Événementiel | Fête des mères                     | Votre animal offrant un symbole ou une fleur.                              | IA & Analyse         | Oui                 | Oui                        |
-|     88 | Insolite     | Sur un banc public                 | Votre animal assis comme un humain.                                        | IA & Analyse         | Oui                 | Non                        |
-|     89 | Emotions     | Regard d'admiration                | Capturez un moment où votre animal observe quelque chose avec fascination. | IA & Analyse         | Oui                 | Non                        |
-|     90 | Saisonnier   | Hiver enneigé                      | Votre animal jouant ou marchant dans la neige fraîche.                     | Partage & Souvenirs  | Non                 | Oui                        |
-|     91 | Saisonnier   | Feuilles automnales                | Votre animal sautant dans un tas de feuilles.                              | Partage & Souvenirs  | Non                 | Oui                        |
-|     92 | Interaction  | Avec un livre                      | Votre animal posé à côté d’un livre ou feuilletant une page.               | IA & Analyse         | Oui                 | Non                        |
-|     93 | Ludique      | Caché sous une couverture          | Votre animal jouant à se cacher sous un drap.                              | IA & Analyse         | Oui                 | Non                        |
-|     94 | Nature       | Au bord d'un lac                   | Votre animal admirant un lac paisible.                                     | IA & Analyse         | Oui                 | Non                        |
-|     95 | Événementiel | Anniversaire d'un ami              | Votre animal participant à une célébration d’anniversaire.                 | IA & Analyse         | Oui                 | Oui                        |
-|     96 | Insolite     | Dans une boîte à chaussures        | Votre animal essayant de rentrer dans un petit espace.                     | IA & Analyse         | Oui                 | Non                        |
-|     97 | Emotions     | Regard endormi                     | Capturez un moment juste avant qu’il ne s’endorme.                         | IA & Analyse         | Oui                 | Non                        |
-|     98 | Saisonnier   | Décor de Noël                      | Votre animal entouré de décorations de Noël.                               | Partage & Souvenirs  | Non                 | Oui                        |
-|     99 | Interaction  | Avec un autre animal               | Votre animal jouant ou se reposant avec un compagnon.                      | IA & Analyse         | Oui                 | Non                        |
-|    100 | Ludique      | Attraper des bulles                | Votre animal tentant d’attraper des bulles de savon.                       | IA & Analyse         | Oui                 | Non                        |
-|    101 | Nature       | Chemin enneigé                     | Votre animal explorant un sentier couvert de neige.                        | IA & Analyse         | Oui                 | Non                        |
-|    102 | Événementiel | Nouvel an                          | Votre animal avec un chapeau de fête ou une banderole.                     | IA & Analyse         | Oui                 | Oui                        |
-|    103 | Insolite     | Sur une chaise haute               | Votre animal dans une posture inhabituelle.                                | IA & Analyse         | Oui                 | Non                        |
-|    104 | Emotions     | Regard de surprise                 | Capturez une expression d'étonnement.                                      | IA & Analyse         | Oui                 | Non                        |
-|    105 | Saisonnier   | Sous une lumière tamisée           | Votre animal dans une ambiance cosy avec des lumières douces.              | Partage & Souvenirs  | Non                 | Oui                        |
-|    106 | Saisonnier   | Pluie et bottes                    | Votre animal près de bottes de pluie colorées.                             | Partage & Souvenirs  | Non                 | Oui                        |
-|    107 | Interaction  | Tir à la corde                     | Capturez un jeu de tir à la corde avec votre animal.                       | IA & Analyse         | Oui                 | Non                        |
-|    108 | Ludique      | Assis sur un coussin               | Votre animal confortablement installé sur un coussin.                      | IA & Analyse         | Oui                 | Non                        |
-|    109 | Nature       | Près d’un ruisseau                 | Votre animal explorant un petit cours d’eau.                               | IA & Analyse         | Oui                 | Non                        |
-|    110 | Événementiel | Halloween                          | Votre animal avec une citrouille décorée.                                  | IA & Analyse         | Oui                 | Oui                        |
-|    111 | Insolite     | Derrière une plante                | Votre animal jouant à cache-cache derrière une plante.                     | IA & Analyse         | Oui                 | Non                        |
-|    112 | Emotions     | Regard malicieux                   | Capturez une expression espiègle.                                          | IA & Analyse         | Oui                 | Non                        |
-|    113 | Saisonnier   | Été tropical                       | Votre animal avec un collier de fleurs tropicales.                         | Partage & Souvenirs  | Non                 | Oui                        |
-|    114 | Interaction  | Chasse au trésor                   | Capturez votre animal découvrant quelque chose d’amusant.                  | IA & Analyse         | Oui                 | Non                        |
-|    115 | Ludique      | Avec des jouets éparpillés         | Votre animal entouré de ses jouets préférés.                               | IA & Analyse         | Oui                 | Non                        |
-|    116 | Nature       | Devant un coucher de soleil        | Votre animal avec un magnifique coucher de soleil en arrière-plan.         | IA & Analyse         | Oui                 | Non                        |
-|    117 | Événementiel | Fête des pères                     | Votre animal avec un objet symbolique pour célébrer.                       | IA & Analyse         | Oui                 | Oui                        |
-|    118 | Insolite     | Dans une valise                    | Votre animal prêt à partir en voyage.                                      | IA & Analyse         | Oui                 | Non                        |
-|    119 | Emotions     | Heureux après un repas             | Capturez un moment post-repas satisfait.                                   | IA & Analyse         | Oui                 | Non                        |
-|    120 | Saisonnier   | Neige fondue                       | Votre animal explorant un paysage de neige qui fond.                       | Partage & Souvenirs  | Non                 | Oui                        |
-|    121 | Saisonnier   | Dans un champ de fleurs            | Votre animal au milieu de fleurs éclatantes.                               | Partage & Souvenirs  | Non                 | Oui                        |
-|    122 | Interaction  | Avec une friandise                 | Capturez un moment où il attend ou mange une friandise.                    | IA & Analyse         | Oui                 | Non                        |
-|    123 | Ludique      | Regard à travers un objet          | Votre animal regardant à travers un cercle ou une forme.                   | IA & Analyse         | Oui                 | Non                        |
-|    124 | Nature       | Dans un champ de blé               | Votre animal explorant un paysage doré.                                    | IA & Analyse         | Oui                 | Non                        |
-|    125 | Événementiel | Jour de marché                     | Votre animal près de stands colorés.                                       | IA & Analyse         | Oui                 | Oui                        |
-|    126 | Insolite     | Sous une table                     | Votre animal installé sous une table.                                      | IA & Analyse         | Oui                 | Non                        |
-|    127 | Emotions     | Regard protecteur                  | Capturez un moment où il veille sur quelqu’un ou quelque chose.            | IA & Analyse         | Oui                 | Non                        |
-|    128 | Saisonnier   | Couleurs d’automne                 | Votre animal entouré de feuillages rouges et jaunes.                       | Partage & Souvenirs  | Non                 | Oui                        |
-|    129 | Interaction  | Avec un ballon                     | Capturez un moment de jeu avec un ballon.                                  | IA & Analyse         | Oui                 | Non                        |
-|    130 | Ludique      | En haut d’un meuble                | Votre animal dans une position dominante.                                  | IA & Analyse         | Oui                 | Non                        |
-|    131 | Nature       | Au bord de l’eau                   | Votre animal profitant d’un instant de fraîcheur.                          | IA & Analyse         | Oui                 | Non                        |
-|    132 | Événementiel | St-Valentin                        | Votre animal avec des cœurs ou un message d’amour.                         | IA & Analyse         | Oui                 | Oui                        |
-|    133 | Insolite     | Derrière une porte                 | Votre animal observant discrètement à travers une porte.                   | IA & Analyse         | Oui                 | Non                        |
-|    134 | Emotions     | Moment de réflexion                | Capturez un moment calme où il semble réfléchir.                           | IA & Analyse         | Oui                 | Non                        |
-|    135 | Saisonnier   | Dans la neige fraîche              | Votre animal jouant dans une neige immaculée.                              | Partage & Souvenirs  | Non                 | Oui                        |
-|    136 | Saisonnier   | Dans un champ enneigé              | Votre animal explorant un paysage d’hiver.                                 | Partage & Souvenirs  | Non                 | Oui                        |
-|    137 | Interaction  | Avec une ombre                     | Capturez votre animal jouant avec son ombre.                               | IA & Analyse         | Oui                 | Non                        |
-|    138 | Ludique      | Tête dans un sac                   | Votre animal fouillant dans un sac ou une boîte.                           | IA & Analyse         | Oui                 | Non                        |
-|    139 | Nature       | À la campagne                      | Votre animal explorant un paysage rural.                                   | IA & Analyse         | Oui                 | Non                        |
-|    140 | Événementiel | Soirée de Noël                     | Votre animal avec des lumières de Noël.                                    | IA & Analyse         | Oui                 | Oui                        |
-|    141 | Insolite     | Regard dans un miroir              | Votre animal se découvrant dans un miroir.                                 | IA & Analyse         | Oui                 | Non                        |
-|    142 | Emotions     | Regard de joie                     | Capturez une expression d’excitation ou de bonheur.                        | IA & Analyse         | Oui                 | Non                        |
-|    143 | Saisonnier   | Été fleuri                         | Votre animal parmi des fleurs estivales.                                   | Partage & Souvenirs  | Non                 | Oui                        |
-|    144 | Interaction  | Avec une corde                     | Votre animal jouant ou mâchant une corde.                                  | IA & Analyse         | Oui                 | Non                        |
-|    145 | Ludique      | Assis sur un fauteuil              | Votre animal dans un fauteuil imposant.                                    | IA & Analyse         | Oui                 | Non                        |
-|    146 | Nature       | Au bord de la mer                  | Votre animal admirant l’océan.                                             | IA & Analyse         | Oui                 | Non                        |
-|    147 | Événementiel | Décor d’Halloween                  | Votre animal dans un cadre effrayant mais amusant.                         | IA & Analyse         | Oui                 | Oui                        |
-|    148 | Insolite     | Sous une couverture                | Votre animal caché sous une couverture colorée.                            | IA & Analyse         | Oui                 | Non                        |
-|    149 | Emotions     | Moment curieux                     | Capturez votre animal examinant quelque chose d’inhabituel.                | IA & Analyse         | Oui                 | Non                        |
-|    150 | Saisonnier   | Dans un jardin fleuri              | Votre animal entouré de plantes en fleurs.                                 | Partage & Souvenirs  | Non                 | Oui                        |
-|    151 | Saisonnier   | Sous un arbre en fleurs            | Votre animal dans un cadre printanier.                                     | Partage & Souvenirs  | Non                 | Oui                        |
-|    152 | Interaction  | Avec un ami humain                 | Capturez un moment de complicité avec un proche.                           | IA & Analyse         | Oui                 | Non                        |
-|    153 | Ludique      | Avec un ballon gonflable           | Votre animal jouant ou regardant un ballon.                                | IA & Analyse         | Oui                 | Non                        |
-|    154 | Nature       | Devant une montagne                | Votre animal dans un cadre majestueux.                                     | IA & Analyse         | Oui                 | Non                        |
-|    155 | Événementiel | Pâques                             | Votre animal avec des œufs ou un panier décoré.                            | IA & Analyse         | Oui                 | Oui                        |
-|    156 | Insolite     | Dans une niche décorée             | Votre animal dans une maison décorée.                                      | IA & Analyse         | Oui                 | Non                        |
-|    157 | Emotions     | Regard attentif                    | Capturez une expression de concentration intense.                          | IA & Analyse         | Oui                 | Non                        |
-|    158 | Saisonnier   | Ruisseau printanier                | Votre animal près d’un petit ruisseau.                                     | Partage & Souvenirs  | Non                 | Oui                        |
-|    159 | Interaction  | Avec une peluche                   | Votre animal avec son jouet en peluche préféré.                            | IA & Analyse         | Oui                 | Non                        |
-|    160 | Ludique      | Sur un tapis moelleux              | Votre animal allongé ou jouant sur un tapis.                               | IA & Analyse         | Oui                 | Non                        |
-|    161 | Nature       | Parmi les rochers                  | Votre animal explorant un terrain rocheux.                                 | IA & Analyse         | Oui                 | Non                        |
-|    162 | Événementiel | Décor festif                       | Votre animal dans une ambiance de fête animée.                             | IA & Analyse         | Oui                 | Oui                        |
-|    163 | Insolite     | Dans une valise                    | Votre animal prêt pour l’aventure.                                         | IA & Analyse         | Oui                 | Non                        |
-|    164 | Emotions     | Regard protecteur                  | Capturez un moment où votre animal semble veiller sur quelque chose.       | IA & Analyse         | Oui                 | Non                        |
-|    165 | Saisonnier   | Avec un parapluie                  | Votre animal dans un décor pluvieux et coloré.                             | Partage & Souvenirs  | Non                 | Oui                        |
-|    166 | Saisonnier   | Flocons d’hiver                    | Votre animal capturé sous de légers flocons.                               | Partage & Souvenirs  | Non                 | Oui                        |
-|    167 | Interaction  | Lecture paisible                   | Votre animal allongé près d’un livre ouvert.                               | IA & Analyse         | Oui                 | Non                        |
-|    168 | Ludique      | Regard curieux                     | Votre animal face à un objet intrigant.                                    | IA & Analyse         | Oui                 | Non                        |
-|    169 | Nature       | Devant un lac gelé                 | Votre animal explorant un paysage hivernal.                                | IA & Analyse         | Oui                 | Non                        |
-|    170 | Événementiel | Anniversaire festif                | Votre animal avec un gâteau ou des ballons.                                | IA & Analyse         | Oui                 | Oui                        |
-|    171 | Insolite     | Sous un plaid                      | Votre animal blotti sous un plaid douillet.                                | IA & Analyse         | Oui                 | Non                        |
-|    172 | Emotions     | Regard malicieux                   | Capturez une expression pleine de ruse.                                    | IA & Analyse         | Oui                 | Non                        |
-|    173 | Saisonnier   | Décor estival                      | Votre animal entouré de sable et de soleil.                                | Partage & Souvenirs  | Non                 | Oui                        |
-|    174 | Interaction  | Avec un enfant                     | Votre animal dans un moment tendre avec un enfant.                         | IA & Analyse         | Oui                 | Non                        |
-|    175 | Ludique      | Attraper un jouet                  | Capturez le moment où votre animal bondit pour attraper un jouet.          | IA & Analyse         | Oui                 | Non                        |
-|    176 | Nature       | Sous un arbre majestueux           | Votre animal profitant d’une ombre rafraîchissante.                        | IA & Analyse         | Oui                 | Non                        |
-|    177 | Événementiel | Déguisement thématique             | Votre animal dans un costume amusant ou original.                          | IA & Analyse         | Oui                 | Oui                        |
-|    178 | Insolite     | Regard dans un miroir              | Votre animal découvrant son reflet dans un miroir.                         | IA & Analyse         | Oui                 | Non                        |
-|    179 | Emotions     | Moment câlin                       | Capturez un moment où il recherche de la tendresse.                        | IA & Analyse         | Oui                 | Non                        |
-|    180 | Saisonnier   | Dans un décor automnal             | Votre animal parmi des feuilles dorées et rouges.                          | Partage & Souvenirs  | Non                 | Oui                        |
-|    181 | Saisonnier   | Sous un ciel étoilé                | Votre animal sous les étoiles ou une lune brillante.                       | Partage & Souvenirs  | Non                 | Oui                        |
-|    182 | Interaction  | Avec un membre de la famille       | Capturez un moment chaleureux en famille.                                  | IA & Analyse         | Oui                 | Non                        |
-|    183 | Ludique      | Cache-cache derrière un rideau     | Votre animal jouant à se cacher.                                           | IA & Analyse         | Oui                 | Non                        |
-|    184 | Nature       | Près d’un arbre en automne         | Votre animal sous un arbre aux feuilles dorées.                            | IA & Analyse         | Oui                 | Non                        |
-|    185 | Événementiel | Célébration surprise               | Votre animal participant à une surprise ou une fête.                       | IA & Analyse         | Oui                 | Oui                        |
-|    186 | Insolite     | Dans une boîte cadeau              | Votre animal découvert dans une boîte.                                     | IA & Analyse         | Oui                 | Non                        |
-|    187 | Emotions     | Regard de gratitude                | Capturez un moment d’échange affectueux.                                   | IA & Analyse         | Oui                 | Non                        |
-|    188 | Saisonnier   | Neige fondante                     | Votre animal observant la transition vers le printemps.                    | Partage & Souvenirs  | Non                 | Oui                        |
-|    189 | Interaction  | Avec un frisbee                    | Capturez un moment de jeu dynamique avec un frisbee.                       | IA & Analyse         | Oui                 | Non                        |
-|    190 | Ludique      | Assis sur un coussin               | Votre animal confortablement installé.                                     | IA & Analyse         | Oui                 | Non                        |
-|    191 | Nature       | Au bord d’un lac paisible          | Votre animal profitant d’un moment calme près de l’eau.                    | IA & Analyse         | Oui                 | Non                        |
-|    192 | Événementiel | Nouvel an                          | Votre animal avec des décorations festives.                                | IA & Analyse         | Oui                 | Oui                        |
-|    193 | Insolite     | Regard à travers une fenêtre       | Votre animal observant par une fenêtre.                                    | IA & Analyse         | Oui                 | Non                        |
-|    194 | Emotions     | Moment de calme                    | Capturez un instant serein de repos ou de contemplation.                   | IA & Analyse         | Oui                 | Non                        |
-|    195 | Saisonnier   | Dans un jardin printanier          | Votre animal entouré de fleurs éclatantes.                                 | Partage & Souvenirs  | Non                 | Oui                        |
-|    196 | Saisonnier   | Sous une pluie d’été               | Votre animal explorant sous une douce pluie estivale.                      | Partage & Souvenirs  | Non                 | Oui                        |
-|    197 | Interaction  | Avec un nouvel objet               | Votre animal découvrant un objet inattendu.                                | IA & Analyse         | Oui                 | Non                        |
-|    198 | Ludique      | Saute par-dessus un obstacle       | Capturez votre animal en plein saut.                                       | IA & Analyse         | Oui                 | Non                        |
-|    199 | Nature       | Dans un champ ouvert               | Votre animal profitant d’une grande étendue.                               | IA & Analyse         | Oui                 | Non                        |
-|    200 | Événementiel | Fête des Lumières                  | Votre animal avec un décor lumineux.                                       | IA & Analyse         | Oui                 | Oui                        |
-|    201 | Insolite     | Regard à travers un trou           | Votre animal observant à travers une ouverture.                            | IA & Analyse         | Oui                 | Non                        |
-|    202 | Emotions     | Regard amusé                       | Capturez un moment joyeux et drôle.                                        | IA & Analyse         | Oui                 | Non                        |
-|    203 | Saisonnier   | Automne venté                      | Votre animal dans un décor venteux avec des feuilles tourbillonnantes.     | Partage & Souvenirs  | Non                 | Oui                        |
-|    204 | Interaction  | Câlin avec un autre animal         | Capturez un moment de complicité entre deux animaux.                       | IA & Analyse         | Oui                 | Non                        |
-|    205 | Ludique      | Grimpe sur un meuble               | Votre animal explorant un espace en hauteur.                               | IA & Analyse         | Oui                 | Non                        |
-|    206 | Nature       | Au bord de la rivière              | Votre animal au bord d’un cours d’eau.                                     | IA & Analyse         | Oui                 | Non                        |
-|    207 | Événementiel | Carnaval                           | Votre animal dans un décor festif et coloré.                               | IA & Analyse         | Oui                 | Oui                        |
-|    208 | Insolite     | Sous un parapluie                  | Votre animal dans une scène protégée de la pluie.                          | IA & Analyse         | Oui                 | Non                        |
-|    209 | Emotions     | Expression concentrée              | Capturez un regard intense et curieux.                                     | IA & Analyse         | Oui                 | Non                        |
-|    210 | Saisonnier   | Décor printanier                   | Votre animal entouré de fleurs et de couleurs vibrantes.                   | Partage & Souvenirs  | Non                 | Oui                        |
-|    211 | Saisonnier   | Lumières de Noël                   | Votre animal illuminé par des guirlandes de Noël.                          | Partage & Souvenirs  | Non                 | Oui                        |
-|    212 | Interaction  | Avec une balle rebondissante       | Capturez un jeu dynamique avec une balle.                                  | IA & Analyse         | Oui                 | Non                        |
-|    213 | Ludique      | Sur un tapis moelleux              | Votre animal étendu confortablement.                                       | IA & Analyse         | Oui                 | Non                        |
-|    214 | Nature       | Devant une falaise                 | Votre animal dans un décor spectaculaire.                                  | IA & Analyse         | Oui                 | Non                        |
-|    215 | Événementiel | Anniversaire d’un autre animal     | Votre animal participant à la fête.                                        | IA & Analyse         | Oui                 | Oui                        |
-|    216 | Insolite     | Regard derrière un rideau          | Votre animal jouant ou caché derrière un rideau.                           | IA & Analyse         | Oui                 | Non                        |
-|    217 | Emotions     | Moment curieux                     | Capturez un instant d’exploration intriguée.                               | IA & Analyse         | Oui                 | Non                        |
-|    218 | Saisonnier   | Neige et soleil                    | Votre animal dans un décor hivernal lumineux.                              | Partage & Souvenirs  | Non                 | Oui                        |
-|    219 | Interaction  | Avec un doudou                     | Votre animal avec son jouet préféré.                                       | IA & Analyse         | Oui                 | Non                        |
-|    220 | Ludique      | Attrape un frisbee                 | Capturez un moment d’adresse.                                              | IA & Analyse         | Oui                 | Non                        |
-|    221 | Nature       | Dans une prairie                   | Votre animal profitant d’une étendue verdoyante.                           | IA & Analyse         | Oui                 | Non                        |
-|    222 | Événementiel | Décor de Saint-Valentin            | Votre animal avec des cœurs et un message affectueux.                      | IA & Analyse         | Oui                 | Oui                        |
-|    223 | Insolite     | Dans une boîte en carton           | Votre animal explorant une boîte.                                          | IA & Analyse         | Oui                 | Non                        |
-|    224 | Emotions     | Regard heureux                     | Capturez un sourire ou une expression joyeuse.                             | IA & Analyse         | Oui                 | Non                        |
-|    225 | Saisonnier   | Décor automnal                     | Votre animal entouré de feuilles colorées.                                 | Partage & Souvenirs  | Non                 | Oui                        |
-|    226 | Saisonnier   | Fleurs sauvages                    | Votre animal dans un champ de fleurs sauvages.                             | Partage & Souvenirs  | Non                 | Oui                        |
-|    227 | Interaction  | Avec un groupe d’amis              | Votre animal entouré de ses compagnons animaux ou humains.                 | IA & Analyse         | Oui                 | Non                        |
-|    228 | Ludique      | Jouer avec des bulles              | Capturez votre animal essayant d’attraper des bulles de savon.             | IA & Analyse         | Oui                 | Non                        |
-|    229 | Nature       | Sous un grand arbre                | Votre animal profitant d’un moment ombragé.                                | IA & Analyse         | Oui                 | Non                        |
-|    230 | Événementiel | Noël en famille                    | Votre animal avec des décorations de Noël.                                 | IA & Analyse         | Oui                 | Oui                        |
-|    231 | Insolite     | Dans un hamac                      | Votre animal se reposant dans un hamac.                                    | IA & Analyse         | Oui                 | Non                        |
-|    232 | Emotions     | Regard protecteur                  | Capturez une expression d’attention et de soin.                            | IA & Analyse         | Oui                 | Non                        |
-|    233 | Saisonnier   | Dans un champ enneigé              | Votre animal dans un vaste champ de neige.                                 | Partage & Souvenirs  | Non                 | Oui                        |
-|    234 | Interaction  | Caresse sur le dos                 | Capturez un moment d’affection.                                            | IA & Analyse         | Oui                 | Non                        |
-|    235 | Ludique      | Attraper un jouet en l'air         | Votre animal sautant pour attraper un jouet.                               | IA & Analyse         | Oui                 | Non                        |
-|    236 | Nature       | Au bord d’une cascade              | Votre animal près d’une chute d’eau.                                       | IA & Analyse         | Oui                 | Non                        |
-|    237 | Événementiel | Décor de Pâques                    | Votre animal avec des lapins ou des œufs.                                  | IA & Analyse         | Oui                 | Oui                        |
-|    238 | Insolite     | Regard par-dessus un mur           | Votre animal observant par-dessus un obstacle.                             | IA & Analyse         | Oui                 | Non                        |
-|    239 | Emotions     | Expression de bonheur              | Capturez un sourire ou une expression joyeuse.                             | IA & Analyse         | Oui                 | Non                        |
-|    240 | Saisonnier   | Près d’un feu de camp              | Votre animal dans une ambiance chaleureuse.                                | Partage & Souvenirs  | Non                 | Oui                        |
-|    241 | Saisonnier   | Arbres en fleurs                   | Votre animal dans un cadre printanier.                                     | Partage & Souvenirs  | Non                 | Oui                        |
-|    242 | Interaction  | Jouer avec un autre animal         | Capturez un moment de complicité entre deux animaux.                       | IA & Analyse         | Oui                 | Non                        |
-|    243 | Ludique      | Regard curieux                     | Votre animal face à un nouvel objet.                                       | IA & Analyse         | Oui                 | Non                        |
-|    244 | Nature       | Dans une forêt ombragée            | Votre animal explorant un chemin boisé.                                    | IA & Analyse         | Oui                 | Non                        |
-|    245 | Événementiel | Jour de l’An                       | Votre animal participant à la fête avec des décorations.                   | IA & Analyse         | Oui                 | Oui                        |
-|    246 | Insolite     | Dans une couverture chaude         | Votre animal blotti sous une couverture douillette.                        | IA & Analyse         | Oui                 | Non                        |
-|    247 | Emotions     | Regard joyeux                      | Capturez une expression de bonheur spontané.                               | IA & Analyse         | Oui                 | Non                        |
-|    248 | Saisonnier   | Ruisseau printanier                | Votre animal explorant près d’un cours d’eau.                              | Partage & Souvenirs  | Non                 | Oui                        |
-|    249 | Interaction  | Regard complice avec un enfant     | Capturez un moment attendrissant.                                          | IA & Analyse         | Oui                 | Non                        |
-|    250 | Ludique      | Caché sous un drap                 | Votre animal jouant à cache-cache.                                         | IA & Analyse         | Oui                 | Non                        |
-|    251 | Nature       | Sous une cascade                   | Votre animal profitant de la fraîcheur d’une cascade.                      | IA & Analyse         | Oui                 | Non                        |
-|    252 | Événementiel | Saint-Valentin                     | Votre animal avec un cœur ou des roses.                                    | IA & Analyse         | Oui                 | Oui                        |
-|    253 | Insolite     | Regard à travers une vitre         | Votre animal observant depuis une fenêtre.                                 | IA & Analyse         | Oui                 | Non                        |
-|    254 | Emotions     | Moment de tendresse                | Capturez un câlin ou un moment tendre.                                     | IA & Analyse         | Oui                 | Non                        |
-|    255 | Saisonnier   | Couleurs automnales                | Votre animal dans un paysage aux teintes chaudes.                          | Partage & Souvenirs  | Non                 | Oui                        |
-|    256 | Saisonnier   | Sous un ciel d’été                 | Votre animal dans un champ ensoleillé.                                     | Partage & Souvenirs  | Non                 | Oui                        |
-|    257 | Interaction  | Avec un ballon                     | Capturez un moment de jeu avec un ballon coloré.                           | IA & Analyse         | Oui                 | Non                        |
-|    258 | Ludique      | Cache-cache derrière une chaise    | Votre animal jouant ou observant.                                          | IA & Analyse         | Oui                 | Non                        |
-|    259 | Nature       | Au sommet d’un rocher              | Votre animal observant depuis un point élevé.                              | IA & Analyse         | Oui                 | Non                        |
-|    260 | Événementiel | Décor de Pâques                    | Votre animal avec des œufs colorés ou un lapin en peluche.                 | IA & Analyse         | Oui                 | Oui                        |
-|    261 | Insolite     | Regard dans un miroir              | Votre animal découvrant son reflet.                                        | IA & Analyse         | Oui                 | Non                        |
-|    262 | Emotions     | Regard protecteur                  | Capturez une expression de surveillance ou d’affection.                    | IA & Analyse         | Oui                 | Non                        |
-|    263 | Saisonnier   | Neige et lumière                   | Votre animal dans un paysage hivernal éclatant.                            | Partage & Souvenirs  | Non                 | Oui                        |
-|    264 | Interaction  | Jeu avec une corde                 | Capturez un moment ludique avec une corde.                                 | IA & Analyse         | Oui                 | Non                        |
-|    265 | Ludique      | Sur une couverture moelleuse       | Votre animal allongé confortablement.                                      | IA & Analyse         | Oui                 | Non                        |
-|    266 | Nature       | Près d’un lac                      | Votre animal explorant près de l’eau.                                      | IA & Analyse         | Oui                 | Non                        |
-|    267 | Événementiel | Fête de la musique                 | Votre animal avec des instruments ou en ambiance musicale.                 | IA & Analyse         | Oui                 | Oui                        |
-|    268 | Insolite     | Regard par-dessus un mur           | Votre animal curieux observant depuis une hauteur.                         | IA & Analyse         | Oui                 | Non                        |
-|    269 | Emotions     | Moment joyeux                      | Capturez un sourire ou une expression heureuse.                            | IA & Analyse         | Oui                 | Non                        |
-|    270 | Saisonnier   | Printemps fleuri                   | Votre animal entouré de fleurs éclatantes.                                 | Partage & Souvenirs  | Non                 | Oui                        |
-|    271 | Saisonnier   | Couleurs d'automne                 | Votre animal au milieu des feuilles d'automne.                             | Partage & Souvenirs  | Non                 | Oui                        |
-|    272 | Interaction  | Regard complice                    | Capturez un échange de regards avec votre animal.                          | IA & Analyse         | Oui                 | Non                        |
-|    273 | Ludique      | Attraper un frisbee                | Votre animal bondissant pour un frisbee.                                   | IA & Analyse         | Oui                 | Non                        |
-|    274 | Nature       | Sur une colline                    | Votre animal admirant la vue depuis une hauteur.                           | IA & Analyse         | Oui                 | Non                        |
-|    275 | Événementiel | Noël festif                        | Votre animal entouré de décorations de Noël.                               | IA & Analyse         | Oui                 | Oui                        |
-|    276 | Insolite     | Sous une table                     | Votre animal jouant ou allongé sous une table.                             | IA & Analyse         | Oui                 | Non                        |
-|    277 | Emotions     | Regard curieux                     | Capturez une exploration attentive.                                        | IA & Analyse         | Oui                 | Non                        |
-|    278 | Saisonnier   | Rivière glacée                     | Votre animal explorant près d'une rivière gelée.                           | Partage & Souvenirs  | Non                 | Oui                        |
-|    279 | Interaction  | Avec une balle                     | Votre animal jouant à attraper ou à poursuivre une balle.                  | IA & Analyse         | Oui                 | Non                        |
-|    280 | Ludique      | Caché derrière un rideau           | Votre animal dans une position espiègle.                                   | IA & Analyse         | Oui                 | Non                        |
-|    281 | Nature       | Dans un champ de lavande           | Votre animal entouré de fleurs violettes.                                  | IA & Analyse         | Oui                 | Non                        |
-|    282 | Événementiel | Anniversaire                       | Votre animal participant à une fête d'anniversaire.                        | IA & Analyse         | Oui                 | Oui                        |
-|    283 | Insolite     | Regard à travers une fenêtre       | Votre animal curieux d'une scène extérieure.                               | IA & Analyse         | Oui                 | Non                        |
-|    284 | Emotions     | Moment calme                       | Capturez un instant paisible et reposant.                                  | IA & Analyse         | Oui                 | Non                        |
-|    285 | Saisonnier   | Dans un champ enneigé              | Votre animal explorant une étendue blanche et glacée.                      | Partage & Souvenirs  | Non                 | Oui                        |
-|    286 | Saisonnier   | Ciel étoilé                        | Votre animal sous un ciel illuminé d'étoiles.                              | Partage & Souvenirs  | Non                 | Oui                        |
-|    287 | Interaction  | Jeu avec un autre animal           | Capturez un moment de jeu complice entre animaux.                          | IA & Analyse         | Oui                 | Non                        |
-|    288 | Ludique      | Cache-cache avec des jouets        | Votre animal entouré de ses jouets préférés.                               | IA & Analyse         | Oui                 | Non                        |
-|    289 | Nature       | Près d'une cascade                 | Votre animal explorant un endroit naturel et paisible.                     | IA & Analyse         | Oui                 | Non                        |
-|    290 | Événementiel | Décor festif                       | Votre animal entouré de lumières et décorations.                           | IA & Analyse         | Oui                 | Oui                        |
-|    291 | Insolite     | Dans une boîte                     | Votre animal confortablement installé dans une boîte.                      | IA & Analyse         | Oui                 | Non                        |
-|    292 | Emotions     | Regard d'amour                     | Capturez un moment de complicité et d’affection.                           | IA & Analyse         | Oui                 | Non                        |
-|    293 | Saisonnier   | Sous la pluie                      | Votre animal protégé par un parapluie ou jouant sous la pluie.             | Partage & Souvenirs  | Non                 | Oui                        |
-|    294 | Interaction  | Avec un enfant                     | Capturez une scène douce avec un enfant.                                   | IA & Analyse         | Oui                 | Non                        |
-|    295 | Ludique      | Attraper une friandise             | Votre animal bondissant pour une friandise.                                | IA & Analyse         | Oui                 | Non                        |
-|    296 | Nature       | Dans un champ ouvert               | Votre animal courant ou explorant un vaste espace.                         | IA & Analyse         | Oui                 | Non                        |
-|    297 | Événementiel | Fête de quartier                   | Votre animal dans une ambiance conviviale.                                 | IA & Analyse         | Oui                 | Oui                        |
-|    298 | Insolite     | Regard à travers un rideau         | Votre animal observant discrètement.                                       | IA & Analyse         | Oui                 | Non                        |
-|    299 | Emotions     | Regard protecteur                  | Capturez un instant où votre animal veille sur vous.                       | IA & Analyse         | Oui                 | Non                        |
-|    300 | Saisonnier   | Feuillage automnal                 | Votre animal jouant dans des feuilles d’automne.                           | Partage & Souvenirs  | Non                 | Oui                        |
-|    301 | Saisonnier   | Couleurs printanières              | Votre animal dans un jardin en fleurs.                                     | Partage & Souvenirs  | Non                 | Oui                        |
-|    302 | Interaction  | Regard complice                    | Capturez un moment de connexion visuelle.                                  | IA & Analyse         | Oui                 | Non                        |
-|    303 | Ludique      | Caché sous une couverture          | Votre animal jouant ou reposant sous une couverture.                       | IA & Analyse         | Oui                 | Non                        |
-|    304 | Nature       | Sous un arbre fleuri               | Votre animal dans un cadre printanier naturel.                             | IA & Analyse         | Oui                 | Non                        |
-|    305 | Événementiel | Décor d'Halloween                  | Votre animal dans une ambiance effrayante mais amusante.                   | IA & Analyse         | Oui                 | Oui                        |
-|    306 | Insolite     | Regard à travers une fente         | Votre animal observant curieusement.                                       | IA & Analyse         | Oui                 | Non                        |
-|    307 | Emotions     | Moment calme                       | Capturez un instant de détente et de sérénité.                             | IA & Analyse         | Oui                 | Non                        |
-|    308 | Saisonnier   | Feuilles dorées                    | Votre animal dans un décor automnal éclatant.                              | Partage & Souvenirs  | Non                 | Oui                        |
-|    309 | Interaction  | Avec un membre de la famille       | Capturez un moment d’affection.                                            | IA & Analyse         | Oui                 | Non                        |
-|    310 | Ludique      | Attraper un jouet                  | Votre animal sautant ou jouant activement.                                 | IA & Analyse         | Oui                 | Non                        |
-|    311 | Nature       | Devant un coucher de soleil        | Votre animal dans un décor magique.                                        | IA & Analyse         | Oui                 | Non                        |
-|    312 | Événementiel | Noël en famille                    | Votre animal entouré de cadeaux et de décorations festives.                | IA & Analyse         | Oui                 | Oui                        |
-|    313 | Insolite     | Dans un panier                     | Votre animal confortablement installé dans un panier.                      | IA & Analyse         | Oui                 | Non                        |
-|    314 | Emotions     | Regard curieux                     | Capturez un instant d’exploration attentive.                               | IA & Analyse         | Oui                 | Non                        |
-|    315 | Saisonnier   | Neige scintillante                 | Votre animal dans un décor hivernal éclatant.                              | Partage & Souvenirs  | Non                 | Oui                        |
-|    316 | Saisonnier   | Sous une pluie d’automne           | Votre animal explorant sous des gouttes légères.                           | Partage & Souvenirs  | Non                 | Oui                        |
-|    317 | Interaction  | Avec un jouet préféré              | Capturez un moment complice avec un jouet adoré.                           | IA & Analyse         | Oui                 | Non                        |
-|    318 | Ludique      | Regard à travers un objet          | Votre animal observant curieusement.                                       | IA & Analyse         | Oui                 | Non                        |
-|    319 | Nature       | Sur un sentier boisé               | Votre animal explorant un chemin naturel.                                  | IA & Analyse         | Oui                 | Non                        |
-|    320 | Événementiel | Nouvel an festif                   | Votre animal avec des lumières et décorations éclatantes.                  | IA & Analyse         | Oui                 | Oui                        |
-|    321 | Insolite     | Dans un carton                     | Votre animal confortablement installé.                                     | IA & Analyse         | Oui                 | Non                        |
-|    322 | Emotions     | Moment câlin                       | Capturez un instant de tendresse.                                          | IA & Analyse         | Oui                 | Non                        |
-|    323 | Saisonnier   | Neige et soleil                    | Votre animal jouant dans une étendue ensoleillée et glacée.                | Partage & Souvenirs  | Non                 | Oui                        |
-|    324 | Interaction  | Avec une balle                     | Votre animal jouant ou attendant une balle.                                | IA & Analyse         | Oui                 | Non                        |
-|    325 | Ludique      | Cache-cache derrière un meuble     | Votre animal observant depuis un coin caché.                               | IA & Analyse         | Oui                 | Non                        |
-|    326 | Nature       | Devant une rivière                 | Votre animal admirant l’eau qui coule.                                     | IA & Analyse         | Oui                 | Non                        |
-|    327 | Événementiel | Décor de fête locale               | Votre animal dans un cadre festif et animé.                                | IA & Analyse         | Oui                 | Oui                        |
-|    328 | Insolite     | Regard sous un meuble              | Votre animal explorant ou caché sous un meuble.                            | IA & Analyse         | Oui                 | Non                        |
-|    329 | Emotions     | Regard heureux                     | Capturez un instant de bonheur et de joie.                                 | IA & Analyse         | Oui                 | Non                        |
-|    330 | Saisonnier   | Dans un champ printanier           | Votre animal entouré de fleurs éclatantes.                                 | Partage & Souvenirs  | Non                 | Oui                        |
-|    331 | Saisonnier   | Lumières d’hiver                   | Votre animal sous des guirlandes lumineuses.                               | Partage & Souvenirs  | Non                 | Oui                        |
-|    332 | Interaction  | Avec un nouveau jouet              | Capturez la curiosité de votre animal découvrant un jouet.                 | IA & Analyse         | Oui                 | Non                        |
-|    333 | Ludique      | Attraper une friandise             | Votre animal bondissant pour une friandise.                                | IA & Analyse         | Oui                 | Non                        |
-|    334 | Nature       | Devant une colline                 | Votre animal explorant un terrain vallonné.                                | IA & Analyse         | Oui                 | Non                        |
-|    335 | Événementiel | Fête locale                        | Votre animal participant à une fête de village.                            | IA & Analyse         | Oui                 | Oui                        |
-|    336 | Insolite     | Sur une chaise haute               | Votre animal dans une posture inhabituelle.                                | IA & Analyse         | Oui                 | Non                        |
-|    337 | Emotions     | Regard de gratitude                | Capturez un moment où votre animal exprime sa reconnaissance.              | IA & Analyse         | Oui                 | Non                        |
-|    338 | Saisonnier   | Sous un parapluie coloré           | Votre animal protégé ou jouant sous un parapluie.                          | Partage & Souvenirs  | Non                 | Oui                        |
-|    339 | Interaction  | Câlin avec un membre de la famille | Capturez un moment d’affection.                                            | IA & Analyse         | Oui                 | Non                        |
-|    340 | Ludique      | Cache-cache dans un drap           | Votre animal jouant à se cacher.                                           | IA & Analyse         | Oui                 | Non                        |
-|    341 | Nature       | Près d’un étang                    | Votre animal admirant ou explorant un étang.                               | IA & Analyse         | Oui                 | Non                        |
-|    342 | Événementiel | Décor de carnaval                  | Votre animal entouré de décorations festives.                              | IA & Analyse         | Oui                 | Oui                        |
-|    343 | Insolite     | Dans un panier décoré              | Votre animal confortablement installé dans un panier.                      | IA & Analyse         | Oui                 | Non                        |
-|    344 | Emotions     | Moment de tranquillité             | Capturez un instant paisible et relaxant.                                  | IA & Analyse         | Oui                 | Non                        |
-|    345 | Saisonnier   | Dans un champ en été               | Votre animal profitant d’un soleil éclatant.                               | Partage & Souvenirs  | Non                 | Oui                        |
-|    346 | Saisonnier   | Dans un champ de blé               | Votre animal explorant un champ doré sous le soleil.                       | Partage & Souvenirs  | Non                 | Oui                        |
-|    347 | Interaction  | Avec un autre animal               | Capturez une interaction amicale ou curieuse.                              | IA & Analyse         | Oui                 | Non                        |
-|    348 | Ludique      | Tête dans une boîte                | Votre animal explorant ou fouillant une boîte.                             | IA & Analyse         | Oui                 | Non                        |
-|    349 | Nature       | Sous un ciel orageux               | Votre animal sous un ciel dramatique et captivant.                         | IA & Analyse         | Oui                 | Non                        |
-|    350 | Événementiel | Décor de Saint-Valentin            | Votre animal entouré de cœurs ou de fleurs.                                | IA & Analyse         | Oui                 | Oui                        |
-|    351 | Insolite     | Avec des lunettes de soleil        | Votre animal avec une touche estivale humoristique.                        | IA & Analyse         | Oui                 | Non                        |
-|    352 | Emotions     | Regard concentré                   | Capturez un instant d'attention intense.                                   | IA & Analyse         | Oui                 | Non                        |
-|    353 | Saisonnier   | Sur la plage                       | Votre animal jouant dans le sable ou les vagues.                           | Partage & Souvenirs  | Non                 | Oui                        |
-|    354 | Interaction  | Avec un nouveau jouet              | Votre animal découvrant un objet intriguant.                               | IA & Analyse         | Oui                 | Non                        |
-|    355 | Ludique      | Attraper un frisbee                | Votre animal bondissant pour un frisbee en plein vol.                      | IA & Analyse         | Oui                 | Non                        |
-|    356 | Nature       | Dans un champ de lavande           | Votre animal entouré de fleurs violettes.                                  | IA & Analyse         | Oui                 | Non                        |
-|    357 | Événementiel | Fête d'anniversaire                | Votre animal entouré de décorations festives.                              | IA & Analyse         | Oui                 | Oui                        |
-|    358 | Insolite     | Caché sous un drap                 | Votre animal jouant à cache-cache dans un lit.                             | IA & Analyse         | Oui                 | Non                        |
-|    359 | Emotions     | Expression joyeuse                 | Capturez un moment de bonheur authentique.                                 | IA & Analyse         | Oui                 | Non                        |
-|    360 | Saisonnier   | Dans un décor hivernal             | Votre animal explorant une forêt enneigée.                                 | Partage & Souvenirs  | Non                 | Oui                        |
-|    361 | Nature       | Au bord d’une rivière              | Votre animal admirant un cours d’eau paisible.                             | IA & Analyse         | Oui                 | Non                        |
-|    362 | Ludique      | Avec une balle bondissante         | Capturez votre animal bondissant après une balle.                          | IA & Analyse         | Oui                 | Non                        |
-|    363 | Interaction  | Câlin avec un membre de la famille | Votre animal et un moment affectueux partagé.                              | IA & Analyse         | Oui                 | Non                        |
-|    364 | Événementiel | Nouvel an festif                   | Votre animal célébrant avec des décorations colorées.                      | IA & Analyse         | Oui                 | Oui                        |
-|    365 | Saisonnier   | Sous un ciel étoilé                | Votre animal sous une ambiance nocturne magique.                           | Partage & Souvenirs  | Non                 | Oui                        |
+Ce fichier regroupe toutes les idées et optimisations liées à la gestion des photos dans AniSphère. L’objectif est double :
+
+Améliorer l’expérience utilisateur à travers des souvenirs, du suivi visuel, de l’émotion et de la fierté.
+
+Maximiser la viralité de l’application grâce à un système de partage optimisé, attrayant, et intelligemment lié au branding.
+
+Renforcer la sécurité animale avec des outils d’identification visuelle en cas de fugue.
+
+🎯 Objectifs stratégiques du module photo
+
+Créer un lien émotionnel entre l’utilisateur et l’application.
+
+Favoriser l’utilisation quotidienne par des photos personnalisées, esthétiques et archivables.
+
+Générer du partage naturel, esthétique et utile sur les réseaux sociaux.
+
+Servir de support d’analyse comportementale, de preuve de suivi animal, et de reconnaissance en cas de fugue.
+
+Alimenter l’IA avec des métadonnées et des contenus visuels anonymisés.
+
+📦 Fonctions prévues / de base
+
+Ajout facile de photos depuis appareil ou galerie.
+
+Classement automatique par date, par animal, par type d’action (santé, balade, éducation…).
+
+Annotation possible (localisation, humeur, note libre).
+
+Compression automatique à l’enregistrement.
+
+Stockage local priorisé, cloud uniquement sur demande ou premium.
+
+🖼️ Partage optimisé & branding intelligent
+
+Génération d’images avec design AniSphère stylisé et discret (marque + lien QR code ou phrase incitative).
+
+Thèmes visuels variés (santé, anniversaire, progrès, souvenir, alerte fugue…)
+
+Filtres et templates visuels prédéfinis (comme des mini-Canva)
+
+Lien vers une page publique dynamique de l’animal (profil, historique, etc.).
+
+Ajout d’un calendrier visuel mensuel : 1 photo/jour → export souvenir en PDF stylisé.
+
+🚨 Identification visuelle & fugue
+
+L’utilisateur peut marquer certaines photos comme “photo d’identification”.
+
+L’IA les analyse et sélectionne les plus utiles (posture latérale, face, marque distinctive).
+
+Ces photos sont utilisées dans le module de fugue pour générer automatiquement : 
+
+Une fiche visuelle PDF partageable
+
+Une alerte communautaire avec photo clé
+
+Une page publique temporaire (liée à un QR code sur le collier, si disponible)
+
+L’IA peut proposer d’actualiser la photo si elle devient obsolète ou non représentative.
+
+🔄 Intégration avec les autres modules
+
+Module santé : ajout automatique de la photo d’une plaie, d’un médicament, d’un carnet scanné.
+
+Module éducation : capture de moments-clés (réussite exercice, balade, sociabilisation).
+
+Module communauté : photo de l’animal dans une publication, alerte fugue ou demande d’aide.
+
+Module vétérinaire : envoi rapide d’une photo liée à une alerte ou une consultation.
+
+Module fugue : activation automatique des photos d’identification sélectionnées.
+
+💡 Idées supplémentaires d’optimisation
+
+1. Gamification
+
+Défis photo par mois ou par espèce (ex : “Meilleure pose rigolote”) avec classement interne
+
+Système de badge photo (1re photo, 10e photo, photo partagée…)
+
+2. Émotions & souvenirs
+
+Rétrospective automatique en fin de mois : les meilleures photos + résumé IA (km parcourus, exercices, événements…)
+
+Timeline visuelle de l’animal = journal de bord illustré
+
+3. Viralité & conversion
+
+Ajout d’un petit message personnalisé sur chaque photo partagée : 
+
+“Photo générée avec AniSphère – Mon carnet de vie animalier”
+
+“Suivez la vie de Max sur AniSphère !”
+
+Génération automatique de QR code redirigeant vers une landing page de téléchargement de l’app
+
+4. Utilisation IA des photos
+
+Reconnaissance du type de scène (balade, repos, blessure…)
+
+Suggestion automatique de catégories, tags ou résumés
+
+Amélioration continue de l’IA de suivi comportemental à partir des métadonnées (heure, météo, position, fréquence)
+
+🛠️ Fonctionnalités techniques à intégrer
+
+Compression photo (paramétrable : faible, standard, qualité originale)
+
+Suppression automatique des doublons ou photos floues (option IA)
+
+Interface intuitive de tri et d’export (multi-sélection, filtres, recherche par tag ou date)
+
+Sauvegarde cloud uniquement si activée ou premium (aucun coût imposé)
+
+🧭 Vision long terme
+
+AniSphère devient le carnet visuel de l’animal, enrichi automatiquement.
+
+Chaque photo devient un point de données émotionnel, pratique et sécuritaire.
+
+L’IA sait identifier les moments importants et aide à les organiser.
+
+Le partage devient un outil naturel de viralité, de valorisation de l’animal et de promotion de l’application.
+
+Le module photo devient un pilier du système d’identification, d’engagement et de suivi dans AniSphère.
+
+Conclusion : Le module photo n’est pas un simple stockage : il est un outil émotionnel, comportemental, sécuritaire, marketing et éducatif, au cœur de l’expérience utilisateur.
+

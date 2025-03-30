@@ -1,32 +1,137 @@
-# 5- UX
+🎨 5__ux.md — UX & Navigation d’AniSphère
 
-| Élément                                             | Description                                                                                                                | Statut             | Priorité UX   | Impact sur l’Expérience   |
-|:----------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------|:-------------------|:--------------|:--------------------------|
-| 🏡 Écran d'Accueil                                  | Widgets interactifs pour un accès rapide aux informations clés : santé, pistage, suivi, notifications.                     | En développement   | Haute         | Critique                  |
-| 📲 Accès Ultra-Rapide                               | Navigation fluide : notifications, paramètres, compte utilisateur accessibles en un tap.                                   | En développement   | Moyenne       | Important                 |
-| 👆 Swipe-Up                                         | Accès rapide aux actions principales selon le module actif (ajout d'un animal, lancement d'un entraînement, etc.).         | En développement   | Moyenne       | Important                 |
-| 🔄 Personnalisation                                 | Organisation flexible des widgets, favoris, thème sombre/clair.                                                            | En développement   | Moyenne       | Important                 |
-| 📚 Dynamisme des Écrans                             | Affichage intelligent et évolutif basé sur les données du module.                                                          | En développement   | Moyenne       | Important                 |
-| 🔧 Modules Responsifs                               | Activation/désactivation des modules selon les besoins.                                                                    | En développement   | Moyenne       | Important                 |
-| 🔹 Conclusion                                       | Navigation fluide, interface épurée, accès rapide aux actions essentielles.                                                | En développement   | Moyenne       | Important                 |
-| Élément                                             | Description                                                                                                                | Statut             | Moyenne       | Important                 |
-| 🗂 Stockage Local (SQLite)                           | Ajout de SQLite pour stocker les données en local et assurer un mode hors-ligne performant.                                | À faire            | Moyenne       | Important                 |
-| 🔄 Synchronisation Firebase                         | Mise en place d’une synchronisation manuelle et automatique entre SQLite et Firebase.                                      | À faire            | Moyenne       | Important                 |
-| 📲 Gestion des fichiers lourds                      | Stockage des images/vidéos en local et synchronisation avec Google Drive API pour optimiser les coûts.                     | À faire            | Moyenne       | Important                 |
-| 🛠 Mode Hors-Ligne Firebase                          | Activation du cache Firestore pour assurer une continuité des données même sans connexion.                                 | À faire            | Moyenne       | Important                 |
-| 🚀 TensorFlow Lite                                  | Intégration d’une IA locale pour réduire la dépendance à Firebase et améliorer la fluidité de l’application.               | À faire            | Moyenne       | Important                 |
-| 📡 Synchronisation Différée                         | Optimisation des synchronisations pour éviter les requêtes inutiles vers Firebase et réduire les coûts.                    | À faire            | Moyenne       | Important                 |
-| 🛠 Stockage Local & Détection des Changements        | Ajout d’un champ `isSynced` pour suivre les modifications locales et éviter des écritures inutiles sur Firebase.           | À faire            | Moyenne       | Important                 |
-| 🔄 Déclenchement de la Synchronisation              | Optimisation de la mise à jour avec un système de scan et envoi automatique des données modifiées uniquement.              | À faire            | Moyenne       | Important                 |
-| 📉 Optimisation Firebase                            | Limiter les écritures Firestore, compresser les données et regrouper les mises à jour pour économiser la bande passante.   | À faire            | Moyenne       | Important                 |
-| 📲 Gestion des Médias                               | Stocker les photos/vidéos localement et proposer une synchronisation avec Google Drive API pour les utilisateurs Premium.  | À faire            | Moyenne       | Important                 |
-| ⚡ Fonctionnement Hors-Ligne & Gestion des Conflits | Comparaison de timestamps entre Firebase et SQLite pour éviter les conflits et assurer des mises à jour intelligentes.     | À faire            | Moyenne       | Important                 |
-| 🎯 Stratégie Globale                                | Mise en place d’une synchronisation efficace qui réduit les coûts Firebase et assure une expérience fluide sans connexion. | À faire            | Moyenne       | Important                 |
-| Expérience Utilisateur Optimisée                    | Créer une expérience fluide, ergonomique et immersive avec une IA adaptative.                                              | 🟢 À suivre        | Moyenne       | Important                 |
-| Navigation & Structure de l’Interface               | Inspiré de Samsung Health, mais avec intelligence adaptative et améliorations UX.                                          | 🟢 À suivre        | Moyenne       | Important                 |
-| Navigation principale                               | 4 onglets fixes : Accueil, Partage, Magasin de Modules, Mes Animaux.                                                       | 🟢 À suivre        | Moyenne       | Important                 |
-| Personnalisation Intelligente                       | Affichage dynamique, filtres intelligents, personnalisation des notifications et des modules.                              | 🟢 À suivre        | Moyenne       | Important                 |
-| Engagement & Gamification                           | Prévu plus tard pour encourager l’utilisateur, sans alourdir l’interface dès le départ.                                    | 🔵 Prévu plus tard | Moyenne       | Important                 |
-| Ergonomie & Immersion                               | Animations fluides, retour haptique, effets sonores subtils pour une expérience plus agréable.                             | 🟢 À suivre        | Moyenne       | Important                 |
-| Accessibilité & Adaptabilité                        | Options pour les malvoyants, polices ajustables, interface modulable et personnalisable.                                   | 🟢 À suivre        | Moyenne       | Important                 |
-| Résumé UX                                           | Navigation fluide, personnalisation avancée, ergonomie optimisée, engagement progressif, accessibilité.                    | 🟢 À suivre        | Moyenne       | Important                 |
+Ce fichier rassemble tous les principes d’ergonomie, de navigation et d’expérience utilisateur d’AniSphère. Il sert de base pour le design des écrans, des parcours utilisateurs et des modules.
+
+🧭 Vision générale UX
+
+L’expérience utilisateur est inspirée de Samsung Health : lisible, fluide, centrée sur l’animal.
+
+L’utilisateur peut avoir plusieurs profils de rôles : particulier, vétérinaire, éleveur, éducateur, etc.
+
+L’application est pensée pour gérer plusieurs animaux avec une navigation simple, rapide et logique.
+
+Les modules sont activables/désactivables à volonté.
+
+La personnalisation UX dépend du rôle de l’utilisateur et des modules actifs.
+
+🖼️ Structure de l’interface
+
+Barre de navigation principale (bas)
+
+4 onglets fixes :
+
+Accueil : tableau de bord global, infos de l’animal sélectionné, raccourcis.
+
+Partage : données partagées avec d’autres utilisateurs, liens d’accès.
+
+Magasin de modules : ajout/suppression de modules actifs.
+
+Mes animaux : liste des animaux, profils complets, accès modules spécifiques.
+
+Éléments fixes (haut)
+
+Icône notifications (haut droite)
+
+Icône paramètres / mon compte (roue crantée)
+
+Slide Up (écran d’accueil)
+
+Accès rapide : ajouter un animal, note santé, photo, activité...
+
+☀️ / 🌙 Thèmes et personnalisation
+
+Mode clair / sombre natif, sélection automatique ou forcée.
+
+Personnalisation possible de l’interface : couleurs secondaires, photo de l’animal en fond, etc.
+
+🔁 Parcours utilisateur (Onboarding)
+
+Connexion simple : email seul → OAuth facultatif ensuite.
+
+Tutoriel intelligent dès le premier lancement : 
+
+Présentation rapide de l’interface.
+
+OCR carnet de santé pour import automatique.
+
+Ajout guidé du premier animal.
+
+L’utilisateur peut accéder à l’app sans compte pour explorer (lecture seule), inscription demandée à l’ajout.
+
+🧠 Intelligence UX intégrée
+
+Notifications IA personnalisées : urgentes, utiles, ou suggérées.
+
+Navigation dynamique selon modules activés.
+
+Tutoriels adaptés au rôle (pro, particulier...).
+
+Suggestions IA contextuelles : heure, météo, habitude, module utilisé récemment.
+
+Translucidité IA : chaque recommandation peut être cliquée pour afficher le raisonnement de l'IA (transparence et pédagogie).
+
+📊 Écrans interactifs et ergonomie visuelle
+
+Graphiques dynamiques (santé, éducation, activité...)
+
+Cartes visuelles pour le pistage, la communauté, les expositions.
+
+Retour haptique léger + animation fluide pour toute action significative.
+
+Accès rapide à tout moment à la fiche de l’animal sélectionné.
+
+Glisser-déposer intelligent dans les listes (objectifs, rappels, tâches).
+
+Barre de recherche universelle (animaux, modules, historique, contenus).
+
+🧩 Personnalisation profonde de l’interface
+
+Navigation à onglets dynamiques selon modules activés.
+
+"Vue Focus" sur un animal : affiche en plein écran tous les éléments rattachés (santé, stats, éducation...).
+
+Mode senior / enfant : taille des boutons, interface épurée.
+
+Mode professionnel : affichage condensé, filtres rapides, vue fiche médicale prioritaire.
+
+🏅 Gamification et engagement utilisateur
+
+Système de badges, niveaux, récompenses visuelles.
+
+Journée de l’animal : moment hebdomadaire avec rappels affectifs, statistiques, photos souvenirs.
+
+Widget quotidien / notification inspirante : "Aujourd’hui est parfait pour une sortie éducative avec Max !"
+
+Rétroaction IA : "Bravo, vous avez complété tous les rappels cette semaine. Pensez à synchroniser un nouveau vaccin."
+
+🔁 Checklist & accroche quotidienne
+
+Checklist du jour par animal : soins, rappels, interactions.
+
+Historique de progression, graphique et suggestions IA.
+
+Fil d’actualité privé : résumé des mises à jour d’un animal partagé.
+
+Statistiques motivantes : "Vous avez interagi avec Luna 12 fois cette semaine."
+
+💡 Design évolutif
+
+Les modules ajoutés injectent dynamiquement leurs éléments dans l’interface.
+
+Le magasin de modules devient l’élément pivot de la personnalisation UX.
+
+L’IA peut proposer de nouveaux modules à activer selon usage.
+
+📌 Règles de design à respecter
+
+Icônes toujours accompagnées de labels.
+
+Navigation à 2 niveaux max par onglet.
+
+Retour accessible à tout moment.
+
+Aucune action destructrice sans confirmation.
+
+Respect du Material Design Flutter.
+
+

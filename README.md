@@ -1,129 +1,111 @@
-# 🐾 AniSphère 2.0
+🐾 AniSphère — Application intelligente pour le suivi de la vie animale
 
-AniSphère est une application modulaire intelligente dédiée au **suivi global des animaux**, conçue pour les particuliers comme les professionnels.
+AniSphère est une application modulaire, intuitive et évolutive qui accompagne les utilisateurs dans le suivi complet de leurs animaux. Grâce à une architecture hybride (local + cloud) et à une intelligence artificielle intégrée, AniSphère devient un véritable compagnon quotidien pour les particuliers, professionnels et associations.
 
-> 📱 **Suivi santé**, 🧭 **pistage GPS**, 🎓 **éducation**, 🤖 **IA comportementale**, et bien plus…
-> 🧠 Développée avec **Flutter**, **Firebase**, **Hive**, et optimisée avec **ChatGPT + GitHub Copilot**.
+🎯 Mission
 
----
+Offrir à chaque utilisateur un suivi complet, intelligent et personnalisable de la santé, de l’éducation, du bien-être et des activités de ses animaux, tout en garantissant :
 
-## 🎯 Objectifs
+Une expérience utilisateur fluide et agréable
 
-- Offrir un **suivi complet** (santé, comportement, alimentation, activités)
-- Permettre l’ajout de **modules personnalisés** à la demande
-- Utiliser une **IA hybride (locale + cloud)** pour des analyses puissantes
-- Optimiser les **coûts Firebase** avec synchronisation différée
-- Garantir une **expérience offline-first** grâce à Hive
+Une confidentialité maximale des données personnelles
 
----
+Une intégration intelligente de l’IA au service de l’utilisateur
 
-## 🧩 Architecture modulaire
+Une modularité totale selon les besoins de chaque profil
 
-Chaque module est autonome et activable selon les besoins :
-- 📁 `modules/sante` → Carnet vétérinaire, traitements, vaccins
-- 📁 `modules/pistage` → Localisation, historique des déplacements
-- 📁 `modules/education` → Socialisation, apprentissage, exercices
-- 📁 `modules/communauté` → Partage, missions, garde, entraide
+🧩 Fonctionnalités principales
 
-Le tout relié à un **Noyau central** qui gère :
-- Authentification, IA maîtresse, stockage local/cloud, notifications, etc.
+Suivi santé complet : vaccins, ordonnances, carnet vétérinaire, rendez-vous
 
----
+Modules d’éducation et de dressage : exercices, sociabilisation, pistage, concours
 
-## 🚀 Technologies utilisées
+Reconnaissance visuelle & OCR : scannez le carnet vétérinaire ou une ordonnance pour l’intégrer automatiquement
 
-| Domaine            | Stack Technique                         |
-|--------------------|------------------------------------------|
-| Développement      | Flutter (Android / iOS / Web)            |
-| Stockage local     | Hive                                     |
-| Cloud & Realtime   | Firebase Firestore, Storage, Auth        |
-| IA locale          | TensorFlow Lite, OpenCV                  |
-| OCR                | Tesseract / Modèle IA interne            |
-| Backend optionnel  | Firebase Functions (léger)               |
-| Site web compagnon | Connecté à l’App (UniSphère)             |
+Photos et souvenirs : journal visuel, partage optimisé, identification visuelle en cas de fugue
 
----
+Fiches animales interactives : historiques, modules activés, IA dédiée
 
-## 🗂️ Structure du projet
+Notifications IA : rappels, alertes urgentes, suggestions intelligentes
 
-```
-anisphere/
-├── lib/
-│   ├── models/             # Modèles de données
-│   ├── providers/          # État global avec Provider
-│   ├── screens/            # Écrans de navigation
-│   ├── services/           # Hive, Firebase, IA...
-│   └── modules/            # Modules activables
-├── docs/                   # Suivi Markdown (projet et modules)
-├── test/                   # Tests unitaires (en cours)
-├── scripts/                # Scripts (sync, build, tests)
-├── sync.sh                 # Script de sauvegarde Git
-└── README.md               # Ce fichier
-```
+Mode hors-ligne & synchronisation différée
 
----
+Modules communautaires : alerte fugue, services entre utilisateurs, sphères (monnaie d'entraide)
 
-## 📌 Suivi & Documentation
+🤖 IA intégrée au cœur du projet
 
-Le projet est suivi avec des fichiers Markdown dans [`/docs/`](docs/) :
+IA locale : OCR, analyse comportementale, suggestions embarquées
 
-- `0__instructions.md` → Présentation & directives globales
-- `1__idees.md` → Idées futures & modules à venir
-- `2__roadmap.md` → Étapes majeures de développement
-- `3__suivi_taches.md` → Suivi des tâches
-- `6__technos_par_module.md` → Technologies utilisées par module
-- `10__architecture.md` → Arborescence et organisation technique
+IA cloud : apprentissage collectif, recommandations, statistiques anonymisées
 
----
+IA maîtresse : centralise toutes les IA, optimise les ressources, personnalise l’expérience
 
-## 🔐 Sécurité & Confidentialité
+Apprentissage autonome : plus il y a d’utilisateurs, plus l’IA devient intelligente
 
-- Authentification sécurisée : Email / Google / Apple
-- Données locales chiffrées
-- Données sensibles non exposées dans le cloud
-- Permissions avancées selon profil & module actif
+🧱 Architecture modulaire
 
----
+AniSphère fonctionne avec un noyau central auquel s’ajoutent des modules indépendants, activables selon les besoins :
 
-## 🤖 IA Hybride
+Santé
 
-- **IA locale** : comportement animal, OCR, prédiction
-- **IA cloud** : analyses de santé, recommandations vétérinaires
-- **IA maîtresse** : optimisation Firebase, personnalisation modules
+Éducation
 
----
+Dressage
 
-## 🛠️ Lancer le projet localement
+Communauté
 
-```bash
-flutter pub get
-flutter run
-```
+Fugue
 
----
+Missions / professionnels
 
-## 🔧 Déploiement & Tests
+Chaque module embarque sa propre IA et son propre système de données.
 
-- `./sync.sh` → push Git rapide
-- Tests unitaires en cours dans `/test/`
-- Déploiement via Firebase et GitHub Actions à venir
+🔒 Sécurité et confidentialité
 
----
+Stockage local par défaut (aucune donnée personnelle dans le cloud sans consentement)
 
-## 💬 Contact & Contribution
+Données chiffrées (local + synchronisation différée chiffrée)
 
-Projet maintenu par **@anisphere13**
-📍 https://github.com/anisphere13/anisphere
+Pas de publicité, pas de revente de données
 
-> Contributions, idées et retours bienvenus (voir `docs/1__idees.md`)
+Authentification sécurisée (Google, Apple, Email)
 
----
+💡 Pourquoi AniSphère est unique ?
 
-## 🧠 Méthodologie
+Tout est personnalisable (UI, modules, espèces…)
 
-Le projet suit une logique **développement + IA assistée** :
+IA intégrée nativement, pas ajoutée après coup
 
-1. Code généré ou guidé par ChatGPT
-2. Optimisé automatiquement avec GitHub Copilot
-3. Sauvegarde sur GitHub via script personnalisé
-4. Suivi Markdown et organisation modulaire
+Adaptée aux professionnels et associations avec suivi multi-animaux
+
+Compatible avec une vie sans Internet, mais aussi avec du cloud intelligent
+
+Pensée pour durer : chaque photo, chaque information contribue à enrichir votre carnet de suivi
+
+📲 Statut actuel
+
+Version alpha en développement
+
+Tests automatisés en place
+
+IA locale opérationnelle (OCR, suggestions, compression)
+
+Noyau fonctionnel avec stockage hybride (Hive + Firebase différé)
+
+👨‍💻 Contribuer
+
+AniSphère est un projet structuré, évolutif, ouvert à la contribution.
+
+Documentation complète (voir README_DEV.md)
+
+Tests automatisés intégrés
+
+Modules indépendants faciles à ajouter
+
+Scripts d’automatisation prêts
+
+Rejoignez l’aventure et contribuez à créer la meilleure application de suivi animal !
+
+© AniSphère 2025 — Suivez vos animaux comme jamais auparavant.
+
+

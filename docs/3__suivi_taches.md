@@ -1,48 +1,97 @@
-# 3- Suivi_Taches
+✅ 3__suivi_taches.md — Tableau de bord global AniSphère
 
-|   Unnamed: 0 | Statut           | Priorité   | Module Associé         | Responsable   |   Date limite |   Date réalisation | Progrès (%)    | Notes                                                                      |
-|-------------:|:-----------------|:-----------|:-----------------------|:--------------|--------------:|-------------------:|:---------------|:---------------------------------------------------------------------------|
-|          nan | En développement | Haute      | Idées et Améliorations | nan           |           nan |                nan | 50             | Fusion des idées similaires                                                |
-|          nan | En développement | Moyenne    | Roadmap                | nan           |           nan |                nan | 40             | Ajouter modules manquants                                                  |
-|          nan | À implémenter    | Basse      | UI/UX                  | nan           |           nan |                nan | 0              | Aligner avec les modules                                                   |
-|          nan | En développement | Haute      | Collections Firebase   | nan           |           nan |                nan | 60             | Vérifier liens Firebase                                                    |
-|          nan | À implémenter    | Moyenne    | Backend                | nan           |           nan |                nan | 0              | Organiser par module                                                       |
-|          nan | En cours         | Haute      | Noyau                  | Développement |           nan |                nan | 10 (Démarrage) | Mise en place du noyau principal, gestion des utilisateurs et du site web. |
-|          nan | À implémenter    | Moyenne    | Backend                | nan           |           nan |                nan | 0              | Créer dossiers dans Drive                                                  |
-|          nan | À implémenter    | Haute      | Automatisation         | nan           |           nan |                nan | 0              | Configurer API Sheets                                                      |
-|          nan | À implémenter    | Moyenne    | Collections Firebase   | nan           |           nan |                nan | 0              | Relier les documents OCR au dossier vétérinaire.                           |
-|          nan | À implémenter    | Moyenne    | Données Médicales      | nan           |           nan |                nan | 0              | Créer des champs et sous-collections pour les médicaments.                 |
-|          nan | À implémenter    | Basse      | Données Médicales      | nan           |           nan |                nan | 0              | Ajouter des données de remèdes naturels.                                   |
-|          nan | À implémenter    | Haute      | Données Médicales      | nan           |           nan |                nan | 0              | Vérifier les interactions et la visualisation.                             |
-|          nan | À implémenter    | Moyenne    | Comportement Animal    | nan           |           nan |                nan | 0              | Créer une sous-collection pour le suivi des comportements.                 |
-|          nan | À implémenter    | Moyenne    | Comportement Animal    | nan           |           nan |                nan | 0              | Permettre la saisie de comportements anormaux.                             |
-|          nan | À implémenter    | Moyenne    | UI                     | nan           |           nan |                nan | 0              | Ajouter des traductions aux rapports partagés.                             |
-|          nan | À implémenter    | Moyenne    | Backend                | nan           |           nan |                nan | 0              | Créer des PDF dans plusieurs langues via une API.                          |
-|          nan | À implémenter    | Moyenne    | Backend                | nan           |           nan |                nan | 0              | Vérifier la précision et l’affichage des rapports.                         |
-|          nan | Terminé          | Haute      | Firestore              | nan           |           nan |                nan | 100            | Ajout des champs : uid, name, email, phone, roles, createdAt, updatedAt    |
-|          nan | À implémenter    | Haute      | Architecture           | nan           |           nan |                nan | 0              | Clarifier ce qui est intégré au noyau et ce qui est un module.             |
-|          nan | À implémenter    | Haute      | Développement          | nan           |           nan |                nan | 0              | Définir l’UI initiale et navigation de l’app.                              |
-|          nan | À implémenter    | Haute      | Firebase/Local DB      | nan           |           nan |                nan | 0              | Mettre en place Hive et synchronisation Firebase.                          |
-|          nan | À implémenter    | Haute      | OCR                    | nan           |           nan |                nan | 0              | Développement et tests pour reconnaître les documents.                     |
-|          nan | À implémenter    | Moyenne    | Partage                | nan           |           nan |                nan | 0              | Créer des règles d’accès et rôles utilisateurs.                            |
-|          nan | À implémenter    | Haute      | UI/UX                  | nan           |           nan |                nan | 0              | Définir les bases d’une app intuitive et simple.                           |
-|          nan | À implémenter    | Moyenne    | UI                     | nan           |           nan |                nan | 0              | Définir comment intégrer les langues dans toute l’application.             |
-|          nan | ✅ Terminé       | Haute      | Environnement          | nan           |           nan |                nan | 100            | Aucune erreur détectée                                                     |
-|          nan | ✅ Terminé       | Haute      | Base de données        | nan           |           nan |                nan | 100            | Base de données locale prête                                               |
-|          nan | ✅ Terminé       | Haute      | Firebase               | nan           |           nan |                nan | 100            | Projet prêt à être lié à Flutter                                           |
-|          nan | ✅ Terminé       | Haute      | Firebase               | nan           |           nan |                nan | 100            | Première base de données créée                                             |
-|          nan | 🟡 En cours      | Haute      | Firebase               | nan           |           nan |                nan | 50             | Téléchargement en cours                                                    |
-|          nan | 🟡 En cours      | Haute      | Firebase               | nan           |           nan |                nan | 50             | Connexion en cours                                                         |
-|          nan | 🟡 En cours      | Moyenne    | Environnement          | nan           |           nan |                nan | 50             | Vérifications système                                                      |
-|          nan | ⏳ À faire       | Haute      | Firebase               | nan           |           nan |                nan | 0              | Doit être validé                                                           |
-|          nan | ⏳ À faire       | Haute      | Firebase               | nan           |           nan |                nan | 0              | À ajouter dans pubspec.yaml                                                |
-|          nan | nan              | nan        | nan                    | nan           |           nan |                nan | 0              | nan                                                                        |
-|          nan | nan              | nan        | nan                    | nan           |           nan |                nan | 0              | nan                                                                        |
-|          nan | nan              | nan        | nan                    | nan           |           nan |                nan | 0              | nan                                                                        |
-|          nan | nan              | nan        | nan                    | nan           |           nan |                nan | 0              | nan                                                                        |
-|          nan | nan              | nan        | nan                    | nan           |           nan |                nan | 0              | nan                                                                        |
-|          nan | nan              | nan        | nan                    | nan           |           nan |                nan | 0              | nan                                                                        |
-|          nan | nan              | nan        | nan                    | nan           |           nan |                nan | 0              | nan                                                                        |
-|          nan | nan              | nan        | nan                    | nan           |           nan |                nan | 0              | nan                                                                        |
-|          nan | nan              | nan        | nan                    | nan           |           nan |                nan | 0              | nan                                                                        |
-|          nan | nan              | nan        | nan                    | nan           |           nan |                nan | 0              | nan                                                                        |
+Ce fichier est une vue d’ensemble condensée du projet AniSphère. Il permet de suivre l’évolution par grandes étapes (noyau + modules) sans entrer dans les détails techniques. Chaque module dispose de son propre fichier de suivi détaillé. Ce tableau sert à suivre le cap général du développement.
+
+⚠️ Ce fichier sera mis à jour automatiquement à chaque avancement significatif via les outils internes (sync_docs.sh, update_tracker, etc.)
+
+🔰 Statut actuel
+
+Phase actuelle : Développement du noyau
+
+Modules encore inactifs (préparation uniquement)
+
+Tests auto et CI/CD en structuration
+
+🧩 Noyau central — Suivi global
+
+Authentification : terminée (email / Google / Apple avec Hive local)
+
+Reconnexion hors-ligne : terminée (stockage local actif hors connexion)
+
+Gestion utilisateur : terminée (création, édition, rôles, stockage cloud/local)
+
+IA maîtresse : en cours (compression, coût Firebase, pilotage auto)
+
+Stockage hybride : terminé (Hive + Firebase avec sync différée)
+
+Notifications globales : à venir (IA + catégories par module)
+
+🩺 Santé — Activation prévue (Roadmap Phase 4)
+
+OCR carnet santé : prévu (lecture ordonnances, vaccins)
+
+Rappels traitements : prévu (notifications intelligentes)
+
+Statistiques santé : prévu (suivi par IA)
+
+Export PDF multilingue : prévu (partage professionnel)
+
+🧠 Éducation — Activation prévue (Roadmap Phase 4)
+
+Base d’exercices : prévu (techniques éducatives classées)
+
+IA éducative : prévu (suggestions personnalisées)
+
+Suivi progression : prévu (courbes + validation)
+
+Playlist sonore : prévu (sons de socialisation)
+
+🐾 Dressage — En attente d’activation
+
+Pistage GPS : prévu (traces, historique, IA parcours)
+
+Concours & agility : prévu (préparation + scoring)
+
+Détection objets : prévu (entraînement au flair)
+
+👥 Communauté — Phase préparatoire
+
+Système de Sphères : prototype en cours (monnaie d’échange & entraide)
+
+Profils publics : prévu (carte interactive, filtres)
+
+Historique des échanges : prévu (réputation, avis)
+
+🧪 Tests & Automatisation — En parallèle
+
+Dossier de test propre : terminé (base unifiée propre)
+
+Générateur de tests : terminé (script modulaire automatique)
+
+Tracker de tests : terminé (fichier + mise à jour auto)
+
+GitHub Actions : prévu (lancement auto des tests)
+
+📝 UI / UX / Docs — En amélioration continue
+
+README.md : terminé (présentation publique enrichie)
+
+README_DEV.md : terminé (vue développeur claire)
+
+Magasin de modules : prévu (UI pour activer/désactiver)
+
+Tutoriel interactif : prévu (onboarding avec IA + OCR)
+
+🔄 Règle de mise à jour
+
+Ce fichier ne liste que les grandes étapes :
+
+Il doit rester lisible, synthétique et global.
+
+Pour les détails → consulter : 
+
+noyau_suivi.md → tâches internes du noyau
+
+suivi_[module].md → suivi fin par module
+
+

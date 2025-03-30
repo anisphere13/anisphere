@@ -1,120 +1,131 @@
+🏗️ 10__architecture.md — Architecture technique et fonctionnelle d’AniSphère
 
-# 🔹 Architecture Modulaire AniSphère – Version 2025
+Ce document décrit l’architecture complète d’AniSphère, conçue pour être modulaire, évolutive, performante, et optimisée par l’intelligence artificielle. Elle prend en compte la nécessité de limiter les coûts Firebase, d’assurer un fonctionnement hors ligne fluide, de gérer un très grand nombre d’utilisateurs et d’animaux, et de garantir une ergonomie maximale.
 
-AniSphère utilise une architecture **modulaire, propre et évolutive**, facilitant :
-- La séparation claire des responsabilités
-- Le développement progressif par module
-- L'intégration d'IA locale/cloud
-- Le suivi automatisé du développement et des tests
+🧱 Fondations de l’architecture AniSphère
 
----
+Flutter : framework unique pour Android, iOS, web (futur) et desktop.
 
-## 📁 Structure globale du projet
+Hive : base de données locale ultra-rapide, prioritaire pour toutes les données non critiques.
 
-```
-anisphere/
-├── lib/
-│   ├── modules/
-│   │   └── noyau/
-│   │       ├── models/
-│   │       ├── providers/
-│   │       ├── screens/
-│   │       └── services/
-│   ├── screens/                      # Écrans globaux (non modulaires)
-│   ├── services/                     # Services globaux (Firebase, Local, Init)
-│   ├── firebase_options.dart
-│   └── main.dart
-│
-├── test/
-│   ├── global/
-│   │   ├── integration/
-│   │   ├── unit/
-│   │   └── widget/
-│   ├── noyau/
-│   │   ├── integration/
-│   │   ├── unit/
-│   │   └── widget/
-│   └── test_module_modele/
-│       ├── integration/
-│       ├── unit/
-│       └── widget/
-│
-├── scripts/
-│   ├── generate_test_module.dart
-│   └── update_test_tracker.dart
-│
-├── docs/
-│   ├── 0__instructions.md
-│   ├── 1__idees.md
-│   ├── 2__roadmap.md
-│   ├── 3__suivi_taches.md
-│   ├── 4__gestion_des_collections.md
-│   ├── 5__ux.md
-│   ├── 6__technos_par_module.md
-│   ├── 7__ia.md
-│   ├── 8__modèle_éco.md
-│   ├── 9__planification_photos.md
-│   ├── 10__architecture.md
-│   └── test_tracker.md
-│
-├── .github/workflows/
-│   ├── flutter_tests.yml
-│   └── update_test_tracker.yml
+Firebase : uniquement pour les fonctions cloud critiques (auth, stockage partagé, synchronisation IA cloud).
 
-├── pubspec.yaml
-├── README.md
-├── README_DEV.md
-└── sync.sh
-```
+TFLite + OpenCV : IA locale embarquée (OCR, reconnaissance visuelle, analyse comportementale).
 
----
+Architecture modulaire : séparation complète entre le noyau et les modules, tous indépendants et téléchargeables à la demande.
 
-## ✅ Règles de structuration
+⚙️ Noyau central (Core)
 
-- Tous les modules sont dans `lib/modules/[nom_module]/`
-- Le **noyau** est un module comme les autres (`modules/noyau`)
-- Chaque module a ses propres :
-  - `models/`
-  - `screens/`
-  - `services/`
-  - `providers/`
-  - `logic/` (facultatif : IA, OCR, traitement)
-  - `tests/` (reliés à `test/[nom_module]/`)
-- Les services partagés (auth, Firebase, Hive) sont dans `lib/services/`
+Le noyau est le cœur de l’application. Il gère :
 
----
+Authentification (email, Google, Apple)
 
-## 🧪 Tests automatisés
+Comptes utilisateurs (statistiques, rôles dynamiques, paramètres)
 
-- Chaque module possède un dossier `test/[module]/` avec :
-  - `unit/` – logique métier
-  - `widget/` – interface Flutter
-  - `integration/` – ensemble complet
-- Génération automatique :
-```bash
-dart run scripts/generate_test_module.dart
-```
-- Suivi automatique dans `docs/test_tracker.md` :
-```bash
-dart run scripts/update_test_tracker.dart
-```
+Profils animaux (données de base, modules actifs, IA locale)
 
----
+Stockage hybride (Hive local + Firestore différé)
 
-## ⚙️ CI/CD et automatisation
+Synchronisation automatique IA + données critiques
 
-- Tests lancés à chaque push :
-  `.github/workflows/flutter_tests.yml`
-- Suivi Markdown mis à jour :
-  `.github/workflows/update_test_tracker.yml`
+IA maîtresse (optimisation Firebase, alertes, personnalisation)
 
----
+Notifications (urgentes, programmées, contextuelles)
 
-## 💡 Avantages
+Gestion de la boutique de modules + activation
 
-- Architecture claire et modulaire
-- Intégration parfaite avec GitHub Copilot
-- Suivi automatique en `.md`
-- IA hybride facilement activable
-- Monétisation intégrée module par module
-- Maintenance facilitée sur le long terme
+Export PDF brut
+
+Interface guidée au lancement
+
+🧩 Modules indépendants et connectés
+
+Chaque module est développé comme un composant autonome :
+
+Il dispose de sa propre IA locale + règles cloud si nécessaire
+
+Il est activé/désactivé via la boutique (et chargé uniquement si actif)
+
+Il a son propre suivi, interface, données, et permissions
+
+Modules principaux (exemples) :
+
+Santé (vaccins, carnet, vétérinaire, antiparasitaires)
+
+Éducation (exercices, phases, progrès IA)
+
+Dressage (canicross, pistage, recherche, agilité)
+
+Communauté (entraide, sphères, échanges, alertes fugue)
+
+Fugue (photo d’identification, alerte automatique, page publique)
+
+🔁 Architecture de développement Flutter (arborescence simplifiée)
+
+lib/ │ ├── core/ # Noyau de l’application │ ├── auth/ # Authentification (login, registre) │ ├── user/ # Modèle utilisateur, paramètres │ ├── animal/ # Modèle animal et profils │ ├── settings/ # Préférences générales │ ├── ia_master/ # IA maîtresse et supervision globale │ └── notifications/ # Gestion centralisée des notifications │ ├── models/ # Modèles de données globaux ├── services/ # Firebase, Hive, OCR, export, IA locale ├── providers/ # États globaux (user, animaux, modules...) ├── screens/ # Interfaces générales (accueil, login, etc.) ├── modules/ # Modules indépendants │ ├── sante/ │ ├── education/ │ ├── dressage/ │ ├── communaute/ │ └── fugue/ └── utils/ # Fonctions utilitaires, constantes globales 
+
+Chaque module suit une structure miroir interne (models/, screens/, services/, ia/, etc.), totalement indépendante et instanciée dynamiquement à l’activation.
+
+🤖 IA intégrée à chaque étage
+
+Locale (TFLite) : OCR, suggestions, rappels, suivi comportemental embarqué
+
+Cloud : analyse globale anonymisée, apprentissage partagé, modèles adaptatifs
+
+Maîtresse IA (noyau) : 
+
+Supervision des autres IA
+
+Optimisation Firebase (compression, tri, upload différé)
+
+Personnalisation de l’expérience utilisateur
+
+Explicabilité IA (justification des suggestions)
+
+Amélioration continue des modules (recommandation, tri, désactivation automatique si inutile)
+
+🌐 Synchronisation intelligente
+
+Par défaut, tout est stocké localement (même connecté)
+
+Synchronisation Firebase : 
+
+Déclenchée uniquement si nécessaire (action critique, partage, backup cloud)
+
+Regroupée en lots compressés pour minimiser les accès
+
+Automatiquement différée par l’IA pour éviter les pics ou coûts inutiles
+
+Données sensibles exclues du cloud (nom, prénom, téléphone)
+
+🛡️ Sécurité et confidentialité intégrées
+
+Authentification OAuth / Google / Apple
+
+Chiffrement des données locales (Hive chiffré)
+
+Gestion fine des permissions par module + rôle utilisateur
+
+Données critiques sauvegardées uniquement avec consentement explicite
+
+🧠 IA + UX : une architecture centrée sur l’utilisateur
+
+L’IA apprend en continu pour fluidifier l’expérience (pas d’options inutiles, navigation personnalisée)
+
+Le système s’auto-adapte selon l’usage réel (modules suggérés ou désactivés)
+
+L’interface est pensée pour créer une relation quotidienne fluide, agréable et cohérente
+
+📈 Vision long terme
+
+Architecture scalable à très grand nombre d’animaux et d’utilisateurs
+
+IA comme infrastructure d’optimisation temps réel, financière, et ergonomique
+
+Système modulaire prêt pour des dizaines de nouveaux modules
+
+Version Web + API publique + dashboard admin professionnel à venir
+
+AniSphère repose sur une architecture modulaire, hybride et intelligente, taillée pour accompagner l’évolution constante des usages, tout en gardant un coût optimisé, une UX exceptionnelle, et une IA au cœur du pilotage.
+
+

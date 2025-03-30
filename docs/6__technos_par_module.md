@@ -1,12 +1,148 @@
-# 6- Technos par Module
+🛠️ 6__technos_par_module.md — Technologies utilisées par module AniSphère
 
-| Module                   | Technologie Principale     | Stockage                  | Communication                  | IA/ML            | Sync avec Firebase                 | Optimisation Coûts                | Notes                                        | Dépendances   | Mode Hors-Ligne   |
-|:-------------------------|:---------------------------|:--------------------------|:-------------------------------|:-----------------|:-----------------------------------|:----------------------------------|:---------------------------------------------|:--------------|:------------------|
-| Recherche de Personnes   | Bluetooth Mesh             | Hive + Stockage Local     | Bluetooth + WiFi Direct        | Non              | Sync uniquement quand réseau dispo | Limite Firebase envoi en bloc     | Utilisé pour les missions hors réseau        | Aucune        | Non               |
-| Suivi GPS Animal         | Stockage Hors-Ligne        | Hive + SQLite             | WiFi uniquement si dispo       | Non              | Sync différée                      | Évite 4G inutiles                 | Position GPS stockée et synchronisée par lot | Aucune        | Non               |
-| Entraînement Animal      | Local Only                 | Hive                      | Aucune                         | Non              | Non                                | 0 coût Firebase                   | Tout est stocké en local sans connexion      | Aucune        | Non               |
-| Carnet de Santé          | Upload Manuel              | Hive + Firestore (Backup) | WiFi uniquement                | Non              | Sync manuel par l’utilisateur      | L’utilisateur choisit             | Évite les uploads automatiques coûteux       | Aucune        | Oui               |
-| Alertes et Notifications | Notifications Locales      | Hive                      | Local AlarmManager/WorkManager | Non              | Non                                | Pas de Cloud Messaging Firebase   | Toutes les alertes sont locales              | Aucune        | Non               |
-| Interface et UI/UX       | Flutter                    | Cache Local               | WiFi si besoin                 | Non              | Sync en WiFi uniquement            | Chargement différé                | UI fluide sans surcharge réseau              | Aucune        | Non               |
-| Données Médicales        | FireStore + Stockage Local | Hive + Firestore          | WiFi uniquement                | OCR et IA légère | Sync contrôlée                     | Batch Processing pour coût réduit | Éviter stockage inutile Firebase             | Aucune        | Non               |
-| Comportement Animal      | Stockage Local             | Hive                      | Aucune                         | IA Légère        | Sync optionnelle                   | Analyse locale                    | Suivi des comportements sans Internet        | Aucune        | Non               |
+Ce fichier décrit les technologies, bibliothèques et outils utilisés dans le projet AniSphère, classés par noyau et modules fonctionnels. Il permet d’avoir une vision claire des dépendances et de faciliter le suivi des performances, des tests et de l’architecture.
+
+🔹 Noyau central
+
+Flutter : Base de l'application multiplateforme (iOS, Android, Web, desktop).
+
+Hive : Stockage local ultra-rapide (données utilisateurs, animaux, modules).
+
+Firebase Auth : Authentification sécurisée (Email, Google, Apple).
+
+Firebase Firestore : Base cloud pour la synchronisation différée.
+
+Firebase Storage : Stockage de fichiers compressés (OCR, photos...)
+
+Firebase Remote Config : Gestion dynamique des versions, modules et fonctionnalités.
+
+Provider : Gestion des états globaux (user, animal, modules actifs).
+
+Github Actions : Tests automatisés, CI/CD, scripts de suivi.
+
+TFLite : IA locale pour OCR et détection embarquée.
+
+OpenCV (via native plugin) : Analyse d’image, tri IA, reconnaissance.
+
+flutter_secure_storage : Stockage local chiffré de données sensibles.
+
+shared_preferences : Gestion des préférences utilisateur (thème, vues, tutoriels).
+
+firebase_crashlytics : Suivi des erreurs en production.
+
+🩺 Module Santé
+
+Tesseract / TFLite : OCR carnet santé (ordonnances, vaccins).
+
+Charts_flutter : Graphiques d’évolution (poids, traitements...)
+
+PDF / printing : Export du carnet santé en PDF
+
+Local Notifications : Rappels de traitements et vaccinations
+
+cloud_functions : Export vérifié et sécurisé (PDF pro)
+
+pdf_text : OCR sur fichiers PDF existants
+
+🧠 Module Éducation
+
+Base éducative locale : Liste embarquée des exercices standards
+
+IA personnalisée (TFLite) : Suggestions d'exercices selon profil
+
+Audio Player : Lecture de playlists sonores éducatives
+
+Hive : Sauvegarde de la progression
+
+confetti / fl_chart : Feedback visuel lors des validations
+
+draggable_grid_view : Organisation des objectifs éducatifs
+
+microphone / recorder : Écoute de commandes vocales (rappel, consignes)
+
+🐾 Module Dressage
+
+Google Maps / Flutter Map : Affichage des parcours (pistage, sport)
+
+Geolocator / location : Enregistrement de traces GPS
+
+TFLite / OpenCV : Détection d’objets, reconnaissance d’action
+
+background_locator_2 : Enregistrement GPS même en arrière-plan
+
+flutter_compass : Orientation et direction dans l'espace (pistage, agility)
+
+ar_flutter_plugin : Réalité augmentée (entraînement interactif)
+
+👥 Module Communauté
+
+Firebase Firestore : Stockage des profils, échanges, réputation
+
+Cloud Functions : Validation des échanges, récompenses
+
+Flutter Webview / QR : Partage des profils, accès simplifié
+
+Algolia (optionnel) : Recherche rapide utilisateurs/animaux
+
+flutter_map_marker_cluster : Regroupement d’utilisateurs sur carte
+
+firebase_messaging + local_notifications : Notification combinée locale et cloud
+
+🌐 Site compagnon (module intégré)
+
+Flutter Web : Interface web miroir
+
+Firebase Hosting : Hébergement statique sécurisé
+
+Deep Linking : Synchronisation directe app ↔ site
+
+next.js (en option futur) : site web plus flexible si besoin
+
+Strapi CMS (en option futur) : gestion de contenu sans coder
+
+🧪 Tests & Automatisation
+
+flutter_test : Tests unitaires & widget
+
+integration_test : Scénarios utilisateur
+
+mockito / fake_async : Simulation d’environnement
+
+generate_test_module.dart : Génération automatique de fichiers de test
+
+update_test_tracker.dart : Mise à jour continue du tracker de tests
+
+📦 Utilitaires communs à tous les modules
+
+Image Picker : Ajout de photos (santé, profil, activité)
+
+Path_provider : Gestion du cache, documents, export
+
+Intl : Traductions, formats de date, langues
+
+Compression : Réduction de poids avant envoi (images, fichiers)
+
+qr_flutter / NFC plugin : Génération de QR code animal, page publique
+
+💳 Paiement & Monétisation (à venir)
+
+in_app_purchase : Achats intégrés (iOS/Android)
+
+stripe : Paiements web
+
+RevenueCat : Gestion multiplateforme des abonnements (optionnelle)
+
+📊 Performance & Analyse (à venir)
+
+Datadog / Sentry : Suivi des performances, crashs, analytics IA
+
+Firebase Analytics : Comportements utilisateurs (activations modules, navigation...)
+
+🧠 IA avancée (idées futures)
+
+Reconnaissance comportementale par caméra (pelage, posture, expression)
+
+IA scoring éducatif (analyse historique et prédiction des progrès)
+
+Speech-to-Bark (reconnaissance d’aboiement) : projet de recherche vocal canin
+
