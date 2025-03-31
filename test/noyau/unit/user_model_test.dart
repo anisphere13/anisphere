@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:anisphere/models/user_model.dart';
+import 'package:anisphere/modules/noyau/models/user_model.dart';
 
 void main() {
   group('USER_MODEL - Test unitaire', () {
