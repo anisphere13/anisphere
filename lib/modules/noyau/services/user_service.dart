@@ -8,6 +8,13 @@ class UserService {
   static const String userBoxName = 'user_data';
   late Box<UserModel> _userBox;
 
+  /// 🔧 **Constructeur pour permettre l'injection de box personnalisée en test**
+  UserService({Box<UserModel>? testBox}) {
+    if (testBox != null) {
+      _userBox = testBox;
+    }
+  }
+
   /// 🔄 **Initialisation globale du service**
   Future<void> init() async {
     await initHive();
