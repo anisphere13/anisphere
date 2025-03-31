@@ -6,32 +6,41 @@ void main() {
     test('Création d\'un animal valide', () {
       final animal = AnimalModel(
         id: '123',
-        nom: 'Rex',
-        espece: 'chien',
-        dateNaissance: DateTime(2020, 1, 1),
-        poids: 30.5,
+        name: 'Rex',
+        species: 'chien',
+        breed: 'labrador',
+        imageUrl: 'http://exemple.com/image.jpg',
+        ownerId: 'u1',
+        createdAt: DateTime(2020, 1, 1),
+        updatedAt: DateTime(2020, 1, 1),
       );
 
-      expect(animal.nom, 'Rex');
-      expect(animal.espece, 'chien');
-      expect(animal.poids, greaterThan(0));
+      expect(animal.name, 'Rex');
+      expect(animal.species, 'chien');
+      expect(animal.breed, 'labrador');
+      expect(animal.imageUrl, contains('http'));
+      expect(animal.ownerId, isNotEmpty);
     });
 
-    test('Conversion toMap et fromMap', () {
+    test('Conversion toJson et fromJson', () {
       final animal = AnimalModel(
-        id: '123',
-        nom: 'Milo',
-        espece: 'chat',
-        dateNaissance: DateTime(2021, 5, 10),
-        poids: 4.2,
+        id: '456',
+        name: 'Milo',
+        species: 'chat',
+        breed: 'persan',
+        imageUrl: 'http://exemple.com/image2.jpg',
+        ownerId: 'u2',
+        createdAt: DateTime(2021, 5, 10),
+        updatedAt: DateTime(2021, 5, 12),
       );
 
-      final map = animal.toMap();
-      final fromMap = AnimalModel.fromMap(map);
+      final map = animal.toJson();
+      final fromMap = AnimalModel.fromJson(map);
 
       expect(fromMap.id, animal.id);
-      expect(fromMap.nom, animal.nom);
-      expect(fromMap.espece, animal.espece);
+      expect(fromMap.name, animal.name);
+      expect(fromMap.species, animal.species);
+      expect(fromMap.breed, animal.breed);
     });
   });
 }
