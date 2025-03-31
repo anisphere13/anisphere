@@ -6,7 +6,7 @@ import 'package:anisphere/services/firebase_service.dart';
 import 'package:anisphere/modules/noyau/models/user_model.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
 
-import 'firebase_service_test.mocks.dart';
+import 'firebase_service_test_config.mocks.dart';
 
 void main() {
   late MockFirebaseFirestore mockFirestore;
