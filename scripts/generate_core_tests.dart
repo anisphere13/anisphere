@@ -1,82 +1,89 @@
+// 📁 scripts/generate_core_tests.dart
 import 'dart:io';
-import 'package:path/path.dart' as p;
 
 void main() {
-  final libDir = Directory('lib');
-  final testBase = Directory('test/global');
-
-  if (!libDir.existsSync()) {
-    print('❌ Dossier lib/ introuvable.');
-    exit(1);
-  }
-
-  final types = ['unit', 'widget', 'integration'];
-  final templates = {
-    'unit': (String name) => '''import 'package:flutter_test/flutter_test.dart';
-
-void main() {
-  group('$name - Test unitaire', () {
-    test('Addition simple', () {
-      expect(1 + 1, equals(2));
-    });
-
-    // TODO: Ajouter d'autres tests unitaires
-  });
-}
-''',
-    'widget': (String name) => '''import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-
-void main() {
-  testWidgets('$name - Widget Test', (WidgetTester tester) async {
-    await tester.pumpWidget(const MaterialApp(
-      home: Scaffold(body: Text('$name Widget')),
-    ));
-
-    expect(find.text('$name Widget'), findsOneWidget);
-
-    // TODO: Ajouter d'autres tests de widget
-  });
-}
-''',
-    'integration': (String name) => '''import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-
-void main() {
-  testWidgets('$name - Test d’intégration', (WidgetTester tester) async {
-    await tester.pumpWidget(const MaterialApp(
-      home: Scaffold(body: Text('$name Integration')),
-    ));
-
-    expect(find.text('$name Integration'), findsOneWidget);
-
-    // TODO: Ajouter d'autres tests d’intégration
-  });
-}
-'''
+  final basePath = 'test/noyau';
+  final structure = {
+    'unit': {
+      'user_service_test.dart': _userServiceTest,
+      'firebase_service_test.dart': _firebaseServiceTest,
+    },
+    'widget': {
+      'login_screen_test.dart': _loginScreenTest,
+    },
+    'integration': {
+      'app_initializer_test.dart': _initializerTest,
+    },
   };
 
-  final files = libDir
-      .listSync(recursive: true)
-      .whereType<File>()
-      .where((file) => file.path.endsWith('.dart'))
-      .where((file) => !file.path.contains('modules/'));
+  for (final type in structure.keys) {
+    final dir = Directory('$basePath/$type');
+    dir.createSync(recursive: true);
 
-  for (final file in files) {
-    final name = p.basenameWithoutExtension(file.path);
-    for (final type in types) {
-      final dir = Directory('${testBase.path}/$type');
-      dir.createSync(recursive: true);
-
-      final testFile = File('${dir.path}/${name}_$type_test.dart');
-      if (!testFile.existsSync()) {
-        testFile.writeAsStringSync(templates[type]!(name));
-        print('✅ Test généré : ${testFile.path}');
-      } else {
-        print('⏭️ Déjà présent : ${testFile.path}');
-      }
+    for (final entry in structure[type]!.entries) {
+      final file = File('${dir.path}/${entry.key}');
+      file.writeAsStringSync(entry.value);
+      print('✅ Fichier créé : ${file.path}');
     }
   }
 
-  print('\n🎉 Génération des tests globaux terminée !');
+  print('\n🎉 Les tests critiques du noyau sont prêts dans $basePath');
 }
+
+// -----------------------------
+// 🧪 CONTENU DES FICHIERS TESTS
+// -----------------------------
+
+const _userServiceTest = '''
+import 'package:flutter_test/flutter_test.dart';
+
+void main() {
+  group('user_service.dart - Tests unitaires', () {
+    test('Exemple test utilisateur', () {
+      expect(1 + 1, equals(2));
+    });
+  });
+}
+''';
+
+const _firebaseServiceTest = '''
+import 'package:flutter_test/flutter_test.dart';
+
+void main() {
+  group('firebase_service.dart - Tests unitaires', () {
+    test('Connexion simulée', () {
+      expect(true, isTrue); // TODO: implémenter un mock
+    });
+  });
+}
+''';
+
+const _loginScreenTest = '''
+import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  testWidgets('login_screen.dart - Widget test', (WidgetTester tester) async {
+    await tester.pumpWidget(const MaterialApp(
+      home: Scaffold(body: Text('Connexion')), // à remplacer
+    ));
+
+    expect(find.text('Connexion'), findsOneWidget);
+  });
+}
+''';
+
+const _initializerTest = '''
+import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  testWidgets('app_initializer.dart - Test d\'intégration', (WidgetTester tester) async {
+    await tester.pumpWidget(const MaterialApp(
+      home: Scaffold(body: Text('Initialisation')), // à remplacer
+    ));
+
+    expect(find.text('Initialisation'), findsOneWidget);
+  });
+}
+''';

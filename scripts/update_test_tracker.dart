@@ -1,43 +1,48 @@
 import 'dart:io';
 
 void main() {
-  final libDir = Directory('lib/modules');
+  final libModulesDir = Directory('lib/modules');
+  final libCoreDir = Directory('lib');
   final testDir = Directory('test');
   final trackerFile = File('docs/test_tracker.md');
 
-  if (!libDir.existsSync() || !testDir.existsSync()) {
-    print('❌ Dossier lib/modules/ ou test/ introuvable.');
+  if (!testDir.existsSync()) {
+    print('❌ Dossier test/ introuvable.');
     exit(1);
   }
 
   final buffer = StringBuffer()
     ..writeln('# 📋 Tracker des tests manquants\n')
-    ..writeln('> Mise à jour automatique à chaque push via GitHub Actions.\n')
-    ..writeln('| Module | Type | Présent ? | Chemin du test |')
-    ..writeln('|--------|------|-----------|----------------|');
+    ..writeln('| Fichier | Type attendu | Test présent | Chemin du test |')
+    ..writeln('|--------|--------------|--------------|----------------|');
 
-  final modules = libDir
-      .listSync()
-      .whereType<Directory>()
-      .map((dir) => dir.uri.pathSegments.last.replaceAll('/', ''))
-      .toList()
-    ..sort();
+  // 🔹 1. Vérification des modules (lib/modules/xxx)
+  if (libModulesDir.existsSync()) {
+    for (final module in libModulesDir.listSync()) {
+      if (module is! Directory) continue;
+      final moduleName = module.uri.pathSegments.last.replaceAll('/', '');
+      final testModulePath = 'test/test_${moduleName}_module';
 
-  for (final moduleName in modules) {
-    final testModulePath = 'test/test_${moduleName}_module';
+      for (final type in ['unit', 'widget', 'integration']) {
+        final expectedPath = '$testModulePath/$type/${moduleName}_$type_test.dart';
+        final exists = File(expectedPath).existsSync();
+        buffer.writeln('| $moduleName | $type | ${exists ? "✅" : "❌"} | ${exists ? expectedPath : "_Aucun test trouvé_"} |');
+      }
+    }
+  }
+
+  // 🔹 2. Vérification du noyau et global (lib/*.dart)
+  for (final file in libCoreDir.listSync()) {
+    if (file is! File || !file.path.endsWith('.dart') || file.path.contains('/modules/')) continue;
+    final fileName = file.uri.pathSegments.last;
+    final nameWithoutExt = fileName.replaceAll('.dart', '').replaceAll('_screen', '').replaceAll('_service', '');
+    final lower = nameWithoutExt.toLowerCase();
 
     for (final type in ['unit', 'widget', 'integration']) {
-      final expectedPath = '$testModulePath/$type/${moduleName}_$type_test.dart';
+      final expectedPath = 'test/noyau/$type/${lower}_${type}_test.dart';
       final exists = File(expectedPath).existsSync();
-
-      final pathDisplay = exists
-          ? '[$expectedPath]($expectedPath)'
-          : '_Aucun test trouvé_';
-
-      buffer.writeln('| $moduleName | $type | ${exists ? "✅" : "❌"} | $pathDisplay |');
+      buffer.writeln('| $fileName | $type | ${exists ? "✅" : "❌"} | ${exists ? expectedPath : "_Aucun test trouvé_"} |');
     }
-
-    buffer.writeln('| | | | |'); // Ligne vide pour séparation
   }
 
   trackerFile.createSync(recursive: true);
