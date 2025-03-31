@@ -1,42 +1,75 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:anisphere/services/firebase_service.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/widgets.dart';
 import 'package:mockito/mockito.dart';
-import 'package:mockito/annotations.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:anisphere/services/firebase_service.dart';
+import 'package:anisphere/modules/noyau/models/user_model.dart';
+import 'package:anisphere/modules/noyau/models/animal_model.dart';
 
 import 'firebase_service_test.mocks.dart';
 
-@GenerateMocks([FirebaseFirestore, CollectionReference, DocumentReference])
 void main() {
-  TestWidgetsFlutterBinding.ensureInitialized();
+  late MockFirebaseFirestore mockFirestore;
+  late MockFirebaseAuth mockAuth;
+  late MockCollectionReference<Map<String, dynamic>> mockUserCollection;
+  late MockCollectionReference<Map<String, dynamic>> mockAnimalCollection;
+  late MockDocumentReference<Map<String, dynamic>> mockUserDoc;
+  late FirebaseService firebaseService;
 
-  group('FIREBASE_SERVICE - Tests unitaires', () {
-    late FirebaseService service;
-    late MockFirebaseFirestore mockFirestore;
-    late MockCollectionReference mockCollection;
-    late MockDocumentReference mockDocument;
+  setUp(() {
+    mockFirestore = MockFirebaseFirestore();
+    mockAuth = MockFirebaseAuth();
+    mockUserCollection = MockCollectionReference();
+    mockAnimalCollection = MockCollectionReference();
+    mockUserDoc = MockDocumentReference();
 
-    setUp(() {
-      mockFirestore = MockFirebaseFirestore();
-      mockCollection = MockCollectionReference();
-      mockDocument = MockDocumentReference();
+    when(mockFirestore.collection('users')).thenReturn(mockUserCollection);
+    when(mockUserCollection.doc(any)).thenReturn(mockUserDoc);
+    when(mockFirestore.collection('animals')).thenReturn(mockAnimalCollection);
+    when(mockAnimalCollection.doc(any)).thenReturn(mockUserDoc);
 
-      when(mockFirestore.collection(any)).thenReturn(mockCollection);
-      when(mockCollection.doc(any)).thenReturn(mockDocument);
+    firebaseService = FirebaseService(firestore: mockFirestore, firebaseAuth: mockAuth);
+  });
 
-      service = FirebaseService(firestore: mockFirestore);
-    });
+  test('saveUser() - sauvegarde utilisateur sans erreur', () async {
+    final user = UserModel(
+      id: 'u1',
+      name: 'Jean',
+      email: 'jean@example.com',
+      phone: '0000',
+      profilePicture: '',
+      profession: 'dev',
+      ownedSpecies: {'chien': true},
+      ownedAnimals: ['a1'],
+      preferences: {},
+      moduleRoles: {},
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+    );
 
-    test('Récupère la collection', () {
-      final result = service.getCollection('utilisateurs');
-      expect(result, isA<CollectionReference>());
-    });
+    when(mockUserDoc.set(any, any)).thenAnswer((_) async => {});
+    final result = await firebaseService.saveUser(user);
+    expect(result, true);
+  });
 
-    test('Récupère le document', () {
-      final result = service.getDocument('utilisateurs', '123');
-      expect(result, isA<DocumentReference>());
-    });
+  test('deleteUser() - suppression utilisateur avec ID vide', () async {
+    final result = await firebaseService.deleteUser('');
+    expect(result, false);
+  });
+
+  test('saveAnimal() - sauvegarde animal avec ID vide', () async {
+    final animal = AnimalModel(
+      id: '',
+      name: 'Rex',
+      species: 'chien',
+      breed: 'labrador',
+      imageUrl: '',
+      ownerId: 'u1',
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+    );
+
+    final result = await firebaseService.saveAnimal(animal);
+    expect(result, false);
   });
 }
