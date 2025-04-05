@@ -95,3 +95,5 @@ noyau_suivi.md → tâches internes du noyau
 suivi_[module].md → suivi fin par module
 
 
+
+- ✅ Mise à jour automatique des tâches le 2025-04-05
