@@ -22,14 +22,14 @@ jobs:
       - name: 📦 Installer les dépendances
         run: flutter pub get
 
-      - name: 🔄 Générer les fichiers mock / hive (build_runner)
+      - name: 🔄 Générer les mocks & adapters (build_runner)
         run: flutter pub run build_runner build --delete-conflicting-outputs
 
       - name: 🧪 Lancer les tests avec couverture
         run: flutter test --coverage
 
-      - name: 📊 (Optionnel) Uploader le rapport de couverture
-        uses: actions/upload-artifact@v3
+      - name: 📊 Uploader le rapport de couverture
+        uses: actions/upload-artifact@v2
         with:
           name: coverage-report
           path: coverage/lcov.info
