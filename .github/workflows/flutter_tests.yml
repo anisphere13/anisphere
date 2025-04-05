@@ -1,4 +1,4 @@
-name: 🧪 Flutter Test & Coverage
+name: 🧪 Flutter Test Autonome
 
 on:
   push:
@@ -14,8 +14,10 @@ jobs:
       image: ghcr.io/cirruslabs/flutter:latest
 
     steps:
-      - name: 📥 Checkout code
-        uses: actions/checkout@v3
+      - name: 📥 Cloner le dépôt manuellement
+        run: |
+          git clone $GITHUB_SERVER_URL/$GITHUB_REPOSITORY .
+          git checkout $GITHUB_SHA
 
       - name: 📌 Afficher la version Flutter
         run: flutter --version
@@ -29,8 +31,4 @@ jobs:
       - name: 🧪 Lancer les tests avec couverture
         run: flutter test --coverage
 
-      - name: 📤 Uploader le rapport de couverture
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage-report
-          path: coverage/lcov.info
+      # ⚠️ pas d’upload de rapport ici car pas d’action dispo
