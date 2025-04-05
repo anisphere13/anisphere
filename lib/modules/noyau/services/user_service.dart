@@ -6,14 +6,14 @@ import 'package:anisphere/modules/noyau/models/user_model.dart';
 class UserService {
   final FirebaseFirestore firestore;
   static const String userBoxName = 'user_data';
-  late Box<UserModel> _userBox;
+  Box<UserModel>? _userBox;
 
   UserService({
     FirebaseFirestore? firestore,
     Box<UserModel>? testBox,
   }) : firestore = firestore ?? FirebaseFirestore.instance {
     if (testBox != null) {
-      _userBox = testBox;
+      _userBox = testBox; // mode test
     }
   }
 
@@ -22,6 +22,7 @@ class UserService {
   }
 
   Future<void> initHive() async {
+    if (_userBox != null) return; // si déjà injecté (mock)
     try {
       if (!Hive.isBoxOpen(userBoxName)) {
         _userBox = await Hive.openBox<UserModel>(userBoxName);
@@ -54,11 +55,11 @@ class UserService {
 
   UserModel? getUserFromHive() {
     try {
-      if (!Hive.isBoxOpen(userBoxName)) {
+      if (_userBox == null || !_userBox!.isOpen) {
         debugPrint("⚠️ Hive Box non ouverte !");
         return null;
       }
-      return _userBox.get('current_user');
+      return _userBox!.get('current_user');
     } catch (e) {
       debugPrint("❌ Erreur récupération locale Hive : $e");
       return null;
@@ -88,11 +89,11 @@ class UserService {
 
   Future<void> updateUserLocally(UserModel user) async {
     try {
-      if (!Hive.isBoxOpen(userBoxName)) {
+      if (_userBox == null || !_userBox!.isOpen) {
         debugPrint("⚠️ Hive Box non ouverte, tentative d'initialisation...");
         await initHive();
       }
-      await _userBox.put('current_user', user);
+      await _userBox?.put('current_user', user);
     } catch (e) {
       debugPrint("❌ Erreur mise à jour locale Hive : $e");
     }
@@ -132,8 +133,8 @@ class UserService {
 
   Future<void> deleteUserLocally() async {
     try {
-      if (Hive.isBoxOpen(userBoxName)) {
-        await _userBox.delete('current_user');
+      if (_userBox?.isOpen ?? false) {
+        await _userBox!.delete('current_user');
         debugPrint("✅ Utilisateur supprimé de Hive.");
       } else {
         debugPrint("⚠️ Impossible de supprimer : Hive Box non ouverte !");
@@ -161,8 +162,8 @@ class UserService {
         return;
       }
 
-      if (Hive.isBoxOpen(userBoxName)) {
-        await _userBox.delete(userId);
+      if (_userBox?.isOpen ?? false) {
+        await _userBox!.delete(userId);
         debugPrint("✅ Utilisateur supprimé de Hive : $userId");
       } else {
         debugPrint("⚠️ Hive Box non ouverte, suppression impossible !");

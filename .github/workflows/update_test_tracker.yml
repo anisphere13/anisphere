@@ -7,6 +7,7 @@ on:
     paths:
       - 'lib/**'
       - 'test/**'
+      - 'scripts/update_test_tracker.dart'
 
 jobs:
   update-tracker:
@@ -30,5 +31,5 @@ jobs:
           git config user.name "AniBot"
           git config user.email "anibot@anisphere.dev"
           git add docs/test_tracker.md
-          git commit -m "🤖 Mise à jour automatique du tracker de tests"
+          git commit -m "🤖 Mise à jour automatique du tracker de tests" || echo "Aucune modification à commettre."
           git push
