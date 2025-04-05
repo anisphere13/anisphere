@@ -1,5 +1,3 @@
-// 📁 test/noyau/unit/user_service_test.dart
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:hive/hive.dart';
@@ -30,13 +28,11 @@ void main() {
 
   setUp(() {
     mockBox = MockUserBox();
-    // Simuler que Hive est déjà ouvert
-    when(Hive.isBoxOpen(any)).thenReturn(true);
-
     userService = UserService(testBox: mockBox);
   });
 
   test('updateUserLocally() stocke l\'utilisateur dans Hive', () async {
+    // Pas de Hive.isBoxOpen, car box injectée
     when(mockBox.put('current_user', testUser)).thenAnswer((_) async => {});
 
     await userService.updateUserLocally(testUser);
