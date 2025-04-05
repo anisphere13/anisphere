@@ -1,4 +1,4 @@
-name: 🧪 Flutter Test Autonome
+name: 🧪 Flutter Tests (3.19 / Dart 3.7)
 
 on:
   push:
@@ -10,14 +10,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    container:
-      image: ghcr.io/cirruslabs/flutter:latest
-
     steps:
-      - name: 📥 Cloner le dépôt manuellement
-        run: |
-          git clone $GITHUB_SERVER_URL/$GITHUB_REPOSITORY .
-          git checkout $GITHUB_SHA
+      - name: 📥 Checkout code
+        uses: actions/checkout@v3
+
+      - name: ⚙️ Setup Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0'
 
       - name: 📌 Afficher la version Flutter
         run: flutter --version
@@ -25,10 +25,14 @@ jobs:
       - name: 📦 Installer les dépendances
         run: flutter pub get
 
-      - name: 🔄 Générer les mocks et adapters
+      - name: 🔄 Générer les mocks & adapters
         run: flutter pub run build_runner build --delete-conflicting-outputs
 
       - name: 🧪 Lancer les tests avec couverture
         run: flutter test --coverage
 
-      # ⚠️ pas d’upload de rapport ici car pas d’action dispo
+      - name: 📊 Uploader le rapport de couverture
+        uses: actions/upload-artifact@v3
+        with:
+          name: couverture
+          path: coverage/lcov.info
