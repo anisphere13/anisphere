@@ -9,7 +9,7 @@ jobs:
   update:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/cirruslabs/flutter:3.22.0
+      image: ghcr.io/cirruslabs/flutter:3.22.1
 
     steps:
       - uses: actions/checkout@v3
