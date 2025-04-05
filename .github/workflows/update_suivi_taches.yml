@@ -2,24 +2,33 @@ name: Update Suivi Tâches
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
     paths:
-      - 'lib/**'
-      - 'test/**'
       - 'scripts/update_suivi_taches.dart'
+      - 'docs/3__suivi_taches.md'
 
 jobs:
-  update:
+  update-suivi-taches:
     runs-on: ubuntu-latest
+
     container:
       image: ghcr.io/cirruslabs/flutter:3.22.1
+
     steps:
-      - uses: actions/checkout@v3
-      - run: flutter pub get
-      - run: dart scripts/update_suivi_taches.dart
-      - run: |
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Run suivi_taches update script
+        run: dart scripts/update_suivi_taches.dart
+
+      - name: Commit updated suivi_taches
+        run: |
           git config user.name "AniBot"
           git config user.email "anibot@anisphere.dev"
           git add docs/3__suivi_taches.md
-          git commit -m "🔄 Mise à jour auto du suivi des tâches" || echo "🟡 Aucune modification."
+          git commit -m "✅ MAJ automatique suivi_taches.md" || echo "✅ Aucun changement"
           git push
