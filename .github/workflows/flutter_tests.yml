@@ -1,4 +1,4 @@
-name: 🧪 Flutter Tests
+name: 🧪 Flutter Tests (3.19 / Dart 3.3)
 
 on:
   push:
@@ -8,29 +8,31 @@ on:
 
 jobs:
   test:
-    name: ✅ Lancer tous les tests Flutter + couverture
     runs-on: ubuntu-latest
 
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v3
 
-      - name: ⚙️ Installer Flutter
+      - name: ⚙️ Setup Flutter SDK
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.19.0'
 
+      - name: 📌 Afficher la version Flutter
+        run: flutter --version
+
       - name: 📦 Installer les dépendances
         run: flutter pub get
 
-      - name: 🔄 Générer les mocks (build_runner)
+      - name: 🔄 Générer les mocks & adapters
         run: flutter pub run build_runner build --delete-conflicting-outputs
 
-      - name: 🧪 Exécuter les tests
+      - name: 🧪 Lancer les tests avec couverture
         run: flutter test --coverage
 
-      - name: 📊 Sauvegarder la couverture
-        uses: actions/upload-artifact@v3
+      - name: 📊 Uploader le rapport de couverture
+        uses: actions/upload-artifact@v2
         with:
           name: couverture
           path: coverage/lcov.info
