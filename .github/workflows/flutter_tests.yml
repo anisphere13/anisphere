@@ -17,7 +17,7 @@ jobs:
       - name: ⚙️ Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.0'
+          flutter-version: '3.22.0' # ✅ Dart 3.4.0+
 
       - name: 📌 Version Flutter
         run: flutter --version
