@@ -29,9 +29,3 @@ jobs:
 
       - name: 🧪 Run tests with coverage
         run: flutter test --coverage
-
-      - name: 📊 Upload coverage
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage
-          path: coverage/lcov.info
