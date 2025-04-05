@@ -17,19 +17,16 @@ jobs:
       - name: ⚙️ Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.22.0'
+          flutter-version: '3.19.0'
+
+      - name: 📌 Show Flutter version
+        run: flutter --version
 
       - name: 📦 Install dependencies
         run: flutter pub get
 
-      - name: 🔄 Build runner (optionnel)
+      - name: 🔄 Build mocks & adapters
         run: flutter pub run build_runner build --delete-conflicting-outputs
 
       - name: 🧪 Run tests
         run: flutter test --coverage
-
-      - name: 📊 Upload coverage report
-        uses: actions/upload-artifact@v3
-        with:
-          name: couverture
-          path: coverage/lcov.info
