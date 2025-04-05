@@ -1,10 +1,12 @@
+// 📁 test/noyau/unit/user_service_test.dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:mockito/annotations.dart';
 import 'package:hive/hive.dart';
+
 import 'package:anisphere/modules/noyau/models/user_model.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
 
-import 'package:mockito/annotations.dart';
 import 'user_service_test.mocks.dart';
 
 @GenerateMocks([Box])
@@ -29,9 +31,10 @@ void main() {
 
   setUp(() {
     mockBox = MockBox<UserModel>();
-    // ⚠️ Simuler que Hive est déjà ouvert
-    when(mockBox.isOpen).thenReturn(true);
-    // Injecte directement le mock
+
+    // ✅ Solution correcte : typage explicite pour éviter l’erreur
+      expect(userService.getUserFromHive(), isNull);
+
     userService = UserService(testBox: mockBox);
   });
 
@@ -54,3 +57,4 @@ void main() {
     expect(result!.id, equals(testUser.id));
   });
 }
+

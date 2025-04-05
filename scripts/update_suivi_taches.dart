@@ -4,7 +4,7 @@ import 'dart:io';
 void main() {
   final file = File('docs/3__suivi_taches.md');
   if (!file.existsSync()) {
-    print("❌ Fichier non trouvé !");
+    stderr.writeln("❌ Fichier non trouvé !");
     return;
   }
 
@@ -12,8 +12,8 @@ void main() {
   if (!content.contains("2025-04-05")) {
     content += "\n- ✅ Mise à jour automatique des tâches le 2025-04-05";
     file.writeAsStringSync(content);
-    print("✅ suivi_taches.md mis à jour !");
+    stderr.writeln("✅ suivi_taches.md mis à jour !");
   } else {
-    print("🔁 Rien à mettre à jour (déjà présent pour aujourd'hui).");
+    stderr.writeln("🔁 Rien à mettre à jour (déjà présent pour aujourd'hui).");
   }
 }

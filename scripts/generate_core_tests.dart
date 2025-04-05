@@ -23,11 +23,11 @@ void main() {
     for (final entry in structure[type]!.entries) {
       final file = File('${dir.path}/${entry.key}');
       file.writeAsStringSync(entry.value);
-      print('✅ Fichier créé : ${file.path}');
+      stderr.writeln('✅ Fichier créé : ${file.path}');
     }
   }
 
-  print('\n🎉 Les tests critiques du noyau sont prêts dans $basePath');
+  stderr.writeln('\n🎉 Les tests critiques du noyau sont prêts dans $basePath');
 }
 
 // -----------------------------

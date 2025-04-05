@@ -1,10 +1,9 @@
 import 'dart:io';
-import 'package:flutter/foundation.dart';
 
 void main(List<String> args) {
   if (args.isEmpty) {
-    debugPrint('❌ Merci de fournir un nom de module :');
-    debugPrint('   Exemple : dart run scripts/generate_test_module.dart sante');
+    stderr.writeln('❌ Merci de fournir un nom de module :');
+    stderr.writeln('   Exemple : dart run scripts/generate_test_module.dart sante');
     exit(1);
   }
 
@@ -19,7 +18,7 @@ void main(List<String> args) {
     File('${libModuleDir.path}/README.md').writeAsStringSync(
       '# Module $moduleName\n\nCe dossier contient le code source du module `$moduleName`.',
     );
-    debugPrint('📁 Dossier créé : ${libModuleDir.path}');
+    stderr.writeln('📁 Dossier créé : ${libModuleDir.path}');
   }
 
   final templates = {
@@ -69,16 +68,17 @@ void main() {
 
   for (final type in types) {
     final dir = Directory('$basePath/$type');
+const typeTest = 'widget'; // camelCase fixé
     dir.createSync(recursive: true);
 
-    final file = File('$basePath/$type/${moduleName}_$type_test.dart');
+    final file = File('$basePath/$type/${moduleName}_$typeTest.dart');
     if (!file.existsSync()) {
       file.writeAsStringSync(templates[type]!);
-      debugPrint('✅ Fichier créé : ${file.path}');
+      stderr.writeln('✅ Fichier créé : ${file.path}');
     } else {
-      debugPrint('⚠️  Déjà existant : ${file.path}');
+      stderr.writeln('⚠️  Déjà existant : ${file.path}');
     }
   }
 
-  debugPrint('\n🎉 Module "$moduleName" prêt dans $basePath');
+  stderr.writeln('\n🎉 Module "$moduleName" prêt dans $basePath');
 }

@@ -141,8 +141,8 @@ class UserProvider with ChangeNotifier {
 
       // Vérifier si l'utilisateur est connecté à internet
       var connectivityResult = await Connectivity().checkConnectivity();
-      if ([ConnectivityResult.wifi, ConnectivityResult.mobile].contains(connectivityResult)) {
-        await FirebaseService.signOut(); // Déconnecter Firebase si Internet est dispo
+      if (connectivityResult == ConnectivityResult.wifi || connectivityResult == ConnectivityResult.mobile) {
+await await FirebaseService().signOut(); // Déconnecter Firebase si Internet est dispo
         debugPrint("✅ Déconnexion Firebase réussie !");
       } else {
         debugPrint("⚠️ Pas d'Internet : Déconnexion locale uniquement.");
