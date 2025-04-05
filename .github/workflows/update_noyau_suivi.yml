@@ -1,9 +1,9 @@
-name: 🧪 Update Test Tracker
+name: 🧠 Update Suivi Noyau
 
 on:
   push:
     branches: [main]
-    paths: ['test/**', 'lib/**', 'scripts/update_test_tracker.dart']
+    paths: ['lib/modules/noyau/**', 'scripts/update_noyau_suivi.dart']
 
 jobs:
   update:
@@ -14,10 +14,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: flutter pub get
-      - run: dart scripts/update_test_tracker.dart
+      - run: dart scripts/update_noyau_suivi.dart
       - run: |
           git config user.name "AniBot"
           git config user.email "anibot@anisphere.dev"
-          git add docs/test_tracker.md
-          git commit -m "🤖 Mise à jour automatique du tracker de tests" || echo "Pas de modifications"
+          git add docs/noyau_suivi.md
+          git commit -m "🧠 Suivi du noyau mis à jour automatiquement" || echo "Pas de modifications"
           git push

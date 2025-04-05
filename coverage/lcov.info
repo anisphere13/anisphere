@@ -134,7 +134,7 @@ LF:49
 LH:0
 end_of_record
 SF:lib/modules/noyau/models/user_model.dart
-DA:43,2
+DA:43,3
 DA:59,0
 DA:60,0
 DA:64,2
@@ -187,8 +187,8 @@ LF:49
 LH:31
 end_of_record
 SF:lib/modules/noyau/services/user_service.dart
-DA:11,0
-DA:14,0
+DA:11,1
+DA:14,1
 DA:16,0
 DA:20,0
 DA:21,0
@@ -263,7 +263,7 @@ DA:167,0
 DA:169,0
 DA:172,0
 LF:75
-LH:0
+LH:2
 end_of_record
 SF:lib/services/firebase_service.dart
 DA:11,1
