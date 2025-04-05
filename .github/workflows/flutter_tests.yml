@@ -29,7 +29,7 @@ jobs:
         run: flutter test --coverage
 
       - name: 📊 Uploader le rapport de couverture
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: coverage-report
           path: coverage/lcov.info
