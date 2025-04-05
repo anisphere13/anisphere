@@ -1,4 +1,4 @@
-name: 🧪 Flutter Tests (3.19 / Dart 3.7)
+name: 🧪 Flutter Tests (Dart 3.7 / Flutter 3.19)
 
 on:
   push:
@@ -10,12 +10,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    container:
-      image: ghcr.io/cirruslabs/flutter:3.19.0
-
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v3
+
+      - name: ⚙️ Setup Flutter 3.19.0 + Dart 3.7.x
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0'
 
       - name: 📌 Show Flutter version
         run: flutter --version
