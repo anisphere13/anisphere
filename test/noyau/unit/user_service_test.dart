@@ -1,12 +1,9 @@
-// 📁 test/noyau/unit/user_service_test.dart
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:hive/hive.dart';
 import 'package:anisphere/modules/noyau/models/user_model.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
 
-// 🔧 Mock personnalisé pour Hive
 class MockUserBox extends Mock implements Box<UserModel> {}
 
 void main() {
@@ -30,18 +27,18 @@ void main() {
 
   setUp(() {
     mockBox = MockUserBox();
-    when(mockBox.isOpen).thenReturn(true);
+    when(mockBox.isOpen).thenReturn(true); // 👈 essentiel pour Hive
     userService = UserService(testBox: mockBox);
   });
 
   test('updateUserLocally() stocke l\'utilisateur dans Hive', () async {
-    when(mockBox.put('current_user', testUser)).thenAnswer((_) async {});
+    when(mockBox.put('current_user', testUser)).thenAnswer((_) async => {});
     await userService.updateUserLocally(testUser);
     verify(mockBox.put('current_user', testUser)).called(1);
   });
 
   test('deleteUserLocally() supprime bien l\'utilisateur', () async {
-    when(mockBox.delete('current_user')).thenAnswer((_) async {});
+    when(mockBox.delete('current_user')).thenAnswer((_) async => {});
     await userService.deleteUserLocally();
     verify(mockBox.delete('current_user')).called(1);
   });
@@ -53,3 +50,4 @@ void main() {
     expect(result!.id, equals(testUser.id));
   });
 }
+
