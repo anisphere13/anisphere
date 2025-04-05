@@ -1,9 +1,12 @@
+// 📁 test/noyau/unit/user_service_test.dart
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:hive/hive.dart';
 import 'package:anisphere/modules/noyau/models/user_model.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
 
+// 🔧 Mock personnalisé pour Hive
 class MockUserBox extends Mock implements Box<UserModel> {}
 
 void main() {
@@ -27,11 +30,10 @@ void main() {
 
   setUp(() {
     mockBox = MockUserBox();
-    userService = UserService(testBox: mockBox);
+    // Simuler que Hive est déjà ouvert
+    when(Hive.isBoxOpen(any)).thenReturn(true);
 
-    // 👉 Mock de Hive statique
-    when(Hive.isBoxOpen(UserService.userBoxName)).thenReturn(true);
-    when(Hive.box<UserModel>(UserService.userBoxName)).thenReturn(mockBox);
+    userService = UserService(testBox: mockBox);
   });
 
   test('updateUserLocally() stocke l\'utilisateur dans Hive', () async {
