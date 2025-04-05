@@ -8,22 +8,19 @@ class UserService {
   static const String userBoxName = 'user_data';
   late Box<UserModel> _userBox;
 
-  UserService({FirebaseFirestore? firestore})
-      : firestore = firestore ?? FirebaseFirestore.instance;
-
-  /// 🔧 **Constructeur pour permettre l'injection de box personnalisée en test**
-  UserService({Box<UserModel>? testBox}) {
+  UserService({
+    FirebaseFirestore? firestore,
+    Box<UserModel>? testBox,
+  }) : firestore = firestore ?? FirebaseFirestore.instance {
     if (testBox != null) {
       _userBox = testBox;
     }
   }
 
-  /// 🔄 **Initialisation globale du service**
   Future<void> init() async {
     await initHive();
   }
 
-  /// 🔄 **Initialisation de Hive**
   Future<void> initHive() async {
     try {
       if (!Hive.isBoxOpen(userBoxName)) {
@@ -37,7 +34,6 @@ class UserService {
     }
   }
 
-  /// 🔄 **Récupérer un utilisateur depuis Firebase et le stocker localement**
   Future<UserModel?> getUserFromFirebase(String userId) async {
     try {
       DocumentSnapshot doc =
@@ -56,7 +52,6 @@ class UserService {
     return null;
   }
 
-  /// 💾 **Récupérer l'utilisateur depuis Hive (local)**
   UserModel? getUserFromHive() {
     try {
       if (!Hive.isBoxOpen(userBoxName)) {
@@ -70,7 +65,6 @@ class UserService {
     }
   }
 
-  /// 🔄 **Synchroniser l'utilisateur entre Firebase et Hive**
   Future<void> syncUserData(String userId) async {
     UserModel? user = await getUserFromFirebase(userId);
     if (user != null) {
@@ -78,7 +72,6 @@ class UserService {
     }
   }
 
-  /// 🔥 **Enregistrer un utilisateur dans Firebase et localement**
   Future<bool> saveUserToFirebase(UserModel user) async {
     try {
       await firestore.collection('users').doc(user.id).set(
@@ -93,7 +86,6 @@ class UserService {
     }
   }
 
-  /// 💾 **Mettre à jour l'utilisateur localement**
   Future<void> updateUserLocally(UserModel user) async {
     try {
       if (!Hive.isBoxOpen(userBoxName)) {
@@ -106,7 +98,6 @@ class UserService {
     }
   }
 
-  /// 🔄 **Mettre à jour Firebase et Hive**
   Future<bool> updateUser(UserModel user) async {
     bool success = await saveUserToFirebase(user);
     if (success) {
@@ -115,7 +106,6 @@ class UserService {
     return success;
   }
 
-  /// 🔥 **Mettre à jour partiellement un utilisateur**
   Future<void> updateUserFields(Map<String, dynamic> updatedFields) async {
     try {
       UserModel? currentUser = getUserFromHive();
@@ -140,7 +130,6 @@ class UserService {
     }
   }
 
-  /// 🗑️ **Supprimer l'utilisateur localement**
   Future<void> deleteUserLocally() async {
     try {
       if (Hive.isBoxOpen(userBoxName)) {
@@ -154,7 +143,6 @@ class UserService {
     }
   }
 
-  /// 🗑️ **Supprimer un utilisateur de Firebase et Hive**
   Future<bool> deleteUser(String userId) async {
     try {
       await firestore.collection('users').doc(userId).delete();
@@ -166,7 +154,6 @@ class UserService {
     }
   }
 
-  /// 🗑️ **Supprimer un utilisateur de Hive uniquement**
   Future<void> deleteUserFromHive(String userId) async {
     try {
       if (userId.isEmpty) {
