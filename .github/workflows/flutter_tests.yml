@@ -1,4 +1,4 @@
-name: 🧪 Flutter Tests (3.19 / Dart 3.7)
+name: 🧪 Flutter Tests
 
 on:
   push:
@@ -15,25 +15,22 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v3
 
-      - name: ⚙️ Setup Flutter SDK
+      - name: ⚙️ Installer Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.19.0'
 
-      - name: 📌 Vérifier version Flutter
-        run: flutter --version
-
       - name: 📦 Installer les dépendances
         run: flutter pub get
 
-      - name: 🔄 Générer les mocks et adapters
+      - name: 🔄 Générer les mocks (build_runner)
         run: flutter pub run build_runner build --delete-conflicting-outputs
 
-      - name: 🧪 Exécuter les tests avec couverture
+      - name: 🧪 Exécuter les tests
         run: flutter test --coverage
 
-      - name: 📊 Uploader la couverture de test
-        uses: ./.github/actions/upload-artifact
+      - name: 📊 Sauvegarder la couverture
+        uses: actions/upload-artifact@v3
         with:
           name: couverture
           path: coverage/lcov.info

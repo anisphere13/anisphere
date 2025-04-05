@@ -2,7 +2,7 @@
 import 'dart:io';
 
 void main() {
-  final basePath = 'test/noyau';
+  const basePath = 'test/noyau';
   final structure = {
     'unit': {
       'user_service_test.dart': _userServiceTest,
