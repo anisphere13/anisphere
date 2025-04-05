@@ -1,10 +1,10 @@
-name: 🧪 Flutter Tests (Dart 3.7 / Flutter 3.19)
+name: 🧪 Flutter Tests (Flutter 3.19.0 + Dart 3.7.x)
 
 on:
   push:
-    branches: [ main, dev ]
+    branches: [main, dev]
   pull_request:
-    branches: [ main, dev ]
+    branches: [main, dev]
 
 jobs:
   test:
@@ -14,26 +14,17 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v3
 
-      - name: ⬇️ Setup Dart 3.7.0
-        uses: dart-lang/setup-dart@v1
-        with:
-          sdk: "3.7.0"
-
-      - name: ⚙️ Setup Flutter 3.19.0
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: "3.19.0"
-
-      - name: 📌 Show versions
+      - name: 🛠️ Installer Flutter 3.19.0 avec Dart 3.7
         run: |
-          dart --version
+          git clone https://github.com/flutter/flutter.git --depth 1 -b stable
+          echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
           flutter --version
 
-      - name: 📦 Install dependencies
+      - name: 📦 Get dependencies
         run: flutter pub get
 
       - name: 🔄 Build mocks & adapters
         run: flutter pub run build_runner build --delete-conflicting-outputs
 
-      - name: 🧪 Run tests
+      - name: 🧪 Run tests with coverage
         run: flutter test --coverage
