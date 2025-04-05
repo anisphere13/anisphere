@@ -28,16 +28,5 @@ jobs:
       - name: 🔄 Build mocks & adapters
         run: flutter pub run build_runner build --delete-conflicting-outputs
 
-      - name: 🧪 Run tests with coverage
-        run: flutter test --coverage
-
-      - name: 📊 Archive couverture
-        run: |
-          mkdir -p artifacts
-          cp coverage/lcov.info artifacts/
-
-      - name: 📤 Upload couverture localement
-        uses: actions/upload-artifact@v3
-        with:
-          name: couverture
-          path: artifacts/
+      - name: 🧪 Run tests
+        run: flutter test
