@@ -1,14 +1,15 @@
-name: Flutter Test (3.19 / Dart 3.7)
+name: 🧪 Flutter Test & Coverage
 
 on:
   push:
-    branches: [main, dev]
+    branches: [ main, dev ]
   pull_request:
-    branches: [main, dev]
+    branches: [ main, dev ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
     container:
       image: ghcr.io/cirruslabs/flutter:latest
 
@@ -22,14 +23,14 @@ jobs:
       - name: 📦 Installer les dépendances
         run: flutter pub get
 
-      - name: 🔄 Générer les mocks & adapters
+      - name: 🔄 Générer les mocks et adapters
         run: flutter pub run build_runner build --delete-conflicting-outputs
 
       - name: 🧪 Lancer les tests avec couverture
         run: flutter test --coverage
 
-      - name: 📊 Uploader le rapport de couverture
-        uses: actions/upload-artifact@v3.1.2
+      - name: 📤 Uploader le rapport de couverture
+        uses: actions/upload-artifact@v3
         with:
           name: coverage-report
           path: coverage/lcov.info
