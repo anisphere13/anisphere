@@ -1,23 +1,34 @@
-name: 🧠 Update Suivi Noyau
+name: Update Noyau Suivi
 
 on:
   push:
-    branches: [main]
-    paths: ['lib/modules/noyau/**', 'scripts/update_noyau_suivi.dart']
+    branches:
+      - main
+    paths:
+      - 'scripts/update_noyau_suivi.dart'
+  workflow_dispatch:
 
 jobs:
-  update:
+  update-noyau:
     runs-on: ubuntu-latest
+
     container:
       image: ghcr.io/cirruslabs/flutter:3.22.1
 
     steps:
-      - uses: actions/checkout@v3
-      - run: flutter pub get
-      - run: dart scripts/update_noyau_suivi.dart
-      - run: |
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Run noyau suivi update script
+        run: dart scripts/update_noyau_suivi.dart
+
+      - name: Commit updated noyau_suivi
+        run: |
           git config user.name "AniBot"
           git config user.email "anibot@anisphere.dev"
           git add docs/noyau_suivi.md
-          git commit -m "🧠 Suivi du noyau mis à jour automatiquement" || echo "Pas de modifications"
+          git commit -m "🧠 Suivi du noyau mis à jour automatiquement" || echo "Aucune modification à commettre."
           git push
