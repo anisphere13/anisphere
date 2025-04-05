@@ -4,9 +4,12 @@ import 'package:flutter/foundation.dart';
 import 'package:anisphere/modules/noyau/models/user_model.dart';
 
 class UserService {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore firestore;
   static const String userBoxName = 'user_data';
   late Box<UserModel> _userBox;
+
+  UserService({FirebaseFirestore? firestore})
+      : firestore = firestore ?? FirebaseFirestore.instance;
 
   /// 🔧 **Constructeur pour permettre l'injection de box personnalisée en test**
   UserService({Box<UserModel>? testBox}) {
@@ -38,7 +41,7 @@ class UserService {
   Future<UserModel?> getUserFromFirebase(String userId) async {
     try {
       DocumentSnapshot doc =
-          await _firestore.collection('users').doc(userId).get();
+          await firestore.collection('users').doc(userId).get();
 
       if (doc.exists && doc.data() != null) {
         UserModel user = UserModel.fromJson(doc.data() as Map<String, dynamic>);
@@ -78,7 +81,7 @@ class UserService {
   /// 🔥 **Enregistrer un utilisateur dans Firebase et localement**
   Future<bool> saveUserToFirebase(UserModel user) async {
     try {
-      await _firestore.collection('users').doc(user.id).set(
+      await firestore.collection('users').doc(user.id).set(
             user.toJson(),
             SetOptions(merge: true),
           );
@@ -154,7 +157,7 @@ class UserService {
   /// 🗑️ **Supprimer un utilisateur de Firebase et Hive**
   Future<bool> deleteUser(String userId) async {
     try {
-      await _firestore.collection('users').doc(userId).delete();
+      await firestore.collection('users').doc(userId).delete();
       await deleteUserLocally();
       return true;
     } catch (e) {
