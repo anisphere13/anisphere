@@ -1,4 +1,4 @@
-name: 🧪 Flutter Tests (Flutter 3.19.0 + Dart 3.7.x)
+name: 🧪 Flutter Tests (3.19.0 + Dart 3.7.x)
 
 on:
   push:
@@ -14,10 +14,11 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v3
 
-      - name: 🛠️ Installer Flutter 3.19.0 avec Dart 3.7
+      - name: ⚙️ Installer Flutter 3.19.0 (avec Dart 3.7)
         run: |
-          git clone https://github.com/flutter/flutter.git --depth 1 -b stable
+          git clone https://github.com/flutter/flutter.git -b stable
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
+          export PATH="$GITHUB_WORKSPACE/flutter/bin:$PATH"
           flutter --version
 
       - name: 📦 Get dependencies
@@ -28,3 +29,9 @@ jobs:
 
       - name: 🧪 Run tests with coverage
         run: flutter test --coverage
+
+      - name: 📊 Upload coverage
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: coverage/lcov.info
