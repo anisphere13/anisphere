@@ -2,9 +2,9 @@ name: Flutter Test (3.19 / Dart 3.7)
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, dev ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, dev ]
 
 jobs:
   test:
@@ -13,16 +13,23 @@ jobs:
       image: ghcr.io/cirruslabs/flutter:latest
 
     steps:
-      - name: Checkout code
+      - name: 📥 Checkout code
         uses: actions/checkout@v3
 
-      - name: Flutter version
+      - name: 📌 Afficher la version Flutter
         run: flutter --version
 
-      - name: Get dependencies
+      - name: 📦 Installer les dépendances
         run: flutter pub get
 
-      - name: Run tests
-        run: flutter test
+      - name: 🔄 Générer les fichiers mock / hive (build_runner)
+        run: flutter pub run build_runner build --delete-conflicting-outputs
 
+      - name: 🧪 Lancer les tests avec couverture
+        run: flutter test --coverage
 
+      - name: 📊 (Optionnel) Uploader le rapport de couverture
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage/lcov.info
