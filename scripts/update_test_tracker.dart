@@ -1,3 +1,4 @@
+// @dart=3.4
 // 🧪 Script de mise à jour de test_tracker.md
 import 'dart:io';
 

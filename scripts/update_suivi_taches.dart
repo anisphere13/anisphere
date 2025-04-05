@@ -1,3 +1,4 @@
+// @dart=3.4
 // 🔄 Script de mise à jour automatique de suivi_taches.md
 import 'dart:io';
 
