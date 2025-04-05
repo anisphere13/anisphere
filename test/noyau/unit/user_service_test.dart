@@ -4,10 +4,12 @@ import 'package:hive/hive.dart';
 import 'package:anisphere/modules/noyau/models/user_model.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
 
-class MockUserBox extends Mock implements Box<UserModel> {}
+import 'package:mockito/annotations.dart';
+import 'user_service_test.mocks.dart';
 
+@GenerateMocks([Box])
 void main() {
-  late MockUserBox mockBox;
+  late MockBox<UserModel> mockBox;
   late UserService userService;
 
   final testUser = UserModel(
@@ -26,8 +28,10 @@ void main() {
   );
 
   setUp(() {
-    mockBox = MockUserBox();
-    when(mockBox.isOpen).thenReturn(true); // 👈 essentiel pour Hive
+    mockBox = MockBox<UserModel>();
+    // ⚠️ Simuler que Hive est déjà ouvert
+    when(mockBox.isOpen).thenReturn(true);
+    // Injecte directement le mock
     userService = UserService(testBox: mockBox);
   });
 
@@ -50,4 +54,3 @@ void main() {
     expect(result!.id, equals(testUser.id));
   });
 }
-
