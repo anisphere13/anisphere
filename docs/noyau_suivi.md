@@ -528,3 +528,9 @@ Un système proactif, transparent et évolutif, où chaque utilisateur devient c
 - Gestion : Web, erreurs, boîtes locales, logs IA-ready
 - Testable : oui (via mocks ou test indirect)
 - Date : 2025-04-06
+### 🔄 auth_provider_test.dart (préparation)
+- 📁 `test/noyau/unit/auth_provider_test.dart`
+- Description : Regroupe tous les mocks nécessaires pour tests avancés (auth, user, box)
+- À exécuter avec build_runner pour générer les mocks
+- Prochaine étape : écrire les tests pour `auth_service`, `user_provider`
+- Date : 2025-04-06

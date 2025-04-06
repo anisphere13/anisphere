@@ -44,7 +44,7 @@ class UserModel {
   @HiveField(11)
   DateTime updatedAt; // 🔄 mutable pour suivi IA ou sync
 
-  const UserModel({
+  UserModel({
     required this.id,
     required this.name,
     required this.email,

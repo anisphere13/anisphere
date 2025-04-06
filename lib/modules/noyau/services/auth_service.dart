@@ -93,7 +93,7 @@ class AuthService {
   /// 🍏 Connexion avec Apple
   Future<UserModel?> signInWithApple() async {
     return await _signIn(() async {
-      final appleCredential = await SignInWithApple.getAppleIDCredential(
+      final appleIdCredential = await SignInWithApple.getAppleIDCredential(
         scopes: [
           AppleIDAuthorizationScopes.email,
           AppleIDAuthorizationScopes.fullName,
@@ -102,15 +102,15 @@ class AuthService {
 
       final oauth = OAuthProvider("apple.com");
       final credential = oauth.credential(
-        idToken: appleCredential.identityToken,
+        idToken: appleIdCredential.identityToken,
       );
 
       return (await _auth.signInWithCredential(credential)).user;
     }, createDefaultUser: (firebaseUser) {
       return _createDefaultUser(
         id: firebaseUser.uid,
-        name: appleCredential.givenName ?? "Utilisateur Apple",
-        email: appleCredential.email ?? "",
+        name: appleIdCredential.givenName ?? "Utilisateur Apple",
+        email: appleIdCredential.email ?? "",
       );
     });
   }
