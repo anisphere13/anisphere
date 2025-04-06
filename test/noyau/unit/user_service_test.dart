@@ -26,36 +26,49 @@ void main() {
     ownedAnimals: ['a1'],
     preferences: {},
     moduleRoles: {},
-    createdAt: DateTime.now(),
-    updatedAt: DateTime.now(),
+    createdAt: DateTime(2025, 4, 5),
+    updatedAt: DateTime(2025, 4, 5),
   );
 
   setUp(() {
     mockBox = MockBox<UserModel>();
-
-    // ✅ Simule que la box est ouverte
     when(mockBox.isOpen).thenReturn(true);
 
-    // ✅ Initialise correctement le service AVANT tout appel
-    userService = UserService(testBox: mockBox);
+    userService = UserService(testBox: mockBox, skipHiveInit: true);
   });
 
-  test('updateUserLocally() stocke l\'utilisateur dans Hive', () async {
-    when(mockBox.put('current_user', testUser)).thenAnswer((_) async {});
-    await userService.updateUserLocally(testUser);
-    verify(mockBox.put('current_user', testUser)).called(1);
-  });
+  group('USER_SERVICE - Hive local', () {
+    test('updateUserLocally() stocke l\'utilisateur dans Hive', () async {
+      when(mockBox.put('current_user', testUser)).thenAnswer((_) async {});
+      await userService.updateUserLocally(testUser);
+      verify(mockBox.put('current_user', testUser)).called(1);
+    });
 
-  test('deleteUserLocally() supprime bien l\'utilisateur', () async {
-    when(mockBox.delete('current_user')).thenAnswer((_) async {});
-    await userService.deleteUserLocally();
-    verify(mockBox.delete('current_user')).called(1);
-  });
+    test('deleteUserLocally() supprime bien l\'utilisateur', () async {
+      when(mockBox.delete('current_user')).thenAnswer((_) async {});
+      await userService.deleteUserLocally();
+      verify(mockBox.delete('current_user')).called(1);
+    });
 
-  test("getUserFromHive() retourne l'utilisateur si présent", () {
-    when(mockBox.get('current_user')).thenReturn(testUser);
-    final result = userService.getUserFromHive();
-    expect(result, isNotNull);
-    expect(result!.id, equals(testUser.id));
+    test("getUserFromHive() retourne l'utilisateur si présent", () {
+      when(mockBox.get('current_user')).thenReturn(testUser);
+      final result = userService.getUserFromHive();
+      expect(result, isNotNull);
+      expect(result!.id, equals('u1'));
+    });
+
+    test('updateUser envoie à Firebase et met à jour Hive (mock Firebase)', () async {
+      when(mockBox.put(any, any)).thenAnswer((_) async {});
+      final success = await userService.updateUser(testUser);
+      expect(success, isTrue);
+      verify(mockBox.put('current_user', testUser)).called(1);
+    });
+
+    test('updateUserFields modifie uniquement les champs fournis', () async {
+      when(mockBox.get('current_user')).thenReturn(testUser);
+      when(mockBox.put(any, any)).thenAnswer((_) async {});
+      await userService.updateUserFields({'name': 'Nouvel utilisateur'});
+      verify(mockBox.put(any, any)).called(1);
+    });
   });
 }

@@ -1,8 +1,12 @@
+/// Modèle utilisateur pour AniSphère.
+/// Sérialisable Hive et Firebase. Contient rôles, préférences, animaux, timestamps.
+/// Prévu pour une app IA, offline-first, multi-rôle et multi-module.
+
 import 'package:hive/hive.dart';
 
-part 'user_model.g.dart'; // Généré avec build_runner pour Hive
+part 'user_model.g.dart';
 
-@HiveType(typeId: 0) // Identifiant unique pour Hive
+@HiveType(typeId: 0)
 class UserModel {
   @HiveField(0)
   final String id;
@@ -38,9 +42,9 @@ class UserModel {
   final DateTime createdAt;
 
   @HiveField(11)
-  DateTime updatedAt; // 🔄 Mutable pour être mis à jour facilement
+  DateTime updatedAt; // 🔄 mutable pour suivi IA ou sync
 
-  UserModel({
+  const UserModel({
     required this.id,
     required this.name,
     required this.email,
@@ -55,30 +59,28 @@ class UserModel {
     required this.updatedAt,
   });
 
-  /// 🔄 **Mettre à jour `updatedAt`**
+  /// 🔄 Met à jour automatiquement le champ `updatedAt`
   void updateTimestamp() {
     updatedAt = DateTime.now();
   }
 
-  /// 🔄 **Convertir l'objet en Map pour Firebase**
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'email': email,
-      'phone': phone,
-      'profilePicture': profilePicture,
-      'profession': profession,
-      'ownedSpecies': ownedSpecies,
-      'ownedAnimals': ownedAnimals,
-      'preferences': preferences,
-      'moduleRoles': moduleRoles,
-      'createdAt': createdAt.toIso8601String(),
-      'updatedAt': updatedAt.toIso8601String(),
-    };
-  }
+  /// 🔁 Convertit l'objet en JSON pour Firebase
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
+        'email': email,
+        'phone': phone,
+        'profilePicture': profilePicture,
+        'profession': profession,
+        'ownedSpecies': ownedSpecies,
+        'ownedAnimals': ownedAnimals,
+        'preferences': preferences,
+        'moduleRoles': moduleRoles,
+        'createdAt': createdAt.toIso8601String(),
+        'updatedAt': updatedAt.toIso8601String(),
+      };
 
-  /// 🔄 **Créer un objet UserModel à partir d'une Map (Firebase)**
+  /// 🔁 Crée un `UserModel` depuis un JSON Firebase
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       id: json['id'] ?? '',
@@ -87,20 +89,16 @@ class UserModel {
       phone: json['phone'] ?? '',
       profilePicture: json['profilePicture'] ?? '',
       profession: json['profession'] ?? '',
-      ownedSpecies: json['ownedSpecies']?.cast<String, bool>() ?? {},
-      ownedAnimals: json['ownedAnimals']?.cast<String>() ?? [],
-      preferences: json['preferences']?.cast<String, dynamic>() ?? {},
-      moduleRoles: json['moduleRoles']?.cast<String, dynamic>() ?? {},
-      createdAt: json['createdAt'] != null
-          ? DateTime.tryParse(json['createdAt']) ?? DateTime.now()
-          : DateTime.now(),
-      updatedAt: json['updatedAt'] != null
-          ? DateTime.tryParse(json['updatedAt']) ?? DateTime.now()
-          : DateTime.now(),
+      ownedSpecies: Map<String, bool>.from(json['ownedSpecies'] ?? {}),
+      ownedAnimals: List<String>.from(json['ownedAnimals'] ?? []),
+      preferences: Map<String, dynamic>.from(json['preferences'] ?? {}),
+      moduleRoles: Map<String, dynamic>.from(json['moduleRoles'] ?? {}),
+      createdAt: DateTime.tryParse(json['createdAt'] ?? '') ?? DateTime.now(),
+      updatedAt: DateTime.tryParse(json['updatedAt'] ?? '') ?? DateTime.now(),
     );
   }
 
-  /// 🔄 **Créer une copie de l'utilisateur avec des valeurs modifiées**
+  /// 📦 Crée une copie de l'objet avec des modifications
   UserModel copyWith({
     String? id,
     String? name,
@@ -122,13 +120,12 @@ class UserModel {
       phone: phone ?? this.phone,
       profilePicture: profilePicture ?? this.profilePicture,
       profession: profession ?? this.profession,
-      ownedSpecies: ownedSpecies ?? Map<String, bool>.from(this.ownedSpecies),
-      ownedAnimals: ownedAnimals ?? List<String>.from(this.ownedAnimals),
-      preferences: preferences ?? Map<String, dynamic>.from(this.preferences),
-      moduleRoles: moduleRoles ?? Map<String, dynamic>.from(this.moduleRoles),
+      ownedSpecies: ownedSpecies ?? this.ownedSpecies,
+      ownedAnimals: ownedAnimals ?? this.ownedAnimals,
+      preferences: preferences ?? this.preferences,
+      moduleRoles: moduleRoles ?? this.moduleRoles,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );
   }
 }
-

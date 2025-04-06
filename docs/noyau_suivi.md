@@ -495,4 +495,36 @@ Un système proactif, transparent et évolutif, où chaque utilisateur devient c
 
 
 
-- 🧩 Synchronisation automatique du noyau le 2025-04-05
+- 🧩 Synchronisation automatique du noyau le 2025-04-05 ### ✅ user_model.dart
+- 📁 `lib/modules/noyau/models/user_model.dart`
+- Test : `user_model_test.dart`
+- Description : Modèle utilisateur complet (Hive + Firebase), IA-compatible
+- Optimisé pour l’IA maîtresse, les rôles dynamiques et le suivi comportemental
+- Ajout méthode `copyWith`, `toJson`, `fromJson`, `updateTimestamp`
+- Date : 2025-04-06
+### ✅ user_service.dart
+- 📁 `lib/modules/noyau/services/user_service.dart`
+- Test : `user_service_test.dart`
+- Description : Service Firebase + Hive, mise à jour IA-ready
+- Intègre `getUserFromFirebase`, `syncUserData`, `updateUserFields`, suppression et initialisation différée
+- Refactor complet pour le noyau AniSphère
+- Date : 2025-04-06
+### ✅ user_provider.dart
+- 📁 `lib/modules/noyau/providers/user_provider.dart`
+- Description : Provider Flutter pour état utilisateur global
+- Gère : Connexions, MAJ, sync Hive/Firebase, logout, écoute UI
+- Préparé pour : tests unitaires + future IA UX
+- Date : 2025-04-06
+
+### ✅ auth_service.dart
+- 📁 `lib/modules/noyau/services/auth_service.dart`
+- Description : Service central d’authentification Firebase
+- Méthodes : connexion (email, Google, Apple), inscription, logout, reset
+- Préparé pour tests unitaires (injection `FirebaseAuth`, `UserService`)
+- Date : 2025-04-06
+### ✅ app_initializer.dart
+- 📁 `lib/modules/noyau/services/app_initializer.dart`
+- Description : Initialise Firebase et Hive de façon sécurisée
+- Gestion : Web, erreurs, boîtes locales, logs IA-ready
+- Testable : oui (via mocks ou test indirect)
+- Date : 2025-04-06

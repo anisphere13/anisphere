@@ -47,5 +47,51 @@ void main() {
       expect(clone.email, equals(user.email));
       expect(clone.ownedAnimals.length, equals(1));
     });
+
+    test('copyWith modifie uniquement les champs spécifiés', () {
+      final user = UserModel(
+        id: 'u1',
+        name: 'Zoe',
+        email: 'zoe@mail.com',
+        phone: '0000',
+        profilePicture: '',
+        profession: 'soigneur',
+        ownedSpecies: {},
+        ownedAnimals: [],
+        preferences: {},
+        moduleRoles: {},
+        createdAt: DateTime(2025, 1, 1),
+        updatedAt: DateTime(2025, 1, 1),
+      );
+
+      final updated = user.copyWith(name: 'Léo');
+
+      expect(updated.name, equals('Léo'));
+      expect(updated.email, equals('zoe@mail.com'));
+      expect(updated.id, equals('u1'));
+    });
+
+    test('updateTimestamp met à jour updatedAt à maintenant', () {
+      final user = UserModel(
+        id: 'u1',
+        name: 'Test',
+        email: 't@t.com',
+        phone: '0000',
+        profilePicture: '',
+        profession: 'na',
+        ownedSpecies: {},
+        ownedAnimals: [],
+        preferences: {},
+        moduleRoles: {},
+        createdAt: DateTime(2025, 1, 1),
+        updatedAt: DateTime(2025, 1, 1),
+      );
+
+      final before = user.updatedAt;
+      user.updateTimestamp();
+      final after = user.updatedAt;
+
+      expect(after.isAfter(before), isTrue);
+    });
   });
 }

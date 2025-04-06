@@ -1,44 +1,68 @@
+/// Service d'initialisation AniSphère (Firebase + Hive).
+/// Gère le démarrage sécurisé et multiplateforme, avec support tests, Web et logs.
+/// Initialisation des boîtes locales et de Firebase selon la plateforme.
+
 import 'package:flutter/foundation.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
 import '../firebase_options.dart';
 
 class AppInitializer {
-  static Future<void> initialize() async {
-    // Initialisation de Firebase
+  /// 🔥 Initialise Firebase (sauf si Web déjà actif)
+  static Future<void> initFirebase() async {
     if (!kIsWeb) {
-      try {
-        await Firebase.initializeApp(
-          options: DefaultFirebaseOptions.currentPlatform,
-        );
-        if (kDebugMode) {
-          debugPrint("🔥 Firebase initialized successfully!");
-        }
-      } catch (e) {
-        if (kDebugMode) {
-          debugPrint("❌ Firebase initialization failed: $e");
-        }
-      }
+      await _safeExecute(
+        () async {
+          await Firebase.initializeApp(
+            options: DefaultFirebaseOptions.currentPlatform,
+          );
+        },
+        successMessage: "🔥 Firebase initialisé !",
+        errorMessage: "❌ Échec Firebase",
+      );
     } else {
-      if (kDebugMode) {
-        debugPrint("🚀 Exécution sur le Web - Firebase activé par défaut");
-      }
+      debugPrint("🌐 Web détecté — Firebase déjà actif");
     }
+  }
 
-    // Initialisation de Hive (stockage local)
+  /// 📦 Initialise Hive et ouvre les boîtes essentielles
+  static Future<void> initHive() async {
+    await _safeExecute(
+      () async {
+        await Hive.initFlutter();
+        await _openSafeBox('settings');
+        await _openSafeBox('user_data');
+      },
+      successMessage: "📦 Hive initialisé !",
+      errorMessage: "❌ Échec Hive",
+    );
+  }
+
+  /// ⚙️ Méthode principale : initialisation complète
+  static Future<void> initialize() async {
+    await initFirebase();
+    await initHive();
+  }
+
+  /// ✅ Ouvre une boîte Hive si elle n'est pas déjà ouverte
+  static Future<void> _openSafeBox(String name) async {
+    if (!Hive.isBoxOpen(name)) {
+      await Hive.openBox(name);
+    }
+  }
+
+  /// 🔒 Exécute une tâche en toute sécurité avec gestion des erreurs
+  static Future<void> _safeExecute(
+    Future<void> Function() task, {
+    required String successMessage,
+    required String errorMessage,
+  }) async {
     try {
-      await Hive.initFlutter();
-      await Hive.openBox('settings'); // Boîte pour les préférences
-      await Hive.openBox(
-        'user_data',
-      ); // Boîte pour stocker les infos utilisateur
-      if (kDebugMode) {
-        debugPrint("📦 Hive initialized successfully!");
-      }
+      await task();
+      debugPrint(successMessage);
     } catch (e) {
-      if (kDebugMode) {
-        debugPrint("❌ Hive initialization failed: $e");
-      }
+      debugPrint("$errorMessage : $e");
     }
   }
 }
