@@ -534,3 +534,51 @@ Un système proactif, transparent et évolutif, où chaque utilisateur devient c
 - À exécuter avec build_runner pour générer les mocks
 - Prochaine étape : écrire les tests pour `auth_service`, `user_provider`
 - Date : 2025-04-06
+### ✅ firebase_service.dart
+- 📁 `lib/modules/noyau/services/firebase_service.dart`
+- Description : Service Firebase Firestore pour lecture/écriture des utilisateurs et animaux
+- Méthodes : saveUser, getUser, deleteUser, saveAnimal, getAnimal, deleteAnimal, signOut
+- Utilisé par : user_provider, animal_service, modules IA
+- Test unitaire simple OK
+- Date : 2025-04-06
+### ✅ animal_model.dart
+- 📁 `lib/modules/noyau/models/animal_model.dart`
+- Description : Modèle de base des animaux (Hive + Firebase)
+- Champs : id, nom, espèce, race, image, timestamps, ownerId
+- Test : toJson/fromJson, copyWith
+- IA-compatible, structuré pour module identite/ et IA comportementale
+- Date : 2025-04-06
+### ✅ animal_service.dart
+- 📁 `lib/modules/noyau/services/animal_service.dart`
+- Description : Service des animaux (Hive + Firebase)
+- Gère : sauvegarde locale, synchronisation, suppression
+- Utilisé dans le noyau et futur module identite/
+- Test unitaire simple OK (mock Hive)
+- Date : 2025-04-06
+### ✅ splash_screen.dart
+- 📁 `lib/modules/noyau/screens/splash_screen.dart`
+- Description : Écran de démarrage intelligent. Redirige selon l’état utilisateur.
+- Vérifie la session via UserProvider → redirige vers MainScreen ou LoginScreen
+- Chargement visuel simple avec message
+- Date : 2025-04-06
+
+### ✅ login_screen.dart
+- 📁 `lib/modules/noyau/screens/login_screen.dart`
+- Description : Formulaire de connexion email / Google / Apple
+- Utilise : UserProvider, redirection vers MainScreen
+- Inclut gestion d’erreur, chargement et bouton création de compte
+- Test manuel (UI) suffisant pour l’instant
+- Date : 2025-04-06
+### ✅ animals_screen.dart
+- 📁 `lib/modules/noyau/screens/animals_screen.dart`
+- Description : Affiche la liste des animaux Hive de l’utilisateur
+- Utilise : AnimalModel + AnimalService (Hive)
+- Prévu pour support ajout animal (FAB)
+- Test manuel suffisant pour l’instant
+- Date : 2025-04-06
+### ✅ register_screen.dart
+- 📁 `lib/modules/noyau/screens/register_screen.dart`
+- Description : Écran d’inscription utilisateur complet (nom, email, tel, métier)
+- Utilise : UserProvider.signUp() → redirige vers MainScreen
+- Affiche erreurs, loading, validé manuellement
+- Date : 2025-04-06

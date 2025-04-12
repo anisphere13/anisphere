@@ -1,5 +1,10 @@
+/// Copilot Prompt : Écran d’inscription pour AniSphère.
+/// Permet à l’utilisateur de créer un compte avec nom, email, téléphone, profession.
+/// Utilise UserProvider.signUp(), redirige vers MainScreen.
+/// Affiche erreurs et loading.
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../providers/user_provider.dart';
 import 'package:anisphere/screens/main_screen.dart';
 
@@ -11,23 +16,23 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class RegisterScreenState extends State<RegisterScreen> {
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
-  final TextEditingController _professionController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _professionController = TextEditingController();
 
   bool _isLoading = false;
   String? _errorMessage;
 
-  Future<void> _register(BuildContext context) async {
+  Future<void> _register() async {
     setState(() {
       _isLoading = true;
       _errorMessage = null;
     });
 
     final userProvider = Provider.of<UserProvider>(context, listen: false);
-    bool success = await userProvider.signUp(
+    final success = await userProvider.signUp(
       name: _nameController.text.trim(),
       email: _emailController.text.trim(),
       password: _passwordController.text.trim(),
@@ -45,12 +50,10 @@ class RegisterScreenState extends State<RegisterScreen> {
       return;
     }
 
-    if (mounted) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const MainScreen()),
-      );
-    }
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const MainScreen()),
+    );
   }
 
   @override
@@ -59,8 +62,7 @@ class RegisterScreenState extends State<RegisterScreen> {
       appBar: AppBar(title: const Text("Inscription")),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: [
             TextField(
               controller: _nameController,
@@ -92,9 +94,9 @@ class RegisterScreenState extends State<RegisterScreen> {
               ),
             const SizedBox(height: 20),
             _isLoading
-                ? const CircularProgressIndicator()
+                ? const Center(child: CircularProgressIndicator())
                 : ElevatedButton(
-                    onPressed: () => _register(context),
+                    onPressed: _register,
                     child: const Text("Créer un compte"),
                   ),
           ],

@@ -1,3 +1,8 @@
+/// Copilot Prompt : Écran de splash pour AniSphère.
+/// Vérifie si un utilisateur est déjà connecté via UserProvider.
+/// Redirige automatiquement vers MainScreen ou LoginScreen.
+/// Affiche une animation de chargement pendant l’analyse.
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/user_provider.dart';
@@ -22,9 +27,9 @@ class SplashScreenState extends State<SplashScreen> {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     try {
-      await userProvider.loadUser(); // Charge l'utilisateur depuis Firebase/Hive
+      await userProvider.loadUser();
 
-      if (!mounted) return; // Vérifie si l'écran est toujours actif
+      if (!mounted) return;
 
       if (userProvider.user != null) {
         debugPrint("✅ Utilisateur connecté : ${userProvider.user!.email}");
@@ -40,12 +45,14 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigateTo(Widget screen) {
-    Future.delayed(const Duration(seconds: 1), () {
-      if (!mounted) return;
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => screen),
-      );
+    if (!mounted) return;
+    Future.microtask(() {
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => screen),
+        );
+      }
     });
   }
 

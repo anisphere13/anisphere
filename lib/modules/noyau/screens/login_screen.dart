@@ -1,5 +1,12 @@
+/// Copilot Prompt : Écran de connexion pour AniSphère.
+/// Permet de se connecter avec email, Google ou Apple.
+/// Utilise UserProvider, redirige vers MainScreen.
+/// Affiche erreurs et loading intelligemment.
+/// Inclut bouton vers création de compte.
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../providers/user_provider.dart';
 import 'register_screen.dart';
 import 'package:anisphere/screens/main_screen.dart';
@@ -12,8 +19,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
   bool _isLoading = false;
   String? _errorMessage;
 
@@ -23,8 +30,8 @@ class LoginScreenState extends State<LoginScreen> {
       _errorMessage = null;
     });
 
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
-    bool success = await userProvider.signInWithEmail(
+    final success = await Provider.of<UserProvider>(context, listen: false)
+        .signInWithEmail(
       _emailController.text.trim(),
       _passwordController.text.trim(),
     );
@@ -39,13 +46,10 @@ class LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    // 🔄 Changement d'écran sécurisé
-    if (mounted) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const MainScreen()),
-      );
-    }
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const MainScreen()),
+    );
   }
 
   Future<void> _loginWithGoogle(BuildContext context) async {
@@ -54,8 +58,8 @@ class LoginScreenState extends State<LoginScreen> {
       _errorMessage = null;
     });
 
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
-    bool success = await userProvider.signInWithGoogle();
+    final success = await Provider.of<UserProvider>(context, listen: false)
+        .signInWithGoogle();
 
     if (!mounted) return;
 
@@ -67,12 +71,10 @@ class LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    if (mounted) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const MainScreen()),
-      );
-    }
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const MainScreen()),
+    );
   }
 
   Future<void> _loginWithApple(BuildContext context) async {
@@ -81,8 +83,8 @@ class LoginScreenState extends State<LoginScreen> {
       _errorMessage = null;
     });
 
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
-    bool success = await userProvider.signInWithApple();
+    final success = await Provider.of<UserProvider>(context, listen: false)
+        .signInWithApple();
 
     if (!mounted) return;
 
@@ -94,12 +96,10 @@ class LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    if (mounted) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const MainScreen()),
-      );
-    }
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const MainScreen()),
+    );
   }
 
   @override
@@ -123,10 +123,7 @@ class LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 10),
             if (_errorMessage != null)
-              Text(
-                _errorMessage!,
-                style: const TextStyle(color: Colors.red),
-              ),
+              Text(_errorMessage!, style: const TextStyle(color: Colors.red)),
             const SizedBox(height: 20),
             _isLoading
                 ? const CircularProgressIndicator()
@@ -152,7 +149,7 @@ class LoginScreenState extends State<LoginScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const RegisterScreen(),
+                                builder: (_) => const RegisterScreen(),
                               ),
                             );
                           }

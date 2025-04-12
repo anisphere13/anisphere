@@ -1,6 +1,7 @@
 /// Service d'authentification pour AniSphère.
 /// Gère email/password, Google, Apple, création, reset, logout.
 /// Intègre Firebase Auth et Firebase Firestore (via UserService).
+library;
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -94,11 +95,11 @@ class AuthService {
   Future<UserModel?> signInWithApple() async {
     return await _signIn(() async {
       final appleIdCredential = await SignInWithApple.getAppleIDCredential(
-        scopes: [
-          AppleIDAuthorizationScopes.email,
-          AppleIDAuthorizationScopes.fullName,
-        ],
-      );
+  scopes: [
+    AppleIDAuthorizationScopes.email,
+    AppleIDAuthorizationScopes.fullName,
+  ],
+);
 
       final oauth = OAuthProvider("apple.com");
       final credential = oauth.credential(

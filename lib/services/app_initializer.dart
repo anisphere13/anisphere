@@ -1,6 +1,7 @@
 /// Service d'initialisation AniSphère (Firebase + Hive).
 /// Gère le démarrage sécurisé et multiplateforme, avec support tests, Web et logs.
 /// Initialisation des boîtes locales et de Firebase selon la plateforme.
+library;
 
 import 'package:flutter/foundation.dart';
 import 'package:firebase_core/firebase_core.dart';

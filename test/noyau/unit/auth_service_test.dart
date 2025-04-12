@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:anisphere/modules/noyau/services/auth_service.dart';
 import 'package:anisphere/modules/noyau/models/user_model.dart';
-import 'auth_service_test.mocks.dart';
+// TODO: vérifier que le mock existe et est bien généré
 
 void main() {
   late MockFirebaseAuth mockFirebaseAuth;
@@ -87,7 +87,9 @@ void main() {
     test('signOut appelle FirebaseAuth.signOut et UserService.deleteUserFromHive', () async {
       when(mockFirebaseAuth.currentUser).thenReturn(mockUser);
       when(mockUser.uid).thenReturn(fakeUid);
-      when(mockUserService.deleteUserFromHive(fakeUid)).thenAnswer((_) async {});
+      when(mockUserService.deleteUserFromHive(fakeUid)).thenAnswer((_) async {
+        return null;
+      });
 
       await authService.signOut();
 

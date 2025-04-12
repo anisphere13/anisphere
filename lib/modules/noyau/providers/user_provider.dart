@@ -1,6 +1,7 @@
 /// Provider utilisateur pour AniSphère.
 /// Gère l’état utilisateur, les connexions (email, Google, Apple),
 /// la synchronisation Firebase/Hive et les notifications UI.
+library;
 
 import 'package:flutter/material.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';

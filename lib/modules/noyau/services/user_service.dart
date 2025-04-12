@@ -1,6 +1,7 @@
 /// Service utilisateur AniSphère (Firebase + Hive).
 /// Gère synchronisation cloud, sauvegarde locale, suppression, et MAJ IA.
 /// Optimisé pour IA maîtresse, offline-first, multi-profil.
+library;
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';

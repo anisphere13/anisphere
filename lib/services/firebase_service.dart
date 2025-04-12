@@ -1,6 +1,13 @@
+/// Copilot Prompt : Service Firebase pour AniSphère.
+/// Gère la déconnexion, la lecture/écriture Firestore des utilisateurs et animaux.
+/// Utilise FirebaseAuth + Firestore.
+/// Inclut gestion des erreurs, logs conditionnels, fusion automatique des données.
+/// IA-ready et modulaire.
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+
 import 'package:anisphere/modules/noyau/models/user_model.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
 
@@ -14,13 +21,13 @@ class FirebaseService {
   })  : db = firestore ?? FirebaseFirestore.instance,
         auth = firebaseAuth ?? FirebaseAuth.instance;
 
-  /// 🔥 Déconnexion
+  /// 🔓 Déconnexion Firebase
   Future<void> signOut() async {
     try {
       await auth.signOut();
       debugPrint("✅ Utilisateur déconnecté.");
     } catch (e) {
-      debugPrint("❌ Erreur lors de la déconnexion : $e");
+      debugPrint("❌ Erreur déconnexion Firebase : $e");
     }
   }
 
@@ -70,7 +77,7 @@ class FirebaseService {
     }
   }
 
-  /// 🐾 Sauvegarde / mise à jour d’un animal
+  /// 🐾 Sauvegarder ou mettre à jour un animal
   Future<bool> saveAnimal(AnimalModel animal) async {
     try {
       if (animal.id.isEmpty) return false;
@@ -116,6 +123,3 @@ class FirebaseService {
     }
   }
 }
-
-
-
