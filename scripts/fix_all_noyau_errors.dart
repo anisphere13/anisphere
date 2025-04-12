@@ -4,29 +4,29 @@ void main() async {
   await _fixUserModel();
   await _fixAuthService();
   await _createMockBuilder();
-  print('\n✅ Tous les correctifs ont été appliqués. Tu peux relancer build_runner puis les tests.');
+  stderr.writeln('\n✅ Tous les correctifs ont été appliqués. Tu peux relancer build_runner puis les tests.');
 }
 
 Future<void> _fixUserModel() async {
   final path = 'lib/modules/noyau/models/user_model.dart';
   final file = File(path);
-  if (!file.existsSync()) return print('❌ Fichier introuvable : $path');
+  if (!file.existsSync()) return stderr.writeln('❌ Fichier introuvable : $path');
 
   final original = await file.readAsString();
   final corrected = original.replaceFirst(RegExp(r'const\s+UserModel\s*\('), 'UserModel(');
 
   if (corrected != original) {
     await file.writeAsString(corrected);
-    print('🔧 user_model.dart : suppression du constructeur const');
+    stderr.writeln('🔧 user_model.dart : suppression du constructeur const');
   } else {
-    print('✅ user_model.dart : déjà corrigé');
+    stderr.writeln('✅ user_model.dart : déjà corrigé');
   }
 }
 
 Future<void> _fixAuthService() async {
   final path = 'lib/modules/noyau/services/auth_service.dart';
   final file = File(path);
-  if (!file.existsSync()) return print('❌ Fichier introuvable : $path');
+  if (!file.existsSync()) return stderr.writeln('❌ Fichier introuvable : $path');
 
   var content = await file.readAsString();
 
@@ -34,7 +34,7 @@ Future<void> _fixAuthService() async {
   content = content.replaceAll('appleIdCredential.', 'appleCredential.');
 
   await file.writeAsString(content);
-  print('🔧 auth_service.dart : correction appleCredential');
+  stderr.writeln('🔧 auth_service.dart : correction appleCredential');
 }
 
 Future<void> _createMockBuilder() async {
@@ -42,7 +42,7 @@ Future<void> _createMockBuilder() async {
   final file = File(path);
 
   if (file.existsSync()) {
-    print('✅ Fichier de mocks déjà présent.');
+    stderr.writeln('✅ Fichier de mocks déjà présent.');
     return;
   }
 
@@ -67,5 +67,5 @@ void main() {}
 ''';
 
   await file.writeAsString(content);
-  print('🧪 auth_service_test.mocks_builder.dart : générateur de mocks créé');
+  stderr.writeln('🧪 auth_service_test.mocks_builder.dart : générateur de mocks créé');
 }
