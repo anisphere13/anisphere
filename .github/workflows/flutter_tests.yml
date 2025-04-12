@@ -14,18 +14,24 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v3
 
-      - name: ⚙️ Installer Flutter 3.19.0 (avec Dart 3.7)
-        run: |
-          git clone https://github.com/flutter/flutter.git -b stable
-          echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
-          export PATH="$GITHUB_WORKSPACE/flutter/bin:$PATH"
-          flutter --version
+      - name: ⚙️ Install Flutter 3.19.0 (avec Dart 3.7)
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.19.0"
+          channel: "stable"
 
-      - name: 📦 Get dependencies
-        run: flutter pub get
+      - name: 📦 Pub get + upgrade (clean)
+        run: |
+          flutter pub get
+          flutter pub upgrade
 
       - name: 🔄 Build mocks & adapters
         run: flutter pub run build_runner build --delete-conflicting-outputs
 
       - name: 🧪 Run tests with coverage
         run: flutter test --coverage
+
+      - name: ✅ Résumé de couverture
+        run: |
+          lcov --summary coverage/lcov.info
+        continue-on-error: true

@@ -1,4 +1,4 @@
-name: Update Test Tracker
+name: 🤖 Update Test Tracker
 
 on:
   push:
@@ -13,23 +13,26 @@ jobs:
   update-tracker:
     runs-on: ubuntu-latest
 
-    container:
-      image: ghcr.io/cirruslabs/flutter:3.22.1
-
     steps:
-      - name: Checkout repository
+      - name: 📥 Checkout repository
         uses: actions/checkout@v3
 
-      - name: Get dependencies
+      - name: ⚙️ Setup Flutter 3.19.0
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.19.0"
+          channel: stable
+
+      - name: 📦 Install dependencies
         run: flutter pub get
 
-      - name: Run tracker update script
+      - name: 🧠 Run tracker update script
         run: dart scripts/update_test_tracker.dart
 
-      - name: Commit updated tracker
+      - name: 📌 Commit updated tracker file
         run: |
           git config user.name "AniBot"
           git config user.email "anibot@anisphere.dev"
           git add docs/test_tracker.md
-          git commit -m "🤖 MAJ automatique test_tracker.md" || echo "✅ Aucun changement"
-          git push
+          git commit -m "🤖 MAJ automatique test_tracker.md" || echo "✅ Aucun changement détecté"
+          git push || echo "🚫 Aucun push nécessaire"

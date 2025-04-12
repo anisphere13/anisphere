@@ -581,4 +581,38 @@ Un système proactif, transparent et évolutif, où chaque utilisateur devient c
 - Description : Écran d’inscription utilisateur complet (nom, email, tel, métier)
 - Utilise : UserProvider.signUp() → redirige vers MainScreen
 - Affiche erreurs, loading, validé manuellement
-- Date : 2025-04-06
+- Date : 2026-04-06
+### ✅ main_screen.dart
+- 📁 `lib/modules/noyau/screens/main_screen.dart`
+- Description : Interface principale avec les 4 onglets fixes (Accueil, Partage, Modules, Mes Animaux)
+- Navigation avec BottomNavigationBar, UI stable
+- Utilise : HomeScreen, ShareScreen, ModulesScreen, AnimalsScreen
+- Date : 2025-04-12
+
+### ✅ share_screen.dart, home_screen.dart, modules_screen.dart
+- 📁 `lib/modules/noyau/screens/`
+- Description : Écrans de navigation liés à `MainScreen`
+- Contenu simple placeholder pour l'instant, prévus pour extension IA + modules
+- Statut : Terminés structurellement, IA-ready
+- Date : 2025-04-12
+
+### ✅ splash_screen.dart
+- 📁 `lib/modules/noyau/screens/splash_screen.dart`
+- Description : Redirige automatiquement selon état utilisateur (connecté ou non)
+- Utilise : UserProvider, Firebase, Hive
+- Préparé pour futur affichage IA ou messages personnalisés
+- Date : 2025-04-12
+
+### ✅ login_screen.dart
+- 📁 `lib/modules/noyau/screens/login_screen.dart`
+- Description : Formulaire complet avec gestion Google / Apple
+- Intégré à UserProvider, redirection auto vers MainScreen
+- Gère erreurs et chargement
+- Date : 2025-04-12
+
+### ✅ register_screen.dart
+- 📁 `lib/modules/noyau/screens/register_screen.dart`
+- Description : Formulaire d’inscription complet (nom, mail, tel, métier)
+- Liaison avec UserProvider, création compte dans Firebase + Hive
+- UX simple, IA-ready
+- Date : 2025-04-12

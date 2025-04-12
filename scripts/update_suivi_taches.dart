@@ -3,18 +3,29 @@
 import 'dart:io';
 
 void main() {
-  final file = File('docs/3__suivi_taches.md');
+  final filePath = 'docs/3__suivi_taches.md';
+  final file = File(filePath);
+
   if (!file.existsSync()) {
-    stderr.writeln("❌ Fichier non trouvé !");
+    stderr.writeln("❌ Fichier introuvable : $filePath");
+    exit(1);
+  }
+
+  final today = DateTime.now();
+  final formattedDate = "${today.year}-${_pad(today.month)}-${_pad(today.day)}";
+  final tag = "- ✅ Mise à jour automatique des tâches le $formattedDate";
+
+  final content = file.readAsStringSync();
+
+  if (content.contains(tag)) {
+    print("🔁 $filePath déjà à jour pour le $formattedDate.");
     return;
   }
 
-  String content = file.readAsStringSync();
-  if (!content.contains("2025-04-05")) {
-    content += "\n- ✅ Mise à jour automatique des tâches le 2025-04-05";
-    file.writeAsStringSync(content);
-    stderr.writeln("✅ suivi_taches.md mis à jour !");
-  } else {
-    stderr.writeln("🔁 Rien à mettre à jour (déjà présent pour aujourd'hui).");
-  }
+  final updatedContent = "$content\n$tag\n";
+  file.writeAsStringSync(updatedContent.trimRight() + '\n');
+
+  print("✅ $filePath mis à jour avec la date du $formattedDate.");
 }
+
+String _pad(int n) => n.toString().padLeft(2, '0');

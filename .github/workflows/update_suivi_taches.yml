@@ -1,4 +1,4 @@
-name: Update Suivi Tâches
+name: 🧩 Update Suivi Tâches
 
 on:
   push:
@@ -12,23 +12,26 @@ jobs:
   update-suivi-taches:
     runs-on: ubuntu-latest
 
-    container:
-      image: ghcr.io/cirruslabs/flutter:3.22.1
-
     steps:
-      - name: Checkout repository
+      - name: 📥 Checkout repository
         uses: actions/checkout@v3
 
-      - name: Get dependencies
+      - name: ⚙️ Setup Flutter 3.19.0
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.19.0"
+          channel: stable
+
+      - name: 📦 Install dependencies
         run: flutter pub get
 
-      - name: Run suivi_taches update script
+      - name: 🧠 Run suivi_taches update script
         run: dart scripts/update_suivi_taches.dart
 
-      - name: Commit updated suivi_taches
+      - name: ✅ Commit suivi_taches.md if modified
         run: |
           git config user.name "AniBot"
           git config user.email "anibot@anisphere.dev"
           git add docs/3__suivi_taches.md
-          git commit -m "✅ MAJ automatique suivi_taches.md" || echo "✅ Aucun changement"
-          git push
+          git commit -m "✅ MAJ automatique suivi_taches.md" || echo "✅ Aucun changement détecté"
+          git push || echo "🚫 Aucun push requis"
