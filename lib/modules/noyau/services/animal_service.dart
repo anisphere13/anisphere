@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
 import '../models/animal_model.dart';
-import 'package:anisphere/services/firebase_service.dart';
+import 'package:anisphere/modules/noyau/services/firebase_service.dart';
 
 class AnimalService {
   static const String animalBoxName = 'animal_data';

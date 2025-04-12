@@ -18,7 +18,7 @@ class MainScreenState extends State<MainScreen> {
     HomeScreen(),
     ShareScreen(),
     ModulesScreen(),
-    AnimalsScreen(),
+    AnimalsScreen(child: Placeholder(), 1),
   ];
 
   void _onItemTapped(int index) {

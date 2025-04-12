@@ -9,7 +9,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import '../models/user_model.dart';
 import '../services/user_service.dart';
 import '../services/auth_service.dart';
-import 'package:anisphere/services/firebase_service.dart';
+import 'package:anisphere/modules/noyau/services/firebase_service.dart';
 
 class UserProvider with ChangeNotifier {
   final UserService _userService;

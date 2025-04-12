@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/user_provider.dart';
 import 'register_screen.dart';
-import 'package:anisphere/screens/main_screen.dart';
+import 'package:anisphere/modules/noyau/screens/main_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

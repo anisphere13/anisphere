@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../firebase_options.dart';
+import 'package:anisphere/firebase_options.dart';
 
 class AppInitializer {
   /// 🔥 Initialise Firebase (sauf si Web déjà actif)
