@@ -642,3 +642,59 @@ Un système proactif, transparent et évolutif, où chaque utilisateur devient c
 - Date : 2025-04-13
 
 - 🧩 Synchronisation automatique du noyau le 2025-04-13
+### ✅ notification_service.dart
+- 📁 `lib/modules/noyau/logic/notification_service.dart`
+- Permet d'envoyer des notifications locales intelligentes
+- Gère l'initialisation FlutterLocalNotifications
+- Base prête pour Firebase Messaging (plus tard)
+- Appelé depuis IA, Santé, Dressage...
+- Test à venir (mock nécessaire)
+- Date : 2025-04-13
+### ✅ ia_master.dart
+- 📁 `lib/modules/noyau/logic/ia_master.dart`
+- IA maîtresse : décisions UX, sync cloud, log événementiel
+- Simulation de cloud IA
+- Base pour toutes les fonctions intelligentes de l’app
+- Utilisée dans : splash, user, animaux, santé, IA
+- Date : 2025-04-13
+### ✅ ia_rules.dart
+- 📁 `lib/modules/noyau/logic/ia_rules.dart`
+- Contient des règles métiers IA simples (UX, comportement, santé)
+- Sert de base aux décisions locales avant IA cloud
+- Utilisé dans : onboarding, santé, animal_profile, IA maîtresse
+- Date : 2025-04-13
+### ✅ ia_config.dart
+- 📁 `lib/modules/noyau/logic/ia_config.dart`
+- Contient les paramètres IA modifiables (seuils, flags, options UX)
+- Sert de base aux règles IA et décisions locales
+- Prévu pour compatibilité future avec Remote Config
+- Date : 2025-04-13
+### ✅ ia_logger.dart
+- 📁 `lib/modules/noyau/logic/ia_logger.dart`
+- Logger IA isolé pour tracer les événements IA (sync, règles, UX)
+- Utilisé par IAMaster et modules IA
+- Nettoyage auto intégré
+- Date : 2025-04-13
+### ✅ ia_rule_engine.dart
+- 📁 `lib/modules/noyau/logic/ia_rule_engine.dart`
+- Moteur IA qui applique les règles de ia_rules.dart aux animaux
+- Retourne des suggestions/action à exécuter (liste de strings)
+- Utilisé par IAMaster, modules UX, santé, dressage
+- Date : 2025-04-13
+### ✅ ia_context.dart
+- 📁 `lib/modules/noyau/logic/ia_context.dart`
+- Contient le wrapper IAContext (état actuel IA : offline, animaux, etc.)
+- Utilisé par IAMaster et IARuleEngine
+- Prépare l’enrichissement futur avec IA cloud
+- Date : 2025-04-13
+### ✅ ia_channel.dart
+- 📁 `lib/modules/noyau/logic/ia_channel.dart`
+- Définit les canaux IA utilisés pour classer logs, suggestions et alertes
+- Sert à trier, visualiser ou exporter les retours IA
+- Utilisé dans IAMaster, IALogger, RuleEngine, modules
+- Date : 2025-04-13
+### ✅ ia_flag.dart
+- 📁 `lib/modules/noyau/logic/ia_flag.dart`
+- Drapeaux booléens pour activer/désactiver des composants IA localement
+- Utilisé pour tests, debug, maintenance, comportement adaptatif
+- Date : 2025-04-13
