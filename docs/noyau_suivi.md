@@ -698,3 +698,36 @@ Un système proactif, transparent et évolutif, où chaque utilisateur devient c
 - Drapeaux booléens pour activer/désactiver des composants IA localement
 - Utilisé pour tests, debug, maintenance, comportement adaptatif
 - Date : 2025-04-13
+### ✅ ia_chip.dart
+- 📁 `lib/modules/noyau/widgets/ia_chip.dart`
+- Widget Chip léger représentant un tag IA dynamique
+- Utilisé dans l’accueil, dashboard, liste animaux, modules IA
+- 100 % réutilisable
+- Date : 2025-04-13
+### ✅ ia_suggestion_card.dart
+- 📁 `lib/modules/noyau/widgets/ia_suggestion_card.dart`
+- Widget carte affichant une recommandation IA riche (titre, message, action)
+- Utilisé dans l’accueil, dashboard IA, modules
+- 100 % réutilisable
+- Date : 2025-04-13
+### ✅ ia_banner.dart
+- 📁 `lib/modules/noyau/widgets/ia_banner.dart`
+- Widget bannière IA contextuelle affichée en haut de l’écran
+- Sert à indiquer un état IA global ou un message permanent
+- Réutilisable dans home_screen, onboarding, profil, dashboard
+- Date : 2025-04-13
+### ✅ ia_log_viewer.dart
+- 📁 `lib/modules/noyau/widgets/ia_log_viewer.dart`
+- Widget permettant d'afficher les logs IA locaux (via IALogger)
+- Utilisable dans les écrans debug, support, ou IA avancée
+- Aide au suivi IA maître et au diagnostic
+- Date : 2025-04-13
+### ✅ home_screen.dart
+- 📁 `lib/modules/noyau/screens/home_screen.dart`
+- Écran d’accueil enrichi avec les composants IA :
+  - `IABanner` (état IA)
+  - `IAChip` (mode IA actif)
+  - `IASuggestionCard` (action IA détectée)
+  - `IALogViewer` (logs IA)
+- IA activée avec IAMaster + IARuleEngine
+- Date : 2025-04-13
