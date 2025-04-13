@@ -616,3 +616,12 @@ Un système proactif, transparent et évolutif, où chaque utilisateur devient c
 - Liaison avec UserProvider, création compte dans Firebase + Hive
 - UX simple, IA-ready
 - Date : 2025-04-12
+
+### ✅ local_storage_service.dart
+- 📁 `lib/modules/noyau/services/local_storage_service.dart`
+- Description : Gère les préférences locales (darkMode, IA, onboarding…)
+- Utilise : Hive (box: settings)
+- À terme utilisé par IA, UX adaptative, réglages utilisateurs
+- Test : accès clé/valeur, fallback
+- Date : 2025-04-13
+

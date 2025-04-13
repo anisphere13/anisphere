@@ -1,13 +1,19 @@
+/// Copilot Prompt : Service de stockage Hive local pour AniSphère.
+/// Gère deux boîtes : utilisateurs et animaux.
+/// Fournit des fonctions de lecture/écriture bas niveau.
+/// Utilisé en complément de UserService et AnimalService.
+/// Peut être utilisé aussi pour debug offline.
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:anisphere/modules/noyau/models/user_model.dart';
-import 'package:anisphere/modules/noyau/models/animal_model.dart';
 import 'package:flutter/foundation.dart';
+
+import '../models/user_model.dart';
+import '../models/animal_model.dart';
 
 class LocalStorageService {
   static late Box<UserModel> _userBox;
   static late Box<AnimalModel> _animalBox;
 
-  /// 📦 **Initialisation de Hive et des boîtes locales**
+  /// 📦 Initialisation Hive
   static Future<void> init() async {
     try {
       await Hive.initFlutter();
@@ -19,46 +25,46 @@ class LocalStorageService {
 
       debugPrint("✅ Hive local storage initialized!");
     } catch (e) {
-      debugPrint("❌ Erreur lors de l'initialisation de Hive : $e");
+      debugPrint("❌ Erreur init Hive : $e");
     }
   }
 
-  /// 💾 **Sauvegarder un utilisateur localement**
+  /// 💾 Sauvegarder un utilisateur
   static Future<void> saveUser(UserModel user) async {
     try {
       await _userBox.put(user.id, user);
       debugPrint("✅ Utilisateur sauvegardé localement : ${user.email}");
     } catch (e) {
-      debugPrint("❌ Erreur lors de la sauvegarde de l'utilisateur : $e");
+      debugPrint("❌ Erreur saveUser : $e");
     }
   }
 
-  /// 🔄 **Récupérer un utilisateur localement**
+  /// 🔄 Lire un utilisateur
   static UserModel? getUser(String userId) {
     try {
       return _userBox.get(userId);
     } catch (e) {
-      debugPrint("❌ Erreur lors de la récupération de l'utilisateur : $e");
+      debugPrint("❌ Erreur getUser : $e");
       return null;
     }
   }
 
-  /// 🐾 **Sauvegarder un animal localement**
+  /// 💾 Sauvegarder un animal
   static Future<void> saveAnimal(AnimalModel animal) async {
     try {
       await _animalBox.put(animal.id, animal);
       debugPrint("✅ Animal sauvegardé localement : ${animal.name}");
     } catch (e) {
-      debugPrint("❌ Erreur lors de la sauvegarde de l'animal : $e");
+      debugPrint("❌ Erreur saveAnimal : $e");
     }
   }
 
-  /// 🔄 **Récupérer un animal localement**
+  /// 🔄 Lire un animal
   static AnimalModel? getAnimal(String animalId) {
     try {
       return _animalBox.get(animalId);
     } catch (e) {
-      debugPrint("❌ Erreur lors de la récupération de l'animal : $e");
+      debugPrint("❌ Erreur getAnimal : $e");
       return null;
     }
   }

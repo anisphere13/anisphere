@@ -1,13 +1,22 @@
 // 📁 test/noyau/unit/auth_service_test.dart
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:anisphere/modules/noyau/services/auth_service.dart';
+import 'package:anisphere/modules/noyau/services/user_service.dart';
 import 'package:anisphere/modules/noyau/models/user_model.dart';
-// TODO: vérifier que le mock existe et est bien généré
 
+import 'auth_service_test.mocks.dart';
+
+@GenerateMocks([
+  FirebaseAuth,
+  User,
+  UserCredential,
+  UserService,
+])
 void main() {
   late MockFirebaseAuth mockFirebaseAuth;
   late MockUserCredential mockUserCredential;
@@ -51,7 +60,6 @@ void main() {
 
   group('AUTH_SERVICE - Tests unitaires', () {
     test('signInWithEmail renvoie un UserModel si tout est OK', () async {
-      // Arrange
       when(mockFirebaseAuth.currentUser).thenReturn(null);
       when(mockFirebaseAuth.signInWithEmailAndPassword(
         email: fakeEmail,
@@ -61,11 +69,9 @@ void main() {
       when(mockUserService.getUserFromFirebase(fakeUid))
           .thenAnswer((_) async => fakeUserModel);
 
-      // Act
       final result =
           await authService.signInWithEmail(fakeEmail, fakePassword);
 
-      // Assert
       expect(result, isNotNull);
       expect(result!.email, equals(fakeEmail));
       verify(mockUserService.getUserFromFirebase(fakeUid)).called(1);
@@ -87,9 +93,7 @@ void main() {
     test('signOut appelle FirebaseAuth.signOut et UserService.deleteUserFromHive', () async {
       when(mockFirebaseAuth.currentUser).thenReturn(mockUser);
       when(mockUser.uid).thenReturn(fakeUid);
-      when(mockUserService.deleteUserFromHive(fakeUid)).thenAnswer((_) async {
-        return null;
-      });
+      when(mockUserService.deleteUserFromHive(fakeUid)).thenAnswer((_) async {});
 
       await authService.signOut();
 
