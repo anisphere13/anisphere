@@ -14,11 +14,11 @@ class MainScreen extends StatefulWidget {
 class MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _pages = <Widget>[
-    HomeScreen(),
-    ShareScreen(),
-    ModulesScreen(),
-    AnimalsScreen(child: Placeholder(), 1),
+  static final List<Widget> _pages = <Widget>[
+    const HomeScreen(),
+    const ShareScreen(),
+    const ModulesScreen(),
+    AnimalsScreen(child: Placeholder()), // ✅ fermeture corrigée ici
   ];
 
   void _onItemTapped(int index) {

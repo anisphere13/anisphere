@@ -8,9 +8,12 @@ import 'package:flutter/foundation.dart';
 
 import '../models/user_model.dart';
 import '../models/animal_model.dart';
+
 class LocalStorageService {
   static late Box<UserModel> _userBox;
   static late Box<AnimalModel> _animalBox;
+  static late Box _settingsBox;
+
   /// 📦 Initialisation Hive
   static Future<void> init() async {
     try {
@@ -19,36 +22,76 @@ class LocalStorageService {
       Hive.registerAdapter(AnimalModelAdapter());
       _userBox = await Hive.openBox<UserModel>('users');
       _animalBox = await Hive.openBox<AnimalModel>('animals');
+      _settingsBox = await Hive.openBox('settings');
       debugPrint("✅ Hive local storage initialized!");
     } catch (e) {
       debugPrint("❌ Erreur init Hive : $e");
     }
   }
+
   /// 💾 Sauvegarder un utilisateur
   static Future<void> saveUser(UserModel user) async {
+    try {
       await _userBox.put(user.id, user);
       debugPrint("✅ Utilisateur sauvegardé localement : ${user.email}");
+    } catch (e) {
       debugPrint("❌ Erreur saveUser : $e");
+    }
+  }
+
   /// 🔄 Lire un utilisateur
   static UserModel? getUser(String userId) {
+    try {
       return _userBox.get(userId);
+    } catch (e) {
       debugPrint("❌ Erreur getUser : $e");
       return null;
+    }
+  }
+
   /// 💾 Sauvegarder un animal
   static Future<void> saveAnimal(AnimalModel animal) async {
+    try {
       await _animalBox.put(animal.id, animal);
       debugPrint("✅ Animal sauvegardé localement : ${animal.name}");
+    } catch (e) {
       debugPrint("❌ Erreur saveAnimal : $e");
+    }
+  }
+
   /// 🔄 Lire un animal
   static AnimalModel? getAnimal(String animalId) {
+    try {
       return _animalBox.get(animalId);
+    } catch (e) {
       debugPrint("❌ Erreur getAnimal : $e");
-}
-/// 🔧 Ajout automatique des méthodes get/set/remove pour tests IA maîtresse
-  static final _box = Hive.box('settings');
+      return null;
+    }
+  }
+
+  /// 🔧 Méthodes génériques pour IA maîtresse ou paramètres globaux
   static dynamic get(String key, {dynamic defaultValue}) {
-    return _box.get(key, defaultValue: defaultValue);
+    try {
+      return _settingsBox.get(key, defaultValue: defaultValue);
+    } catch (e) {
+      debugPrint("❌ Erreur get (settings) : $e");
+      return defaultValue;
+    }
+  }
+
   static Future<void> set(String key, dynamic value) async {
-    await _box.put(key, value);
+    try {
+      await _settingsBox.put(key, value);
+    } catch (e) {
+      debugPrint("❌ Erreur set (settings) : $e");
+    }
+  }
+
   static Future<void> remove(String key) async {
-    await _box.delete(key);
+    try {
+      await _settingsBox.delete(key);
+    } catch (e) {
+      debugPrint("❌ Erreur remove (settings) : $e");
+    }
+  }
+}
