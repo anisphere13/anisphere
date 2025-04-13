@@ -731,3 +731,15 @@ Un système proactif, transparent et évolutif, où chaque utilisateur devient c
   - `IALogViewer` (logs IA)
 - IA activée avec IAMaster + IARuleEngine
 - Date : 2025-04-13
+### ✅ user_profile_screen.dart
+- 📁 `lib/modules/noyau/screens/user_profile_screen.dart`
+- Description : Affiche les infos personnelles de l'utilisateur + modules actifs
+- Préparé pour les stats, QR, export, IA future
+- Test UI prévu (widget + logique de déconnexion)
+- Date : 2025-04-13
+### ✅ settings_screen.dart
+- 📁 `lib/modules/noyau/screens/settings_screen.dart`
+- Description : Gère les préférences locales (mode sombre, IA suggestions, IA notifications)
+- Utilise : LocalStorageService
+- Prévu pour extension (langue, compte, export, sync)
+- Date : 2025-04-13
