@@ -7,3 +7,4 @@
 | app_initializer.dart | Intégration | ❌ | _Aucun test trouvé_ |
 
 - 📌 Tests validés automatiquement le 2025-04-05
+- ✅ Tests validés automatiquement le 2025-04-13

@@ -625,3 +625,20 @@ Un système proactif, transparent et évolutif, où chaque utilisateur devient c
 - Test : accès clé/valeur, fallback
 - Date : 2025-04-13
 
+### ✅ ia_master.dart
+- 📁 `lib/modules/noyau/logic/ia_master.dart`
+- Description : Cœur IA du noyau, centralise les décisions IA
+- Méthodes : logEvent, decideUXMode, syncCloudIA, cleanOldLogs
+- Gère IA locale + cloud, auto-maintenance, future adaptation UX
+- Test : logique décisionnelle IA (UX mode)
+- Date : 2025-04-13
+### ✅ maintenance_service.dart
+- 📁 `lib/modules/noyau/logic/maintenance_service.dart`
+- Description : Maintenance automatique du noyau AniSphère
+- Méthodes : cleanPreferences, fixHiveIfCorrupted, autoSyncIfExpired
+- Appelé au démarrage ou déclenché par IA
+- Prépare les outils pour relancer sync / purge Hive si crash
+- Test simple possible (non-blocage)
+- Date : 2025-04-13
+
+- 🧩 Synchronisation automatique du noyau le 2025-04-13
