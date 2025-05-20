@@ -1,0 +1,40 @@
+/// Copilot Prompt : Service pour la gestion du statut juridique de l’animal.
+/// Permet de déclarer ou modifier le statut (chien d’assistance, travail, élevage...).
+/// Gère les validations IA, l’enregistrement local et la traçabilité historique.
+import 'package:anisphere/modules/identite/models/identity_model.dart';
+import 'identity_service.dart';
+
+class LegalStatusService {
+  final IdentityService identityService;
+
+  LegalStatusService({required this.identityService});
+
+  Future<void> updateLegalStatus({
+    required String animalId,
+    required String newStatus,
+  }) async {
+    final identity = identityService.getIdentityLocally(animalId);
+    if (identity == null) return;
+
+    final updated = IdentityModel(
+      animalId: identity.animalId,
+      microchipNumber: identity.microchipNumber,
+      photoUrl: identity.photoUrl,
+      status: identity.status,
+      legalStatus: newStatus,
+      verifiedByIA: identity.verifiedByIA,
+      hasPublicQR: identity.hasPublicQR,
+      history: [
+        ...identity.history,
+        IdentityChange(
+          field: 'legalStatus',
+          oldValue: identity.legalStatus ?? '',
+          newValue: newStatus,
+          date: DateTime.now(),
+        ),
+      ],
+    );
+
+    await identityService.saveIdentityLocally(updated);
+  }
+}

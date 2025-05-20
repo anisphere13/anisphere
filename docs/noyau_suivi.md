@@ -731,15 +731,80 @@ Un système proactif, transparent et évolutif, où chaque utilisateur devient c
   - `IALogViewer` (logs IA)
 - IA activée avec IAMaster + IARuleEngine
 - Date : 2025-04-13
-### ✅ user_profile_screen.dart
-- 📁 `lib/modules/noyau/screens/user_profile_screen.dart`
-- Description : Affiche les infos personnelles de l'utilisateur + modules actifs
-- Préparé pour les stats, QR, export, IA future
-- Test UI prévu (widget + logique de déconnexion)
-- Date : 2025-04-13
-### ✅ settings_screen.dart
-- 📁 `lib/modules/noyau/screens/settings_screen.dart`
-- Description : Gère les préférences locales (mode sombre, IA suggestions, IA notifications)
-- Utilise : LocalStorageService
-- Prévu pour extension (langue, compte, export, sync)
-- Date : 2025-04-13
+
+### ✅ main.dart
+- 📁 `lib/main.dart`
+- Correction du thème selon le brandbook
+- Intégration des couleurs : bleu nuit, jaune solaire, gris clair
+- AppBar, fond, boutons unifiés
+- Date : 2025-05-20
+
+### ✅ ia_chip.dart
+- 📁 `lib/modules/noyau/widgets/ia_chip.dart`
+- Badge intelligent IA stylé (UX Samsung Health)
+- Couleurs : fond #FFF8E1, texte/bordure #183153
+- Utilisation : header, suggestions IA, dashboards
+- Date : 2025-05-20
+
+### ✅ ia_suggestion_card.dart
+- 📁 `lib/modules/noyau/widgets/ia_suggestion_card.dart`
+- Carte IA élégante avec message, icône et action possible
+- Style Samsung Health + couleurs du brandbook (bleu nuit, jaune solaire)
+- 100 % réutilisable dans les dashboards, suggestions, modules
+- Date : 2025-05-20
+
+### ✅ ia_banner.dart
+- 📁 `lib/modules/noyau/widgets/ia_banner.dart`
+- Bandeau contextuel IA affiché en haut des écrans
+- Branding appliqué : fond jaune pâle, texte bleu nuit
+- Prévu pour onboarding, alertes, infos IA discrètes
+- Date : 2025-05-20
+
+### ✅ ia_log_viewer.dart
+- 📁 `lib/modules/noyau/widgets/ia_log_viewer.dart`
+- Widget d'affichage des logs IA enregistrés localement
+- Branding appliqué : titre bleu nuit, texte contrasté
+- Comportement UX : ExpansionTile élégant et fluide
+- Date : 2025-05-20
+
+### ✅ animal_form_screen.dart
+- 📁 `lib/modules/noyau/screens/animal_form_screen.dart`
+- Formulaire d’ajout d’un animal : nom, espèce, race, date
+- Prévu pour OCR (certificat I-CAD, carnet LOF)
+- Branding : gris clair, bleu nuit, jaune solaire
+- UX simple, fluide, inspiration Samsung Health
+- Date : 2025-05-20
+
+### ✅ animal_screen.dart
+- 📁 `lib/modules/noyau/screens/animal_screen.dart`
+- Affiche un animal : nom, espèce, race, date de naissance
+- Prévu pour l'intégration IA (modules, suggestions, QR)
+- Branding : fond gris clair, carte blanche, bleu nuit
+- UX inspiration Samsung Health
+- Date : 2025-05-20
+
+### ✅ animals_screen.dart
+- 📁 `lib/modules/noyau/screens/animals_screen.dart`
+- Liste les animaux (mock), propose ajout, affiche une suggestion IA si vide
+- Préparé pour futur scroll intelligent avec raccourcis IA
+- Design Samsung Health / Branding AniSphère
+- Date : 2025-05-20
+
+### ✅ modules_screen.dart
+- 📁 `lib/modules/noyau/screens/modules_screen.dart`
+- Affiche les modules disponibles : Santé, Éducation, Dressage
+- Statuts : actif, disponible, premium (chip colorée)
+- UX Samsung Health : cartes propres, bouton “Découvrir”
+- Branding appliqué : fond gris, accents bleu nuit et jaune solaire
+- Date : 2025-05-20
+
+### ✅ share_screen.dart
+- 📁 `lib/modules/noyau/screens/share_screen.dart`
+- Contenu : QR code (mock), bouton d’export de données IA
+- UX épurée, responsive, extensible pour ID publique ou certificat IA
+- Branding appliqué : fond gris clair, bleu nuit
+- Date : 2025-05-20
+
+
+
+
