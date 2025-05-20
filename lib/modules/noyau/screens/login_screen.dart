@@ -3,6 +3,7 @@
 /// Utilise UserProvider, redirige vers MainScreen.
 /// Affiche erreurs et loading intelligemment.
 /// Inclut bouton vers création de compte.
+library;
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

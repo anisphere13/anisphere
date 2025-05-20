@@ -1,6 +1,7 @@
 /// Copilot Prompt : HomeScreen AniSphère enrichi avec IA.
 /// Intègre les widgets IA dynamiques : IABanner, IAChip, IASuggestionCard, IALogViewer.
 /// Récupère des actions IA depuis IAMaster / RuleEngine et les affiche.
+library;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

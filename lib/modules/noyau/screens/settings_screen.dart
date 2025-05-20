@@ -2,6 +2,7 @@
 /// Permet à l’utilisateur de configurer les préférences de l’app.
 /// Options actuelles : dark mode, notifications IA, suggestions IA.
 /// Préférences stockées avec LocalStorageService.
+library;
 import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/services/local_storage_service.dart';
 

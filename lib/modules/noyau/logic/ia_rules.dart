@@ -2,6 +2,7 @@
 /// Contient des règles métiers IA : seuils d’alerte, détections comportementales,
 /// logiques de notifications ou déclencheurs IA.
 /// S’appuie sur les données locales et le contexte utilisateur.
+library;
 
 import 'package:flutter/foundation.dart';
 import '../models/animal_model.dart';

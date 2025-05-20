@@ -2,6 +2,7 @@
 /// Gère la lecture/écriture locale Hive, la synchronisation avec Firebase,
 /// et la suppression. Utilise FirebaseService en interne.
 /// IA-compatible, testable, offline-first.
+library;
 
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';

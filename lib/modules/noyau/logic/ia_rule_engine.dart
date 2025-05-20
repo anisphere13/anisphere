@@ -2,6 +2,7 @@
 /// Applique dynamiquement les règles définies dans ia_rules.dart selon le contexte.
 /// Peut être appelé automatiquement par IAMaster ou d’autres modules.
 /// Retourne des suggestions IA, alertes ou actions à exécuter.
+library;
 import '../models/animal_model.dart';
 import 'ia_rules.dart';
 import 'ia_logger.dart';

@@ -1,6 +1,7 @@
 /// Copilot Prompt : Écran de profil utilisateur pour AniSphère.
 /// Affiche les infos personnelles, modules actifs et boutons d'action.
 /// Préparé pour extensions IA, export, QR et statistiques à venir.
+library;
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

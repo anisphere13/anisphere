@@ -2,6 +2,7 @@
 /// Gère le nettoyage des logs, la purge Hive, la réinitialisation IA.
 /// Appelé périodiquement par le noyau ou à chaque lancement si besoin.
 /// Peut déclencher une sync IA ou une relance utilisateur.
+library;
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 

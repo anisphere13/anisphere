@@ -1,6 +1,7 @@
 /// Copilot Prompt : Logger IA centralisé AniSphère.
 /// Permet de tracer les événements IA localement dans Hive.
 /// Compatible avec la stratégie de nettoyage et synchronisation cloud.
+library;
 import 'package:flutter/foundation.dart';
 import '../services/local_storage_service.dart';
 import 'ia_config.dart';

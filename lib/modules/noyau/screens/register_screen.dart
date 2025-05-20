@@ -2,6 +2,7 @@
 /// Permet à l’utilisateur de créer un compte avec nom, email, téléphone, profession.
 /// Utilise UserProvider.signUp(), redirige vers MainScreen.
 /// Affiche erreurs et loading.
+library;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

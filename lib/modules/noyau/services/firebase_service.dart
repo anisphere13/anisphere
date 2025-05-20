@@ -3,6 +3,7 @@
 /// Utilise FirebaseAuth + Firestore.
 /// Inclut gestion des erreurs, logs conditionnels, fusion automatique des données.
 /// IA-ready et modulaire.
+library;
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';

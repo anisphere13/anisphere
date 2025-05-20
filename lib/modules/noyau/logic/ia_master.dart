@@ -2,6 +2,7 @@
 /// Coordonne la logique IA locale et cloud, centralise les décisions.
 /// Pilote la synchronisation adaptative, les suggestions, et les logs IA.
 /// Prévu pour évoluer vers un système prédictif temps réel.
+library;
 import 'package:flutter/foundation.dart';
 import '../services/local_storage_service.dart';
 import '../services/firebase_service.dart';

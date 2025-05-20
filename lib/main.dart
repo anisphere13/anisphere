@@ -15,7 +15,7 @@ import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // 🔥 Initialisation de Firebase
+  // 🔥 Firebase
   try {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
@@ -25,7 +25,7 @@ void main() async {
     debugPrint("❌ Firebase initialization failed: $e");
   }
 
-  // 📦 Initialisation de Hive pour le stockage local
+  // 📦 Hive
   try {
     await Hive.initFlutter();
     await LocalStorageService.init();
@@ -34,22 +34,21 @@ void main() async {
     debugPrint("❌ Hive initialization failed: $e");
   }
 
-  // 🔄 Initialisation des services
+  // 🔄 Services
   final userService = UserService();
   final authService = AuthService();
-
   try {
-    await userService.init(); // ✅ Ajout de la gestion des erreurs
+    await userService.init();
   } catch (e) {
     debugPrint("❌ Erreur d'initialisation de UserService : $e");
   }
 
-  // 🚀 Lancement de l'application
+  // 🚀 App
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => UserProvider(userService, authService),
+          create: (_) => UserProvider(userService, authService),
         ),
       ],
       child: const MyApp(),
@@ -63,10 +62,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'AniSphère',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const SplashScreen(), // Démarrage sur l'écran de chargement
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scaffoldBackgroundColor: const Color(0xFFF5F5F5),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF183153), // Bleu nuit
+          primary: const Color(0xFF183153),
+          secondary: const Color(0xFFFBC02D), // Jaune solaire
+        ),
+        useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF183153),
+          foregroundColor: Colors.white,
+        ),
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(color: Color(0xFF3A3A3A)),
+        ),
+      ),
+      home: const SplashScreen(),
     );
   }
 }

@@ -2,6 +2,7 @@
 /// Permet d'envoyer des notifications locales intelligentes selon le contexte IA.
 /// Gère également la préparation des canaux pour l'envoi de notifications.
 /// Utilisable avec Firebase Messaging à terme pour le cloud.
+library;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/foundation.dart';
 

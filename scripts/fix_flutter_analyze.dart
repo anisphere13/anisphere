@@ -49,7 +49,7 @@ Future<void> _corrigerMainScreenChildArgument() async {
   if (content.contains('AnimalsScreen(') && !content.contains('child:')) {
     content = content.replaceFirst(
       RegExp(r'AnimalsScreen\(([^)]*)\)'),
-      'AnimalsScreen(child: Placeholder(), \1)',
+      'AnimalsScreen(child: Placeholder(), 1)',
     );
     await file.writeAsString(content);
     log('🔧 child: Placeholder() ajouté dans MainScreen');

@@ -2,6 +2,7 @@
 /// Affiche la liste des logs IA locaux enregistrés dans Hive.
 /// Sert au debug, à la maintenance, ou au retour utilisateur avancé.
 /// Peut être affiché dans une page "À propos", "Debug", ou panneau IA.
+library;
 import 'package:flutter/material.dart';
 import '../logic/ia_logger.dart';
 
@@ -24,8 +25,19 @@ class _IALogViewerState extends State<IALogViewer> {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      title: const Text("🧠 Journaux IA"),
-      subtitle: Text("${logs.length} événements enregistrés"),
+      initiallyExpanded: false,
+      title: Text(
+        "🧠 Journaux IA",
+        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              color: const Color(0xFF183153),
+              fontWeight: FontWeight.bold,
+            ),
+      ),
+      subtitle: Text(
+        "${logs.length} événement(s)",
+        style: const TextStyle(color: Color(0xFF3A3A3A)),
+      ),
+      childrenPadding: const EdgeInsets.symmetric(horizontal: 16),
       children: [
         if (logs.isEmpty)
           const Padding(
@@ -35,11 +47,12 @@ class _IALogViewerState extends State<IALogViewer> {
         else
           SizedBox(
             height: 200,
-            child: ListView.builder(
+            child: ListView.separated(
               itemCount: logs.length,
+              separatorBuilder: (_, __) => const Divider(height: 1),
               itemBuilder: (context, index) => ListTile(
                 dense: true,
-                leading: const Icon(Icons.chevron_right),
+                leading: const Icon(Icons.chevron_right, color: Color(0xFF183153)),
                 title: Text(logs[index]),
               ),
             ),

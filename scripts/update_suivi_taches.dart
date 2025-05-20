@@ -23,7 +23,7 @@ void main() {
   }
 
   final updatedContent = "$content\n$tag\n";
-  file.writeAsStringSync(updatedContent.trimRight() + '\n');
+  file.writeAsStringSync('${updatedContent.trimRight()}\n');
 
   print("✅ $filePath mis à jour avec la date du $formattedDate.");
 }

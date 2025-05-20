@@ -2,6 +2,7 @@
 /// Stockage Hive + export Firebase (toJson/fromJson), copie, updateAt.
 /// Champs : identité, espèce, race, image, propriétaire, timestamps.
 /// Utilisé dans le noyau pour la gestion des animaux.
+library;
 import 'package:hive/hive.dart';
 
 part 'animal_model.g.dart';
