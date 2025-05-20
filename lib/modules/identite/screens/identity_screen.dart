@@ -2,8 +2,7 @@
 /// Affiche la fiche d'identité de l’animal (photo, puce, statut, QR),
 /// permet la mise à jour manuelle et la génération de QR/page publique.
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../../../noyau/models/animal_model.dart';
+import 'package:anisphere/modules/noyau/models/animal_model.dart'; // ✅ Correction ici
 import '../services/identity_service.dart';
 import '../models/identity_model.dart';
 

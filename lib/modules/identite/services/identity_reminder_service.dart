@@ -16,9 +16,7 @@ class IdentityReminderService {
 
     if (monthsDiff >= 12) {
       iaMaster.logEvent(
-        channel: 'identite',
-        message: 'L’identité de ${identity.animalId} n’a pas été mise à jour depuis $monthsDiff mois.',
-        suggestion: 'Vérifiez que les données de ${identity.animalId} sont toujours valides.',
+        "🔔 Identité obsolète : ${identity.animalId} non mise à jour depuis $monthsDiff mois.",
       );
     }
   }

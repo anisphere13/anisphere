@@ -1,6 +1,7 @@
 /// Copilot Prompt : IdentityVerificationService pour AniSphère.
 /// Valide automatiquement une fiche identité si la photo est nette, la puce présente,
 /// et les données cohérentes. Active le badge IA “Identité vérifiée”.
+import 'dart:io';
 import 'package:anisphere/modules/identite/models/identity_model.dart';
 import 'package:anisphere/modules/identite/services/identity_service.dart';
 import 'package:anisphere/modules/identite/services/photo_verification_service.dart';

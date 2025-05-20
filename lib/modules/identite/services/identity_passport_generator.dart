@@ -2,8 +2,10 @@
 /// Produit un document stylisé multilingue (nom, puce, photo, statut, QR, historique)
 /// réservé aux utilisateurs premium. Export PDF prêt à partager.
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/pdf.dart';
+
 import '../models/identity_model.dart';
 
 class IdentityPassportGenerator {
@@ -26,8 +28,10 @@ class IdentityPassportGenerator {
           return [
             pw.Header(
               level: 0,
-              child: pw.Text("Passeport d'identité – ${animalName}",
-                  style: pw.TextStyle(fontSize: 24, fontWeight: pw.FontWeight.bold)),
+              child: pw.Text(
+                "Passeport d'identité – $animalName",
+                style: pw.TextStyle(fontSize: 24, fontWeight: pw.FontWeight.bold),
+              ),
             ),
             pw.Row(
               crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -50,7 +54,9 @@ class IdentityPassportGenerator {
                         pw.Text("Statut : ${identity.status}"),
                       if (identity.legalStatus != null)
                         pw.Text("Type : ${identity.legalStatus}"),
-                      pw.Text("Dernière mise à jour : ${identity.lastUpdate.toLocal().toIso8601String().substring(0, 10)}"),
+                      pw.Text(
+                        "Dernière mise à jour : ${identity.lastUpdate.toLocal().toIso8601String().substring(0, 10)}",
+                      ),
                     ],
                   ),
                 ),
@@ -67,13 +73,16 @@ class IdentityPassportGenerator {
             if (identity.history.isNotEmpty) ...[
               pw.SizedBox(height: 20),
               pw.Text("Historique des modifications :", style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
-              pw.Bullet(
-                text: identity.history
-                    .map((e) =>
-                        "${e.date.toLocal().toIso8601String().substring(0, 10)} : ${e.field} modifié de '${e.oldValue}' → '${e.newValue}'")
-                    .join("\n"),
-              )
-            ]
+              pw.Column(
+                crossAxisAlignment: pw.CrossAxisAlignment.start,
+                children: identity.history.map((e) {
+                  final date = e.date.toLocal().toIso8601String().substring(0, 10);
+                  return pw.Bullet(
+                    text: "$date : ${e.field} modifié de '${e.oldValue}' → '${e.newValue}'",
+                  );
+                }).toList(),
+              ),
+            ],
           ];
         },
       ),
@@ -82,3 +91,4 @@ class IdentityPassportGenerator {
     return await doc.save();
   }
 }
+// import 'package:flutter/material.dart';

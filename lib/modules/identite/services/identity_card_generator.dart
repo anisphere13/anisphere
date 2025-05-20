@@ -1,10 +1,11 @@
 /// Copilot Prompt : Générateur PDF pour mini-carte d’identité AniSphère.
 /// Crée un PDF format CB (85x54 mm) avec nom, puce, photo, QR code.
-/// Utilise `pdf` et `printing` pour affichage ou export.
+/// Utilise `pdf` pour génération, preview ou export via un autre service.
 import 'dart:io';
+import 'dart:typed_data'; // ✅ Nécessaire pour Uint8List
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/pdf.dart';
-import 'package:printing/printing.dart';
+
 import '../models/identity_model.dart';
 
 class IdentityCardGenerator {
@@ -68,3 +69,4 @@ class IdentityCardGenerator {
     return await doc.save();
   }
 }
+// Copilot Prompt : Générateur PDF pour mini-carte d’identité AniSphère.

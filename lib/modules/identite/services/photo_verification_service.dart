@@ -24,16 +24,20 @@ class PhotoVerificationService {
   }
 
   double _estimateSharpness(img.Image image) {
-    // Filtre de Laplace simplifié
     final grey = img.grayscale(image);
     double sum = 0.0;
     for (var y = 1; y < grey.height - 1; y++) {
       for (var x = 1; x < grey.width - 1; x++) {
-        final center = grey.getPixel(x, y) & 0xFF;
-        final laplace = ((center - (grey.getPixel(x - 1, y) & 0xFF)) +
-                         (center - (grey.getPixel(x + 1, y) & 0xFF)) +
-                         (center - (grey.getPixel(x, y - 1) & 0xFF)) +
-                         (center - (grey.getPixel(x, y + 1) & 0xFF)));
+        final center = img.getLuminance(grey.getPixel(x, y));
+        final left = img.getLuminance(grey.getPixel(x - 1, y));
+        final right = img.getLuminance(grey.getPixel(x + 1, y));
+        final top = img.getLuminance(grey.getPixel(x, y - 1));
+        final bottom = img.getLuminance(grey.getPixel(x, y + 1));
+
+        final laplace = ((center - left) +
+                         (center - right) +
+                         (center - top) +
+                         (center - bottom));
         sum += laplace * laplace;
       }
     }
@@ -41,9 +45,8 @@ class PhotoVerificationService {
   }
 
   double _estimateCentering(img.Image image) {
-    // Détection simple : zone centrale plus claire que la périphérie ?
-    final center = image.getPixel(image.width ~/ 2, image.height ~/ 2) & 0xFF;
-    final border = image.getPixel(5, 5) & 0xFF;
-    return center > border ? 1.0 : 0.3;
+    final centerLuma = img.getLuminance(image.getPixel(image.width ~/ 2, image.height ~/ 2));
+    final borderLuma = img.getLuminance(image.getPixel(5, 5));
+    return centerLuma > borderLuma ? 1.0 : 0.3;
   }
 }
