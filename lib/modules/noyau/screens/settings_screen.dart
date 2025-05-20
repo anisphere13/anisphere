@@ -42,8 +42,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text("Paramètres")),
       body: ListView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(24),
         children: [
+          const Text(
+            "Préférences générales",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF183153),
+            ),
+          ),
+          const SizedBox(height: 8),
           SwitchListTile(
             title: const Text("Mode sombre"),
             subtitle: const Text("Thème sombre automatique"),
@@ -51,6 +60,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onChanged: (val) => _updatePreference("dark_mode", val),
           ),
           const Divider(),
+          const Text(
+            "Intelligence artificielle",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF183153),
+            ),
+          ),
           SwitchListTile(
             title: const Text("Suggestions IA"),
             subtitle: const Text("Activer les recommandations personnalisées"),

@@ -25,34 +25,59 @@ class UserProfileScreen extends StatelessWidget {
         title: const Text("Mon Profil"),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Text(
+              "Informations personnelles",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF183153),
+              ),
+            ),
+            const SizedBox(height: 12),
             _buildProfileRow("Nom", user.name),
             _buildProfileRow("Email", user.email),
             _buildProfileRow("Téléphone", user.phone),
             _buildProfileRow("Profession", user.profession),
-            const SizedBox(height: 16),
+            const SizedBox(height: 20),
             const Divider(),
             const SizedBox(height: 8),
-            const Text("Modules actifs :", style: TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 4),
+            const Text(
+              "Modules actifs",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF183153),
+              ),
+            ),
+            const SizedBox(height: 8),
             Wrap(
               spacing: 8,
-              children: user.moduleRoles.keys.map((m) => Chip(label: Text(m))).toList(),
+              runSpacing: 4,
+              children: user.moduleRoles.keys
+                  .map((m) => Chip(
+                        label: Text(m),
+                        backgroundColor: const Color(0xFFF5F5F5),
+                      ))
+                  .toList(),
             ),
             const Spacer(),
             Center(
               child: ElevatedButton.icon(
                 icon: const Icon(Icons.logout),
+                label: const Text("Se déconnecter"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF183153),
+                  foregroundColor: Colors.white,
+                ),
                 onPressed: () async {
                   await Provider.of<UserProvider>(context, listen: false).signOut();
                   if (context.mounted) {
                     Navigator.of(context).pop();
                   }
                 },
-                label: const Text("Se déconnecter"),
               ),
             ),
           ],
@@ -66,8 +91,16 @@ class UserProfileScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: Row(
         children: [
-          Text("$label : ", style: const TextStyle(fontWeight: FontWeight.bold)),
-          Expanded(child: Text(value.isNotEmpty ? value : "Non renseigné")),
+          Text(
+            "$label : ",
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF183153),
+            ),
+          ),
+          Expanded(
+            child: Text(value.isNotEmpty ? value : "Non renseigné"),
+          ),
         ],
       ),
     );

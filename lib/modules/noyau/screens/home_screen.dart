@@ -11,6 +11,7 @@ import '../screens/login_screen.dart';
 import '../logic/ia_master.dart';
 import '../logic/ia_rule_engine.dart';
 import '../logic/ia_context.dart';
+
 import '../widgets/ia_banner.dart';
 import '../widgets/ia_chip.dart';
 import '../widgets/ia_suggestion_card.dart';
@@ -36,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _initIA() async {
     await IAMaster().initialize();
 
-    // Contexte simulé (en prod, on utiliserait un vrai User/AnimalProvider)
+    // Exemple de contexte IA simulé
     final context = IAContext(
       isOffline: false,
       isFirstLaunch: false,
@@ -69,34 +70,49 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               }
             },
-            itemBuilder: (BuildContext context) => const [
+            itemBuilder: (_) => const [
               PopupMenuItem(value: 'logout', child: Text('Se Déconnecter')),
             ],
           ),
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const IABanner(
-            message: "Mode IA : Local uniquement (démo)",
-            icon: Icons.lightbulb_outline,
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: IAChip(label: "UX adaptative"),
+      body: CustomScrollView(
+        slivers: [
+          // Header IA (scrollable + sticky à venir)
+          SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const IABanner(
+                  message: "Mode IA : Local uniquement (démo)",
+                  icon: Icons.lightbulb_outline,
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: IAChip(label: "UX adaptative"),
+                ),
+              ],
+            ),
           ),
           if (iaReady && iaActions.isNotEmpty)
-            ...iaActions.map(
-              (action) => IASuggestionCard(
-                title: "Suggestion IA",
-                message: "Action détectée : $action",
-                icon: Icons.auto_awesome,
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                  child: IASuggestionCard(
+                    title: "Suggestion IA",
+                    message: "Action détectée : ${iaActions[index]}",
+                    icon: Icons.auto_awesome,
+                  ),
+                ),
+                childCount: iaActions.length,
               ),
             ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: IALogViewer(),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              child: IALogViewer(),
+            ),
           ),
         ],
       ),
