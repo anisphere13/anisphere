@@ -36,4 +36,98 @@ Ce document suit le développement du module Identité animale pour AniSphère. 
 Assurer à chaque animal une fiche unique, fiable, partageable et intelligente, avec OCR, IA, QR code, historique et compatibilité complète AniSphère.
 
 > Dernière mise à jour : [À compléter à chaque étape]
+### ✅ identity_model.dart
+- 📁 `lib/modules/identite/models/identity_model.dart`
+- Modèle complet de fiche identité animale (puce, statut, photo, historique, QR)
+- Compatible Hive + Firebase, prêt pour IA photo et vérification automatique
+- Test unitaire de sérialisation/desérialisation inclus
+- Date : 2025-05-20
+
+### ✅ identity_service.dart
+- 📁 `lib/modules/identite/services/identity_service.dart`
+- Service complet pour sauvegarde, historique, synchronisation cloud et MAJ des fiches d'identité
+- Préparé pour Firebase + Hive, test unitaire simple inclus
+- Date : 2025-05-20
+
+### ✅ identity_screen.dart
+- 📁 `lib/modules/identite/screens/identity_screen.dart`
+- Écran de consultation/édition de l’identité : puce, statut, sauvegarde locale
+- Préparé pour extension QR, IA, partage public
+- Test widget minimal validant affichage des champs
+- Date : 2025-05-20
+
+### ✅ ocr_icad_service.dart
+- 📁 `lib/modules/identite/services/ocr_icad_service.dart`
+- Service OCR (Tesseract/MLKit) pour extraction de données sur documents I-CAD/LOF
+- Expressions régulières incluses pour puce, nom, race, date
+- Test unitaire sur RegEx validé
+- Date : 2025-05-20
+
+### ✅ photo_verification_service.dart
+- 📁 `lib/modules/identite/services/photo_verification_service.dart`
+- Service IA local pour scorer automatiquement les photos d’identité animale
+- Détection simplifiée de netteté (Laplace) et centrage
+- Test unitaire des scores logique inclus
+- Date : 2025-05-20
+
+### ✅ qr_generator_service.dart
+- 📁 `lib/modules/identite/services/qr_generator_service.dart`
+- Génère un QR code vers une page publique Firebase (I-CAD, statut, photo…)
+- Widget `QrImageView` intégré pour affichage dans l’app
+- Test de validation d’URL publique inclus
+- Date : 2025-05-20
+
+### ✅ identity_card_generator.dart
+- 📁 `lib/modules/identite/services/identity_card_generator.dart`
+- Génère une mini-carte PDF format CB avec photo, puce, statut, QR code
+- Exportable localement ou imprimable, test PDF basique inclus
+- Date : 2025-05-20
+
+### ✅ identity_reminder_service.dart
+- 📁 `lib/modules/identite/services/identity_reminder_service.dart`
+- Déclenche une alerte IA si la fiche identité n’a pas été mise à jour depuis plus de 12 mois
+- Connecté à `IAMaster`, testé avec un FakeIAMaster
+- Date : 2025-05-20
+
+### ✅ legal_status_service.dart
+- 📁 `lib/modules/identite/services/legal_status_service.dart`
+- Gère la déclaration du statut juridique (chien d’assistance, élevage…)
+- Met à jour l’historique et sauvegarde via IdentityService
+- Test unitaire avec service mocké
+- Date : 2025-05-20
+
+### ✅ identity_verification_service.dart
+- 📁 `lib/modules/identite/services/identity_verification_service.dart`
+- Vérifie automatiquement l’identité si photo nette + puce + statut
+- Active le badge IA “Identité vérifiée”
+- Test unitaire avec mocks des services
+- Date : 2025-05-20
+
+### ✅ identity_passport_generator.dart
+- 📁 `lib/modules/identite/services/identity_passport_generator.dart`
+- Génère un PDF premium stylisé multilingue pour fiche identité complète
+- Exportable, partageable, réservé aux comptes premium (désactivé par défaut)
+- Test PDF validé sans photo
+- Date : 2025-05-20
+
+### ✅ animal_screen.dart (bouton Identité)
+- 📁 `lib/modules/noyau/screens/animal_screen.dart`
+- Ajoute un bouton stylisé “Identité” redirigeant vers `IdentityScreen`
+- Liaison complète avec `IdentityService` + Hive local
+- UX cohérente avec le thème AniSphère
+- Date : 2025-05-20
+
+### ✅ animal_screen.dart (intégration complète)
+- 📁 `lib/modules/noyau/screens/animal_screen.dart`
+- Intègre le bouton “Identité” stylisé, relié à `IdentityScreen` + Hive
+- UX Samsung Health / branding bleu nuit appliqué
+- Préparé pour intégrer `AnimalModel` complet
+- Date : 2025-05-20
+
+### ✅ animal_screen.dart (finalisé avec AnimalModel)
+- 📁 `lib/modules/noyau/screens/animal_screen.dart`
+- Utilise le vrai `AnimalModel` pour afficher les données
+- Redirige vers `IdentityScreen` via `IdentityService` Hive
+- UX fluide, couleurs branding appliquées, navigation fonctionnelle
+- Date : 2025-05-20
 
