@@ -63,3 +63,9 @@ flutter:
   uses-material-design: true
   assets:
     - assets/credentials.json
+
+# 🔧 Correction temporaire pour google_mlkit_commons
+dependency_overrides:
+  google_mlkit_commons:
+    path: lib_mlkit/google_mlkit_commons
+  

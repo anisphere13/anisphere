@@ -3,6 +3,9 @@
 /// Préparé pour afficher les modules IA, l’historique, et la fiche publique.
 /// Suivi du branding AniSphère et UX à la Samsung Health.
 import 'package:flutter/material.dart';
+import 'package:anisphere/modules/identite/screens/identity_screen.dart';
+import 'package:anisphere/modules/identite/services/identity_service.dart';
+import 'package:hive/hive.dart';
 
 class AnimalScreen extends StatelessWidget {
   final String name;
