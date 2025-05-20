@@ -1,24 +1,22 @@
 /// Copilot Prompt : Écran de visualisation d’un animal dans AniSphère.
 /// Affiche les données complètes d’un animal enregistré (nom, espèce, race, date, image).
+/// Intègre un bouton “Identité” vers `IdentityScreen` avec `IdentityService`.
 /// Préparé pour afficher les modules IA, l’historique, et la fiche publique.
 /// Suivi du branding AniSphère et UX à la Samsung Health.
+
 import 'package:flutter/material.dart';
+import 'package:anisphere/modules/noyau/models/animal_model.dart';
 import 'package:anisphere/modules/identite/screens/identity_screen.dart';
 import 'package:anisphere/modules/identite/services/identity_service.dart';
+import 'package:anisphere/modules/identite/models/identity_model.dart';
 import 'package:hive/hive.dart';
 
 class AnimalScreen extends StatelessWidget {
-  final String name;
-  final String species;
-  final String breed;
-  final DateTime birthDate;
+  final AnimalModel animal;
 
   const AnimalScreen({
     super.key,
-    required this.name,
-    required this.species,
-    required this.breed,
-    required this.birthDate,
+    required this.animal,
   });
 
   @override
@@ -43,12 +41,43 @@ class AnimalScreen extends StatelessWidget {
                   child: Icon(Icons.pets, size: 80, color: Color(0xFF183153)),
                 ),
                 const SizedBox(height: 20),
-                _buildRow("Nom", name),
-                _buildRow("Espèce", species),
-                _buildRow("Race", breed),
-                _buildRow("Date de naissance",
-                    "${birthDate.day}/${birthDate.month}/${birthDate.year}"),
-                const SizedBox(height: 20),
+                _buildRow("Nom", animal.name),
+                _buildRow("Espèce", animal.species),
+                _buildRow("Race", animal.breed),
+                _buildRow(
+                  "Date de naissance",
+                  "${animal.birthDate.day}/${animal.birthDate.month}/${animal.birthDate.year}",
+                ),
+                const SizedBox(height: 30),
+                Center(
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      final identityBox = Hive.box<IdentityModel>('identityBox');
+                      final identityService = IdentityService(localBox: identityBox);
+
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => IdentityScreen(
+                            animal: animal,
+                            service: identityService,
+                          ),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.badge),
+                    label: const Text("Identité"),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF183153),
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 24, vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 30),
                 const Divider(),
                 const Text("Modules IA à venir...",
                     style: TextStyle(color: Colors.grey)),

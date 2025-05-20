@@ -1,0 +1,10 @@
+name: google_mlkit_text_recognition
+description: "Override local de google_mlkit_text_recognition avec namespace."
+version: 0.10.0
+
+environment:
+  sdk: ">=2.17.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter

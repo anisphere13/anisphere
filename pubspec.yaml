@@ -68,4 +68,7 @@ flutter:
 dependency_overrides:
   google_mlkit_commons:
     path: lib_mlkit/google_mlkit_commons
+  google_mlkit_text_recognition:
+    path: lib_mlkit/google_mlkit_text_recognition
+
   

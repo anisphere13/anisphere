@@ -1,3 +1,8 @@
+/// Copilot Prompt : HomeScreen AniSphère enrichi avec navigation.
+/// Contient les onglets : Accueil, Partage, Modules, Mes animaux.
+/// Affiche dynamiquement la bonne page selon l’index sélectionné.
+/// Prévu pour intégrer l’IA plus tard dans chaque onglet.
+
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'share_screen.dart';
@@ -18,7 +23,7 @@ class MainScreenState extends State<MainScreen> {
     const HomeScreen(),
     const ShareScreen(),
     const ModulesScreen(),
-    AnimalsScreen(child: Placeholder()), // ✅ fermeture corrigée ici
+    const AnimalsScreen(), // ✅ corrigé : plus besoin de paramètre
   ];
 
   void _onItemTapped(int index) {
