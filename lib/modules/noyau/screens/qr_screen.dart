@@ -1,12 +1,12 @@
 /// Copilot Prompt : Écran QR pour AniSphère.
 /// Permet de scanner un QR code ou de générer un QR lié à l’utilisateur ou à un animal.
-/// Utilise QRService pour l’UI. Préparé pour la synchronisation IA via QR.
-
-library;
+/// Utilise mobile_scanner + QRService. Préparé pour la synchronisation IA via QR.
 
 import 'package:flutter/material.dart';
-import 'package:anisphere/modules/noyau/services/qr_service.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:provider/provider.dart';
+
+import 'package:anisphere/modules/noyau/services/qr_service.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 
 class QRScreen extends StatefulWidget {
@@ -19,6 +19,7 @@ class QRScreen extends StatefulWidget {
 class _QRScreenState extends State<QRScreen> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   String? _scanResult;
+  final MobileScannerController _scannerController = MobileScannerController();
 
   @override
   void initState() {
@@ -27,12 +28,20 @@ class _QRScreenState extends State<QRScreen> with SingleTickerProviderStateMixin
   }
 
   void _handleScan(String result) {
-    setState(() {
-      _scanResult = result;
-    });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("QR scanné : $result")),
-    );
+    if (result != _scanResult) {
+      setState(() => _scanResult = result);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("QR scanné : $result")),
+      );
+      // Ici : synchronisation IA ou traitement personnalisé
+    }
+  }
+
+  @override
+  void dispose() {
+    _scannerController.dispose();
+    _tabController.dispose();
+    super.dispose();
   }
 
   @override
@@ -42,23 +51,30 @@ class _QRScreenState extends State<QRScreen> with SingleTickerProviderStateMixin
     return Scaffold(
       appBar: AppBar(
         title: const Text("QR Sync"),
-        bottom: const TabBar(
-          tabs: [
+        backgroundColor: const Color(0xFF183153),
+        foregroundColor: Colors.white,
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: const [
             Tab(icon: Icon(Icons.qr_code_scanner), text: "Scanner"),
             Tab(icon: Icon(Icons.qr_code), text: "Mon QR"),
           ],
         ),
-        bottomOpacity: 1.0,
-        backgroundColor: const Color(0xFF183153),
-        foregroundColor: Colors.white,
-        controller: _tabController,
       ),
       body: TabBarView(
         controller: _tabController,
         children: [
-          // Onglet scanner
-          QRService.buildQRScanner(onScanned: _handleScan),
-          // Onglet générateur
+          // ✅ Scanner mobile_scanner intégré
+          MobileScanner(
+            controller: _scannerController,
+            onDetect: (capture) {
+              final barcode = capture.barcodes.first;
+              final value = barcode.rawValue;
+              if (value != null) _handleScan(value);
+            },
+          ),
+
+          // ✅ Générateur QR selon l'utilisateur
           Center(
             child: user != null
                 ? QRService.generateQRCode("anisphere:user:${user.id}")

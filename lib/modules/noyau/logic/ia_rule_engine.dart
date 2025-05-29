@@ -6,6 +6,7 @@ import '../models/animal_model.dart';
 import 'ia_rules.dart';
 import 'ia_logger.dart';
 import 'ia_channel.dart';
+import 'package:anisphere/modules/noyau/logic/ia_context.dart';
 
 class IARuleEngine {
   /// 🔍 Analyse les animaux de l'utilisateur

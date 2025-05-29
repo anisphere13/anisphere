@@ -2,16 +2,13 @@
 /// Coordonne la logique IA (locale & future cloud)
 /// Centralise les décisions, les logs et la stratégie IA
 /// Utilisé au démarrage, dans les exécuteurs IA et dans la logique UX
-/// 🤖 IAMaster — IA maîtresse locale AniSphère
-/// Coordonne la logique IA (locale & future cloud)
-/// Centralise les décisions, les logs et la stratégie IA
-/// Utilisé au démarrage, dans les exécuteurs IA et dans la logique UX
 
 import 'package:flutter/foundation.dart';
 import '../services/local_storage_service.dart';
 import '../services/firebase_service.dart';
 import 'ia_logger.dart';
 import 'ia_flag.dart';
+import 'ia_channel.dart';
 
 class IAMaster {
   static final IAMaster instance = IAMaster._internal();
@@ -26,17 +23,32 @@ class IAMaster {
 
   /// 🧠 Initialisation IA (au lancement)
   Future<void> initialize() async {
-    debugPrint("🤖 IA maîtresse initialisée.");
-    await IALogger.log(message: "IA_START");
+    assert(() {
+      debugPrint("🤖 IA maîtresse initialisée.");
+      return true;
+    }());
+    await IALogger.log(
+      message: "IA_START",
+      channel: IAChannel.master,
+    );
   }
 
   /// ☁️ Simulation future de synchronisation IA cloud
   Future<void> syncCloudIA() async {
-    await IALogger.log(message: "SYNC_CLOUD_START");
-    await Future.delayed(const Duration(seconds: 1)); // Simule traitement
+    await IALogger.log(
+      message: "SYNC_CLOUD_START",
+      channel: IAChannel.master,
+    );
+    await Future.delayed(const Duration(seconds: 1));
     await recordSync();
-    await IALogger.log(message: "SYNC_CLOUD_SUCCESS");
-    debugPrint("☁️ Sync IA cloud terminée.");
+    await IALogger.log(
+      message: "SYNC_CLOUD_SUCCESS",
+      channel: IAChannel.master,
+    );
+    assert(() {
+      debugPrint("☁️ Sync IA cloud terminée.");
+      return true;
+    }());
   }
 
   /// 🔄 Enregistrement de la dernière sync IA cloud
@@ -60,11 +72,24 @@ class IAMaster {
 
   /// 🧹 Nettoyage automatique des anciens logs IA
   Future<void> cleanOldLogs() async {
-    final logs = LocalStorageService.get(_iaLogsKey, defaultValue: <String>[]).cast<String>();
-    if (logs.length > 50) {
-      final trimmed = logs.sublist(logs.length - 30);
-      await LocalStorageService.set(_iaLogsKey, trimmed);
-      await IALogger.log(message: "LOGS_TRIMMED");
+    try {
+      final logs = LocalStorageService.get(_iaLogsKey, defaultValue: <String>[])
+          .cast<String>();
+      if (logs.length > 50) {
+        final trimmed = logs.sublist(logs.length - 30);
+        await LocalStorageService.set(_iaLogsKey, trimmed);
+        await IALogger.log(
+          message: "LOGS_TRIMMED",
+          channel: IAChannel.master,
+        );
+      }
+    } catch (e) {
+      // Log uniquement en debug
+      assert(() {
+        debugPrint("❌ [IAMaster] Erreur cleanOldLogs : $e");
+        return true;
+      }());
+      rethrow;
     }
   }
 
@@ -81,7 +106,7 @@ class IAMaster {
     _flags.clear();
   }
 
-  /// 🧠 Décision IA du mode UX (utilisé pour accueil / adaptative UI)
+  /// 🧠 Décision IA du mode UX
   String decideUXMode({
     required bool isFirstLaunch,
     required bool isOffline,

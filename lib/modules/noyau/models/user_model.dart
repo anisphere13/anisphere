@@ -44,10 +44,19 @@ class UserModel {
   final DateTime createdAt;
 
   @HiveField(11)
-  final DateTime updatedAt;
+  DateTime updatedAt;
 
   @HiveField(12)
   final List<String> activeModules;
+
+  @HiveField(13)
+  final String role;
+
+  @HiveField(14)
+  final bool iaPremium;
+
+  @HiveField(15)
+  final DateTime? lastIASync;
 
   const UserModel({
     required this.id,
@@ -63,9 +72,13 @@ class UserModel {
     required this.createdAt,
     required this.updatedAt,
     required this.activeModules,
+    required this.role,
+    required this.iaPremium,
+    this.lastIASync,
   });
 
-  /// 🔁 Convertit l'objet en JSON pour Firebase
+  void updateTimestamp() => updatedAt = DateTime.now();
+
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
@@ -80,9 +93,11 @@ class UserModel {
         'createdAt': createdAt.toIso8601String(),
         'updatedAt': updatedAt.toIso8601String(),
         'activeModules': activeModules,
+        'role': role,
+        'iaPremium': iaPremium,
+        'lastIASync': lastIASync?.toIso8601String(),
       };
 
-  /// 🔁 Crée un `UserModel` depuis un JSON Firebase
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       id: json['id'] ?? '',
@@ -98,10 +113,14 @@ class UserModel {
       createdAt: DateTime.tryParse(json['createdAt'] ?? '') ?? DateTime.now(),
       updatedAt: DateTime.tryParse(json['updatedAt'] ?? '') ?? DateTime.now(),
       activeModules: List<String>.from(json['activeModules'] ?? []),
+      role: json['role'] ?? 'user',
+      iaPremium: json['iaPremium'] ?? false,
+      lastIASync: json['lastIASync'] != null
+          ? DateTime.tryParse(json['lastIASync']) ?? null
+          : null,
     );
   }
 
-  /// 📦 Crée une copie de l'objet avec des modifications
   UserModel copyWith({
     String? id,
     String? name,
@@ -116,6 +135,9 @@ class UserModel {
     DateTime? createdAt,
     DateTime? updatedAt,
     List<String>? activeModules,
+    String? role,
+    bool? iaPremium,
+    DateTime? lastIASync,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -131,6 +153,9 @@ class UserModel {
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
       activeModules: activeModules ?? this.activeModules,
+      role: role ?? this.role,
+      iaPremium: iaPremium ?? this.iaPremium,
+      lastIASync: lastIASync ?? this.lastIASync,
     );
   }
 }

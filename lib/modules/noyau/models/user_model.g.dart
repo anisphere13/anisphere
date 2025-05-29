@@ -30,13 +30,16 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       createdAt: fields[10] as DateTime,
       updatedAt: fields[11] as DateTime,
       activeModules: (fields[12] as List).cast<String>(),
+      role: fields[13] as String,
+      iaPremium: fields[14] as bool,
+      lastIASync: fields[15] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, UserModel obj) {
     writer
-      ..writeByte(13)
+      ..writeByte(16)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -62,7 +65,13 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       ..writeByte(11)
       ..write(obj.updatedAt)
       ..writeByte(12)
-      ..write(obj.activeModules);
+      ..write(obj.activeModules)
+      ..writeByte(13)
+      ..write(obj.role)
+      ..writeByte(14)
+      ..write(obj.iaPremium)
+      ..writeByte(15)
+      ..write(obj.lastIASync);
   }
 
   @override
