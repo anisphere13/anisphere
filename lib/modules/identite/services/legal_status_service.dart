@@ -4,6 +4,10 @@
 import 'package:anisphere/modules/identite/models/identity_model.dart';
 import 'identity_service.dart';
 
+/// Service pour la gestion du statut juridique de l’animal.
+/// Permet de déclarer ou modifier le statut (chien d’assistance, travail, élevage...).
+/// Gère les validations IA, l’enregistrement local et la traçabilité historique.
+
 class LegalStatusService {
   final IdentityService identityService;
 
@@ -38,3 +42,4 @@ class LegalStatusService {
     await identityService.saveIdentityLocally(updated);
   }
 }
+

@@ -1,11 +1,12 @@
-/// Copilot Prompt : Modèle IdentityModel pour AniSphère.
-/// Contient les champs d'identité animale (puce, race, photo, statut),
-/// badge IA, historique, statut juridique, QR et photo validée IA.
-/// Compatible Hive + Firebase. Prévu pour IA locale et sync différée.
 import 'package:hive/hive.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 part 'identity_model.g.dart';
+
+/// Modèle IdentityModel pour AniSphère.
+/// Contient les champs d'identité animale (puce, race, photo, statut),
+/// badge IA, historique, statut juridique, QR et photo validée IA.
+/// Compatible Hive + Firebase. Prévu pour IA locale et sync différée.
 
 @HiveType(typeId: 40)
 class IdentityModel {

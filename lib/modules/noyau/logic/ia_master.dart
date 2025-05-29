@@ -2,8 +2,10 @@
 /// Coordonne la logique IA (locale & future cloud)
 /// Centralise les décisions, les logs et la stratégie IA
 /// Utilisé au démarrage, dans les exécuteurs IA et dans la logique UX
-
-library;
+/// 🤖 IAMaster — IA maîtresse locale AniSphère
+/// Coordonne la logique IA (locale & future cloud)
+/// Centralise les décisions, les logs et la stratégie IA
+/// Utilisé au démarrage, dans les exécuteurs IA et dans la logique UX
 
 import 'package:flutter/foundation.dart';
 import '../services/local_storage_service.dart';

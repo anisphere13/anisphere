@@ -13,11 +13,10 @@ import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:anisphere/modules/noyau/providers/animal_provider.dart';
 import 'package:anisphere/modules/noyau/providers/ia_context_provider.dart';
 
-// 🧠 IA maîtresse
 import 'package:anisphere/modules/noyau/logic/ia_master.dart';
 import 'package:anisphere/modules/noyau/logic/ia_executor.dart';
 import 'package:anisphere/modules/noyau/logic/ia_scheduler.dart';
-import 'package:anisphere/modules/noyau/logic/notification_service.dart';
+import 'package:anisphere/modules/noyau/services/notification_service.dart';
 import 'package:anisphere/modules/noyau/services/animal_service.dart';
 import 'package:anisphere/modules/noyau/services/modules_service.dart';
 
@@ -67,7 +66,6 @@ void main() async {
     }());
   }
 
-  // 🚀 App
   runApp(
     MultiProvider(
       providers: [
@@ -135,7 +133,6 @@ class SplashScreenState extends State<SplashScreen> {
     if (!mounted) return;
 
     final userProvider = Provider.of<UserProvider>(context, listen: false);
-    final animalProvider = Provider.of<AnimalProvider>(context, listen: false);
     final iaContextProvider = Provider.of<IAContextProvider>(context, listen: false);
 
     await userProvider.loadUser();

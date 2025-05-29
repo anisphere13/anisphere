@@ -8,6 +8,10 @@ import 'package:pdf/pdf.dart';
 
 import '../models/identity_model.dart';
 
+/// Générateur PDF pour mini-carte d’identité AniSphère.
+/// Crée un PDF format CB (85x54 mm) avec nom, puce, photo, QR code.
+/// Utilise `pdf` pour génération, preview ou export via un autre service.
+
 class IdentityCardGenerator {
   Future<Uint8List> generateCard({
     required IdentityModel identity,
@@ -43,13 +47,28 @@ class IdentityCardGenerator {
                   child: pw.Column(
                     crossAxisAlignment: pw.CrossAxisAlignment.start,
                     children: [
-                      pw.Text(animalName, style: pw.TextStyle(fontSize: 12, fontWeight: pw.FontWeight.bold)),
+                      pw.Text(
+                        animalName,
+                        style: pw.TextStyle(
+                          fontSize: 12,
+                          fontWeight: pw.FontWeight.bold,
+                        ),
+                      ),
                       if (identity.microchipNumber != null)
-                        pw.Text("Puce : ${identity.microchipNumber}", style: const pw.TextStyle(fontSize: 10)),
+                        pw.Text(
+                          "Puce : ${identity.microchipNumber}",
+                          style: const pw.TextStyle(fontSize: 10),
+                        ),
                       if (identity.status != null)
-                        pw.Text("Statut : ${identity.status}", style: const pw.TextStyle(fontSize: 10)),
+                        pw.Text(
+                          "Statut : ${identity.status}",
+                          style: const pw.TextStyle(fontSize: 10),
+                        ),
                       if (identity.legalStatus != null)
-                        pw.Text("Type : ${identity.legalStatus}", style: const pw.TextStyle(fontSize: 10)),
+                        pw.Text(
+                          "Type : ${identity.legalStatus}",
+                          style: const pw.TextStyle(fontSize: 10),
+                        ),
                     ],
                   ),
                 ),
@@ -69,4 +88,3 @@ class IdentityCardGenerator {
     return await doc.save();
   }
 }
-// Copilot Prompt : Générateur PDF pour mini-carte d’identité AniSphère.

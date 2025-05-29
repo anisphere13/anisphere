@@ -1,10 +1,11 @@
-/// Copilot Prompt : Écran IdentityScreen pour AniSphère.
-/// Affiche la fiche d'identité de l’animal (photo, puce, statut, QR),
-/// permet la mise à jour manuelle et la génération de QR/page publique.
 import 'package:flutter/material.dart';
-import 'package:anisphere/modules/noyau/models/animal_model.dart'; // ✅ Correction ici
+import 'package:anisphere/modules/noyau/models/animal_model.dart';
 import '../services/identity_service.dart';
 import '../models/identity_model.dart';
+
+/// Écran IdentityScreen pour AniSphère.
+/// Affiche la fiche d'identité de l’animal (photo, puce, statut, QR),
+/// permet la mise à jour manuelle et la génération de QR/page publique.
 
 class IdentityScreen extends StatefulWidget {
   final AnimalModel animal;
@@ -54,11 +55,13 @@ class _IdentityScreenState extends State<IdentityScreen> {
     );
 
     await widget.service.saveIdentityLocally(updated);
-    if (context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Identité mise à jour")),
-      );
-    }
+
+    if (!mounted) return;
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Identité mise à jour")),
+    );
+
     setState(() => identity = updated);
   }
 

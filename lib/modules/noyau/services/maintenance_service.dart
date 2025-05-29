@@ -6,8 +6,8 @@ library;
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
-import '../services/local_storage_service.dart';
-import 'ia_master.dart';
+import 'local_storage_service.dart';
+import '../logic/ia_master.dart';
 
 class MaintenanceService {
   final IAMaster _ia;

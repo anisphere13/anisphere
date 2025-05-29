@@ -4,6 +4,10 @@
 import 'dart:io';
 import 'package:image/image.dart' as img;
 
+/// Service de vérification photo IA pour AniSphère.
+/// Analyse les photos d’animaux pour détecter netteté, posture, cadrage, duplicata.
+/// Utilise OpenCV/TFLite en local, et score la meilleure photo pour l'identité.
+
 class PhotoVerificationService {
   /// Retourne un score d’utilisabilité pour une photo : 0.0 à 1.0
   Future<double> scorePhoto(File file) async {
@@ -50,3 +54,4 @@ class PhotoVerificationService {
     return centerLuma > borderLuma ? 1.0 : 0.3;
   }
 }
+

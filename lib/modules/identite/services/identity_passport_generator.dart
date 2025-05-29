@@ -8,6 +8,10 @@ import 'package:pdf/pdf.dart';
 
 import '../models/identity_model.dart';
 
+/// Générateur PDF premium de passeport visuel pour AniSphère.
+/// Produit un document stylisé multilingue (nom, puce, photo, statut, QR, historique)
+/// réservé aux utilisateurs premium. Export PDF prêt à partager.
+
 class IdentityPassportGenerator {
   Future<Uint8List> generatePremiumPassport({
     required IdentityModel identity,
@@ -91,4 +95,3 @@ class IdentityPassportGenerator {
     return await doc.save();
   }
 }
-// import 'package:flutter/material.dart';

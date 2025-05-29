@@ -51,7 +51,8 @@ class UserProvider with ChangeNotifier {
 
   /// 🔐 Connexion par email
   Future<bool> signInWithEmail(String email, String password) async {
-    return await _signIn(() => _authService.signInWithEmail(email, password), "email");
+    return await _signIn(
+        () => _authService.signInWithEmail(email, password), "email");
   }
 
   /// 🆕 Inscription
@@ -116,7 +117,8 @@ class UserProvider with ChangeNotifier {
   }
 
   /// Méthode privée pour gérer les connexions
-  Future<bool> _signIn(Future<UserModel?> Function() signInMethod, String method) async {
+  Future<bool> _signIn(
+      Future<UserModel?> Function() signInMethod, String method) async {
     try {
       final user = await signInMethod();
       if (user != null) {
@@ -134,17 +136,27 @@ class UserProvider with ChangeNotifier {
   /// Méthode privée pour logguer et notifier l'état utilisateur
   void _logAndNotifyUserState(UserModel? user, String action) {
     if (user != null) {
-      debugPrint("✅ Utilisateur $action : ${user.email}");
+      assert(() {
+        debugPrint("✅ Utilisateur $action : ${user.email}");
+        return true;
+      }());
       notifyListeners();
     } else {
-      debugPrint("⚠️ Aucun utilisateur trouvé.");
+      assert(() {
+        debugPrint("⚠️ Aucun utilisateur trouvé.");
+        return true;
+      }());
     }
   }
 
   /// Méthode privée pour logguer les erreurs
   void _logError(String context, Object error) {
-    debugPrint("❌ Erreur $context : $error");
+    assert(() {
+      debugPrint("❌ Erreur $context : $error");
+      return true;
+    }());
   }
+
+  /// 🔍 Accès au service utilisateur (ex: pour IAContextProvider)
+  UserService get userService => _userService;
 }
-
-

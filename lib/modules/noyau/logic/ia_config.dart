@@ -2,6 +2,7 @@
 /// Contient les paramètres de configuration IA (seuils, flags, options actives),
 /// modifiables dans le futur via Remote Config.
 /// Utilisé par les modules IA, UX adaptative, alertes intelligentes.
+
 class IAConfig {
   /// ⏱️ Inactivité d’un animal (en jours)
   static const int inactiveDurationDays = 14;
@@ -17,6 +18,8 @@ class IAConfig {
 
   /// 🧹 Nombre maximum de logs IA avant nettoyage
   static const int maxLocalLogs = 50;
+
+  /// 🧽 Seuil de logs à conserver après nettoyage
   static const int logsTrimTarget = 30;
 
   /// 🌐 Sync IA cloud activée (modifiable dans le futur via Remote Config)

@@ -44,12 +44,12 @@ class UserModel {
   final DateTime createdAt;
 
   @HiveField(11)
-  DateTime updatedAt; // 🔄 mutable pour suivi IA ou sync
+  final DateTime updatedAt;
 
   @HiveField(12)
-  final List<String> activeModules; // ✅ Modules actifs
+  final List<String> activeModules;
 
-  UserModel({
+  const UserModel({
     required this.id,
     required this.name,
     required this.email,
@@ -64,11 +64,6 @@ class UserModel {
     required this.updatedAt,
     required this.activeModules,
   });
-
-  /// 🔄 Met à jour automatiquement le champ `updatedAt`
-  void updateTimestamp() {
-    updatedAt = DateTime.now();
-  }
 
   /// 🔁 Convertit l'objet en JSON pour Firebase
   Map<String, dynamic> toJson() => {

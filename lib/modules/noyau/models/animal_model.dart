@@ -3,6 +3,7 @@
 /// Champs : identité, espèce, race, image, propriétaire, timestamps.
 /// Utilisé dans le noyau pour la gestion des animaux.
 library;
+
 import 'package:hive/hive.dart';
 
 part 'animal_model.g.dart';
@@ -31,9 +32,9 @@ class AnimalModel {
   final DateTime createdAt;
 
   @HiveField(7)
-  DateTime updatedAt; // 🔄 Mutable pour être mis à jour facilement
+  final DateTime updatedAt;
 
-  AnimalModel({
+  const AnimalModel({
     required this.id,
     required this.name,
     required this.species,
@@ -44,12 +45,7 @@ class AnimalModel {
     required this.updatedAt,
   });
 
-  /// 🔄 **Mettre à jour `updatedAt`**
-  void updateTimestamp() {
-    updatedAt = DateTime.now();
-  }
-
-  /// 🔄 **Convertir l'objet en Map pour Firebase**
+  /// 🔄 Convertir l'objet en Map pour Firebase
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -63,7 +59,7 @@ class AnimalModel {
     };
   }
 
-  /// 🔄 **Créer un objet AnimalModel à partir d'une Map (Firebase)**
+  /// 🔄 Créer un objet AnimalModel à partir d'une Map (Firebase)
   factory AnimalModel.fromJson(Map<String, dynamic> json) {
     return AnimalModel(
       id: json['id'] ?? '',
@@ -81,7 +77,7 @@ class AnimalModel {
     );
   }
 
-  /// 🔄 **Créer une copie de l'animal avec des valeurs modifiées**
+  /// 🔄 Créer une copie de l'animal avec des valeurs modifiées
   AnimalModel copyWith({
     String? id,
     String? name,
@@ -104,5 +100,3 @@ class AnimalModel {
     );
   }
 }
-
-

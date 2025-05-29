@@ -2,8 +2,10 @@
 /// Applique les décisions IA générées par `IAMaster`
 /// Ce moteur exécute : nettoyage, notifications, sync, suggestions UI
 /// Utilisé à l’accueil, au démarrage et lors des triggers IA
-
-library;
+/// 🧠 IAExecutor — AniSphère
+/// Applique les décisions IA générées par `IAMaster`
+/// Ce moteur exécute : nettoyage, notifications, sync, suggestions UI
+/// Utilisé à l’accueil, au démarrage et lors des triggers IA
 
 import 'package:flutter/foundation.dart';
 

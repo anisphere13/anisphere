@@ -5,6 +5,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:flutter/material.dart';
 
+/// QRGeneratorService pour AniSphère.
+/// Génère un QR code pointant vers une page publique Firebase d’un animal.
+/// Utilise qr_flutter pour affichage local, Firebase pour publication différée.
+
 class QRGeneratorService {
   final FirebaseFirestore firestore;
 
