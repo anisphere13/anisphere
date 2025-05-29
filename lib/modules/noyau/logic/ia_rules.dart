@@ -1,7 +1,7 @@
-/// Règles intelligentes AniSphère.
-/// Contient des règles métiers IA : seuils d’alerte, détections comportementales,
-/// logiques de notifications ou déclencheurs IA.
-/// S’appuie sur les données locales et le contexte utilisateur.
+/// 📐 IARules — Règles métiers IA pour AniSphère
+/// Contient les règles d’analyse comportementale, UX et alertes IA
+/// Appelé par IARuleEngine, IAMaster et les modules IA
+
 library;
 
 import 'package:flutter/foundation.dart';
@@ -16,26 +16,27 @@ class IARules {
     return delta > threshold;
   }
 
-  /// ⚠️ Vérification de données manquantes critiques
+  /// ⚠️ Vérifie si des champs critiques du profil sont manquants
   static bool isAnimalProfileIncomplete(AnimalModel animal) {
     return animal.name.isEmpty ||
         animal.species.isEmpty ||
         animal.ownerId.isEmpty;
   }
 
-  /// 🔔 Déclenche une suggestion si aucun animal
+  /// 🔔 Déclenche une suggestion s’il n’y a aucun animal
   static bool shouldSuggestAnimalOnboarding(List<AnimalModel> animals) {
     return animals.isEmpty;
   }
 
-  /// 📊 Détection d’anomalie basique sur comportement (exemple simplifié)
+  /// 📊 Analyse une variation de poids excessive
   static bool isWeightSuspicious(double previousWeight, double currentWeight) {
     final diff = (currentWeight - previousWeight).abs();
+    if (previousWeight == 0) return false;
     final percent = (diff / previousWeight) * 100;
     return percent > 20; // ex : variation de +20% considérée anormale
   }
 
-  /// 🧠 Retourne des règles UX intelligentes
+  /// 🧠 Renvoie une action UX IA basée sur les animaux présents
   static String getSuggestedAction(List<AnimalModel> animals) {
     if (animals.isEmpty) return "add_first_animal";
     final inactive = animals.where((a) => isAnimalInactive(a)).toList();
@@ -43,7 +44,7 @@ class IARules {
     return "dashboard_default";
   }
 
-  /// 🧠 Décision UX IA selon le contexte
+  /// 🧠 Mode IA UX à utiliser selon le contexte
   static String decideUXMode({
     required bool isFirstLaunch,
     required bool isOffline,

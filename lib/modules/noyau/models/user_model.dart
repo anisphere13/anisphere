@@ -1,6 +1,7 @@
 /// Modèle utilisateur pour AniSphère.
 /// Sérialisable Hive et Firebase. Contient rôles, préférences, animaux, timestamps.
 /// Prévu pour une app IA, offline-first, multi-rôle et multi-module.
+
 library;
 
 import 'package:hive/hive.dart';
@@ -45,6 +46,9 @@ class UserModel {
   @HiveField(11)
   DateTime updatedAt; // 🔄 mutable pour suivi IA ou sync
 
+  @HiveField(12)
+  final List<String> activeModules; // ✅ Modules actifs
+
   UserModel({
     required this.id,
     required this.name,
@@ -58,6 +62,7 @@ class UserModel {
     required this.moduleRoles,
     required this.createdAt,
     required this.updatedAt,
+    required this.activeModules,
   });
 
   /// 🔄 Met à jour automatiquement le champ `updatedAt`
@@ -79,6 +84,7 @@ class UserModel {
         'moduleRoles': moduleRoles,
         'createdAt': createdAt.toIso8601String(),
         'updatedAt': updatedAt.toIso8601String(),
+        'activeModules': activeModules,
       };
 
   /// 🔁 Crée un `UserModel` depuis un JSON Firebase
@@ -96,6 +102,7 @@ class UserModel {
       moduleRoles: Map<String, dynamic>.from(json['moduleRoles'] ?? {}),
       createdAt: DateTime.tryParse(json['createdAt'] ?? '') ?? DateTime.now(),
       updatedAt: DateTime.tryParse(json['updatedAt'] ?? '') ?? DateTime.now(),
+      activeModules: List<String>.from(json['activeModules'] ?? []),
     );
   }
 
@@ -113,6 +120,7 @@ class UserModel {
     Map<String, dynamic>? moduleRoles,
     DateTime? createdAt,
     DateTime? updatedAt,
+    List<String>? activeModules,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -127,6 +135,7 @@ class UserModel {
       moduleRoles: moduleRoles ?? this.moduleRoles,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
+      activeModules: activeModules ?? this.activeModules,
     );
   }
 }

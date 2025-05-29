@@ -22,17 +22,26 @@ class AnimalProvider extends ChangeNotifier {
 
   /// 📥 Chargement des animaux locaux
   Future<void> _loadLocalAnimals() async {
-    final box = await _animalService._initHive();
-    final Map<String, AnimalModel> loaded = {};
-    for (var key in box.keys) {
-      final animal = box.get(key);
-      if (animal != null) {
-        loaded[key] = animal;
+    try {
+      final box = await _animalService._initHive();
+      final Map<String, AnimalModel> loaded = {};
+      for (var key in box.keys) {
+        final animal = box.get(key);
+        if (animal != null) {
+          loaded[key] = animal;
+        }
       }
+      _animals
+        ..clear()
+        ..addAll(loaded);
+      notifyListeners();
+    } catch (e) {
+      // Log uniquement en debug
+      assert(() {
+        debugPrint("❌ Erreur chargement animaux locaux : $e");
+        return true;
+      }());
     }
-    _animals.clear();
-    _animals.addAll(loaded);
-    notifyListeners();
   }
 
   /// 🐾 Accès en lecture seule
@@ -40,25 +49,46 @@ class AnimalProvider extends ChangeNotifier {
 
   /// ➕ Ajout ou modification
   Future<void> saveAnimal(AnimalModel animal) async {
-    await _animalService.saveAnimal(animal);
-    _animals[animal.id] = animal;
-    notifyListeners();
+    try {
+      await _animalService.saveAnimal(animal);
+      _animals[animal.id] = animal;
+      notifyListeners();
+    } catch (e) {
+      assert(() {
+        debugPrint("❌ Erreur sauvegarde animal : $e");
+        return true;
+      }());
+    }
   }
 
   /// 🔄 Synchronisation spécifique
   Future<void> syncAnimal(String id) async {
-    final updated = await _animalService.syncAnimal(id);
-    if (updated != null) {
-      _animals[id] = updated;
-      notifyListeners();
+    try {
+      final updated = await _animalService.syncAnimal(id);
+      if (updated != null) {
+        _animals[id] = updated;
+        notifyListeners();
+      }
+    } catch (e) {
+      assert(() {
+        debugPrint("❌ Erreur synchronisation animal : $e");
+        return true;
+      }());
     }
   }
 
   /// ❌ Suppression
   Future<void> deleteAnimal(String id) async {
-    await _animalService.deleteAnimal(id);
-    _animals.remove(id);
-    notifyListeners();
+    try {
+      await _animalService.deleteAnimal(id);
+      _animals.remove(id);
+      notifyListeners();
+    } catch (e) {
+      assert(() {
+        debugPrint("❌ Erreur suppression animal : $e");
+        return true;
+      }());
+    }
   }
 
   /// 🔍 Récupération par ID

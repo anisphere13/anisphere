@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-// ✅ Utilisation des bons chemins d'import
 import 'package:anisphere/firebase_options.dart';
 import 'package:anisphere/modules/noyau/screens/main_screen.dart';
 import 'package:anisphere/modules/noyau/screens/login_screen.dart';
@@ -12,6 +11,15 @@ import 'package:anisphere/modules/noyau/services/user_service.dart';
 import 'package:anisphere/modules/noyau/services/auth_service.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:anisphere/modules/noyau/providers/animal_provider.dart';
+import 'package:anisphere/modules/noyau/providers/ia_context_provider.dart';
+
+// 🧠 IA maîtresse
+import 'package:anisphere/modules/noyau/logic/ia_master.dart';
+import 'package:anisphere/modules/noyau/logic/ia_executor.dart';
+import 'package:anisphere/modules/noyau/logic/ia_scheduler.dart';
+import 'package:anisphere/modules/noyau/logic/notification_service.dart';
+import 'package:anisphere/modules/noyau/services/animal_service.dart';
+import 'package:anisphere/modules/noyau/services/modules_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,18 +29,30 @@ void main() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    debugPrint("🔥 Firebase initialized successfully!");
+    assert(() {
+      debugPrint("🔥 Firebase initialized successfully!");
+      return true;
+    }());
   } catch (e) {
-    debugPrint("❌ Firebase initialization failed: $e");
+    assert(() {
+      debugPrint("❌ Firebase initialization failed: $e");
+      return true;
+    }());
   }
 
   // 📦 Hive
   try {
     await Hive.initFlutter();
     await LocalStorageService.init();
-    debugPrint("📦 Hive initialized successfully!");
+    assert(() {
+      debugPrint("📦 Hive initialized successfully!");
+      return true;
+    }());
   } catch (e) {
-    debugPrint("❌ Hive initialization failed: $e");
+    assert(() {
+      debugPrint("❌ Hive initialization failed: $e");
+      return true;
+    }());
   }
 
   // 🔄 Services
@@ -41,23 +61,29 @@ void main() async {
   try {
     await userService.init();
   } catch (e) {
-    debugPrint("❌ Erreur d'initialisation de UserService : $e");
+    assert(() {
+      debugPrint("❌ Erreur d'initialisation de UserService : $e");
+      return true;
+    }());
   }
 
   // 🚀 App
   runApp(
-  MultiProvider(
-    providers: [
-      ChangeNotifierProvider(
-        create: (_) => UserProvider(userService, authService),
-      ),
-      ChangeNotifierProvider(
-        create: (_) => AnimalProvider()..init(),
-      ),
-    ],
-    child: const MyApp(),
-  ),
-);
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => UserProvider(userService, authService),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => AnimalProvider()..init(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => IAContextProvider(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -71,9 +97,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFFF5F5F5),
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF183153), // Bleu nuit
+          seedColor: const Color(0xFF183153),
           primary: const Color(0xFF183153),
-          secondary: const Color(0xFFFBC02D), // Jaune solaire
+          secondary: const Color(0xFFFBC02D),
         ),
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
@@ -89,7 +115,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// 🔄 **Écran de chargement pendant l'initialisation**
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -105,25 +130,53 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> _navigateToNextScreen() async {
-    await Future.delayed(
-      const Duration(seconds: 2),
-    ); // Simule un temps de chargement
+    await Future.delayed(const Duration(seconds: 2));
 
     if (!mounted) return;
 
     final userProvider = Provider.of<UserProvider>(context, listen: false);
-    await userProvider.loadUser(); // Charge l'utilisateur
+    final animalProvider = Provider.of<AnimalProvider>(context, listen: false);
+    final iaContextProvider = Provider.of<IAContextProvider>(context, listen: false);
+
+    await userProvider.loadUser();
 
     if (!mounted) return;
+
+    // ⏱️ Initialisation dynamique du contexte IA
+    await iaContextProvider.init(
+      isOffline: false,
+      animalService: AnimalService(),
+      userService: userProvider.userService,
+    );
+
+    final contextIA = iaContextProvider.context;
+
+    // 🧠 IA maîtresse : initialisation + planification
+    final iaExecutor = IAExecutor(
+      iaMaster: IAMaster.instance,
+      notificationService: NotificationService(),
+      modulesService: ModulesService(),
+      animalService: AnimalService(),
+    );
+
+    final iaScheduler = IAScheduler(
+      executor: iaExecutor,
+      iaMaster: IAMaster.instance,
+    );
+
+    iaScheduler.start(contextIA);
 
     final Widget nextScreen =
         userProvider.user != null ? const MainScreen() : const LoginScreen();
 
-    debugPrint(
-      userProvider.user != null
-          ? "✅ Utilisateur connecté, redirection vers MainScreen"
-          : "❌ Aucun utilisateur connecté, redirection vers LoginScreen",
-    );
+    assert(() {
+      debugPrint(
+        userProvider.user != null
+            ? "✅ Utilisateur connecté, redirection vers MainScreen"
+            : "❌ Aucun utilisateur connecté, redirection vers LoginScreen",
+      );
+      return true;
+    }());
 
     if (mounted) {
       Navigator.pushReplacement(

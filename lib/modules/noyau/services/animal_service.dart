@@ -119,6 +119,17 @@ class AnimalService {
     }
   }
 
+  /// 📚 Récupère tous les animaux locaux
+  Future<List<AnimalModel>> getAllAnimals() async {
+    try {
+      await _initHive();
+      return _animalBox?.values.toList() ?? [];
+    } catch (e) {
+      _log("❌ Erreur lors de la récupération de tous les animaux : $e");
+      return [];
+    }
+  }
+
   /// 🔒 Log conditionné par kDebugMode
   void _log(String message) {
     if (kDebugMode) {

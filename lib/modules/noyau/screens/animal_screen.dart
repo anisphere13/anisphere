@@ -46,23 +46,38 @@ class AnimalScreen extends StatelessWidget {
                 _buildRow("Race", animal.breed),
                 _buildRow(
                   "Date de naissance",
-                  "${animal.birthDate.day}/${animal.birthDate.month}/${animal.birthDate.year}",
+                  animal.birthDate != null
+                      ? "${animal.birthDate.day}/${animal.birthDate.month}/${animal.birthDate.year}"
+                      : "Non renseignée",
                 ),
                 const SizedBox(height: 30),
                 Center(
                   child: ElevatedButton.icon(
                     onPressed: () {
-                      final identityBox = Hive.box<IdentityModel>('identityBox');
-                      final identityService = IdentityService(localBox: identityBox);
-
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => IdentityScreen(
-                            animal: animal,
-                            service: identityService,
+                      try {
+                        final identityBox =
+                            Hive.box<IdentityModel>('identityBox');
+                        final identityService =
+                            IdentityService(localBox: identityBox);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => IdentityScreen(
+                              animal: animal,
+                              service: identityService,
+                            ),
                           ),
-                        ),
-                      );
+                        );
+                      } catch (e) {
+                        // Log uniquement en debug
+                        assert(() {
+                          debugPrint("❌ Erreur ouverture identité : $e");
+                          return true;
+                        }());
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content: Text("Erreur d'accès à l'identité.")),
+                        );
+                      }
                     },
                     icon: const Icon(Icons.badge),
                     label: const Text("Identité"),
@@ -89,6 +104,7 @@ class AnimalScreen extends StatelessWidget {
     );
   }
 
+  /// Affiche une ligne label/valeur pour une info animal.
   Widget _buildRow(String label, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),

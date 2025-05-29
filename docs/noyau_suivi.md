@@ -805,6 +805,131 @@ Un système proactif, transparent et évolutif, où chaque utilisateur devient c
 - Branding appliqué : fond gris clair, bleu nuit
 - Date : 2025-05-20
 
+### ✅ settings_screen.dart
+- 📁 `lib/modules/noyau/screens/settings_screen.dart`
+- Gère : mode sombre, suggestions IA, notifications IA
+- LocalStorageService → 100 % offline + extensible
+- Branding appliqué : titres bleu nuit, espacement clair
+- Date : 2025-05-20
+
+### ✅ home_screen.dart
+- 📁 `lib/modules/noyau/screens/home_screen.dart`
+- Intègre tous les widgets IA : IABanner, IAChip, IASuggestionCard, IALogViewer
+- IA dynamique via IAMaster / IARuleEngine
+- Scroll vertical fluide (CustomScrollView + Sliver)
+- UX Samsung Health / Branding appliqué
+- Date : 2025-05-20
+
+29/05/2025 - ✅ Création du widget NotificationIcon (badge dynamique + redirection)
+
+- [29/05/2025] Finalisation de `main_screen.dart` avec navigation complète, intégration du badge notification, menu déroulant utilisateur et ergonomie Samsung Health respectée.
+
+- [29/05/2025] Amélioration de `animal_form_screen.dart` : ajout champ photo, bouton IA OCR (placeholder), couleurs brandbook, prompt Copilot, préparé pour AnimalService.
+
+- [29/05/2025] Validation complète du fichier `animal_service.dart` :
+  ✔ Stockage Hive + Firebase
+  ✔ Mode test avec `testBox` et `skipHiveInit`
+  ✔ IA-compatible, robuste et propre
+  
+  - [29/05/2025] Intégration du AnimalProvider dans `main.dart`
+  ✔ MultiProvider mis à jour avec initialisation automatique
+  ✔ AnimalProvider disponible globalement pour l’UI
+
+- [29/05/2025] Ajout du widget `animal_card.dart` : carte visuelle d’un animal.
+  ✔ Image + nom + espèce/race
+  ✔ Placeholder si pas d’image
+  ✔ Support du clic (`onTap`)
+
+- [29/05/2025] Mise à jour de `animals_screen.dart` :
+  ✔ Affichage réel des animaux depuis Hive via AnimalService
+  ✔ Intégration du widget AnimalCard
+  ✔ Suggestion IA si aucun animal
+  ✔ Bouton “+” fonctionnel pour ajout
+
+- [29/05/2025] Création de `animal_profile_screen.dart` :
+  ✔ Affichage complet de l’identité d’un animal
+  ✔ Photo, espèce, race, dates, propriétaire
+  ✔ Bouton IA pour accès futur à statistiques et alertes
+  
+  - [29/05/2025] Finalisation de `animals_screen.dart` :
+  ✔ Récupération des animaux depuis Hive via AnimalService
+  ✔ Affichage sous forme de cartes avec `AnimalCard`
+  ✔ Ajout d’un bouton flottant pour ajouter un animal
+  ✔ Lien vers `AnimalProfileScreen` en onTap
+  ✔ Préparation à l’accueil dynamique style Samsung Health
+
+- ✅ [29/05/2025] Mise à jour de animals_screen.dart : intégration de la navigation vers AnimalProfileScreen.
+- 🧠 Affichage contextuel IA prêt pour évolution future (IA par animal).
+- 🐾 SliverList mise en place pour affichage fluide et responsive (Samsung Health-like).
+
+- ✅ [29/05/2025] Fichier user_profile_screen.dart validé : affichage des infos personnelles et modules actifs.
+- 🔜 Prévu : QR utilisateur, export, IA premium (affichage).
+
+- ✅ [29/05/2025] Fichier user_profile_screen.dart enrichi : IA premium, modules actifs, QR ID, actions pratiques, prêt pour stats/export.
+
+- ✅ [29/05/2025] qr_service.dart : service de génération + scan QR complet, prêt à intégrer partout dans l'app.
+
+- ✅ [29/05/2025] qr_screen.dart : écran complet avec scanner et générateur QR, connecté à UserProvider.
+
+- ✅ [29/05/2025] main_screen.dart complété : QR intégré dans l’AppBar, menu contextuel complet, Copilot Prompt ajouté.
+
+# ✅ Suivi du module NOYAU – AniSphère
+📅 Dernière mise à jour : 29/05/2025
+
+## 🧩 Fonctionnalités essentielles
+
+| Élément                    | Statut   | Détails / Fichier principal                               | Commentaire |
+|---------------------------|----------|-----------------------------------------------------------|-------------|
+| Initialisation globale    | ✅ Fait   | `main.dart`                                               | Firebase, Hive, Provider OK |
+| Authentification          | ✅ Fait   | `login_screen.dart`, `user_provider.dart`                | Redirection automatique |
+| Profil utilisateur        | ✅ Fait   | `user_profile_screen.dart`                                | Affichage dynamique des données |
+| Paramètres (préférences)  | ✅ Fait   | `settings_screen.dart`                                    | Stockés via `LocalStorageService` |
+| Données utilisateur       | ✅ Fait   | `user_model.dart`, `user_service.dart`                   | Hive + Firebase synchronisés |
+| Gestion des animaux       | ✅ Fait   | `animals_screen.dart`, `animal_form_screen.dart`          | Intégration `AnimalService` |
+| Fiche profil animal       | ✅ Fait   | `animal_profile_screen.dart`                              | UI enrichie + IA suggestion |
+| Accueil IA (Home)         | ✅ Fait   | `home_screen.dart`                                        | Intégration widgets IA (invisible) |
+| QR Code                   | ✅ Fait   | `qr_screen.dart`, `qr_service.dart`                       | Scan & génération utilisateur |
+| Notifications             | ✅ Fait   | `notifications_screen.dart`, `notification_icon.dart`     | Icône dynamique |
+| Partage                   | ✅ Fait   | `share_screen.dart`                                       | QR & Export à venir |
+| Modules (UI)              | ✅ Fait   | `modules_screen.dart`                                     | Design Samsung Health |
+| Modules (données)         | ✅ Fait   | `modules_service.dart`                                    | Gestion des rôles IA |
+| Écran principal           | ✅ Fait   | `main_screen.dart`                                        | Navigation + menu + notifications |
+
+## ⚠️ Fonctionnalités à finaliser
+
+| Élément                          | Priorité | Statut   | Note |
+|----------------------------------|----------|----------|------|
+| IA Maîtresse (offline)           | 🔥 Haute | 🔜 À faire | Structure prête, logique à implémenter |
+| IA cloud + synchronisation      | 🔥 Haute | 🔜 À faire | Abonnement requis pour synchronisation descendante |
+| Export PDF & partage animal     | ⚪ Moyen | 🔜 À faire | Prévu dans `share_screen.dart` |
+| Gestion des rôles multi-utilisateurs | ⚪ Moyen | 🔜 À faire | Prête dans `user_model.dart`, à activer |
+
+## 📦 Fichiers ajoutés ou finalisés aujourd’hui
+
+- `home_screen.dart`
+- `animal_profile_screen.dart`
+- `modules_screen.dart`
+- `modules_service.dart`
+- `user_model.dart` (mise à jour `moduleRoles`)
+- `user_service.dart` (support de mise à jour dynamique)
+- `notifications_screen.dart`
+- `main_screen.dart` (menu, navigation, notification, IA invisible)
+- QR (vérifié : `qr_screen.dart`, `qr_service.dart`)
+- `share_screen.dart` (structure export)
+
+---
+
+🧠 **L’IA est déjà présente** en local (suggestions, widgets, décisions internes) mais **non visible** pour l'utilisateur, conformément à ta demande.
+
+Souhaites-tu que je te le prépare au format `.md` à copier-coller dans ton `docs/suivi_noyau.md` ou veux-tu que je te génère un fichier prêt à l’emploi ?
+
+
+
+
+
+
+
+
 
 
 

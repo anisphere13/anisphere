@@ -4,6 +4,7 @@
 /// Utilisé en complément de UserService et AnimalService.
 /// Peut être utilisé aussi pour debug offline.
 library;
+
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter/foundation.dart';
 
@@ -93,6 +94,17 @@ class LocalStorageService {
       await _settingsBox.delete(key);
     } catch (e) {
       debugPrint("❌ Erreur remove (settings) : $e");
+    }
+  }
+
+  /// ✅ Helper : lecture booléenne avec fallback
+  static Future<bool> getBool(String key, {bool defaultValue = false}) async {
+    try {
+      final value = _settingsBox.get(key);
+      return value is bool ? value : defaultValue;
+    } catch (e) {
+      debugPrint("❌ Erreur getBool : $e");
+      return defaultValue;
     }
   }
 }

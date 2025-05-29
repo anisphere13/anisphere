@@ -1,7 +1,9 @@
 /// Copilot Prompt : HomeScreen AniSphère enrichi avec IA.
 /// Intègre les widgets IA dynamiques : IABanner, IAChip, IASuggestionCard, IALogViewer.
-/// Récupère des actions IA depuis IAMaster / RuleEngine et les affiche.
+/// Affiche les résumés IA des modules actifs via ModulesSummaryService.
+
 library;
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,10 +19,9 @@ import '../widgets/ia_chip.dart';
 import '../widgets/ia_suggestion_card.dart';
 import '../widgets/ia_log_viewer.dart';
 
-// 🔽 Import futurs widgets résumés de modules (ex : santé, dressage, éducation)
-import '../../modules/sante/widgets/sante_summary_card.dart';
-import '../../modules/dressage/widgets/dressage_summary_card.dart';
-// ... ajoute d’autres ici selon les modules actifs
+import '../services/modules_summary_service.dart';
+import '../services/animal_service.dart';
+import '../providers/ia_context_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -32,45 +33,85 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<String> iaActions = [];
   bool iaReady = false;
+  List<ModuleSummary> summaries = [];
 
   @override
   void initState() {
     super.initState();
     _initIA();
+    _loadSummaries();
   }
 
   Future<void> _initIA() async {
-    await IAMaster().initialize();
+    try {
+      await IAMaster().initialize();
 
-    final context = IAContext(
-      isOffline: false,
-      isFirstLaunch: false,
-      hasAnimals: true,
-      animalCount: 2,
-    );
+      final context =
+          Provider.of<IAContextProvider>(context, listen: false).context;
+      final actions = await IARuleEngine.analyzeAnimals([]);
 
-    final actions = await IARuleEngine.analyzeAnimals([]);
-    setState(() {
-      iaActions = actions;
-      iaReady = true;
-    });
+      setState(() {
+        iaActions = actions;
+        iaReady = true;
+      });
+    } catch (e) {
+      // Log uniquement en debug
+      assert(() {
+        debugPrint("❌ Erreur IA : $e");
+        return true;
+      }());
+      setState(() {
+        iaReady = true;
+        iaActions = [];
+      });
+    }
+  }
+
+  Future<void> _loadSummaries() async {
+    try {
+      final contextIA =
+          Provider.of<IAContextProvider>(context, listen: false).context;
+      final summaryService = ModulesSummaryService(
+        animalService: AnimalService(),
+        context: contextIA,
+      );
+      final result = await summaryService.generateSummaries();
+      if (mounted) {
+        setState(() {
+          summaries = result;
+        });
+      }
+    } catch (e) {
+      // Log uniquement en debug
+      assert(() {
+        debugPrint("❌ Erreur chargement résumés modules : $e");
+        return true;
+      }());
+    }
   }
 
   /// 🧩 Génère dynamiquement les widgets des modules actifs
   List<Widget> _buildModuleSummaries() {
-    final modules = Provider.of<UserProvider>(context, listen: false).user?.moduleRoles.keys ?? [];
-    final List<Widget> widgets = [];
-
-    if (modules.contains("sante")) {
-      widgets.add(const SanteSummaryCard()); // résumé module Santé
-    }
-    if (modules.contains("dressage")) {
-      widgets.add(const DressageSummaryCard()); // résumé module Dressage
-    }
-    // 🔽 Ajoute d’autres modules ici
-    // if (modules.contains("education")) widgets.add(const EducationSummaryCard());
-
-    return widgets;
+    return summaries
+        .map((summary) => Card(
+              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              elevation: 2,
+              child: ListTile(
+                leading: Text(
+                  summary.icon,
+                  style: const TextStyle(fontSize: 24),
+                ),
+                title: Text(summary.moduleName),
+                subtitle: Text(summary.summary),
+                trailing: summary.isPremium
+                    ? const Icon(Icons.star, color: Colors.amber)
+                    : null,
+              ),
+            ))
+        .toList();
   }
 
   @override
@@ -120,7 +161,9 @@ class _HomeScreenState extends State<HomeScreen> {
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) => Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                  key: ValueKey("ia-suggestion-$index"),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                   child: IASuggestionCard(
                     title: "Suggestion IA",
                     message: "Action détectée : ${iaActions[index]}",

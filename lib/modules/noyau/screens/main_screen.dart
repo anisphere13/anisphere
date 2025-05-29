@@ -1,9 +1,6 @@
-/// Copilot Prompt : HomeScreen AniSphère enrichi avec navigation.
-/// Contient les onglets : Accueil, Partage, Modules, Mes animaux.
-/// Affiche dynamiquement la bonne page selon l’index sélectionné.
-/// Prévu pour intégrer l’IA plus tard dans chaque onglet.
-
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'home_screen.dart';
 import 'share_screen.dart';
 import 'modules_screen.dart';
@@ -12,7 +9,9 @@ import 'settings_screen.dart';
 import 'user_profile_screen.dart';
 import 'login_screen.dart';
 import 'notifications_screen.dart';
-import 'package:provider/provider.dart';
+import 'qr_screen.dart';
+import 'ia_debug_screen.dart'; // 👈 ajouté
+
 import 'package:anisphere/modules/noyau/widgets/notification_icon.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 
@@ -58,10 +57,30 @@ class MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AniSphère'),
+        title: GestureDetector(
+          onLongPress: () {
+            final user = Provider.of<UserProvider>(context, listen: false).user;
+            if (user != null && user.role == 'super_admin') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const IADebugScreen()),
+              );
+            }
+          },
+          child: const Text('AniSphère'),
+        ),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.qr_code),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const QRScreen()),
+              );
+            },
+          ),
           NotificationIcon(
-            unreadCount: 3, // à connecter plus tard à une logique dynamique
+            unreadCount: 3, // TODO: relier au provider
             onTap: () {
               Navigator.push(
                 context,

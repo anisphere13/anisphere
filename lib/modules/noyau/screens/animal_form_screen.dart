@@ -6,6 +6,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class AnimalFormScreen extends StatefulWidget {
   const AnimalFormScreen({super.key});
@@ -25,9 +26,17 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
 
   Future<void> _pickImage() async {
     final picker = ImagePicker();
-    final picked = await picker.pickImage(source: ImageSource.gallery);
-    if (picked != null) {
-      setState(() => _image = picked);
+    try {
+      final picked = await picker.pickImage(source: ImageSource.gallery);
+      if (picked != null) {
+        setState(() => _image = picked);
+      }
+    } catch (e) {
+      // Log uniquement en debug
+      assert(() {
+        debugPrint("❌ Erreur lors de la sélection d'image : $e");
+        return true;
+      }());
     }
   }
 
@@ -70,7 +79,10 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     // TODO : enregistrement via AnimalService
-                    debugPrint("✅ Animal enregistré !");
+                    assert(() {
+                      debugPrint("✅ Animal enregistré !");
+                      return true;
+                    }());
                     Navigator.pop(context);
                   }
                 },
@@ -146,11 +158,7 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
               borderRadius: BorderRadius.circular(8),
               image: _image != null
                   ? DecorationImage(
-                      image: FileImage(
-                        // ignore: deprecated_member_use
-                        // image_picker utilise un path
-                        File(_image!.path),
-                      ),
+                      image: FileImage(File(_image!.path)),
                       fit: BoxFit.cover,
                     )
                   : null,
@@ -166,5 +174,3 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
     );
   }
 }
-import 'dart:io';
-// ignore_for_file: deprecated_member_use

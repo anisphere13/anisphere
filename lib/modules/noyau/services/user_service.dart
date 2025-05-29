@@ -1,12 +1,12 @@
 /// Service utilisateur AniSphère (Firebase + Hive).
 /// Gère synchronisation cloud, sauvegarde locale, suppression, et MAJ IA.
 /// Optimisé pour IA maîtresse, offline-first, multi-profil.
+
 library;
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-
 import '../models/user_model.dart';
 
 class UserService {
@@ -133,10 +133,38 @@ class UserService {
         ownedAnimals: fields['ownedAnimals'],
         preferences: fields['preferences'],
         moduleRoles: fields['moduleRoles'],
+        activeModules: List<String>.from(fields['activeModules'] ?? currentUser.activeModules),
         updatedAt: DateTime.now(),
       );
       await updateUser(updatedUser);
     }
+  }
+
+  /// 📌 Active un module localement + cloud
+  Future<void> activateModule(String moduleKey) async {
+    final currentUser = getUserFromHive();
+    if (currentUser == null) return;
+
+    final newModules = Set<String>.from(currentUser.activeModules)..add(moduleKey);
+    final updatedUser = currentUser.copyWith(
+      activeModules: newModules.toList(),
+      updatedAt: DateTime.now(),
+    );
+    await updateUser(updatedUser);
+  }
+
+  /// 📌 Désactive un module localement + cloud
+  Future<void> deactivateModule(String moduleKey) async {
+    final currentUser = getUserFromHive();
+    if (currentUser == null) return;
+
+    final newModules = List<String>.from(currentUser.activeModules)
+      ..removeWhere((m) => m == moduleKey);
+    final updatedUser = currentUser.copyWith(
+      activeModules: newModules,
+      updatedAt: DateTime.now(),
+    );
+    await updateUser(updatedUser);
   }
 
   /// 🗑️ Supprimer localement
