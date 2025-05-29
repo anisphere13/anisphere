@@ -1,3 +1,6 @@
+/// Copilot Prompt : Service AnimalService pour AniSphère.
+/// Gère le stockage local (Hive), la synchro Firebase, les ajouts/suppressions.
+/// IA-compatible, testable, optimisé offline-first.
 /// Service des animaux pour AniSphère.
 /// Gère la lecture/écriture locale Hive, la synchronisation avec Firebase,
 /// et la suppression. Utilise FirebaseService en interne.

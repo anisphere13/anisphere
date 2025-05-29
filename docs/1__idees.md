@@ -2,6 +2,14 @@
 
 Ce fichier rassemble toutes les idées actuelles et futures d’AniSphère, enrichies de descriptions, cas d’usage, variantes et propositions complémentaires. Les idées sont classées par catégories thématiques, sans aucune suppression.
 
+## Widgets Résumés par Module (Accueil)
+
+- Objectif : afficher dans `HomeScreen` un résumé de chaque module actif.
+- Composants : `SanteSummaryCard`, `DressageSummaryCard`, `EducationSummaryCard`, etc.
+- Design : format compact, infos clés, icône et action rapide.
+- Source : chaque module fournit son widget dans `widgets/summary_card.dart`.
+
+
 🩺 Santé
 
 Carnet de santé intelligent

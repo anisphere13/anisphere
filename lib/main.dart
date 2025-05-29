@@ -11,6 +11,7 @@ import 'package:anisphere/modules/noyau/services/local_storage_service.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
 import 'package:anisphere/modules/noyau/services/auth_service.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
+import 'package:anisphere/modules/noyau/providers/animal_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,15 +46,18 @@ void main() async {
 
   // 🚀 App
   runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => UserProvider(userService, authService),
-        ),
-      ],
-      child: const MyApp(),
-    ),
-  );
+  MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (_) => UserProvider(userService, authService),
+      ),
+      ChangeNotifierProvider(
+        create: (_) => AnimalProvider()..init(),
+      ),
+    ],
+    child: const MyApp(),
+  ),
+);
 }
 
 class MyApp extends StatelessWidget {

@@ -3,7 +3,9 @@
 /// Prévu pour accueillir plus tard l’upload de documents avec OCR IA.
 /// Champs : nom, espèce, race, date de naissance, photo.
 /// L’animal est ensuite enregistré via AnimalService (Hive + Firebase).
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AnimalFormScreen extends StatefulWidget {
   const AnimalFormScreen({super.key});
@@ -19,13 +21,20 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
   final TextEditingController _speciesController = TextEditingController();
   final TextEditingController _breedController = TextEditingController();
   DateTime? _birthDate;
+  XFile? _image;
+
+  Future<void> _pickImage() async {
+    final picker = ImagePicker();
+    final picked = await picker.pickImage(source: ImageSource.gallery);
+    if (picked != null) {
+      setState(() => _image = picked);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Ajouter un animal"),
-      ),
+      appBar: AppBar(title: const Text("Ajouter un animal")),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Form(
@@ -39,37 +48,40 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
               _buildTextField(_breedController, "Race"),
               const SizedBox(height: 12),
               _buildDatePicker(context),
+              const SizedBox(height: 12),
+              _buildPhotoPicker(),
               const SizedBox(height: 20),
               ElevatedButton.icon(
-                icon: const Icon(Icons.file_upload),
-                label: const Text("Importer un document"),
+                icon: const Icon(Icons.auto_fix_high),
+                label: const Text("Pré-remplir via IA (à venir)"),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFFBC02D),
-                  foregroundColor: const Color(0xFF183153),
+                  backgroundColor: const Color(0xFFEDE7F6),
+                  foregroundColor: const Color(0xFF4B2991),
                 ),
                 onPressed: () {
-                  // 📎 OCR à intégrer plus tard
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text("Fonction OCR à venir..."),
                   ));
                 },
               ),
               const SizedBox(height: 24),
-              ElevatedButton(
+              ElevatedButton.icon(
+                icon: const Icon(Icons.check),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    debugPrint("Animal enregistré !");
-                    Navigator.pop(context); // En prod : sauvegarder
+                    // TODO : enregistrement via AnimalService
+                    debugPrint("✅ Animal enregistré !");
+                    Navigator.pop(context);
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF183153),
+                  backgroundColor: const Color(0xFF4B2991),
                 ),
-                child: const Text(
+                label: const Text(
                   "Ajouter",
                   style: TextStyle(color: Colors.white),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -86,9 +98,8 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
         fillColor: Colors.white,
         filled: true,
       ),
-      validator: (value) => (value == null || value.isEmpty)
-          ? "Ce champ est requis"
-          : null,
+      validator: (value) =>
+          (value == null || value.isEmpty) ? "Ce champ est requis" : null,
     );
   }
 
@@ -118,4 +129,42 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
       ),
     );
   }
+
+  Widget _buildPhotoPicker() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text("Photo de l’animal"),
+        const SizedBox(height: 8),
+        GestureDetector(
+          onTap: _pickImage,
+          child: Container(
+            height: 150,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade100,
+              border: Border.all(color: Colors.grey.shade300),
+              borderRadius: BorderRadius.circular(8),
+              image: _image != null
+                  ? DecorationImage(
+                      image: FileImage(
+                        // ignore: deprecated_member_use
+                        // image_picker utilise un path
+                        File(_image!.path),
+                      ),
+                      fit: BoxFit.cover,
+                    )
+                  : null,
+            ),
+            child: _image == null
+                ? const Center(
+                    child: Icon(Icons.add_a_photo, color: Colors.grey),
+                  )
+                : null,
+          ),
+        ),
+      ],
+    );
+  }
 }
+import 'dart:io';
+// ignore_for_file: deprecated_member_use

@@ -4,6 +4,9 @@ Ce fichier est une vue d’ensemble condensée du projet AniSphère. Il permet d
 
 ⚠️ Ce fichier sera mis à jour automatiquement à chaque avancement significatif via les outils internes (sync_docs.sh, update_tracker, etc.)
 
+- [ ] Créer les `*SummaryCard` pour chaque module actif (santé, dressage, éducation, communauté, etc.) à afficher dans `home_screen.dart`
+
+
 🔰 Statut actuel
 
 Phase actuelle : Développement du noyau
@@ -95,6 +98,3 @@ noyau_suivi.md → tâches internes du noyau
 suivi_[module].md → suivi fin par module
 
 
-
-- ✅ Mise à jour automatique des tâches le 2025-04-05
-- ✅ Mise à jour automatique des tâches le 2025-04-13

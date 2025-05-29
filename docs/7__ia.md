@@ -74,7 +74,6 @@ L’apprentissage est anonyme, rationnel et structuré par module.
 
 Remontée intelligente et différée des données (vagues, compression, horodatage)
 
-Les utilisateurs peuvent autoriser l’amélioration globale IA via une option visible et valorisée (badge IA, récompense…)
 
 🔍 Optimisations IA recommandées
 
@@ -106,13 +105,30 @@ Notifications : tri automatique par niveau d’urgence et récurrence.
 
 Données sensibles exclues des traitements cloud (nom, prénom, téléphone).
 
-Apprentissage croisé uniquement sur données autorisées et anonymisées.
-
-Droit de désactivation IA cloud pour l’utilisateur (fonctionnement local uniquement).
+Apprentissage croisé uniquement sur données  anonymisées.
 
 IA conçue pour accompagner, pas pour imposer.
 
 Suivi visible de l’impact de l’IA sur l’expérience utilisateur.
+
+🎯 Politique d’apprentissage et synchronisation IA (gratuite vs premium)
+
+L’intelligence artificielle d’AniSphère repose sur un fonctionnement hybride local + cloud, conçu pour évoluer en permanence tout en optimisant les ressources.
+
+**Tous les utilisateurs** bénéficient gratuitement de :
+
+- IA locale embarquée (OCR, suggestions, tri de photos…)
+- Analyse IA maître en local
+- Application fluide et intelligente, même hors ligne
+
+Cependant :
+
+- Toutes les **données utiles** (anonymisées, compressées) sont **systématiquement transmises à l’IA cloud**, pour nourrir l’apprentissage global
+- En **version gratuite**, **aucune synchronisation descendante n’est active** : l’IA locale **ne reçoit pas de mises à jour** depuis le cloud
+
+La **synchronisation IA descendante** (mise à jour des modèles, amélioration continue des suggestions, affinement comportemental) est **réservée aux comptes premium ou autorisés**.
+
+Ce fonctionnement garantit une IA collective toujours plus performante, tout en **préservant la gratuité**, en **limitant les coûts cloud** et en **réservant la puissance IA complète aux utilisateurs engagés**.
 
 📌 À venir / pistes futures IA
 
@@ -139,5 +155,6 @@ Apprendre automatiquement sans dépendre du cloud pour chaque action
 Être optimisée en coût, intelligente dans la collecte, transparente dans l’usage
 
 Elle devient un partenaire évolutif dans le suivi de l’animal, et plus il y aura d’utilisateurs, plus elle deviendra puissante — au service de tous.
+
 
 

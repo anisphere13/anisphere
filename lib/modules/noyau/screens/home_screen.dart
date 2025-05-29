@@ -17,6 +17,11 @@ import '../widgets/ia_chip.dart';
 import '../widgets/ia_suggestion_card.dart';
 import '../widgets/ia_log_viewer.dart';
 
+// 🔽 Import futurs widgets résumés de modules (ex : santé, dressage, éducation)
+import '../../modules/sante/widgets/sante_summary_card.dart';
+import '../../modules/dressage/widgets/dressage_summary_card.dart';
+// ... ajoute d’autres ici selon les modules actifs
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -37,7 +42,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _initIA() async {
     await IAMaster().initialize();
 
-    // Exemple de contexte IA simulé
     final context = IAContext(
       isOffline: false,
       isFirstLaunch: false,
@@ -50,6 +54,23 @@ class _HomeScreenState extends State<HomeScreen> {
       iaActions = actions;
       iaReady = true;
     });
+  }
+
+  /// 🧩 Génère dynamiquement les widgets des modules actifs
+  List<Widget> _buildModuleSummaries() {
+    final modules = Provider.of<UserProvider>(context, listen: false).user?.moduleRoles.keys ?? [];
+    final List<Widget> widgets = [];
+
+    if (modules.contains("sante")) {
+      widgets.add(const SanteSummaryCard()); // résumé module Santé
+    }
+    if (modules.contains("dressage")) {
+      widgets.add(const DressageSummaryCard()); // résumé module Dressage
+    }
+    // 🔽 Ajoute d’autres modules ici
+    // if (modules.contains("education")) widgets.add(const EducationSummaryCard());
+
+    return widgets;
   }
 
   @override
@@ -78,22 +99,23 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: CustomScrollView(
         slivers: [
-          // Header IA (scrollable + sticky à venir)
+          // 📌 Widgets IA
           SliverToBoxAdapter(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const IABanner(
+              children: const [
+                IABanner(
                   message: "Mode IA : Local uniquement (démo)",
                   icon: Icons.lightbulb_outline,
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: IAChip(label: "UX adaptative"),
                 ),
               ],
             ),
           ),
+
           if (iaReady && iaActions.isNotEmpty)
             SliverList(
               delegate: SliverChildBuilderDelegate(
@@ -108,10 +130,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 childCount: iaActions.length,
               ),
             ),
+
+          // 🧠 Logs IA
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: IALogViewer(),
+            ),
+          ),
+
+          // 🧩 Résumés des modules actifs
+          SliverToBoxAdapter(
+            child: Column(
+              children: _buildModuleSummaries(),
             ),
           ),
         ],
