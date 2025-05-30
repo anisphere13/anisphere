@@ -4,6 +4,7 @@
 
 library;
 
+import 'package:flutter/foundation.dart';  // Ajout de cet import pour kDebugMode
 import 'package:anisphere/modules/identite/models/identity_model.dart';
 import 'package:anisphere/modules/noyau/logic/ia_master.dart';
 

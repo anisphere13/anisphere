@@ -45,4 +45,15 @@ class ModulesService {
     }
     return result;
   }
+
+  /// 🧳 Méthode fictive pour compatibilité avec IAExecutor
+  Future<void> getAllStatuses() async {
+    // Retourne un statut global, à utiliser pour IAExecutor
+    return getAllModulesStatus();
+  }
+
+  /// 💡 Méthode fictive pour compatibilité avec IAExecutor
+  Future<void> setActive(String moduleName) async {
+    await activate(moduleName);
+  }
 }

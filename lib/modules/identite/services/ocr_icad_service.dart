@@ -1,10 +1,12 @@
 /// Copilot Prompt : OCRICADService pour AniSphère.
 /// Analyse les documents I-CAD, LOF, carnet papier.
 /// Extrait puce, nom, race, dates, identifiants via OCR (Tesseract + RegEx).
+
 library;
+
 import 'dart:io';
-import 'package:flutter/foundation.dart';
-import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
+import 'package:flutter/foundation.dart';  // Pour kDebugMode
+import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';  // Vérifie que ce package est bien installé
 
 /// OCRICADService pour AniSphère.
 /// Analyse les documents I-CAD, LOF, carnet papier.
