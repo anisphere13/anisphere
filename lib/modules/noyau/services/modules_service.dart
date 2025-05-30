@@ -38,7 +38,7 @@ class ModulesService {
   }
 
   /// 📦 Renvoie une map complète des modules avec leur statut
-  static Map<String, String> getAllModulesStatus() {
+  static Future<void> getAllModulesStatus() async {
     final Map<String, String> result = {};
     for (final module in allModules) {
       result[module] = getStatus(module);
