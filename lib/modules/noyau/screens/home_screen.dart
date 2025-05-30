@@ -12,7 +12,6 @@ import '../screens/login_screen.dart';
 
 import '../logic/ia_master.dart';
 import '../logic/ia_rule_engine.dart';
-import '../logic/ia_context.dart';
 
 import '../widgets/ia_banner.dart';
 import '../widgets/ia_chip.dart';
@@ -44,10 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _initIA() async {
     try {
-      await IAMaster().initialize();
+      await IAMaster.instance.initialize();
 
-      final context =
-          Provider.of<IAContextProvider>(context, listen: false).context;
       final actions = await IARuleEngine.analyzeAnimals([]);
 
       setState(() {

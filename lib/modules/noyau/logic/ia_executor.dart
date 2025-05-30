@@ -2,11 +2,7 @@
 /// Applique les décisions IA générées par `IAMaster`
 /// Ce moteur exécute : nettoyage, notifications, sync, suggestions UI
 /// Utilisé à l’accueil, au démarrage et lors des triggers IA
-/// 🧠 IAExecutor — AniSphère
-/// Applique les décisions IA générées par `IAMaster`
-/// Ce moteur exécute : nettoyage, notifications, sync, suggestions UI
-/// Utilisé à l’accueil, au démarrage et lors des triggers IA
-
+library;
 import 'package:flutter/foundation.dart';
 
 import 'ia_master.dart';
@@ -50,15 +46,15 @@ class IAExecutor {
   Future<void> _applyAction(String action, IAContext context) async {
     switch (action) {
       case 'sync_animals':
-        await animalService.syncAnimalsWithCloud();
+        await animalService.syncAnimalsWithCloud?.call();
         break;
 
       case 'deactivate_unused_modules':
-        await modulesService.deactivateUnusedModules();
+        await modulesService.deactivateUnusedModules?.call();
         break;
 
       case 'notify_identity_update_needed':
-        await notificationService.sendLocalNotification(
+        await notificationService.sendLocalNotification?.call(
           title: 'Identité animale à mettre à jour',
           body: 'Une fiche identité n’a pas été actualisée depuis 12 mois.',
         );
@@ -69,10 +65,9 @@ class IAExecutor {
         break;
 
       default:
-        assert(() {
-          debugPrint('⚠️ Action IA inconnue : $action');
-          return true;
-        }());
+        if (kDebugMode) {
+          print('⚠️ Action IA inconnue : $action');
+        }
         IALogger.log(
           channel: IAChannel.execution,
           message: '⚠️ Action inconnue ignorée : $action',
@@ -81,3 +76,4 @@ class IAExecutor {
     }
   }
 }
+

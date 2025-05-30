@@ -2,6 +2,7 @@
 /// Gère la liste locale des animaux via AnimalService.
 /// Permet d’ajouter, supprimer, synchroniser et notifier l’UI.
 /// IA-compatible, optimisé offline-first et modulaire.
+library;
 
 import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';

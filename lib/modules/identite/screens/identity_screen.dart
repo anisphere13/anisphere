@@ -94,3 +94,4 @@ class _IdentityScreenState extends State<IdentityScreen> {
     );
   }
 }
+//       title: const Text("AniSphère - Identité de l’animal"),

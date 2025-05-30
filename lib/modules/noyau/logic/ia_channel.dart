@@ -1,4 +1,5 @@
 /// 🎯 Canaux de logs IA AniSphère (tri par type de message)
+library;
 
 enum IAChannel {
   system,

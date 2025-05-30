@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:anisphere/modules/identite/services/ocr_icad_service.dart';
 
 void main() {
   test('RegExp extracts microchip number', () {

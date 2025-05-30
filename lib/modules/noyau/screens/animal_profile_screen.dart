@@ -6,8 +6,6 @@
 
 library;
 
-library;
-
 import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
 import 'package:anisphere/modules/noyau/widgets/ia_chip.dart';

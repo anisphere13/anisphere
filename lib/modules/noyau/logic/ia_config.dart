@@ -2,6 +2,7 @@
 /// Contient les paramètres de configuration IA (seuils, flags, options actives),
 /// modifiables dans le futur via Remote Config.
 /// Utilisé par les modules IA, UX adaptative, alertes intelligentes.
+library;
 
 class IAConfig {
   /// ⏱️ Inactivité d’un animal (en jours)

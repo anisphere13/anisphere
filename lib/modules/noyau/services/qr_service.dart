@@ -2,6 +2,7 @@
 /// Génère des QR codes (texte, URL, ID), et intègre un scanner mobile.
 /// Utilise qr_flutter pour l'affichage, mobile_scanner pour la lecture.
 /// Prévu pour la synchronisation d’animaux, d'utilisateurs et de partages IA.
+library;
 
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';

@@ -116,7 +116,7 @@ class UserModel {
       role: json['role'] ?? 'user',
       iaPremium: json['iaPremium'] ?? false,
       lastIASync: json['lastIASync'] != null
-          ? DateTime.tryParse(json['lastIASync']) ?? null
+          ? DateTime.tryParse(json['lastIASync'])
           : null,
     );
   }

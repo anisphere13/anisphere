@@ -4,7 +4,6 @@
 
 library;
 
-import 'package:flutter/foundation.dart';
 import '../models/animal_model.dart';
 
 class IARules {

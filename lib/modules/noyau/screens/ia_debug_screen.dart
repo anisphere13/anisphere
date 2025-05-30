@@ -2,6 +2,8 @@
 /// Accès masqué dans l’app, destiné à la maintenance technique IA
 /// Affiche logs, flags, stats IA internes.
 
+library;
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -34,25 +36,29 @@ class _IADebugScreenState extends State<IADebugScreen> {
       final lastSyncDate =
           LocalStorageService.get("last_ia_sync", defaultValue: "Jamais");
       // Simule un contexte minimal pour la décision IA
-      uxMode = IAMaster().decideUXMode(
+      uxMode = IAMaster.instance.decideUXMode(
         isFirstLaunch: false,
         isOffline: false,
         hasAnimals: true,
       );
-      setState(() {
-        logs = iaLogs.reversed.toList();
-        lastSync = lastSyncDate;
-      });
+      if (mounted) {
+        setState(() {
+          logs = iaLogs.reversed.toList();
+          lastSync = lastSyncDate;
+        });
+      }
     } catch (e) {
       // Log uniquement en debug
       assert(() {
         debugPrint("❌ Erreur chargement debug IA : $e");
         return true;
       }());
-      setState(() {
-        logs = [];
-        lastSync = "Erreur";
-      });
+      if (mounted) {
+        setState(() {
+          logs = [];
+          lastSync = "Erreur";
+        });
+      }
     }
   }
 
@@ -118,3 +124,5 @@ class _IADebugScreenState extends State<IADebugScreen> {
     );
   }
 }
+// import 'package:flutter/material.dart';
+// import 'package:provider/provider.dart';

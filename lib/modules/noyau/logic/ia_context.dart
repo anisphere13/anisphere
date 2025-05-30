@@ -1,6 +1,7 @@
 /// Copilot Prompt : Contexte IA local pour AniSphère.
 /// Centralise les infos critiques du contexte utilisateur (hors-ligne, animaux, 1er lancement).
 /// Permet à IAMaster ou IARuleEngine de prendre des décisions locales intelligentes.
+library;
 
 class IAContext {
   final bool isOffline;

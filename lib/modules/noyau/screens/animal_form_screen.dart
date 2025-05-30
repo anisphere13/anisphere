@@ -3,6 +3,7 @@
 /// Prévu pour accueillir plus tard l’upload de documents avec OCR IA.
 /// Champs : nom, espèce, race, date de naissance, photo.
 /// L’animal est ensuite enregistré via AnimalService (Hive + Firebase).
+library;
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';

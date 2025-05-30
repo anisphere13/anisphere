@@ -3,6 +3,7 @@
 /// Intègre un bouton “Identité” vers `IdentityScreen` avec `IdentityService`.
 /// Préparé pour afficher les modules IA, l’historique, et la fiche publique.
 /// Suivi du branding AniSphère et UX à la Samsung Health.
+library;
 
 import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
@@ -44,12 +45,8 @@ class AnimalScreen extends StatelessWidget {
                 _buildRow("Nom", animal.name),
                 _buildRow("Espèce", animal.species),
                 _buildRow("Race", animal.breed),
-                _buildRow(
-                  "Date de naissance",
-                  animal.birthDate != null
-                      ? "${animal.birthDate.day}/${animal.birthDate.month}/${animal.birthDate.year}"
-                      : "Non renseignée",
-                ),
+// TODO: birthDate non défini dans AnimalModel – à corriger ou ajouter plus tard
+_buildRow("Date de naissance", "Non renseignée"),
                 const SizedBox(height: 30),
                 Center(
                   child: ElevatedButton.icon(

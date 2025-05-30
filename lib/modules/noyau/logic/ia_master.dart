@@ -2,10 +2,9 @@
 /// Coordonne la logique IA (locale & future cloud)
 /// Centralise les décisions, les logs et la stratégie IA
 /// Utilisé au démarrage, dans les exécuteurs IA et dans la logique UX
-
+library;
 import 'package:flutter/foundation.dart';
 import '../services/local_storage_service.dart';
-import '../services/firebase_service.dart';
 import 'ia_logger.dart';
 import 'ia_flag.dart';
 import 'ia_channel.dart';
@@ -16,10 +15,7 @@ class IAMaster {
   static const String _iaLogsKey = "ia_logs";
   static const String _lastSyncKey = "last_ia_sync";
 
-  final FirebaseService _firebaseService;
-
-  IAMaster._internal({FirebaseService? firebaseService})
-      : _firebaseService = firebaseService ?? FirebaseService();
+  IAMaster._internal();
 
   /// 🧠 Initialisation IA (au lancement)
   Future<void> initialize() async {
@@ -29,7 +25,7 @@ class IAMaster {
     }());
     await IALogger.log(
       message: "IA_START",
-      channel: IAChannel.master,
+      channel: IAChannel.execution,
     );
   }
 
@@ -37,13 +33,13 @@ class IAMaster {
   Future<void> syncCloudIA() async {
     await IALogger.log(
       message: "SYNC_CLOUD_START",
-      channel: IAChannel.master,
+      channel: IAChannel.execution,
     );
     await Future.delayed(const Duration(seconds: 1));
     await recordSync();
     await IALogger.log(
       message: "SYNC_CLOUD_SUCCESS",
-      channel: IAChannel.master,
+      channel: IAChannel.execution,
     );
     assert(() {
       debugPrint("☁️ Sync IA cloud terminée.");
@@ -80,7 +76,7 @@ class IAMaster {
         await LocalStorageService.set(_iaLogsKey, trimmed);
         await IALogger.log(
           message: "LOGS_TRIMMED",
-          channel: IAChannel.master,
+          channel: IAChannel.execution,
         );
       }
     } catch (e) {

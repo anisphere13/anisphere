@@ -1,8 +1,6 @@
 // 📁 test/noyau/unit/ia_executor_test.dart
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
-import 'package:anisphere/modules/noyau/logic/ia_executor.dart';
 
 // Crée ici les mocks de tes services : IAMaster, NotificationService, etc.
 

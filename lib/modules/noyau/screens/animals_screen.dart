@@ -13,6 +13,7 @@ import 'package:anisphere/modules/noyau/services/animal_service.dart';
 import 'package:anisphere/modules/noyau/widgets/animal_card.dart';
 import 'package:anisphere/modules/noyau/widgets/ia_suggestion_card.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
+import 'package:hive/hive.dart'; // Manquant pour accès direct à Hive
 
 class AnimalsScreen extends StatefulWidget {
   const AnimalsScreen({super.key});
@@ -31,16 +32,16 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
     _loadAnimals();
   }
 
+  /// Charge les animaux depuis Hive via AnimalService.
   Future<void> _loadAnimals() async {
     try {
       await _animalService.init();
-      final box = _animalService.getBox();
-      if (box != null) {
-        setState(() {
-          _animals = box.values.toList();
-        });
-      }
+      final box = Hive.box<AnimalModel>('animalsBox');
+      setState(() {
+        _animals = box.values.toList();
+      });
     } catch (e) {
+      // Log uniquement en debug
       assert(() {
         debugPrint("❌ Erreur chargement animaux : $e");
         return true;
@@ -60,7 +61,7 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
             context,
             MaterialPageRoute(builder: (_) => const AnimalFormScreen()),
           );
-          _loadAnimals();
+          await _loadAnimals();
         },
         child: const Icon(Icons.add),
       ),
@@ -79,7 +80,7 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
                     MaterialPageRoute(
                         builder: (_) => const AnimalFormScreen()),
                   );
-                  _loadAnimals();
+                  await _loadAnimals();
                 },
               ),
             )

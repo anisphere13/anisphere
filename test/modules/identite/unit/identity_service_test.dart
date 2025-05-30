@@ -3,7 +3,6 @@ import 'package:anisphere/modules/identite/models/identity_model.dart';
 import 'package:anisphere/modules/identite/services/identity_service.dart';
 import 'package:hive/hive.dart';
 import 'package:mockito/mockito.dart';
-import 'dart:async';
 
 class MockBox extends Mock implements Box<IdentityModel> {}
 

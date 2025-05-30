@@ -1,7 +1,9 @@
 /// Copilot Prompt : OCRICADService pour AniSphère.
 /// Analyse les documents I-CAD, LOF, carnet papier.
 /// Extrait puce, nom, race, dates, identifiants via OCR (Tesseract + RegEx).
+library;
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 
 /// OCRICADService pour AniSphère.
@@ -43,11 +45,9 @@ class OCRICADService {
 
       return data;
     } catch (e) {
-      // Log uniquement en debug
-      assert(() {
-        debugPrint("❌ [OCRICADService] Erreur extraction OCR : $e");
-        return true;
-      }());
+      if (kDebugMode) {
+        print("❌ [OCRICADService] Erreur extraction OCR : $e");
+      }
       return {};
     }
   }
