@@ -8,6 +8,10 @@ library;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'package:uuid/uuid.dart';
+
+import '../models/animal_model.dart';
+import '../services/animal_service.dart';
 
 class AnimalFormScreen extends StatefulWidget {
   const AnimalFormScreen({super.key});
@@ -18,12 +22,13 @@ class AnimalFormScreen extends StatefulWidget {
 
 class _AnimalFormScreenState extends State<AnimalFormScreen> {
   final _formKey = GlobalKey<FormState>();
-
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _speciesController = TextEditingController();
-  final TextEditingController _breedController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _speciesController = TextEditingController();
+  final _breedController = TextEditingController();
   DateTime? _birthDate;
   XFile? _image;
+
+  final AnimalService _animalService = AnimalService();
 
   Future<void> _pickImage() async {
     final picker = ImagePicker();
@@ -33,11 +38,43 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
         setState(() => _image = picked);
       }
     } catch (e) {
-      // Log uniquement en debug
       assert(() {
-        debugPrint("❌ Erreur lors de la sélection d'image : $e");
+        debugPrint("❌ Erreur sélection image : $e");
         return true;
       }());
+    }
+  }
+
+  Future<void> _saveAnimal() async {
+    try {
+      await _animalService.init();
+
+      final newAnimal = AnimalModel(
+        id: const Uuid().v4(),
+        name: _nameController.text.trim(),
+        species: _speciesController.text.trim(),
+        breed: _breedController.text.trim(),
+        imageUrl: '', // TODO: à remplir avec URL après upload
+        ownerId: 'owner-1', // TODO: à remplacer par userProvider.user.id
+        createdAt: DateTime.now(),
+        updatedAt: DateTime.now(),
+        birthDate: _birthDate,
+      );
+
+      final success = await _animalService.saveAnimal(newAnimal);
+
+      if (success && mounted) {
+        Navigator.pop(context);
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Erreur lors de l’enregistrement.")),
+        );
+      }
+    } catch (e) {
+      debugPrint("❌ Erreur _saveAnimal : $e");
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Une erreur est survenue.")),
+      );
     }
   }
 
@@ -79,12 +116,7 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
                 icon: const Icon(Icons.check),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    // TODO : enregistrement via AnimalService
-                    assert(() {
-                      debugPrint("✅ Animal enregistré !");
-                      return true;
-                    }());
-                    Navigator.pop(context);
+                    _saveAnimal();
                   }
                 },
                 style: ElevatedButton.styleFrom(

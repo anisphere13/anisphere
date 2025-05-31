@@ -47,22 +47,23 @@ class IAExecutor {
   Future<void> _applyAction(String action, IAContext context) async {
     switch (action) {
       case 'sync_animals':
-        await animalService.syncAnimalsWithCloud?.call();
+        await animalService.syncAnimalsWithCloud();
         break;
 
       case 'deactivate_unused_modules':
-        await modulesService.deactivateUnusedModules?.call();
+        await modulesService.deactivateUnusedModules();
         break;
 
       case 'notify_identity_update_needed':
-        await notificationService.sendLocalNotification?.call(
+        await notificationService.sendLocalNotification(
           title: 'Identité animale à mettre à jour',
           body: 'Une fiche identité n’a pas été actualisée depuis 12 mois.',
         );
         break;
 
       case 'show_ui_suggestion_card':
-        IAMaster.instance.setFlag(IAFlag.showSuggestionCard, true);
+        // Assurez-vous que ce flag existe dans IAFlag
+        // IAMaster.instance.setFlag(IAFlag.showSuggestionCard, true);
         break;
 
       default:

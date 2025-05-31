@@ -38,7 +38,7 @@ class ModulesService {
   }
 
   /// 📦 Renvoie une map complète des modules avec leur statut
-  static Future<void> getAllModulesStatus() async {
+  static Future<Map<String, String>> getAllModulesStatus() async {
     final Map<String, String> result = {};
     for (final module in allModules) {
       result[module] = getStatus(module);
@@ -46,13 +46,23 @@ class ModulesService {
     return result;
   }
 
-  /// 🧳 Méthode fictive pour compatibilité avec IAExecutor
-  Future<void> getAllStatuses() async {
-    // Retourne un statut global, à utiliser pour IAExecutor
+  /// ✅ Rend compatible IAExecutor : désactivation des modules inactifs
+  Future<void> deactivateUnusedModules() async {
+    for (final module in allModules) {
+      final status = getStatus(module);
+      if (status != "actif") {
+        // Exemple : on pourrait forcer une action, log ou nettoyage
+      }
+    }
+    // Rien à faire ici pour l’instant, méthode factice pour compatibilité IA
+  }
+
+  /// 📦 Méthode utilisée dans IAExecutor (correctif type)
+  Future<Map<String, String>> getAllStatuses() async {
     return getAllModulesStatus();
   }
 
-  /// 💡 Méthode fictive pour compatibilité avec IAExecutor
+  /// Méthode compatible IA pour activation rapide
   Future<void> setActive(String moduleName) async {
     await activate(moduleName);
   }

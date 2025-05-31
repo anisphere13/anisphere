@@ -21,10 +21,8 @@ class AuthService {
   })  : _auth = firebaseAuth ?? FirebaseAuth.instance,
         _userService = userService ?? UserService();
 
-  /// 🔎 Utilisateur actuellement connecté
   User? get currentUser => _auth.currentUser;
 
-  /// 📩 Connexion avec email / mot de passe
   Future<UserModel?> signInWithEmail(String email, String password) async {
     return await _signIn(() async {
       final credential = await _auth.signInWithEmailAndPassword(
@@ -35,7 +33,6 @@ class AuthService {
     });
   }
 
-  /// 🆕 Inscription avec email / mot de passe
   Future<UserModel?> signUpWithEmail({
     required String name,
     required String email,
@@ -68,7 +65,6 @@ class AuthService {
     }
   }
 
-  /// 🔐 Connexion avec Google
   Future<UserModel?> signInWithGoogle() async {
     return await _signIn(() async {
       final googleUser = await GoogleSignIn().signIn();
@@ -91,7 +87,6 @@ class AuthService {
     });
   }
 
-  /// 🍏 Connexion avec Apple
   Future<UserModel?> signInWithApple() async {
     AuthorizationCredentialAppleID? appleIdCredential;
 
@@ -118,7 +113,6 @@ class AuthService {
     });
   }
 
-  /// 🔎 Récupérer l'utilisateur actuel depuis Firestore
   Future<UserModel?> getCurrentUser() async {
     final current = currentUser;
     if (current != null) {
@@ -127,7 +121,6 @@ class AuthService {
     return null;
   }
 
-  /// 🔓 Déconnexion
   Future<void> signOut() async {
     if (currentUser != null) {
       await _auth.signOut();
@@ -135,7 +128,6 @@ class AuthService {
     }
   }
 
-  /// 🔁 Réinitialisation du mot de passe
   Future<void> resetPassword(String email) async {
     try {
       await _auth.sendPasswordResetEmail(email: email);
@@ -145,7 +137,6 @@ class AuthService {
     }
   }
 
-  /// 🔒 Vérification de l'email
   Future<void> verifyEmail() async {
     final user = currentUser;
     if (user != null && !user.emailVerified) {
@@ -154,7 +145,6 @@ class AuthService {
     }
   }
 
-  /// Méthode privée pour gérer les connexions
   Future<UserModel?> _signIn(
     Future<User?> Function() signInMethod, {
     UserModel Function(User)? createDefaultUser,
@@ -175,7 +165,6 @@ class AuthService {
     }
   }
 
-  /// Méthode privée pour créer un utilisateur par défaut
   UserModel _createDefaultUser({
     required String id,
     required String name,
@@ -195,12 +184,15 @@ class AuthService {
       ownedAnimals: [],
       preferences: {"theme": "light", "notifications": true},
       moduleRoles: {},
+      activeModules: const [],
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
+      role: "user",
+      iaPremium: false,
+      lastIASync: null,
     );
   }
 
-  /// Méthode privée pour logguer les erreurs
   void _logError(String context, Object error) {
     debugPrint("❌ $context : $error");
   }

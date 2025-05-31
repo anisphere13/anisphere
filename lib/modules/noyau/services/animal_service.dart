@@ -131,6 +131,28 @@ class AnimalService {
     }
   }
 
+  /// 📦 Accès direct à la box locale (ex : pour les providers)
+  Future<Box<AnimalModel>> getLocalBox() async {
+    await _initHive();
+    if (_animalBox == null) {
+      throw Exception("Animal box non initialisée !");
+    }
+    return _animalBox!;
+  }
+
+  /// 🔁 Synchronise tous les animaux depuis Firebase
+  Future<void> syncAnimalsWithCloud() async {
+    try {
+      final remoteAnimals = await _firebaseService.getAllAnimals();
+      for (final animal in remoteAnimals) {
+        await updateLocalAnimal(animal);
+      }
+      _log("🔁 Tous les animaux synchronisés depuis le cloud.");
+    } catch (e) {
+      _log("❌ Erreur de synchronisation globale : $e");
+    }
+  }
+
   /// 🔒 Log conditionné par kDebugMode
   void _log(String message) {
     if (kDebugMode) {

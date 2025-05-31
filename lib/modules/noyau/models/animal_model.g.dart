@@ -25,13 +25,14 @@ class AnimalModelAdapter extends TypeAdapter<AnimalModel> {
       ownerId: fields[5] as String,
       createdAt: fields[6] as DateTime,
       updatedAt: fields[7] as DateTime,
+      birthDate: fields[8] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, AnimalModel obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -47,7 +48,9 @@ class AnimalModelAdapter extends TypeAdapter<AnimalModel> {
       ..writeByte(6)
       ..write(obj.createdAt)
       ..writeByte(7)
-      ..write(obj.updatedAt);
+      ..write(obj.updatedAt)
+      ..writeByte(8)
+      ..write(obj.birthDate);
   }
 
   @override

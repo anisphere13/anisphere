@@ -2,7 +2,7 @@
 /// Sérialisable Hive et Firebase. Contient rôles, préférences, animaux, timestamps.
 /// Prévu pour une app IA, offline-first, multi-rôle et multi-module.
 
-library;
+library user_model;
 
 import 'package:hive/hive.dart';
 
@@ -44,7 +44,7 @@ class UserModel {
   final DateTime createdAt;
 
   @HiveField(11)
-  DateTime updatedAt;
+  final DateTime updatedAt;
 
   @HiveField(12)
   final List<String> activeModules;
@@ -77,7 +77,8 @@ class UserModel {
     this.lastIASync,
   });
 
-  void updateTimestamp() => updatedAt = DateTime.now();
+  /// ⚠️ Supprimé car 'updatedAt' est final :
+  /// void updateTimestamp() => updatedAt = DateTime.now();
 
   Map<String, dynamic> toJson() => {
         'id': id,

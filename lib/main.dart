@@ -39,7 +39,7 @@ void main() async {
     }());
   }
 
-  // 📦 Hive
+  // 📦 Hive + Local Storage
   try {
     await Hive.initFlutter();
     await LocalStorageService.init();
@@ -54,9 +54,13 @@ void main() async {
     }());
   }
 
+  // 🔔 Notifications (optionnel)
+  await NotificationService.initialize();
+
   // 🔄 Services
   final userService = UserService();
   final authService = AuthService();
+
   try {
     await userService.init();
   } catch (e) {
@@ -139,7 +143,6 @@ class SplashScreenState extends State<SplashScreen> {
 
     if (!mounted) return;
 
-    // ⏱️ Initialisation dynamique du contexte IA
     await iaContextProvider.init(
       isOffline: false,
       animalService: AnimalService(),
@@ -148,7 +151,6 @@ class SplashScreenState extends State<SplashScreen> {
 
     final contextIA = iaContextProvider.context;
 
-    // 🧠 IA maîtresse : initialisation + planification
     final iaExecutor = IAExecutor(
       iaMaster: IAMaster.instance,
       notificationService: NotificationService(),

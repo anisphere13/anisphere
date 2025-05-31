@@ -3,7 +3,6 @@
 /// Intègre des sections IA (actions personnalisées, stats), modules actifs,
 /// et une future timeline (santé, éducation, dressage, etc.).
 /// Prêt pour évolutions IA cloud + formations IA premium.
-
 library;
 
 import 'package:flutter/material.dart';
@@ -89,8 +88,18 @@ class AnimalProfileScreen extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12),
         child: animal.imageUrl.isNotEmpty
-            ? Image.network(animal.imageUrl, width: 120, height: 120, fit: BoxFit.cover)
-            : Image.asset("assets/images/placeholder.png", width: 120, height: 120),
+            ? Image.network(
+                animal.imageUrl,
+                width: 120,
+                height: 120,
+                fit: BoxFit.cover,
+              )
+            : Container(
+                width: 120,
+                height: 120,
+                color: Colors.grey.shade300,
+                child: const Icon(Icons.pets, size: 48, color: Colors.grey),
+              ),
       ),
     );
   }

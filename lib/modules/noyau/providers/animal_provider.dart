@@ -7,6 +7,7 @@ library;
 import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
 import 'package:anisphere/modules/noyau/services/animal_service.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class AnimalProvider extends ChangeNotifier {
   final AnimalService _animalService;
@@ -24,7 +25,7 @@ class AnimalProvider extends ChangeNotifier {
   /// 📥 Chargement des animaux locaux
   Future<void> _loadLocalAnimals() async {
     try {
-      final box = await _animalService._initHive();
+      final box = await _animalService.getLocalBox(); // ✅ remplacement ici
       final Map<String, AnimalModel> loaded = {};
       for (var key in box.keys) {
         final animal = box.get(key);
@@ -37,7 +38,6 @@ class AnimalProvider extends ChangeNotifier {
         ..addAll(loaded);
       notifyListeners();
     } catch (e) {
-      // Log uniquement en debug
       assert(() {
         debugPrint("❌ Erreur chargement animaux locaux : $e");
         return true;

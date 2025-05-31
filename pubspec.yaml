@@ -31,6 +31,7 @@ dependencies:
   firebase_storage: ^12.4.6
   firebase_messaging: ^15.2.6
   firebase_data_connect: ^0.1.5
+  uuid: ^4.0.0
 
   # 🔑 Auth
   google_sign_in: ^6.2.0

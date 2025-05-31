@@ -3,7 +3,8 @@
 /// Utilise FirebaseAuth + Firestore.
 /// Inclut gestion des erreurs, logs conditionnels, fusion automatique des données.
 /// IA-ready et modulaire.
-library;
+
+library firebase_service;
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -28,15 +29,14 @@ class FirebaseService {
       await auth.signOut();
       debugPrint("✅ Utilisateur déconnecté.");
     } catch (e) {
-      debugPrint("❌ Erreur déconnexion Firebase : $e");
+      _logError("signOut", e);
     }
   }
 
   /// 💾 Sauvegarder ou mettre à jour un utilisateur
   Future<bool> saveUser(UserModel user) async {
+    if (user.id.isEmpty) return false;
     try {
-      if (user.id.isEmpty) return false;
-
       await db.collection('users').doc(user.id).set(
             user.toJson(),
             SetOptions(merge: true),
@@ -44,45 +44,42 @@ class FirebaseService {
       debugPrint("✅ Utilisateur sauvegardé : ${user.email}");
       return true;
     } catch (e) {
-      debugPrint("❌ Erreur enregistrement utilisateur : $e");
+      _logError("saveUser", e);
       return false;
     }
   }
 
   /// 🔄 Récupération utilisateur
   Future<UserModel?> getUser(String userId) async {
+    if (userId.isEmpty) return null;
     try {
-      if (userId.isEmpty) return null;
-
       final doc = await db.collection('users').doc(userId).get();
       if (doc.exists && doc.data() != null) {
         return UserModel.fromJson(doc.data() as Map<String, dynamic>);
       }
     } catch (e) {
-      debugPrint("❌ Erreur récupération utilisateur : $e");
+      _logError("getUser", e);
     }
     return null;
   }
 
   /// 🗑️ Suppression utilisateur
   Future<bool> deleteUser(String userId) async {
+    if (userId.isEmpty) return false;
     try {
-      if (userId.isEmpty) return false;
-
       await db.collection('users').doc(userId).delete();
       debugPrint("✅ Utilisateur supprimé : $userId");
       return true;
     } catch (e) {
-      debugPrint("❌ Erreur suppression utilisateur : $e");
+      _logError("deleteUser", e);
       return false;
     }
   }
 
   /// 🐾 Sauvegarder ou mettre à jour un animal
   Future<bool> saveAnimal(AnimalModel animal) async {
+    if (animal.id.isEmpty) return false;
     try {
-      if (animal.id.isEmpty) return false;
-
       await db.collection('animals').doc(animal.id).set(
             animal.toJson(),
             SetOptions(merge: true),
@@ -90,37 +87,61 @@ class FirebaseService {
       debugPrint("✅ Animal sauvegardé : ${animal.name}");
       return true;
     } catch (e) {
-      debugPrint("❌ Erreur enregistrement animal : $e");
+      _logError("saveAnimal", e);
       return false;
     }
   }
 
   /// 🔄 Récupération animal
   Future<AnimalModel?> getAnimal(String animalId) async {
+    if (animalId.isEmpty) return null;
     try {
-      if (animalId.isEmpty) return null;
-
       final doc = await db.collection('animals').doc(animalId).get();
       if (doc.exists && doc.data() != null) {
         return AnimalModel.fromJson(doc.data() as Map<String, dynamic>);
       }
     } catch (e) {
-      debugPrint("❌ Erreur récupération animal : $e");
+      _logError("getAnimal", e);
     }
     return null;
   }
 
   /// 🗑️ Suppression animal
   Future<bool> deleteAnimal(String animalId) async {
+    if (animalId.isEmpty) return false;
     try {
-      if (animalId.isEmpty) return false;
-
       await db.collection('animals').doc(animalId).delete();
       debugPrint("✅ Animal supprimé : $animalId");
       return true;
     } catch (e) {
-      debugPrint("❌ Erreur suppression animal : $e");
+      _logError("deleteAnimal", e);
       return false;
     }
+  }
+
+  /// 📥 Récupération de tous les animaux (pour un utilisateur ou global)
+  Future<List<AnimalModel>> getAllAnimals({String? ownerId}) async {
+    try {
+      QuerySnapshot<Map<String, dynamic>> query;
+      if (ownerId != null) {
+        query = await db
+            .collection('animals')
+            .where('ownerId', isEqualTo: ownerId)
+            .get();
+      } else {
+        query = await db.collection('animals').get();
+      }
+
+      return query.docs
+          .map((doc) => AnimalModel.fromJson(doc.data()))
+          .toList();
+    } catch (e) {
+      _logError("getAllAnimals", e);
+      return [];
+    }
+  }
+
+  void _logError(String context, Object error) {
+    debugPrint("❌ [$context] FirebaseService error : $error");
   }
 }

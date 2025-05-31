@@ -200,6 +200,12 @@ class UserService {
     }
   }
 
+  /// 📅 Récupère la date de dernière synchronisation (updatedAt) de l'utilisateur local
+  Future<DateTime?> getLastSyncDate() async {
+    final user = getUserFromHive();
+    return user?.updatedAt;
+  }
+
   /// Méthode privée pour logguer les erreurs
   void _logError(String context, Object error) {
     debugPrint("❌ Erreur $context : $error");

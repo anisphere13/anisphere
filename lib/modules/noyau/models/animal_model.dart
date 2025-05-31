@@ -1,7 +1,8 @@
 /// Copilot Prompt : Modèle d’animal pour AniSphère.
 /// Stockage Hive + export Firebase (toJson/fromJson), copie, updateAt.
-/// Champs : identité, espèce, race, image, propriétaire, timestamps.
+/// Champs : identité, espèce, race, image, date de naissance, propriétaire, timestamps.
 /// Utilisé dans le noyau pour la gestion des animaux.
+
 library;
 
 import 'package:hive/hive.dart';
@@ -26,13 +27,16 @@ class AnimalModel {
   final String imageUrl;
 
   @HiveField(5)
-  final String ownerId; // ID du propriétaire
+  final String ownerId;
 
   @HiveField(6)
   final DateTime createdAt;
 
   @HiveField(7)
   final DateTime updatedAt;
+
+  @HiveField(8)
+  final DateTime? birthDate;
 
   const AnimalModel({
     required this.id,
@@ -43,6 +47,7 @@ class AnimalModel {
     required this.ownerId,
     required this.createdAt,
     required this.updatedAt,
+    this.birthDate,
   });
 
   /// 🔄 Convertir l'objet en Map pour Firebase
@@ -56,6 +61,7 @@ class AnimalModel {
       'ownerId': ownerId,
       'createdAt': createdAt.toIso8601String(),
       'updatedAt': updatedAt.toIso8601String(),
+      'birthDate': birthDate?.toIso8601String(),
     };
   }
 
@@ -68,16 +74,14 @@ class AnimalModel {
       breed: json['breed'] ?? '',
       imageUrl: json['imageUrl'] ?? '',
       ownerId: json['ownerId'] ?? '',
-      createdAt: json['createdAt'] != null
-          ? DateTime.tryParse(json['createdAt']) ?? DateTime.now()
-          : DateTime.now(),
-      updatedAt: json['updatedAt'] != null
-          ? DateTime.tryParse(json['updatedAt']) ?? DateTime.now()
-          : DateTime.now(),
+      createdAt: DateTime.tryParse(json['createdAt'] ?? '') ?? DateTime.now(),
+      updatedAt: DateTime.tryParse(json['updatedAt'] ?? '') ?? DateTime.now(),
+      birthDate: json['birthDate'] != null
+          ? DateTime.tryParse(json['birthDate'])
+          : null,
     );
   }
 
-  /// 🔄 Créer une copie de l'animal avec des valeurs modifiées
   AnimalModel copyWith({
     String? id,
     String? name,
@@ -87,6 +91,7 @@ class AnimalModel {
     String? ownerId,
     DateTime? createdAt,
     DateTime? updatedAt,
+    DateTime? birthDate,
   }) {
     return AnimalModel(
       id: id ?? this.id,
@@ -97,6 +102,7 @@ class AnimalModel {
       ownerId: ownerId ?? this.ownerId,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
+      birthDate: birthDate ?? this.birthDate,
     );
   }
 }

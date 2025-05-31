@@ -13,7 +13,6 @@ import 'package:anisphere/modules/noyau/services/animal_service.dart';
 import 'package:anisphere/modules/noyau/widgets/animal_card.dart';
 import 'package:anisphere/modules/noyau/widgets/ia_suggestion_card.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
-import 'package:hive/hive.dart'; // Manquant pour accès direct à Hive
 
 class AnimalsScreen extends StatefulWidget {
   const AnimalsScreen({super.key});
@@ -32,16 +31,15 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
     _loadAnimals();
   }
 
-  /// Charge les animaux depuis Hive via AnimalService.
+  /// 📦 Charge les animaux depuis la box locale
   Future<void> _loadAnimals() async {
     try {
       await _animalService.init();
-      final box = Hive.box<AnimalModel>('animalsBox');
+      final box = await _animalService.getLocalBox();
       setState(() {
         _animals = box.values.toList();
       });
     } catch (e) {
-      // Log uniquement en debug
       assert(() {
         debugPrint("❌ Erreur chargement animaux : $e");
         return true;
@@ -70,15 +68,13 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
               padding: const EdgeInsets.all(16),
               child: IASuggestionCard(
                 title: "Aucun animal enregistré",
-                message:
-                    "Ajoutez un animal pour commencer le suivi intelligent.",
+                message: "Ajoutez un animal pour commencer le suivi intelligent.",
                 icon: Icons.pets,
                 actionLabel: "Ajouter maintenant",
                 onAction: () async {
                   await Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (_) => const AnimalFormScreen()),
+                    MaterialPageRoute(builder: (_) => const AnimalFormScreen()),
                   );
                   await _loadAnimals();
                 },
@@ -100,9 +96,7 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (_) => AnimalProfileScreen(
-                                    animal: animal,
-                                  ),
+                                  builder: (_) => AnimalProfileScreen(animal: animal),
                                 ),
                               );
                             },
