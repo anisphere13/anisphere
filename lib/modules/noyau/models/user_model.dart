@@ -2,7 +2,7 @@
 /// Sérialisable Hive et Firebase. Contient rôles, préférences, animaux, timestamps.
 /// Prévu pour une app IA, offline-first, multi-rôle et multi-module.
 
-library user_model;
+library;
 
 import 'package:hive/hive.dart';
 

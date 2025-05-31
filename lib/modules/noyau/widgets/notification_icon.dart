@@ -5,7 +5,6 @@
 library;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 
 class NotificationIcon extends StatelessWidget {
   final int unreadCount;

@@ -36,10 +36,10 @@ class ModulesSummaryService {
   Future<List<ModuleSummary>> generateSummaries() async {
     final List<ModuleSummary> summaries = [];
     final animals = await animalService.getAllAnimals();
-    final statuses = ModulesService.getAllModulesStatus();
+    final statuses = await ModulesService.getAllModulesStatus(); // ✅ await ici
 
     for (final module in ModulesService.allModules) {
-      final status = statuses[module];
+      final status = statuses[module]; // ✅ plus d’erreur ici
       if (status == "actif") {
         switch (module) {
           case "Santé":

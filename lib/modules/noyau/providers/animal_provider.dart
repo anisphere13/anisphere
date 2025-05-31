@@ -7,7 +7,6 @@ library;
 import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
 import 'package:anisphere/modules/noyau/services/animal_service.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class AnimalProvider extends ChangeNotifier {
   final AnimalService _animalService;
