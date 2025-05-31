@@ -37,7 +37,7 @@ class ModulesSummaryService {
     final List<ModuleSummary> summaries = [];
 
     final animals = await animalService.getAllAnimals();
-    final statuses = ModulesService.getAllModulesStatus(); // ⚠️ Pas de await (synchrone)
+    final statuses = await ModulesService.getAllModulesStatus(); // ✅ Correction : await ajouté
 
     for (final module in ModulesService.allModules) {
       final status = statuses[module] ?? "disponible";
@@ -99,4 +99,5 @@ class ModulesSummaryService {
 
     return summaries;
   }
-}
+  }
+  /// 📝 Génère un résumé textuel pour l'UI

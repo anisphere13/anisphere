@@ -1,4 +1,4 @@
-/// Copilot Prompt : Service de maintenance automatique pour le noyau AniSphère.
+/// Service de maintenance automatique pour le noyau AniSphère.
 /// Gère le nettoyage des logs, la purge Hive, la réinitialisation IA.
 /// Appelé périodiquement par le noyau ou à chaque lancement si besoin.
 /// Peut déclencher une sync IA ou une relance utilisateur.
@@ -52,15 +52,15 @@ class MaintenanceService {
   }
 
   /// 🔁 Relance la sync IA si trop ancienne
-  Future<void> autoSyncIfExpired() async {
+  Future<void> autoSyncIfExpired(String userId) async {
     final lastSyncStr =
         LocalStorageService.get("last_ia_sync", defaultValue: "") as String;
-    if (lastSyncStr.isEmpty) return await _ia.syncCloudIA();
+    if (lastSyncStr.isEmpty) return await _ia.syncCloudIA(userId);
 
     final lastSync = DateTime.tryParse(lastSyncStr);
     if (lastSync == null ||
         DateTime.now().difference(lastSync).inHours >= 12) {
-      await _ia.syncCloudIA();
+      await _ia.syncCloudIA(userId);
     }
   }
 }

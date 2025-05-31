@@ -34,12 +34,14 @@ class _SuperAdminScreenState extends State<SuperAdminScreen> {
   Future<void> _loadData() async {
     final fetchedLogs = IALogger.getLogs();
     final fetchedFlags = IAFlag.getAll();
-    final syncDate = await IAMaster.instance.getLastSync();
+    final syncDate = IAMaster.instance.getLastSyncDate();
 
     setState(() {
       logs = fetchedLogs.reversed.toList();
       flags = fetchedFlags;
-      lastSync = syncDate ?? "Jamais synchronisé";
+      lastSync = syncDate != null
+          ? "${syncDate.day}/${syncDate.month}/${syncDate.year} ${syncDate.hour}h${syncDate.minute.toString().padLeft(2, '0')}"
+          : "Jamais synchronisé";
     });
   }
 
@@ -49,8 +51,11 @@ class _SuperAdminScreenState extends State<SuperAdminScreen> {
   }
 
   Future<void> _forceSync() async {
-    await IAMaster.instance.syncCloudIA();
-    await _loadData();
+    final user = Provider.of<UserProvider>(context, listen: false).user;
+    if (user != null) {
+      await IAMaster.instance.syncCloudIA(user.id);
+      await _loadData();
+    }
   }
 
   @override

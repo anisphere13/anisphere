@@ -22,7 +22,7 @@ import 'package:anisphere/modules/noyau/logic/ia_executor.dart';
 import 'package:anisphere/modules/noyau/services/animal_service.dart';
 import 'package:anisphere/modules/noyau/services/modules_service.dart';
 import 'package:anisphere/modules/noyau/logic/ia_master.dart';
-import 'package:anisphere/modules/noyau/logic/notification_service.dart';
+import 'package:anisphere/modules/noyau/services/notification_service.dart';
 import 'package:anisphere/modules/noyau/providers/ia_context_provider.dart';
 
 class MainScreen extends StatefulWidget {

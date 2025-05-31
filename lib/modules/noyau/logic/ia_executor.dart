@@ -52,11 +52,8 @@ class IAExecutor {
         await animalService.syncAnimalsWithCloud();
         break;
 
-      // 🔥 Les actions 'sync_user' sont désactivées car non supportées dans IAContext actuel
       // case 'sync_user':
-      //   if (context.user != null) {
-      //     await context.syncUser();
-      //   }
+      //   // Non supporté dans IAContext actuel
       //   break;
 
       case 'deactivate_unused_modules':
@@ -71,7 +68,8 @@ class IAExecutor {
         break;
 
       case 'show_ui_suggestion_card':
-        iaMaster.setFlag(IAFlag.showSuggestionCard, true);
+        // Correction : IAFlag n'est pas un enum, pas de showSuggestionCard => activer enableSuggestions par exemple
+        IAFlag.enableSuggestions = true;
         break;
 
       default:
