@@ -1,7 +1,7 @@
 /// 🧠 modules_summary_service.dart — AniSphère
-/// Génère dynamiquement des résumés IA pour les modules actifs
+/// Génère dynamiquement des résumés IA pour les modules actifs.
 /// Utilisé sur l’écran d’accueil IA pour afficher une vue synthétique.
-/// Se base sur IAContext, les services locaux et l’état des modules.
+/// Dépend de IAContext, AnimalService et ModulesService.
 
 library;
 
@@ -12,7 +12,7 @@ import 'package:anisphere/modules/noyau/logic/ia_context.dart';
 class ModuleSummary {
   final String moduleName;
   final String summary;
-  final String icon; // Peut servir pour un widget visuel
+  final String icon; // Icône visuelle pour l'UI
   final bool isPremium;
 
   ModuleSummary({
@@ -32,14 +32,16 @@ class ModulesSummaryService {
     required this.context,
   });
 
-  /// 📦 Récupère les résumés IA pour les modules actifs
+  /// 📦 Récupère les résumés IA pour les modules actifs.
   Future<List<ModuleSummary>> generateSummaries() async {
     final List<ModuleSummary> summaries = [];
+
     final animals = await animalService.getAllAnimals();
-    final statuses = await ModulesService.getAllModulesStatus(); // ✅ await ici
+    final statuses = ModulesService.getAllModulesStatus(); // ⚠️ Pas de await (synchrone)
 
     for (final module in ModulesService.allModules) {
-      final status = statuses[module]; // ✅ plus d’erreur ici
+      final status = statuses[module] ?? "disponible";
+
       if (status == "actif") {
         switch (module) {
           case "Santé":
@@ -48,7 +50,7 @@ class ModulesSummaryService {
                 moduleName: "Santé",
                 summary: animals.isEmpty
                     ? "Aucun suivi de santé en cours"
-                    : "${animals.length} animaux enregistrés pour le suivi santé",
+                    : "${animals.length} animaux suivis en santé",
                 icon: "🩺",
                 isPremium: false,
               ),
@@ -61,7 +63,7 @@ class ModulesSummaryService {
                 moduleName: "Éducation",
                 summary: context.animalCount == 0
                     ? "Aucun apprentissage lancé"
-                    : "${context.animalCount} animaux à accompagner",
+                    : "${context.animalCount} animaux en apprentissage",
                 icon: "📚",
                 isPremium: false,
               ),
@@ -72,13 +74,16 @@ class ModulesSummaryService {
             summaries.add(
               ModuleSummary(
                 moduleName: "Dressage",
-                summary: "Dressage intelligent disponible",
+                summary: context.hasAnimals
+                    ? "Dressage disponible pour ${context.animalCount} animaux"
+                    : "Aucun animal enregistré pour le dressage",
                 icon: "🎯",
                 isPremium: true,
               ),
             );
             break;
 
+          // 🔽 Ajoute ici les futurs modules avec des résumés spécifiques.
           default:
             summaries.add(
               ModuleSummary(

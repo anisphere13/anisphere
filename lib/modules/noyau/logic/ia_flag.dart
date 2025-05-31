@@ -10,6 +10,9 @@ class IAFlag {
   static bool enableDebugLogs = true;
   static bool offlineOnly = false;
 
+  // Ajout du flag manquant pour compatibilité avec IAExecutor
+  static const String showSuggestionCard = "show_ui_suggestion_card";
+
   /// 🔄 Reset à l'état par défaut
   static void reset() {
     enableSync = true;

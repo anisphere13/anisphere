@@ -43,7 +43,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _initIA() async {
     try {
-      await IAMaster.instance.initialize();
+      final iaMaster = IAMaster.instance;
+      await iaMaster.initialize();
+
+      final iaContext =
+          Provider.of<IAContextProvider>(context, listen: false).context;
 
       final actions = await IARuleEngine.analyzeAnimals([]);
 
@@ -52,7 +56,6 @@ class _HomeScreenState extends State<HomeScreen> {
         iaReady = true;
       });
     } catch (e) {
-      // Log uniquement en debug
       assert(() {
         debugPrint("❌ Erreur IA : $e");
         return true;
@@ -66,20 +69,22 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _loadSummaries() async {
     try {
-      final contextIA =
+      final iaContext =
           Provider.of<IAContextProvider>(context, listen: false).context;
+
       final summaryService = ModulesSummaryService(
         animalService: AnimalService(),
-        context: contextIA,
+        context: iaContext,
       );
+
       final result = await summaryService.generateSummaries();
+
       if (mounted) {
         setState(() {
           summaries = result;
         });
       }
     } catch (e) {
-      // Log uniquement en debug
       assert(() {
         debugPrint("❌ Erreur chargement résumés modules : $e");
         return true;
@@ -87,7 +92,6 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  /// 🧩 Génère dynamiquement les widgets des modules actifs
   List<Widget> _buildModuleSummaries() {
     return summaries
         .map((summary) => Card(
@@ -120,13 +124,15 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text("Accueil"),
         actions: [
           PopupMenuButton<String>(
-            onSelected: (value) {
+            onSelected: (value) async {
               if (value == 'logout') {
-                userProvider.signOut();
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (_) => const LoginScreen()),
-                );
+                await userProvider.signOut();
+                if (mounted) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => const LoginScreen()),
+                  );
+                }
               }
             },
             itemBuilder: (_) => const [
@@ -138,10 +144,10 @@ class _HomeScreenState extends State<HomeScreen> {
       body: CustomScrollView(
         slivers: [
           // 📌 Widgets IA
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 IABanner(
                   message: "Mode IA : Local uniquement (démo)",
                   icon: Icons.lightbulb_outline,
@@ -154,6 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
 
+          // 🧠 Suggestions IA
           if (iaReady && iaActions.isNotEmpty)
             SliverList(
               delegate: SliverChildBuilderDelegate(
@@ -163,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                   child: IASuggestionCard(
                     title: "Suggestion IA",
-                    message: "Action détectée : ${iaActions[index]}",
+                    message: iaActions[index],
                     icon: Icons.auto_awesome,
                   ),
                 ),
@@ -172,17 +179,17 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
 
           // 🧠 Logs IA
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: IALogViewer(),
             ),
           ),
 
-          // 🧩 Résumés des modules actifs
-          SliverToBoxAdapter(
-            child: Column(
-              children: _buildModuleSummaries(),
+          // 🧩 Résumés dynamiques des modules actifs
+          SliverList(
+            delegate: SliverChildListDelegate(
+              _buildModuleSummaries(),
             ),
           ),
         ],

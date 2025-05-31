@@ -1,6 +1,8 @@
 /// Provider utilisateur pour AniSphère.
 /// Gère l’état utilisateur, les connexions (email, Google, Apple),
 /// la synchronisation Firebase/Hive et les notifications UI.
+/// Copilot Prompt : "UserProvider gère l’utilisateur, la connexion, et déclenche la synchro IA cloud si premium"
+
 library;
 
 import 'package:flutter/material.dart';
@@ -10,6 +12,7 @@ import '../models/user_model.dart';
 import '../services/user_service.dart';
 import '../services/auth_service.dart';
 import 'package:anisphere/modules/noyau/services/firebase_service.dart';
+import 'package:anisphere/modules/noyau/logic/ia_master.dart'; // 👈 IA ajoutée
 
 class UserProvider with ChangeNotifier {
   final UserService _userService;
@@ -29,6 +32,11 @@ class UserProvider with ChangeNotifier {
       if (currentUser != null) {
         _user = await _fetchUser(currentUser.uid);
         _logAndNotifyUserState(_user, "chargé");
+
+        // ✅ Synchronisation IA si premium
+        if (_user?.iaPremium == true) {
+          await IAMaster.instance.syncCloudIA(_user!.id);
+        }
       } else {
         debugPrint("⚠️ Aucun utilisateur connecté.");
       }
@@ -44,6 +52,11 @@ class UserProvider with ChangeNotifier {
       _user = user;
       notifyListeners();
       debugPrint("✅ Utilisateur mis à jour : ${user.email}");
+
+      // ✅ Synchronisation IA si premium
+      if (user.iaPremium) {
+        await IAMaster.instance.syncCloudIA(user.id);
+      }
     } catch (e) {
       _logError("updateUser", e);
     }
@@ -125,6 +138,12 @@ class UserProvider with ChangeNotifier {
         _user = user;
         notifyListeners();
         debugPrint("✅ Connexion $method : ${user.email}");
+
+        // ✅ Synchronisation IA si premium
+        if (user.iaPremium) {
+          await IAMaster.instance.syncCloudIA(user.id);
+        }
+
         return true;
       }
     } catch (e) {

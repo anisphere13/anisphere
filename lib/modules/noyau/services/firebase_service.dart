@@ -34,14 +34,14 @@ class FirebaseService {
   }
 
   /// 💾 Sauvegarder ou mettre à jour un utilisateur
-  Future<bool> saveUser(UserModel user) async {
+  Future<bool> saveUser(UserModel user, {bool forTraining = false}) async {
     if (user.id.isEmpty) return false;
     try {
-      await db.collection('users').doc(user.id).set(
-            user.toJson(),
-            SetOptions(merge: true),
-          );
-      debugPrint("✅ Utilisateur sauvegardé : ${user.email}");
+      await db
+          .collection(forTraining ? 'training_users' : 'users')
+          .doc(user.id)
+          .set(user.toJson(), SetOptions(merge: true));
+      debugPrint("✅ Utilisateur sauvegardé : ${user.email} (${forTraining ? "training" : "prod"})");
       return true;
     } catch (e) {
       _logError("saveUser", e);
@@ -77,14 +77,14 @@ class FirebaseService {
   }
 
   /// 🐾 Sauvegarder ou mettre à jour un animal
-  Future<bool> saveAnimal(AnimalModel animal) async {
+  Future<bool> saveAnimal(AnimalModel animal, {bool forTraining = false}) async {
     if (animal.id.isEmpty) return false;
     try {
-      await db.collection('animals').doc(animal.id).set(
-            animal.toJson(),
-            SetOptions(merge: true),
-          );
-      debugPrint("✅ Animal sauvegardé : ${animal.name}");
+      await db
+          .collection(forTraining ? 'training_animals' : 'animals')
+          .doc(animal.id)
+          .set(animal.toJson(), SetOptions(merge: true));
+      debugPrint("✅ Animal sauvegardé : ${animal.name} (${forTraining ? "training" : "prod"})");
       return true;
     } catch (e) {
       _logError("saveAnimal", e);
@@ -138,6 +138,33 @@ class FirebaseService {
     } catch (e) {
       _logError("getAllAnimals", e);
       return [];
+    }
+  }
+
+  /// 🧠 Envoi libre pour modules IA
+  Future<void> sendModuleData(String moduleName, Map<String, dynamic> data) async {
+    try {
+      await db.collection("training_modules").add({
+        "module": moduleName,
+        "timestamp": DateTime.now().toIso8601String(),
+        "data": data,
+      });
+      debugPrint("✅ Module $moduleName envoyé.");
+    } catch (e) {
+      _logError("sendModuleData", e);
+    }
+  }
+
+  /// 🧠 Envoi de métriques IA locales
+  Future<void> sendIAFeedback(Map<String, dynamic> metrics) async {
+    try {
+      await db.collection("ia_feedback").add({
+        "timestamp": DateTime.now().toIso8601String(),
+        "metrics": metrics,
+      });
+      debugPrint("✅ Feedback IA envoyé.");
+    } catch (e) {
+      _logError("sendIAFeedback", e);
     }
   }
 

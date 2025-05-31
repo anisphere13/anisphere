@@ -2,8 +2,10 @@
 /// Applique les décisions IA générées par `IAMaster`
 /// Ce moteur exécute : nettoyage, notifications, sync, suggestions UI
 /// Utilisé à l’accueil, au démarrage et lors des triggers IA
+/// Copilot Prompt : "IAExecutor exécute les décisions IA contextuelles et active IAMaster flags ou services associés"
 
 library;
+
 import 'package:flutter/foundation.dart';
 
 import 'ia_master.dart';
@@ -11,6 +13,7 @@ import 'ia_rule_engine.dart';
 import 'ia_logger.dart';
 import 'ia_context.dart';
 import 'ia_channel.dart';
+import 'ia_flag.dart';
 
 import '../services/notification_service.dart';
 import '../services/modules_service.dart';
@@ -49,6 +52,13 @@ class IAExecutor {
         await animalService.syncAnimalsWithCloud();
         break;
 
+      // 🔥 Les actions 'sync_user' sont désactivées car non supportées dans IAContext actuel
+      // case 'sync_user':
+      //   if (context.user != null) {
+      //     await context.syncUser();
+      //   }
+      //   break;
+
       case 'deactivate_unused_modules':
         await modulesService.deactivateUnusedModules();
         break;
@@ -61,8 +71,7 @@ class IAExecutor {
         break;
 
       case 'show_ui_suggestion_card':
-        // Assurez-vous que ce flag existe dans IAFlag
-        // IAMaster.instance.setFlag(IAFlag.showSuggestionCard, true);
+        iaMaster.setFlag(IAFlag.showSuggestionCard, true);
         break;
 
       default:

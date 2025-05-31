@@ -1,4 +1,4 @@
-/// Modèle utilisateur pour AniSphère.
+/// Copilot Prompt : Modèle utilisateur AniSphère complet pour IA hybride (Hive + Firebase).
 /// Sérialisable Hive et Firebase. Contient rôles, préférences, animaux, timestamps.
 /// Prévu pour une app IA, offline-first, multi-rôle et multi-module.
 
@@ -76,9 +76,6 @@ class UserModel {
     required this.iaPremium,
     this.lastIASync,
   });
-
-  /// ⚠️ Supprimé car 'updatedAt' est final :
-  /// void updateTimestamp() => updatedAt = DateTime.now();
 
   Map<String, dynamic> toJson() => {
         'id': id,

@@ -1,3 +1,6 @@
+/// Copilot Prompt : Entrée principale AniSphère.
+/// Initialise Firebase, Hive avec adapters IA, providers, IA, et lance l'app.
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -20,10 +23,13 @@ import 'package:anisphere/modules/noyau/services/notification_service.dart';
 import 'package:anisphere/modules/noyau/services/animal_service.dart';
 import 'package:anisphere/modules/noyau/services/modules_service.dart';
 
+// Hive Adapters pour la synchronisation différée IA
+import 'package:anisphere/modules/noyau/logic/offline_sync_queue.dart';
+import 'package:anisphere/modules/noyau/logic/ia_metrics_collector.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // 🔥 Firebase
   try {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
@@ -39,10 +45,15 @@ void main() async {
     }());
   }
 
-  // 📦 Hive + Local Storage
   try {
     await Hive.initFlutter();
+
+    // Enregistrement des adapters Hive nécessaires
+    Hive.registerAdapter(SyncTaskAdapter());
+    Hive.registerAdapter(IAMetricAdapter());
+
     await LocalStorageService.init();
+
     assert(() {
       debugPrint("📦 Hive initialized successfully!");
       return true;
@@ -54,10 +65,12 @@ void main() async {
     }());
   }
 
-  // 🔔 Notifications (optionnel)
   await NotificationService.initialize();
+  assert(() {
+    debugPrint("🧠 Initialisation services IA terminée !");
+    return true;
+  }());
 
-  // 🔄 Services
   final userService = UserService();
   final authService = AuthService();
 
@@ -133,7 +146,6 @@ class SplashScreenState extends State<SplashScreen> {
 
   Future<void> _navigateToNextScreen() async {
     await Future.delayed(const Duration(seconds: 2));
-
     if (!mounted) return;
 
     final userProvider = Provider.of<UserProvider>(context, listen: false);
@@ -161,6 +173,7 @@ class SplashScreenState extends State<SplashScreen> {
     final iaScheduler = IAScheduler(
       executor: iaExecutor,
       iaMaster: IAMaster.instance,
+      user: userProvider.user!, // ✅ nécessaire pour la sync cloud
     );
 
     iaScheduler.start(contextIA);

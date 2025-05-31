@@ -1,3 +1,6 @@
+/// Copilot Prompt : MainScreen avec navigation sécurisée, IAScheduler et accès superadmin masqué.
+/// Comporte 4 onglets dynamiques + accès à IADebugScreen par long press (si rôle = super_admin).
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,10 +13,17 @@ import 'user_profile_screen.dart';
 import 'login_screen.dart';
 import 'notifications_screen.dart';
 import 'qr_screen.dart';
-import 'ia_debug_screen.dart'; // 👈 ajouté
+import 'ia_debug_screen.dart'; // 👈 Écran superadmin masqué
 
 import 'package:anisphere/modules/noyau/widgets/notification_icon.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
+import 'package:anisphere/modules/noyau/logic/ia_scheduler.dart';
+import 'package:anisphere/modules/noyau/logic/ia_executor.dart';
+import 'package:anisphere/modules/noyau/services/animal_service.dart';
+import 'package:anisphere/modules/noyau/services/modules_service.dart';
+import 'package:anisphere/modules/noyau/logic/ia_master.dart';
+import 'package:anisphere/modules/noyau/logic/notification_service.dart';
+import 'package:anisphere/modules/noyau/providers/ia_context_provider.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -24,8 +34,9 @@ class MainScreen extends StatefulWidget {
 
 class MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
+  IAScheduler? _scheduler;
 
-  static final List<Widget> _pages = <Widget>[
+  static final List<Widget> _pages = <Widget>[ 
     const HomeScreen(),
     const ShareScreen(),
     const ModulesScreen(),
@@ -41,25 +52,69 @@ class MainScreenState extends State<MainScreen> {
   void _handleMenuSelection(String value) {
     switch (value) {
       case 'profile':
-        Navigator.push(context, MaterialPageRoute(builder: (_) => const UserProfileScreen()));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const UserProfileScreen()),
+        );
         break;
       case 'settings':
-        Navigator.push(context, MaterialPageRoute(builder: (_) => const SettingsScreen()));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const SettingsScreen()),
+        );
         break;
       case 'logout':
         Provider.of<UserProvider>(context, listen: false).signOut();
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const LoginScreen()));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const LoginScreen()),
+        );
         break;
     }
   }
 
   @override
+  void initState() {
+    super.initState();
+
+    // ⚙️ Planification IA dès que le widget est monté
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final user = Provider.of<UserProvider>(context, listen: false).user;
+      final contextIA = Provider.of<IAContextProvider>(context, listen: false).context;
+
+      if (user != null) {
+        final executor = IAExecutor(
+          iaMaster: IAMaster.instance,
+          notificationService: NotificationService(),
+          modulesService: ModulesService(),
+          animalService: AnimalService(),
+        );
+
+        _scheduler = IAScheduler(
+          executor: executor,
+          iaMaster: IAMaster.instance,
+          user: user,
+        );
+
+        _scheduler!.start(contextIA);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scheduler?.stop();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context).user;
+
     return Scaffold(
       appBar: AppBar(
         title: GestureDetector(
           onLongPress: () {
-            final user = Provider.of<UserProvider>(context, listen: false).user;
             if (user != null && user.role == 'super_admin') {
               Navigator.push(
                 context,
@@ -80,7 +135,7 @@ class MainScreenState extends State<MainScreen> {
             },
           ),
           NotificationIcon(
-            unreadCount: 3, // TODO: relier au provider
+            unreadCount: 3, // 🔜 à connecter au provider de notifications
             onTap: () {
               Navigator.push(
                 context,

@@ -1,10 +1,14 @@
 /// 🤖 IAMaster — IA maîtresse locale AniSphère
-/// Coordonne la logique IA (locale & future cloud)
+/// Coordonne la logique IA (locale & cloud)
 /// Centralise les décisions, les logs et la stratégie IA
-/// Utilisé au démarrage, dans les exécuteurs IA et dans la logique UX
+/// Utilisé au démarrage, dans les exécuteurs IA et la logique UX
+/// Copilot Prompt : "IAMaster manages local IA logic and triggers CloudSyncService when needed"
+
 library;
+
 import 'package:flutter/foundation.dart';
 import '../services/local_storage_service.dart';
+import '../services/cloud_sync_service.dart';
 import 'ia_logger.dart';
 import 'ia_flag.dart';
 import 'ia_channel.dart';
@@ -14,6 +18,8 @@ class IAMaster {
 
   static const String _iaLogsKey = "ia_logs";
   static const String _lastSyncKey = "last_ia_sync";
+
+  final CloudSyncService _cloudSyncService = CloudSyncService();
 
   IAMaster._internal();
 
@@ -29,22 +35,34 @@ class IAMaster {
     );
   }
 
-  /// ☁️ Simulation future de synchronisation IA cloud
-  Future<void> syncCloudIA() async {
-    await IALogger.log(
-      message: "SYNC_CLOUD_START",
-      channel: IAChannel.execution,
-    );
-    await Future.delayed(const Duration(seconds: 1));
-    await recordSync();
-    await IALogger.log(
-      message: "SYNC_CLOUD_SUCCESS",
-      channel: IAChannel.execution,
-    );
-    assert(() {
-      debugPrint("☁️ Sync IA cloud terminée.");
-      return true;
-    }());
+  /// ☁️ Synchronisation IA cloud réelle (premium uniquement)
+  Future<void> syncCloudIA(String userId) async {
+    try {
+      await IALogger.log(
+        message: "SYNC_CLOUD_START",
+        channel: IAChannel.execution,
+      );
+
+      final logs = LocalStorageService.get(_iaLogsKey, defaultValue: <String>[])
+          .cast<String>();
+      await _cloudSyncService.syncFullIA(userId, logs);
+
+      await recordSync();
+      await IALogger.log(
+        message: "SYNC_CLOUD_SUCCESS",
+        channel: IAChannel.execution,
+      );
+
+      assert(() {
+        debugPrint("☁️ Sync IA cloud terminée pour $userId.");
+        return true;
+      }());
+    } catch (e) {
+      assert(() {
+        debugPrint("❌ [IAMaster] Erreur syncCloudIA : $e");
+        return true;
+      }());
+    }
   }
 
   /// 🔄 Enregistrement de la dernière sync IA cloud
@@ -80,7 +98,6 @@ class IAMaster {
         );
       }
     } catch (e) {
-      // Log uniquement en debug
       assert(() {
         debugPrint("❌ [IAMaster] Erreur cleanOldLogs : $e");
         return true;

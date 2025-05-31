@@ -1,12 +1,14 @@
 /// ⏰ IAScheduler — AniSphère
 /// Déclenche l’exécution IA selon des règles temporelles ou événements clés
 /// Utilise IAExecutor pour appliquer les décisions IA
-/// Peut être déclenché automatiquement ou manuellement
+/// Déclenche automatiquement la synchronisation IA cloud si nécessaire
+/// Copilot Prompt : "IAScheduler triggers IAExecutor and calls IAMaster.syncCloudIA if premium"
 
 library;
 
 import 'dart:async';
 import 'package:flutter/foundation.dart';
+import '../models/user_model.dart'; // pour récupérer le userId
 
 import 'ia_executor.dart';
 import 'ia_master.dart';
@@ -17,6 +19,7 @@ import 'ia_channel.dart';
 class IAScheduler {
   final IAExecutor executor;
   final IAMaster iaMaster;
+  final UserModel user; // 👈 Ajout de l'utilisateur pour ID/premium
 
   Timer? _periodicTimer;
   DateTime? _lastExecution;
@@ -24,6 +27,7 @@ class IAScheduler {
   IAScheduler({
     required this.executor,
     required this.iaMaster,
+    required this.user,
   });
 
   /// 🚀 Démarrage automatique du scheduler IA (à l'ouverture de l'app)
@@ -47,6 +51,10 @@ class IAScheduler {
     _log("Déclenchement IA manuel (triggerNow).");
     await executor.executeAll(context);
     _lastExecution = DateTime.now();
+
+    if (user.iaPremium) {
+      await iaMaster.syncCloudIA(user.id);
+    }
   }
 
   /// 🔁 Déclenche IA seulement si plus de 6h depuis la dernière exécution
@@ -56,6 +64,10 @@ class IAScheduler {
       _log("Déclenchement automatique IA (toutes les 6h).");
       await executor.executeAll(context);
       _lastExecution = now;
+
+      if (user.iaPremium) {
+        await iaMaster.syncCloudIA(user.id);
+      }
     } else {
       _log("IA déjà exécutée récemment. Aucune action.");
     }

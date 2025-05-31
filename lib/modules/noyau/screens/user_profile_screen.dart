@@ -1,7 +1,7 @@
 /// Copilot Prompt : Écran de profil utilisateur complet pour AniSphère.
-/// Affiche l’identité, les modules actifs, le statut IA premium, un QR, et des actions pratiques.
-/// UX fluide inspirée Samsung Health, avec sections bien séparées.
-/// Préparé pour IA, abonnements, QR, export, stats, vie privée.
+/// Affiche identité, modules actifs, statut IA premium, QR ID, et actions pratiques.
+/// UX inspirée Samsung Health, sections clairement séparées.
+/// Préparé pour IA, abonnements, QR, export, statistiques et confidentialité.
 
 library;
 
@@ -52,16 +52,31 @@ class UserProfileScreen extends StatelessWidget {
 
           _sectionTitle("IA & Abonnement"),
           _profileRow("IA Premium", user.iaPremium ? "Oui" : "Non"),
-          _profileRow("Dernière sync IA", user.lastIASync?.toIso8601String() ?? "Jamais"),
-
+          _profileRow("Dernière sync IA",
+              user.lastIASync?.toLocal().toString().split('.').first ?? "Jamais"),
           const SizedBox(height: 24),
+
           _sectionTitle("QR d'identification"),
           Center(
-            child: QrImageView(
-              data: user.id,
-              version: QrVersions.auto,
-              size: 150,
-              backgroundColor: Colors.white,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.white,
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 4,
+                    offset: Offset(0, 2),
+                  ),
+                ],
+              ),
+              padding: const EdgeInsets.all(8),
+              child: QrImageView(
+                data: user.id,
+                version: QrVersions.auto,
+                size: 150,
+                backgroundColor: Colors.white,
+              ),
             ),
           ),
 
@@ -70,6 +85,7 @@ class UserProfileScreen extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.history),
             title: const Text("Exporter mes données"),
+            trailing: const Icon(Icons.chevron_right),
             onTap: () {
               // 📎 Export à implémenter
               ScaffoldMessenger.of(context).showSnackBar(
@@ -80,18 +96,20 @@ class UserProfileScreen extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.lock),
             title: const Text("Vie privée et sécurité"),
+            trailing: const Icon(Icons.chevron_right),
             onTap: () {
-              // 📎 Paramètres à venir
+              // 📎 Paramètres confidentialité à venir
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text("Fonction confidentialité à venir.")),
               );
             },
           ),
           ListTile(
-            leading: const Icon(Icons.stacked_bar_chart),
+            leading: const Icon(Icons.bar_chart),
             title: const Text("Statistiques d’utilisation"),
+            trailing: const Icon(Icons.chevron_right),
             onTap: () {
-              // 📎 Statistiques futures
+              // 📎 Statistiques futures à implémenter
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text("Statistiques à venir.")),
               );
@@ -109,7 +127,7 @@ class UserProfileScreen extends StatelessWidget {
               onPressed: () async {
                 await Provider.of<UserProvider>(context, listen: false).signOut();
                 if (context.mounted) {
-                  Navigator.of(context).pop();
+                  Navigator.of(context).popUntil((route) => route.isFirst);
                 }
               },
             ),
@@ -119,27 +137,36 @@ class UserProfileScreen extends StatelessWidget {
     );
   }
 
+  /// 🏷️ Widget titre de section standardisé
   Widget _sectionTitle(String title) {
-    return Text(
-      title,
-      style: const TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-        color: Color(0xFF183153),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Text(
+        title,
+        style: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: Color(0xFF183153),
+        ),
       ),
     );
   }
 
+  /// 📌 Ligne d’information utilisateur standardisée
   Widget _profileRow(String label, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "$label : ",
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF183153),
+          SizedBox(
+            width: 120,
+            child: Text(
+              "$label :",
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF183153),
+              ),
             ),
           ),
           Expanded(

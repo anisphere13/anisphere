@@ -1,7 +1,8 @@
 /// 🧠 IAContextProvider — AniSphère
-/// Fournit dynamiquement un IAContext à toute l’application
-/// Se base sur l’utilisateur, les animaux, la connectivité, la date de sync
+/// Fournit dynamiquement un IAContext à toute l’application.
+/// Se base sur l’utilisateur, les animaux, la connectivité, la date de sync.
 /// Prompt Copilot : "IAContextProvider builds and updates the IAContext for use across AniSphère"
+
 library;
 
 import 'package:flutter/foundation.dart';
@@ -15,28 +16,35 @@ class IAContextProvider extends ChangeNotifier {
 
   IAContext get context => _context;
 
-  /// Initialise le contexte IA en fonction des services
+  /// 🔁 Initialisation complète du contexte IA
   Future<void> init({
     required bool isOffline,
     required AnimalService animalService,
     required UserService userService,
   }) async {
-    final animals = await animalService.getAllAnimals();
-    final bool isFirstLaunch = await LocalStorageService.getBool('firstLaunch', defaultValue: true);
-    final DateTime? lastSync = await userService.getLastSyncDate();
+    try {
+      final animals = await animalService.getAllAnimals();
+      final bool isFirstLaunch =
+          await LocalStorageService.getBool('firstLaunch', defaultValue: true);
+      final DateTime? lastSync = await userService.getLastSyncDate();
 
-    _context = IAContext(
-      isOffline: isOffline,
-      isFirstLaunch: isFirstLaunch,
-      hasAnimals: animals.isNotEmpty,
-      animalCount: animals.length,
-      lastSyncDate: lastSync,
-    );
+      _context = IAContext(
+        isOffline: isOffline,
+        isFirstLaunch: isFirstLaunch,
+        hasAnimals: animals.isNotEmpty,
+        animalCount: animals.length,
+        lastSyncDate: lastSync,
+      );
 
-    notifyListeners();
+      notifyListeners();
+
+      debugPrint("✅ IAContextProvider initialisé : $_context");
+    } catch (e) {
+      debugPrint("❌ [IAContextProvider] Erreur init() : $e");
+    }
   }
 
-  /// Permet de mettre à jour manuellement certains champs
+  /// 🔄 Mise à jour partielle du contexte IA
   void update({
     bool? isOffline,
     bool? isFirstLaunch,
@@ -52,5 +60,7 @@ class IAContextProvider extends ChangeNotifier {
       lastSyncDate: lastSyncDate ?? _context.lastSyncDate,
     );
     notifyListeners();
+
+    debugPrint("🔁 IAContextProvider mis à jour : $_context");
   }
 }
