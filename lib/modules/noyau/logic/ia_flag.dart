@@ -10,16 +10,20 @@ class IAFlag {
   static bool enableDebugLogs = true;
   static bool offlineOnly = false;
 
+  // Flag spécifique pour la suggestion d'ajout d'animal (utilisé par l'IA)
+  static bool suggestAddAnimal = false;
+
   // Pour compatibilité avec IAExecutor (si besoin d'un flag de type String)
   static const String showSuggestionCard = "show_ui_suggestion_card";
 
-  /// Ajoute la méthode statique pour lister tous les flags IA
+  /// Méthode statique pour lister tous les flags IA
   static Map<String, bool> getAll() => {
         'enableSync': enableSync,
         'enableSuggestions': enableSuggestions,
         'enableRuleEngine': enableRuleEngine,
         'enableDebugLogs': enableDebugLogs,
         'offlineOnly': offlineOnly,
+        'suggestAddAnimal': suggestAddAnimal,
       };
 
   /// 🔄 Reset à l'état par défaut
@@ -29,5 +33,6 @@ class IAFlag {
     enableRuleEngine = true;
     enableDebugLogs = true;
     offlineOnly = false;
+    suggestAddAnimal = false;
   }
 }

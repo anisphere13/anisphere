@@ -68,8 +68,12 @@ class IAExecutor {
         break;
 
       case 'show_ui_suggestion_card':
-        // Correction : IAFlag n'est pas un enum, pas de showSuggestionCard => activer enableSuggestions par exemple
         IAFlag.enableSuggestions = true;
+        break;
+
+      case 'suggest_add_animal':
+        IAFlag.suggestAddAnimal = true; // Ajoute cette variable dans IAFlag (static bool suggestAddAnimal = false;)
+        debugPrint('💡 Suggestion IA : propose d’ajouter un animal (aucun enregistré)');
         break;
 
       default:
