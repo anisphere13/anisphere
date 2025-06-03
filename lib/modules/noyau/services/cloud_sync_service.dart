@@ -8,9 +8,7 @@ import 'package:flutter/foundation.dart';
 import '../models/animal_model.dart';
 import '../models/user_model.dart';
 import 'firebase_service.dart';
-import 'local_storage_service.dart';
-import '../services/animal_service.dart';
-import '../services/user_service.dart';
+import '../services/offline_sync_queue.dart';
 
 class CloudSyncService {
   final FirebaseService _firebaseService;
@@ -22,9 +20,12 @@ class CloudSyncService {
   Future<void> pushAnimalData(AnimalModel animal) async {
     try {
       await _firebaseService.saveAnimal(animal, forTraining: true);
-      debugPrint("☁️ Données animal envoyées au cloud pour IA : \${animal.name}");
+      debugPrint("☁️ Données animal envoyées au cloud pour IA : ${animal.name}");
     } catch (e) {
-      debugPrint("❌ [CloudSync] Erreur pushAnimalData : \$e");
+      debugPrint("❌ [CloudSync] Erreur pushAnimalData : $e");
+      await OfflineSyncQueue.addTask(
+        SyncTask(type: "animal", data: animal.toJson(), timestamp: DateTime.now()),
+      );
     }
   }
 
@@ -32,9 +33,12 @@ class CloudSyncService {
   Future<void> pushUserData(UserModel user) async {
     try {
       await _firebaseService.saveUser(user, forTraining: true);
-      debugPrint("☁️ Données utilisateur envoyées au cloud pour IA : \${user.email}");
+      debugPrint("☁️ Données utilisateur envoyées au cloud pour IA : ${user.email}");
     } catch (e) {
-      debugPrint("❌ [CloudSync] Erreur pushUserData : \$e");
+      debugPrint("❌ [CloudSync] Erreur pushUserData : $e");
+      await OfflineSyncQueue.addTask(
+        SyncTask(type: "user", data: user.toJson(), timestamp: DateTime.now()),
+      );
     }
   }
 
@@ -42,9 +46,12 @@ class CloudSyncService {
   Future<void> pushModuleData(String moduleName, Map<String, dynamic> data) async {
     try {
       await _firebaseService.sendModuleData(moduleName, data);
-      debugPrint("☁️ Données module \$moduleName envoyées au cloud.");
+      debugPrint("☁️ Données module $moduleName envoyées au cloud.");
     } catch (e) {
-      debugPrint("❌ [CloudSync] Erreur pushModuleData (\$moduleName) : \$e");
+      debugPrint("❌ [CloudSync] Erreur pushModuleData ($moduleName) : $e");
+      await OfflineSyncQueue.addTask(
+        SyncTask(type: "module:$moduleName", data: data, timestamp: DateTime.now()),
+      );
     }
   }
 
@@ -54,7 +61,10 @@ class CloudSyncService {
       await _firebaseService.sendIAFeedback(metrics);
       debugPrint("☁️ Feedback IA locale envoyé au cloud.");
     } catch (e) {
-      debugPrint("❌ [CloudSync] Erreur pushIAFeedback : \$e");
+      debugPrint("❌ [CloudSync] Erreur pushIAFeedback : $e");
+      await OfflineSyncQueue.addTask(
+        SyncTask(type: "ia_feedback", data: metrics, timestamp: DateTime.now()),
+      );
     }
   }
 
@@ -62,12 +72,37 @@ class CloudSyncService {
   Future<void> syncFullIA(String userId, List<String> logs) async {
     try {
       debugPrint("☁️ [CloudSyncService] Sync full IA pour $userId avec ${logs.length} logs.");
-      // TODO : upload les logs ou autres données vers Firebase ou autre backend ici si besoin
       await Future.delayed(const Duration(milliseconds: 200));
-      // Tu peux ajouter ici une future vraie logique d’envoi cloud.
     } catch (e) {
       debugPrint("❌ [CloudSyncService] Erreur syncFullIA : $e");
     }
   }
 
-}
+  /// 🔁 Rejoue toutes les tâches en attente dans la file offline
+  Future<void> replayOfflineTasks() async {
+    await OfflineSyncQueue.processQueue((task) async {
+      switch (task.type) {
+        case "animal":
+          await _firebaseService.saveAnimal(
+            AnimalModel.fromJson(task.data),
+            forTraining: true,
+          );
+          break;
+        case "user":
+          await _firebaseService.saveUser(
+            UserModel.fromJson(task.data),
+            forTraining: true,
+          );
+          break;
+        case "ia_feedback":
+          await _firebaseService.sendIAFeedback(task.data);
+          break;
+        default:
+          if (task.type.startsWith("module:")) {
+            final moduleName = task.type.split(":").last;
+            await _firebaseService.sendModuleData(moduleName, task.data);
+          }
+      }
+    });
+  }
+} 

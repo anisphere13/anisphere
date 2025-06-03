@@ -1,7 +1,7 @@
-/// Copilot Prompt : Écran de profil utilisateur complet pour AniSphère.
-/// Affiche identité, modules actifs, statut IA premium, QR ID, et actions pratiques.
-/// UX inspirée Samsung Health, sections clairement séparées.
-/// Préparé pour IA, abonnements, QR, export, statistiques et confidentialité.
+/// Copilot Prompt : Écran complet du profil utilisateur AniSphère.
+/// Affiche identité, modules actifs, statut IA, QR ID, actions pratiques.
+/// UX fluide inspirée Samsung Health, sections bien définies.
+/// IA-ready, QR, export, stats, confidentialité préparés.
 
 library;
 
@@ -51,70 +51,72 @@ class UserProfileScreen extends StatelessWidget {
           const SizedBox(height: 24),
 
           _sectionTitle("IA & Abonnement"),
-          _profileRow("IA Premium", user.iaPremium ? "Oui" : "Non"),
-          _profileRow("Dernière sync IA",
-              user.lastIASync?.toLocal().toString().split('.').first ?? "Jamais"),
-          const SizedBox(height: 24),
+          _profileRow("IA Premium", user.iaPremium ? "Oui ✅" : "Non ❌"),
+          _profileRow(
+              "Dernière sync IA",
+              user.lastIASync != null
+                  ? "${user.lastIASync!.day}/${user.lastIASync!.month}/${user.lastIASync!.year}"
+                  : "Jamais"),
 
+          const SizedBox(height: 24),
           _sectionTitle("QR d'identification"),
           Center(
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.white,
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 4,
-                    offset: Offset(0, 2),
-                  ),
-                ],
-              ),
-              padding: const EdgeInsets.all(8),
-              child: QrImageView(
-                data: user.id,
-                version: QrVersions.auto,
-                size: 150,
-                backgroundColor: Colors.white,
+            child: QrImageView(
+              data: user.id,
+              version: QrVersions.auto,
+              size: 160,
+              backgroundColor: Colors.white,
+              embeddedImageStyle: QrEmbeddedImageStyle(
+                size: const Size(40, 40),
               ),
             ),
           ),
 
           const SizedBox(height: 24),
-          _sectionTitle("Actions"),
-          ListTile(
-            leading: const Icon(Icons.history),
-            title: const Text("Exporter mes données"),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () {
-              // 📎 Export à implémenter
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Fonction export à venir.")),
-              );
-            },
+          _sectionTitle("Actions pratiques"),
+          Card(
+            child: Column(
+              children: [
+                _actionTile(
+                  context,
+                  icon: Icons.history,
+                  title: "Exporter mes données",
+                  subtitle: "Télécharger un fichier complet de vos données.",
+                  action: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                          content: Text("Fonction export bientôt disponible.")),
+                    );
+                  },
+                ),
+                _actionTile(
+                  context,
+                  icon: Icons.lock,
+                  title: "Vie privée et sécurité",
+                  subtitle: "Configurer vos préférences de confidentialité.",
+                  action: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                          content:
+                              Text("Paramètres confidentialité à venir.")),
+                    );
+                  },
+                ),
+                _actionTile(
+                  context,
+                  icon: Icons.bar_chart,
+                  title: "Statistiques d'utilisation",
+                  subtitle: "Voir les statistiques détaillées d'utilisation.",
+                  action: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Statistiques à venir.")),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
-          ListTile(
-            leading: const Icon(Icons.lock),
-            title: const Text("Vie privée et sécurité"),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () {
-              // 📎 Paramètres confidentialité à venir
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Fonction confidentialité à venir.")),
-              );
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.bar_chart),
-            title: const Text("Statistiques d’utilisation"),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () {
-              // 📎 Statistiques futures à implémenter
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Statistiques à venir.")),
-              );
-            },
-          ),
+
           const SizedBox(height: 32),
           Center(
             child: ElevatedButton.icon(
@@ -125,7 +127,8 @@ class UserProfileScreen extends StatelessWidget {
                 foregroundColor: Colors.white,
               ),
               onPressed: () async {
-                await Provider.of<UserProvider>(context, listen: false).signOut();
+                await Provider.of<UserProvider>(context, listen: false)
+                    .signOut();
                 if (context.mounted) {
                   Navigator.of(context).popUntil((route) => route.isFirst);
                 }
@@ -137,14 +140,13 @@ class UserProfileScreen extends StatelessWidget {
     );
   }
 
-  /// 🏷️ Widget titre de section standardisé
   Widget _sectionTitle(String title) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Text(
         title,
         style: const TextStyle(
-          fontSize: 18,
+          fontSize: 20,
           fontWeight: FontWeight.bold,
           color: Color(0xFF183153),
         ),
@@ -152,28 +154,43 @@ class UserProfileScreen extends StatelessWidget {
     );
   }
 
-  /// 📌 Ligne d’information utilisateur standardisée
   Widget _profileRow(String label, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            width: 120,
-            child: Text(
-              "$label :",
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF183153),
-              ),
+          Text(
+            "$label : ",
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF183153),
             ),
           ),
           Expanded(
-            child: Text(value.isNotEmpty ? value : "Non renseigné"),
+            child: Text(
+              value.isNotEmpty ? value : "Non renseigné",
+              style: const TextStyle(color: Color(0xFF3A3A3A)),
+            ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _actionTile(
+    BuildContext context, {
+    required IconData icon,
+    required String title,
+    required String subtitle,
+    required VoidCallback action,
+  }) {
+    return ListTile(
+      leading: Icon(icon, color: const Color(0xFF183153)),
+      title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+      subtitle: Text(subtitle),
+      trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+      onTap: action,
     );
   }
 }

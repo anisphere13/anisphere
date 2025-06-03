@@ -1,7 +1,7 @@
 /// Copilot Prompt : SuperAdminScreen sécurisé pour AniSphère.
-/// Réservé au rôle "superadmin". Affiche les logs IA, flags, statut sync, et actions debug IA.
+/// Réservé au rôle "superadmin". Affiche logs IA, flags, statut sync, et permet de forcer une synchronisation.
 /// Écran masqué, accessible uniquement en mode développeur ou via menu caché.
-/// Permet de surveiller et gérer l’IA maîtresse à distance.
+/// Optimisé UI et sécurité. UX fluide, statut clair.
 
 library;
 
@@ -40,7 +40,7 @@ class _SuperAdminScreenState extends State<SuperAdminScreen> {
       logs = fetchedLogs.reversed.toList();
       flags = fetchedFlags;
       lastSync = syncDate != null
-          ? "${syncDate.day}/${syncDate.month}/${syncDate.year} ${syncDate.hour}h${syncDate.minute.toString().padLeft(2, '0')}"
+          ? "${syncDate.day}/${syncDate.month}/${syncDate.year} à ${syncDate.hour}h${syncDate.minute.toString().padLeft(2, '0')}"
           : "Jamais synchronisé";
     });
   }
@@ -48,6 +48,7 @@ class _SuperAdminScreenState extends State<SuperAdminScreen> {
   Future<void> _clearLogs() async {
     await IALogger.clearLogs();
     await _loadData();
+    _showSnackbar("Logs IA supprimés.");
   }
 
   Future<void> _forceSync() async {
@@ -55,7 +56,15 @@ class _SuperAdminScreenState extends State<SuperAdminScreen> {
     if (user != null) {
       await IAMaster.instance.syncCloudIA(user.id);
       await _loadData();
+      _showSnackbar("Synchronisation IA lancée.");
     }
+  }
+
+  void _showSnackbar(String message) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
   }
 
   @override
@@ -73,32 +82,44 @@ class _SuperAdminScreenState extends State<SuperAdminScreen> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          Text("🕒 Dernière synchronisation : $lastSync"),
-          const SizedBox(height: 16),
-          const Text("🔖 Flags IA actifs :",
-              style: TextStyle(fontWeight: FontWeight.bold)),
-          ...flags.entries.map((e) => ListTile(
+          const Text("🕒 Dernière synchronisation", style: TextStyle(fontWeight: FontWeight.bold)),
+          Text(lastSync),
+          const SizedBox(height: 24),
+
+          const Text("🔖 Flags IA actifs", style: TextStyle(fontWeight: FontWeight.bold)),
+          ...flags.entries.map((e) => SwitchListTile(
                 title: Text(e.key),
-                trailing: Icon(
+                value: e.value,
+                onChanged: (_) {}, // readonly
+                secondary: Icon(
                   e.value ? Icons.check_circle : Icons.cancel,
                   color: e.value ? Colors.green : Colors.red,
                 ),
               )),
-          const Divider(),
-          const Text("🧠 Logs IA :",
-              style: TextStyle(fontWeight: FontWeight.bold)),
+          const Divider(height: 32),
+
+          const Text("🧠 Logs IA", style: TextStyle(fontWeight: FontWeight.bold)),
           const SizedBox(height: 8),
-          ...logs.map((log) => Text(log)).toList(),
-          const SizedBox(height: 16),
+          if (logs.isEmpty)
+            const Text("Aucun log IA enregistré pour l’instant."),
+          ...logs.map((log) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 2),
+                child: Text("- $log"),
+              )),
+          const SizedBox(height: 24),
+
           ElevatedButton.icon(
             icon: const Icon(Icons.cleaning_services),
             label: const Text("Vider les logs"),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.orange.shade600),
             onPressed: _clearLogs,
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 12),
+
           ElevatedButton.icon(
             icon: const Icon(Icons.cloud_sync),
             label: const Text("Forcer une synchronisation IA"),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.blue.shade700),
             onPressed: _forceSync,
           ),
         ],

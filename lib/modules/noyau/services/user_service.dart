@@ -1,4 +1,4 @@
-/// Service utilisateur AniSphère (Firebase + Hive).
+/// Copilot Prompt : Service utilisateur AniSphère (Firebase + Hive).
 /// Gère synchronisation cloud, sauvegarde locale, suppression, et MAJ IA.
 /// Optimisé pour IA maîtresse, offline-first, multi-profil.
 
@@ -8,6 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import '../models/user_model.dart';
+import 'package:anisphere/modules/noyau/services/ia_sync_service.dart';
 
 class UserService {
   final FirebaseFirestore firestore;
@@ -27,12 +28,10 @@ class UserService {
     }
   }
 
-  /// Initialisation du service (Hive)
   Future<void> init() async {
     await _initHive();
   }
 
-  /// Initialisation de Hive
   Future<void> _initHive() async {
     if (skipHiveInit || _userBox != null) return;
     try {
@@ -45,7 +44,6 @@ class UserService {
     }
   }
 
-  /// 📦 Retourne la box Hive ou tente de l'ouvrir
   Future<Box<UserModel>?> getOrInitBox() async {
     if (_userBox == null || !_userBox!.isOpen) {
       await _initHive();
@@ -53,7 +51,6 @@ class UserService {
     return _userBox;
   }
 
-  /// 🔄 Récupère un utilisateur depuis Firebase
   Future<UserModel?> getUserFromFirebase(String userId) async {
     try {
       final doc = await firestore.collection('users').doc(userId).get();
@@ -68,7 +65,6 @@ class UserService {
     return null;
   }
 
-  /// 🔍 Récupère l’utilisateur localement
   UserModel? getUserFromHive() {
     try {
       return _userBox?.get(currentUserKey);
@@ -78,7 +74,6 @@ class UserService {
     }
   }
 
-  /// 🔁 Synchronise Firebase → Hive
   Future<void> syncUserData(String userId) async {
     final user = await getUserFromFirebase(userId);
     if (user != null) {
@@ -86,7 +81,6 @@ class UserService {
     }
   }
 
-  /// 💾 Sauvegarde dans Firebase (merge)
   Future<bool> saveUserToFirebase(UserModel user) async {
     try {
       await firestore
@@ -100,7 +94,6 @@ class UserService {
     }
   }
 
-  /// 🧠 Mise à jour locale (Hive)
   Future<void> updateUserLocally(UserModel user) async {
     try {
       final box = await getOrInitBox();
@@ -110,16 +103,17 @@ class UserService {
     }
   }
 
-  /// 🔁 MAJ cloud + locale combinée
   Future<bool> updateUser(UserModel user) async {
     final success = await saveUserToFirebase(user);
     if (success) {
       await updateUserLocally(user);
+      if (user.iaPremium) {
+        await IASyncService.syncUser(user);
+      }
     }
     return success;
   }
 
-  /// ✏️ MAJ partielle via Map (Firebase + Hive)
   Future<void> updateUserFields(Map<String, dynamic> fields) async {
     final currentUser = getUserFromHive();
     if (currentUser != null) {
@@ -133,19 +127,20 @@ class UserService {
         ownedAnimals: fields['ownedAnimals'],
         preferences: fields['preferences'],
         moduleRoles: fields['moduleRoles'],
-        activeModules: List<String>.from(fields['activeModules'] ?? currentUser.activeModules),
+        activeModules: List<String>.from(
+            fields['activeModules'] ?? currentUser.activeModules),
         updatedAt: DateTime.now(),
       );
       await updateUser(updatedUser);
     }
   }
 
-  /// 📌 Active un module localement + cloud
   Future<void> activateModule(String moduleKey) async {
     final currentUser = getUserFromHive();
     if (currentUser == null) return;
 
-    final newModules = Set<String>.from(currentUser.activeModules)..add(moduleKey);
+    final newModules = Set<String>.from(currentUser.activeModules)
+      ..add(moduleKey);
     final updatedUser = currentUser.copyWith(
       activeModules: newModules.toList(),
       updatedAt: DateTime.now(),
@@ -153,7 +148,6 @@ class UserService {
     await updateUser(updatedUser);
   }
 
-  /// 📌 Désactive un module localement + cloud
   Future<void> deactivateModule(String moduleKey) async {
     final currentUser = getUserFromHive();
     if (currentUser == null) return;
@@ -167,7 +161,6 @@ class UserService {
     await updateUser(updatedUser);
   }
 
-  /// 🗑️ Supprimer localement
   Future<void> deleteUserLocally() async {
     try {
       final box = await getOrInitBox();
@@ -178,7 +171,6 @@ class UserService {
     }
   }
 
-  /// 🗑️ Supprimer dans Firebase
   Future<bool> deleteUser(String userId) async {
     try {
       await firestore.collection('users').doc(userId).delete();
@@ -190,7 +182,6 @@ class UserService {
     }
   }
 
-  /// 🗑️ Supprimer un utilisateur précis dans Hive
   Future<void> deleteUserFromHive(String userId) async {
     try {
       final box = await getOrInitBox();
@@ -200,14 +191,55 @@ class UserService {
     }
   }
 
-  /// 📅 Récupère la date de dernière synchronisation (updatedAt) de l'utilisateur local
   Future<DateTime?> getLastSyncDate() async {
     final user = getUserFromHive();
     return user?.updatedAt;
   }
 
-  /// Méthode privée pour logguer les erreurs
+  /// Log d'erreur typé, visible uniquement en debug.
   void _logError(String context, Object error) {
-    debugPrint("❌ Erreur $context : $error");
+    assert(() {
+      debugPrint("❌ Erreur $context : $error");
+      return true;
+    }());
+  }
+
+  /// Version asynchrone pour récupérer l'utilisateur localement (utile hors contexte Provider).
+  Future<UserModel?> getLocalUser() async {
+    try {
+      final box = await getOrInitBox();
+      return box?.get(currentUserKey);
+    } catch (e) {
+      _logError("getLocalUser", e);
+      return null;
+    }
+  }
+
+  /// Version asynchrone pour sauvegarder l'utilisateur localement (utile hors Provider).
+  Future<void> saveUserLocally(UserModel user) async {
+    try {
+      final box = await getOrInitBox();
+      await box?.put(currentUserKey, user);
+      assert(() {
+        debugPrint("✅ Utilisateur sauvegardé localement !");
+        return true;
+      }());
+    } catch (e) {
+      _logError("saveUserLocally", e);
+    }
+  }
+
+  /// Supprime tous les utilisateurs locaux (utile pour debug ou reset).
+  Future<void> clearAllLocalUsers() async {
+    try {
+      final box = await getOrInitBox();
+      await box?.clear();
+      assert(() {
+        debugPrint("✅ Tous les utilisateurs locaux supprimés.");
+        return true;
+      }());
+    } catch (e) {
+      _logError("clearAllLocalUsers", e);
+    }
   }
 }

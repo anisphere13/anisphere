@@ -1,10 +1,6 @@
 /// Copilot Prompt : Service AnimalService pour AniSphère.
 /// Gère le stockage local (Hive), la synchro Firebase, les ajouts/suppressions.
 /// IA-compatible, testable, optimisé offline-first.
-/// Service des animaux pour AniSphère.
-/// Gère la lecture/écriture locale Hive, la synchronisation avec Firebase,
-/// et la suppression. Utilise FirebaseService en interne.
-/// IA-compatible, testable, offline-first.
 
 library;
 
@@ -13,6 +9,8 @@ import 'package:hive/hive.dart';
 
 import '../models/animal_model.dart';
 import 'package:anisphere/modules/noyau/services/firebase_service.dart';
+import 'package:anisphere/modules/noyau/services/ia_sync_service.dart';
+import 'package:anisphere/modules/noyau/models/user_model.dart';
 
 class AnimalService {
   static const String animalBoxName = 'animal_data';
@@ -44,7 +42,7 @@ class AnimalService {
           : await Hive.openBox<AnimalModel>(animalBoxName);
       _log("📦 Boîte Hive des animaux initialisée.");
     } catch (e) {
-      _log("❌ Erreur d'initialisation Hive (animaux) : $e");
+      _log("❌ Erreur d'initialisation Hive (animaux) : \$e");
     }
   }
 
@@ -57,18 +55,18 @@ class AnimalService {
       }
       return animal;
     } catch (e) {
-      _log("❌ Erreur lors de la synchronisation de l'animal : $e");
+      _log("❌ Erreur lors de la synchronisation de l'animal : \$e");
       return null;
     }
   }
 
-  /// 📥 Ajoute ou met à jour un animal localement
+  /// 📅 Ajoute ou met à jour un animal localement
   Future<void> updateLocalAnimal(AnimalModel animal) async {
     try {
       await _initHive();
       await _animalBox?.put(animal.id, animal);
     } catch (e) {
-      _log("❌ Erreur lors de la mise à jour locale de l'animal : $e");
+      _log("❌ Erreur lors de la mise à jour locale de l'animal : \$e");
     }
   }
 
@@ -77,21 +75,24 @@ class AnimalService {
     try {
       return _animalBox?.get(animalId);
     } catch (e) {
-      _log("❌ Erreur lors de la récupération de l'animal : $e");
+      _log("❌ Erreur lors de la récupération de l'animal : \$e");
       return null;
     }
   }
 
-  /// 💾 Envoie un animal à Firebase et met à jour localement
-  Future<bool> saveAnimal(AnimalModel animal) async {
+  /// 📂 Envoie un animal à Firebase, met à jour localement, puis déclenche la sync IA si premium
+  Future<bool> saveAnimal(AnimalModel animal, {UserModel? user}) async {
     try {
       final success = await _firebaseService.saveAnimal(animal);
       if (success) {
         await updateLocalAnimal(animal);
+        if (user != null) {
+          await IASyncService.instance.syncAnimal(animal, user);
+        }
       }
       return success;
     } catch (e) {
-      _log("❌ Erreur lors de l'enregistrement de l'animal : $e");
+      _log("❌ Erreur lors de l'enregistrement de l'animal : \$e");
       return false;
     }
   }
@@ -102,7 +103,7 @@ class AnimalService {
       await _initHive();
       await _animalBox?.delete(animalId);
     } catch (e) {
-      _log("❌ Erreur lors de la suppression locale de l'animal : $e");
+      _log("❌ Erreur lors de la suppression locale de l'animal : \$e");
     }
   }
 
@@ -115,7 +116,7 @@ class AnimalService {
       }
       return success;
     } catch (e) {
-      _log("❌ Erreur lors de la suppression globale de l'animal : $e");
+      _log("❌ Erreur lors de la suppression globale de l'animal : \$e");
       return false;
     }
   }
@@ -126,7 +127,7 @@ class AnimalService {
       await _initHive();
       return _animalBox?.values.toList() ?? [];
     } catch (e) {
-      _log("❌ Erreur lors de la récupération de tous les animaux : $e");
+      _log("❌ Erreur lors de la récupération de tous les animaux : \$e");
       return [];
     }
   }
@@ -149,7 +150,7 @@ class AnimalService {
       }
       _log("🔁 Tous les animaux synchronisés depuis le cloud.");
     } catch (e) {
-      _log("❌ Erreur de synchronisation globale : $e");
+      _log("❌ Erreur de synchronisation globale : \$e");
     }
   }
 

@@ -1,5 +1,6 @@
 /// Copilot Prompt : Entrée principale AniSphère.
 /// Initialise Firebase, Hive avec adapters IA, providers, IA, et lance l'app.
+library;
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,7 +25,7 @@ import 'package:anisphere/modules/noyau/services/animal_service.dart';
 import 'package:anisphere/modules/noyau/services/modules_service.dart';
 
 // Hive Adapters pour la synchronisation différée IA
-import 'package:anisphere/modules/noyau/logic/offline_sync_queue.dart';
+import 'package:anisphere/modules/noyau/services/offline_sync_queue.dart';
 import 'package:anisphere/modules/noyau/logic/ia_metrics_collector.dart';
 
 void main() async {

@@ -1,5 +1,6 @@
 /// Copilot Prompt : MainScreen avec navigation sécurisée, IAScheduler et accès superadmin masqué.
 /// Comporte 4 onglets dynamiques + accès à IADebugScreen par long press (si rôle = super_admin).
+library;
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

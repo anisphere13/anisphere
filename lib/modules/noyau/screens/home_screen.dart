@@ -10,14 +10,6 @@ import 'package:provider/provider.dart';
 import '../providers/user_provider.dart';
 import '../screens/login_screen.dart';
 
-import '../logic/ia_master.dart';
-import '../logic/ia_rule_engine.dart';
-
-import '../widgets/ia_banner.dart';
-import '../widgets/ia_chip.dart';
-import '../widgets/ia_suggestion_card.dart';
-import '../widgets/ia_log_viewer.dart';
-
 import '../services/modules_summary_service.dart';
 import '../services/animal_service.dart';
 import '../providers/ia_context_provider.dart';
@@ -30,44 +22,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<String> iaActions = [];
-  bool iaReady = false;
   List<ModuleSummary> summaries = [];
+  bool loadingSummaries = true;
 
   @override
   void initState() {
     super.initState();
-    _initIA();
     _loadSummaries();
   }
 
-  Future<void> _initIA() async {
-    try {
-      final iaMaster = IAMaster.instance;
-      await iaMaster.initialize();
-
-      final iaContext =
-          Provider.of<IAContextProvider>(context, listen: false).context;
-
-      final actions = await IARuleEngine.analyzeAnimals([]);
-
-      setState(() {
-        iaActions = actions;
-        iaReady = true;
-      });
-    } catch (e) {
-      assert(() {
-        debugPrint("❌ Erreur IA : $e");
-        return true;
-      }());
-      setState(() {
-        iaReady = true;
-        iaActions = [];
-      });
-    }
-  }
-
   Future<void> _loadSummaries() async {
+    setState(() {
+      loadingSummaries = true;
+    });
     try {
       final iaContext =
           Provider.of<IAContextProvider>(context, listen: false).context;
@@ -82,6 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
       if (mounted) {
         setState(() {
           summaries = result;
+          loadingSummaries = false;
         });
       }
     } catch (e) {
@@ -89,30 +57,32 @@ class _HomeScreenState extends State<HomeScreen> {
         debugPrint("❌ Erreur chargement résumés modules : $e");
         return true;
       }());
+      setState(() {
+        loadingSummaries = false;
+      });
     }
   }
 
-  List<Widget> _buildModuleSummaries() {
-    return summaries
-        .map((summary) => Card(
-              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              elevation: 2,
-              child: ListTile(
-                leading: Text(
-                  summary.icon,
-                  style: const TextStyle(fontSize: 24),
-                ),
-                title: Text(summary.moduleName),
-                subtitle: Text(summary.summary),
-                trailing: summary.isPremium
-                    ? const Icon(Icons.star, color: Colors.amber)
-                    : null,
-              ),
-            ))
-        .toList();
+  Widget _buildModuleCard(ModuleSummary summary) {
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      elevation: 2,
+      child: ListTile(
+        leading: Text(
+          summary.icon,
+          style: const TextStyle(fontSize: 28),
+        ),
+        title: Text(
+          summary.moduleName,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        subtitle: Text(summary.summary),
+        trailing: summary.isPremium
+            ? const Icon(Icons.star, color: Colors.amber)
+            : const SizedBox.shrink(),
+      ),
+    );
   }
 
   @override
@@ -141,59 +111,39 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: CustomScrollView(
-        slivers: [
-          // 📌 Widgets IA
-          const SliverToBoxAdapter(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                IABanner(
-                  message: "Mode IA : Local uniquement (démo)",
-                  icon: Icons.lightbulb_outline,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: IAChip(label: "UX adaptative"),
-                ),
-              ],
-            ),
-          ),
-
-          // 🧠 Suggestions IA
-          if (iaReady && iaActions.isNotEmpty)
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) => Padding(
-                  key: ValueKey("ia-suggestion-$index"),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                  child: IASuggestionCard(
-                    title: "Suggestion IA",
-                    message: iaActions[index],
-                    icon: Icons.auto_awesome,
+      body: loadingSummaries
+          ? const Center(child: CircularProgressIndicator())
+          : summaries.isEmpty
+              ? const Center(
+                  child: Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Text(
+                      "Aucun module actif.\nAjoutez ou activez des modules depuis l'onglet Modules.",
+                      textAlign: TextAlign.center,
+                    ),
                   ),
+                )
+              : CustomScrollView(
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Text(
+                          "Résumé des modules actifs",
+                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: const Color(0xFF183153),
+                              ),
+                        ),
+                      ),
+                    ),
+                    SliverList.builder(
+                      itemCount: summaries.length,
+                      itemBuilder: (context, index) =>
+                          _buildModuleCard(summaries[index]),
+                    ),
+                  ],
                 ),
-                childCount: iaActions.length,
-              ),
-            ),
-
-          // 🧠 Logs IA
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-              child: IALogViewer(),
-            ),
-          ),
-
-          // 🧩 Résumés dynamiques des modules actifs
-          SliverList(
-            delegate: SliverChildListDelegate(
-              _buildModuleSummaries(),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

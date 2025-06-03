@@ -3,7 +3,6 @@
 
 library;
 
-import 'dart:convert';
 import 'package:hive/hive.dart';
 import 'package:flutter/foundation.dart';
 

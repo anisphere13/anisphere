@@ -38,6 +38,12 @@ class AnimalModel {
   @HiveField(8)
   final DateTime? birthDate;
 
+  @HiveField(9)
+  final bool iaTrained;
+
+  @HiveField(10)
+  final DateTime? syncedAt;
+
   const AnimalModel({
     required this.id,
     required this.name,
@@ -48,9 +54,10 @@ class AnimalModel {
     required this.createdAt,
     required this.updatedAt,
     this.birthDate,
+    this.iaTrained = false,
+    this.syncedAt,
   });
 
-  /// 🔄 Convertir l'objet en Map pour Firebase
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -62,10 +69,11 @@ class AnimalModel {
       'createdAt': createdAt.toIso8601String(),
       'updatedAt': updatedAt.toIso8601String(),
       'birthDate': birthDate?.toIso8601String(),
+      'iaTrained': iaTrained,
+      'syncedAt': syncedAt?.toIso8601String(),
     };
   }
 
-  /// 🔄 Créer un objet AnimalModel à partir d'une Map (Firebase)
   factory AnimalModel.fromJson(Map<String, dynamic> json) {
     return AnimalModel(
       id: json['id'] ?? '',
@@ -78,6 +86,10 @@ class AnimalModel {
       updatedAt: DateTime.tryParse(json['updatedAt'] ?? '') ?? DateTime.now(),
       birthDate: json['birthDate'] != null
           ? DateTime.tryParse(json['birthDate'])
+          : null,
+      iaTrained: json['iaTrained'] ?? false,
+      syncedAt: json['syncedAt'] != null
+          ? DateTime.tryParse(json['syncedAt'])
           : null,
     );
   }
@@ -92,6 +104,8 @@ class AnimalModel {
     DateTime? createdAt,
     DateTime? updatedAt,
     DateTime? birthDate,
+    bool? iaTrained,
+    DateTime? syncedAt,
   }) {
     return AnimalModel(
       id: id ?? this.id,
@@ -103,6 +117,8 @@ class AnimalModel {
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
       birthDate: birthDate ?? this.birthDate,
+      iaTrained: iaTrained ?? this.iaTrained,
+      syncedAt: syncedAt ?? this.syncedAt,
     );
   }
 }

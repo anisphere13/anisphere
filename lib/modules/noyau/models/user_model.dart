@@ -58,6 +58,12 @@ class UserModel {
   @HiveField(15)
   final DateTime? lastIASync;
 
+  @HiveField(16)
+  final bool iaTrained;
+
+  @HiveField(17)
+  final DateTime? syncedAt;
+
   const UserModel({
     required this.id,
     required this.name,
@@ -75,6 +81,8 @@ class UserModel {
     required this.role,
     required this.iaPremium,
     this.lastIASync,
+    this.iaTrained = false,
+    this.syncedAt,
   });
 
   Map<String, dynamic> toJson() => {
@@ -94,6 +102,8 @@ class UserModel {
         'role': role,
         'iaPremium': iaPremium,
         'lastIASync': lastIASync?.toIso8601String(),
+        'iaTrained': iaTrained,
+        'syncedAt': syncedAt?.toIso8601String(),
       };
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -116,6 +126,10 @@ class UserModel {
       lastIASync: json['lastIASync'] != null
           ? DateTime.tryParse(json['lastIASync'])
           : null,
+      iaTrained: json['iaTrained'] ?? false,
+      syncedAt: json['syncedAt'] != null
+          ? DateTime.tryParse(json['syncedAt'])
+          : null,
     );
   }
 
@@ -136,6 +150,8 @@ class UserModel {
     String? role,
     bool? iaPremium,
     DateTime? lastIASync,
+    bool? iaTrained,
+    DateTime? syncedAt,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -154,6 +170,8 @@ class UserModel {
       role: role ?? this.role,
       iaPremium: iaPremium ?? this.iaPremium,
       lastIASync: lastIASync ?? this.lastIASync,
+      iaTrained: iaTrained ?? this.iaTrained,
+      syncedAt: syncedAt ?? this.syncedAt,
     );
   }
 }
