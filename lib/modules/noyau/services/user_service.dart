@@ -108,7 +108,7 @@ class UserService {
     if (success) {
       await updateUserLocally(user);
       if (user.iaPremium) {
-        await IASyncService.syncUser(user);
+        await IASyncService.instance.syncUser(user); // ← Correction ici !
       }
     }
     return success;
