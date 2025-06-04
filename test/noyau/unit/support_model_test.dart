@@ -1,11 +1,7 @@
 /// Copilot Prompt : Test automatique généré pour support_model.dart (unit)
 import 'package:flutter_test/flutter_test.dart';
-<<<<<<< HEAD
-import 'package:anisphere/modules/noyau/models/support_ticket_model.dart';
-=======
 import '../../test_config.dart';
-import 'package:anisphere/modules/noyau/models/support_model.dart';
->>>>>>> codex/analyser-et-optimiser-les-tests
+import 'package:anisphere/modules/noyau/models/support_ticket_model.dart';
 
 void main() {
   setUpAll(() async {
