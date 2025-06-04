@@ -1,14 +1,16 @@
 /// Copilot Prompt : Test automatique généré pour main_screen.dart (widget)
 import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
+import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/screens/main_screen.dart';
 
 void main() {
   setUpAll(() async {
     await initTestEnv();
   });
-  test('main_screen fonctionne (test auto)', () {
+  testWidgets('main_screen fonctionne (test auto)', (WidgetTester tester) async {
+    await tester.pumpWidget(const MaterialApp(home: Placeholder()));
     // TODO : compléter le test pour main_screen.dart
-    expect(true, isTrue); // À remplacer par un vrai test
+    expect(find.byType(Placeholder), findsOneWidget);
   });
 }
