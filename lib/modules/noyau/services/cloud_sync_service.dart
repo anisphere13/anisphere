@@ -3,19 +3,17 @@
 /// Toutes les données modules & noyau passent ici pour apprentissage IA cloud
 /// Utilisé par IAMaster, les modules, les IA locales
 library;
-
 import 'package:flutter/foundation.dart';
 import '../models/animal_model.dart';
 import '../models/user_model.dart';
+import '../models/support_model.dart';
 import 'firebase_service.dart';
 import '../services/offline_sync_queue.dart';
 
 class CloudSyncService {
   final FirebaseService _firebaseService;
-
   CloudSyncService({FirebaseService? firebaseService})
       : _firebaseService = firebaseService ?? FirebaseService();
-
   /// 🔁 Envoie les données d’un animal pour apprentissage IA
   Future<void> pushAnimalData(AnimalModel animal) async {
     try {
@@ -28,7 +26,6 @@ class CloudSyncService {
       );
     }
   }
-
   /// 🔁 Envoie les données d’un utilisateur pour IA (profil, préférences)
   Future<void> pushUserData(UserModel user) async {
     try {
@@ -41,7 +38,6 @@ class CloudSyncService {
       );
     }
   }
-
   /// 🔁 Envoie de données spécifiques à un module (format libre)
   Future<void> pushModuleData(String moduleName, Map<String, dynamic> data) async {
     try {
@@ -51,6 +47,19 @@ class CloudSyncService {
       debugPrint("❌ [CloudSync] Erreur pushModuleData ($moduleName) : $e");
       await OfflineSyncQueue.addTask(
         SyncTask(type: "module:$moduleName", data: data, timestamp: DateTime.now()),
+      );
+    }
+  }
+
+  /// 🔁 Envoie un retour utilisateur (support/contact/bug)
+  Future<void> pushSupportData(SupportModel feedback) async {
+    try {
+      await _firebaseService.sendModuleData('support', feedback.toJson());
+      debugPrint('☁️ Feedback support envoyé au cloud.');
+    } catch (e) {
+      debugPrint('❌ [CloudSync] Erreur pushSupportData : $e');
+      await OfflineSyncQueue.addTask(
+        SyncTask(type: 'support', data: feedback.toJson(), timestamp: DateTime.now()),
       );
     }
   }
@@ -67,7 +76,6 @@ class CloudSyncService {
       );
     }
   }
-
   /// 📦 Synchro complète pour IAMaster (utilise les logs de l’app)
   Future<void> syncFullIA(String userId, List<String> logs) async {
     try {
@@ -77,7 +85,6 @@ class CloudSyncService {
       debugPrint("❌ [CloudSyncService] Erreur syncFullIA : $e");
     }
   }
-
   /// 🔁 Rejoue toutes les tâches en attente dans la file offline
   Future<void> replayOfflineTasks() async {
     await OfflineSyncQueue.processQueue((task) async {
@@ -96,6 +103,9 @@ class CloudSyncService {
           break;
         case "ia_feedback":
           await _firebaseService.sendIAFeedback(task.data);
+          break;
+        case "support":
+          await _firebaseService.sendModuleData('support', task.data);
           break;
         default:
           if (task.type.startsWith("module:")) {

@@ -45,8 +45,12 @@ class AnimalScreen extends StatelessWidget {
                 _buildRow("Nom", animal.name),
                 _buildRow("Espèce", animal.species),
                 _buildRow("Race", animal.breed),
-// TODO: birthDate non défini dans AnimalModel – à corriger ou ajouter plus tard
-_buildRow("Date de naissance", "Non renseignée"),
+                _buildRow(
+                  "Date de naissance",
+                  animal.birthDate != null
+                      ? "${animal.birthDate!.day}/${animal.birthDate!.month}/${animal.birthDate!.year}"
+                      : "Non renseignée",
+                ),
                 const SizedBox(height: 30),
                 Center(
                   child: ElevatedButton.icon(

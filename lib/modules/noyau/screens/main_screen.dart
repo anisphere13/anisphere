@@ -1,10 +1,8 @@
 /// Copilot Prompt : MainScreen avec navigation sécurisée, IAScheduler et accès superadmin masqué.
 /// Comporte 4 onglets dynamiques + accès à IADebugScreen par long press (si rôle = super_admin).
 library;
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'home_screen.dart';
 import 'share_screen.dart';
 import 'modules_screen.dart';
@@ -15,6 +13,7 @@ import 'login_screen.dart';
 import 'notifications_screen.dart';
 import 'qr_screen.dart';
 import 'ia_debug_screen.dart'; // 👈 Écran superadmin masqué
+import 'support_screen.dart';
 
 import 'package:anisphere/modules/noyau/widgets/notification_icon.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
@@ -25,31 +24,25 @@ import 'package:anisphere/modules/noyau/services/modules_service.dart';
 import 'package:anisphere/modules/noyau/logic/ia_master.dart';
 import 'package:anisphere/modules/noyau/services/notification_service.dart';
 import 'package:anisphere/modules/noyau/providers/ia_context_provider.dart';
-
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
-
   @override
   MainScreenState createState() => MainScreenState();
 }
-
 class MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   IAScheduler? _scheduler;
-
   static final List<Widget> _pages = <Widget>[ 
     const HomeScreen(),
     const ShareScreen(),
     const ModulesScreen(),
     const AnimalsScreen(),
   ];
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
-
   void _handleMenuSelection(String value) {
     switch (value) {
       case 'profile':
@@ -64,6 +57,12 @@ class MainScreenState extends State<MainScreen> {
           MaterialPageRoute(builder: (_) => const SettingsScreen()),
         );
         break;
+      case 'support':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const SupportScreen()),
+        );
+        break;
       case 'logout':
         Provider.of<UserProvider>(context, listen: false).signOut();
         Navigator.pushReplacement(
@@ -73,16 +72,13 @@ class MainScreenState extends State<MainScreen> {
         break;
     }
   }
-
   @override
   void initState() {
     super.initState();
-
     // ⚙️ Planification IA dès que le widget est monté
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final user = Provider.of<UserProvider>(context, listen: false).user;
       final contextIA = Provider.of<IAContextProvider>(context, listen: false).context;
-
       if (user != null) {
         final executor = IAExecutor(
           iaMaster: IAMaster.instance,
@@ -90,28 +86,23 @@ class MainScreenState extends State<MainScreen> {
           modulesService: ModulesService(),
           animalService: AnimalService(),
         );
-
         _scheduler = IAScheduler(
           executor: executor,
           iaMaster: IAMaster.instance,
           user: user,
         );
-
         _scheduler!.start(contextIA);
       }
     });
   }
-
   @override
   void dispose() {
     _scheduler?.stop();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context).user;
-
     return Scaffold(
       appBar: AppBar(
         title: GestureDetector(
@@ -149,6 +140,7 @@ class MainScreenState extends State<MainScreen> {
             itemBuilder: (context) => const [
               PopupMenuItem(value: 'profile', child: Text('Mon Profil')),
               PopupMenuItem(value: 'settings', child: Text('Paramètres')),
+              PopupMenuItem(value: 'support', child: Text('Support')),
               PopupMenuItem(value: 'logout', child: Text('Se déconnecter')),
             ],
           ),
