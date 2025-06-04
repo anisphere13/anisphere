@@ -7,7 +7,6 @@
 library;
 
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import '../services/local_storage_service.dart';
 import '../services/cloud_sync_service.dart';
 import '../services/offline_sync_queue.dart';

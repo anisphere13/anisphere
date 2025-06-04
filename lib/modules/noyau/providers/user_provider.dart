@@ -107,8 +107,8 @@ class UserProvider with ChangeNotifier {
       }
 
       final connectivity = await Connectivity().checkConnectivity();
-      if (connectivity == ConnectivityResult.wifi ||
-          connectivity == ConnectivityResult.mobile) {
+      if ([ConnectivityResult.wifi, ConnectivityResult.mobile]
+          .contains(connectivity)) {
         await FirebaseService().signOut();
         debugPrint("✅ Déconnexion Firebase !");
       } else {

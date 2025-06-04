@@ -14,14 +14,6 @@ class SupportAdminScreen extends StatefulWidget {
   State<SupportAdminScreen> createState() => _SupportAdminScreenState();
 }
 
-class _SupportAdminState implements PreferredSizeWidget {
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
-
-  @override
-  Widget build(BuildContext context) => AppBar(title: const Text('Feedbacks'));
-}
-
 class _SupportAdminScreenState extends State<SupportAdminScreen> {
   @override
   void initState() {

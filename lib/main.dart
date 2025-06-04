@@ -61,10 +61,11 @@ void main() async {
   }
   await NotificationService.initialize();
   CloudNotificationListener.initialize();  // Demande de permission notifications Android (intégré proprement ici)
-  await FlutterLocalNotificationsPlugin()
-      .resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>()
-      ?.requestPermission();
+  final plugin = FlutterLocalNotificationsPlugin();
+  final androidPlugin =
+      plugin.resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>();
+  await androidPlugin?.requestPermission();
   assert(() {
     debugPrint("🧠 Initialisation services IA terminée !");
     return true;
