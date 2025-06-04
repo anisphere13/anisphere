@@ -28,18 +28,27 @@ class _NotificationAdminScreenState extends State<NotificationAdminScreen> {
     if (!_formKey.currentState!.validate()) return;
     _formKey.currentState!.save();
 
-    final result = await CloudNotificationService.sendAdminNotification(
+    final service = CloudNotificationService();
+
+    String? userId;
+    String? role;
+    if (target.startsWith('role:')) {
+      role = target.split(':').last;
+    } else if (target.startsWith('user:')) {
+      userId = target.split(':').last;
+    }
+
+    await service.sendAdminNotification(
       title: title,
       body: body,
-      target: target,
-      module: module,
       type: type,
+      module: module.isEmpty ? null : module,
+      userId: userId,
+      role: role,
     );
-
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(result ? "✅ Notification envoyée" : "❌ Échec de l'envoi")),
-    );
+      const SnackBar(content: Text('✅ Notification envoyée')),    );
   }
 
   @override

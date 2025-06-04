@@ -20,8 +20,8 @@ void main() {
     final mockIdentityService = MockIdentityService();
     final mockPhotoVerifier = MockPhotoVerificationService();
 
-    when(mockPhotoVerifier.scorePhoto(any)).thenAnswer((_) async => 0.8);
-
+    when(mockPhotoVerifier.scorePhoto(any<File>()))
+        .thenAnswer((_) async => 0.8);
     final service = IdentityVerificationService(
       identityService: mockIdentityService,
       photoVerificationService: mockPhotoVerifier,

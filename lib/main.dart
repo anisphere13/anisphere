@@ -26,8 +26,7 @@ import 'package:anisphere/modules/noyau/services/modules_service.dart';
 // Hive Adapters pour la synchronisation différée IA
 import 'package:anisphere/modules/noyau/services/offline_sync_queue.dart';
 import 'package:anisphere/modules/noyau/logic/ia_metrics_collector.dart';
-import 'package:anisphere/services/notification_service.dart';
-import 'package:anisphere/services/cloud_notification_listener.dart';
+import 'package:anisphere/modules/noyau/services/cloud_notification_listener.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   try {
@@ -61,8 +60,7 @@ void main() async {
     }());
   }
   await NotificationService.initialize();
-  CloudNotificationListener.start();
-  // Demande de permission notifications Android (intégré proprement ici)
+  CloudNotificationListener.initialize();  // Demande de permission notifications Android (intégré proprement ici)
   await FlutterLocalNotificationsPlugin()
       .resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin>()

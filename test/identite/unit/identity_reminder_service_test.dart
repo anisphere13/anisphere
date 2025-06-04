@@ -6,9 +6,7 @@ import 'package:anisphere/modules/noyau/logic/ia_master.dart';
 class FakeIAMaster extends IAMaster {
   final List<String> logs = [];
 
-  FakeIAMaster() : super();
-
-  @override
+  FakeIAMaster() : super.test();
   void logEvent({required String channel, required String message, String? suggestion}) {
     logs.add(message);
   }

@@ -88,8 +88,8 @@ void main() {
       when(mockSnapshot.exists).thenReturn(true);
       when(mockSnapshot.data()).thenReturn(fakeUser.toJson());
 
-      when(mockBox.put(any, any)).thenAnswer((_) async => null);
-
+      when(mockBox.put(any<String>(), any<UserModel>()))
+          .thenAnswer((_) async => null);
       final user = await userService.getUserFromFirebase(fakeUid);
       expect(user, isNotNull);
       expect(user!.id, equals(fakeUid));
@@ -99,8 +99,10 @@ void main() {
     test('updateUser() met à jour dans Firebase + Hive', () async {
       when(mockFirestore.collection('users')).thenReturn(mockCollection);
       when(mockCollection.doc(fakeUid)).thenReturn(mockDocRef);
-      when(mockDocRef.set(any, any)).thenAnswer((_) async => null);
-      when(mockBox.put(any, any)).thenAnswer((_) async => null);
+      when(mockDocRef.set(any<Map<String, dynamic>>(), any<SetOptions>()))
+          .thenAnswer((_) async => null);
+      when(mockBox.put(any<String>(), any<UserModel>()))
+          .thenAnswer((_) async => null);
 
       final success = await userService.updateUser(fakeUser);
       expect(success, isTrue);
@@ -116,8 +118,10 @@ void main() {
       when(mockBox.get(UserService.currentUserKey)).thenReturn(fakeUser);
       when(mockFirestore.collection('users')).thenReturn(mockCollection);
       when(mockCollection.doc(fakeUid)).thenReturn(mockDocRef);
-      when(mockDocRef.set(any, any)).thenAnswer((_) async => null);
-      when(mockBox.put(any, any)).thenAnswer((_) async => null);
+      when(mockDocRef.set(any<Map<String, dynamic>>(), any<SetOptions>()))
+          .thenAnswer((_) async => null);
+      when(mockBox.put(any<String>(), any<UserModel>()))
+          .thenAnswer((_) async => null);
 
       await userService.activateModule(testModule);
       verify(mockBox.put(UserService.currentUserKey, userWithModule)).called(1);

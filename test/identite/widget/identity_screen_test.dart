@@ -12,8 +12,16 @@ class MockBox extends Mock implements Box {}
 void main() {
   testWidgets('IdentityScreen renders input fields', (WidgetTester tester) async {
     final service = IdentityService(localBox: MockBox());
-    final animal = AnimalModel(id: 'test');
-
+    final animal = AnimalModel(
+      id: 'test',
+      name: 'Test',
+      species: 'dog',
+      breed: 'beagle',
+      imageUrl: 'https://example.com',
+      ownerId: 'owner',
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+    );
     await tester.pumpWidget(MaterialApp(
       home: IdentityScreen(animal: animal, service: service),
     ));

@@ -32,8 +32,6 @@ extension IAChannelName on IAChannel {
         return 'CONTEXT';
       case IAChannel.user:
         return 'USER';
-      default:
-        return 'UNKNOWN';
     }
   }
 }
