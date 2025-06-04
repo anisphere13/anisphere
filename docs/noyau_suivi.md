@@ -7473,3 +7473,5 @@ Lier l'option Support dans le menu principal et l'écran SuperAdmin
 
 
 
+
+- 🧩 Synchronisation automatique du noyau le 2025-06-04
