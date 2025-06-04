@@ -14,7 +14,7 @@ TFLite + OpenCV : IA locale embarquée (OCR, reconnaissance visuelle, analyse co
 
 Architecture modulaire : séparation complète entre le noyau et les modules, tous indépendants et téléchargeables à la demande.
 
-⚙️ Noyau central (Core)
+⚙️ Noyau central
 
 Le noyau est le cœur de l’application. Il gère :
 
@@ -60,11 +60,92 @@ Communauté (entraide, sphères, échanges, alertes fugue)
 
 Fugue (photo d’identification, alerte automatique, page publique)
 
-🔁 Architecture de développement Flutter (arborescence simplifiée)
+## 🧩 Répartition générale du code (lib/)
 
-lib/ │ ├── core/ # Noyau de l’application │ ├── auth/ # Authentification (login, registre) │ ├── user/ # Modèle utilisateur, paramètres │ ├── animal/ # Modèle animal et profils │ ├── settings/ # Préférences générales │ ├── ia_master/ # IA maîtresse et supervision globale │ └── notifications/ # Gestion centralisée des notifications │ ├── models/ # Modèles de données globaux ├── services/ # Firebase, Hive, OCR, export, IA locale ├── providers/ # États globaux (user, animaux, modules...) ├── screens/ # Interfaces générales (accueil, login, etc.) ├── modules/ # Modules indépendants │ ├── sante/ │ ├── education/ │ ├── dressage/ │ ├── communaute/ │ └── fugue/ └── utils/ # Fonctions utilitaires, constantes globales 
+### lib/modules/
 
-Chaque module suit une structure miroir interne (models/, screens/, services/, ia/, etc.), totalement indépendante et instanciée dynamiquement à l’activation.
+* **noyau/** : coeur de l'application (auth, IA, services globaux, synchronisation, UI commune)
+* **identite/** : module identité animal (OCR, badge, éleveur, QR, documents)
+* à venir : **sante**, **education**, **dressage**, **communaute**, etc.
+
+### lib/modules/noyau
+
+Organisation stricte en 6 sous-dossiers principaux :
+
+* **models/** : modèles de données Hive + Firebase (user\_model, animal\_model, support\_ticket\_model, etc.)
+* **services/** : logique metier et accès Hive/Firebase (user\_service, auth\_service, offline\_sync\_queue, firebase\_service...)
+* **screens/** : écrans principaux et secondaires du noyau (login\_screen, main\_screen, splash\_screen, settings\_screen, etc.)
+* **logic/** : logique IA locale (ia\_master, ia\_executor, ia\_rule\_engine, ia\_flag, etc.)
+* **providers/** : state management avec Provider (user\_provider, animal\_provider, ia\_context\_provider)
+* **widgets/** : composants visuels réutilisables (ia\_banner, ia\_chip, ia\_log\_viewer, notification\_icon, etc.)
+* **storage/** : fichiers partagés ou intermodulaires (ex : stockage IA modulaire)
+
+## 🧠 IA Maîtresse (locale)
+
+L'intelligence artificielle locale est déployée dans le noyau selon un système modulaire complet :
+
+* **ia\_context.dart** : fournit le contexte actuel IA (connexion, animaux, sync...)
+* **ia\_rules.dart** : contient les règles IA de base
+* **ia\_rule\_engine.dart** : applique les règles en fonction du contexte
+* **ia\_executor.dart** : applique les actions IA concrètes (notifications, sync, UI)
+* **ia\_scheduler.dart** : planifie les exécutions IA (6h, au démarrage, etc.)
+* **ia\_logger.dart** : journalise les actions IA
+* **ia\_flag.dart / ia\_channel.dart / ia\_config.dart** : configuration, canaux, drapeaux IA
+
+L'appel principal se fait dans **main.dart > SplashScreen**, avec le Provider **IAContextProvider**.
+
+## 📦 Modules externes (identite/, à venir : sante/, education/...)
+
+Chaque module suit la même architecture que noyau/ :
+
+* **models/** : modèles propres au module
+* **services/** : services dédiés (OCR, IA, Firebase, etc.)
+* **screens/** : écrans spécifiques (identity\_screen, etc.)
+* **logic/** : logique IA locale du module (si applicable)
+* **widgets/** : composants visuels du module
+
+## 🧪 Tests
+
+* Tous les tests sont rangés dans le dossier `/test` par catégorie : `test/noyau/`, `test/modules/`, etc.
+* Les tests unitaires suivent la structure des services/modèles.
+* Les scripts d'automatisation se trouvent dans `/scripts/` :
+
+  * `generate_test_module.dart`
+  * `update_test_tracker.dart`
+  * `update_suivi_taches.dart`
+  * `update_noyau_suivi.dart`
+
+## 🔄 Synchronisation automatique
+
+Le projet utilise des workflows GitHub Actions pour :
+
+* Lancer les tests automatiquement (`flutter_tests.yml`)
+* Mettre à jour les suivis `test_tracker.md`, `noyau_suivi.md`, `suivi_taches.md` automatiquement
+
+Fichiers déclencheurs :
+
+* `.github/workflows/update_test_tracker.yml`
+* `.github/workflows/update_noyau_suivi.yml`
+* `.github/workflows/update_suivi_taches.yml`
+
+## 📁 Dossiers de documentation (docs/)
+
+* `0__instructions.md` : structure de base
+* `2__roadmap.md` : roadmap par phase
+* `3__suivi_taches.md` : tableau de bord global
+* `noyau_suivi.md` : suivi complet du noyau
+* `suivi_identite.md` : suivi complet module identité
+* `test_tracker.md` : suivi des tests
+* `10__architecture.md` : ce fichier
+
+## ✅ Statut
+
+L’architecture actuelle est **optimale, modulaire, testable et IA-ready**.
+Chaque module est isolé, chaque fichier testable, et chaque logique IA supervisable.
+Les modules futurs peuvent s’ajouter **sans casser le noyau**, tout en bénéficiant de la structure IA centrale.
+
+Prochaine étape : étendre cette architecture au module **Santé** ou **Éducation** avec la même logique.
+
 
 🤖 IA intégrée à chaque étage
 

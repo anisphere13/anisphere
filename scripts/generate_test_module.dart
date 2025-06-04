@@ -8,7 +8,9 @@ void main(List<String> args) {
   }
 
   final moduleName = args[0].toLowerCase();
-  final basePath = 'test/test_${moduleName}_module';
+  // Les tests suivent la même arborescence que lib/modules/
+  // Exemple : test/sante/unit/...
+  final basePath = 'test/$moduleName';
   final types = ['unit', 'widget', 'integration'];
 
   // Crée aussi le dossier du module dans lib/modules/ si non existant

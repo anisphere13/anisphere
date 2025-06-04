@@ -14,24 +14,30 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v3
 
-      - name: ⚙️ Install Flutter 3.19.0 (avec Dart 3.7)
+      - name: ⚙️ Install Flutter 3.19.0 (Dart 3.7)
         uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.19.0"
-          channel: "stable"
+          channel: stable
+          cache: true
 
-      - name: 📦 Pub get + upgrade (clean)
-        run: |
-          flutter pub get
-          flutter pub upgrade
+      - name: 📦 Install dependencies
+        run: flutter pub get
+
+      - name: 🔍 Analyse statique
+        run: flutter analyze --no-pub
 
       - name: 🔄 Build mocks & adapters
         run: flutter pub run build_runner build --delete-conflicting-outputs
 
       - name: 🧪 Run tests with coverage
-        run: flutter test --coverage
+        run: flutter test --coverage --dart-define=CI=true
 
       - name: ✅ Résumé de couverture
-        run: |
-          lcov --summary coverage/lcov.info
-        continue-on-error: true
+        run: lcov --summary coverage/lcov.info || true
+
+      - name: 📤 Upload coverage artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: coverage/lcov.info

@@ -1,74 +1,135 @@
-✅ README — Tests automatiques & suivi de développement
+# ✅ README — Tests Automatisés & Suivi de Développement AniSphère
 
-Ce dossier centralise tous les outils, scripts et bonnes pratiques pour assurer un suivi rigoureux et automatisé du développement de l’application AniSphère.
+Ce dossier centralise **tous les outils, scripts, conventions et workflows** utilisés pour assurer un suivi rigoureux, automatisé et évolutif du développement de l’application **AniSphère**.
 
-📁 Structure recommandée des tests
+---
 
-Chaque module (y compris le noyau) doit avoir :
+## 📁 Structure standard des tests
 
-unit/
+Chaque module (y compris le **noyau**) doit avoir la structure suivante dans le dossier `/test/` :
 
-Tests des modèles, services, classes de logique métier
+```
+test/
+  noyau/
+    unit/
+    widget/
+    integration/
+  modules/
+    [nom_module]/
+      unit/
+      widget/
+      integration/
+```
 
-Exemple : animal_model_test.dart, firebase_service_test.dart
+**Définitions :**
+- `unit/` : Tests de modèles, services, logique métier pure.
+- `widget/` : Tests d’affichage, interaction, états UI.
+- `integration/` : Tests de parcours utilisateur, navigation, stockage, etc.
 
-widget/
+---
 
-Tests des composants visuels indépendants
+## 🧪 Obligations de test par fonctionnalité
 
-Exemple : login_screen_test.dart, animal_card_test.dart
+| Type | Exemple | Test requis |
+|------|---------|-------------|
+| Modèle | `animal_model.dart` | ✅ unitaire (structure, sérialisation) |
+| Service | `user_service.dart` | ✅ unitaire (logique, mocks) |
+| Écran UI | `login_screen.dart` | ✅ widget |
+| Navigation | `main_screen.dart → animal_screen.dart` | ✅ intégration |
+| Notification | `notification_service.dart` | ✅ unitaire + intégration |
+| Connexion | `auth_service.dart` | ✅ widget + intégration (email/Google/Apple + erreurs) |
+| IA / API | `photo_verification_service.dart` | ✅ unitaire avec mocks |
+| UX critique | `splash_screen.dart` | ✅ widget + manuel (fluidité, offline, erreurs) |
 
-integration/
+---
 
-Tests des flux utilisateur complets
+## ⚙️ Scripts intégrés
 
-Exemple : création d’un animal, ajout d’une note, navigation avec ou sans connexion
+| Script | Rôle |
+|--------|------|
+| `scripts/generate_test_module.dart` | Crée l’ossature complète de tests pour un module |
+| `scripts/update_test_tracker.dart` | Met à jour automatiquement `docs/test_tracker.md` |
+| `scripts/update_noyau_suivi.dart` | Met à jour `docs/noyau_suivi.md` après chaque fichier |
+| `scripts/update_suivi_taches.dart` | Met à jour `docs/3__suivi_taches.md` automatiquement |
 
-🧪 Types de tests obligatoires par fonctionnalité
+---
 
-Modèles (.dart) : tests unitaires pour valider la structure, la sérialisation, et la logique métier.
+## 🔁 Workflows GitHub Actions
 
-Interfaces utilisateur : tests widgets pour vérifier les affichages, états, et interactions.
+Déclenchés à chaque push ou merge :
 
-Navigation et flux utilisateur : tests d’intégration pour valider les parcours complets.
+- **`flutter_tests.yml`** : Exécute tous les tests Flutter et produit un rapport de couverture.
+- **`update_test_tracker.yml`** : Analyse tous les fichiers modifiés, détecte les oublis de tests, et met à jour `test_tracker.md`.
 
-Notifications : test unitaire de la logique et test d’intégration pour l’affichage.
+> Tous les workflows se trouvent dans `.github/workflows/`.
 
-Connexion et authentification : test widget et test d’intégration pour toutes les variantes (email, Google, Apple) et erreurs.
+---
 
-IA / API : test unitaire avec mocks pour simuler les réponses et tester la prise de décision.
+## 🧠 Suggestions IA — à venir
 
-UX critiques : tests widget + tests utilisateurs sur les animations, messages, feedbacks, et fonctionnement hors ligne.
+Des fonctions avancées sont prévues pour automatiser encore plus :
 
-⚙️ Scripts inclus
+- Analyse des fichiers non couverts par des tests.
+- Génération automatique de tests via IA (logique + mocks).
+- Détection de logique complexe à sécuriser par tests.
+- Correction intelligente + proposition de refactoring.
 
-generate_test_module.dart : génère automatiquement la structure de tests pour un nouveau module
+---
 
-update_test_tracker.dart : met à jour le fichier docs/test_tracker.md avec le statut des tests
+## 📝 Bonnes pratiques manuelles
 
-✅ Suivi automatique (GitHub Actions)
+- Tout fichier `.dart` modifié **sans test associé** doit comporter un `// TODO: ajouter test`.
+- Ce commentaire est automatiquement détecté et listé dans `docs/test_tracker.md`.
+- Une convention de nommage stricte est appliquée (ex. : `nom_model_test.dart`, `nom_service_test.dart`, etc.).
 
-flutter_tests.yml : exécute tous les tests à chaque push et produit un rapport de couverture
+---
 
-update_test_tracker.yml : met à jour automatiquement test_tracker.md, détecte les fichiers sans test ou en erreur
+## 🧩 Modules testables dès la création
 
-🧠 Suggestions IA (à venir)
+Chaque nouveau module doit intégrer **dès le départ** :
 
-Intégration d’une IA de développement : 
+- Un modèle de données (`model/`) avec test de sérialisation.
+- Un service logique (`services/`) avec test unitaire.
+- Une UI (`screen/`, `widgets/`) avec test widget simple.
+- Un script `generate_test_module.dart` à exécuter dès la création.
+- Un suivi dans `docs/suivi_[nom_module].md` avec état des tests.
 
-Analyse automatique du code non couvert
+> Cf. `docs/prompts_naturels.md` pour lancer un module proprement avec tests automatisés.
 
-Propositions de fichiers de test générés automatiquement
+---
 
-Détection de logique complexe sans couverture
+## 📚 Documentation liée
 
-📋 Suivi manuel complémentaire
+| Fichier | Contenu |
+|--------|---------|
+| `docs/test_tracker.md` | Suivi automatisé de la couverture de tests |
+| `docs/10__architecture.md` | Structure de l’application et des tests |
+| `docs/prompts_naturels.md` | Prompts ChatGPT pour structurer les modules et leurs tests |
+| `README_DEV.md` | Vue complète pour les contributeurs |
+| `README.md` | Présentation publique de l’app |
 
-Lorsqu’un fichier est modifié sans test, un commentaire TODO doit être ajouté dans le fichier
+---
 
-Ce commentaire est remonté automatiquement dans test_tracker.md
+## ✅ Pour lancer tous les tests :
 
-Souhaites-tu maintenant un exemple complet de structure de test pour un module (fichiers + modèles de test) ?
+```bash
+flutter test
+```
 
-Pour une vue détaillée de l'architecture des tests (dossiers par module, connexion à l'IA, exécution locale et CI), consultez **docs/test_architecture.md**.
+Ou pour une catégorie :
 
+```bash
+flutter test test/noyau/unit/
+flutter test test/modules/sante/widget/
+```
+
+---
+
+> Besoin d’un exemple complet de structure de test pour un module ? Lance la commande :
+```
+dart scripts/generate_test_module.dart --module [nom]
+```
+
+---
+
+📌 **AniSphère est conçu pour que chaque module soit testable, maintenable, évolutif. Les tests sont une brique centrale du projet.**
