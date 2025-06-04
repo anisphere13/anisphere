@@ -1,6 +1,6 @@
 /// Copilot Prompt : Test automatique généré pour user_model.g.dart (unit)
 import 'package:flutter_test/flutter_test.dart';
-import 'package:anisphere/modules/noyau/models/user_model.g.dart';
+import 'package:anisphere/modules/noyau/models/user_model.dart';
 
 void main() {
   test('user_model.g fonctionne (test auto)', () {
