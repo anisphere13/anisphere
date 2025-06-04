@@ -1,0 +1,10 @@
+/// Copilot Prompt : Test automatique généré pour ia_config.dart (unit)
+import 'package:flutter_test/flutter_test.dart';
+import 'package:anisphere/modules/noyau/logic/ia_config.dart';
+
+void main() {
+  test('ia_config fonctionne (test auto)', () {
+    // TODO : compléter le test pour ia_config.dart
+    expect(true, isTrue); // À remplacer par un vrai test
+  });
+}

@@ -33,7 +33,7 @@ test/
 | (à venir) communaute | `test/communaute/` |
 
 Lorsqu’un nouveau module est créé, on lance `dart run scripts/generate_test_module.dart <nom>` pour générer automatiquement la hiérarchie.
-
+Le script crée trois fichiers de test : `<nom>_unit.dart`, `<nom>_widget.dart` et `<nom>_integration.dart` dans `test/test_<nom>_module/<type>/`.
 ## 3. Fichiers clés
 
 - `test/test_config.dart` : initialise l’environnement Flutter et Firebase pour les tests.

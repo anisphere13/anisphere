@@ -3,8 +3,7 @@
 | Fichier | Type attendu | Test présent | Chemin du test |
 |--------|--------------|--------------|----------------|
 | user_service.dart | Unitaire | ✅ | test/noyau/unit/user_service_test.dart |
-| login_screen.dart | Widget | ❌ | _Aucun test trouvé_ |
-| app_initializer.dart | Intégration | ❌ | _Aucun test trouvé_ |
-
-- 📌 Tests validés automatiquement le 2025-04-05
-- ✅ Tests validés automatiquement le 2025-04-13
+| support_service.dart | Unitaire | ✅ | test/noyau/unit/support_service_test.dart |
+| login_screen.dart | Widget | ✅ | test/noyau/widget/login_screen_test.dart |
+| support_screen.dart | Widget | ✅ | test/noyau/widget/support_screen_test.dart |
+| app_initializer.dart | Intégration | ✅ | test/noyau/integration/app_initializer_test.dart |

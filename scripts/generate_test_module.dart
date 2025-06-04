@@ -68,8 +68,7 @@ void main() {
 
   for (final type in types) {
     final dir = Directory('$basePath/$type');
-const typeTest = 'widget'; // camelCase fixé
-    dir.createSync(recursive: true);
+    final typeTest = type; // ensures correct suffix    dir.createSync(recursive: true);
 
     final file = File('$basePath/$type/${moduleName}_$typeTest.dart');
     if (!file.existsSync()) {

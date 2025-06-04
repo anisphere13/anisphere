@@ -103,7 +103,20 @@ Tests automatisés intégrés
 Modules indépendants faciles à ajouter
 
 Scripts d’automatisation prêts
+🧪 Lancer les tests
 
+Rejoignez l’aventure et contribuez à créer la meilleure application de suivi animal !
+Toutes les commandes de test se lancent depuis la racine du projet :
+```bash
+flutter pub get
+flutter test --coverage
+```
+Les tests Firebase nécessitent de copier `assets/credentials.json.example` vers `assets/credentials.json`.
+
+Pour plus de détails, consultez [README_Tests.md](README_Tests.md) et [docs/test_architecture.md](docs/test_architecture.md).
+
+Rejoignez l’aventure et contribuez à créer la meilleure application de suivi animal !
+© AniSphère 2025 — Suivez vos animaux comme jamais auparavant.
 Rejoignez l’aventure et contribuez à créer la meilleure application de suivi animal !
 
 © AniSphère 2025 — Suivez vos animaux comme jamais auparavant.
