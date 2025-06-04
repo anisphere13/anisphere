@@ -7,6 +7,7 @@ library;
 import 'package:flutter/foundation.dart';
 import '../models/animal_model.dart';
 import '../models/user_model.dart';
+import '../models/support_model.dart';
 import 'firebase_service.dart';
 import '../services/offline_sync_queue.dart';
 
@@ -55,6 +56,19 @@ class CloudSyncService {
     }
   }
 
+  /// 🔁 Envoie un retour utilisateur (support/contact/bug)
+  Future<void> pushSupportData(SupportModel feedback) async {
+    try {
+      await _firebaseService.sendModuleData('support', feedback.toJson());
+      debugPrint('☁️ Feedback support envoyé au cloud.');
+    } catch (e) {
+      debugPrint('❌ [CloudSync] Erreur pushSupportData : $e');
+      await OfflineSyncQueue.addTask(
+        SyncTask(type: 'support', data: feedback.toJson(), timestamp: DateTime.now()),
+      );
+    }
+  }
+
   /// 📊 Envoie d’un retour IA local (métriques, logs, feedbacks)
   Future<void> pushIAFeedback(Map<String, dynamic> metrics) async {
     try {
@@ -96,6 +110,9 @@ class CloudSyncService {
           break;
         case "ia_feedback":
           await _firebaseService.sendIAFeedback(task.data);
+          break;
+        case "support":
+          await _firebaseService.sendModuleData('support', task.data);
           break;
         default:
           if (task.type.startsWith("module:")) {

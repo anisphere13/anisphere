@@ -74,7 +74,24 @@ Centraliser les interactions communautaires et les échanges.
 
 🔹 Structure
 
-communaute (collection) └── [userId] (document) ├── spheres: number ├── echanges: [ { type, avec, date, validé } ] ├── reputation: number └── historique: [string] 
+communaute (collection) └── [userId] (document) ├── spheres: number ├── echanges: [ { type, avec, date, validé } ] ├── reputation: number └── historique: [string]
+
+🆘 Collection support
+
+🔹 Objectif
+
+Centraliser les retours utilisateurs : bug, idée, contact et feedback IA.
+
+🔹 Structure
+
+support (collection)
+ └── [feedbackId] (document)
+     ├── userId: string
+     ├── type: string (bug, idee, contact)
+     ├── message: string
+     ├── status: string (brouillon, lu, traité)
+     ├── createdAt: timestamp
+     └── updatedAt: timestamp
 
 🗂️ Compléments prévus
 

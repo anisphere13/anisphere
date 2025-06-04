@@ -12,6 +12,7 @@ import '../providers/user_provider.dart';
 import '../logic/ia_logger.dart';
 import '../logic/ia_flag.dart';
 import '../logic/ia_master.dart';
+import 'support_admin_screen.dart';
 
 class SuperAdminScreen extends StatefulWidget {
   const SuperAdminScreen({super.key});
@@ -121,6 +122,19 @@ class _SuperAdminScreenState extends State<SuperAdminScreen> {
             label: const Text("Forcer une synchronisation IA"),
             style: ElevatedButton.styleFrom(backgroundColor: Colors.blue.shade700),
             onPressed: _forceSync,
+          ),
+          const SizedBox(height: 12),
+
+          ElevatedButton.icon(
+            icon: const Icon(Icons.support_agent),
+            label: const Text('Voir les feedbacks'),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const SupportAdminScreen()),
+              );
+            },
           ),
         ],
       ),
