@@ -70,4 +70,5 @@ Ce commentaire est remonté automatiquement dans test_tracker.md
 
 Souhaites-tu maintenant un exemple complet de structure de test pour un module (fichiers + modèles de test) ?
 
+Pour une vue détaillée de l'architecture des tests (dossiers par module, connexion à l'IA, exécution locale et CI), consultez **docs/test_architecture.md**.
 
