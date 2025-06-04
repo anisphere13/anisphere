@@ -7,3 +7,4 @@
 | login_screen.dart | Widget | ✅ | test/noyau/widget/login_screen_test.dart |
 | support_screen.dart | Widget | ✅ | test/noyau/widget/support_screen_test.dart |
 | app_initializer.dart | Intégration | ✅ | test/noyau/integration/app_initializer_test.dart |
+- ✅ Tests validés automatiquement le 2025-06-04
