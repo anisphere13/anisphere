@@ -102,8 +102,8 @@ class UserProvider with ChangeNotifier {
   Future<void> signOut() async {
     try {
       await _userService.init(); // Hive ready
-      if (_user?.id != null) {
-        await _userService.deleteUserFromHive(_user!.id);
+      if (_user != null) {
+        await _userService.deleteUserLocally();
       }
 
       final connectivity = await Connectivity().checkConnectivity();

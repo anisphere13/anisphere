@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart'; // Ajouté pour la permission Android
 
 import 'package:anisphere/firebase_options.dart';
 import 'package:anisphere/modules/noyau/screens/main_screen.dart';
@@ -27,6 +28,8 @@ import 'package:anisphere/modules/noyau/services/modules_service.dart';
 // Hive Adapters pour la synchronisation différée IA
 import 'package:anisphere/modules/noyau/services/offline_sync_queue.dart';
 import 'package:anisphere/modules/noyau/logic/ia_metrics_collector.dart';
+import 'package:anisphere/services/notification_service.dart';
+import 'package:anisphere/services/cloud_notification_listener.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -67,6 +70,14 @@ void main() async {
   }
 
   await NotificationService.initialize();
+  CloudNotificationListener.start();
+
+  // Demande de permission notifications Android (intégré proprement ici)
+  await FlutterLocalNotificationsPlugin()
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
+      ?.requestPermission();
+
   assert(() {
     debugPrint("🧠 Initialisation services IA terminée !");
     return true;
@@ -150,7 +161,8 @@ class SplashScreenState extends State<SplashScreen> {
     if (!mounted) return;
 
     final userProvider = Provider.of<UserProvider>(context, listen: false);
-    final iaContextProvider = Provider.of<IAContextProvider>(context, listen: false);
+    final iaContextProvider =
+        Provider.of<IAContextProvider>(context, listen: false);
 
     await userProvider.loadUser();
 
@@ -215,3 +227,6 @@ class SplashScreenState extends State<SplashScreen> {
     );
   }
 }
+// ⚠️ SUPPRESSION : doublon de main() et appel hors contexte Flutter (voir plus haut)
+// La fonction main() et l'appel à NotificationService/CloudNotificationListener sont déjà gérés plus haut.
+// L'appel direct à FlutterLocalNotificationsPlugin().resolvePlatformSpecificImplementation... est maintenant intégré proprement dans main().

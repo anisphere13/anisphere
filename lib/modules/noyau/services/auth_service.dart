@@ -124,7 +124,7 @@ class AuthService {
   Future<void> signOut() async {
     if (currentUser != null) {
       await _auth.signOut();
-      await _userService.deleteUserFromHive(currentUser!.uid);
+      await _userService.deleteUserLocally();
     }
   }
 
