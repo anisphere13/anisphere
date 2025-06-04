@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import '../../test_config.dart';
 import 'package:flutter/material.dart';
 import 'package:anisphere/modules/identite/screens/identity_screen.dart';
 import 'package:anisphere/modules/identite/services/identity_service.dart';
@@ -10,6 +11,9 @@ import 'package:mockito/mockito.dart';
 class MockBox extends Mock implements Box {}
 
 void main() {
+  setUpAll(() async {
+    await initTestEnv();
+  });
   testWidgets('IdentityScreen renders input fields', (WidgetTester tester) async {
     final service = IdentityService(localBox: MockBox());
     final animal = AnimalModel(

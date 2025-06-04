@@ -1,18 +1,19 @@
 # Test Tracker AniSphère
 | Fichier test | Type | Source | Statut |
 |--------------|------|--------|--------|
-| test/modules/identite/unit/identity_model.g_test.dart | unit | package:anisphere/modules/identite/models/identity_model.g.dart | À faire |
-| test/modules/identite/unit/identity_model_test.dart | unit | package:anisphere/modules/identite/models/identity_model.dart | À faire |
-| test/modules/identite/unit/identity_card_generator_test.dart | unit | package:anisphere/modules/identite/services/identity_card_generator.dart | À faire |
-| test/modules/identite/unit/identity_reminder_service_test.dart | unit | package:anisphere/modules/identite/services/identity_reminder_service.dart | À faire |
-| test/modules/identite/unit/legal_status_service_test.dart | unit | package:anisphere/modules/identite/services/legal_status_service.dart | À faire |
-| test/modules/identite/unit/identity_service_test.dart | unit | package:anisphere/modules/identite/services/identity_service.dart | À faire |
-| test/modules/identite/unit/identity_verification_service_test.dart | unit | package:anisphere/modules/identite/services/identity_verification_service.dart | À faire |
-| test/modules/identite/unit/qr_generator_service_test.dart | unit | package:anisphere/modules/identite/services/qr_generator_service.dart | À faire |
-| test/modules/identite/unit/ocr_icad_service_test.dart | unit | package:anisphere/modules/identite/services/ocr_icad_service.dart | À faire |
-| test/modules/identite/unit/identity_passport_generator_test.dart | unit | package:anisphere/modules/identite/services/identity_passport_generator.dart | À faire |
-| test/modules/identite/unit/photo_verification_service_test.dart | unit | package:anisphere/modules/identite/services/photo_verification_service.dart | À faire |
-| test/modules/identite/widget/identity_screen_test.dart | widget | package:anisphere/modules/identite/screens/identity_screen.dart | À faire |
+| test/identite/unit/identity_model.g_test.dart | unit | package:anisphere/modules/identite/models/identity_model.g.dart | À faire |
+| test/identite/unit/identity_model_test.dart | unit | package:anisphere/modules/identite/models/identity_model.dart | À faire |
+| test/identite/unit/identity_card_generator_test.dart | unit | package:anisphere/modules/identite/services/identity_card_generator.dart | À faire |
+| test/identite/unit/identity_reminder_service_test.dart | unit | package:anisphere/modules/identite/services/identity_reminder_service.dart | À faire |
+| test/identite/unit/legal_status_service_test.dart | unit | package:anisphere/modules/identite/services/legal_status_service.dart | À faire |
+| test/identite/unit/identity_service_test.dart | unit | package:anisphere/modules/identite/services/identity_service.dart | À faire |
+| test/identite/unit/identity_verification_service_test.dart | unit | package:anisphere/modules/identite/services/identity_verification_service.dart | À faire |
+| test/identite/unit/qr_generator_service_test.dart | unit | package:anisphere/modules/identite/services/qr_generator_service.dart | À faire |
+| test/identite/unit/ocr_icad_service_test.dart | unit | package:anisphere/modules/identite/services/ocr_icad_service.dart | À faire |
+| test/identite/unit/identity_passport_generator_test.dart | unit | package:anisphere/modules/identite/services/identity_passport_generator.dart | À faire |
+| test/identite/unit/photo_verification_service_test.dart | unit | package:anisphere/modules/identite/services/photo_verification_service.dart | À faire |
+| test/identite/widget/identity_screen_test.dart | widget | package:anisphere/modules/identite/screens/identity_screen.dart | À faire |
+| test/identite/integration/identity_flow_test.dart | integration | package:anisphere/modules/identite/screens/identity_screen.dart | À faire |
 | test/noyau/unit/animal_model_test.dart | unit | package:anisphere/modules/noyau/models/animal_model.dart | À faire |
 | test/noyau/unit/support_model_test.dart | unit | package:anisphere/modules/noyau/models/support_model.dart | À faire |
 | test/noyau/unit/user_model_test.dart | unit | package:anisphere/modules/noyau/models/user_model.dart | À faire |

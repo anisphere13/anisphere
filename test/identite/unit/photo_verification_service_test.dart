@@ -1,7 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
+import '../../test_config.dart';
 import 'package:anisphere/modules/identite/services/photo_verification_service.dart';
 
 void main() {
+  setUpAll(() async {
+    await initTestEnv();
+  });
   test('Score calculé reste dans une plage valide', () async {
     final service = PhotoVerificationService();
     // simulate with 0 sharpness, 1 centering = score 0.3

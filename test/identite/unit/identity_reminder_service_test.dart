@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import '../../test_config.dart';
 import 'package:anisphere/modules/identite/models/identity_model.dart';
 import 'package:anisphere/modules/identite/services/identity_reminder_service.dart';
 import 'package:anisphere/modules/noyau/logic/ia_master.dart';
@@ -13,6 +14,9 @@ class FakeIAMaster extends IAMaster {
 }
 
 void main() {
+  setUpAll(() async {
+    await initTestEnv();
+  });
   test('déclenche un rappel IA après 12 mois', () {
     final ia = FakeIAMaster();
     final service = IdentityReminderService(iaMaster: ia);
