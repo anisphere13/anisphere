@@ -3,12 +3,13 @@ import '../../test_config.dart';
 import 'package:flutter/material.dart';
 import 'package:anisphere/modules/identite/screens/identity_screen.dart';
 import 'package:anisphere/modules/identite/services/identity_service.dart';
+import 'package:anisphere/modules/identite/models/identity_model.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
 
 import 'package:hive/hive.dart';
 import 'package:mockito/mockito.dart';
 
-class MockBox extends Mock implements Box {}
+class MockBox extends Mock implements Box<IdentityModel> {}
 
 void main() {
   setUpAll(() async {

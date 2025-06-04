@@ -22,12 +22,10 @@ Future<void> main() async {
       '${today.year}-${_pad(today.month)}-${_pad(today.day)}';
   final tag = '- ✅ Tests validés automatiquement le $formattedDate';
 
-  destFile
-      .writeAsStringSync('${processedLines.join('\n')}\n\n$tag\n');
+  destFile.writeAsStringSync('${processedLines.join('\n')}\n\n$tag\n');
   srcFile.writeAsStringSync('${processedLines.join('\n')}\n');
 
-  final updatedContent = "$content\n$tag\n";
-  file.writeAsStringSync('${updatedContent.trimRight()}\n');
+}
 
 List<String> _processTracker(List<String> lines) {
   if (lines.length <= 3) return lines; // headers only
