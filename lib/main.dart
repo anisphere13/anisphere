@@ -17,6 +17,7 @@ import 'package:anisphere/modules/noyau/services/auth_service.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:anisphere/modules/noyau/providers/animal_provider.dart';
 import 'package:anisphere/modules/noyau/providers/ia_context_provider.dart';
+import 'package:anisphere/modules/noyau/providers/support_provider.dart';
 
 import 'package:anisphere/modules/noyau/logic/ia_master.dart';
 import 'package:anisphere/modules/noyau/logic/ia_executor.dart';
@@ -106,6 +107,9 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => IAContextProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SupportProvider(),
         ),
       ],
       child: const MyApp(),

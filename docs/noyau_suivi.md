@@ -7448,6 +7448,14 @@ Ajouter tests unitaires pour la synchronisation différée et la collecte métri
 
 Préparer l’intégration complète du module Identité et sa synchronisation IA
 
+Mettre en place la fonctionnalité Support/Contact/Bug (création de support_model.dart)
+
+Créer le service support_service.dart pour stocker les retours en local et les envoyer vers Firebase
+Créer SupportProvider pour afficher les feedbacks en temps réel
+Ajouter les écrans support_screen.dart et support_admin_screen.dart
+Lier l'option Support dans le menu principal et l'écran SuperAdmin
+Étendre CloudSyncService avec pushSupportData
+
 
 
 

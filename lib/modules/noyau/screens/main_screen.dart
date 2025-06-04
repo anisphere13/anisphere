@@ -15,6 +15,7 @@ import 'login_screen.dart';
 import 'notifications_screen.dart';
 import 'qr_screen.dart';
 import 'ia_debug_screen.dart'; // 👈 Écran superadmin masqué
+import 'support_screen.dart';
 
 import 'package:anisphere/modules/noyau/widgets/notification_icon.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
@@ -62,6 +63,12 @@ class MainScreenState extends State<MainScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (_) => const SettingsScreen()),
+        );
+        break;
+      case 'support':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const SupportScreen()),
         );
         break;
       case 'logout':
@@ -149,6 +156,7 @@ class MainScreenState extends State<MainScreen> {
             itemBuilder: (context) => const [
               PopupMenuItem(value: 'profile', child: Text('Mon Profil')),
               PopupMenuItem(value: 'settings', child: Text('Paramètres')),
+              PopupMenuItem(value: 'support', child: Text('Support')),
               PopupMenuItem(value: 'logout', child: Text('Se déconnecter')),
             ],
           ),
