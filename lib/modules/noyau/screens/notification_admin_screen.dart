@@ -25,6 +25,7 @@ class _NotificationAdminScreenState extends State<NotificationAdminScreen> {
   String type = "info"; // info, alert, promo
 
   void _sendNotification() async {
+    final messenger = ScaffoldMessenger.of(context);
     if (!_formKey.currentState!.validate()) return;
     _formKey.currentState!.save();
 
@@ -47,7 +48,7 @@ class _NotificationAdminScreenState extends State<NotificationAdminScreen> {
       role: role,
     );
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
+    messenger.showSnackBar(
       const SnackBar(content: Text('✅ Notification envoyée')),    );
   }
 

@@ -26,6 +26,7 @@ class LoginScreenState extends State<LoginScreen> {
   String? _errorMessage;
 
   Future<void> _login(BuildContext context) async {
+    final navigator = Navigator.of(context);
     setState(() {
       _isLoading = true;
       _errorMessage = null;
@@ -47,13 +48,13 @@ class LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    Navigator.pushReplacement(
-      context,
+    navigator.pushReplacement(
       MaterialPageRoute(builder: (_) => const MainScreen()),
     );
   }
 
   Future<void> _loginWithGoogle(BuildContext context) async {
+    final navigator = Navigator.of(context);
     setState(() {
       _isLoading = true;
       _errorMessage = null;
@@ -72,13 +73,13 @@ class LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    Navigator.pushReplacement(
-      context,
+    navigator.pushReplacement(
       MaterialPageRoute(builder: (_) => const MainScreen()),
     );
   }
 
   Future<void> _loginWithApple(BuildContext context) async {
+    final navigator = Navigator.of(context);
     setState(() {
       _isLoading = true;
       _errorMessage = null;
@@ -97,8 +98,7 @@ class LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    Navigator.pushReplacement(
-      context,
+    navigator.pushReplacement(
       MaterialPageRoute(builder: (_) => const MainScreen()),
     );
   }

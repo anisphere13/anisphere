@@ -53,12 +53,12 @@ class _IdentityScreenState extends State<IdentityScreen> {
       verifiedByIA: false,
       history: identity?.history ?? [],
     );
-
+    final messenger = ScaffoldMessenger.of(context);
     await widget.service.saveIdentityLocally(updated);
 
     if (!mounted) return;
 
-    ScaffoldMessenger.of(context).showSnackBar(
+    messenger.showSnackBar(
       const SnackBar(content: Text("Identité mise à jour")),
     );
 

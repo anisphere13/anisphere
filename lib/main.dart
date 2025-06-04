@@ -9,6 +9,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart'; /
 import 'package:anisphere/firebase_options.dart';
 import 'package:anisphere/modules/noyau/screens/main_screen.dart';
 import 'package:anisphere/modules/noyau/screens/login_screen.dart';
+import 'package:anisphere/modules/noyau/screens/splash_screen.dart';
 import 'package:anisphere/modules/noyau/services/local_storage_service.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
 import 'package:anisphere/modules/noyau/services/auth_service.dart';
@@ -127,76 +128,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
-  @override
-  SplashScreenState createState() => SplashScreenState();
-}
-class SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    _navigateToNextScreen();
-  }
-  Future<void> _navigateToNextScreen() async {
-    await Future.delayed(const Duration(seconds: 2));
-    if (!mounted) return;
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
-    final iaContextProvider =
-        Provider.of<IAContextProvider>(context, listen: false);
-    await userProvider.loadUser();
-    if (!mounted) return;
-    await iaContextProvider.init(
-      isOffline: false,
-      animalService: AnimalService(),
-      userService: userProvider.userService,
-    );
-    final contextIA = iaContextProvider.context;
-    final iaExecutor = IAExecutor(
-      iaMaster: IAMaster.instance,
-      notificationService: NotificationService(),
-      modulesService: ModulesService(),
-      animalService: AnimalService(),
-    );
-    final iaScheduler = IAScheduler(
-      executor: iaExecutor,
-      iaMaster: IAMaster.instance,
-      user: userProvider.user!, // ✅ nécessaire pour la sync cloud
-    );
-    iaScheduler.start(contextIA);
-    final Widget nextScreen =
-        userProvider.user != null ? const MainScreen() : const LoginScreen();
-    assert(() {
-      debugPrint(
-        userProvider.user != null
-            ? "✅ Utilisateur connecté, redirection vers MainScreen"
-            : "❌ Aucun utilisateur connecté, redirection vers LoginScreen",
-      );
-      return true;
-    }());
-    if (mounted) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => nextScreen),
-      );
-    }
-  }
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircularProgressIndicator(),
-            SizedBox(height: 20),
-            Text("Chargement d'AniSphère..."),
-          ],
-        ),
-      ),
-    );
-  }
-}
-// ⚠️ SUPPRESSION : doublon de main() et appel hors contexte Flutter (voir plus haut)
-// La fonction main() et l'appel à NotificationService/CloudNotificationListener sont déjà gérés plus haut.
-// L'appel direct à FlutterLocalNotificationsPlugin().resolvePlatformSpecificImplementation... est maintenant intégré proprement dans main().

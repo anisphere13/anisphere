@@ -97,6 +97,7 @@ class _IADebugScreenState extends State<IADebugScreen> {
             const SizedBox(height: 20),
             ElevatedButton.icon(
               onPressed: () async {
+                final messenger = ScaffoldMessenger.of(context);
                 try {
                   await IALogger.clearLogs();
                   await _loadDebugData();
@@ -106,7 +107,7 @@ class _IADebugScreenState extends State<IADebugScreen> {
                     debugPrint("❌ Erreur suppression logs IA : $e");
                     return true;
                   }());
-                  ScaffoldMessenger.of(context).showSnackBar(
+                  messenger.showSnackBar(
                     const SnackBar(
                         content:
                             Text("Erreur lors de la suppression des logs IA.")),

@@ -96,10 +96,10 @@ class _HomeScreenState extends State<HomeScreen> {
           PopupMenuButton<String>(
             onSelected: (value) async {
               if (value == 'logout') {
+                final navigator = Navigator.of(context);
                 await userProvider.signOut();
                 if (mounted) {
-                  Navigator.pushReplacement(
-                    context,
+                  navigator.pushReplacement(
                     MaterialPageRoute(builder: (_) => const LoginScreen()),
                   );
                 }

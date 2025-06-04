@@ -38,24 +38,28 @@ class _SuperAdminScreenState extends State<SuperAdminScreen> {
     });
   }
   Future<void> _clearLogs() async {
+    final messenger = ScaffoldMessenger.of(context);
     await IALogger.clearLogs();
     await _loadData();
-    _showSnackbar("Logs IA supprimés.");
+    if (!mounted) return;
+    messenger.showSnackBar(
+      const SnackBar(content: Text("Logs IA supprimés.")),
+    );
   }
+
   Future<void> _forceSync() async {
+    final messenger = ScaffoldMessenger.of(context);
     final user = Provider.of<UserProvider>(context, listen: false).user;
     if (user != null) {
       await IAMaster.instance.syncCloudIA(user.id);
       await _loadData();
-      _showSnackbar("Synchronisation IA lancée.");
+      if (!mounted) return;
+      messenger.showSnackBar(
+        const SnackBar(content: Text("Synchronisation IA lancée.")),
+      );
     }
   }
-  void _showSnackbar(String message) {
-    if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message)),
-    );
-  }
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context).user;

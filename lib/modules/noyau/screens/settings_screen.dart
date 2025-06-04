@@ -53,39 +53,42 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _resetIA() async {
+    final messenger = ScaffoldMessenger.of(context);
     await LocalStorageService.set("firstLaunch", true);
     await ModulesService.resetAllStatuses();
     await IALogService.clearLogs();
-    ScaffoldMessenger.of(context).showSnackBar(
+    messenger.showSnackBar(
       const SnackBar(content: Text("IA réinitialisée avec succès.")),
     );
   }
 
   Future<void> _performBackup() async {
+    final messenger = ScaffoldMessenger.of(context);
     final success = await backupService.performBackup();
     if (success) {
       await _loadLastBackup();
-      ScaffoldMessenger.of(context).showSnackBar(
+      messenger.showSnackBar(
         const SnackBar(content: Text("Sauvegarde effectuée avec succès.")),
       );
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
+      messenger.showSnackBar(
         const SnackBar(content: Text("Erreur lors de la sauvegarde.")),
       );
     }
   }
 
   Future<void> _restoreBackup() async {
+    final messenger = ScaffoldMessenger.of(context);
     final user = Provider.of<UserProvider>(context, listen: false).user;
     if (user == null) return;
 
     final success = await backupService.restoreBackup(user.id);
     if (success) {
-      ScaffoldMessenger.of(context).showSnackBar(
+      messenger.showSnackBar(
         const SnackBar(content: Text("Restauration réussie.")),
       );
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
+      messenger.showSnackBar(
         const SnackBar(content: Text("Erreur lors de la restauration.")),
       );
     }

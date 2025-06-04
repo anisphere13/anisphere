@@ -20,6 +20,7 @@ class _SupportScreenState extends State<SupportScreen> {
   bool _isSending = false;
 
   Future<void> _send() async {
+    final navigator = Navigator.of(context);
     final user = Provider.of<UserProvider>(context, listen: false).user;
     if (user == null) return;
     setState(() => _isSending = true);
@@ -34,7 +35,7 @@ class _SupportScreenState extends State<SupportScreen> {
     await Provider.of<SupportProvider>(context, listen: false)
         .addFeedback(feedback);
     if (!mounted) return;
-    Navigator.pop(context);
+    navigator.pop();
   }
 
   @override

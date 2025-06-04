@@ -46,6 +46,8 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
   }
 
   Future<void> _saveAnimal() async {
+    final navigator = Navigator.of(context);
+    final messenger = ScaffoldMessenger.of(context);
     try {
       await _animalService.init();
 
@@ -64,15 +66,15 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
       final success = await _animalService.saveAnimal(newAnimal);
 
       if (success && mounted) {
-        Navigator.pop(context);
+        navigator.pop();
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
+        messenger.showSnackBar(
           const SnackBar(content: Text("Erreur lors de l’enregistrement.")),
         );
       }
     } catch (e) {
       debugPrint("❌ Erreur _saveAnimal : $e");
-      ScaffoldMessenger.of(context).showSnackBar(
+      messenger.showSnackBar(
         const SnackBar(content: Text("Une erreur est survenue.")),
       );
     }

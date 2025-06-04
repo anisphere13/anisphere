@@ -127,10 +127,11 @@ class UserProfileScreen extends StatelessWidget {
                 foregroundColor: Colors.white,
               ),
               onPressed: () async {
+                final navigator = Navigator.of(context);
                 await Provider.of<UserProvider>(context, listen: false)
                     .signOut();
                 if (context.mounted) {
-                  Navigator.of(context).popUntil((route) => route.isFirst);
+                  navigator.popUntil((route) => route.isFirst);
                 }
               },
             ),

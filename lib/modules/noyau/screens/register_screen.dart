@@ -27,6 +27,7 @@ class RegisterScreenState extends State<RegisterScreen> {
   String? _errorMessage;
 
   Future<void> _register() async {
+    final navigator = Navigator.of(context);
     setState(() {
       _isLoading = true;
       _errorMessage = null;
@@ -51,8 +52,7 @@ class RegisterScreenState extends State<RegisterScreen> {
       return;
     }
 
-    Navigator.pushReplacement(
-      context,
+    navigator.pushReplacement(
       MaterialPageRoute(builder: (_) => const MainScreen()),
     );
   }

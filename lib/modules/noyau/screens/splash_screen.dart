@@ -25,6 +25,7 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> _checkUserStatus() async {
+    final navigator = Navigator.of(context);
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     try {
@@ -34,23 +35,22 @@ class SplashScreenState extends State<SplashScreen> {
 
       if (userProvider.user != null) {
         debugPrint("✅ Utilisateur connecté : ${userProvider.user!.email}");
-        _navigateTo(const MainScreen());
+        _navigateTo(navigator, const MainScreen());
       } else {
         debugPrint("❌ Aucun utilisateur connecté, redirection vers Login.");
-        _navigateTo(const LoginScreen());
+        _navigateTo(navigator, const LoginScreen());
       }
     } catch (e) {
       debugPrint("❌ Erreur lors du chargement utilisateur : $e");
-      if (mounted) _navigateTo(const LoginScreen());
+      if (mounted) _navigateTo(navigator, const LoginScreen());
     }
   }
 
-  void _navigateTo(Widget screen) {
+  void _navigateTo(NavigatorState navigator, Widget screen) {
     if (!mounted) return;
     Future.microtask(() {
       if (mounted) {
-        Navigator.pushReplacement(
-          context,
+        navigator.pushReplacement(
           MaterialPageRoute(builder: (_) => screen),
         );
       }
