@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/support_provider.dart';
 import '../providers/user_provider.dart';
-import '../models/support_model.dart';
+import '../models/support_ticket_model.dart';
 
 class SupportAdminScreen extends StatefulWidget {
   const SupportAdminScreen({super.key});
@@ -36,8 +36,7 @@ class _SupportAdminScreenState extends State<SupportAdminScreen> {
       body: ListView.builder(
         itemCount: feedbacks.length,
         itemBuilder: (context, index) {
-          final SupportModel f = feedbacks[index];
-          return ListTile(
+          final SupportTicketModel f = feedbacks[index];          return ListTile(
             title: Text(f.message),
             subtitle: Text('${f.type} — ${f.status}'),
             trailing: IconButton(

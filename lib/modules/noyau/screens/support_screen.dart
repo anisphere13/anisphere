@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/support_provider.dart';
 import '../providers/user_provider.dart';
-import '../models/support_model.dart';
+import '../models/support_ticket_model.dart';
 
 class SupportScreen extends StatefulWidget {
   const SupportScreen({super.key});
@@ -23,7 +23,7 @@ class _SupportScreenState extends State<SupportScreen> {
     final user = Provider.of<UserProvider>(context, listen: false).user;
     if (user == null) return;
     setState(() => _isSending = true);
-    final feedback = SupportModel(
+    final feedback = SupportTicketModel(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       userId: user.id,
       type: _type,

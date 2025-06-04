@@ -6,7 +6,7 @@ library;
 import 'package:flutter/foundation.dart';
 import '../models/animal_model.dart';
 import '../models/user_model.dart';
-import '../models/support_model.dart';
+import '../models/support_ticket_model.dart';
 import 'firebase_service.dart';
 import '../services/offline_sync_queue.dart';
 
@@ -52,7 +52,7 @@ class CloudSyncService {
   }
 
   /// 🔁 Envoie un retour utilisateur (support/contact/bug)
-  Future<void> pushSupportData(SupportModel feedback) async {
+  Future<void> pushSupportData(SupportTicketModel feedback) async {
     try {
       await _firebaseService.sendModuleData('support', feedback.toJson());
       debugPrint('☁️ Feedback support envoyé au cloud.');

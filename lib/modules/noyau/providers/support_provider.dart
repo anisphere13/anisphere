@@ -2,15 +2,14 @@ library;
 
 import 'package:flutter/foundation.dart';
 
-import '../models/support_model.dart';
+import '../models/support_ticket_model.dart';
 import '../services/support_service.dart';
 
 class SupportProvider with ChangeNotifier {
   final SupportService _supportService;
-  List<SupportModel> _feedbacks = [];
+  List<SupportTicketModel> _feedbacks = [];
 
-  List<SupportModel> get feedbacks => _feedbacks;
-
+  List<SupportTicketModel> get feedbacks => _feedbacks;
   SupportProvider({SupportService? service})
       : _supportService = service ?? SupportService();
 
@@ -19,7 +18,7 @@ class SupportProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> addFeedback(SupportModel feedback) async {
+  Future<void> addFeedback(SupportTicketModel feedback) async {
     await _supportService.saveFeedback(feedback);
     _feedbacks.add(feedback);
     notifyListeners();

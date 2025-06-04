@@ -1,37 +1,41 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'support_model.dart';
+part of 'support_ticket_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class SupportModelAdapter extends TypeAdapter<SupportModel> {
+class SupportTicketModelAdapter extends TypeAdapter<SupportTicketModel> {
   @override
-  final int typeId = 20;
+  final int typeId = 21;
 
   @override
-  SupportModel read(BinaryReader reader) {
+  SupportTicketModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return SupportModel(
+    return SupportTicketModel(
       id: fields[0] as String,
       userId: fields[1] as String,
       type: fields[2] as String,
       message: fields[3] as String,
       status: fields[4] as String,
-      createdAt: fields[5] as DateTime,
-      updatedAt: fields[6] as DateTime,
-      attachments: (fields[7] as List).cast<String>(),
+      logs: fields[5] as String,
+      aiResponse: fields[6] as String,
+      adminNote: fields[7] as String,
+      createdAt: fields[8] as DateTime,
+      updatedAt: fields[9] as DateTime,
+      moduleName: fields[10] as String,
+      attachments: (fields[11] as List).cast<String>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, SupportModel obj) {
+  void write(BinaryWriter writer, SupportTicketModel obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(12)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -43,10 +47,18 @@ class SupportModelAdapter extends TypeAdapter<SupportModel> {
       ..writeByte(4)
       ..write(obj.status)
       ..writeByte(5)
-      ..write(obj.createdAt)
+      ..write(obj.logs)
       ..writeByte(6)
-      ..write(obj.updatedAt)
+      ..write(obj.aiResponse)
       ..writeByte(7)
+      ..write(obj.adminNote)
+      ..writeByte(8)
+      ..write(obj.createdAt)
+      ..writeByte(9)
+      ..write(obj.updatedAt)
+      ..writeByte(10)
+      ..write(obj.moduleName)
+      ..writeByte(11)
       ..write(obj.attachments);
   }
 
@@ -56,7 +68,7 @@ class SupportModelAdapter extends TypeAdapter<SupportModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SupportModelAdapter &&
+      other is SupportTicketModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
