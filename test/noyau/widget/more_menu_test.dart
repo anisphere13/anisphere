@@ -1,7 +1,6 @@
-/// Copilot Prompt : Test automatique généré pour more_menu.dart (widget)
+// Copilot Prompt : Test automatique généré pour more_menu.dart (widget)
 import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
-import 'package:anisphere/modules/noyau/widgets/more_menu.dart';
 
 void main() {
   setUpAll(() async {

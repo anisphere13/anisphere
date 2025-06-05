@@ -1,4 +1,4 @@
-/// Copilot Prompt : IAMetricsCollector collects and stores local AI metrics to be sent later to the cloud by CloudSyncService.
+// Copilot Prompt : IAMetricsCollector collects and stores local AI metrics to be sent later to the cloud by CloudSyncService.
 library;
 
 import 'package:flutter/foundation.dart';

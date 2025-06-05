@@ -1,7 +1,7 @@
-/// Copilot Prompt : Écran complet du profil utilisateur AniSphère.
-/// Affiche identité, modules actifs, statut IA, QR ID, actions pratiques.
-/// UX fluide inspirée Samsung Health, sections bien définies.
-/// IA-ready, QR, export, stats, confidentialité préparés.
+// Copilot Prompt : Écran complet du profil utilisateur AniSphère.
+// Affiche identité, modules actifs, statut IA, QR ID, actions pratiques.
+// UX fluide inspirée Samsung Health, sections bien définies.
+// IA-ready, QR, export, stats, confidentialité préparés.
 
 library;
 

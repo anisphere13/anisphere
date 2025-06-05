@@ -1,8 +1,8 @@
-/// Copilot Prompt : Contexte IA local pour AniSphère.
-/// Centralise les infos critiques du contexte utilisateur (hors-ligne, animaux, 1er lancement).
-/// Permet à IAMaster ou IARuleEngine de prendre des décisions locales intelligentes.
-/// Utilisé par IAExecutor, IAScheduler, IAMaster.
-/// IAContext peut être enrichi avec d'autres signaux (modules actifs, version app...)
+// Copilot Prompt : Contexte IA local pour AniSphère.
+// Centralise les infos critiques du contexte utilisateur (hors-ligne, animaux, 1er lancement).
+// Permet à IAMaster ou IARuleEngine de prendre des décisions locales intelligentes.
+// Utilisé par IAExecutor, IAScheduler, IAMaster.
+// IAContext peut être enrichi avec d'autres signaux (modules actifs, version app...)
 
 library;
 

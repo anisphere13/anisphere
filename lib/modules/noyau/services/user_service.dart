@@ -1,6 +1,6 @@
-/// Copilot Prompt : Service utilisateur AniSphère (Firebase + Hive).
-/// Gère synchronisation cloud, sauvegarde locale, suppression, et MAJ IA.
-/// Optimisé pour IA maîtresse, offline-first, multi-profil.
+// Copilot Prompt : Service utilisateur AniSphère (Firebase + Hive).
+// Gère synchronisation cloud, sauvegarde locale, suppression, et MAJ IA.
+// Optimisé pour IA maîtresse, offline-first, multi-profil.
 
 library;
 

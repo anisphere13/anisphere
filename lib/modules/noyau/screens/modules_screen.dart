@@ -1,7 +1,7 @@
-/// Copilot Prompt : Écran des modules dans AniSphère.
-/// Affiche les modules disponibles avec cartes claires (nom, description, statut).
-/// Préparé pour activer, acheter ou découvrir chaque module.
-/// Inspiré de l’ergonomie Samsung Health.
+// Copilot Prompt : Écran des modules dans AniSphère.
+// Affiche les modules disponibles avec cartes claires (nom, description, statut).
+// Préparé pour activer, acheter ou découvrir chaque module.
+// Inspiré de l’ergonomie Samsung Health.
 library;
 import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/services/modules_service.dart';

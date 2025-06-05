@@ -1,8 +1,8 @@
-/// Copilot Prompt : BackupService complet pour AniSphère.
-/// Sauvegarde automatiquement les données Hive vers Firebase.
-/// Gère également la restauration des données sauvegardées.
-/// Compatible avec IAContext, AnimalService, UserService.
-/// Optimisé offline-first, sécurisé, gestion erreurs propre.
+// Copilot Prompt : BackupService complet pour AniSphère.
+// Sauvegarde automatiquement les données Hive vers Firebase.
+// Gère également la restauration des données sauvegardées.
+// Compatible avec IAContext, AnimalService, UserService.
+// Optimisé offline-first, sécurisé, gestion erreurs propre.
 
 library;
 

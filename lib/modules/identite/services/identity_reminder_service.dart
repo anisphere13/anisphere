@@ -1,6 +1,6 @@
-/// Copilot Prompt : Service de rappel IA pour mise à jour d’identité.
-/// Vérifie si la dernière MAJ de l’identité animale dépasse 12 mois.
-/// Déclenche une notification IA discrète via IA maîtresse.
+// Copilot Prompt : Service de rappel IA pour mise à jour d’identité.
+// Vérifie si la dernière MAJ de l’identité animale dépasse 12 mois.
+// Déclenche une notification IA discrète via IA maîtresse.
 
 library;
 

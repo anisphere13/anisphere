@@ -1,8 +1,8 @@
-/// Copilot Prompt : Écran de liste des animaux pour AniSphère.
-/// Affiche les animaux depuis AnimalService (Hive), sous forme de cartes.
-/// Montre une suggestion IA si aucun animal n’est enregistré.
-/// Utilise le widget AnimalCard. Prévu pour accueil type Samsung Health.
-/// Préparé pour intégration IA contextuelle future par animal.
+// Copilot Prompt : Écran de liste des animaux pour AniSphère.
+// Affiche les animaux depuis AnimalService (Hive), sous forme de cartes.
+// Montre une suggestion IA si aucun animal n’est enregistré.
+// Utilise le widget AnimalCard. Prévu pour accueil type Samsung Health.
+// Préparé pour intégration IA contextuelle future par animal.
 
 library;
 

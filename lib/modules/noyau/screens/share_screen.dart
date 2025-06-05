@@ -1,7 +1,7 @@
-/// Copilot Prompt : Écran de partage AniSphère.
-/// Permet à l’utilisateur de partager ses données ou ses animaux (QR, export).
-/// Doit être visuellement clair, responsive et conforme au brandbook.
-/// Préparé pour afficher un QR code, un bouton d’export, et d’autres options IA.
+// Copilot Prompt : Écran de partage AniSphère.
+// Permet à l’utilisateur de partager ses données ou ses animaux (QR, export).
+// Doit être visuellement clair, responsive et conforme au brandbook.
+// Préparé pour afficher un QR code, un bouton d’export, et d’autres options IA.
 library;
 import 'package:flutter/material.dart';
 

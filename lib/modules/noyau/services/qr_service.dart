@@ -1,7 +1,7 @@
-/// Copilot Prompt : Service de QR code pour AniSphère.
-/// Génère des QR codes (texte, URL, ID), et intègre un scanner mobile.
-/// Utilise qr_flutter pour l'affichage, mobile_scanner pour la lecture.
-/// Prévu pour la synchronisation d’animaux, d'utilisateurs et de partages IA.
+// Copilot Prompt : Service de QR code pour AniSphère.
+// Génère des QR codes (texte, URL, ID), et intègre un scanner mobile.
+// Utilise qr_flutter pour l'affichage, mobile_scanner pour la lecture.
+// Prévu pour la synchronisation d’animaux, d'utilisateurs et de partages IA.
 library;
 
 import 'package:flutter/material.dart';

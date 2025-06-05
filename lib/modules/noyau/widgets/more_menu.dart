@@ -1,6 +1,6 @@
-/// Copilot Prompt : Menu contextuel AniSphère (3 points vertical).
-/// Permet d'accéder rapidement au profil, paramètres, notifications, etc.
-/// Intégration prévue dans tous les écrans via AppBar > actions.
+// Copilot Prompt : Menu contextuel AniSphère (3 points vertical).
+// Permet d'accéder rapidement au profil, paramètres, notifications, etc.
+// Intégration prévue dans tous les écrans via AppBar > actions.
 library;
 
 import 'package:flutter/material.dart';

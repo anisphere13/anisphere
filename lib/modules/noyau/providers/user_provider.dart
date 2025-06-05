@@ -1,7 +1,7 @@
-/// Provider utilisateur pour AniSphère.
-/// Gère l’état utilisateur, les connexions (email, Google, Apple),
-/// la synchronisation Firebase/Hive et les notifications UI.
-/// Copilot Prompt : "UserProvider gère l’utilisateur, la connexion, et déclenche la synchro IA cloud si premium"
+// Provider utilisateur pour AniSphère.
+// Gère l’état utilisateur, les connexions (email, Google, Apple),
+// la synchronisation Firebase/Hive et les notifications UI.
+// Copilot Prompt : "UserProvider gère l’utilisateur, la connexion, et déclenche la synchro IA cloud si premium"
 
 library;
 

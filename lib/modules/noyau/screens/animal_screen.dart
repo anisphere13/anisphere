@@ -1,8 +1,8 @@
-/// Copilot Prompt : Écran de visualisation d’un animal dans AniSphère.
-/// Affiche les données complètes d’un animal enregistré (nom, espèce, race, date, image).
-/// Intègre un bouton “Identité” vers `IdentityScreen` avec `IdentityService`.
-/// Préparé pour afficher les modules IA, l’historique, et la fiche publique.
-/// Suivi du branding AniSphère et UX à la Samsung Health.
+// Copilot Prompt : Écran de visualisation d’un animal dans AniSphère.
+// Affiche les données complètes d’un animal enregistré (nom, espèce, race, date, image).
+// Intègre un bouton “Identité” vers `IdentityScreen` avec `IdentityService`.
+// Préparé pour afficher les modules IA, l’historique, et la fiche publique.
+// Suivi du branding AniSphère et UX à la Samsung Health.
 library;
 
 import 'package:flutter/material.dart';

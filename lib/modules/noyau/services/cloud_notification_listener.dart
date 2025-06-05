@@ -1,7 +1,7 @@
-/// Copilot Prompt : Écouteur de notifications cloud AniSphère.
-/// Se connecte à Firebase Messaging pour recevoir les notifications push.
-/// Affiche les notifications via NotificationService.
-/// À intégrer dans l'initialisation de l'application.
+// Copilot Prompt : Écouteur de notifications cloud AniSphère.
+// Se connecte à Firebase Messaging pour recevoir les notifications push.
+// Affiche les notifications via NotificationService.
+// À intégrer dans l'initialisation de l'application.
 
 library;
 

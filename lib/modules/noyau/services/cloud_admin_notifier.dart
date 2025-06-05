@@ -1,7 +1,7 @@
-/// Copilot Prompt : AniSphère cloud notification manager for superadmin.
-/// Permet d’envoyer des notifications cloud ciblées ou globales via Firestore.
-/// Prévu pour une Firebase Function ou une lecture client-side en background.
-/// Utilisé par le superadmin uniquement.
+// Copilot Prompt : AniSphère cloud notification manager for superadmin.
+// Permet d’envoyer des notifications cloud ciblées ou globales via Firestore.
+// Prévu pour une Firebase Function ou une lecture client-side en background.
+// Utilisé par le superadmin uniquement.
 
 library;
 

@@ -1,8 +1,8 @@
-/// 🤖 IAMaster — IA mâtresse locale AniSphère
-/// Coordonne la logique IA (locale & cloud)
-/// Centralise les décisions, les logs et la stratégie IA
-/// Utilisé au démarrage, dans les exécuteurs IA et la logique UX
-/// Copilot Prompt : "IAMaster manages local IA logic and triggers CloudSyncService when needed"
+// 🤖 IAMaster — IA mâtresse locale AniSphère
+// Coordonne la logique IA (locale & cloud)
+// Centralise les décisions, les logs et la stratégie IA
+// Utilisé au démarrage, dans les exécuteurs IA et la logique UX
+// Copilot Prompt : "IAMaster manages local IA logic and triggers CloudSyncService when needed"
 
 library;
 

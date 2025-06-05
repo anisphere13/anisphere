@@ -1,7 +1,7 @@
-/// Copilot Prompt : Service de gestion des modules AniSphère.
-/// Gère l’état des modules (activé, premium, disponible).
-/// Persiste les statuts avec LocalStorageService.
-/// Utilisé par ModulesScreen et IA pour déterminer les accès.
+// Copilot Prompt : Service de gestion des modules AniSphère.
+// Gère l’état des modules (activé, premium, disponible).
+// Persiste les statuts avec LocalStorageService.
+// Utilisé par ModulesScreen et IA pour déterminer les accès.
 
 library;
 

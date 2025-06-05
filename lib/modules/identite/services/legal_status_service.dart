@@ -1,6 +1,6 @@
-/// Copilot Prompt : Service pour la gestion du statut juridique de l’animal.
-/// Permet de déclarer ou modifier le statut (chien d’assistance, travail, élevage...).
-/// Gère les validations IA, l’enregistrement local et la traçabilité historique.
+// Copilot Prompt : Service pour la gestion du statut juridique de l’animal.
+// Permet de déclarer ou modifier le statut (chien d’assistance, travail, élevage...).
+// Gère les validations IA, l’enregistrement local et la traçabilité historique.
 
 library;
 

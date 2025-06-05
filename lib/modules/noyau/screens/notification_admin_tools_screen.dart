@@ -1,6 +1,6 @@
-/// Copilot Prompt : Outils avancés pour les notifications AniSphère (admin).
-/// Affiche l’historique des notifications envoyées, permet de gérer des brouillons,
-/// tester localement et envoyer à des groupes personnalisés.
+// Copilot Prompt : Outils avancés pour les notifications AniSphère (admin).
+// Affiche l’historique des notifications envoyées, permet de gérer des brouillons,
+// tester localement et envoyer à des groupes personnalisés.
 
 library;
 

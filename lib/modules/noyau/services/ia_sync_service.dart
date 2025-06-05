@@ -1,8 +1,8 @@
-/// Copilot Prompt : IASyncService AniSphère.
-/// Détecte automatiquement les événements importants (ajout animal, update, module actif),
-/// Vérifie si l’utilisateur est premium et déclenche la synchronisation IA cloud.
-/// Optimisé sans coût : batch, différé, sans doublon, sans surcharge.
-/// Utilise CloudSyncService en arrière-plan. Journalise localement via IALogger.
+// Copilot Prompt : IASyncService AniSphère.
+// Détecte automatiquement les événements importants (ajout animal, update, module actif),
+// Vérifie si l’utilisateur est premium et déclenche la synchronisation IA cloud.
+// Optimisé sans coût : batch, différé, sans doublon, sans surcharge.
+// Utilise CloudSyncService en arrière-plan. Journalise localement via IALogger.
 
 library;
 

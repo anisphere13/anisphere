@@ -1,8 +1,8 @@
-/// Copilot Prompt : Service Firebase pour AniSphère.
-/// Gère la déconnexion, la lecture/écriture Firestore des utilisateurs et animaux.
-/// Utilise FirebaseAuth + Firestore.
-/// Inclut gestion des erreurs, logs conditionnels, fusion automatique des données.
-/// IA-ready et modulaire.
+// Copilot Prompt : Service Firebase pour AniSphère.
+// Gère la déconnexion, la lecture/écriture Firestore des utilisateurs et animaux.
+// Utilise FirebaseAuth + Firestore.
+// Inclut gestion des erreurs, logs conditionnels, fusion automatique des données.
+// IA-ready et modulaire.
 
 library;
 

@@ -1,7 +1,6 @@
-/// Copilot Prompt : Test automatique généré pour ia_sync_service.dart (unit)
+// Copilot Prompt : Test automatique généré pour ia_sync_service.dart (unit)
 import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
-import 'package:anisphere/modules/noyau/services/ia_sync_service.dart';
 
 void main() {
   setUpAll(() async {

@@ -1,7 +1,7 @@
-/// Copilot Prompt : SuperAdminScreen sécurisé pour AniSphère.
-/// Réservé au rôle "superadmin". Affiche logs IA, flags, statut sync, et permet de forcer une synchronisation.
-/// Écran masqué, accessible uniquement en mode développeur ou via menu caché.
-/// Optimisé UI et sécurité. UX fluide, statut clair.
+// Copilot Prompt : SuperAdminScreen sécurisé pour AniSphère.
+// Réservé au rôle "superadmin". Affiche logs IA, flags, statut sync, et permet de forcer une synchronisation.
+// Écran masqué, accessible uniquement en mode développeur ou via menu caché.
+// Optimisé UI et sécurité. UX fluide, statut clair.
 library;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
