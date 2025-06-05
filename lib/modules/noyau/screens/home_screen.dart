@@ -1,6 +1,6 @@
-/// Copilot Prompt : HomeScreen AniSphère enrichi avec IA.
-/// Intègre les widgets IA dynamiques : IABanner, IAChip, IASuggestionCard, IALogViewer.
-/// Affiche les résumés IA des modules actifs via ModulesSummaryService.
+// Copilot Prompt : HomeScreen AniSphère enrichi avec IA.
+// Intègre les widgets IA dynamiques : IABanner, IAChip, IASuggestionCard, IALogViewer.
+// Affiche les résumés IA des modules actifs via ModulesSummaryService.
 
 library;
 

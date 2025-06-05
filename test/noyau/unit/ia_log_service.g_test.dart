@@ -1,7 +1,6 @@
-/// Copilot Prompt : Test automatique généré pour ia_log_service.g.dart (unit)
+// Copilot Prompt : Test automatique généré pour ia_log_service.g.dart (unit)
 import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
-import 'package:anisphere/modules/noyau/services/ia_log_service.dart';
 
 void main() {
   setUpAll(() async {

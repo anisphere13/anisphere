@@ -1,8 +1,8 @@
-/// Copilot Prompt : Service de stockage Hive local pour AniSphère.
-/// Gère deux boîtes : utilisateurs et animaux.
-/// Fournit des fonctions de lecture/écriture bas niveau.
-/// Utilisé en complément de UserService et AnimalService.
-/// Peut être utilisé aussi pour debug offline.
+// Copilot Prompt : Service de stockage Hive local pour AniSphère.
+// Gère deux boîtes : utilisateurs et animaux.
+// Fournit des fonctions de lecture/écriture bas niveau.
+// Utilisé en complément de UserService et AnimalService.
+// Peut être utilisé aussi pour debug offline.
 library;
 
 import 'package:hive_flutter/hive_flutter.dart';

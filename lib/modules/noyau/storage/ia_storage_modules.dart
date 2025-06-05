@@ -1,5 +1,5 @@
-/// Copilot Prompt : Module IA pour collecte de métriques et gestion offline-first.
-/// Contient IAMetricsCollector (score IA) et OfflineSyncQueue (buffer de synchronisation).
+// Copilot Prompt : Module IA pour collecte de métriques et gestion offline-first.
+// Contient IAMetricsCollector (score IA) et OfflineSyncQueue (buffer de synchronisation).
 
 library;
 

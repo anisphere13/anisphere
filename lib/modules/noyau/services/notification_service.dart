@@ -1,7 +1,7 @@
-/// Copilot Prompt : Service de notifications pour le noyau AniSphère.
-/// Permet d'envoyer des notifications locales intelligentes selon le contexte IA.
-/// Gère également la préparation des canaux pour l'envoi de notifications.
-/// Utilisable avec Firebase Messaging à terme pour le cloud.
+// Copilot Prompt : Service de notifications pour le noyau AniSphère.
+// Permet d'envoyer des notifications locales intelligentes selon le contexte IA.
+// Gère également la préparation des canaux pour l'envoi de notifications.
+// Utilisable avec Firebase Messaging à terme pour le cloud.
 
 library;
 

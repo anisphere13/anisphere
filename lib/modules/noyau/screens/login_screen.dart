@@ -1,8 +1,8 @@
-/// Copilot Prompt : Écran de connexion pour AniSphère.
-/// Permet de se connecter avec email, Google ou Apple.
-/// Utilise UserProvider, redirige vers MainScreen.
-/// Affiche erreurs et loading intelligemment.
-/// Inclut bouton vers création de compte.
+// Copilot Prompt : Écran de connexion pour AniSphère.
+// Permet de se connecter avec email, Google ou Apple.
+// Utilise UserProvider, redirige vers MainScreen.
+// Affiche erreurs et loading intelligemment.
+// Inclut bouton vers création de compte.
 library;
 
 import 'package:flutter/material.dart';

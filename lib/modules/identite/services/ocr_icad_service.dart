@@ -1,6 +1,6 @@
-/// Copilot Prompt : OCRICADService pour AniSphère.
-/// Analyse les documents I-CAD, LOF, carnet papier.
-/// Extrait puce, nom, race, dates, identifiants via OCR (Tesseract + RegEx).
+// Copilot Prompt : OCRICADService pour AniSphère.
+// Analyse les documents I-CAD, LOF, carnet papier.
+// Extrait puce, nom, race, dates, identifiants via OCR (Tesseract + RegEx).
 
 library;
 

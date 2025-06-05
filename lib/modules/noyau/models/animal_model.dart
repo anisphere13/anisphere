@@ -1,7 +1,7 @@
-/// Copilot Prompt : Modèle d’animal pour AniSphère.
-/// Stockage Hive + export Firebase (toJson/fromJson), copie, updateAt.
-/// Champs : identité, espèce, race, image, date de naissance, propriétaire, timestamps.
-/// Utilisé dans le noyau pour la gestion des animaux.
+// Copilot Prompt : Modèle d’animal pour AniSphère.
+// Stockage Hive + export Firebase (toJson/fromJson), copie, updateAt.
+// Champs : identité, espèce, race, image, date de naissance, propriétaire, timestamps.
+// Utilisé dans le noyau pour la gestion des animaux.
 
 library;
 

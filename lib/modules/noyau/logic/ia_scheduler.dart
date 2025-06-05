@@ -1,8 +1,8 @@
-/// ⏰ IAScheduler — AniSphère
-/// Déclenche l’exécution IA selon des règles temporelles ou événements clés
-/// Utilise IAExecutor pour appliquer les décisions IA
-/// Déclenche automatiquement la synchronisation IA cloud si nécessaire
-/// Copilot Prompt : "IAScheduler triggers IAExecutor and calls IAMaster.syncCloudIA if premium"
+// ⏰ IAScheduler — AniSphère
+// Déclenche l’exécution IA selon des règles temporelles ou événements clés
+// Utilise IAExecutor pour appliquer les décisions IA
+// Déclenche automatiquement la synchronisation IA cloud si nécessaire
+// Copilot Prompt : "IAScheduler triggers IAExecutor and calls IAMaster.syncCloudIA if premium"
 
 library;
 

@@ -1,6 +1,6 @@
-/// Copilot Prompt : Widget AnimalCard pour AniSphère.
-/// Affiche un animal sous forme de carte élégante avec image, nom, espèce.
-/// Utilisé dans la liste des animaux, l'accueil et les modules IA.
+// Copilot Prompt : Widget AnimalCard pour AniSphère.
+// Affiche un animal sous forme de carte élégante avec image, nom, espèce.
+// Utilisé dans la liste des animaux, l'accueil et les modules IA.
 
 library;
 

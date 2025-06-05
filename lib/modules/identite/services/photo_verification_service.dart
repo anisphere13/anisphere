@@ -1,6 +1,6 @@
-/// Copilot Prompt : Service de vérification photo IA pour AniSphère.
-/// Analyse les photos d’animaux pour détecter netteté, posture, cadrage, duplicata.
-/// Utilise OpenCV/TFLite en local, et score la meilleure photo pour l'identité.
+// Copilot Prompt : Service de vérification photo IA pour AniSphère.
+// Analyse les photos d’animaux pour détecter netteté, posture, cadrage, duplicata.
+// Utilise OpenCV/TFLite en local, et score la meilleure photo pour l'identité.
 library;
 import 'dart:io';
 import 'package:image/image.dart' as img;

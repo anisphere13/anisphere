@@ -1,7 +1,6 @@
-/// Copilot Prompt : Test automatique généré pour ia_context.dart (unit)
+// Copilot Prompt : Test automatique généré pour ia_context.dart (unit)
 import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
-import 'package:anisphere/modules/noyau/logic/ia_context.dart';
 
 void main() {
   setUpAll(() async {

@@ -1,7 +1,10 @@
-/// Copilot Prompt : Test automatique généré pour splash_screen.dart (widget)
+// Copilot Prompt : Test automatique généré pour splash_screen.dart (widget)
 import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
+<<<<<<< HEAD
 import 'package:anisphere/main.dart' as app_main;
+=======
+>>>>>>> codex/nettoyer-les-commentaires-et-imports
 
 void main() {
   setUpAll(() async {

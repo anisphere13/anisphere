@@ -1,6 +1,6 @@
-/// Copilot Prompt : Écran QR pour AniSphère.
-/// Permet de scanner un QR code ou de générer un QR lié à l’utilisateur ou à un animal.
-/// Utilise mobile_scanner + QRService. Préparé pour la synchronisation IA via QR.
+// Copilot Prompt : Écran QR pour AniSphère.
+// Permet de scanner un QR code ou de générer un QR lié à l’utilisateur ou à un animal.
+// Utilise mobile_scanner + QRService. Préparé pour la synchronisation IA via QR.
 library;
 
 import 'package:flutter/material.dart';

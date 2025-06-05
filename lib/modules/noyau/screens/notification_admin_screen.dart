@@ -1,6 +1,6 @@
-/// Copilot Prompt : NotificationAdminScreen permet au superadmin d'envoyer des notifications cloud manuelles.
-/// Il peut choisir le titre, le message, la cible (tous, rôle, ID utilisateur), le module, et le type.
-/// Intégré au noyau AniSphère, utilisé pour les communications importantes, marketing ou système.
+// Copilot Prompt : NotificationAdminScreen permet au superadmin d'envoyer des notifications cloud manuelles.
+// Il peut choisir le titre, le message, la cible (tous, rôle, ID utilisateur), le module, et le type.
+// Intégré au noyau AniSphère, utilisé pour les communications importantes, marketing ou système.
 
 library;
 

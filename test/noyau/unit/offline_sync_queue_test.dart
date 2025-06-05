@@ -1,7 +1,6 @@
-/// Copilot Prompt : Test automatique généré pour offline_sync_queue.dart (unit)
+// Copilot Prompt : Test automatique généré pour offline_sync_queue.dart (unit)
 import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
-import 'package:anisphere/modules/noyau/services/offline_sync_queue.dart';
 
 void main() {
   setUpAll(() async {

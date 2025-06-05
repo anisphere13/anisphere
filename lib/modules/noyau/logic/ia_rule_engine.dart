@@ -1,8 +1,8 @@
-/// 🧠 IARuleEngine — Moteur de règles IA AniSphère
-/// Applique dynamiquement les règles définies dans ia_rules.dart selon le contexte
-/// Appelé automatiquement par IAMaster ou IAExecutor
-/// Retourne des suggestions IA, alertes ou actions à exécuter
-/// Copilot Prompt : "IARuleEngine analyzes AnimalModel list and IAContext to generate smart actions"
+// 🧠 IARuleEngine — Moteur de règles IA AniSphère
+// Applique dynamiquement les règles définies dans ia_rules.dart selon le contexte
+// Appelé automatiquement par IAMaster ou IAExecutor
+// Retourne des suggestions IA, alertes ou actions à exécuter
+// Copilot Prompt : "IARuleEngine analyzes AnimalModel list and IAContext to generate smart actions"
 
 library;
 

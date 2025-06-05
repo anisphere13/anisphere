@@ -1,7 +1,7 @@
-/// Copilot Prompt : Widget IALogViewer pour AniSphère.
-/// Affiche la liste des logs IA locaux enregistrés dans Hive.
-/// Sert au debug, à la maintenance, ou au retour utilisateur avancé.
-/// Peut être affiché dans une page "À propos", "Debug", ou panneau IA.
+// Copilot Prompt : Widget IALogViewer pour AniSphère.
+// Affiche la liste des logs IA locaux enregistrés dans Hive.
+// Sert au debug, à la maintenance, ou au retour utilisateur avancé.
+// Peut être affiché dans une page "À propos", "Debug", ou panneau IA.
 library;
 import 'package:flutter/material.dart';
 import '../logic/ia_logger.dart';

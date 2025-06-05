@@ -1,6 +1,6 @@
-/// Copilot Prompt : Modèle utilisateur AniSphère complet pour IA hybride (Hive + Firebase).
-/// Sérialisable Hive et Firebase. Contient rôles, préférences, animaux, timestamps.
-/// Prévu pour une app IA, offline-first, multi-rôle et multi-module.
+// Copilot Prompt : Modèle utilisateur AniSphère complet pour IA hybride (Hive + Firebase).
+// Sérialisable Hive et Firebase. Contient rôles, préférences, animaux, timestamps.
+// Prévu pour une app IA, offline-first, multi-rôle et multi-module.
 
 library;
 

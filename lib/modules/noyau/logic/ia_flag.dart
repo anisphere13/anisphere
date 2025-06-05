@@ -1,6 +1,6 @@
-/// Copilot Prompt : Drapeaux IA globaux AniSphère.
-/// Contient des booléens de configuration rapide pour activer/désactiver
-/// des comportements IA côté client. Utilisé pour debug, test, maintenance.
+// Copilot Prompt : Drapeaux IA globaux AniSphère.
+// Contient des booléens de configuration rapide pour activer/désactiver
+// des comportements IA côté client. Utilisé pour debug, test, maintenance.
 library;
 
 class IAFlag {

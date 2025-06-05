@@ -1,6 +1,6 @@
-/// Copilot Prompt : IdentityVerificationService pour AniSphère.
-/// Valide automatiquement une fiche identité si la photo est nette, la puce présente,
-/// et les données cohérentes. Active le badge IA “Identité vérifiée”.
+// Copilot Prompt : IdentityVerificationService pour AniSphère.
+// Valide automatiquement une fiche identité si la photo est nette, la puce présente,
+// et les données cohérentes. Active le badge IA “Identité vérifiée”.
 
 library;
 

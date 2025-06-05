@@ -1,7 +1,7 @@
-/// Copilot Prompt : Widget IASuggestionCard pour AniSphère.
-/// Affiche une carte de suggestion IA avec un titre, un message, une icône et un bouton.
-/// Utilisé sur l’écran d’accueil, le dashboard IA, ou dans les modules.
-/// Doit être élégant, discret, mais réactif.
+// Copilot Prompt : Widget IASuggestionCard pour AniSphère.
+// Affiche une carte de suggestion IA avec un titre, un message, une icône et un bouton.
+// Utilisé sur l’écran d’accueil, le dashboard IA, ou dans les modules.
+// Doit être élégant, discret, mais réactif.
 library;
 import 'package:flutter/material.dart';
 

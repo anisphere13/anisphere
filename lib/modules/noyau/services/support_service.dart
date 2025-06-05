@@ -1,6 +1,6 @@
-/// Copilot Prompt : SupportService AniSphère
-/// Gère les retours utilisateurs (bug, idée, contact) avec Hive et Firebase.
-/// Sauvegarde locale offline-first, puis envoi cloud via Firebase.
+// Copilot Prompt : SupportService AniSphère
+// Gère les retours utilisateurs (bug, idée, contact) avec Hive et Firebase.
+// Sauvegarde locale offline-first, puis envoi cloud via Firebase.
 library;
 
 import 'package:flutter/foundation.dart';

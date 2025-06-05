@@ -1,6 +1,6 @@
-/// Copilot Prompt : Service de notifications cloud AniSphère.
-/// Permet au superadmin d’envoyer des notifications push via Firebase (Firestore).
-/// Utilisé par NotificationAdminScreen et IA maîtresse (alertes IA globales).
+// Copilot Prompt : Service de notifications cloud AniSphère.
+// Permet au superadmin d’envoyer des notifications push via Firebase (Firestore).
+// Utilisé par NotificationAdminScreen et IA maîtresse (alertes IA globales).
 
 library;
 

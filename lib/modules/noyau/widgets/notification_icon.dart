@@ -1,6 +1,6 @@
-/// Copilot Prompt : Widget NotificationIcon pour AniSphère.
-/// Affiche une cloche avec un badge rouge si des notifications non lues sont présentes.
-/// S'intègre dans l'AppBar de `MainScreen`.
+// Copilot Prompt : Widget NotificationIcon pour AniSphère.
+// Affiche une cloche avec un badge rouge si des notifications non lues sont présentes.
+// S'intègre dans l'AppBar de `MainScreen`.
 
 library;
 

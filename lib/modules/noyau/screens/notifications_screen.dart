@@ -1,7 +1,7 @@
-/// Copilot Prompt : Écran des notifications AniSphère.
-/// Liste toutes les notifications IA et système.
-/// Trie les messages par modules et par date.
-/// Prévu pour une extension IA intelligente (filtrage, urgences…).
+// Copilot Prompt : Écran des notifications AniSphère.
+// Liste toutes les notifications IA et système.
+// Trie les messages par modules et par date.
+// Prévu pour une extension IA intelligente (filtrage, urgences…).
 library;
 
 import 'package:flutter/material.dart';

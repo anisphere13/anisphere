@@ -1,7 +1,7 @@
-/// Copilot Prompt : Écran de splash pour AniSphère.
-/// Vérifie si un utilisateur est déjà connecté via UserProvider.
-/// Redirige automatiquement vers MainScreen ou LoginScreen.
-/// Affiche une animation de chargement pendant l’analyse.
+// Copilot Prompt : Écran de splash pour AniSphère.
+// Vérifie si un utilisateur est déjà connecté via UserProvider.
+// Redirige automatiquement vers MainScreen ou LoginScreen.
+// Affiche une animation de chargement pendant l’analyse.
 library;
 
 import 'package:flutter/material.dart';

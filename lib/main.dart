@@ -1,5 +1,5 @@
-/// Copilot Prompt : Entrée principale AniSphère.
-/// Initialise Firebase, Hive avec adapters IA, providers, IA, et lance l'app.
+// Copilot Prompt : Entrée principale AniSphère.
+// Initialise Firebase, Hive avec adapters IA, providers, IA, et lance l'app.
 library;
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';

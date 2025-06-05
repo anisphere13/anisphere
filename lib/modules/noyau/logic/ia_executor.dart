@@ -1,8 +1,8 @@
-/// 🧠 IAExecutor — AniSphère
-/// Applique les décisions IA générées par `IAMaster`
-/// Ce moteur exécute : nettoyage, notifications, sync, suggestions UI
-/// Utilisé à l’accueil, au démarrage et lors des triggers IA
-/// Copilot Prompt : "IAExecutor exécute les décisions IA contextuelles et active IAMaster flags ou services associés"
+// 🧠 IAExecutor — AniSphère
+// Applique les décisions IA générées par `IAMaster`
+// Ce moteur exécute : nettoyage, notifications, sync, suggestions UI
+// Utilisé à l’accueil, au démarrage et lors des triggers IA
+// Copilot Prompt : "IAExecutor exécute les décisions IA contextuelles et active IAMaster flags ou services associés"
 
 library;
 

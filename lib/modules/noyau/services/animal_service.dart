@@ -1,6 +1,6 @@
-/// Copilot Prompt : Service AnimalService pour AniSphère.
-/// Gère le stockage local (Hive), la synchro Firebase, les ajouts/suppressions.
-/// IA-compatible, testable, optimisé offline-first.
+// Copilot Prompt : Service AnimalService pour AniSphère.
+// Gère le stockage local (Hive), la synchro Firebase, les ajouts/suppressions.
+// IA-compatible, testable, optimisé offline-first.
 
 library;
 

@@ -1,8 +1,8 @@
-/// Copilot Prompt : Écran de création/modification d’un animal dans AniSphère.
-/// Permet à l’utilisateur de saisir manuellement les infos d’un animal.
-/// Prévu pour accueillir plus tard l’upload de documents avec OCR IA.
-/// Champs : nom, espèce, race, date de naissance, photo.
-/// L’animal est ensuite enregistré via AnimalService (Hive + Firebase).
+// Copilot Prompt : Écran de création/modification d’un animal dans AniSphère.
+// Permet à l’utilisateur de saisir manuellement les infos d’un animal.
+// Prévu pour accueillir plus tard l’upload de documents avec OCR IA.
+// Champs : nom, espèce, race, date de naissance, photo.
+// L’animal est ensuite enregistré via AnimalService (Hive + Firebase).
 library;
 
 import 'package:flutter/material.dart';
