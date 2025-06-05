@@ -1,17 +1,14 @@
 // Copilot Prompt : Test automatique généré pour splash_screen.dart (widget)
 import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
-<<<<<<< HEAD
-import 'package:anisphere/main.dart' as app_main;
-=======
->>>>>>> codex/nettoyer-les-commentaires-et-imports
+import 'package:anisphere/modules/noyau/screens/splash_screen.dart';
 
 void main() {
   setUpAll(() async {
     await initTestEnv();
   });
   test('splash_screen fonctionne (test auto)', () {
-    final screen = app_main.SplashScreen();
+    const screen = SplashScreen();
     expect(screen, isA<SplashScreen>());
   });
 }

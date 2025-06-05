@@ -19,6 +19,6 @@ void main() {
     final legalStatusService = LegalStatusService(identityService: mockService);
     await legalStatusService.updateLegalStatus(animalId: 'test', newStatus: 'chien d’assistance');
 
-    verify(mockService.saveIdentityLocally(any)).called(1);
+    verify(mockService.saveIdentityLocally(any<IdentityModel>())).called(1);
   });
 }

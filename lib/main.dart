@@ -7,8 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart'; // Ajouté pour la permission Android
 import 'package:anisphere/firebase_options.dart';
-import 'package:anisphere/modules/noyau/screens/main_screen.dart';
-import 'package:anisphere/modules/noyau/screens/login_screen.dart';
+
 import 'package:anisphere/modules/noyau/screens/splash_screen.dart';
 import 'package:anisphere/modules/noyau/services/local_storage_service.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
@@ -18,12 +17,8 @@ import 'package:anisphere/modules/noyau/providers/animal_provider.dart';
 import 'package:anisphere/modules/noyau/providers/ia_context_provider.dart';
 import 'package:anisphere/modules/noyau/providers/support_provider.dart';
 
-import 'package:anisphere/modules/noyau/logic/ia_master.dart';
-import 'package:anisphere/modules/noyau/logic/ia_executor.dart';
-import 'package:anisphere/modules/noyau/logic/ia_scheduler.dart';
 import 'package:anisphere/modules/noyau/services/notification_service.dart';
-import 'package:anisphere/modules/noyau/services/animal_service.dart';
-import 'package:anisphere/modules/noyau/services/modules_service.dart';
+
 // Hive Adapters pour la synchronisation différée IA
 import 'package:anisphere/modules/noyau/services/offline_sync_queue.dart';
 import 'package:anisphere/modules/noyau/logic/ia_metrics_collector.dart';
@@ -66,7 +61,7 @@ void main() async {
   final androidPlugin =
       plugin.resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin>();
-  await androidPlugin?.requestPermission();
+  await androidPlugin?.requestNotificationsPermission();
   assert(() {
     debugPrint("🧠 Initialisation services IA terminée !");
     return true;

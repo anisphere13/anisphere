@@ -25,7 +25,7 @@ void main() {
     final mockIdentityService = MockIdentityService();
     final mockPhotoVerifier = MockPhotoVerificationService();
 
-    when(mockPhotoVerifier.scorePhoto(any<File>()))
+    when(mockPhotoVerifier.scorePhoto(any<File>(that: isA<File>())))
         .thenAnswer((_) async => 0.8);
     final service = IdentityVerificationService(
       identityService: mockIdentityService,
@@ -35,8 +35,9 @@ void main() {
     await service.verifyIdentityAutomatically(identity: identity, animalName: 'Luna');
 
     final captured =
-        verify(mockIdentityService.saveIdentityLocally(captureAny)).captured.single
-            as IdentityModel;
+        verify(mockIdentityService.saveIdentityLocally(captureAny<IdentityModel>()))
+            .captured
+            .single as IdentityModel;
     expect(captured.verifiedByIA, isTrue);
   });
 }
