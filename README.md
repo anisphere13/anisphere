@@ -95,6 +95,9 @@ Noyau fonctionnel avec stockage hybride (Hive + Firebase différé)
 👨‍💻 Contribuer
 
 AniSphère est un projet structuré, évolutif, ouvert à la contribution.
+Le développement repose sur **Flutter 3.32.x** et **Dart 3.4+**.
+Les workflows CI utilisent cette version : assurez-vous qu'elle
+est installée localement avant de lancer les tests.
 
 Documentation complète (voir README_DEV.md)
 
