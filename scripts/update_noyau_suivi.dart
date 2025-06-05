@@ -18,14 +18,14 @@ void main() {
   final content = file.readAsStringSync();
 
   if (content.contains(tag)) {
-    print("🔁 $filePath déjà synchronisé pour le $formattedDate.");
+    stdout.writeln("🔁 $filePath déjà synchronisé pour le $formattedDate.");
     return;
   }
 
   final updatedContent = "$content\n$tag\n";
   file.writeAsStringSync('${updatedContent.trimRight()}\n');
 
-  print("✅ $filePath mis à jour avec la date du $formattedDate.");
+  stdout.writeln("✅ $filePath mis à jour avec la date du $formattedDate.");
 }
 
 String _pad(int n) => n.toString().padLeft(2, '0');

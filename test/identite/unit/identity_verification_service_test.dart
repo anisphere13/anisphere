@@ -34,8 +34,9 @@ void main() {
 
     await service.verifyIdentityAutomatically(identity: identity, animalName: 'Luna');
 
-    verify(mockIdentityService.saveIdentityLocally(argThat(predicate<IdentityModel>(
-      (i) => i.verifiedByIA == true,
-    )))).called(1);
+    final captured =
+        verify(mockIdentityService.saveIdentityLocally(captureAny)).captured.single
+            as IdentityModel;
+    expect(captured.verifiedByIA, isTrue);
   });
 }

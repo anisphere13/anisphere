@@ -70,8 +70,9 @@ void main() {
 
   for (final type in types) {
     final dir = Directory('$basePath/$type');
-    final typeTest = type; // ensures correct suffix    dir.createSync(recursive: true);
+    dir.createSync(recursive: true);
 
+    final typeTest = type; // ensures correct suffix
     final file = File('$basePath/$type/${moduleName}_$typeTest.dart');
     if (!file.existsSync()) {
       file.writeAsStringSync(templates[type]!);
