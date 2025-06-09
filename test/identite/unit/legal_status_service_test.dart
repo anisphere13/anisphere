@@ -2,10 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
 import 'package:anisphere/modules/identite/models/identity_model.dart';
 import 'package:anisphere/modules/identite/services/legal_status_service.dart';
-import 'package:anisphere/modules/identite/services/identity_service.dart';
 import 'package:mockito/mockito.dart';
-
-class MockIdentityService extends Mock implements IdentityService {}
+import 'mock_services.mocks.dart';
 
 void main() {
   setUpAll(() async {
@@ -18,7 +16,7 @@ void main() {
 
     final legalStatusService = LegalStatusService(identityService: mockService);
     await legalStatusService.updateLegalStatus(animalId: 'test', newStatus: 'chien d’assistance');
-
+    // ignore: invalid_use_of_null_value
     verify(mockService.saveIdentityLocally(any<IdentityModel>())).called(1);
   });
 }
