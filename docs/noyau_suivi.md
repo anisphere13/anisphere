@@ -180,3 +180,5 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 **Le noyau AniSphère doit rester minimal, autonome, sécurisé, évolutif, et intégralement testable.  
 Toute évolution doit être documentée ici, commitée, testée, et suivie dans GitHub et les scripts.**
 
+
+- 🧩 Synchronisation automatique du noyau le 2025-06-09
