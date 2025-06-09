@@ -16,7 +16,7 @@ import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:anisphere/modules/noyau/providers/animal_provider.dart';
 import 'package:anisphere/modules/noyau/providers/ia_context_provider.dart';
 import 'package:anisphere/modules/noyau/providers/support_provider.dart';
-
+import 'package:anisphere/modules/noyau/models/support_ticket_model.dart';
 import 'package:anisphere/modules/noyau/services/notification_service.dart';
 
 // Hive Adapters pour la synchronisation différée IA
