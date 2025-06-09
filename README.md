@@ -103,7 +103,7 @@ Documentation complète (voir README_DEV.md)
 
 Tests automatisés intégrés
 
-Modules indépendants faciles à ajouter
+Modules indépendants faciles à ajouter (voir aussi `docs/suivi_superadmin.md` pour le module Superadmin)
 
 Scripts d’automatisation prêts
 🧪 Lancer les tests

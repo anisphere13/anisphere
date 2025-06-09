@@ -79,6 +79,7 @@ Le projet est structuré par blocs indépendants :
 noyau/ → gestion utilisateur, IA maîtresse, notifications, app shell
 
 modules/ → 1 dossier par module (activable indépendamment)
+Le module Superadmin est désormais séparé du noyau (voir `docs/suivi_superadmin.md`)
 
 services/ → Firebase, Hive, IA, OCR, localisation, stockage
 

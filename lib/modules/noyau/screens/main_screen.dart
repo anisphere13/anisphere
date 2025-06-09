@@ -1,5 +1,5 @@
-// Copilot Prompt : MainScreen avec navigation sécurisée, IAScheduler et accès superadmin masqué.
-// Comporte 4 onglets dynamiques + accès à IADebugScreen par long press (si rôle = super_admin).
+// Copilot Prompt : MainScreen avec navigation sécurisée et IAScheduler.
+// Comporte 4 onglets dynamiques.
 library;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +12,6 @@ import 'user_profile_screen.dart';
 import 'login_screen.dart';
 import 'notifications_screen.dart';
 import 'qr_screen.dart';
-import 'ia_debug_screen.dart'; // 👈 Écran superadmin masqué
 import 'support_screen.dart';
 
 import 'package:anisphere/modules/noyau/widgets/notification_icon.dart';
@@ -102,20 +101,9 @@ class MainScreenState extends State<MainScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
       appBar: AppBar(
-        title: GestureDetector(
-          onLongPress: () {
-            if (user != null && user.role == 'super_admin') {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const IADebugScreen()),
-              );
-            }
-          },
-          child: const Text('AniSphère'),
-        ),
+        title: const Text('AniSphère'),
         actions: [
           IconButton(
             icon: const Icon(Icons.qr_code),

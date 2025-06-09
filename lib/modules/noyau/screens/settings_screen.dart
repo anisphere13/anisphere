@@ -4,7 +4,6 @@ library;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/local_storage_service.dart';
-import '../services/ia_log_service.dart';
 import '../services/modules_service.dart';
 import '../services/backup_service.dart';
 import '../providers/user_provider.dart';
@@ -21,7 +20,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
   bool darkMode = false;
   bool iaSuggestions = true;
   bool iaNotifications = true;
-  bool isSuperAdmin = false;
   DateTime? lastBackup;
 
   late BackupService backupService;
@@ -43,7 +41,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
       darkMode = LocalStorageService.get("dark_mode", defaultValue: false);
       iaSuggestions = LocalStorageService.get("ia_suggestions", defaultValue: true);
       iaNotifications = LocalStorageService.get("ia_notifications", defaultValue: true);
-      isSuperAdmin = user?.role == 'super_admin';
     });
   }
 
@@ -52,15 +49,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
     await _loadPreferences();
   }
 
-  Future<void> _resetIA() async {
-    final messenger = ScaffoldMessenger.of(context);
-    await LocalStorageService.set("firstLaunch", true);
-    await ModulesService.resetAllStatuses();
-    await IALogService.clearLogs();
-    messenger.showSnackBar(
-      const SnackBar(content: Text("IA réinitialisée avec succès.")),
-    );
-  }
 
   Future<void> _performBackup() async {
     final messenger = ScaffoldMessenger.of(context);
@@ -147,27 +135,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
             subtitle: const Text("Restaurez vos données depuis le cloud."),
             onTap: _restoreBackup,
           ),
-          if (isSuperAdmin) ...[
-            const Divider(),
-            const Text("Maintenance IA (super admin uniquement)", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.red)),
-            const SizedBox(height: 8),
-            ElevatedButton.icon(
-              icon: const Icon(Icons.delete_forever),
-              label: const Text("Effacer tous les logs IA"),
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.red.shade700),
-              onPressed: () async {
-                await IALogService.clearLogs();
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Logs IA supprimés")));
-              },
-            ),
-            const SizedBox(height: 8),
-            ElevatedButton.icon(
-              icon: const Icon(Icons.restart_alt),
-              label: const Text("Réinitialiser l'IA locale"),
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.deepOrange),
-              onPressed: _resetIA,
-            ),
-          ]
         ],
       ),
     );

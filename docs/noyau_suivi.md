@@ -142,7 +142,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 - `superadmin_screen.dart`  
 - Widgets/providers/services dédiés  
 - Menus, flags, accès, logique spécifiques  
-- Documentation & suivi → déplacés vers `docs/suivi_superadmin.md` (futur)
+- Documentation & suivi → déplacés vers `docs/suivi_superadmin.md`
 
 ---
 
@@ -164,7 +164,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 - [3__suivi_taches.md](3__suivi_taches.md) — Suivi macro projet
 - [test_tracker.md](test_tracker.md) — Couverture et état des tests
 - [10__architecture.md](10__architecture.md) — Architecture technique
-- [suivi_superadmin.md](suivi_superadmin.md) — (futur module Superadmin)
+- [suivi_superadmin.md](suivi_superadmin.md) — Module Superadmin
 
 ---
 
