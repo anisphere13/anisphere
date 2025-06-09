@@ -47,3 +47,32 @@ class FakeFirebaseService extends FirebaseService {
   FakeFirebaseService(FakeFirestore firestore)
       : super(firestore: firestore, firebaseAuth: FakeFirebaseAuth());
 }
+
+import 'package:anisphere/modules/noyau/services/cloud_sync_service.dart';
+import 'package:anisphere/modules/noyau/services/offline_sync_queue.dart';
+import 'package:anisphere/modules/noyau/models/support_ticket_model.dart';
+
+class FakeCloudSyncService extends CloudSyncService {
+  FakeCloudSyncService(this.firestore)
+      : super(firebaseService: FakeFirebaseService(firestore));
+
+  final FakeFirestore firestore;
+
+  @override
+  Future<void> pushSupportData(SupportTicketModel feedback) async {
+    try {
+      await firestore
+          .collection('support')
+          .doc(feedback.id)
+          .set(feedback.toJson());
+    } catch (_) {
+      await OfflineSyncQueue.addTask(
+        SyncTask(
+          type: 'support',
+          data: feedback.toJson(),
+          timestamp: DateTime.now(),
+        ),
+      );
+    }
+  }
+}

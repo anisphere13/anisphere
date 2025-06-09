@@ -50,7 +50,7 @@ void main() {
 
   testWidgets('submits ticket using provider', (tester) async {
     final service = SupportService(
-      firebaseService: FakeFirebaseService(FakeFirestore()),
+      cloudSyncService: FakeCloudSyncService(FakeFirestore()),
       skipHiveInit: true,
       testBox: Hive.box<SupportTicketModel>('support_data'),
     );
