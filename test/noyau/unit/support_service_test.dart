@@ -42,7 +42,7 @@ void main() {
   });
 
   test('saveFeedback stores ticket locally and remotely', () async {
-    final firestore = FakeFirestore();
+    final firestore = FakeFirebaseFirestore();
     final service = SupportService(
       firebaseService: FakeFirebaseService(firestore),
       skipHiveInit: true,
@@ -59,13 +59,14 @@ void main() {
     await service.saveFeedback(ticket);
     final box = Hive.box<SupportTicketModel>('support_data');
     expect(box.get('1')?.message, 'msg');
-    expect(firestore.data['support']?['1']?['message'], 'msg');
+    final doc = await firestore.collection('support').doc('1').get();
+    expect(doc.data()?['message'], 'msg');
   });
 
   test('saveFeedback queues ticket when Firebase fails', () async {
-    final firestore = FakeFirestore(fail: true);
+    final firestore = FakeFirebaseFirestore();
     final service = SupportService(
-      firebaseService: FakeFirebaseService(firestore),
+      firebaseService: FailingFirebaseService(firestore),
       skipHiveInit: true,
       testBox: Hive.box<SupportTicketModel>('support_data'),
     );

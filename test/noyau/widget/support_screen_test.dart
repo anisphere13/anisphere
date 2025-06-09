@@ -11,6 +11,7 @@ import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:anisphere/modules/noyau/screens/support_screen.dart';
 import 'package:anisphere/modules/noyau/services/support_service.dart';
 import 'package:anisphere/modules/noyau/services/offline_sync_queue.dart';
+import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 
 import "../../helpers/test_fakes.dart";
 
@@ -50,7 +51,7 @@ void main() {
 
   testWidgets('submits ticket using provider', (tester) async {
     final service = SupportService(
-      firebaseService: FakeFirebaseService(FakeFirestore()),
+      firebaseService: FakeFirebaseService(FakeFirebaseFirestore()),
       skipHiveInit: true,
       testBox: Hive.box<SupportTicketModel>('support_data'),
     );
