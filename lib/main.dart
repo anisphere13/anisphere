@@ -45,6 +45,9 @@ void main() async {
     // Enregistrement des adapters Hive nécessaires
     Hive.registerAdapter(SyncTaskAdapter());
     Hive.registerAdapter(IAMetricAdapter());
+    Hive.registerAdapter(SupportTicketTypeAdapter());
+    Hive.registerAdapter(SupportTicketStatusAdapter());
+    Hive.registerAdapter(SupportTicketModelAdapter());
     await LocalStorageService.init();
     assert(() {
       debugPrint("📦 Hive initialized successfully!");
