@@ -4,7 +4,6 @@ library;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/local_storage_service.dart';
-import '../services/modules_service.dart';
 import '../services/backup_service.dart';
 import '../providers/user_provider.dart';
 import '../services/animal_service.dart';
@@ -36,7 +35,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _loadPreferences() async {
-    final user = Provider.of<UserProvider>(context, listen: false).user;
+
     setState(() {
       darkMode = LocalStorageService.get("dark_mode", defaultValue: false);
       iaSuggestions = LocalStorageService.get("ia_suggestions", defaultValue: true);

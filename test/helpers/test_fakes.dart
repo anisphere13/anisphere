@@ -47,3 +47,5 @@ class FakeFirebaseService extends FirebaseService {
   FakeFirebaseService(FakeFirestore firestore)
       : super(firestore: firestore, firebaseAuth: FakeFirebaseAuth());
 }
+
+// TODO: Ajouter d'autres méthodes fake si besoin pour les tests unitaires.
