@@ -23,6 +23,7 @@ import 'package:anisphere/modules/noyau/services/notification_service.dart';
 import 'package:anisphere/modules/noyau/services/offline_sync_queue.dart';
 import 'package:anisphere/modules/noyau/logic/ia_metrics_collector.dart';
 import 'package:anisphere/modules/noyau/services/cloud_notification_listener.dart';
+import 'package:anisphere/modules/noyau/logic/ia_master.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   try {
@@ -55,6 +56,11 @@ void main() async {
       return true;
     }());
   }
+  await IAMaster.instance.processOfflineQueue(); // TODO: ajouter test
+  assert(() {
+    debugPrint("🔄 File offline traitée au démarrage");
+    return true;
+  }());
   await NotificationService.initialize();
   CloudNotificationListener.initialize();  // Demande de permission notifications Android (intégré proprement ici)
   final plugin = FlutterLocalNotificationsPlugin();
