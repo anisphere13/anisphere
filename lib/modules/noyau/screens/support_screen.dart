@@ -16,7 +16,7 @@ class SupportScreen extends StatefulWidget {
 
 class _SupportScreenState extends State<SupportScreen> {
   final _messageController = TextEditingController();
-  String _type = 'bug';
+  SupportTicketType _type = SupportTicketType.bug;
   bool _isSending = false;
 
   Future<void> _send() async {
@@ -46,14 +46,18 @@ class _SupportScreenState extends State<SupportScreen> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            DropdownButtonFormField<String>(
+            DropdownButtonFormField<SupportTicketType>(
               value: _type,
               items: const [
-                DropdownMenuItem(value: 'bug', child: Text('Bug')),
-                DropdownMenuItem(value: 'idee', child: Text('Idée')),
-                DropdownMenuItem(value: 'contact', child: Text('Contact')),
+                DropdownMenuItem(
+                    value: SupportTicketType.bug, child: Text('Bug')),
+                DropdownMenuItem(
+                    value: SupportTicketType.idee, child: Text('Idée')),
+                DropdownMenuItem(
+                    value: SupportTicketType.contact, child: Text('Contact')),
               ],
-              onChanged: (v) => setState(() => _type = v ?? 'bug'),
+              onChanged: (v) =>
+                  setState(() => _type = v ?? SupportTicketType.bug),
               decoration: const InputDecoration(labelText: 'Type de message'),
             ),
             TextField(

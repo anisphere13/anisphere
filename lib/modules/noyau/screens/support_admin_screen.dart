@@ -38,7 +38,7 @@ class _SupportAdminScreenState extends State<SupportAdminScreen> {
         itemBuilder: (context, index) {
           final SupportTicketModel f = feedbacks[index];          return ListTile(
             title: Text(f.message),
-            subtitle: Text('${f.type} — ${f.status}'),
+            subtitle: Text('${f.type.name} — ${f.status.name}'),
             trailing: IconButton(
               icon: const Icon(Icons.delete),
               onPressed: () =>

@@ -23,6 +23,7 @@ import 'package:anisphere/modules/noyau/services/notification_service.dart';
 import 'package:anisphere/modules/noyau/services/offline_sync_queue.dart';
 import 'package:anisphere/modules/noyau/logic/ia_metrics_collector.dart';
 import 'package:anisphere/modules/noyau/services/cloud_notification_listener.dart';
+import 'package:anisphere/modules/noyau/models/support_ticket_model.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   try {
@@ -44,6 +45,9 @@ void main() async {
     // Enregistrement des adapters Hive nécessaires
     Hive.registerAdapter(SyncTaskAdapter());
     Hive.registerAdapter(IAMetricAdapter());
+    Hive.registerAdapter(SupportTicketTypeAdapter());
+    Hive.registerAdapter(SupportTicketStatusAdapter());
+    Hive.registerAdapter(SupportTicketModelAdapter());
     await LocalStorageService.init();
     assert(() {
       debugPrint("📦 Hive initialized successfully!");

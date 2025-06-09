@@ -35,6 +35,15 @@ class SupportService {
   Future<void> _initHive() async {
     if (skipHiveInit || _supportBox != null) return;
     try {
+      if (!Hive.isAdapterRegistered(22)) {
+        Hive.registerAdapter(SupportTicketTypeAdapter());
+      }
+      if (!Hive.isAdapterRegistered(23)) {
+        Hive.registerAdapter(SupportTicketStatusAdapter());
+      }
+      if (!Hive.isAdapterRegistered(21)) {
+        Hive.registerAdapter(SupportTicketModelAdapter());
+      }
       _supportBox = Hive.isBoxOpen(supportBoxName)
           ? Hive.box<SupportTicketModel>(supportBoxName)
           : await Hive.openBox<SupportTicketModel>(supportBoxName);
