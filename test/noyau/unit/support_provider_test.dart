@@ -29,7 +29,7 @@ void main() {
     final feedback = SupportTicketModel(
       id: 'f1',
       userId: 'u1',
-      type: 'bug',
+      type: SupportTicketType.bug,
       message: 'msg',
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
