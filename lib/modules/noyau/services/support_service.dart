@@ -1,27 +1,24 @@
 // Copilot Prompt : SupportService AniSphère
-// Gère les retours utilisateurs (bug, idée, contact) avec Hive et Firebase.
-// Sauvegarde locale offline-first, puis envoi cloud via Firebase.
+// Gère les retours utilisateurs (bug, idée, contact) avec Hive et CloudSync.
+// Sauvegarde locale offline-first, puis envoi cloud via CloudSyncService.
 library;
 
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../models/support_ticket_model.dart';
-import 'firebase_service.dart';
-import 'offline_sync_queue.dart';
+import 'cloud_sync_service.dart';
 
 class SupportService {
   static const String supportBoxName = 'support_data';
-  final FirebaseService _firebaseService;
+  final CloudSyncService _cloudSyncService;
   Box<SupportTicketModel>? _supportBox;
   final bool skipHiveInit;
 
   SupportService({
-    FirebaseService? firebaseService,
+    CloudSyncService? cloudSyncService,
     Box<SupportTicketModel>? testBox,
     this.skipHiveInit = false,
-  }) : _firebaseService = firebaseService ?? FirebaseService() {
+  }) : _cloudSyncService = cloudSyncService ?? CloudSyncService() {
     if (testBox != null) {
       _supportBox = testBox;
     }
@@ -53,25 +50,15 @@ class SupportService {
     }
   }
 
-  /// 💾 Sauvegarde un feedback localement et sur Firebase
+  /// 💾 Sauvegarde un feedback localement et via CloudSync
   Future<void> saveFeedback(SupportTicketModel feedback) async {
     try {
       await _initHive();
       await _supportBox?.put(feedback.id, feedback);
-      await _firebaseService.db
-          .collection('support')
-          .doc(feedback.id)
-          .set(feedback.toJson(), SetOptions(merge: true));
+      await _cloudSyncService.pushSupportData(feedback);
       _log('✅ Feedback ${feedback.id} sauvegardé.');
     } catch (e) {
       _log('❌ Erreur saveFeedback : $e');
-      await OfflineSyncQueue.addTask(
-        SyncTask(
-          type: 'support',
-          data: feedback.toJson(),
-          timestamp: DateTime.now(),
-        ),
-      );
     }
   }
 
@@ -86,12 +73,11 @@ class SupportService {
     }
   }
 
-  /// 🗑️ Supprime un feedback localement et sur Firebase
+  /// 🗑️ Supprime un feedback localement
   Future<void> deleteFeedback(String id) async {
     try {
       await _initHive();
       await _supportBox?.delete(id);
-      await _firebaseService.db.collection('support').doc(id).delete();
       _log('🗑️ Feedback $id supprimé.');
     } catch (e) {
       _log('❌ Erreur deleteFeedback : $e');
