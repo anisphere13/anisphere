@@ -26,6 +26,7 @@ class SyncTask {
 
 class OfflineSyncQueue {
   static const String _boxName = "offline_sync_queue";
+  static const String taskNotificationFeedback = 'notification_feedback';
 
   static Future<void> addTask(SyncTask task) async {
     final box = await Hive.openBox<SyncTask>(_boxName);

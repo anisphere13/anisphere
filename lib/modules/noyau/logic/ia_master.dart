@@ -10,6 +10,7 @@ import 'package:flutter/foundation.dart';
 import '../services/local_storage_service.dart';
 import '../services/cloud_sync_service.dart';
 import '../services/offline_sync_queue.dart';
+import '../services/notification_feedback_service.dart';
 import '../models/animal_model.dart';
 import '../models/user_model.dart';
 import 'ia_logger.dart';
@@ -23,6 +24,8 @@ class IAMaster {
   static const String _lastSyncKey = "last_ia_sync";
 
   final CloudSyncService _cloudSyncService = CloudSyncService();
+  final NotificationFeedbackService _notificationFeedbackService =
+      NotificationFeedbackService();
 
   IAMaster._internal();
   /// Constructor accessible for testing purposes.
@@ -104,6 +107,20 @@ class IAMaster {
         timestamp: DateTime.now(),
       ));
       debugPrint("⚠️ pushUserData : ajout dans la file offline");
+    }
+  }
+
+  /// 🔁 Sauvegarde d'un retour utilisateur sur une notification
+  Future<void> pushNotificationFeedback(
+      NotificationFeedbackModel feedback) async {
+    try {
+      await _notificationFeedbackService.saveFeedback(feedback);
+      await IALogger.log(
+        message: 'NOTIF_FEEDBACK_${feedback.notificationId}',
+        channel: IAChannel.notification,
+      );
+    } catch (e) {
+      debugPrint('❌ pushNotificationFeedback : $e');
     }
   }
 

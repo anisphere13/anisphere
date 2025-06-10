@@ -7,6 +7,9 @@ library;
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/foundation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../models/notification_feedback_model.dart';
+import '../logic/ia_master.dart';
 
 class NotificationService {
   static final FlutterLocalNotificationsPlugin _notificationsPlugin =
@@ -21,7 +24,22 @@ class NotificationService {
       android: androidSettings,
     );
 
-    await _notificationsPlugin.initialize(settings);
+    await _notificationsPlugin.initialize(
+      settings,
+      onDidReceiveNotificationResponse: (details) {
+        final userId = FirebaseAuth.instance.currentUser?.uid ?? '';
+        final feedback = NotificationFeedbackModel(
+          notificationId: details.id?.toString() ?? '',
+          userId: userId,
+          openedAt: DateTime.now(),
+          reaction: 'opened',
+          module: '',
+          type: '',
+          createdAt: DateTime.now(),
+        );
+        IAMaster.instance.pushNotificationFeedback(feedback);
+      },
+    );
     debugPrint("🔔 Notifications initialisées !");
   }
 

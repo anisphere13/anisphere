@@ -168,6 +168,16 @@ class FirebaseService {
     }
   }
 
+  /// 💌 Envoi d'un feedback lié aux notifications
+  Future<void> sendNotificationFeedback(Map<String, dynamic> data) async {
+    try {
+      await db.collection('notification_feedback').add(data);
+      debugPrint('✅ Notification feedback envoyé.');
+    } catch (e) {
+      _logError('sendNotificationFeedback', e);
+    }
+  }
+
   void _logError(String context, Object error) {
     debugPrint("❌ [$context] FirebaseService error : $error");
   }
