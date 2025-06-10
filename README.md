@@ -121,7 +121,7 @@ flutter pub get
 flutter test --coverage
 ```
 Les tests Firebase nécessitent de copier `assets/credentials.json.example` vers `assets/credentials.json`.
-
+Ce fichier reste en dehors du suivi Git grâce à `.gitignore`. Gardez donc vos identifiants uniquement en local.
 Pour plus de détails, consultez [README_Tests.md](README_Tests.md) et [docs/test_architecture.md](docs/test_architecture.md).
 
 Rejoignez l’aventure et contribuez à créer la meilleure application de suivi animal !

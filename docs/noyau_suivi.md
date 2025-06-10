@@ -182,3 +182,5 @@ Toute évolution doit être documentée ici, commitée, testée, et suivie dans 
 
 
 - 🧩 Synchronisation automatique du noyau le 2025-06-09
+- 🚮 Nettoyage final : aucun fichier SuperAdmin dans le noyau
+- 🧩 Synchronisation automatique du noyau le 2025-06-10

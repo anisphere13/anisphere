@@ -87,7 +87,7 @@ Pour travailler en local :
 2. S’assurer d’avoir les versions de Flutter/Dart compatibles (voir `pubspec.yaml`).
 3. Copier `assets/credentials.json.example` vers `assets/credentials.json` si nécessaire pour les tests Firebase.
 4. Lancer les tests comme indiqué plus haut.
-
+   Le fichier original est ignoré par Git pour protéger vos secrets.
 Sur GitHub, rien à configurer : les workflows CI se déclenchent automatiquement.
 
 ---
