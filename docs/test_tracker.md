@@ -28,17 +28,18 @@
 | test/noyau/unit/app_initializer_test.dart | unit | package:anisphere/modules/noyau/services/app_initializer.dart | À faire |
 | test/noyau/unit/support_service_test.dart | unit | package:anisphere/modules/noyau/services/support_service.dart | À faire |
 | test/noyau/unit/modules_summary_service_test.dart | unit | package:anisphere/modules/noyau/services/modules_summary_service.dart | À faire |
-| test/noyau/unit/notification_service_test.dart | unit | package:anisphere/modules/noyau/services/notification_service.dart | À faire |
+| test/noyau/unit/notification_service_test.dart | unit | package:anisphere/modules/noyau/services/notification_service.dart | ✅ |
+| test/noyau/unit/notification_feedback_service_test.dart | unit | package:anisphere/modules/noyau/services/notification_feedback_service.dart | ✅ |
 | test/noyau/unit/backup_service_test.dart | unit | package:anisphere/modules/noyau/services/backup_service.dart | À faire |
 | test/noyau/unit/local_storage_service_test.dart | unit | package:anisphere/modules/noyau/services/local_storage_service.dart | À faire |
 | test/noyau/unit/animal_service_test.dart | unit | package:anisphere/modules/noyau/services/animal_service.dart | À faire |
 | test/noyau/unit/ia_sync_service_test.dart | unit | package:anisphere/modules/noyau/services/ia_sync_service.dart | À faire |
-| test/noyau/unit/cloud_notification_listener_test.dart | unit | package:anisphere/modules/noyau/services/cloud_notification_listener.dart | À faire |
+| test/noyau/unit/cloud_notification_listener_test.dart | unit | package:anisphere/modules/noyau/services/cloud_notification_listener.dart | ✅ |
 | test/noyau/unit/offline_sync_queue_test.dart | unit | package:anisphere/modules/noyau/services/offline_sync_queue.dart | À faire |
 | test/noyau/unit/firebase_service_test.dart | unit | package:anisphere/modules/noyau/services/firebase_service.dart | À faire |
 | test/noyau/unit/cloud_sync_service_test.dart | unit | package:anisphere/modules/noyau/services/cloud_sync_service.dart | À faire |
 | test/noyau/unit/ia_executor_test.dart | unit | package:anisphere/modules/noyau/logic/ia_executor.dart | À faire |
-| test/noyau/unit/ia_metrics_collector_test.dart | unit | package:anisphere/modules/noyau/logic/ia_metrics_collector.dart | À faire |
+| test/noyau/unit/ia_metrics_collector_test.dart | unit | package:anisphere/modules/noyau/logic/ia_metrics_collector.dart | ✅ |
 | test/noyau/unit/ia_config_test.dart | unit | package:anisphere/modules/noyau/logic/ia_config.dart | À faire |
 | test/noyau/unit/ia_flag_test.dart | unit | package:anisphere/modules/noyau/logic/ia_flag.dart | À faire |
 | test/noyau/unit/ia_context_test.dart | unit | package:anisphere/modules/noyau/logic/ia_context.dart | À faire |
@@ -74,5 +75,5 @@
 | test/noyau/widget/login_screen_test.dart | widget | package:anisphere/modules/noyau/screens/login_screen.dart | À faire |
 | test/noyau/widget/support_screen_test.dart | widget | package:anisphere/modules/noyau/screens/support_screen.dart | À faire |
 | test/noyau/widget/register_screen_test.dart | widget | package:anisphere/modules/noyau/screens/register_screen.dart | À faire |
-| test/noyau/widget/notifications_screen_test.dart | widget | package:anisphere/modules/noyau/screens/notifications_screen.dart | À faire |
+| test/noyau/widget/notifications_screen_test.dart | widget | package:anisphere/modules/noyau/screens/notifications_screen.dart | ✅ |
 | test/noyau/widget/settings_screen_test.dart | widget | package:anisphere/modules/noyau/screens/settings_screen.dart | À faire |
