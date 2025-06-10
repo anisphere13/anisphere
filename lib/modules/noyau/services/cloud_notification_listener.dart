@@ -8,6 +8,9 @@ library;
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import '../services/notification_service.dart';
+import '../models/notification_feedback_model.dart';
+import '../logic/ia_master.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class CloudNotificationListener {
   static final FirebaseMessaging _messaging = FirebaseMessaging.instance;
@@ -28,6 +31,17 @@ class CloudNotificationListener {
     // 📥 Gestion des messages reçus en arrière-plan (clic utilisateur)
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       debugPrint("🔁 Notification cliquée : ${message.data}");
+      final userId = FirebaseAuth.instance.currentUser?.uid ?? '';
+      final feedback = NotificationFeedbackModel(
+        notificationId: message.messageId ?? '',
+        userId: userId,
+        openedAt: DateTime.now(),
+        reaction: 'opened',
+        module: message.data['module'] ?? '',
+        type: message.data['type'] ?? '',
+        createdAt: message.sentTime ?? DateTime.now(),
+      );
+      IAMaster.instance.pushNotificationFeedback(feedback);
       // TODO : Ajouter redirection ou comportement contextuel
     });
 
