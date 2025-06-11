@@ -82,6 +82,24 @@ class CloudSyncService {
     }
   }
 
+  /// 🔁 Envoie d'un message analysé pour apprentissage IA
+  Future<void> pushMessagingData(
+      String conversationId, Map<String, dynamic> data) async {
+    try {
+      await _firebaseService.sendModuleData('messaging/$conversationId', data);
+      debugPrint('☁️ Données messagerie envoyées pour $conversationId.');
+    } catch (e) {
+      debugPrint('❌ [CloudSync] Erreur pushMessagingData : $e');
+      await OfflineSyncQueue.addTask(
+        SyncTask(
+          type: 'message:$conversationId',
+          data: data,
+          timestamp: DateTime.now(),
+        ),
+      );
+    }
+  }
+
   /// 📊 Envoie d’un retour IA local (métriques, logs, feedbacks)
   Future<void> pushIAFeedback(Map<String, dynamic> metrics) async {
     try {
@@ -132,8 +150,11 @@ class CloudSyncService {
           if (task.type.startsWith("module:")) {
             final moduleName = task.type.split(":").last;
             await _firebaseService.sendModuleData(moduleName, task.data);
+          } else if (task.type.startsWith("message:")) {
+            final convoId = task.type.split(":").last;
+            await _firebaseService.sendModuleData('messaging/$convoId', task.data);
           }
       }
     });
   }
-} 
+}
