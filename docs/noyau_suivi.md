@@ -104,6 +104,9 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 - [05/06/2025]  
     - Optimisation structure du suivi, priorités IA cloud, sécurité, automatisation des tests, modularité stricte
 
+### **Juin 2025 — Préparation de la messagerie**
+- [06/2025] Définition de la collection `messages` (conversations, messages).
+- [06/2025] Création du dossier module `messagerie` et des premiers tests vides.
 ---
 
 ## 🚩 Statut actuel du noyau (05/06/2025)
@@ -120,6 +123,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 | Rôles & multi-utilisateurs            | 🔄 En cours | user_model, settings_screen                       | Non           | UI assignation rôles à finir     |
 | Sécurité avancée                      | 🔄 En cours | local_storage_service, user_service               | Non           | Chiffrement, double auth         |
 | IA cloud (sync, scoring, logs)        | 🔄 À démarrer | ia_master (syncToCloud), cloud_sync_service      | Non           | Synchronisation premium          |
+| Messagerie interne                    | 🔄 À démarrer | messages_service, messaging_screen              | Non           | Structure des conversations      |
 | **Superadmin**                        | ❌ Migré  | —                                                 | —             | Maintenant module indépendant    |
 
 ---
