@@ -60,7 +60,8 @@ class MessagingService {
     final pending = await OfflineMessageQueue.getAll();
     if (pending.isEmpty) return;
     final batch = firestore.batch();
-    for (final msg in pending) {
+    for (final queued in pending) {
+      final msg = queued.message;
       final ref = firestore
           .collection('conversations')
           .doc(msg.conversationId)
@@ -70,7 +71,8 @@ class MessagingService {
     }
     try {
       await batch.commit();
-      for (final msg in pending) {
+      for (final queued in pending) {
+        final msg = queued.message;
         await _box?.put(msg.id, msg.copyWith(sent: true));
       }
       await OfflineMessageQueue.clear();

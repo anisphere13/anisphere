@@ -14,15 +14,18 @@ class QueuedMessageAdapter extends TypeAdapter<QueuedMessage> {
     };
     return QueuedMessage(
       message: fields[0] as MessageModel,
+      timestamp: fields[1] as DateTime,
     );
   }
 
   @override
   void write(BinaryWriter writer, QueuedMessage obj) {
     writer
-      ..writeByte(1)
+      ..writeByte(2)
       ..writeByte(0)
-      ..write(obj.message);
+      ..write(obj.message)
+      ..writeByte(1)
+      ..write(obj.timestamp);
   }
 
   @override
