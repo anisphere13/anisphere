@@ -1,32 +1,40 @@
-<<<<<<< HEAD
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
+
 import 'package:anisphere/modules/messagerie/models/message_model.dart';
+import 'package:anisphere/modules/messagerie/models/message_model.g.dart';
 import 'package:anisphere/modules/messagerie/services/messaging_service.dart';
 import 'package:anisphere/modules/messagerie/services/offline_message_queue.dart';
-import '../../test_config.dart';
+
 import '../../helpers/test_fakes.dart';
-=======
-// Copilot Prompt : Test automatique g\u00e9n\u00e9r\u00e9 pour messaging_service.dart (unit)
-import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
->>>>>>> codex/ajouter-des-tests-unitaires-et-de-widget
 
 void main() {
+  late Directory tempDir;
+
   setUpAll(() async {
     await initTestEnv();
   });
 
-<<<<<<< HEAD
-  test('sendMessage stores message locally and queues on failure', () async {
-    final tempDir = await Directory.systemTemp.createTemp();
+  setUp(() async {
+    tempDir = await Directory.systemTemp.createTemp();
     Hive.init(tempDir.path);
     Hive.registerAdapter(MessageModelAdapter());
-    Hive.registerAdapter(QueuedMessageAdapter());
+    await Hive.openBox<MessageModel>('messages_box');
+    await Hive.openBox<MessageModel>('offline_messages');
+  });
 
-    final service = MessagingService(firestoreInstance: FakeFirestore(fail: true));
+  tearDown(() async {
+    await Hive.deleteBoxFromDisk('messages_box');
+    await Hive.deleteBoxFromDisk('offline_messages');
+    await tempDir.delete(recursive: true);
+  });
+
+  test('sendMessage writes to Firestore and marks as sent', () async {
+    final firestore = FakeFirestore();
+    final service = MessagingService(firestoreInstance: firestore);
     final message = MessageModel(
       id: '1',
       conversationId: 'c1',
@@ -36,16 +44,28 @@ void main() {
 
     await service.sendMessage(message);
 
-    final box = await Hive.openBox<MessageModel>('messages_box');
-    expect(box.get('1')?.content, 'hello');
-    final queued = await OfflineMessageQueue.getAll();
-    expect(queued.length, 1);
+    final box = Hive.box<MessageModel>('messages_box');
+    expect(box.get('1')?.sent, true);
+    expect(
+      firestore.data['conversations']?['c1']?['messages']?['1']?['content'],
+      'hello',
+    );
+  });
 
-    await tempDir.delete(recursive: true);
-=======
-  test('messaging_service fonctionne (test auto)', () {
-    // TODO : compl\u00e9ter le test pour messaging_service.dart
-    expect(true, isTrue); // \u00c0 remplacer par un vrai test
->>>>>>> codex/ajouter-des-tests-unitaires-et-de-widget
+  test('sendMessage failure queues offline', () async {
+    final firestore = FakeFirestore(fail: true);
+    final service = MessagingService(firestoreInstance: firestore);
+    final message = MessageModel(
+      id: '2',
+      conversationId: 'c2',
+      senderId: 'u2',
+      content: 'offline',
+    );
+
+    await service.sendMessage(message);
+
+    final pending = await OfflineMessageQueue.getAllMessages();
+    expect(pending.length, 1);
+    expect(pending.first.id, '2');
   });
 }
