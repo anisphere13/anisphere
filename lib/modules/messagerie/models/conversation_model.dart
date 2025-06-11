@@ -7,52 +7,60 @@ part 'conversation_model.g.dart';
 @HiveType(typeId: 71)
 class ConversationModel {
   @HiveField(0)
-  final List<String> participants;
+  final String id;
 
   @HiveField(1)
-  final String lastMessage;
+  final List<String> participantIds;
 
   @HiveField(2)
-  final DateTime lastTimestamp;
+  final String lastMessage;
 
   @HiveField(3)
-  final String module;
+  final DateTime lastTimestamp;
+
+  @HiveField(4)
+  final String moduleName;
 
   ConversationModel({
-    this.participants = const [],
+    required this.id,
+    this.participantIds = const [],
     this.lastMessage = '',
     DateTime? lastTimestamp,
-    this.module = '',
+    this.moduleName = '',
   }) : lastTimestamp = lastTimestamp ?? DateTime.now();
 
   factory ConversationModel.fromJson(Map<String, dynamic> json) {
     return ConversationModel(
-      participants: List<String>.from(json['participants'] ?? []),
+      id: json['id'] ?? '',
+      participantIds: List<String>.from(json['participantIds'] ?? []),
       lastMessage: json['lastMessage'] ?? '',
       lastTimestamp:
           DateTime.tryParse(json['lastTimestamp'] ?? '') ?? DateTime.now(),
-      module: json['module'] ?? '',
+      moduleName: json['moduleName'] ?? '',
     );
   }
 
   Map<String, dynamic> toJson() => {
-        'participants': participants,
+        'id': id,
+        'participantIds': participantIds,
         'lastMessage': lastMessage,
         'lastTimestamp': lastTimestamp.toIso8601String(),
-        'module': module,
+        'moduleName': moduleName,
       };
 
   ConversationModel copyWith({
-    List<String>? participants,
+    String? id,
+    List<String>? participantIds,
     String? lastMessage,
     DateTime? lastTimestamp,
-    String? module,
+    String? moduleName,
   }) {
     return ConversationModel(
-      participants: participants ?? this.participants,
+      id: id ?? this.id,
+      participantIds: participantIds ?? this.participantIds,
       lastMessage: lastMessage ?? this.lastMessage,
       lastTimestamp: lastTimestamp ?? this.lastTimestamp,
-      module: module ?? this.module,
+      moduleName: moduleName ?? this.moduleName,
     );
   }
 }
