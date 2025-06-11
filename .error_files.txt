@@ -1,0 +1,61 @@
+An uninitialized variable should have an explicit type annotation • test/messagerie/unit/messaging_service_test.dart
+Classes can only extend other classes • lib/modules/messagerie/services/offline_message_queue.g.dart
+Directives must appear before any declarations • lib/modules/noyau/services/notification_feedback_service.dart
+Directives must appear before any declarations • test/helpers/test_fakes.dart
+Directives must appear before any declarations • test/messagerie/unit/messaging_service_test.dart
+Expected a method, getter, setter or operator declaration • test/messagerie/unit/messaging_service_test.dart
+Expected an identifier • test/messagerie/unit/messaging_service_test.dart
+Expected to find ')' • test/messagerie/unit/messaging_service_test.dart
+Expected to find ';' • test/messagerie/unit/messaging_service_test.dart
+Expected to find '>' • test/messagerie/unit/messaging_service_test.dart
+Expected to find '[' • test/messagerie/unit/messaging_service_test.dart
+Expected to find '}' • test/messagerie/unit/messaging_service_test.dart
+Instance member 'clear' can't be accessed using static access • test/noyau/unit/notification_feedback_service_test.dart
+Missing type annotation • test/messagerie/unit/messaging_service_test.dart
+The class 'DocumentReference' shouldn't be extended, mixed in, or implemented because it's sealed • test/helpers/test_fakes.dart
+The class 'Query' shouldn't be extended, mixed in, or implemented because it's sealed • test/helpers/test_fakes.dart
+The declaration '<unnamed>' isn't referenced • test/messagerie/unit/messaging_service_test.dart
+The field doesn't override an inherited getter or setter • lib/modules/messagerie/services/offline_message_queue.g.dart
+The function 'SupportTicketModelAdapter' isn't defined • lib/main.dart
+The function 'SupportTicketStatusAdapter' isn't defined • lib/main.dart
+The function 'SupportTicketTypeAdapter' isn't defined • lib/main.dart
+The getter 'conversationId' isn't defined for the type 'MessageModel' • lib/modules/messagerie/providers/messaging_provider.dart
+The getter 'conversationId' isn't defined for the type 'MessageModel' • lib/modules/messagerie/services/messaging_service.dart
+The getter 'conversationId' isn't defined for the type 'MessageModel' • test/messagerie/unit/messaging_provider_test.dart
+The getter 'conversations' isn't defined for the type 'MessagingProvider' • lib/modules/messagerie/screens/message_list_screen.dart
+The getter 'id' isn't defined for the type 'ConversationModel' • lib/modules/messagerie/screens/chat_screen.dart
+The getter 'moduleName' isn't defined for the type 'ConversationModel' • lib/modules/messagerie/screens/chat_screen.dart
+The getter 'participantIds' isn't defined for the type 'ConversationModel' • lib/modules/messagerie/screens/message_list_screen.dart
+The library directive must appear before all other directives • lib/modules/noyau/services/notification_feedback_service.dart
+The method 'addFeedback' isn't defined for the type 'NotificationFeedbackService' • test/noyau/unit/notification_feedback_service_test.dart
+The method 'clear' isn't defined for the type 'OfflineMessageQueue' • lib/modules/messagerie/services/messaging_service.dart
+The method doesn't override an inherited method • lib/modules/messagerie/services/offline_message_queue.g.dart
+The method 'enqueue' isn't defined for the type 'OfflineMessageQueue' • lib/modules/messagerie/services/messaging_service.dart
+The method 'getAllFeedback' isn't defined for the type 'NotificationFeedbackService' • test/noyau/unit/notification_feedback_service_test.dart
+The method 'getAll' isn't defined for the type 'OfflineMessageQueue' • lib/modules/messagerie/services/messaging_service.dart
+The method 'init' isn't defined for the type 'MessagingProvider' • lib/main.dart
+The method 'init' isn't defined for the type 'MessagingProvider' • lib/modules/messagerie/screens/message_list_screen.dart
+The method 'loadMessages' isn't defined for the type 'MessagingProvider' • lib/modules/messagerie/screens/chat_screen.dart
+The method 'messagesFor' isn't defined for the type 'MessagingProvider' • lib/modules/messagerie/screens/chat_screen.dart
+The method 'QueuedMessageAdapter' isn't defined for the type 'MessagingService' • lib/modules/messagerie/services/messaging_service.dart
+The method 'QueuedMessage' isn't defined for the type 'QueuedMessageAdapter' • lib/modules/messagerie/services/offline_message_queue.g.dart
+The method 'sendMessage' isn't defined for the type 'MessagingProvider' • lib/modules/messagerie/screens/chat_screen.dart
+The method 'toMap' isn't defined for the type 'MessageModel' • lib/modules/messagerie/services/messaging_service.dart
+The named parameter 'conversationId' isn't defined • test/messagerie/unit/messaging_provider_test.dart
+The named parameter 'receiverId' is required, but there's no corresponding argument • test/messagerie/unit/messaging_provider_test.dart
+The named parameter 'sent' isn't defined • lib/modules/messagerie/services/messaging_service.dart
+The named parameter 'timestamp' is required, but there's no corresponding argument • test/messagerie/unit/messaging_provider_test.dart
+The name 'HEAD' isn't a type, so it can't be used as a type argument • test/messagerie/unit/messaging_service_test.dart
+The name 'MessageModel' isn't a type, so it can't be used in an 'as' expression • lib/modules/messagerie/services/offline_message_queue.g.dart
+The name 'NotificationFeedbackService' is already defined • lib/modules/noyau/services/notification_feedback_service.dart
+The name 'QueuedMessage' isn't a type, so it can't be used as a type argument • lib/modules/messagerie/services/offline_message_queue.g.dart
+The '===' operator is not supported • test/messagerie/unit/messaging_service_test.dart
+The type of the right operand ('ConnectivityResult') isn't a subtype or a supertype of the left operand ('List<ConnectivityResult>') • lib/modules/noyau/providers/user_provider.dart
+Undefined class 'BinaryReader' • lib/modules/messagerie/services/offline_message_queue.g.dart
+Undefined class 'BinaryWriter' • lib/modules/messagerie/services/offline_message_queue.g.dart
+Undefined class 'HEAD' • test/messagerie/unit/messaging_service_test.dart
+Undefined class 'NotificationFeedbackModel' • lib/modules/noyau/logic/ia_master.dart
+Undefined class 'QueuedMessage' • lib/modules/messagerie/services/offline_message_queue.g.dart
+Undefined name 'firestore' • test/noyau/unit/support_service_test.dart
+Variables must be declared using the keywords 'const', 'final', 'var' or a type name • test/messagerie/unit/messaging_service_test.dart
+'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/modules/messagerie/screens/chat_screen.dart
