@@ -16,6 +16,7 @@ import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:anisphere/modules/noyau/providers/animal_provider.dart';
 import 'package:anisphere/modules/noyau/providers/ia_context_provider.dart';
 import 'package:anisphere/modules/noyau/providers/support_provider.dart';
+import 'package:anisphere/modules/messagerie/providers/messaging_provider.dart';
 import 'package:anisphere/modules/noyau/services/notification_service.dart';
 import 'package:anisphere/modules/noyau/services/offline_sync_queue.dart';
 import 'package:anisphere/modules/noyau/logic/ia_metrics_collector.dart';
@@ -99,6 +100,9 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => SupportProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => MessagingProvider()..init(),
         ),
       ],
       child: const MyApp(),
