@@ -64,6 +64,11 @@ Système de Sphères : prototype en cours (monnaie d’échange & entraide)
 Profils publics : prévu (carte interactive, filtres)
 
 Historique des échanges : prévu (réputation, avis)
+✉️ Messagerie — À démarrer
+
+Conversation privée : à définir (Firestore messages)
+
+Tests module messagerie : à créer (unit/widget).
 
 🧪 Tests & Automatisation — En parallèle
 

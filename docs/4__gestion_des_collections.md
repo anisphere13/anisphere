@@ -93,6 +93,26 @@ support (collection)
      ├── createdAt: timestamp
      └── updatedAt: timestamp
 
+📨 Collection messages
+
+🔹 Objectif
+
+Gérer les conversations privées entre utilisateurs.
+
+🔹 Structure
+
+messages (collection)
+ └── [conversationId] (document)
+     ├── participants: [string]
+     ├── lastMessage: string
+     ├── updatedAt: timestamp
+     └── messages (subcollection)
+         └── [messageId] (document)
+             ├── senderId: string
+             ├── text: string
+             ├── sentAt: timestamp
+             └── readBy: [string]
+
 
 🗂️ Compléments prévus
 

@@ -22,12 +22,13 @@ pour éviter toute incompatibilité.
 
 Voici la structure actuelle recommandée pour AniSphère, organisée pour séparer clairement le noyau, les modules, les services, et les tests :
 
-lib/ ├── core/ # Noyau central : utilisateurs, animaux, IA, modules, partage… ├── modules/ # Modules indépendants (santé, éducation, dressage, etc.) ├── services/ # API, Firebase, OCR, stockage, IA cloud ├── models/ # Modèles de données (utilisateur, animal, module, etc.) ├── providers/ # Providers (état global via Provider ou Riverpod) ├── screens/ # Écrans principaux (accueil, partage, paramètres…) ├── utils/ # Fonctions utilitaires, constantes, helpers └── test/ # Tests automatisés : unit, widget, intégration 
+lib/ ├── core/ # Noyau central : utilisateurs, animaux, IA, modules, partage… ├── modules/ # Modules indépendants (santé, éducation, dressage, messagerie, etc.) ├── services/ # API, Firebase, OCR, stockage, IA cloud ├── models/ # Modèles de données (utilisateur, animal, module, etc.) ├── providers/ # Providers (état global via Provider ou Riverpod) ├── screens/ # Écrans principaux (accueil, partage, paramètres…) ├── utils/ # Fonctions utilitaires, constantes, helpers └── test/ # Tests automatisés : unit, widget, intégration 
 
 Règles :
 
 Chaque module dispose de son propre dossier dans lib/modules/[nom_du_module]
 
+Le module `messagerie` est en préparation dans `lib/modules/messagerie` avec une base de tests dans `test/messagerie/`.
 Le noyau est toujours accessible depuis les modules, mais les modules ne doivent jamais l’altérer
 
 Tous les tests sont regroupés dans /test et suivent la même hiérarchie que lib/
