@@ -13,6 +13,7 @@ import '../services/offline_sync_queue.dart';
 import '../services/notification_feedback_service.dart';
 import '../models/animal_model.dart';
 import '../models/user_model.dart';
+import '../../messagerie/logic/ia_message_analyzer.dart';
 import 'ia_logger.dart';
 import 'ia_flag.dart';
 import 'ia_channel.dart';
@@ -124,6 +125,27 @@ class IAMaster {
     }
   }
 
+  /// 📨 Analyse un message utilisateur et envoie le résultat au cloud
+  Future<Map<String, String>> analyzeAndPushMessage(
+      String conversationId, String message) async {
+    final analysis = IAMessageAnalyzer().analyze(message);
+    try {
+      await _cloudSyncService.pushMessagingData(conversationId, {
+        'message': message,
+        'intent': analysis['intent'],
+        'feedback': analysis['feedback'],
+        'timestamp': DateTime.now().toIso8601String(),
+      });
+      await IALogger.log(
+        message: 'MESSAGE_${analysis['intent']}',
+        channel: IAChannel.user,
+      );
+    } catch (e) {
+      debugPrint('❌ analyzeAndPushMessage : $e');
+    }
+    return analysis;
+  }
+
   /// 🔄 Traitement manuel ou automatique de la file offline (ex: au retour online)
   Future<void> processOfflineQueue() async {
     await OfflineSyncQueue.processQueue((task) async {
@@ -135,7 +157,12 @@ class IAMaster {
           await _cloudSyncService.pushUserData(UserModel.fromJson(task.data));
           break;
         default:
-          debugPrint("❓ Type de tâche non géré : ${task.type}");
+          if (task.type.startsWith('message:')) {
+            final convoId = task.type.split(':').last;
+            await _cloudSyncService.pushMessagingData(convoId, task.data);
+          } else {
+            debugPrint("❓ Type de tâche non géré : ${task.type}");
+          }
       }
     });
   }
