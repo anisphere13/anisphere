@@ -18,35 +18,41 @@ class MessageModelAdapter extends TypeAdapter<MessageModel> {
     };
     return MessageModel(
       id: fields[0] as String,
-      senderId: fields[1] as String,
-      receiverId: fields[2] as String,
-      content: fields[3] as String,
-      timestamp: fields[4] as DateTime,
-      moduleContext: fields[5] as String,
-      priority: fields[6] as int,
-      status: fields[7] as String,
+      conversationId: fields[1] as String,
+      senderId: fields[2] as String,
+      receiverId: fields[3] as String,
+      content: fields[4] as String,
+      timestamp: fields[5] as DateTime,
+      sent: fields[6] as bool,
+      moduleContext: fields[7] as String,
+      priority: fields[8] as int,
+      status: fields[9] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, MessageModel obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.senderId)
+      ..write(obj.conversationId)
       ..writeByte(2)
-      ..write(obj.receiverId)
+      ..write(obj.senderId)
       ..writeByte(3)
-      ..write(obj.content)
+      ..write(obj.receiverId)
       ..writeByte(4)
-      ..write(obj.timestamp)
+      ..write(obj.content)
       ..writeByte(5)
-      ..write(obj.moduleContext)
+      ..write(obj.timestamp)
       ..writeByte(6)
-      ..write(obj.priority)
+      ..write(obj.sent)
       ..writeByte(7)
+      ..write(obj.moduleContext)
+      ..writeByte(8)
+      ..write(obj.priority)
+      ..writeByte(9)
       ..write(obj.status);
   }
 

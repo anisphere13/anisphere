@@ -43,7 +43,7 @@ class MessagingService {
       await _box?.put(message.id, message.copyWith(sent: true));
     } catch (e) {
       debugPrint('❌ Envoi Firestore échoué, mise en queue.');
-      await OfflineMessageQueue.enqueue(message);
+      await OfflineMessageQueue.addMessage(message);
     }
   }
 
@@ -57,7 +57,7 @@ class MessagingService {
 
   Future<void> syncOfflineMessages() async {
     await _initHive();
-    final pending = await OfflineMessageQueue.getAll();
+    final pending = await OfflineMessageQueue.getAllMessages();
     if (pending.isEmpty) return;
     final batch = firestore.batch();
     for (final msg in pending) {
@@ -73,7 +73,7 @@ class MessagingService {
       for (final msg in pending) {
         await _box?.put(msg.id, msg.copyWith(sent: true));
       }
-      await OfflineMessageQueue.clear();
+      await OfflineMessageQueue.clearQueue();
     } catch (e) {
       debugPrint('❌ Batch sync failed: $e');
     }

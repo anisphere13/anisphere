@@ -21,15 +21,8 @@ void main() {
   test('send adds message to conversation and delegates to service', () async {
     final service = _FakeService();
     final provider = MessagingProvider(service: service);
-    final msg = MessageModel(
-      id: '1',
-      conversationId: 'c1',
-      senderId: 'u1',
-      content: 'hi',
-    );
-
-    await provider.send(msg);
-    expect(provider.getMessages('c1').length, 1);
+    await provider.sendMessage('c1', 'u1', 'hi');
+    expect(provider.messagesFor('c1').length, 1);
     expect(service.sent.length, 1);
   });
 }

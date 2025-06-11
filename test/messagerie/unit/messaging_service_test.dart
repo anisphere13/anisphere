@@ -39,7 +39,9 @@ void main() {
       id: '1',
       conversationId: 'c1',
       senderId: 'u1',
+      receiverId: 'u2',
       content: 'hello',
+      timestamp: DateTime.now(),
     );
 
     await service.sendMessage(message);
@@ -59,7 +61,9 @@ void main() {
       id: '2',
       conversationId: 'c2',
       senderId: 'u2',
+      receiverId: 'u1',
       content: 'offline',
+      timestamp: DateTime.now(),
     );
 
     await service.sendMessage(message);
