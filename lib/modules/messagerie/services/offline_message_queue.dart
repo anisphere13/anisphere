@@ -5,22 +5,36 @@ import 'package:hive/hive.dart';
 
 import '../models/message_model.dart';
 
+part 'offline_message_queue.g.dart';
+
+@HiveType(typeId: 121)
+class QueuedMessage {
+  @HiveField(0)
+  final MessageModel message;
+
+  @HiveField(1)
+  final DateTime timestamp;
+
+  QueuedMessage({required this.message, DateTime? timestamp})
+      : timestamp = timestamp ?? DateTime.now();
+}
+
 class OfflineMessageQueue {
   static const String _boxName = 'offline_messages';
 
-  static Future<void> addMessage(MessageModel message) async {
-    final box = await Hive.openBox<MessageModel>(_boxName);
-    await box.add(message);
+  static Future<void> enqueue(MessageModel message) async {
+    final box = await Hive.openBox<QueuedMessage>(_boxName);
+    await box.add(QueuedMessage(message: message));
     debugPrint('📥 Message ajouté à la file offline : ${message.id}');
   }
 
-  static Future<List<MessageModel>> getAllMessages() async {
-    final box = await Hive.openBox<MessageModel>(_boxName);
+  static Future<List<QueuedMessage>> getAll() async {
+    final box = await Hive.openBox<QueuedMessage>(_boxName);
     return box.values.toList();
   }
 
-  static Future<void> clearQueue() async {
-    final box = await Hive.openBox<MessageModel>(_boxName);
+  static Future<void> clear() async {
+    final box = await Hive.openBox<QueuedMessage>(_boxName);
     await box.clear();
     debugPrint('🧹 File de messages offline vidée.');
   }

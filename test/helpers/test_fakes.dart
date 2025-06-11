@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mockito/mockito.dart';
-
+import 'package:anisphere/modules/noyau/services/firebase_service.dart';
 class FakeFirebaseAuth extends Fake implements FirebaseAuth {}
 
 class FakeFirestore extends Fake implements FirebaseFirestore {
@@ -41,7 +41,6 @@ class _FakeDoc extends Fake implements DocumentReference<Map<String, dynamic>> {
   }
 }
 
-import 'package:anisphere/modules/noyau/services/firebase_service.dart';
 
 class FakeFirebaseService extends FirebaseService {
   FakeFirebaseService(FakeFirestore firestore)
