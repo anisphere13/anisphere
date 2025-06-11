@@ -22,6 +22,7 @@ import 'package:anisphere/modules/noyau/services/offline_sync_queue.dart';
 import 'package:anisphere/modules/noyau/logic/ia_metrics_collector.dart';
 import 'package:anisphere/modules/noyau/services/cloud_notification_listener.dart';
 import 'package:anisphere/modules/noyau/logic/ia_master.dart';
+import 'package:anisphere/modules/noyau/models/support_ticket_model.dart';
 import 'package:anisphere/modules/messagerie/models/message_model.dart';
 import 'package:anisphere/modules/messagerie/models/conversation_model.dart';
 
