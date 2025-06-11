@@ -19,7 +19,7 @@ class MessagingService {
 
   Future<void> _initHive() async {
     if (_box != null) return;
-    if (!Hive.isAdapterRegistered(120)) {
+    if (!Hive.isAdapterRegistered(70)) {
       Hive.registerAdapter(MessageModelAdapter());
     }
     if (!Hive.isAdapterRegistered(121)) {

@@ -25,7 +25,9 @@ void main() {
       id: '1',
       conversationId: 'c1',
       senderId: 'u1',
+      receiverId: 'u2',
       content: 'hi',
+      timestamp: DateTime.now(),
     );
 
     await provider.send(msg);

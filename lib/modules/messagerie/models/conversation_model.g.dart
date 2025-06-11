@@ -17,25 +17,28 @@ class ConversationModelAdapter extends TypeAdapter<ConversationModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ConversationModel(
-      participants: (fields[0] as List).cast<String>(),
-      lastMessage: fields[1] as String,
-      lastTimestamp: fields[2] as DateTime,
-      module: fields[3] as String,
+      id: fields[0] as String,
+      participantIds: (fields[1] as List).cast<String>(),
+      lastMessage: fields[2] as String,
+      lastTimestamp: fields[3] as DateTime,
+      moduleName: fields[4] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, ConversationModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
-      ..write(obj.participants)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.lastMessage)
+      ..write(obj.participantIds)
       ..writeByte(2)
-      ..write(obj.lastTimestamp)
+      ..write(obj.lastMessage)
       ..writeByte(3)
-      ..write(obj.module);
+      ..write(obj.lastTimestamp)
+      ..writeByte(4)
+      ..write(obj.moduleName);
   }
 
   @override

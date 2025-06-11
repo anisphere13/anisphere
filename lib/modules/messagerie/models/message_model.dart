@@ -10,28 +10,35 @@ class MessageModel {
   final String id;
 
   @HiveField(1)
-  final String senderId;
+  final String conversationId;
 
   @HiveField(2)
-  final String receiverId;
+  final String senderId;
 
   @HiveField(3)
-  final String content;
+  final String receiverId;
 
   @HiveField(4)
-  final DateTime timestamp;
+  final String content;
 
   @HiveField(5)
-  final String moduleContext;
+  final DateTime timestamp;
 
   @HiveField(6)
-  final int priority;
+  final String moduleContext;
 
   @HiveField(7)
+  final int priority;
+
+  @HiveField(8)
   final String status;
+
+  @HiveField(9)
+  final bool sent;
 
   const MessageModel({
     required this.id,
+    required this.conversationId,
     required this.senderId,
     required this.receiverId,
     required this.content,
@@ -39,11 +46,13 @@ class MessageModel {
     this.moduleContext = '',
     this.priority = 0,
     this.status = '',
+    this.sent = false,
   });
 
   factory MessageModel.fromJson(Map<String, dynamic> json) {
     return MessageModel(
       id: json['id'] ?? '',
+      conversationId: json['conversationId'] ?? '',
       senderId: json['senderId'] ?? '',
       receiverId: json['receiverId'] ?? '',
       content: json['content'] ?? '',
@@ -51,11 +60,13 @@ class MessageModel {
       moduleContext: json['moduleContext'] ?? '',
       priority: json['priority'] ?? 0,
       status: json['status'] ?? '',
+      sent: json['sent'] ?? false,
     );
   }
 
   Map<String, dynamic> toJson() => {
         'id': id,
+        'conversationId': conversationId,
         'senderId': senderId,
         'receiverId': receiverId,
         'content': content,
@@ -63,10 +74,14 @@ class MessageModel {
         'moduleContext': moduleContext,
         'priority': priority,
         'status': status,
+        'sent': sent,
       };
+
+  Map<String, dynamic> toMap() => toJson();
 
   MessageModel copyWith({
     String? id,
+    String? conversationId,
     String? senderId,
     String? receiverId,
     String? content,
@@ -74,9 +89,11 @@ class MessageModel {
     String? moduleContext,
     int? priority,
     String? status,
+    bool? sent,
   }) {
     return MessageModel(
       id: id ?? this.id,
+      conversationId: conversationId ?? this.conversationId,
       senderId: senderId ?? this.senderId,
       receiverId: receiverId ?? this.receiverId,
       content: content ?? this.content,
@@ -84,6 +101,7 @@ class MessageModel {
       moduleContext: moduleContext ?? this.moduleContext,
       priority: priority ?? this.priority,
       status: status ?? this.status,
+      sent: sent ?? this.sent,
     );
   }
 }

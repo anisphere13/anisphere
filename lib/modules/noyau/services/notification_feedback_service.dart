@@ -1,7 +1,11 @@
 library;
 
-import 'package:hive/hive.dart';
 import 'package:flutter/foundation.dart';
+import 'package:hive/hive.dart';
+
+import '../models/notification_feedback_model.dart';
+import 'cloud_sync_service.dart';
+import 'offline_sync_queue.dart';
 
 part 'notification_feedback_service.g.dart';
 
@@ -30,43 +34,6 @@ class NotificationFeedback {
 class NotificationFeedbackService {
   static const String _boxName = 'notification_feedback';
 
-  /// Stores a feedback entry locally.
-  static Future<void> addFeedback(String notificationId, bool positive) async {
-    final box = await Hive.openBox<NotificationFeedback>(_boxName);
-    final entry = NotificationFeedback(
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
-      notificationId: notificationId,
-      positive: positive,
-      timestamp: DateTime.now(),
-    );
-    await box.add(entry);
-    debugPrint('💬 Feedback enregistré pour $notificationId ($positive)');
-  }
-
-  /// Returns all stored feedback entries.
-  static Future<List<NotificationFeedback>> getAllFeedback() async {
-    final box = await Hive.openBox<NotificationFeedback>(_boxName);
-    return box.values.toList();
-  }
-
-  /// Clears all stored feedback entries.
-  static Future<void> clear() async {
-    final box = await Hive.openBox<NotificationFeedback>(_boxName);
-    await box.clear();
-    debugPrint('🧹 Feedback notifications vidé.');
-  }
-}
-
-library;
-
-
-import '../models/notification_feedback_model.dart';
-import 'cloud_sync_service.dart';
-import 'offline_sync_queue.dart';
-
-class NotificationFeedbackService {
-  static const String boxName = 'notification_feedback';
-
   final CloudSyncService _cloudSyncService;
   Box<NotificationFeedbackModel>? _box;
   final bool skipHiveInit;
@@ -81,14 +48,38 @@ class NotificationFeedbackService {
     }
   }
 
+  /// --- Static helpers used in unit tests ---
+  static Future<void> addFeedback(String notificationId, bool positive) async {
+    final box = await Hive.openBox<NotificationFeedback>(_boxName);
+    final entry = NotificationFeedback(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      notificationId: notificationId,
+      positive: positive,
+      timestamp: DateTime.now(),
+    );
+    await box.add(entry);
+    debugPrint('\uD83D\uDCAC Feedback enregistré pour $notificationId ($positive)');
+  }
+
+  static Future<List<NotificationFeedback>> getAllFeedback() async {
+    final box = await Hive.openBox<NotificationFeedback>(_boxName);
+    return box.values.toList();
+  }
+
+  static Future<void> clear() async {
+    final box = await Hive.openBox<NotificationFeedback>(_boxName);
+    await box.clear();
+    debugPrint('\uD83E\uDE91 Feedback notifications vidé.');
+  }
+
   Future<void> _initHive() async {
     if (skipHiveInit || _box != null) return;
     if (!Hive.isAdapterRegistered(24)) {
       Hive.registerAdapter(NotificationFeedbackModelAdapter());
     }
-    _box = Hive.isBoxOpen(boxName)
-        ? Hive.box<NotificationFeedbackModel>(boxName)
-        : await Hive.openBox<NotificationFeedbackModel>(boxName);
+    _box = Hive.isBoxOpen(_boxName)
+        ? Hive.box<NotificationFeedbackModel>(_boxName)
+        : await Hive.openBox<NotificationFeedbackModel>(_boxName);
   }
 
   Future<void> saveFeedback(NotificationFeedbackModel feedback) async {
@@ -117,7 +108,7 @@ class NotificationFeedbackService {
     }
   }
 
-  Future<void> clear() async {
+  Future<void> clearBox() async {
     try {
       await _initHive();
       await _box?.clear();
