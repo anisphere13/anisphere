@@ -24,6 +24,7 @@ import 'package:anisphere/modules/noyau/services/cloud_notification_listener.dar
 import 'package:anisphere/modules/noyau/logic/ia_master.dart';
 import 'package:anisphere/modules/messagerie/models/message_model.dart';
 import 'package:anisphere/modules/messagerie/models/conversation_model.dart';
+import 'package:anisphere/modules/messagerie/services/offline_message_queue.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,6 +51,7 @@ void main() async {
     Hive.registerAdapter(SupportTicketStatusAdapter());
     Hive.registerAdapter(SupportTicketModelAdapter());
     Hive.registerAdapter(MessageModelAdapter());
+    Hive.registerAdapter(QueuedMessageAdapter());
     Hive.registerAdapter(ConversationModelAdapter());
     await LocalStorageService.init();
     assert(() {
