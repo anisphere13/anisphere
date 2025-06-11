@@ -6,24 +6,29 @@ import 'package:hive/hive.dart';
 import 'package:anisphere/modules/noyau/services/support_service.dart';
 import 'package:anisphere/modules/noyau/services/cloud_sync_service.dart';
 import 'package:anisphere/modules/noyau/models/support_ticket_model.dart';
+import '../../helpers/test_fakes.dart';
 
 class MockBox extends Mock implements Box<SupportTicketModel> {}
 
-class MockCloudSyncService extends Mock implements CloudSyncService {}
 
 
 void main() {
+  late FakeFirestore firestore;
+
   setUpAll(() async {
     await initTestEnv();
-    expect(firestore.data['support']?['1']?['message'], 'msg');
+  });
+
+  setUp(() {
+    firestore = FakeFirestore();
   });
 
 
   test('saveFeedback calls CloudSyncService and stores locally', () async {
     final mockBox = MockBox();
-    final mockCloud = MockCloudSyncService();
     final service = SupportService(
-      cloudSyncService: mockCloud,
+      cloudSyncService:
+          CloudSyncService(firebaseService: FakeFirebaseService(firestore)),
       testBox: mockBox,
       skipHiveInit: true,
     );
@@ -40,6 +45,6 @@ void main() {
     await service.saveFeedback(feedback);
 
     verify(mockBox.put('f1', feedback)).called(1);
-    verify(mockCloud.pushSupportData(feedback)).called(1);
+    expect(firestore.data['support']?['f1']?['message'], 'issue');
   });
 }
