@@ -18,10 +18,10 @@ class ConversationModelAdapter extends TypeAdapter<ConversationModel> {
     };
     return ConversationModel(
       id: fields[0] as String,
-      participants: (fields[1] as List).cast<String>(),
+      participantIds: (fields[1] as List).cast<String>(),
       lastMessage: fields[2] as String,
       lastTimestamp: fields[3] as DateTime,
-      module: fields[4] as String,
+      moduleName: fields[4] as String,
     );
   }
 
@@ -32,13 +32,13 @@ class ConversationModelAdapter extends TypeAdapter<ConversationModel> {
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.participants)
+      ..write(obj.participantIds)
       ..writeByte(2)
       ..write(obj.lastMessage)
       ..writeByte(3)
       ..write(obj.lastTimestamp)
       ..writeByte(4)
-      ..write(obj.module);
+      ..write(obj.moduleName);
   }
 
   @override

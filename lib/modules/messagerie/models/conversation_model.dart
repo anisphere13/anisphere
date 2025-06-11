@@ -10,7 +10,7 @@ class ConversationModel {
   final String id;
 
   @HiveField(1)
-  final List<String> participants;
+  final List<String> participantIds;
 
   @HiveField(2)
   final String lastMessage;
@@ -19,52 +19,48 @@ class ConversationModel {
   final DateTime lastTimestamp;
 
   @HiveField(4)
-  final String module;
-
-  String get moduleName => module;
-
-  List<String> get participantIds => participants;
+  final String moduleName;
 
   ConversationModel({
     required this.id,
-    this.participants = const [],
+    this.participantIds = const [],
     this.lastMessage = '',
     DateTime? lastTimestamp,
-    this.module = '',
+    this.moduleName = '',
   }) : lastTimestamp = lastTimestamp ?? DateTime.now();
 
   factory ConversationModel.fromJson(Map<String, dynamic> json) {
     return ConversationModel(
       id: json['id'] ?? '',
-      participants: List<String>.from(json['participants'] ?? []),
+      participantIds: List<String>.from(json['participantIds'] ?? []),
       lastMessage: json['lastMessage'] ?? '',
       lastTimestamp:
           DateTime.tryParse(json['lastTimestamp'] ?? '') ?? DateTime.now(),
-      module: json['module'] ?? '',
+      moduleName: json['moduleName'] ?? '',
     );
   }
 
   Map<String, dynamic> toJson() => {
         'id': id,
-        'participants': participants,
+        'participantIds': participantIds,
         'lastMessage': lastMessage,
         'lastTimestamp': lastTimestamp.toIso8601String(),
-        'module': module,
+        'moduleName': moduleName,
       };
 
   ConversationModel copyWith({
     String? id,
-    List<String>? participants,
+    List<String>? participantIds,
     String? lastMessage,
     DateTime? lastTimestamp,
-    String? module,
+    String? moduleName,
   }) {
     return ConversationModel(
       id: id ?? this.id,
-      participants: participants ?? this.participants,
+      participantIds: participantIds ?? this.participantIds,
       lastMessage: lastMessage ?? this.lastMessage,
       lastTimestamp: lastTimestamp ?? this.lastTimestamp,
-      module: module ?? this.module,
+      moduleName: moduleName ?? this.moduleName,
     );
   }
 }

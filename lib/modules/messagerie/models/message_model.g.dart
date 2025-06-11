@@ -23,10 +23,10 @@ class MessageModelAdapter extends TypeAdapter<MessageModel> {
       receiverId: fields[3] as String,
       content: fields[4] as String,
       timestamp: fields[5] as DateTime,
-      moduleContext: fields[6] as String,
-      priority: fields[7] as int,
-      status: fields[8] as String,
-      sent: fields[9] as bool,
+      sent: fields[6] as bool,
+      moduleContext: fields[7] as String,
+      priority: fields[8] as int,
+      status: fields[9] as String,
     );
   }
 
@@ -47,13 +47,13 @@ class MessageModelAdapter extends TypeAdapter<MessageModel> {
       ..writeByte(5)
       ..write(obj.timestamp)
       ..writeByte(6)
-      ..write(obj.moduleContext)
+      ..write(obj.sent)
       ..writeByte(7)
-      ..write(obj.priority)
+      ..write(obj.moduleContext)
       ..writeByte(8)
-      ..write(obj.status)
+      ..write(obj.priority)
       ..writeByte(9)
-      ..write(obj.sent);
+      ..write(obj.status);
   }
 
   @override

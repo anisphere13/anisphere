@@ -27,12 +27,15 @@ class MessageModel {
   final DateTime timestamp;
 
   @HiveField(6)
-  final String moduleContext;
+  final bool sent;
 
   @HiveField(7)
-  final int priority;
+  final String moduleContext;
 
   @HiveField(8)
+  final int priority;
+
+  @HiveField(9)
   final String status;
 
   @HiveField(9)
@@ -44,7 +47,8 @@ class MessageModel {
     required this.senderId,
     this.receiverId = '',
     required this.content,
-    DateTime? timestamp,
+    required this.timestamp,
+    this.sent = false,
     this.moduleContext = '',
     this.priority = 0,
     this.status = '',
@@ -59,6 +63,7 @@ class MessageModel {
       receiverId: json['receiverId'] ?? '',
       content: json['content'] ?? '',
       timestamp: DateTime.tryParse(json['timestamp'] ?? '') ?? DateTime.now(),
+      sent: json['sent'] ?? false,
       moduleContext: json['moduleContext'] ?? '',
       priority: json['priority'] ?? 0,
       status: json['status'] ?? '',
@@ -73,25 +78,14 @@ class MessageModel {
         'receiverId': receiverId,
         'content': content,
         'timestamp': timestamp.toIso8601String(),
+        'sent': sent,
         'moduleContext': moduleContext,
         'priority': priority,
         'status': status,
         'sent': sent,
       };
 
-  /// Map representation suitable for Firestore writes.
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'senderId': senderId,
-      'receiverId': receiverId,
-      'content': content,
-      'timestamp': Timestamp.fromDate(timestamp),
-      'moduleContext': moduleContext,
-      'priority': priority,
-      'status': status,
-    };
-  }
+  Map<String, dynamic> toMap() => toJson();
 
   MessageModel copyWith({
     String? id,
@@ -100,6 +94,7 @@ class MessageModel {
     String? receiverId,
     String? content,
     DateTime? timestamp,
+    bool? sent,
     String? moduleContext,
     int? priority,
     String? status,
@@ -112,6 +107,7 @@ class MessageModel {
       receiverId: receiverId ?? this.receiverId,
       content: content ?? this.content,
       timestamp: timestamp ?? this.timestamp,
+      sent: sent ?? this.sent,
       moduleContext: moduleContext ?? this.moduleContext,
       priority: priority ?? this.priority,
       status: status ?? this.status,
