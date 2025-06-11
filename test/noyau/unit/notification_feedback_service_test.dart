@@ -1,44 +1,41 @@
-import 'dart:io';
-
 import 'package:flutter_test/flutter_test.dart';
+import '../../test_config.dart';
+import 'package:mockito/mockito.dart';
 import 'package:hive/hive.dart';
 import 'package:anisphere/modules/noyau/services/notification_feedback_service.dart';
+import 'package:anisphere/modules/noyau/services/cloud_sync_service.dart';
+import 'package:anisphere/modules/noyau/models/notification_feedback_model.dart';
+
+class MockBox extends Mock implements Box<NotificationFeedbackModel> {}
+class MockCloudSyncService extends Mock implements CloudSyncService {}
 
 void main() {
-  late Directory tempDir;
-
-  setUp(() async {
-    tempDir = await Directory.systemTemp.createTemp();
-    Hive.init(tempDir.path);
-    Hive.registerAdapter(NotificationFeedbackAdapter());
-    await Hive.openBox<NotificationFeedback>('notification_feedback');
+  setUpAll(() async {
+    await initTestEnv();
   });
 
-  tearDown(() async {
-    await Hive.deleteBoxFromDisk('notification_feedback');
-    await tempDir.delete(recursive: true);
-  });
+  test('saveFeedback stores entry and pushes to cloud', () async {
+    final mockBox = MockBox();
+    final mockCloud = MockCloudSyncService();
+    final service = NotificationFeedbackService(
+      cloudSyncService: mockCloud,
+      testBox: mockBox,
+      skipHiveInit: true,
+    );
 
-  test('addFeedback stores feedback in Hive box', () async {
-    await NotificationFeedbackService.addFeedback('notif1', true);
-    final box = await Hive.openBox<NotificationFeedback>('notification_feedback');
-    expect(box.length, 1);
-    expect(box.getAt(0)?.notificationId, 'notif1');
-    expect(box.getAt(0)?.positive, true);
-  });
+    final feedback = NotificationFeedbackModel(
+      notificationId: 'n1',
+      userId: 'u1',
+      openedAt: DateTime.now(),
+      reaction: 'ok',
+      module: 'core',
+      type: 'info',
+      createdAt: DateTime.now(),
+    );
 
-  test('getAllFeedback returns stored entries', () async {
-    await NotificationFeedbackService.addFeedback('notif2', false);
-    final all = await NotificationFeedbackService.getAllFeedback();
-    expect(all.length, 1);
-    expect(all.first.notificationId, 'notif2');
-    expect(all.first.positive, false);
-  });
+    await service.saveFeedback(feedback);
 
-  test('clear removes all feedback', () async {
-    await NotificationFeedbackService.addFeedback('notif3', true);
-    await NotificationFeedbackService.clear();
-    final all = await NotificationFeedbackService.getAllFeedback();
-    expect(all, isEmpty);
+    verify(mockBox.add(feedback)).called(1);
+    verify(mockCloud.pushNotificationFeedback(feedback)).called(1);
   });
 }
