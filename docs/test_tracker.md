@@ -77,3 +77,9 @@
 | test/noyau/widget/register_screen_test.dart | widget | package:anisphere/modules/noyau/screens/register_screen.dart | À faire |
 | test/noyau/widget/notifications_screen_test.dart | widget | package:anisphere/modules/noyau/screens/notifications_screen.dart | ✅ |
 | test/noyau/widget/settings_screen_test.dart | widget | package:anisphere/modules/noyau/screens/settings_screen.dart | À faire |
+| test/messagerie/unit/messaging_service_test.dart | unit | package:anisphere/modules/messagerie/services/messaging_service.dart | À faire |
+| test/messagerie/unit/offline_message_queue_test.dart | unit | package:anisphere/modules/messagerie/services/offline_message_queue.dart | À faire |
+| test/messagerie/unit/ia_message_analyzer_test.dart | unit | package:anisphere/modules/messagerie/services/ia_message_analyzer.dart | À faire |
+| test/messagerie/widget/chat_screen_widget_test.dart | widget | package:anisphere/modules/messagerie/screens/chat_screen.dart | À faire |
+| test/messagerie/widget/message_list_screen_widget_test.dart | widget | package:anisphere/modules/messagerie/screens/message_list_screen.dart | À faire |
+| test/messagerie/integration/messagerie_integration.dart | integration | package:anisphere/modules/messagerie/screens/chat_screen.dart | À faire |
