@@ -2,6 +2,7 @@ library;
 // TODO: ajouter test
 
 import 'package:hive/hive.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 part 'message_model.g.dart';
 
@@ -77,6 +78,20 @@ class MessageModel {
         'status': status,
         'sent': sent,
       };
+
+  /// Map representation suitable for Firestore writes.
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'senderId': senderId,
+      'receiverId': receiverId,
+      'content': content,
+      'timestamp': Timestamp.fromDate(timestamp),
+      'moduleContext': moduleContext,
+      'priority': priority,
+      'status': status,
+    };
+  }
 
   MessageModel copyWith({
     String? id,
