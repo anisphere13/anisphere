@@ -322,7 +322,7 @@ Suivre la roadmap et proposer les prochaines priorités intelligemment
 📈 Suivi et amélioration continue
 
 Fichier noyau_suivi.md mis à jour automatiquement après chaque push
-
+Consultez [docs/stockage_suivi.md](docs/stockage_suivi.md) pour le suivi du stockage (Hive, Firebase, drives).
 Rapport IA hebdomadaire dans l’interface Super Admin avec :
 
 modules à supprimer, à optimiser ou à promouvoir
