@@ -13,6 +13,7 @@ import '../services/offline_sync_queue.dart';
 import '../services/notification_feedback_service.dart';
 import '../models/animal_model.dart';
 import '../models/user_model.dart';
+import '../models/notification_feedback_model.dart';
 import '../../messagerie/logic/ia_message_analyzer.dart';
 import 'ia_logger.dart';
 import 'ia_flag.dart';

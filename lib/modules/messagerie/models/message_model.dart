@@ -2,7 +2,6 @@ library;
 // TODO: ajouter test
 
 import 'package:hive/hive.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 part 'message_model.g.dart';
 
@@ -38,22 +37,19 @@ class MessageModel {
   @HiveField(9)
   final String status;
 
-  @HiveField(9)
-  final bool sent;
-
-  const MessageModel({
+  MessageModel({
     required this.id,
     required this.conversationId,
     required this.senderId,
     this.receiverId = '',
     required this.content,
-    required this.timestamp,
-    this.sent = false,
+    DateTime? timestamp,
+    bool? sent,
     this.moduleContext = '',
     this.priority = 0,
     this.status = '',
-    this.sent = false,
-  }) : timestamp = timestamp ?? DateTime.now();
+  })  : timestamp = timestamp ?? DateTime.now(),
+        sent = sent ?? false;
 
   factory MessageModel.fromJson(Map<String, dynamic> json) {
     return MessageModel(
@@ -67,7 +63,6 @@ class MessageModel {
       moduleContext: json['moduleContext'] ?? '',
       priority: json['priority'] ?? 0,
       status: json['status'] ?? '',
-      sent: json['sent'] ?? false,
     );
   }
 
@@ -82,7 +77,6 @@ class MessageModel {
         'moduleContext': moduleContext,
         'priority': priority,
         'status': status,
-        'sent': sent,
       };
 
   Map<String, dynamic> toMap() => toJson();
@@ -98,7 +92,6 @@ class MessageModel {
     String? moduleContext,
     int? priority,
     String? status,
-    bool? sent,
   }) {
     return MessageModel(
       id: id ?? this.id,
@@ -111,7 +104,6 @@ class MessageModel {
       moduleContext: moduleContext ?? this.moduleContext,
       priority: priority ?? this.priority,
       status: status ?? this.status,
-      sent: sent ?? this.sent,
     );
   }
 }

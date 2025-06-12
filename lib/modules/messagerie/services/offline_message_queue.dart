@@ -28,14 +28,22 @@ class OfflineMessageQueue {
     debugPrint('📥 Message ajouté à la file offline : ${message.id}');
   }
 
+  /// New API used by MessagingService
+  static Future<void> addMessage(MessageModel msg) => enqueue(msg);
+
   static Future<List<QueuedMessage>> getAll() async {
     final box = await Hive.openBox<QueuedMessage>(_boxName);
     return box.values.toList();
   }
+
+  /// Returns all queued messages
+  static Future<List<QueuedMessage>> getAllMessages() => getAll();
 
   static Future<void> clear() async {
     final box = await Hive.openBox<QueuedMessage>(_boxName);
     await box.clear();
     debugPrint('🧹 File de messages offline vidée.');
   }
+
+  static Future<void> clearQueue() => clear();
 }
