@@ -10,6 +10,7 @@ import '../models/support_ticket_model.dart';
 import '../models/notification_feedback_model.dart';
 import 'firebase_service.dart';
 import '../services/offline_sync_queue.dart';
+import '../services/storage_optimizer.dart';
 
 class CloudSyncService {
   final FirebaseService _firebaseService;
@@ -55,7 +56,12 @@ class CloudSyncService {
   /// 🔁 Envoie un retour utilisateur (support/contact/bug)
   Future<void> pushSupportData(SupportTicketModel feedback) async {
     try {
-      await _firebaseService.sendModuleData('support', feedback.toJson());
+      var optimized = feedback;
+      if (feedback.attachments.isNotEmpty) {
+        final optimizedPaths = await StorageOptimizer.optimizePaths(feedback.attachments);
+        optimized = feedback.copyWith(attachments: optimizedPaths);
+      }
+      await _firebaseService.sendModuleData('support', optimized.toJson());
       debugPrint('☁️ Feedback support envoyé au cloud.');
     } catch (e) {
       debugPrint('❌ [CloudSync] Erreur pushSupportData : $e');
