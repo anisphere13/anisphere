@@ -1,3 +1,4 @@
+// 🛠️ Fix: utilise `contains` pour les vérifications de connexion WiFi/mobile.
 // Provider utilisateur pour AniSphère.
 // Gère l’état utilisateur, les connexions (email, Google, Apple),
 // la synchronisation Firebase/Hive et les notifications UI.
@@ -108,8 +109,8 @@ class UserProvider with ChangeNotifier {
       }
 
       final connectivity = await Connectivity().checkConnectivity();
-      if (connectivity == ConnectivityResult.wifi ||
-          connectivity == ConnectivityResult.mobile) {
+      if (connectivity.contains(ConnectivityResult.wifi) ||
+          connectivity.contains(ConnectivityResult.mobile)) {
         await FirebaseService().signOut();
         debugPrint("✅ Déconnexion Firebase !");
       } else {
