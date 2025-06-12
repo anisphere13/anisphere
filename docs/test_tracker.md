@@ -31,7 +31,7 @@
 | test/noyau/unit/notification_service_test.dart | unit | package:anisphere/modules/noyau/services/notification_service.dart | ✅ |
 | test/noyau/unit/notification_feedback_service_test.dart | unit | package:anisphere/modules/noyau/services/notification_feedback_service.dart | ✅ |
 | test/noyau/unit/backup_service_test.dart | unit | package:anisphere/modules/noyau/services/backup_service.dart | À faire |
-| test/noyau/unit/local_storage_service_test.dart | unit | package:anisphere/modules/noyau/services/local_storage_service.dart | À faire |
+| test/noyau/unit/local_storage_service_test.dart | unit | package:anisphere/modules/noyau/services/local_storage_service.dart | ✅ |
 | test/noyau/unit/animal_service_test.dart | unit | package:anisphere/modules/noyau/services/animal_service.dart | À faire |
 | test/noyau/unit/ia_sync_service_test.dart | unit | package:anisphere/modules/noyau/services/ia_sync_service.dart | À faire |
 | test/noyau/unit/cloud_notification_listener_test.dart | unit | package:anisphere/modules/noyau/services/cloud_notification_listener.dart | ✅ |

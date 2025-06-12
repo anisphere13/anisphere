@@ -7,6 +7,8 @@ library;
 
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'dart:convert';
 
 import '../models/user_model.dart';
 import '../models/animal_model.dart';
@@ -15,16 +17,34 @@ class LocalStorageService {
   static late Box<UserModel> _userBox;
   static late Box<AnimalModel> _animalBox;
   static late Box _settingsBox;
+  static const _secureKeyName = 'hive_aes_key';
+  static const _secureStorage = FlutterSecureStorage();
+  static HiveAesCipher? _cipher;
+
+  static Future<HiveAesCipher> _getCipher() async {
+    if (_cipher != null) return _cipher!;
+    final stored = await _secureStorage.read(key: _secureKeyName);
+    List<int> key;
+    if (stored == null) {
+      key = Hive.generateSecureKey();
+      await _secureStorage.write(key: _secureKeyName, value: base64UrlEncode(key));
+    } else {
+      key = base64Url.decode(stored);
+    }
+    _cipher = HiveAesCipher(key);
+    return _cipher!;
+  }
 
   /// 📦 Initialisation Hive
   static Future<void> init() async {
     try {
       await Hive.initFlutter();
+      final cipher = await _getCipher();
       Hive.registerAdapter(UserModelAdapter());
       Hive.registerAdapter(AnimalModelAdapter());
-      _userBox = await Hive.openBox<UserModel>('users');
-      _animalBox = await Hive.openBox<AnimalModel>('animals');
-      _settingsBox = await Hive.openBox('settings');
+      _userBox = await Hive.openBox<UserModel>('users', encryptionCipher: cipher);
+      _animalBox = await Hive.openBox<AnimalModel>('animals', encryptionCipher: cipher);
+      _settingsBox = await Hive.openBox('settings', encryptionCipher: cipher);
       debugPrint("✅ Hive local storage initialized!");
     } catch (e) {
       debugPrint("❌ Erreur init Hive : $e");
