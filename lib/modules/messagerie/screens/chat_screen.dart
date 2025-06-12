@@ -1,3 +1,4 @@
+// 🔧 Fix applied automatically via Codex on 2025-06-11 (flutter analyze)
 library;
 
 import 'package:flutter/material.dart';
@@ -51,7 +52,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: isMe
-                          ? Theme.of(context).colorScheme.primary.withOpacity(0.2)
+                          ? Theme.of(context).colorScheme.primary.withAlpha(0x33)
                           : Colors.grey.shade300,
                       borderRadius: BorderRadius.circular(8),
                     ),
