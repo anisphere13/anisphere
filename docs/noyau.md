@@ -507,6 +507,7 @@ Les données sensibles (nom, téléphone, données vétérinaires) ne sont jamai
 Chiffrement des données :
 
 Les fichiers Hive sont chiffrés automatiquement
+Une clé AES de 256 bits est générée au premier lancement et stockée dans `flutter_secure_storage`. Cette clé est ensuite transmise à `HiveAesCipher` pour ouvrir les boîtes Hive. Sans elle les données locales restent illisibles.
 
 Les exports générés (PDF, transferts) sont signés et protégés si nécessaire
 
