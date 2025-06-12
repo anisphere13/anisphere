@@ -1,7 +1,8 @@
+// fix: update file handling for FlutterImageCompress (XFile -> File)
+// and remove unused imports.
 library;
 
 import 'dart:io';
-import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter/foundation.dart';
@@ -24,12 +25,13 @@ class StorageOptimizer {
         quality: quality,
       );
       if (result != null) {
+        final size = await result.length();
         assert(() {
-          debugPrint('📦 Image compressée : ${file.path} -> ${result.lengthSync()} o');
+          debugPrint('📦 Image compressée : ${file.path} -> $size o');
           return true;
         }());
       }
-      return result;
+      return result != null ? File(result.path) : null;
     } catch (e) {
       debugPrint('❌ [StorageOptimizer] Erreur compression : $e');
       return null;
