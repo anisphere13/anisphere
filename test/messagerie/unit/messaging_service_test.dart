@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:anisphere/modules/messagerie/services/messaging_service.dart';
 
 void main() {
   group('MessagingService', () {
