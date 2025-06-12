@@ -1,9 +1,22 @@
-# 📦 stockage_suivi.md — Suivi du stockage et de la synchronisation
+📦 stockage_suivi.md — Optimisation du stockage
 
-Ce fichier suit l'avancement du stockage local via Hive ainsi que des solutions cloud et externes.
+Ce document décrit le fonctionnement du `StorageOptimizer`. Ce service se charge
+ de compresser les images et de calculer un hash afin de détecter les doublons
+avant tout envoi vers le cloud.
 
-| Principe | Implémentation actuelle | Statut |
-|----------|------------------------|-------|
-| Stockage local (Hive) | Base fonctionnelle prête (modèles principaux) | ✅ Fait |
-| Stockage cloud (Firebase) | Structure Firestore/Storage à finaliser | 🔄 À démarrer |
-| Sauvegarde sur drives externes | Spécifications en cours (Google Drive, iCloud…) | 🔄 À démarrer |
+### Objectifs
+- Réduire la taille des fichiers transférés (moins de coût Firebase)
+- Éviter l’envoi de fichiers identiques
+- Simplifier la préparation des fichiers dans `CloudSyncService` et `CloudDriveService`
+
+### Utilisation basique
+```dart
+final compressed = await StorageOptimizer.compressImage(file);
+final hash = await StorageOptimizer.computeHash(compressed ?? file);
+```
+
+Dans `CloudSyncService.pushSupportData`, la liste des pièces jointes est
+optimisée via `StorageOptimizer.optimizePaths` avant l’upload. Le futur
+`CloudDriveService` appliquera la même logique pour tous les fichiers mis
+en ligne.
+
