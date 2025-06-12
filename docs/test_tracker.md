@@ -38,6 +38,7 @@
 | test/noyau/unit/offline_sync_queue_test.dart | unit | package:anisphere/modules/noyau/services/offline_sync_queue.dart | À faire |
 | test/noyau/unit/firebase_service_test.dart | unit | package:anisphere/modules/noyau/services/firebase_service.dart | À faire |
 | test/noyau/unit/cloud_sync_service_test.dart | unit | package:anisphere/modules/noyau/services/cloud_sync_service.dart | À faire |
+| test/noyau/unit/cloud_drive_service_test.dart | unit | package:anisphere/modules/noyau/services/cloud_drive_service.dart | ✅ |
 | test/noyau/unit/ia_executor_test.dart | unit | package:anisphere/modules/noyau/logic/ia_executor.dart | À faire |
 | test/noyau/unit/ia_metrics_collector_test.dart | unit | package:anisphere/modules/noyau/logic/ia_metrics_collector.dart | ✅ |
 | test/noyau/unit/ia_config_test.dart | unit | package:anisphere/modules/noyau/logic/ia_config.dart | À faire |
