@@ -1,4 +1,5 @@
 // Copilot Prompt : Test automatique généré pour support_service.dart (unit)
+// fix: verify saved message using collection().doc().get()
 import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
 import 'package:mockito/mockito.dart';
@@ -45,6 +46,7 @@ void main() {
     await service.saveFeedback(feedback);
 
     verify(mockBox.put('f1', feedback)).called(1);
-    expect(firestore.data['support']?['f1']?['message'], 'issue');
+    final doc = await firestore.collection('support').doc('f1').get();
+    expect(doc.data()?['message'], 'issue');
   });
 }
