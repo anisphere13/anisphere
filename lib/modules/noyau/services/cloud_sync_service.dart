@@ -12,6 +12,7 @@ import '../models/photo_model.dart';
 import 'firebase_service.dart';
 import '../services/offline_sync_queue.dart';
 import '../services/offline_photo_queue.dart' as offline_queue;
+import '../services/offline_gps_queue.dart';
 import '../services/storage_optimizer.dart';
 
 class CloudSyncService {
@@ -139,6 +140,17 @@ class CloudSyncService {
       );
     }
   }
+
+  // Copilot: envoie un batch GPS et le met en attente si besoin
+  Future<void> pushGPSData(List<Map<String, dynamic>> batch) async {
+    try {
+      await _firebaseService.sendModuleData('gps', {'batch': batch});
+      debugPrint('☁️ Batch GPS envoyé (${batch.length} entrées).');
+    } catch (e) {
+      debugPrint('❌ [CloudSync] Erreur pushGPSData : $e');
+      await OfflineGpsQueue.addBatch(batch);
+    }
+  }
   /// 📦 Synchro complète pour IAMaster (utilise les logs de l’app)
   Future<void> syncFullIA(String userId, List<String> logs) async {
     try {
@@ -197,5 +209,16 @@ class CloudSyncService {
       }
     }
     await offline_queue.OfflinePhotoQueue.clearQueue();
+
+    final gpsBatches = await OfflineGpsQueue.getAllBatches();
+    for (final batch in gpsBatches) {
+      try {
+        await _firebaseService.sendModuleData('gps', {'batch': batch.data});
+      } catch (e) {
+        debugPrint('❌ [CloudSync] Erreur envoi GPS offline : \$e');
+        await OfflineGpsQueue.addBatch(batch.data);
+      }
+    }
+    await OfflineGpsQueue.clearQueue();
   }
 }
