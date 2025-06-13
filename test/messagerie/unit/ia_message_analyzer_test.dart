@@ -1,5 +1,5 @@
-// Copilot Prompt : Test automatique g\u00e9n\u00e9r\u00e9 pour ia_message_analyzer.dart (unit)
 import 'package:flutter_test/flutter_test.dart';
+import 'package:anisphere/modules/messagerie/logic/ia_message_analyzer.dart';
 import '../../test_config.dart';
 
 void main() {
@@ -7,8 +7,26 @@ void main() {
     await initTestEnv();
   });
 
-  test('ia_message_analyzer fonctionne (test auto)', () {
-    // TODO : compl\u00e9ter le test pour ia_message_analyzer.dart
-    expect(true, isTrue); // \u00c0 remplacer par un vrai test
+  final analyzer = IAMessageAnalyzer();
+
+  test('detect greeting intent', () {
+    final result = analyzer.analyze('Bonjour, ça va ?');
+    expect(result['intent'], 'greeting');
+    expect(result['feedback']!.isNotEmpty, isTrue);
+  });
+
+  test('detect thanks intent', () {
+    final result = analyzer.analyze('merci pour ton aide');
+    expect(result['intent'], 'thanks');
+  });
+
+  test('detect complaint intent', () {
+    final result = analyzer.analyze('Il y a un bug ici');
+    expect(result['intent'], 'complaint');
+  });
+
+  test('detect question intent', () {
+    final result = analyzer.analyze('Que puis-je faire ?');
+    expect(result['intent'], 'question');
   });
 }
