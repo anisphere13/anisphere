@@ -51,11 +51,11 @@ class PhotoTaskAdapter extends TypeAdapter<PhotoTask> {
     };
     return PhotoTask(
       photo: fields[0] as PhotoModel,
-      timestamp: fields[1] as DateTime,
-      animalId: (fields[2] as String?) ?? '',
-      userId: (fields[3] as String?) ?? '',
-      uploaded: (fields[4] as bool?) ?? false,
-      remoteUrl: fields[5] as String?,
+      animalId: fields[1] as String,
+      userId: fields[2] as String,
+      uploaded: fields[3] as bool,
+      remoteUrl: fields[4] as String,
+      timestamp: fields[5] as DateTime,
     );
   }
 
@@ -66,15 +66,15 @@ class PhotoTaskAdapter extends TypeAdapter<PhotoTask> {
       ..writeByte(0)
       ..write(obj.photo)
       ..writeByte(1)
-      ..write(obj.timestamp)
-      ..writeByte(2)
       ..write(obj.animalId)
-      ..writeByte(3)
+      ..writeByte(2)
       ..write(obj.userId)
-      ..writeByte(4)
+      ..writeByte(3)
       ..write(obj.uploaded)
+      ..writeByte(4)
+      ..write(obj.remoteUrl)
       ..writeByte(5)
-      ..write(obj.remoteUrl);
+      ..write(obj.timestamp);
   }
 
   @override

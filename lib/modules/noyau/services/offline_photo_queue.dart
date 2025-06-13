@@ -25,26 +25,26 @@ class PhotoTask {
   final PhotoModel photo;
 
   @HiveField(1)
-  final DateTime timestamp;
-
-  @HiveField(2)
   final String animalId;
 
-  @HiveField(3)
+  @HiveField(2)
   final String userId;
 
-  @HiveField(4)
+  @HiveField(3)
   final bool uploaded;
 
+  @HiveField(4)
+  final String remoteUrl;
+
   @HiveField(5)
-  final String? remoteUrl;
+  final DateTime timestamp;
 
   PhotoTask({
     required this.photo,
     required this.animalId,
     required this.userId,
     this.uploaded = false,
-    this.remoteUrl,
+    this.remoteUrl = '',
     DateTime? timestamp,
   }) : timestamp = timestamp ?? DateTime.now();
 }
