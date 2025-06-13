@@ -21,12 +21,20 @@ class PhotoModel {
   @HiveField(4)
   final DateTime createdAt;
 
+  @HiveField(5)
+  final bool uploaded;
+
+  @HiveField(6)
+  final String? remoteUrl;
+
   const PhotoModel({
     required this.id,
     required this.userId,
     required this.animalId,
     required this.localPath,
     required this.createdAt,
+    required this.uploaded,
+    this.remoteUrl,
   });
 
   Map<String, dynamic> toJson() => {
@@ -35,6 +43,8 @@ class PhotoModel {
         'animalId': animalId,
         'localPath': localPath,
         'createdAt': createdAt.toIso8601String(),
+        'uploaded': uploaded,
+        'remoteUrl': remoteUrl,
       };
 
   factory PhotoModel.fromJson(Map<String, dynamic> json) {
@@ -44,6 +54,8 @@ class PhotoModel {
       animalId: json['animalId'] ?? '',
       localPath: json['localPath'] ?? '',
       createdAt: DateTime.tryParse(json['createdAt'] ?? '') ?? DateTime.now(),
+      uploaded: json['uploaded'] ?? false,
+      remoteUrl: json['remoteUrl'],
     );
   }
 
@@ -53,6 +65,8 @@ class PhotoModel {
     String? animalId,
     String? localPath,
     DateTime? createdAt,
+    bool? uploaded,
+    String? remoteUrl,
   }) {
     return PhotoModel(
       id: id ?? this.id,
@@ -60,6 +74,8 @@ class PhotoModel {
       animalId: animalId ?? this.animalId,
       localPath: localPath ?? this.localPath,
       createdAt: createdAt ?? this.createdAt,
+      uploaded: uploaded ?? this.uploaded,
+      remoteUrl: remoteUrl ?? this.remoteUrl,
     );
   }
 }
