@@ -113,6 +113,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 - [06/2025] Création du modèle `photo_model.dart` (métadonnées, stockage Hive).
 - [06/2025] Mise en place de `photo_upload_queue.dart` pour la synchronisation différée hors ligne.
 - [06/2025] Tests unitaires : `camera_service_test.dart`, `photo_model_test.dart`, `photo_upload_queue_test.dart`.
+- [06/2025] Ajout du service `ia_gps_analyzer.dart` (compression Douglas‑Peucker, détection arrêts/anomalies) et tests associés.
 ---
 
 ## 🚩 Statut actuel du noyau (05/06/2025)
