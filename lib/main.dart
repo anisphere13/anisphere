@@ -26,6 +26,9 @@ import 'package:anisphere/modules/noyau/models/support_ticket_model.dart';
 import 'package:anisphere/modules/messagerie/models/message_model.dart';
 import 'package:anisphere/modules/messagerie/models/conversation_model.dart';
 import 'package:anisphere/modules/messagerie/services/offline_message_queue.dart';
+import 'package:anisphere/modules/noyau/providers/photo_provider.dart';
+import 'package:anisphere/modules/noyau/models/photo_model.dart';
+import 'package:anisphere/modules/noyau/services/offline_photo_queue.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,6 +57,8 @@ void main() async {
     Hive.registerAdapter(MessageModelAdapter());
     Hive.registerAdapter(QueuedMessageAdapter());
     Hive.registerAdapter(ConversationModelAdapter());
+    Hive.registerAdapter(PhotoModelAdapter());
+    Hive.registerAdapter(PhotoTaskAdapter());
     await LocalStorageService.init();
     assert(() {
       debugPrint("📦 Hive initialized successfully!");
@@ -110,6 +115,9 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => MessagingProvider()..init(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => PhotoProvider()..init(),
         ),
       ],
       child: const MyApp(),

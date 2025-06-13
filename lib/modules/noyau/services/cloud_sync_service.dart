@@ -8,8 +8,10 @@ import '../models/animal_model.dart';
 import '../models/user_model.dart';
 import '../models/support_ticket_model.dart';
 import '../models/notification_feedback_model.dart';
+import '../models/photo_model.dart';
 import 'firebase_service.dart';
 import '../services/offline_sync_queue.dart';
+import '../services/offline_photo_queue.dart';
 import '../services/storage_optimizer.dart';
 
 class CloudSyncService {
@@ -118,6 +120,17 @@ class CloudSyncService {
       );
     }
   }
+
+  /// 🖼️ Envoie une photo pour apprentissage IA ou la met en attente.
+  Future<void> pushPhotoData(PhotoModel photo) async {
+    try {
+      await _firebaseService.sendModuleData('photos', photo.toJson());
+      debugPrint('☁️ Photo ${photo.id} envoyée au cloud.');
+    } catch (e) {
+      debugPrint('❌ [CloudSync] Erreur pushPhotoData : $e');
+      await OfflinePhotoQueue.addTask(PhotoTask(photo: photo));
+    }
+  }
   /// 📦 Synchro complète pour IAMaster (utilise les logs de l’app)
   Future<void> syncFullIA(String userId, List<String> logs) async {
     try {
@@ -149,6 +162,9 @@ class CloudSyncService {
         case "support":
           await _firebaseService.sendModuleData('support', task.data);
           break;
+        case 'photo':
+          await _firebaseService.sendModuleData('photos', task.data);
+          break;
         case OfflineSyncQueue.taskNotificationFeedback:
           await _firebaseService.sendNotificationFeedback(task.data);
           break;
@@ -161,6 +177,9 @@ class CloudSyncService {
             await _firebaseService.sendModuleData('messaging/$convoId', task.data);
           }
       }
+    });
+    await OfflinePhotoQueue.processQueue((pTask) async {
+      await _firebaseService.sendModuleData('photos', pTask.photo.toJson());
     });
   }
 }
