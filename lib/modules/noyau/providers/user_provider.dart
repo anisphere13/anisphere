@@ -12,7 +12,6 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import '../models/user_model.dart';
 import '../services/user_service.dart';
 import '../services/auth_service.dart';
-import 'package:anisphere/modules/noyau/services/firebase_service.dart';
 import 'package:anisphere/modules/noyau/logic/ia_master.dart'; // 👈 IA ajoutée
 
 class UserProvider with ChangeNotifier {
@@ -111,7 +110,7 @@ class UserProvider with ChangeNotifier {
       final connectivity = await Connectivity().checkConnectivity();
       if (connectivity.contains(ConnectivityResult.wifi) ||
           connectivity.contains(ConnectivityResult.mobile)) {
-        await FirebaseService().signOut();
+        await _authService.signOut();
         debugPrint("✅ Déconnexion Firebase !");
       } else {
         debugPrint("⚠️ Déconnexion locale (pas de réseau).");
