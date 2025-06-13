@@ -114,6 +114,10 @@ Interface intuitive de tri et d’export (multi-sélection, filtres, recherche p
 
 Sauvegarde cloud uniquement si activée ou premium (aucun coût imposé)
 
+- `camera_service.dart` gère la prise de vue et stocke dans `photo_model.dart`.
+- `ocr_photo_service.dart` extrait les textes pour alimenter l’IA locale.
+- Les photos passent par `photo_upload_queue.dart` pour une synchronisation différée avec le cloud et l’IA collective.
+
 🧭 Vision long terme
 
 AniSphère devient le carnet visuel de l’animal, enrichi automatiquement.

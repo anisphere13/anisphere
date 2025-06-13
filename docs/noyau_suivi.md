@@ -107,6 +107,12 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 ### **Juin 2025 — Préparation de la messagerie**
 - [06/2025] Définition de la collection `messages` (conversations, messages).
 - [06/2025] Création du dossier module `messagerie` et des premiers tests vides.
+
+### **Juin 2025 — Gestion photo & file offline**
+- [06/2025] Ajout du `camera_service.dart` pour la capture et le pré-traitement des images.
+- [06/2025] Création du modèle `photo_model.dart` (métadonnées, stockage Hive).
+- [06/2025] Mise en place de `photo_upload_queue.dart` pour la synchronisation différée hors ligne.
+- [06/2025] Tests unitaires : `camera_service_test.dart`, `photo_model_test.dart`, `photo_upload_queue_test.dart`.
 ---
 
 ## 🚩 Statut actuel du noyau (05/06/2025)
@@ -125,6 +131,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 | IA cloud (sync, scoring, logs)        | 🔄 À démarrer | ia_master (syncToCloud), cloud_sync_service      | Non           | Synchronisation premium          |
 | Messagerie interne                    | 🔄 À démarrer | messages_service, messaging_screen              | Non           | Structure des conversations      |
 | **Superadmin**                        | ❌ Migré  | —                                                 | —             | Maintenant module indépendant    |
+| Prise de photo & file offline         | 🔄 À démarrer | camera_service, photo_model, photo_upload_queue | Non           | Capture locale, sync différée    |
 
 ---
 
@@ -135,6 +142,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 - `animal_model.dart`, `animal_service.dart`, `animal_provider.dart`
 - `main_screen.dart`, `home_screen.dart`, `modules_screen.dart`, `settings_screen.dart`, `share_screen.dart`, `animal_form_screen.dart`, `animal_profile_screen.dart`
 - `notification_service.dart`, `notification_icon.dart`
+- `camera_service.dart`, `photo_model.dart`, `photo_upload_queue.dart`
 - `ia_master.dart`, `ia_rule_engine.dart`, `ia_executor.dart`, `ia_scheduler.dart`, `ia_logger.dart`
 - **Tests** dans `test/noyau/`
 - **Scripts d’automatisation** : `generate_test_module.dart`, `update_noyau_suivi.dart`
@@ -159,6 +167,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 - Poursuivre l’automatisation des tests (unit/widget/intégration) pour toute nouvelle brique
 - Rafraîchir le suivi Markdown et la documentation à chaque étape (script `update_noyau_suivi.dart`)
 - Créer le module indépendant `superadmin` (lib/modules/superadmin/), suivi dédié
+- Finaliser l’intégration de `camera_service` et de la `photo_upload_queue`
 
 ---
 
@@ -176,6 +185,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 
 - **05/06/2025** : Extraction Superadmin → module sécurisé indépendant. Nettoyage du noyau.
 - **05/2025** : Préparation IA cloud, priorité sécurité, modularité renforcée.
+- **06/2025** : Introduction du `camera_service`, de `photo_model` et de la `photo_upload_queue` pour gérer la prise de vue hors ligne.
 - **04–05/2025** : Finalisation IA locale, navigation, automatisation test/suivi.
 - **03–04/2024** : Création de la structure modulaire, bases IA, stockage optimisé, automatisation du suivi.
 
