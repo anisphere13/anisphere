@@ -14,7 +14,7 @@
 | test/identite/unit/photo_verification_service_test.dart | unit | package:anisphere/modules/identite/services/photo_verification_service.dart | À faire |
 | test/identite/widget/identity_screen_test.dart | widget | package:anisphere/modules/identite/screens/identity_screen.dart | À faire |
 | test/identite/integration/identity_flow_test.dart | integration | package:anisphere/modules/identite/screens/identity_screen.dart | À faire |
-| test/noyau/unit/animal_model_test.dart | unit | package:anisphere/modules/noyau/models/animal_model.dart | À faire |
+| test/noyau/unit/animal_model_test.dart | unit | package:anisphere/modules/noyau/models/animal_model.dart | ✅ |
 | test/noyau/unit/support_model_test.dart | unit | package:anisphere/modules/noyau/models/support_model.dart | À faire |
 | test/noyau/unit/user_model_test.dart | unit | package:anisphere/modules/noyau/models/user_model.dart | À faire |
 | test/noyau/unit/animal_model.g_test.dart | unit | package:anisphere/modules/noyau/models/animal_model.g.dart | À faire |
@@ -23,7 +23,7 @@
 | test/noyau/unit/auth_service_test.dart | unit | package:anisphere/modules/noyau/services/auth_service.dart | À faire |
 | test/noyau/unit/offline_sync_queue.g_test.dart | unit | package:anisphere/modules/noyau/services/offline_sync_queue.g.dart | À faire |
 | test/noyau/unit/maintenance_service_test.dart | unit | package:anisphere/modules/noyau/services/maintenance_service.dart | À faire |
-| test/noyau/unit/qr_service_test.dart | unit | package:anisphere/modules/noyau/services/qr_service.dart | À faire |
+| test/noyau/unit/qr_service_test.dart | unit | package:anisphere/modules/noyau/services/qr_service.dart | ✅ |
 | test/noyau/unit/user_service_test.dart | unit | package:anisphere/modules/noyau/services/user_service.dart | À faire |
 | test/noyau/unit/app_initializer_test.dart | unit | package:anisphere/modules/noyau/services/app_initializer.dart | À faire |
 | test/noyau/unit/support_service_test.dart | unit | package:anisphere/modules/noyau/services/support_service.dart | À faire |
@@ -43,7 +43,7 @@
 | test/noyau/unit/ia_executor_test.dart | unit | package:anisphere/modules/noyau/logic/ia_executor.dart | À faire |
 | test/noyau/unit/ia_metrics_collector_test.dart | unit | package:anisphere/modules/noyau/logic/ia_metrics_collector.dart | ✅ |
 | test/noyau/unit/ia_config_test.dart | unit | package:anisphere/modules/noyau/logic/ia_config.dart | À faire |
-| test/noyau/unit/ia_flag_test.dart | unit | package:anisphere/modules/noyau/logic/ia_flag.dart | À faire |
+| test/noyau/unit/ia_flag_test.dart | unit | package:anisphere/modules/noyau/logic/ia_flag.dart | ✅ |
 | test/noyau/unit/ia_context_test.dart | unit | package:anisphere/modules/noyau/logic/ia_context.dart | À faire |
 | test/noyau/unit/ia_scheduler_test.dart | unit | package:anisphere/modules/noyau/logic/ia_scheduler.dart | À faire |
 | test/noyau/unit/ia_rules_test.dart | unit | package:anisphere/modules/noyau/logic/ia_rules.dart | À faire |
