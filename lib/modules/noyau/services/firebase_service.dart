@@ -195,6 +195,17 @@ class FirebaseService {
     }
   }
 
+  /// ☁️ Envoi des logs IA (compressés ou découpés)
+  Future<void> sendIALogs(Map<String, dynamic> data) async {
+    try {
+      await db.collection('ia_logs').add(data);
+      debugPrint('✅ IA logs envoyés.');
+    } catch (e) {
+      _logError('sendIALogs', e);
+      rethrow;
+    }
+  }
+
   void _logError(String context, Object error) {
     debugPrint("❌ [$context] FirebaseService error : $error");
   }

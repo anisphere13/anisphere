@@ -21,6 +21,11 @@ class FailingFirebaseService extends FirebaseService {
   Future<bool> savePhoto(PhotoModel photo) async {
     throw Exception('fail');
   }
+
+  @override
+  Future<void> sendIALogs(Map<String, dynamic> data) async {
+    throw Exception('fail');
+  }
 }
 
 class MockFirebaseService extends Mock implements FirebaseService {}
@@ -169,5 +174,27 @@ void main() {
 
     final remaining = await OfflineSyncQueue.getAllTasks();
     expect(remaining.isEmpty, isTrue);
+  });
+
+  test('syncFullIA uploads logs to Firestore', () async {
+    final firestore = FakeFirestore();
+    final service = CloudSyncService(firebaseService: FakeFirebaseService(firestore));
+
+    await service.syncFullIA('user123', ['log1', 'log2']);
+
+    final logs = await firestore.collection('ia_logs').get();
+    expect(logs.docs.length, greaterThan(0));
+    expect(logs.docs.first.data()['userId'], 'user123');
+  });
+
+  test('syncFullIA queues logs on failure', () async {
+    final service = CloudSyncService(firebaseService: FailingFirebaseService());
+
+    await service.syncFullIA('user321', ['a', 'b']);
+
+    final tasks = await OfflineSyncQueue.getAllTasks();
+    expect(tasks.length, 1);
+    expect(tasks.first.type, 'ia_logs');
+    expect(tasks.first.data['userId'], 'user321');
   });
 }
