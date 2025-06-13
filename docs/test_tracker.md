@@ -78,6 +78,7 @@
 | test/noyau/widget/animal_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animal_screen.dart | À faire |
 | test/noyau/widget/animals_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animals_screen.dart | À faire |
 | test/noyau/widget/login_screen_test.dart | widget | package:anisphere/modules/noyau/screens/login_screen.dart | À faire |
+| test/noyau/widget/gps_screen_test.dart | widget | package:anisphere/modules/noyau/screens/gps_screen.dart | À faire |
 | test/noyau/widget/support_screen_test.dart | widget | package:anisphere/modules/noyau/screens/support_screen.dart | À faire |
 | test/noyau/widget/register_screen_test.dart | widget | package:anisphere/modules/noyau/screens/register_screen.dart | À faire |
 | test/noyau/widget/notifications_screen_test.dart | widget | package:anisphere/modules/noyau/screens/notifications_screen.dart | ✅ |

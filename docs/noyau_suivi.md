@@ -113,20 +113,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 - [06/2025] Création du modèle `photo_model.dart` (métadonnées, stockage Hive).
 - [06/2025] Mise en place de `photo_upload_queue.dart` pour la synchronisation différée hors ligne.
 - [06/2025] Tests unitaires : `camera_service_test.dart`, `photo_model_test.dart`, `photo_upload_queue_test.dart`.
-<<<<<<< HEAD
-
-### **13/06/2025 — Déploiement du suivi GPS**
-- [06/2025] Création de `gps_service.dart` pour enregistrer la position en arrière-plan.
-- [06/2025] Stockage hors ligne et synchronisation différée intégrés au noyau.
-- [06/2025] Premiers tests unitaires `gps_service_test.dart`.
-
-#### Checklist
-- [ ] Add a subsection dated with the implementation day in docs/noyau_suivi.md summarizing the GPS feature rollout.
-- [ ] Include checklist items mirroring the bullet list from the user prompt.
-- [ ] Ensure scripts such as `update_noyau_suivi.dart` can append the synchronization tag afterward.
-=======
-- [06/2025] Tests unitaires supplémentaires : `photo_task_test.dart`, `user_provider_test.dart`.
->>>>>>> codex/créer-des-tests-correspondants-et-mettre-à-jour-les-fichiers
+- [06/2025] Écran `gps_screen.dart` : affichage des traces enregistrées sur carte interne avec options de synchronisation et de logs.
 ---
 
 ## 🚩 Statut actuel du noyau (05/06/2025)
