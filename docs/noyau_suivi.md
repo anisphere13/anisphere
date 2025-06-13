@@ -115,7 +115,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 - [06/2025] Ajout de `offline_gps_queue.dart` pour enregistrer les traces GPS hors ligne et analyse IA.
 - [06/2025] Tests unitaires : `offline_gps_queue_test.dart`.
 - [06/2025] Tests unitaires : `camera_service_test.dart`, `photo_model_test.dart`, `photo_upload_queue_test.dart`.
-- [06/2025] Ajout du `gps_tracker_model.dart` pour suivre les positions GPS.
+- [06/2025] Création du `gps_service.dart` pour la localisation et la gestion du flux de positions.
 ---
 
 ## 🚩 Statut actuel du noyau (05/06/2025)
