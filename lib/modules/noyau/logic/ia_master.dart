@@ -135,7 +135,15 @@ class IAMaster {
         channel: IAChannel.execution,
       );
     } catch (e) {
-      await OfflinePhotoQueue.addTask(PhotoTask(photo: photo));
+      await OfflinePhotoQueue.addTask(
+        PhotoTask(
+          photo: photo,
+          animalId: photo.animalId,
+          userId: photo.userId,
+          uploaded: photo.uploaded,
+          remoteUrl: photo.remoteUrl,
+        ),
+      );
       debugPrint('⚠️ analyzeAndPushPhoto : file offline');
     }
   }
