@@ -212,3 +212,66 @@ Toute évolution doit être documentée ici, commitée, testée, et suivie dans 
 - 🧩 Synchronisation automatique du noyau le 2025-06-11
 
 - 🧩 Synchronisation automatique du noyau le 2025-06-13
+📁 Configuration manuelle initiale dans Firestore — AniSphère (non gérée via Flutter)
+
+Dernière mise à jour : 2025-06-13
+Responsable : Superadmin
+
+---
+
+🌟 Objectif : Préparer manuellement les collections et documents Firestore qui **ne seront pas créés automatiquement** via Flutter, afin que les modules critiques (noyau, IA cloud, identité) puissent fonctionner sans erreur.
+
+---
+
+## ✅ À créer manuellement dans Firestore
+
+### 1. Collection `ia_categories/`
+
+* 📂 `ia_categories/sante/uploads`
+* 📂 `ia_categories/sante/models`
+* 📂 `ia_categories/sante/feedbacks`
+* 📂 `ia_categories/education/uploads`
+* 📂 `ia_categories/education/models`
+* 📂 `ia_categories/education/feedbacks`
+* 📂 `ia_categories/dressage/uploads`
+* 📂 `ia_categories/dressage/models`
+* 📂 `ia_categories/dressage/feedbacks`
+* 📂 `ia_categories/communaute/uploads`
+* 📂 `ia_categories/communaute/models`
+* 📂 `ia_categories/communaute/feedbacks`
+
+### 2. Collection `logs_ia/`
+
+* 📂 `logs_ia/sante`
+* 📂 `logs_ia/education`
+* 📂 `logs_ia/dressage`
+* 📂 `logs_ia/communaute`
+
+### 3. Collection `consents/`
+
+* 📄 `consents/global`
+
+  * 🔢 `current_version` : 1
+  * 🕒 `last_update` : \[timestamp actuel]
+  * 📜 `description` : "Consentement RGPD pour synchronisation IA (anonymisée)"
+  * ✅ `required` : true
+
+### 4. Collection `superadmin/`
+
+* 📄 `superadmin/flags`
+
+  * 🔁 `start_training_sante` : false
+  * 🔁 `start_training_education` : false
+  * 🔁 `start_training_dressage` : false
+  * 🔁 `start_training_communaute` : false
+
+---
+
+## 📌 Où suivre l'avancement de cette configuration ?
+
+➞ Mise à jour **manuelle** dans ce document : `firestore_structure_initiale.md`
+➞ Synthèse globale à reporter dans : `docs/noyau_suivi.md` (section "Préparation Firestore IA") et `3__suivi_taches.md` (section noyau)
+
+---
+
+✅ Ce document est un repère **temporaire**, en attendant que ces données puissent être gérées automatiquement (ex : via script d’init Firebase ou via IAMaster avec `createIfNotExists`).
