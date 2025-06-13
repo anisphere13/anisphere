@@ -48,13 +48,18 @@ class OfflineSyncQueue {
   static Future<void> processQueue(Function(SyncTask) process) async {
     final box = await Hive.openBox<SyncTask>(_boxName);
     final tasks = box.values.toList();
+    final failedTasks = <SyncTask>[];
     for (final task in tasks) {
       try {
         await process(task);
       } catch (e) {
         debugPrint("❌ Erreur lors du traitement de ${task.type} : $e");
+        failedTasks.add(task);
       }
     }
-    await clearQueue();
+    await box.clear();
+    for (final task in failedTasks) {
+      await box.add(task);
+    }
   }
 }

@@ -39,6 +39,17 @@ void main() {
     expect(box.isEmpty, true);
   });
 
+  test('processQueue retains failed tasks', () async {
+    final task = SyncTask(type: 'fail', data: {}, timestamp: DateTime.now());
+    await OfflineSyncQueue.addTask(task);
+    await OfflineSyncQueue.processQueue((t) async {
+      throw Exception('boom');
+    });
+    final box = await Hive.openBox<SyncTask>('offline_sync_queue');
+    expect(box.length, 1);
+    expect(box.getAt(0)?.type, 'fail');
+  });
+
   test('clearQueue removes all tasks', () async {
     final task = SyncTask(type: 'clear', data: {}, timestamp: DateTime.now());
     await OfflineSyncQueue.addTask(task);
