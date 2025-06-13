@@ -4,6 +4,7 @@
 /// Utilisé par IAMaster, les modules, les IA locales
 library;
 import 'package:flutter/foundation.dart';
+import 'dart:convert';
 import '../models/animal_model.dart';
 import '../models/user_model.dart';
 import '../models/support_ticket_model.dart';
@@ -161,10 +162,38 @@ class CloudSyncService {
   /// 📦 Synchro complète pour IAMaster (utilise les logs de l’app)
   Future<void> syncFullIA(String userId, List<String> logs) async {
     try {
-      debugPrint("☁️ [CloudSyncService] Sync full IA pour $userId avec ${logs.length} logs.");
-      await Future.delayed(const Duration(milliseconds: 200));
+      debugPrint('☁️ [CloudSyncService] Sync full IA pour $userId avec ${logs.length} logs.');
+      if (logs.isEmpty) return;
+
+      // Concatenate and compress logs
+      final raw = logs.join('\n');
+      final compressed = gzip.encode(utf8.encode(raw));
+      final base64Logs = base64Encode(compressed);
+
+      // Firestore has a ~1MB document limit, so chunk if needed
+      const int maxSize = 900000; // keep some margin
+      int index = 0;
+      for (var i = 0; i < base64Logs.length; i += maxSize) {
+        final chunk = base64Logs.substring(i, i + maxSize > base64Logs.length ? base64Logs.length : i + maxSize);
+        await _firebaseService.sendIALogs({
+          'userId': userId,
+          'timestamp': DateTime.now().toIso8601String(),
+          'chunkIndex': index++,
+          'data': chunk,
+        });
+      }
     } catch (e) {
-      debugPrint("❌ [CloudSyncService] Erreur syncFullIA : $e");
+      debugPrint('❌ [CloudSyncService] Erreur syncFullIA : $e');
+      await OfflineSyncQueue.addTask(
+        SyncTask(
+          type: 'ia_logs',
+          data: {
+            'userId': userId,
+            'logs': logs,
+          },
+          timestamp: DateTime.now(),
+        ),
+      );
     }
   }
   /// 🔁 Rejoue toutes les tâches en attente dans la file offline
@@ -185,6 +214,11 @@ class CloudSyncService {
           break;
         case "ia_feedback":
           await _firebaseService.sendIAFeedback(task.data);
+          break;
+        case 'ia_logs':
+          final userId = task.data['userId'] as String;
+          final logs = (task.data['logs'] as List).cast<String>();
+          await syncFullIA(userId, logs);
           break;
         case "support":
           await _firebaseService.sendModuleData('support', task.data);
