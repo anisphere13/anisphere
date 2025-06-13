@@ -89,7 +89,7 @@ Scoring dynamique des modules : modules classés selon pertinence IA, usage et i
 
 Compression automatique des données + suppression des doublons + stockage minimal.
 
-🔁 Modules IA par usage
+🔁 Grandes catégories de module IA par usage
 
 Santé : OCR carnet, détection schéma vaccinal, prédiction rechutes, suivi poids.
 
