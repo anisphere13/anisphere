@@ -5,7 +5,7 @@ library;
 
 import 'package:flutter/material.dart';
 import '../models/photo_model.dart';
-import '../services/offline_photo_queue.dart';
+import '../services/offline_photo_queue.dart' as offline_queue;
 import 'package:hive/hive.dart';
 
 class PhotoProvider extends ChangeNotifier {
@@ -32,8 +32,8 @@ class PhotoProvider extends ChangeNotifier {
     await box.put(photo.id, photo);
     _photos[photo.id] = photo;
     notifyListeners();
-    await OfflinePhotoQueue.addTask(
-      PhotoTask(
+    await offline_queue.OfflinePhotoQueue.addTask(
+      offline_queue.PhotoTask(
         photo: photo,
         animalId: photo.animalId,
         userId: photo.userId,

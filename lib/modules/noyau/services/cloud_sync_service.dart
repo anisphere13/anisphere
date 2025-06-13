@@ -11,7 +11,7 @@ import '../models/notification_feedback_model.dart';
 import '../models/photo_model.dart';
 import 'firebase_service.dart';
 import '../services/offline_sync_queue.dart';
-import '../services/offline_photo_queue.dart';
+import '../services/offline_photo_queue.dart' as offline_queue;
 import '../services/storage_optimizer.dart';
 
 class CloudSyncService {
@@ -108,17 +108,6 @@ class CloudSyncService {
     }
   }
 
-  /// 🖼️ Envoie les métadonnées d'une photo
-  Future<void> pushPhotoData(PhotoModel photo) async {
-    try {
-      await _firebaseService.savePhoto(photo);
-      debugPrint('☁️ Photo envoyée au cloud : ${photo.id}');
-    } catch (e) {
-      debugPrint('❌ [CloudSync] Erreur pushPhotoData : $e');
-      await OfflinePhotoQueue.addPhoto(photo);
-    }
-  }
-
   /// 📊 Envoie d’un retour IA local (métriques, logs, feedbacks)
   Future<void> pushIAFeedback(Map<String, dynamic> metrics) async {
     try {
@@ -139,8 +128,8 @@ class CloudSyncService {
       debugPrint('☁️ Photo ${photo.id} envoyée au cloud.');
     } catch (e) {
       debugPrint('❌ [CloudSync] Erreur pushPhotoData : $e');
-      await OfflinePhotoQueue.addTask(
-        PhotoTask(
+      await offline_queue.OfflinePhotoQueue.addTask(
+        offline_queue.PhotoTask(
           photo: photo,
           animalId: photo.animalId,
           userId: photo.userId,
@@ -198,15 +187,15 @@ class CloudSyncService {
       }
     });
 
-    final photos = await OfflinePhotoQueue.getAllPhotos();
+    final photos = await offline_queue.OfflinePhotoQueue.getAllPhotos();
     for (final queued in photos) {
       try {
         await _firebaseService.savePhoto(queued.photo);
       } catch (e) {
         debugPrint('❌ [CloudSync] Erreur envoi photo offline : \$e');
-        await OfflinePhotoQueue.addPhoto(queued.photo);
+        await offline_queue.OfflinePhotoQueue.addPhoto(queued.photo);
       }
     }
-    await OfflinePhotoQueue.clearQueue();
+    await offline_queue.OfflinePhotoQueue.clearQueue();
   }
 }

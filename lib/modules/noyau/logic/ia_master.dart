@@ -10,7 +10,7 @@ import 'package:flutter/foundation.dart';
 import '../services/local_storage_service.dart';
 import '../services/cloud_sync_service.dart';
 import '../services/offline_sync_queue.dart';
-import '../services/offline_photo_queue.dart';
+import '../services/offline_photo_queue.dart' as offline_queue;
 import '../services/notification_feedback_service.dart';
 import '../models/animal_model.dart';
 import '../models/user_model.dart';
@@ -135,8 +135,8 @@ class IAMaster {
         channel: IAChannel.execution,
       );
     } catch (e) {
-      await OfflinePhotoQueue.addTask(
-        PhotoTask(
+      await offline_queue.OfflinePhotoQueue.addTask(
+        offline_queue.PhotoTask(
           photo: photo,
           animalId: photo.animalId,
           userId: photo.userId,
@@ -202,7 +202,7 @@ class IAMaster {
           }
       }
     });
-    await OfflinePhotoQueue.processQueue((pt) async {
+    await offline_queue.OfflinePhotoQueue.processQueue((pt) async {
       await _cloudSyncService.pushPhotoData(pt.photo);
     });
   }

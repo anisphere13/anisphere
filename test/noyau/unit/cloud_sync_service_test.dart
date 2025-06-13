@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:anisphere/modules/noyau/services/cloud_sync_service.dart';
 import 'package:anisphere/modules/noyau/services/offline_photo_queue.dart'
-    show PhotoTask, OfflinePhotoQueue;
+    show PhotoTask, OfflinePhotoQueue, PhotoTaskAdapter;
 import 'package:anisphere/modules/noyau/models/photo_model.dart';
 import 'package:anisphere/modules/noyau/services/firebase_service.dart';
 import '../../test_config.dart';

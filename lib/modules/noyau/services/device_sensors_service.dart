@@ -15,10 +15,11 @@ class DeviceSensorsService {
   final Connectivity _connectivity = Connectivity();
 
   /// Flux d’accéléromètre brut.
-  Stream<AccelerometerEvent> get accelerometerStream => accelerometerEvents;
+  Stream<AccelerometerEvent> get accelerometerStream =>
+      accelerometerEventStream();
 
   /// Flux de gyroscope brut.
-  Stream<GyroscopeEvent> get gyroscopeStream => gyroscopeEvents;
+  Stream<GyroscopeEvent> get gyroscopeStream => gyroscopeEventStream();
 
   /// Flux du podomètre.
   Stream<StepCount> get pedometerStream => Pedometer.stepCountStream;
