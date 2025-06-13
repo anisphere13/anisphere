@@ -9,6 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:uuid/uuid.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/user_provider.dart';
 
 import '../models/animal_model.dart';
 import '../services/animal_service.dart';
@@ -51,13 +54,15 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
     try {
       await _animalService.init();
 
+      final userProvider = Provider.of<UserProvider>(context, listen: false);
+
       final newAnimal = AnimalModel(
         id: const Uuid().v4(),
         name: _nameController.text.trim(),
         species: _speciesController.text.trim(),
         breed: _breedController.text.trim(),
-        imageUrl: '', // TODO: à remplir avec URL après upload
-        ownerId: 'owner-1', // TODO: à remplacer par userProvider.user.id
+        imageUrl: _image?.path ?? '',
+        ownerId: userProvider.user?.id ?? '',
         createdAt: DateTime.now(),
         updatedAt: DateTime.now(),
         birthDate: _birthDate,
