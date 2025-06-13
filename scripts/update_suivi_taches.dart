@@ -3,7 +3,7 @@
 import 'dart:io';
 
 void main() {
-  final filePath = 'docs/3__suivi_taches.md';
+  const filePath = 'docs/3__suivi_taches.md';
   final file = File(filePath);
 
   if (!file.existsSync()) {

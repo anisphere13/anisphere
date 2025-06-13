@@ -38,7 +38,7 @@ class AnimalScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
+                const Center(
                   child: Icon(Icons.pets, size: 80, color: Color(0xFF183153)),
                 ),
                 const SizedBox(height: 20),

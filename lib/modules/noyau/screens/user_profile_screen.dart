@@ -66,8 +66,8 @@ class UserProfileScreen extends StatelessWidget {
               version: QrVersions.auto,
               size: 160,
               backgroundColor: Colors.white,
-              embeddedImageStyle: QrEmbeddedImageStyle(
-                size: const Size(40, 40),
+              embeddedImageStyle: const QrEmbeddedImageStyle(
+                size: Size(40, 40),
               ),
             ),
           ),

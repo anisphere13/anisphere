@@ -28,7 +28,7 @@ class IdentityCardGenerator {
 
     doc.addPage(
       pw.Page(
-        pageFormat: PdfPageFormat(85 * PdfPageFormat.mm, 54 * PdfPageFormat.mm),
+        pageFormat: const PdfPageFormat(85 * PdfPageFormat.mm, 54 * PdfPageFormat.mm),
         build: (pw.Context context) {
           return pw.Container(
             decoration: pw.BoxDecoration(

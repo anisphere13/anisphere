@@ -43,10 +43,10 @@ class AnimalProfileScreen extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
-          Wrap(
+          const Wrap(
             spacing: 8,
             runSpacing: 4,
-            children: const [
+            children: [
               IAChip(label: "Suivi santé", icon: Icons.healing),
               IAChip(label: "Éducation", icon: Icons.psychology_alt),
               IAChip(label: "Fugue/QR", icon: Icons.qr_code),
@@ -58,12 +58,12 @@ class AnimalProfileScreen extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
-          IASuggestionCard(
+          const IASuggestionCard(
             title: "Activité à revoir",
             message: "Promenades trop espacées cette semaine. Essayez d’ajuster.",
             icon: Icons.directions_walk,
           ),
-          IASuggestionCard(
+          const IASuggestionCard(
             title: "Vaccins",
             message: "Prochaine vérification vétérinaire recommandée sous 30 jours.",
             icon: Icons.medical_services,

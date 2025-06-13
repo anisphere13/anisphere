@@ -11,7 +11,7 @@ import '../../test_config.dart';
 
 void main() {
   const keyName = 'hive_aes_key';
-  final secureStorage = const FlutterSecureStorage();
+  const secureStorage = FlutterSecureStorage();
   late Directory tempDir;
 
   setUp(() async {

@@ -3,7 +3,7 @@
 import 'dart:io';
 
 void main() {
-  final filePath = 'docs/noyau_suivi.md';
+  const filePath = 'docs/noyau_suivi.md';
   final file = File(filePath);
 
   if (!file.existsSync()) {

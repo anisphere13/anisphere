@@ -14,10 +14,10 @@ Future<void> main() async {
 }
 
 Future<void> _corrigerAnimalsScreen() async {
-  final path = 'lib/modules/noyau/screens/animals_screen.dart';
+  const path = 'lib/modules/noyau/screens/animals_screen.dart';
   final file = File(path);
   if (!await file.exists()) return;
-  final content = '''
+  const content = '''
 import 'package:flutter/material.dart';
 
 /// Écran principal des animaux dans AniSphère.
@@ -42,7 +42,7 @@ class AnimalsScreen extends StatelessWidget {
 }
 
 Future<void> _corrigerMainScreenChildArgument() async {
-  final path = 'lib/modules/noyau/screens/main_screen.dart';
+  const path = 'lib/modules/noyau/screens/main_screen.dart';
   final file = File(path);
   if (!await file.exists()) return;
   var content = await file.readAsString();
@@ -57,7 +57,7 @@ Future<void> _corrigerMainScreenChildArgument() async {
 }
 
 Future<void> _insererAppleCredential() async {
-  final path = 'lib/modules/noyau/services/auth_service.dart';
+  const path = 'lib/modules/noyau/services/auth_service.dart';
   final file = File(path);
   if (!await file.exists()) return;
   var content = await file.readAsString();
