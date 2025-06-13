@@ -42,6 +42,8 @@ IA maîtresse : centralise toutes les IA, optimise les ressources, personnalise 
 
 Apprentissage autonome : plus il y a d’utilisateurs, plus l’IA devient intelligente
 
+Pour un récapitulatif des pratiques IA (local-first, collecte de métriques, synchronisation offline, fonctionnalités premium), consultez [docs/ia_policy.md](docs/ia_policy.md).
+
 🧱 Architecture modulaire
 
 AniSphère fonctionne avec un noyau central auquel s’ajoutent des modules indépendants, activables selon les besoins :
