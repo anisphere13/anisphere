@@ -6,8 +6,23 @@ void main() {
   setUpAll(() async {
     await initTestEnv();
   });
-  test('animal_model fonctionne (test auto)', () {
-    // TODO : compléter le test pour animal_model.dart
-    expect(true, isTrue); // À remplacer par un vrai test
+  test('toJson and fromJson preserve fields', () {
+    final now = DateTime.now();
+    final animal = AnimalModel(
+      id: 'a1',
+      name: 'Rex',
+      species: 'dog',
+      breed: 'Labrador',
+      imageUrl: 'url',
+      ownerId: 'u1',
+      createdAt: now,
+      updatedAt: now,
+    );
+
+    final json = animal.toJson();
+    final copy = AnimalModel.fromJson(json);
+
+    expect(copy.id, animal.id);
+    expect(copy.name, animal.name);
   });
 }
