@@ -29,8 +29,9 @@ class GpsProvider with ChangeNotifier {
     _connectivity.onConnectivityChanged.listen(_updateConnection);
   }
 
-  void _updateConnection(ConnectivityResult result) {
-    final connected = result != ConnectivityResult.none;
+  void _updateConnection(List<ConnectivityResult> results) {
+    final connected =
+        results.any((r) => r != ConnectivityResult.none);
     if (connected != _isConnected) {
       _isConnected = connected;
       notifyListeners();

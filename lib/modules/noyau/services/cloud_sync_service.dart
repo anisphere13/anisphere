@@ -135,17 +135,24 @@ class CloudSyncService {
           animalId: photo.animalId,
           userId: photo.userId,
           uploaded: photo.uploaded,
-          remoteUrl: photo.remoteUrl,
+          remoteUrl: photo.remoteUrl ?? '',
         ),
       );
     }
   }
 
   // Copilot: envoie un batch GPS et le met en attente si besoin
-  Future<void> pushGPSData(List<Map<String, dynamic>> batch) async {
+  Future<void> pushGPSData(GpsBatch batch) async {
     try {
-      await _firebaseService.sendModuleData('gps', {'batch': batch});
-      debugPrint('☁️ Batch GPS envoyé (${batch.length} entrées).');
+      final data = batch.points
+          .map((p) => {
+                'lat': p.lat,
+                'lon': p.lon,
+                'timestamp': p.timestamp.toIso8601String(),
+              })
+          .toList();
+      await _firebaseService.sendModuleData('gps', {'batch': data});
+      debugPrint('☁️ Batch GPS envoyé (${batch.points.length} entrées).');
     } catch (e) {
       debugPrint('❌ [CloudSync] Erreur pushGPSData : $e');
       await OfflineGpsQueue.addBatch(batch);
@@ -194,7 +201,7 @@ class CloudSyncService {
             await _firebaseService.sendModuleData(moduleName, task.data);
           } else if (task.type.startsWith("message:")) {
             final convoId = task.type.split(":").last;
-            await _firebaseService.sendModuleData('messaging/\$convoId', task.data);
+            await _firebaseService.sendModuleData('messaging/$convoId', task.data);
           }
       }
     });
@@ -213,10 +220,17 @@ class CloudSyncService {
     final gpsBatches = await OfflineGpsQueue.getAllBatches();
     for (final batch in gpsBatches) {
       try {
-        await _firebaseService.sendModuleData('gps', {'batch': batch.data});
+        final data = batch.points
+            .map((p) => {
+                  'lat': p.lat,
+                  'lon': p.lon,
+                  'timestamp': p.timestamp.toIso8601String(),
+                })
+            .toList();
+        await _firebaseService.sendModuleData('gps', {'batch': data});
       } catch (e) {
-        debugPrint('❌ [CloudSync] Erreur envoi GPS offline : \$e');
-        await OfflineGpsQueue.addBatch(batch.data);
+        debugPrint('❌ [CloudSync] Erreur envoi GPS offline : $e');
+        await OfflineGpsQueue.addBatch(batch);
       }
     }
     await OfflineGpsQueue.clearQueue();
