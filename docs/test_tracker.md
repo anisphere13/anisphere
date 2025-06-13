@@ -59,6 +59,7 @@
 | test/noyau/unit/ia_context_provider_test.dart | unit | package:anisphere/modules/noyau/providers/ia_context_provider.dart | À faire |
 | test/noyau/unit/user_provider_test.dart | unit | package:anisphere/modules/noyau/providers/user_provider.dart | À faire |
 | test/noyau/unit/animal_provider_test.dart | unit | package:anisphere/modules/noyau/providers/animal_provider.dart | À faire |
+| test/noyau/unit/gps_provider_test.dart | unit | package:anisphere/modules/noyau/providers/gps_provider.dart | À faire |
 | test/noyau/widget/ia_banner_test.dart | widget | package:anisphere/modules/noyau/widgets/ia_banner.dart | À faire |
 | test/noyau/widget/more_menu_test.dart | widget | package:anisphere/modules/noyau/widgets/more_menu.dart | À faire |
 | test/noyau/widget/ia_chip_test.dart | widget | package:anisphere/modules/noyau/widgets/ia_chip.dart | À faire |
