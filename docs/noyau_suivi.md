@@ -160,6 +160,17 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 - Rafraîchir le suivi Markdown et la documentation à chaque étape (script `update_noyau_suivi.dart`)
 - Créer le module indépendant `superadmin` (lib/modules/superadmin/), suivi dédié
 
+### Nouveaux services IA & capteurs
+| Élément | Description | Statut |
+|---------|-------------|--------|
+| device_sensors_service.dart | Accès centralisé à tous les capteurs | ⬜ à faire |
+| ia_context_enricher.dart | Contexte IA enrichi temps réel | ⬜ à faire |
+| behavior_analysis_service.dart | Analyse comportementale IA (TFLite/capteurs) | ⬜ à faire |
+| image_analysis_service.dart | IA analyse images/photo (TFLite) | ⬜ à faire |
+| engagement_score_model.dart | Modèle scoring engagement IA | ⬜ à faire |
+| ia_adaptation_service.dart | Priorisation/ajustement IA selon contexte | ⬜ à faire |
+| behavior_dashboard_screen.dart | UI historique et recommandations | ⬜ à faire |
+
 ---
 
 ## 🗂️ Annexes & liens
