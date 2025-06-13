@@ -35,12 +35,12 @@ class DeviceSensorsService {
   }
 
   /// Renvoie le type de connexion réseau (wifi/4g/offline).
-  Future<ConnectivityResult> getConnectivity() async {
+  Future<List<ConnectivityResult>> getConnectivity() async {
     try {
       return await _connectivity.checkConnectivity();
     } catch (e) {
-      _log('Erreur récupération connectivité : \\$e');
-      return ConnectivityResult.none;
+      _log('Erreur récupération connectivité : $e');
+      return [ConnectivityResult.none];
     }
   }
 

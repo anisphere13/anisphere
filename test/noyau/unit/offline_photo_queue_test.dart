@@ -37,7 +37,7 @@ void main() {
         animalId: photo.animalId,
         userId: photo.userId,
         uploaded: photo.uploaded,
-        remoteUrl: photo.remoteUrl,
+        remoteUrl: photo.remoteUrl ?? '',
       ),
     );
     final box = await Hive.openBox<PhotoTask>('offline_photo_queue');
@@ -61,7 +61,7 @@ void main() {
         animalId: photo.animalId,
         userId: photo.userId,
         uploaded: photo.uploaded,
-        remoteUrl: photo.remoteUrl,
+        remoteUrl: photo.remoteUrl ?? '',
       ),
     );
     final processed = <PhotoTask>[];
