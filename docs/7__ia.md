@@ -1,160 +1,215 @@
-🤖 7__ia.md — Intelligence Artificielle dans AniSphère
+🧠 7__ia.md — Architecture IA AniSphère (MAJ Juin 2025) 
 
-Ce fichier définit l’infrastructure, les rôles, les types et les objectifs de l’IA dans AniSphère. L’IA est hybride : locale (offline avec TFLite) et cloud (analyse massive, apprentissage partagé entre utilisateurs). Elle est centrale dans toute l’architecture.
+1. Vision & Objectifs 
 
-L’objectif est de créer une IA autonome, rationnelle, éthique et évolutive, capable d’apprendre de chaque interaction, de personnaliser l’expérience, et d’optimiser les coûts et les ressources. Elle est conçue pour s'améliorer automatiquement à mesure que le nombre d’utilisateurs et d’animaux croît.
+AniSphère repose sur une architecture IA hybride, optimisée pour : 
 
-🔹 Objectifs principaux de l’IA
+Réduire les coûts cloud et l’usage Firebase 
 
-Améliorer l’expérience utilisateur par des recommandations personnalisées.
+Garantir la confidentialité et la performance offline 
 
-Alléger la charge cognitive de l’utilisateur (automatisations, rappels, interface contextuelle).
+Offrir des capacités d’apprentissage collectif et d’adaptation par module ET par grande catégorie métier 
 
-Favoriser la cohérence et la rigueur dans les suivis santé, éducatifs et comportementaux.
+Permettre une montée en charge progressive de l’IA cloud pour optimiser les coûts à chaque phase du projet 
 
-Apprendre continuellement de l’ensemble des utilisateurs, de manière collective et anonyme.
+ 
+ 
 
-S’adapter localement pour fonctionner sans connexion.
+2. Organisation générale 
 
-Optimiser les coûts Firebase par décisions IA (stockage différé, compression…)
+a. IA locale (TFLite/OpenCV/Logique Flutter) 
 
-Gérer automatiquement les données utiles au suivi et à l’amélioration continue.
+1 IA locale par module  
 
-🔧 Infrastructure IA
+Fonctions : OCR, détection d’image, UX intelligente, scoring, analyse comportementale, suggestions, gestion offline, etc. 
 
-IA locale (TFLite) :
+Implémentée en Dart (logic/), ou embarquée via TFLite ou plugin natif 
 
-OCR via Tesseract ou modèles TFLite entraînés
+Enregistre ses propres métriques localement (Hive) et prépare des logs pour le cloud 
 
-Analyse d’image (OpenCV, détection animale)
+Interagit avec IAMaster (noyau) pour la synchronisation, le déclenchement ou la collecte d’informations transverses 
 
-Suggestions en local (exercices, rappels)
+b. IA cloud (par catégorie de modules) 
 
-Comportement prédictif embarqué (off-line)
+1 IA cloud par grande catégorie  
 
-IA cloud :
+Catégories principales :  
 
-Analyse massive des données anonymisées
+Santé (ex : analyse carnet santé, suivi santé animale, prédiction de risques) 
 
-Modèles mis à jour régulièrement depuis la base globale
+Éducation (ex : suggestions d’exercices, analyse de progression, scoring éducatif) 
 
-Suggestions croisées entre profils similaires
+Dressage (ex : pistage GPS, analyse d’entraînement, scoring, conseils experts) 
 
-Réglage de seuils, poids et paramètres adaptatifs
+Communauté (ex : réputation, modération, matching d’adoption) 
 
-Envoi de résumés analytiques compressés, sans fichiers lourds
+Pro/Structure (ex : gestion multi-compte, scoring pro, CRM vétérinaire…) 
 
-Supervision IA maîtresse (noyau) :
+Fonctions :  
 
-Coordonne les sous-IA de chaque module
+Apprentissage global, consolidation de métriques, détection d’anomalies, suggestion intelligente, entraînement de modèles mutualisés 
 
-Décide des synchronisations, suggestions, alertes
+Réception des données anonymisées de tous les modules de la catégorie 
 
-Priorise la charge Firebase, la compression, les envois critiques
+Descente des recommandations, plans, modèles IA à tous les utilisateurs de la catégorie (premium ou sur demande) 
 
-Centralise l’apprentissage continu et modulaire
+Techno : Python (FastAPI, Flask), Node.js, Firebase Functions, Vertex AI, TensorFlow, PyTorch, etc. 
 
-🧠 Apprentissage autonome & collaboratif
+c. IAMaster (noyau, local + cloud) 
 
-Chaque action utilisateur nourrit les modèles d’apprentissage.
+Superviseur général de l’IA  
 
-L’IA apprend automatiquement à :
+Orchestration des échanges module/local ↔ cloud ↔ utilisateur 
 
-Repérer des routines efficaces
+Planification des sync, contrôle des quotas, optimisation des flux (compression, différé, batching, anonymisation) 
 
-Distinguer les comportements sains/dangereux
+Sécurité : IAMaster veille au respect RGPD, filtre les données, déclenche la descente IA seulement pour premium 
 
-Anticiper des besoins récurrents
+Peut centraliser les logs, les incidents IA, et les corrections automatiques 
 
-Proposer les modules les plus pertinents selon l’usage
+ 
+ 
 
-Plus il y a d’utilisateurs, plus l’IA apprend.
+3. Pipeline IA : Collecte → Traitement → Synchronisation → Feedback 
 
-L’apprentissage est anonyme, rationnel et structuré par module.
+Collecte locale 
 
-Remontée intelligente et différée des données (vagues, compression, horodatage)
+Chaque IA locale enregistre ses données, scores, feedbacks utilisateur dans Hive (local_storage_service, metrics_collector) 
 
+Prépare les données pour la sync cloud (via OfflineSyncQueue, CloudSyncService) 
 
-🔍 Optimisations IA recommandées
+Sync vers IA cloud 
 
-Seuils intelligents : l’IA ne notifie ou n’analyse que si l’impact est pertinent (filtrage bruit).
+IAMaster orchestre la montée des données vers la bonne IA cloud de catégorie (CloudSyncService.pushCategoryData("sante", ...)) 
 
-Détection de profils atypiques pour adapter les modèles (ex : chiens sportifs, chiens âgés…)
+Upload toujours en batch compressé, jamais en temps réel sauf nécessité critique 
 
-Feedback utilisateur optionnel : l’utilisateur peut confirmer ou corriger une suggestion (renforce le modèle).
+Stockage cloud initial (SANS apprentissage IA activé) 
 
-Explicabilité IA : chaque suggestion peut être justifiée (« pourquoi cette alerte ? »).
+Au lancement de l’application, toutes les données sont bien stockées dans le cloud (Firestore, BigQuery…), mais aucun apprentissage IA n’est lancé par défaut. 
 
-Scoring dynamique des modules : modules classés selon pertinence IA, usage et impact observé.
+L’apprentissage IA cloud est explicitement déclenché “au clic” par le superadmin via une interface dédiée, pour maîtriser les coûts d’infrastructure. 
 
-Compression automatique des données + suppression des doublons + stockage minimal.
+Cette approche permet de constituer un jeu de données propre, validé, analysé, avant de lancer tout pipeline IA gourmand en ressources/cloud. 
 
-🔁 Grandes catégories de module IA par usage
+Activation progressive de l’apprentissage IA cloud 
 
-Santé : OCR carnet, détection schéma vaccinal, prédiction rechutes, suivi poids.
+Lorsque la base utilisateurs ou le volume d’abonnements le justifie (décision manuelle ou automatique par IAMaster/cloud), le superadmin peut déclencher l’apprentissage régulier (batch/scheduled). 
 
-Éducation : suggestion d’exercices, adaptation au tempérament, correction IA, analyse des progrès.
+L’IA cloud peut alors apprendre sur toutes les données déjà collectées, et continuer de s’entraîner de façon régulière à mesure que le volume et les revenus augmentent. 
 
-Dressage : interprétation des traces GPS, reconnaissance de trajectoires, scoring de concours.
+Optimisation continue : IAMaster cloud peut ajuster la fréquence ou l’intensité de l’apprentissage en fonction des coûts, de la demande, ou du statut premium de la base utilisateurs. 
 
-Communauté : modération IA, détection d’abus, suggestion d’échanges selon profil.
+Traitement IA cloud 
 
-Notifications : tri automatique par niveau d’urgence et récurrence.
+L’IA cloud de la catégorie reçoit, apprend, met à jour ses modèles, détecte tendances/anomalies 
 
-🔐 Éthique & sécurité IA
+Peut renvoyer feedback, recommandations, ou updates modèles via IAMaster (si premium) 
 
-Données sensibles exclues des traitements cloud (nom, prénom, téléphone).
+Descente IA 
 
-Apprentissage croisé uniquement sur données  anonymisées.
+Les recommandations, plans, modèles ou MAJ IA sont proposées uniquement aux comptes premium ou sur action de l’utilisateur 
 
-IA conçue pour accompagner, pas pour imposer.
+IAMaster gère la descente, applique ou notifie les modules concernés 
 
-Suivi visible de l’impact de l’IA sur l’expérience utilisateur.
+ 
+ 
 
-🎯 Politique d’apprentissage et synchronisation IA (gratuite vs premium)
+4. Sécurité, RGPD & Coût 
 
-L’intelligence artificielle d’AniSphère repose sur un fonctionnement hybride local + cloud, conçu pour évoluer en permanence tout en optimisant les ressources.
+Aucune donnée sensible ne transite dans l’IA cloud (tout est anonymisé dès la collecte) 
 
-**Tous les utilisateurs** bénéficient gratuitement de :
+Sync batch différée et compressée pour optimiser les coûts Firebase 
 
-- IA locale embarquée (OCR, suggestions, tri de photos…)
-- Analyse IA maître en local
-- Application fluide et intelligente, même hors ligne
+Logs, consentements, et scorings toujours versionnés et consultables 
 
-Cependant :
+Sync descendante réservée au premium (freemium IA) 
 
-- Toutes les **données utiles** (anonymisées, compressées) sont **systématiquement transmises à l’IA cloud**, pour nourrir l’apprentissage global
-- En **version gratuite**, **aucune synchronisation descendante n’est active** : l’IA locale **ne reçoit pas de mises à jour** depuis le cloud
+IAMaster assure l’explicabilité IA (toutes les décisions IA doivent être traçables) 
 
-La **synchronisation IA descendante** (mise à jour des modèles, amélioration continue des suggestions, affinement comportemental) est **réservée aux comptes premium ou autorisés**.
+Maîtrise totale des coûts IA cloud : apprentissage déclenché uniquement manuellement par le superadmin au lancement, puis progressivement selon le business model (abonnements/usage) 
 
-Ce fonctionnement garantit une IA collective toujours plus performante, tout en **préservant la gratuité**, en **limitant les coûts cloud** et en **réservant la puissance IA complète aux utilisateurs engagés**.
+ 
+ 
 
-📌 À venir / pistes futures IA
+5. Implémentation technique 
 
-Reconnaissance vocale animale : premiers tests (aboiements, gémissements…)
+lib/logic/  
 
-Analyse comportementale vidéo : sommeil, tics, fatigue (IA caméra + TFLite)
+ia_master.dart : superviseur général 
 
-IA vétérinaire embarquée : diagnostic préliminaire à valider avec un pro
+ia_executor.dart : exécution locale des décisions IA 
 
-IA communautaire : scoring positif d’actions partagées entre utilisateurs
+ia_scheduler.dart : planification et déclenchements périodiques 
 
-Rétroactions intelligentes : chaque action ou négligence peut entraîner une suggestion de suivi
+metrics_collector.dart : collecte, structuration et upload des métriques IA 
 
-Tableaux IA visibles : influence réelle de l’IA sur la santé, l’éducation, les progrès
+offline_sync_queue.dart : stockage différé des logs/metrics 
 
-🎯 Conclusion
+cloud_sync_service.dart : upload batch vers la bonne IA cloud de catégorie 
 
-L’IA d’AniSphère est conçue pour :
+modules/[module]/logic/  
 
-S’adapter à chaque utilisateur et à chaque animal
+IA locale de chaque module (TFLite, rules, analyzers) 
 
-Apprendre automatiquement sans dépendre du cloud pour chaque action
+cloud/ (non versionné ici)  
 
-Être optimisée en coût, intelligente dans la collecte, transparente dans l’usage
+Backend API IA cloud par catégorie (API REST, batch endpoints, ML pipeline) 
 
-Elle devient un partenaire évolutif dans le suivi de l’animal, et plus il y aura d’utilisateurs, plus elle deviendra puissante — au service de tous.
+Stockage Firestore ou BigQuery par catégorie 
 
+Scripts d’apprentissage, retrain, déploiement modèles 
 
+ 
+ 
 
+6. Structure Firestore / Backend recommandée 
+
+/ia_categories/{categorie}/uploads 
+/ia_categories/{categorie}/models 
+/ia_categories/{categorie}/feedbacks 
+/users/{userId} 
+/animals/{animalId} 
+/modules/{moduleName}/ 
+/logs_ia/{categorie}/ 
+/consents/ 
+ 
+
+ 
+ 
+
+7. Extension & Maintenance 
+
+Ajout d’un module : crée son IA locale, déclare sa catégorie, raccorde CloudSyncService à la bonne IA cloud 
+
+Ajout d’une IA cloud : crée un nouveau backend/API de catégorie, ajoute la logique IAMaster correspondante 
+
+Versionning : tous les modèles IA (locaux et cloud) sont versionnés et updatables 
+
+Tests & Explicabilité : chaque décision IA doit être traçable et testable (via test_tracker.md) 
+
+ 
+ 
+
+8. Roadmap & Suivi 
+
+Déploiement de l’IA cloud “Santé” et “Éducation” en priorité (roadmap phase 4) 
+
+Ajout progressif des pipelines d’analyse, recommandations, scoring pour chaque catégorie 
+
+Au lancement, stockage cloud sans apprentissage IA — activation manuelle par superadmin, puis apprentissage régulier quand la rentabilité est assurée (abonnements actifs) 
+
+Activation progressive de la descente IA premium sur demande ou par abonnement 
+
+Mise à jour régulière du fichier 7__ia.md à chaque avancée majeure 
+
+ 
+ 
+
+Cette architecture IA garantit à AniSphère : 
+
+Performance, confidentialité, évolutivité, optimisation des coûts 
+
+Facilité d’extension pour de futurs modules ou catégories IA 
+
+Contrôle total sur le lancement, la montée en charge et la rentabilité de l’IA cloud 
