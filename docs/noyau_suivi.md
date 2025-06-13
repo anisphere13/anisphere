@@ -113,6 +113,8 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 - [06/2025] Création du modèle `photo_model.dart` (métadonnées, stockage Hive).
 - [06/2025] Mise en place de `photo_upload_queue.dart` pour la synchronisation différée hors ligne.
 - [06/2025] Tests unitaires : `camera_service_test.dart`, `photo_model_test.dart`, `photo_upload_queue_test.dart`.
+- [06/2025] Ajout du `gps_provider.dart` pour suivre la position et l'état de connexion.
+- [06/2025] Test unitaire associé : `gps_provider_test.dart`.
 ---
 
 ## 🚩 Statut actuel du noyau (05/06/2025)
@@ -143,6 +145,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 - `main_screen.dart`, `home_screen.dart`, `modules_screen.dart`, `settings_screen.dart`, `share_screen.dart`, `animal_form_screen.dart`, `animal_profile_screen.dart`
 - `notification_service.dart`, `notification_icon.dart`
 - `camera_service.dart`, `photo_model.dart`, `photo_upload_queue.dart`
+- `gps_provider.dart`
 - `ia_master.dart`, `ia_rule_engine.dart`, `ia_executor.dart`, `ia_scheduler.dart`, `ia_logger.dart`
 - **Tests** dans `test/noyau/`
 - **Scripts d’automatisation** : `generate_test_module.dart`, `update_noyau_suivi.dart`
@@ -173,6 +176,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 | Élément | Description | Statut |
 |---------|-------------|--------|
 | device_sensors_service.dart | Accès centralisé à tous les capteurs | ⬜ à faire |
+| gps_provider.dart | Flux position + connexion | ✅ fait |
 | ia_context_enricher.dart | Contexte IA enrichi temps réel | ⬜ à faire |
 | behavior_analysis_service.dart | Analyse comportementale IA (TFLite/capteurs) | ⬜ à faire |
 | image_analysis_service.dart | IA analyse images/photo (TFLite) | ⬜ à faire |
