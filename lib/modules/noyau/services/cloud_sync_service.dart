@@ -132,16 +132,6 @@ class CloudSyncService {
     }
   }
 
-  /// 🖼️ Envoie une photo pour apprentissage IA ou la met en attente.
-  Future<void> pushPhotoData(PhotoModel photo) async {
-    try {
-      await _firebaseService.sendModuleData('photos', photo.toJson());
-      debugPrint('☁️ Photo ${photo.id} envoyée au cloud.');
-    } catch (e) {
-      debugPrint('❌ [CloudSync] Erreur pushPhotoData : $e');
-      await OfflinePhotoQueue.addTask(PhotoTask(photo: photo));
-    }
-  }
   /// 📦 Synchro complète pour IAMaster (utilise les logs de l’app)
   Future<void> syncFullIA(String userId, List<String> logs) async {
     try {
