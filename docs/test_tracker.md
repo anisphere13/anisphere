@@ -21,7 +21,7 @@
 | test/noyau/unit/user_model.g_test.dart | unit | package:anisphere/modules/noyau/models/user_model.g.dart | À faire |
 | test/noyau/unit/modules_service_test.dart | unit | package:anisphere/modules/noyau/services/modules_service.dart | À faire |
 | test/noyau/unit/auth_service_test.dart | unit | package:anisphere/modules/noyau/services/auth_service.dart | À faire |
-| test/noyau/unit/offline_sync_queue.g_test.dart | unit | package:anisphere/modules/noyau/services/offline_sync_queue.g.dart | À faire |
+| test/noyau/unit/offline_sync_queue.g_test.dart | unit | package:anisphere/modules/noyau/services/offline_sync_queue.g.dart | ✅ |
 | test/noyau/unit/maintenance_service_test.dart | unit | package:anisphere/modules/noyau/services/maintenance_service.dart | À faire |
 | test/noyau/unit/qr_service_test.dart | unit | package:anisphere/modules/noyau/services/qr_service.dart | ✅ |
 | test/noyau/unit/user_service_test.dart | unit | package:anisphere/modules/noyau/services/user_service.dart | À faire |
