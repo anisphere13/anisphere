@@ -4,8 +4,15 @@ import 'package:hive/hive.dart';
 import 'package:anisphere/modules/noyau/services/cloud_sync_service.dart';
 import 'package:anisphere/modules/noyau/services/offline_photo_queue.dart'
     show PhotoTask, OfflinePhotoQueue, PhotoTaskAdapter;
+import 'package:anisphere/modules/noyau/services/offline_sync_queue.dart'
+    show SyncTask, OfflineSyncQueue, SyncTaskAdapter;
 import 'package:anisphere/modules/noyau/models/photo_model.dart';
+import 'package:anisphere/modules/noyau/models/animal_model.dart';
+import 'package:anisphere/modules/noyau/models/user_model.dart';
+import 'package:anisphere/modules/noyau/models/support_ticket_model.dart';
+import 'package:anisphere/modules/noyau/models/notification_feedback_model.dart';
 import 'package:anisphere/modules/noyau/services/firebase_service.dart';
+import 'package:mockito/mockito.dart';
 import '../../test_config.dart';
 import '../../helpers/test_fakes.dart';
 
@@ -18,6 +25,8 @@ class FailingFirebaseService extends FirebaseService {
   }
 }
 
+class MockFirebaseService extends Mock implements FirebaseService {}
+
 void main() {
   late Directory tempDir;
 
@@ -27,11 +36,14 @@ void main() {
     Hive.init(tempDir.path);
     Hive.registerAdapter(PhotoModelAdapter());
     Hive.registerAdapter(PhotoTaskAdapter());
+    Hive.registerAdapter(SyncTaskAdapter());
     await Hive.openBox<PhotoTask>('offline_photo_queue');
+    await Hive.openBox<SyncTask>('offline_sync_queue');
   });
 
   tearDown(() async {
     await Hive.deleteBoxFromDisk('offline_photo_queue');
+    await Hive.deleteBoxFromDisk('offline_sync_queue');
     await tempDir.delete(recursive: true);
   });
 
@@ -74,5 +86,90 @@ void main() {
     });
     expect(processed.length, 1);
     expect(processed.first.photo.id, 'p2');
+  });
+
+  test('pushAnimalData queues task on failure', () async {
+    final mock = MockFirebaseService();
+    when(mock.saveAnimal(any, forTraining: anyNamed('forTraining')))
+        .thenThrow(Exception('fail'));
+    final service = CloudSyncService(firebaseService: mock);
+    final animal = AnimalModel(
+      id: 'a1',
+      name: 'rex',
+      species: 'dog',
+      breed: '',
+      imageUrl: '',
+      ownerId: 'u1',
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+    );
+
+    await service.pushAnimalData(animal);
+
+    final tasks = await OfflineSyncQueue.getAllTasks();
+    expect(tasks.length, 1);
+    expect(tasks.first.type, 'animal');
+    expect(tasks.first.data['id'], 'a1');
+  });
+
+  test('replayOfflineTasks flushes queued tasks', () async {
+    final failing = MockFirebaseService();
+    when(failing.saveAnimal(any, forTraining: anyNamed('forTraining')))
+        .thenThrow(Exception('fail'));
+    when(failing.saveUser(any, forTraining: anyNamed('forTraining')))
+        .thenThrow(Exception('fail'));
+    when(failing.sendModuleData(any, any)).thenThrow(Exception('fail'));
+
+    final service = CloudSyncService(firebaseService: failing);
+
+    final animal = AnimalModel(
+      id: 'a2',
+      name: 'bob',
+      species: 'cat',
+      breed: '',
+      imageUrl: '',
+      ownerId: 'u1',
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+    );
+    final user = UserModel(
+      id: 'u2',
+      name: 'Alice',
+      email: 'a@b.com',
+      phone: '',
+      profilePicture: '',
+      profession: '',
+      ownedSpecies: const {},
+      ownedAnimals: const [],
+      preferences: const {},
+      moduleRoles: const {},
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+      activeModules: const [],
+      role: 'user',
+      iaPremium: false,
+    );
+
+    await service.pushAnimalData(animal);
+    await service.pushUserData(user);
+    await service.pushModuleData('demo', {'v': 1});
+
+    final success = MockFirebaseService();
+    when(success.saveAnimal(any, forTraining: anyNamed('forTraining')))
+        .thenAnswer((_) async => true);
+    when(success.saveUser(any, forTraining: anyNamed('forTraining')))
+        .thenAnswer((_) async => true);
+    when(success.sendModuleData(any, any)).thenAnswer((_) async {});
+
+    final replay = CloudSyncService(firebaseService: success);
+    await replay.replayOfflineTasks();
+
+    verify(success.saveAnimal(any, forTraining: anyNamed('forTraining')))
+        .called(1);
+    verify(success.saveUser(any, forTraining: anyNamed('forTraining'))).called(1);
+    verify(success.sendModuleData('demo', any)).called(1);
+
+    final remaining = await OfflineSyncQueue.getAllTasks();
+    expect(remaining.isEmpty, isTrue);
   });
 }
