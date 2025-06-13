@@ -19,8 +19,41 @@ class QueuedPhoto {
       : timestamp = timestamp ?? DateTime.now();
 }
 
+@HiveType(typeId: 132)
+class PhotoTask {
+  @HiveField(0)
+  final PhotoModel photo;
+
+  @HiveField(1)
+  final DateTime timestamp;
+
+  PhotoTask({required this.photo, DateTime? timestamp})
+      : timestamp = timestamp ?? DateTime.now();
+}
+
 class OfflinePhotoQueue {
   static const String _boxName = 'offline_photos';
+  static const String _taskBoxName = 'offline_photo_queue';
+
+  static Future<void> addTask(PhotoTask task) async {
+    final box = await Hive.openBox<PhotoTask>(_taskBoxName);
+    await box.add(task);
+    debugPrint('📥 PhotoTask ajouté à la file offline : ${task.photo.id}');
+  }
+
+  static Future<void> processQueue(
+      Future<void> Function(PhotoTask) handler) async {
+    final box = await Hive.openBox<PhotoTask>(_taskBoxName);
+    final tasks = box.values.toList();
+    for (final task in tasks) {
+      try {
+        await handler(task);
+      } catch (e) {
+        debugPrint('❌ Erreur lors du traitement de ${task.photo.id} : $e');
+      }
+    }
+    await box.clear();
+  }
 
   static Future<void> addPhoto(PhotoModel photo) async {
     final box = await Hive.openBox<QueuedPhoto>(_boxName);
