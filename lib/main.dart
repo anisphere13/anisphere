@@ -28,6 +28,7 @@ import 'package:anisphere/modules/messagerie/models/conversation_model.dart';
 import 'package:anisphere/modules/messagerie/services/offline_message_queue.dart';
 import 'package:anisphere/modules/noyau/providers/photo_provider.dart';
 import 'package:anisphere/modules/noyau/models/photo_model.dart';
+import 'package:anisphere/modules/noyau/models/photo_task.dart';
 import 'package:anisphere/modules/noyau/services/offline_photo_queue.dart';
 
 void main() async {
