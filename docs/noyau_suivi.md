@@ -113,7 +113,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 - [06/2025] Création du modèle `photo_model.dart` (métadonnées, stockage Hive).
 - [06/2025] Mise en place de `photo_upload_queue.dart` pour la synchronisation différée hors ligne.
 - [06/2025] Tests unitaires : `camera_service_test.dart`, `photo_model_test.dart`, `photo_upload_queue_test.dart`.
-- [06/2025] Écran `gps_screen.dart` : affichage des traces enregistrées sur carte interne avec options de synchronisation et de logs.
+- [06/2025] Introduction de `offline_gps_queue.dart` et du nouveau `pushGPSData()` dans `cloud_sync_service` pour stocker les traces GPS hors ligne.
 ---
 
 ## 🚩 Statut actuel du noyau (05/06/2025)
