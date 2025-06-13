@@ -139,7 +139,15 @@ class CloudSyncService {
       debugPrint('☁️ Photo ${photo.id} envoyée au cloud.');
     } catch (e) {
       debugPrint('❌ [CloudSync] Erreur pushPhotoData : $e');
-      await OfflinePhotoQueue.addTask(PhotoTask(photo: photo));
+      await OfflinePhotoQueue.addTask(
+        PhotoTask(
+          photo: photo,
+          animalId: photo.animalId,
+          userId: photo.userId,
+          uploaded: photo.uploaded,
+          remoteUrl: photo.remoteUrl,
+        ),
+      );
     }
   }
   /// 📦 Synchro complète pour IAMaster (utilise les logs de l’app)

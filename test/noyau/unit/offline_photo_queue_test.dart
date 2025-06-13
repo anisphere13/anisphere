@@ -23,10 +23,22 @@ void main() {
   test('addTask stores photo in Hive box', () async {
     final photo = PhotoModel(
       id: 'p1',
+      userId: 'u1',
+      animalId: 'a1',
       localPath: '/tmp/1.png',
       createdAt: DateTime.now(),
+      uploaded: false,
+      remoteUrl: null,
     );
-    await OfflinePhotoQueue.addTask(PhotoTask(photo: photo));
+    await OfflinePhotoQueue.addTask(
+      PhotoTask(
+        photo: photo,
+        animalId: photo.animalId,
+        userId: photo.userId,
+        uploaded: photo.uploaded,
+        remoteUrl: photo.remoteUrl,
+      ),
+    );
     final box = await Hive.openBox<PhotoTask>('offline_photo_queue');
     expect(box.length, 1);
     expect(box.getAt(0)?.photo.id, 'p1');
@@ -35,10 +47,22 @@ void main() {
   test('processQueue processes tasks and clears box', () async {
     final photo = PhotoModel(
       id: 'p2',
+      userId: 'u2',
+      animalId: 'a2',
       localPath: '/tmp/2.png',
       createdAt: DateTime.now(),
+      uploaded: false,
+      remoteUrl: null,
     );
-    await OfflinePhotoQueue.addTask(PhotoTask(photo: photo));
+    await OfflinePhotoQueue.addTask(
+      PhotoTask(
+        photo: photo,
+        animalId: photo.animalId,
+        userId: photo.userId,
+        uploaded: photo.uploaded,
+        remoteUrl: photo.remoteUrl,
+      ),
+    );
     final processed = <PhotoTask>[];
     await OfflinePhotoQueue.processQueue((t) async {
       processed.add(t);

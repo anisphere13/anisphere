@@ -32,7 +32,15 @@ class PhotoProvider extends ChangeNotifier {
     await box.put(photo.id, photo);
     _photos[photo.id] = photo;
     notifyListeners();
-    await OfflinePhotoQueue.addTask(PhotoTask(photo: photo));
+    await OfflinePhotoQueue.addTask(
+      PhotoTask(
+        photo: photo,
+        animalId: photo.animalId,
+        userId: photo.userId,
+        uploaded: photo.uploaded,
+        remoteUrl: photo.remoteUrl,
+      ),
+    );
   }
 
   Future<void> markUploaded(String id, String remoteUrl) async {
