@@ -27,7 +27,7 @@
 | test/noyau/unit/user_service_test.dart | unit | package:anisphere/modules/noyau/services/user_service.dart | À faire |
 | test/noyau/unit/app_initializer_test.dart | unit | package:anisphere/modules/noyau/services/app_initializer.dart | À faire |
 | test/noyau/unit/support_service_test.dart | unit | package:anisphere/modules/noyau/services/support_service.dart | À faire |
-| test/noyau/unit/modules_summary_service_test.dart | unit | package:anisphere/modules/noyau/services/modules_summary_service.dart | À faire |
+| test/noyau/unit/modules_summary_service_test.dart | unit | package:anisphere/modules/noyau/services/modules_summary_service.dart | ✅ |
 | test/noyau/unit/notification_service_test.dart | unit | package:anisphere/modules/noyau/services/notification_service.dart | ✅ |
 | test/noyau/unit/notification_feedback_service_test.dart | unit | package:anisphere/modules/noyau/services/notification_feedback_service.dart | ✅ |
 | test/noyau/unit/backup_service_test.dart | unit | package:anisphere/modules/noyau/services/backup_service.dart | À faire |

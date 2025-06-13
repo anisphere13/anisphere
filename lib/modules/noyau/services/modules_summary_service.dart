@@ -99,5 +99,15 @@ class ModulesSummaryService {
 
     return summaries;
   }
+
+  /// 📝 Génère un résumé textuel pour l'UI.
+  Future<String> generateSummaryText() async {
+    final summaries = await generateSummaries();
+    if (summaries.isEmpty) {
+      return 'Aucun module actif';
+    }
+    return summaries
+        .map((s) => '${s.moduleName}: ${s.summary}')
+        .join(' | ');
   }
-  /// 📝 Génère un résumé textuel pour l'UI
+}
