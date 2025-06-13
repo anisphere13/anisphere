@@ -5,14 +5,20 @@ void main() {
   test('PhotoModel toJson/fromJson round trip', () {
     final model = PhotoModel(
       id: '1',
+      userId: 'u1',
+      animalId: 'a1',
       localPath: '/tmp/img.png',
       createdAt: DateTime.parse('2024-01-01'),
       uploaded: false,
+      remoteUrl: '',
     );
     final json = model.toJson();
     final copy = PhotoModel.fromJson(json);
     expect(copy.id, model.id);
     expect(copy.localPath, model.localPath);
     expect(copy.uploaded, model.uploaded);
+    expect(copy.remoteUrl, model.remoteUrl);
+    expect(copy.userId, model.userId);
+    expect(copy.animalId, model.animalId);
   });
 }
