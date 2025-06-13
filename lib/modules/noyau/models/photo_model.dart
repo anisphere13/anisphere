@@ -1,68 +1,65 @@
-// Copilot Prompt : Modèle PhotoModel pour AniSphère.
-// Stocke les informations d'une photo locale ou synchronisée.
-// Compatible Hive et JSON.
-
 library;
 
 import 'package:hive/hive.dart';
 
 part 'photo_model.g.dart';
 
-@HiveType(typeId: 102)
+@HiveType(typeId: 50)
 class PhotoModel {
   @HiveField(0)
   final String id;
 
   @HiveField(1)
-  final String localPath;
+  final String userId;
 
   @HiveField(2)
-  final String? remoteUrl;
+  final String animalId;
 
   @HiveField(3)
-  final DateTime createdAt;
+  final String localPath;
 
   @HiveField(4)
-  final bool uploaded;
+  final DateTime createdAt;
 
   const PhotoModel({
     required this.id,
+    required this.userId,
+    required this.animalId,
     required this.localPath,
-    this.remoteUrl,
     required this.createdAt,
-    this.uploaded = false,
   });
-
-  factory PhotoModel.fromJson(Map<String, dynamic> json) => PhotoModel(
-        id: json['id'] ?? '',
-        localPath: json['localPath'] ?? '',
-        remoteUrl: json['remoteUrl'],
-        createdAt:
-            DateTime.tryParse(json['createdAt'] ?? '') ?? DateTime.now(),
-        uploaded: json['uploaded'] ?? false,
-      );
 
   Map<String, dynamic> toJson() => {
         'id': id,
+        'userId': userId,
+        'animalId': animalId,
         'localPath': localPath,
-        'remoteUrl': remoteUrl,
         'createdAt': createdAt.toIso8601String(),
-        'uploaded': uploaded,
       };
+
+  factory PhotoModel.fromJson(Map<String, dynamic> json) {
+    return PhotoModel(
+      id: json['id'] ?? '',
+      userId: json['userId'] ?? '',
+      animalId: json['animalId'] ?? '',
+      localPath: json['localPath'] ?? '',
+      createdAt: DateTime.tryParse(json['createdAt'] ?? '') ?? DateTime.now(),
+    );
+  }
 
   PhotoModel copyWith({
     String? id,
+    String? userId,
+    String? animalId,
     String? localPath,
-    String? remoteUrl,
     DateTime? createdAt,
-    bool? uploaded,
   }) {
     return PhotoModel(
       id: id ?? this.id,
+      userId: userId ?? this.userId,
+      animalId: animalId ?? this.animalId,
       localPath: localPath ?? this.localPath,
-      remoteUrl: remoteUrl ?? this.remoteUrl,
       createdAt: createdAt ?? this.createdAt,
-      uploaded: uploaded ?? this.uploaded,
     );
   }
 }

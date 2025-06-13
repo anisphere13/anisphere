@@ -12,6 +12,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:anisphere/modules/noyau/models/user_model.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
+import 'package:anisphere/modules/noyau/models/photo_model.dart';
 
 class FirebaseService {
   final FirebaseFirestore db;
@@ -88,6 +89,22 @@ class FirebaseService {
       return true;
     } catch (e) {
       _logError("saveAnimal", e);
+      return false;
+    }
+  }
+
+  /// 🖼️ Sauvegarder ou mettre à jour une photo
+  Future<bool> savePhoto(PhotoModel photo) async {
+    if (photo.id.isEmpty) return false;
+    try {
+      await db.collection('photos').doc(photo.id).set(
+            photo.toJson(),
+            SetOptions(merge: true),
+          );
+      debugPrint('✅ Photo sauvegardée : ${photo.id}');
+      return true;
+    } catch (e) {
+      _logError('savePhoto', e);
       return false;
     }
   }

@@ -2,13 +2,9 @@
 
 part of 'photo_model.dart';
 
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
 class PhotoModelAdapter extends TypeAdapter<PhotoModel> {
   @override
-  final int typeId = 102;
+  final int typeId = 50;
 
   @override
   PhotoModel read(BinaryReader reader) {
@@ -18,10 +14,10 @@ class PhotoModelAdapter extends TypeAdapter<PhotoModel> {
     };
     return PhotoModel(
       id: fields[0] as String,
-      localPath: fields[1] as String,
-      remoteUrl: fields[2] as String?,
-      createdAt: fields[3] as DateTime,
-      uploaded: fields[4] as bool,
+      userId: fields[1] as String,
+      animalId: fields[2] as String,
+      localPath: fields[3] as String,
+      createdAt: fields[4] as DateTime,
     );
   }
 
@@ -32,13 +28,13 @@ class PhotoModelAdapter extends TypeAdapter<PhotoModel> {
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.localPath)
+      ..write(obj.userId)
       ..writeByte(2)
-      ..write(obj.remoteUrl)
+      ..write(obj.animalId)
       ..writeByte(3)
-      ..write(obj.createdAt)
+      ..write(obj.localPath)
       ..writeByte(4)
-      ..write(obj.uploaded);
+      ..write(obj.createdAt);
   }
 
   @override

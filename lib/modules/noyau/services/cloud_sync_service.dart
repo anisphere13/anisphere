@@ -108,6 +108,17 @@ class CloudSyncService {
     }
   }
 
+  /// 🖼️ Envoie les métadonnées d'une photo
+  Future<void> pushPhotoData(PhotoModel photo) async {
+    try {
+      await _firebaseService.savePhoto(photo);
+      debugPrint('☁️ Photo envoyée au cloud : ${photo.id}');
+    } catch (e) {
+      debugPrint('❌ [CloudSync] Erreur pushPhotoData : $e');
+      await OfflinePhotoQueue.addPhoto(photo);
+    }
+  }
+
   /// 📊 Envoie d’un retour IA local (métriques, logs, feedbacks)
   Future<void> pushIAFeedback(Map<String, dynamic> metrics) async {
     try {
@@ -174,12 +185,20 @@ class CloudSyncService {
             await _firebaseService.sendModuleData(moduleName, task.data);
           } else if (task.type.startsWith("message:")) {
             final convoId = task.type.split(":").last;
-            await _firebaseService.sendModuleData('messaging/$convoId', task.data);
+            await _firebaseService.sendModuleData('messaging/\$convoId', task.data);
           }
       }
     });
-    await OfflinePhotoQueue.processQueue((pTask) async {
-      await _firebaseService.sendModuleData('photos', pTask.photo.toJson());
-    });
+
+    final photos = await OfflinePhotoQueue.getAllPhotos();
+    for (final queued in photos) {
+      try {
+        await _firebaseService.savePhoto(queued.photo);
+      } catch (e) {
+        debugPrint('❌ [CloudSync] Erreur envoi photo offline : \$e');
+        await OfflinePhotoQueue.addPhoto(queued.photo);
+      }
+    }
+    await OfflinePhotoQueue.clearQueue();
   }
 }
