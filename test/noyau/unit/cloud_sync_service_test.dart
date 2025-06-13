@@ -2,7 +2,8 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:anisphere/modules/noyau/services/cloud_sync_service.dart';
-import 'package:anisphere/modules/noyau/services/offline_photo_queue.dart';
+import 'package:anisphere/modules/noyau/services/offline_photo_queue.dart'
+    show PhotoTask, OfflinePhotoQueue;
 import 'package:anisphere/modules/noyau/models/photo_model.dart';
 import 'package:anisphere/modules/noyau/services/firebase_service.dart';
 import '../../test_config.dart';
@@ -25,12 +26,12 @@ void main() {
     tempDir = await Directory.systemTemp.createTemp();
     Hive.init(tempDir.path);
     Hive.registerAdapter(PhotoModelAdapter());
-    Hive.registerAdapter(QueuedPhotoAdapter());
-    await Hive.openBox<QueuedPhoto>('offline_photos');
+    Hive.registerAdapter(PhotoTaskAdapter());
+    await Hive.openBox<PhotoTask>('offline_photo_queue');
   });
 
   tearDown(() async {
-    await Hive.deleteBoxFromDisk('offline_photos');
+    await Hive.deleteBoxFromDisk('offline_photo_queue');
     await tempDir.delete(recursive: true);
   });
 
@@ -44,7 +45,7 @@ void main() {
       localPath: 'path.jpg',
       createdAt: DateTime.now(),
       uploaded: false,
-      remoteUrl: null,
+      remoteUrl: '',
     );
 
     await service.pushPhotoData(photo);
@@ -62,13 +63,16 @@ void main() {
       localPath: 'path.jpg',
       createdAt: DateTime.now(),
       uploaded: false,
-      remoteUrl: null,
+      remoteUrl: '',
     );
 
     await service.pushPhotoData(photo);
 
-    final queued = await OfflinePhotoQueue.getAllPhotos();
-    expect(queued.length, 1);
-    expect(queued.first.photo.id, 'p2');
+    final processed = <PhotoTask>[];
+    await OfflinePhotoQueue.processQueue((pt) async {
+      processed.add(pt);
+    });
+    expect(processed.length, 1);
+    expect(processed.first.photo.id, 'p2');
   });
 }
