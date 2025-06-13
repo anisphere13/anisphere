@@ -27,8 +27,26 @@ class PhotoTask {
   @HiveField(1)
   final DateTime timestamp;
 
-  PhotoTask({required this.photo, DateTime? timestamp})
-      : timestamp = timestamp ?? DateTime.now();
+  @HiveField(2)
+  final String animalId;
+
+  @HiveField(3)
+  final String userId;
+
+  @HiveField(4)
+  final bool uploaded;
+
+  @HiveField(5)
+  final String? remoteUrl;
+
+  PhotoTask({
+    required this.photo,
+    required this.animalId,
+    required this.userId,
+    this.uploaded = false,
+    this.remoteUrl,
+    DateTime? timestamp,
+  }) : timestamp = timestamp ?? DateTime.now();
 }
 
 class OfflinePhotoQueue {

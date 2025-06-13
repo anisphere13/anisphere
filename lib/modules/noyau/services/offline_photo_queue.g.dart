@@ -52,17 +52,29 @@ class PhotoTaskAdapter extends TypeAdapter<PhotoTask> {
     return PhotoTask(
       photo: fields[0] as PhotoModel,
       timestamp: fields[1] as DateTime,
+      animalId: (fields[2] as String?) ?? '',
+      userId: (fields[3] as String?) ?? '',
+      uploaded: (fields[4] as bool?) ?? false,
+      remoteUrl: fields[5] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, PhotoTask obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.photo)
       ..writeByte(1)
-      ..write(obj.timestamp);
+      ..write(obj.timestamp)
+      ..writeByte(2)
+      ..write(obj.animalId)
+      ..writeByte(3)
+      ..write(obj.userId)
+      ..writeByte(4)
+      ..write(obj.uploaded)
+      ..writeByte(5)
+      ..write(obj.remoteUrl);
   }
 
   @override
