@@ -34,6 +34,7 @@
 | test/noyau/unit/local_storage_service_test.dart | unit | package:anisphere/modules/noyau/services/local_storage_service.dart | ✅ |
 | test/noyau/unit/animal_service_test.dart | unit | package:anisphere/modules/noyau/services/animal_service.dart | À faire |
 | test/noyau/unit/ia_sync_service_test.dart | unit | package:anisphere/modules/noyau/services/ia_sync_service.dart | À faire |
+| test/noyau/unit/ia_gps_analyzer_test.dart | unit | package:anisphere/modules/noyau/services/ia_gps_analyzer.dart | ✅ |
 | test/noyau/unit/cloud_notification_listener_test.dart | unit | package:anisphere/modules/noyau/services/cloud_notification_listener.dart | ✅ |
 | test/noyau/unit/offline_sync_queue_test.dart | unit | package:anisphere/modules/noyau/services/offline_sync_queue.dart | À faire |
 | test/photos/unit/camera_service_test.dart | unit | package:anisphere/modules/photos/services/camera_service.dart | À faire |
