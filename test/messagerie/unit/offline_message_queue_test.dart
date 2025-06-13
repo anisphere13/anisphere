@@ -1,14 +1,51 @@
-// Copilot Prompt : Test automatique g\u00e9n\u00e9r\u00e9 pour offline_message_queue.dart (unit)
+import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hive/hive.dart';
+import 'package:anisphere/modules/messagerie/models/message_model.dart';
+import 'package:anisphere/modules/messagerie/services/offline_message_queue.dart';
 import '../../test_config.dart';
 
 void main() {
-  setUpAll(() async {
+  late Directory tempDir;
+
+  setUp(() async {
     await initTestEnv();
+    tempDir = await Directory.systemTemp.createTemp();
+    Hive.init(tempDir.path);
+    Hive.registerAdapter(MessageModelAdapter());
+    Hive.registerAdapter(QueuedMessageAdapter());
+    await Hive.openBox<QueuedMessage>('offline_messages');
   });
 
-  test('offline_message_queue fonctionne (test auto)', () {
-    // TODO : compl\u00e9ter le test pour offline_message_queue.dart
-    expect(true, isTrue); // \u00c0 remplacer par un vrai test
+  tearDown(() async {
+    await Hive.deleteBoxFromDisk('offline_messages');
+    await tempDir.delete(recursive: true);
+  });
+
+  test('addMessage stores message in Hive box', () async {
+    final msg = MessageModel(
+      id: 'm1',
+      conversationId: 'c1',
+      senderId: 'u1',
+      content: 'hello',
+    );
+
+    await OfflineMessageQueue.addMessage(msg);
+    final box = await Hive.openBox<QueuedMessage>('offline_messages');
+    expect(box.length, 1);
+    expect(box.getAt(0)?.message.id, 'm1');
+  });
+
+  test('clearQueue removes all messages', () async {
+    final msg = MessageModel(
+      id: 'm2',
+      conversationId: 'c1',
+      senderId: 'u1',
+      content: 'hi',
+    );
+    await OfflineMessageQueue.addMessage(msg);
+    await OfflineMessageQueue.clearQueue();
+    final box = await Hive.openBox<QueuedMessage>('offline_messages');
+    expect(box.isEmpty, true);
   });
 }
