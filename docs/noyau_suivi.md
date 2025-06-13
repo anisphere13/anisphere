@@ -1,5 +1,5 @@
 # ✅ Suivi chronologique du développement — Noyau d’AniSphère
-*Fichier mis à jour au 05/06/2025*
+*Fichier mis à jour au 06/06/2025*
 
 Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolution, les tests et les grandes décisions du noyau AniSphère.  
 > Toute étape validée est datée, toute fonctionnalité doit être couverte par un test associé.  
@@ -113,6 +113,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 - [06/2025] Création du modèle `photo_model.dart` (métadonnées, stockage Hive).
 - [06/2025] Mise en place de `photo_upload_queue.dart` pour la synchronisation différée hors ligne.
 - [06/2025] Tests unitaires : `camera_service_test.dart`, `photo_model_test.dart`, `photo_upload_queue_test.dart`.
+<<<<<<< HEAD
 
 ### **13/06/2025 — Déploiement du suivi GPS**
 - [06/2025] Création de `gps_service.dart` pour enregistrer la position en arrière-plan.
@@ -123,6 +124,9 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 - [ ] Add a subsection dated with the implementation day in docs/noyau_suivi.md summarizing the GPS feature rollout.
 - [ ] Include checklist items mirroring the bullet list from the user prompt.
 - [ ] Ensure scripts such as `update_noyau_suivi.dart` can append the synchronization tag afterward.
+=======
+- [06/2025] Tests unitaires supplémentaires : `photo_task_test.dart`, `user_provider_test.dart`.
+>>>>>>> codex/créer-des-tests-correspondants-et-mettre-à-jour-les-fichiers
 ---
 
 ## 🚩 Statut actuel du noyau (05/06/2025)
