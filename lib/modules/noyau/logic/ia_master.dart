@@ -121,9 +121,12 @@ class IAMaster {
     final analysis = await IAPhotoAnalyzer().analyze(file);
     final photo = PhotoModel(
       id: analysis['hash'],
+      userId: analysis['userId'] ?? '',
+      animalId: analysis['animalId'] ?? '',
       localPath: file.path,
       createdAt: DateTime.now(),
       uploaded: false,
+      remoteUrl: null,
     );
     try {
       await _cloudSyncService.pushPhotoData(photo);

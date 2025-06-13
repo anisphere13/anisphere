@@ -18,13 +18,15 @@ class PhotoModelAdapter extends TypeAdapter<PhotoModel> {
       animalId: fields[2] as String,
       localPath: fields[3] as String,
       createdAt: fields[4] as DateTime,
+      uploaded: fields[5] as bool,
+      remoteUrl: fields[6] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, PhotoModel obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -34,7 +36,11 @@ class PhotoModelAdapter extends TypeAdapter<PhotoModel> {
       ..writeByte(3)
       ..write(obj.localPath)
       ..writeByte(4)
-      ..write(obj.createdAt);
+      ..write(obj.createdAt)
+      ..writeByte(5)
+      ..write(obj.uploaded)
+      ..writeByte(6)
+      ..write(obj.remoteUrl);
   }
 
   @override

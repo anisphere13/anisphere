@@ -43,6 +43,8 @@ void main() {
       animalId: 'a1',
       localPath: 'path.jpg',
       createdAt: DateTime.now(),
+      uploaded: false,
+      remoteUrl: null,
     );
 
     await service.pushPhotoData(photo);
@@ -59,6 +61,8 @@ void main() {
       animalId: 'a1',
       localPath: 'path.jpg',
       createdAt: DateTime.now(),
+      uploaded: false,
+      remoteUrl: null,
     );
 
     await service.pushPhotoData(photo);
