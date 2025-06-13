@@ -5,6 +5,7 @@
 library;
 import 'package:flutter/foundation.dart';
 import 'dart:convert';
+import 'package:archive/archive.dart';
 import '../models/animal_model.dart';
 import '../models/user_model.dart';
 import '../models/support_ticket_model.dart';
