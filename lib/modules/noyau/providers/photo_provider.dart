@@ -38,7 +38,7 @@ class PhotoProvider extends ChangeNotifier {
         animalId: photo.animalId,
         userId: photo.userId,
         uploaded: photo.uploaded,
-        remoteUrl: photo.remoteUrl,
+          remoteUrl: photo.remoteUrl ?? '',
       ),
     );
   }
