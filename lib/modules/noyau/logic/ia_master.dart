@@ -10,10 +10,14 @@ import 'package:flutter/foundation.dart';
 import '../services/local_storage_service.dart';
 import '../services/cloud_sync_service.dart';
 import '../services/offline_sync_queue.dart';
+import '../services/offline_photo_queue.dart';
 import '../services/notification_feedback_service.dart';
 import '../models/animal_model.dart';
 import '../models/user_model.dart';
+import '../models/photo_model.dart';
 import '../models/notification_feedback_model.dart';
+import 'ia_photo_analyzer.dart';
+import 'dart:io';
 import '../../messagerie/logic/ia_message_analyzer.dart';
 import 'ia_logger.dart';
 import 'ia_flag.dart';
@@ -112,6 +116,27 @@ class IAMaster {
     }
   }
 
+  /// 📸 Analyse locale d'une photo puis envoi ou mise en attente.
+  Future<void> analyzeAndPushPhoto(File file) async {
+    final analysis = await IAPhotoAnalyzer().analyze(file);
+    final photo = PhotoModel(
+      id: analysis['hash'],
+      localPath: file.path,
+      createdAt: DateTime.now(),
+      uploaded: false,
+    );
+    try {
+      await _cloudSyncService.pushPhotoData(photo);
+      await IALogger.log(
+        message: 'PUSH_PHOTO_${photo.id}',
+        channel: IAChannel.execution,
+      );
+    } catch (e) {
+      await OfflinePhotoQueue.addTask(PhotoTask(photo: photo));
+      debugPrint('⚠️ analyzeAndPushPhoto : file offline');
+    }
+  }
+
   /// 🔁 Sauvegarde d'un retour utilisateur sur une notification
   Future<void> pushNotificationFeedback(
       NotificationFeedbackModel feedback) async {
@@ -165,6 +190,9 @@ class IAMaster {
             debugPrint("❓ Type de tâche non géré : ${task.type}");
           }
       }
+    });
+    await OfflinePhotoQueue.processQueue((pt) async {
+      await _cloudSyncService.pushPhotoData(pt.photo);
     });
   }
 

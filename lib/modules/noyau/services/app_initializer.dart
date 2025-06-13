@@ -34,6 +34,9 @@ class AppInitializer {
         await Hive.initFlutter();
         await _openSafeBox('settings');
         await _openSafeBox('user_data');
+        await _openSafeBox('offline_sync_queue');
+        await _openSafeBox('offline_photo_queue');
+        await _openSafeBox('photos');
       },
       successMessage: "📦 Hive initialisé !",
       errorMessage: "❌ Échec Hive",
