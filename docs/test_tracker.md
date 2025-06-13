@@ -41,7 +41,7 @@
 | test/photos/unit/photo_model_test.dart | unit | package:anisphere/modules/photos/models/photo_model.dart | À faire |
 | test/photos/unit/photo_upload_queue_test.dart | unit | package:anisphere/modules/photos/services/photo_upload_queue.dart | À faire |
 | test/noyau/unit/storage_sync_queue_test.dart | unit | package:anisphere/modules/noyau/storage/storage_sync_queue.dart | ✅ |
-| test/noyau/unit/firebase_service_test.dart | unit | package:anisphere/modules/noyau/services/firebase_service.dart | À faire |
+| test/noyau/unit/firebase_service_test.dart | unit | package:anisphere/modules/noyau/services/firebase_service.dart | ✅ |
 | test/noyau/unit/cloud_sync_service_test.dart | unit | package:anisphere/modules/noyau/services/cloud_sync_service.dart | ✅ |
 | test/noyau/unit/cloud_drive_service_test.dart | unit | package:anisphere/modules/noyau/services/cloud_drive_service.dart | ✅ |
 | test/noyau/unit/ia_executor_test.dart | unit | package:anisphere/modules/noyau/logic/ia_executor.dart | À faire |
