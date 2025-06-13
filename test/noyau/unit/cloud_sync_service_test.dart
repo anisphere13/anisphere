@@ -170,4 +170,111 @@ void main() {
     final remaining = await OfflineSyncQueue.getAllTasks();
     expect(remaining.isEmpty, isTrue);
   });
+
+  test('pushAnimalData uploads animal via FirebaseService', () async {
+    final firestore = FakeFirestore();
+    final service =
+        CloudSyncService(firebaseService: FakeFirebaseService(firestore));
+    final animal = AnimalModel(
+      id: 'a3',
+      name: 'Luna',
+      species: 'cat',
+      breed: '',
+      imageUrl: '',
+      ownerId: 'u1',
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+    );
+
+    await service.pushAnimalData(animal);
+
+    final doc =
+        await firestore.collection('training_animals').doc('a3').get();
+    expect(doc.data()?['name'], 'Luna');
+  });
+
+  test('pushUserData uploads user via FirebaseService', () async {
+    final firestore = FakeFirestore();
+    final service =
+        CloudSyncService(firebaseService: FakeFirebaseService(firestore));
+    final user = UserModel(
+      id: 'u3',
+      name: 'Bob',
+      email: 'b@b.com',
+      phone: '',
+      profilePicture: '',
+      profession: '',
+      ownedSpecies: const {},
+      ownedAnimals: const [],
+      preferences: const {},
+      moduleRoles: const {},
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+      activeModules: const [],
+      role: 'user',
+      iaPremium: false,
+    );
+
+    await service.pushUserData(user);
+
+    final doc =
+        await firestore.collection('training_users').doc('u3').get();
+    expect(doc.data()?['email'], 'b@b.com');
+  });
+
+  test('pushUserData queues task on failure', () async {
+    final mock = MockFirebaseService();
+    when(mock.saveUser(any<UserModel>(), forTraining: anyNamed('forTraining')))
+        .thenThrow(Exception('fail'));
+    final service = CloudSyncService(firebaseService: mock);
+    final user = UserModel(
+      id: 'u4',
+      name: 'Queue',
+      email: 'q@b.com',
+      phone: '',
+      profilePicture: '',
+      profession: '',
+      ownedSpecies: const {},
+      ownedAnimals: const [],
+      preferences: const {},
+      moduleRoles: const {},
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+      activeModules: const [],
+      role: 'user',
+      iaPremium: false,
+    );
+
+    await service.pushUserData(user);
+
+    final tasks = await OfflineSyncQueue.getAllTasks();
+    expect(tasks.length, 1);
+    expect(tasks.first.type, 'user');
+    expect(tasks.first.data['id'], 'u4');
+  });
+
+  test('pushModuleData uploads data via FirebaseService', () async {
+    final firestore = FakeFirestore();
+    final service =
+        CloudSyncService(firebaseService: FakeFirebaseService(firestore));
+
+    await service.pushModuleData('demo', {'v': 2});
+
+    final docs = await firestore.collection('training_modules').get();
+    expect(docs.docs.length, 1);
+    expect(docs.docs.first.data()['module'], 'demo');
+  });
+
+  test('pushModuleData queues task on failure', () async {
+    final mock = MockFirebaseService();
+    when(mock.sendModuleData(any, any)).thenThrow(Exception('fail'));
+    final service = CloudSyncService(firebaseService: mock);
+
+    await service.pushModuleData('demo', {'v': 3});
+
+    final tasks = await OfflineSyncQueue.getAllTasks();
+    expect(tasks.length, 1);
+    expect(tasks.first.type, 'module:demo');
+    expect(tasks.first.data['v'], 3);
+  });
 }
