@@ -1,6 +1,8 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:anisphere/modules/noyau/services/cloud_notification_listener.dart';
+import 'package:anisphere/modules/noyau/services/navigation_service.dart';
+import 'package:flutter/material.dart';
 import '../../test_config.dart';
 
 void main() {
@@ -27,5 +29,18 @@ void main() {
     final token = await CloudNotificationListener.getToken();
     expect(token, 'token_123');
     expect(log.any((c) => c.method.contains('getToken')), isTrue);
+  });
+
+  testWidgets('processNotificationData navigates to MessageListScreen',
+      (tester) async {
+    await tester.pumpWidget(MaterialApp(
+      navigatorKey: NavigationService.navigatorKey,
+      home: const SizedBox(),
+    ));
+
+    CloudNotificationListener.processNotificationData({'module': 'messagerie'});
+    await tester.pumpAndSettle();
+
+    expect(find.text('Messagerie'), findsOneWidget);
   });
 }

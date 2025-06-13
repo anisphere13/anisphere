@@ -10,6 +10,9 @@ import 'package:flutter/foundation.dart';
 import '../services/notification_service.dart';
 import '../models/notification_feedback_model.dart';
 import '../logic/ia_master.dart';
+import 'navigation_service.dart';
+import '../../messagerie/screens/message_list_screen.dart';
+import '../screens/notifications_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class CloudNotificationListener {
@@ -42,10 +45,21 @@ class CloudNotificationListener {
         createdAt: message.sentTime ?? DateTime.now(),
       );
       IAMaster.instance.pushNotificationFeedback(feedback);
-      // TODO : Ajouter redirection ou comportement contextuel
+      processNotificationData(message.data);
     });
 
     debugPrint("☁️ CloudNotificationListener initialisé.");
+  }
+
+  /// Handles navigation or actions based on notification content.
+  static void processNotificationData(Map<String, dynamic> data) {
+    final module = data['module'] as String? ?? '';
+    final type = data['type'] as String? ?? '';
+    if (module == 'messagerie' || type == 'message') {
+      NavigationService.push(const MessageListScreen());
+    } else if (module == 'noyau' || type == 'notification') {
+      NavigationService.push(const NotificationsScreen());
+    }
   }
 
   /// 🧪 Token utile pour debug / lien Firestore si besoin
