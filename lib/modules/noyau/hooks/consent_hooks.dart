@@ -12,6 +12,7 @@ ConsentService consentService = ConsentService();
 /// Si ce n'est pas le cas, affiche [LegalScreen] et retourne le résultat.
 Future<bool> ensureConsent(BuildContext context, String type) async {
   final has = await consentService.hasConsent(type);
+  if (!context.mounted) return false;
   if (has) return true;
 
   final accepted = await Navigator.of(context).push<bool>(
