@@ -32,6 +32,15 @@ class LoginScreenState extends State<LoginScreen> {
       _errorMessage = null;
     });
 
+    final auth = Provider.of<UserProvider>(context, listen: false).authService;
+    if (!await auth.verifyBiometric()) {
+      setState(() {
+        _errorMessage = "Authentification biométrique requise.";
+        _isLoading = false;
+      });
+      return;
+    }
+
     final success = await Provider.of<UserProvider>(context, listen: false)
         .signInWithEmail(
       _emailController.text.trim(),
@@ -60,6 +69,15 @@ class LoginScreenState extends State<LoginScreen> {
       _errorMessage = null;
     });
 
+    final auth = Provider.of<UserProvider>(context, listen: false).authService;
+    if (!await auth.verifyBiometric()) {
+      setState(() {
+        _errorMessage = "Authentification biométrique requise.";
+        _isLoading = false;
+      });
+      return;
+    }
+
     final success = await Provider.of<UserProvider>(context, listen: false)
         .signInWithGoogle();
 
@@ -84,6 +102,15 @@ class LoginScreenState extends State<LoginScreen> {
       _isLoading = true;
       _errorMessage = null;
     });
+
+    final auth = Provider.of<UserProvider>(context, listen: false).authService;
+    if (!await auth.verifyBiometric()) {
+      setState(() {
+        _errorMessage = "Authentification biométrique requise.";
+        _isLoading = false;
+      });
+      return;
+    }
 
     final success = await Provider.of<UserProvider>(context, listen: false)
         .signInWithApple();

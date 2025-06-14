@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:flutter/foundation.dart';
+import 'biometric_auth_service.dart';
 
 import '../models/user_model.dart';
 import 'user_service.dart';
@@ -195,5 +196,11 @@ class AuthService {
 
   void _logError(String context, Object error) {
     debugPrint("❌ $context : $error");
+  }
+
+  /// 🔐 Vérifie l'identité via biométrie ou PIN
+  Future<bool> verifyBiometric() async {
+    final service = BiometricAuthService();
+    return service.authenticateOrPin('Confirmez votre identité');
   }
 }

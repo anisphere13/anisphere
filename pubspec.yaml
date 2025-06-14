@@ -38,6 +38,7 @@ dependencies:
   # 🔑 Auth
   google_sign_in: ^6.3.0
   sign_in_with_apple: ^7.0.1
+  local_auth: ^2.3.0
 
   # 🌐 UI / WebView / Notifications
   webview_flutter: ^4.13.0

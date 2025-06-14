@@ -185,6 +185,14 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 | ia_adaptation_service.dart | Priorisation/ajustement IA selon contexte | ⬜ à faire |
 | behavior_dashboard_screen.dart | UI historique et recommandations | ⬜ à faire |
 
+### Sécurité biométrique
+| Fichier | Statut |
+|---------|-------|
+| lib/modules/noyau/services/biometric_auth_service.dart | ✅ fait |
+| lib/modules/noyau/models/security_settings_model.dart | ✅ fait |
+| lib/modules/noyau/screens/security_settings_screen.dart | ✅ fait |
+| lib/modules/noyau/widgets/biometric_guard.dart | ✅ fait |
+
 ---
 
 ## 🗂️ Annexes & liens

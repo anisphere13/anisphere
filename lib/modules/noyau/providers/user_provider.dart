@@ -178,4 +178,7 @@ class UserProvider with ChangeNotifier {
 
   /// 🔍 Accès au service utilisateur (ex: pour IAContextProvider)
   UserService get userService => _userService;
+
+  /// 🔐 Accès au service d'authentification
+  AuthService get authService => _authService;
 }

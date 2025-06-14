@@ -4,6 +4,8 @@
 // Préparé pour afficher un QR code, un bouton d’export, et d’autres options IA.
 library;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/user_provider.dart';
 
 class ShareScreen extends StatelessWidget {
   const ShareScreen({super.key});
@@ -45,7 +47,14 @@ class ShareScreen extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           ElevatedButton.icon(
-            onPressed: () {
+            onPressed: () async {
+              final auth = Provider.of<UserProvider>(context, listen: false).authService;
+              if (!await auth.verifyBiometric()) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Vérification biométrique échouée')),
+                );
+                return;
+              }
               // Action d'export future
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 content: Text("Export IA à venir"),
