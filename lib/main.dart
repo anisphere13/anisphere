@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:anisphere/firebase_options.dart';
+import 'package:anisphere/theme.dart';
 import 'package:anisphere/modules/noyau/screens/splash_screen.dart';
 import 'package:anisphere/modules/noyau/services/local_storage_service.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
@@ -137,22 +138,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: NavigationService.navigatorKey,
       title: 'AniSphère',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFFF5F5F5),
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF183153),
-          primary: const Color(0xFF183153),
-          secondary: const Color(0xFFFBC02D),
-        ),
-        useMaterial3: true,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF183153),
-          foregroundColor: Colors.white,
-        ),
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(color: Color(0xFF3A3A3A)),
-        ),
-      ),
+      theme: buildAniSphereTheme(),
       home: const SplashScreen(),
     );
   }
