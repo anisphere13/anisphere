@@ -6,21 +6,21 @@ import 'package:flutter/foundation.dart';
 
 import '../models/share_history_model.dart';
 import 'share_history_service.dart';
-import 'premium_sharing_checker.dart';
 import 'cloud_drive_service.dart';
+import 'premium_sharing_checker.dart';
 
 class CloudSharingService {
   final ShareHistoryService _historyService;
-  final PremiumSharingChecker _checker;
   final CloudDriveService _driveService;
+  final PremiumSharingChecker _checker;
 
   CloudSharingService({
     ShareHistoryService? historyService,
-    PremiumSharingChecker? checker,
     CloudDriveService? driveService,
+    PremiumSharingChecker? checker,
   })  : _historyService = historyService ?? ShareHistoryService(),
-        _checker = checker ?? PremiumSharingChecker(),
-        _driveService = driveService ?? CloudDriveService();
+        _driveService = driveService ?? CloudDriveService(),
+        _checker = checker ?? PremiumSharingChecker();
 
   Future<void> share(String data, {double cost = 0}) async {
     try {
