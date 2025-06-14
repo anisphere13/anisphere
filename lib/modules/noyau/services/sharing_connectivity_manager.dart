@@ -1,17 +1,16 @@
 library;
+// TODO: ajouter test
 
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
 import 'cloud_sync_service.dart';
-import 'local_sharing_service.dart';
 
 enum SharingMode { offline, localOnly, cloudReady }
 
 class SharingConnectivityManager {
   final Connectivity _connectivity;
   final CloudSyncService _cloudSyncService;
-  final LocalSharingService _localSharingService;
 
   late final StreamSubscription<List<ConnectivityResult>> _sub;
   final StreamController<SharingMode> _controller = StreamController.broadcast();
@@ -23,10 +22,8 @@ class SharingConnectivityManager {
   SharingConnectivityManager({
     Connectivity? connectivity,
     CloudSyncService? cloudSyncService,
-    LocalSharingService? localSharingService,
   })  : _connectivity = connectivity ?? Connectivity(),
-        _cloudSyncService = cloudSyncService ?? CloudSyncService(),
-        _localSharingService = localSharingService ?? LocalSharingService();
+        _cloudSyncService = cloudSyncService ?? CloudSyncService();
 
   Future<void> init() async {
     final results = await _connectivity.checkConnectivity();
