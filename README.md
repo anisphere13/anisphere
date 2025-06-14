@@ -132,4 +132,7 @@ Rejoignez l’aventure et contribuez à créer la meilleure application de suivi
 
 © AniSphère 2025 — Suivez vos animaux comme jamais auparavant.
 
+## Licence
+
+Ce projet est distribué sous licence [MIT](LICENSE).
 
