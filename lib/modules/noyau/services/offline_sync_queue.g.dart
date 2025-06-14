@@ -20,19 +20,22 @@ class SyncTaskAdapter extends TypeAdapter<SyncTask> {
       type: fields[0] as String,
       data: (fields[1] as Map).cast<String, dynamic>(),
       timestamp: fields[2] as DateTime,
+      id: fields[3] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, SyncTask obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.type)
       ..writeByte(1)
       ..write(obj.data)
       ..writeByte(2)
-      ..write(obj.timestamp);
+      ..write(obj.timestamp)
+      ..writeByte(3)
+      ..write(obj.id);
   }
 
   @override

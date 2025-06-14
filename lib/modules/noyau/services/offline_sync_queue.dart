@@ -3,6 +3,7 @@ library;
 
 import 'package:hive/hive.dart';
 import 'package:flutter/foundation.dart';
+import 'package:uuid/uuid.dart';
 
 part 'offline_sync_queue.g.dart';
 
@@ -17,11 +18,17 @@ class SyncTask {
   @HiveField(2)
   final DateTime timestamp;
 
+  // Unique id to allow easy deletion and merging with previous implementation
+  @HiveField(3)
+  final String id;
+
   SyncTask({
     required this.type,
     required this.data,
-    required this.timestamp,
-  });
+    DateTime? timestamp,
+    String? id,
+  })  : timestamp = timestamp ?? DateTime.now(),
+        id = id ?? const Uuid().v4();
 }
 
 class OfflineSyncQueue {
@@ -30,8 +37,14 @@ class OfflineSyncQueue {
 
   static Future<void> addTask(SyncTask task) async {
     final box = await Hive.openBox<SyncTask>(_boxName);
-    await box.add(task);
+    await box.put(task.id, task);
     debugPrint("📥 Tâche ajoutée à la file offline : ${task.type}");
+  }
+
+  static Future<void> removeTask(String id) async {
+    final box = await Hive.openBox<SyncTask>(_boxName);
+    await box.delete(id);
+    debugPrint('🗑️ Tâche supprimée de la file offline : $id');
   }
 
   static Future<List<SyncTask>> getAllTasks() async {
@@ -59,7 +72,7 @@ class OfflineSyncQueue {
     }
     await box.clear();
     for (final task in failedTasks) {
-      await box.add(task);
+      await box.put(task.id, task);
     }
   }
 }

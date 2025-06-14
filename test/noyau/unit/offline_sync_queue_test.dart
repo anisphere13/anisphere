@@ -20,15 +20,15 @@ void main() {
   });
 
   test('addTask stores task in Hive box', () async {
-    final task = SyncTask(type: 'test', data: {'v': 1}, timestamp: DateTime.now());
+    final task = SyncTask(id: 't1', type: 'test', data: {'v': 1});
     await OfflineSyncQueue.addTask(task);
     final box = await Hive.openBox<SyncTask>('offline_sync_queue');
     expect(box.length, 1);
-    expect(box.getAt(0)?.type, 'test');
+    expect(box.get('t1')?.type, 'test');
   });
 
   test('processQueue processes tasks and clears box', () async {
-    final task = SyncTask(type: 'proc', data: {}, timestamp: DateTime.now());
+    final task = SyncTask(id: 'proc', type: 'proc', data: {});
     await OfflineSyncQueue.addTask(task);
     final processed = <SyncTask>[];
     await OfflineSyncQueue.processQueue((t) async {
@@ -40,18 +40,18 @@ void main() {
   });
 
   test('processQueue retains failed tasks', () async {
-    final task = SyncTask(type: 'fail', data: {}, timestamp: DateTime.now());
+    final task = SyncTask(id: 'fail', type: 'fail', data: {});
     await OfflineSyncQueue.addTask(task);
     await OfflineSyncQueue.processQueue((t) async {
       throw Exception('boom');
     });
     final box = await Hive.openBox<SyncTask>('offline_sync_queue');
     expect(box.length, 1);
-    expect(box.getAt(0)?.type, 'fail');
+    expect(box.get('fail')?.type, 'fail');
   });
 
   test('clearQueue removes all tasks', () async {
-    final task = SyncTask(type: 'clear', data: {}, timestamp: DateTime.now());
+    final task = SyncTask(id: 'clear', type: 'clear', data: {});
     await OfflineSyncQueue.addTask(task);
     await OfflineSyncQueue.clearQueue();
     final box = await Hive.openBox<SyncTask>('offline_sync_queue');
