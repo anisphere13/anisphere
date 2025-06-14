@@ -8,8 +8,6 @@ import 'package:hive/hive.dart';
 import '../models/consent_entry.dart';
 import 'local_storage_service.dart';
 
-part 'consent_service.g.dart';
-
 class ConsentService {
   static const _boxName = 'consent_history';
   Box<ConsentEntry>? _box;
