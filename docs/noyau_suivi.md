@@ -198,6 +198,14 @@ AniSphère introduit une authentification biométrique (empreinte digitale ou re
 | lib/modules/noyau/screens/security_settings_screen.dart | ✅ fait |
 | lib/modules/noyau/widgets/biometric_guard.dart | ✅ fait |
 
+### Consentement RGPD
+| Fichier | Rôle |
+|---------|------|
+| functions/index.js | Fonction Cloud enregistrant les données sensibles et le `consentementIA` |
+| docs/ia_policy.md | Politique détaillée sur l'anonymisation et le traitement des données |
+| lib/modules/noyau/models/security_settings_model.dart | Stockage local des choix de sécurité et de consentement |
+| lib/modules/noyau/screens/security_settings_screen.dart | Interface pour modifier ou révoquer son consentement |
+
 ---
 
 ## 🗂️ Annexes & liens

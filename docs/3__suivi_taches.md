@@ -29,6 +29,11 @@ Stockage hybride : terminé (Hive + Firebase avec sync différée)
 
 Notifications globales : à venir (IA + catégories par module)
 
+- [x] Fonction `storeSensitiveUserData` (functions/index.js)
+- [x] Document `ia_policy.md` sur le consentement RGPD
+- [x] Modèle `security_settings_model.dart`
+- [x] Écran `security_settings_screen.dart`
+
 🩺 Santé — Activation prévue (Roadmap Phase 4)
 
 OCR carnet santé : prévu (lecture ordonnances, vaccins)
