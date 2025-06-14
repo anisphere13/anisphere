@@ -93,6 +93,9 @@ Tests automatisés en place
 IA locale opérationnelle (OCR, suggestions, compression)
 
 Noyau fonctionnel avec stockage hybride (Hive + Firebase différé)
+ℹ️ Utilisation du module Partage
+- En mode gratuit, ouvrez l’onglet **Partage** pour générer un QR code ou un fichier à envoyer manuellement.
+- Avec l’abonnement Premium, activez la synchronisation cloud pour partager automatiquement vos données entre plusieurs appareils.
 
 👨‍💻 Contribuer
 

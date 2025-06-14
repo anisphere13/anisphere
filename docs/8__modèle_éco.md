@@ -33,6 +33,11 @@ Partage en lecture seule avec d'autres utilisateurs
 Modules de base (santé, éducation, dressage)
 
 L’IA fonctionne ici en local : aucun coût cloud généré.
+🤝 Partage local gratuit vs cloud premium
+
+Le partage de base est entièrement local. L'utilisateur peut générer un QR code ou un fichier à transmettre manuellement, sans aucune connexion serveur.
+
+L'offre premium débloque la synchronisation cloud automatique : les profils et historiques partagés sont accessibles en temps réel depuis n'importe quel appareil autorisé. Cette option couvre les frais de stockage et de bande passante.
 
 💎 Fonctions premium — haute valeur, faible charge
 

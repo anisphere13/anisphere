@@ -94,6 +94,12 @@ GitHub Actions assure le test automatique à chaque push
 Fichier test_tracker.md → suivi des tests à jour
 
 Chaque module a son dossier dans /test/[module]/
+🔗 Module Partage — Tâches & statut
+- Base de partage local (QR code + export) : terminée
+- Sauvegarde cloud facultative : en cours
+- Gestion des permissions d'accès : prévu
+- UI onglet Partage : à démarrer
+- Tests module partage : à créer
 
 Les scripts : generate_test_module.dart, update_test_tracker.dart, sync_docs.sh
 

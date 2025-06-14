@@ -74,6 +74,12 @@ Historique des échanges : prévu (réputation, avis)
 Conversation privée : à définir (Firestore messages)
 
 Tests module messagerie : à créer (unit/widget).
+🔗 Partage — Suivi du module
+Partage local (QR code + export) : terminé
+Sauvegarde cloud premium : en cours
+Permissions d'accès : prévu
+Interface Partage : à démarrer
+Tests module partage : à créer
 
 🧪 Tests & Automatisation — En parallèle
 

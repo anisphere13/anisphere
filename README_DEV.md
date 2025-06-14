@@ -17,6 +17,10 @@ Le développement d'AniSphère s'appuie sur **Flutter&nbsp;3.32.x** et **Dart&nb
 Les scripts de CI (GitHub Actions) utilisent cette version pour lancer
 les tests et la compilation. Veillez à utiliser la même version en local
 pour éviter toute incompatibilité.
+ℹ️ Notes d’utilisation du module Partage pour les contributeurs
+- Testez toujours le partage local hors connexion avant de valider une mise à jour.
+- Les fonctions cloud nécessitent un compte Premium de test ; utilisez `lib/core/sharing` pour simuler la synchro.
+- Documentez les évolutions dans `docs/3__suivi_taches.md` et `docs/0__instructions.md`.
 
 🗂️ Chapitre 2 — Structure du projet Flutter
 
