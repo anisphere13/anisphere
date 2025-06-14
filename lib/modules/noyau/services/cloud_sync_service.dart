@@ -16,7 +16,8 @@ import '../services/offline_sync_queue.dart';
 import '../services/offline_photo_queue.dart' as offline_queue;
 import '../services/offline_gps_queue.dart';
 import '../services/storage_optimizer.dart';
-
+import 'package:archive/archive.dart';
+import 'dart:convert';
 class CloudSyncService {
   final FirebaseService _firebaseService;
   CloudSyncService({FirebaseService? firebaseService})

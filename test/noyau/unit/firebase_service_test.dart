@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:anisphere/modules/noyau/services/firebase_service.dart';
 import 'package:anisphere/modules/noyau/models/user_model.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';

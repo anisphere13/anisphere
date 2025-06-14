@@ -10,7 +10,7 @@ void main() {
   });
 
   test('compressPath reduces points', () {
-    final analyzer = IAGPSAnalyzer();
+    const analyzer = IAGPSAnalyzer();
     final now = DateTime.now();
     final path = [
       GPSPoint(lat: 0, lon: 0, time: now),
@@ -23,7 +23,7 @@ void main() {
   });
 
   test('tagStops detects pause', () {
-    final analyzer = IAGPSAnalyzer();
+    const analyzer = IAGPSAnalyzer();
     final now = DateTime.now();
     final path = [
       GPSPoint(lat: 0, lon: 0, time: now),
@@ -37,7 +37,7 @@ void main() {
   });
 
   test('tagAnomalies detects big jumps', () {
-    final analyzer = IAGPSAnalyzer();
+    const analyzer = IAGPSAnalyzer();
     final now = DateTime.now();
     final path = [
       GPSPoint(lat: 0, lon: 0, time: now),
