@@ -3,7 +3,6 @@ library;
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
-import '../services/biometric_auth_service.dart';
 import '../models/security_settings_model.dart';
 import '../services/modules_service.dart';
 

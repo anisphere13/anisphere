@@ -7,7 +7,6 @@ library;
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:archive/archive.dart';
 import 'package:flutter/foundation.dart';
 
 import '../models/animal_model.dart';
