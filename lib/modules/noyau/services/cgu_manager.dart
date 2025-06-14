@@ -59,7 +59,9 @@ class CguManager {
 
     if (acceptedCgu != cgu || acceptedPrivacy != privacy) {
       if (NavigationService.context != null) {
-        await NavigationService.push(const LegalScreen());
+        await NavigationService.push(
+          const LegalScreen(consentType: 'general'), // or an enum value
+        );
       } else {
         debugPrint('❌ Navigation context indisponible pour LegalScreen');
       }
