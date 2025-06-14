@@ -90,28 +90,30 @@ class _HomeScreenState extends State<HomeScreen> {
     final userProvider = Provider.of<UserProvider>(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Accueil"),
-        actions: [
-          PopupMenuButton<String>(
-            onSelected: (value) async {
-              if (value == 'logout') {
-                final navigator = Navigator.of(context);
-                await userProvider.signOut();
-                if (mounted) {
-                  navigator.pushReplacement(
-                    MaterialPageRoute(builder: (_) => const LoginScreen()),
-                  );
-                }
-              }
-            },
-            itemBuilder: (_) => const [
-              PopupMenuItem(value: 'logout', child: Text('Se Déconnecter')),
-            ],
-          ),
+      // AppBar supprimée pour commencer directement sous la barre de statut
+      appBar: const PreferredSize(
+        preferredSize: Size.zero,
+        child: SizedBox.shrink(),
+      ),
+      floatingActionButton: PopupMenuButton<String>(
+        icon: const Icon(Icons.more_vert),
+        onSelected: (value) async {
+          if (value == 'logout') {
+            final navigator = Navigator.of(context);
+            await userProvider.signOut();
+            if (mounted) {
+              navigator.pushReplacement(
+                MaterialPageRoute(builder: (_) => const LoginScreen()),
+              );
+            }
+          }
+        },
+        itemBuilder: (_) => const [
+          PopupMenuItem(value: 'logout', child: Text('Se Déconnecter')),
         ],
       ),
-      body: loadingSummaries
+      body: SafeArea(
+        child: loadingSummaries
           ? const Center(child: CircularProgressIndicator())
           : summaries.isEmpty
               ? const Center(
@@ -144,6 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
+      ),
     );
   }
 }
