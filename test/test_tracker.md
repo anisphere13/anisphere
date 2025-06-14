@@ -41,6 +41,7 @@
 | test/noyau/unit/firebase_service_test.dart | unit | package:anisphere/modules/noyau/services/firebase_service.dart | ✅ |
 | test/noyau/unit/cloud_sync_service_test.dart | unit | package:anisphere/modules/noyau/services/cloud_sync_service.dart | ✅ |
 | test/noyau/unit/cloud_drive_service_test.dart | unit | package:anisphere/modules/noyau/services/cloud_drive_service.dart | ✅ |
+| test/noyau/unit/consent_service_test.dart | unit | package:anisphere/modules/noyau/services/consent_service.dart | ✅ |
 | test/noyau/unit/biometric_service_test.dart | unit | package:anisphere/modules/noyau/services/biometric_service.dart | ✅ |
 | test/noyau/unit/ia_executor_test.dart | unit | package:anisphere/modules/noyau/logic/ia_executor.dart | ✅ |
 | test/noyau/unit/ia_metrics_collector_test.dart | unit | package:anisphere/modules/noyau/logic/ia_metrics_collector.dart | ✅ |
@@ -84,6 +85,7 @@
 | test/noyau/widget/biometric_setup_screen_test.dart | widget | package:anisphere/modules/noyau/screens/biometric_setup_screen.dart | ✅ |
 | test/noyau/widget/notifications_screen_test.dart | widget | package:anisphere/modules/noyau/screens/notifications_screen.dart | ✅ |
 | test/noyau/widget/settings_screen_test.dart | widget | package:anisphere/modules/noyau/screens/settings_screen.dart | ✅ |
+| test/noyau/widget/legal_screen_test.dart | widget | package:anisphere/modules/noyau/screens/legal_screen.dart | ✅ |
 | test/noyau/unit/sync_metrics_model_test.dart | unit | package:anisphere/modules/noyau/models/sync_metrics_model.dart | ✅ |
 | test/messagerie/unit/messaging_service_test.dart | unit | package:anisphere/modules/messagerie/services/messaging_service.dart | ✅ |
 | test/messagerie/unit/offline_message_queue_test.dart | unit | package:anisphere/modules/messagerie/services/offline_message_queue.dart | ✅ |
