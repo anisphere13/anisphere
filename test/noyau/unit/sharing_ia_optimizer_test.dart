@@ -20,7 +20,7 @@ class FakeCloudSharingService extends CloudSharingService {
   final List<List<int>> uploads = [];
   FakeCloudSharingService() : super();
   @override
-  Future<void> uploadCompressed(List<int> gzipData) async {
+  Future<void> uploadCompressed(List<int> gzipData, {double cost = 0}) async {
     uploads.add(gzipData);
   }
 }
