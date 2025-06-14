@@ -3,12 +3,16 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
 import 'package:anisphere/modules/noyau/hooks/consent_hooks.dart';
 import 'package:anisphere/modules/noyau/screens/legal_screen.dart';
+import 'package:anisphere/modules/noyau/services/consent_service.dart';
+import 'package:mockito/mockito.dart';
 
-class FakeConsentService extends ConsentService {
+class FakeConsentService extends Fake implements ConsentService {
   bool has = false;
   bool saved = false;
+
   @override
   Future<bool> hasConsent(String type) async => has;
+
   @override
   Future<void> saveConsent(String type) async {
     saved = true;
