@@ -32,6 +32,7 @@ import 'package:anisphere/modules/noyau/models/photo_model.dart';
 import 'package:anisphere/modules/noyau/models/sync_metrics_model.dart';
 import 'package:anisphere/modules/noyau/services/offline_photo_queue.dart'
     as offline_queue;
+import 'package:anisphere/modules/noyau/models/share_history_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -63,6 +64,7 @@ void main() async {
     Hive.registerAdapter(PhotoModelAdapter());
     Hive.registerAdapter(SyncMetricsModelAdapter());
     Hive.registerAdapter(offline_queue.PhotoTaskAdapter());
+    Hive.registerAdapter(ShareHistoryModelAdapter());
     await LocalStorageService.init();
     assert(() {
       debugPrint("📦 Hive initialized successfully!");

@@ -37,6 +37,7 @@ class AppInitializer {
         await _openSafeBox('offline_sync_queue');
         await _openSafeBox('offline_photo_queue');
         await _openSafeBox('photos');
+        await _openSafeBox('share_history');
       },
       successMessage: "📦 Hive initialisé !",
       errorMessage: "❌ Échec Hive",
