@@ -94,7 +94,7 @@ void main() {
   test('pushAnimalData queues task on failure', () async {
     final mock = MockFirebaseService();
     expect(mock, isNotNull); // FIXED: flutter analyze
-    when(mock.saveAnimal(any<AnimalModel>(), forTraining: true))
+    when(mock.saveAnimal(argThat(isA<AnimalModel>()), forTraining: true))
         .thenAnswer((_) async => throw Exception('fail')); // FIXED: flutter analyze
     final service = CloudSyncService(firebaseService: mock);
     final animal = AnimalModel(
@@ -119,9 +119,9 @@ void main() {
   test('replayOfflineTasks flushes queued tasks', () async {
     final failing = MockFirebaseService();
     expect(failing, isNotNull); // FIXED: flutter analyze
-    when(failing.saveAnimal(any<AnimalModel>(), forTraining: true))
+    when(failing.saveAnimal(argThat(isA<AnimalModel>()), forTraining: true))
         .thenAnswer((_) async => throw Exception('fail')); // FIXED: flutter analyze
-    when(failing.saveUser(any<UserModel>(), forTraining: true))
+    when(failing.saveUser(argThat(isA<UserModel>()), forTraining: true))
         .thenAnswer((_) async => throw Exception('fail')); // FIXED: flutter analyze
     when(failing.sendModuleData(any<String>(),
             argThat(isA<Map<String, dynamic>>())))
@@ -163,9 +163,9 @@ void main() {
 
     final success = MockFirebaseService();
     expect(success, isNotNull); // FIXED: flutter analyze
-    when(success.saveAnimal(any<AnimalModel>(), forTraining: true))
+    when(success.saveAnimal(argThat(isA<AnimalModel>()), forTraining: true))
         .thenAnswer((_) async => true); // FIXED: flutter analyze
-    when(success.saveUser(any<UserModel>(), forTraining: true))
+    when(success.saveUser(argThat(isA<UserModel>()), forTraining: true))
         .thenAnswer((_) async => true); // FIXED: flutter analyze
     when(success.sendModuleData(any<String>(),
             argThat(isA<Map<String, dynamic>>())))
