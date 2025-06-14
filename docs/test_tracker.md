@@ -93,4 +93,4 @@
 | test/messagerie/widget/message_list_screen_widget_test.dart | widget | package:anisphere/modules/messagerie/screens/message_list_screen.dart | ✅ |
 | test/messagerie/integration/messagerie_integration.dart | integration | package:anisphere/modules/messagerie/screens/chat_screen.dart | ✅ |
 
-- ✅ Tests validés automatiquement le 2025-06-15
+- ✅ Tests validés automatiquement le 2025-06-14
