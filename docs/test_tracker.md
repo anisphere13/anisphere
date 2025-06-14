@@ -90,3 +90,4 @@
 | test/messagerie/integration/messagerie_integration.dart | integration | package:anisphere/modules/messagerie/screens/chat_screen.dart | ✅ |
 
 - ✅ Tests validés automatiquement le 2025-06-14
+| test/noyau/widget/consent_hooks_test.dart | widget | package:anisphere/modules/noyau/hooks/consent_hooks.dart | ✅ |
