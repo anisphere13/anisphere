@@ -71,7 +71,7 @@ class _ShareScreenState extends State<ShareScreen> {
           ElevatedButton(
             onPressed: () async {
               await LocalSharingService().share('default');
-              if (!mounted) return;
+              if (!context.mounted) return;
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Partage local effectué')),
               );
@@ -83,7 +83,7 @@ class _ShareScreenState extends State<ShareScreen> {
             onPressed: isPremium
                 ? () async {
                     await CloudSharingService().share('default');
-                    if (!mounted) return;
+                    if (!context.mounted) return;
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Partage cloud effectué')),
                     );
