@@ -9,7 +9,6 @@ import 'package:provider/provider.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:anisphere/firebase_options.dart';
-import 'package:anisphere/theme.dart';
 import 'package:anisphere/modules/noyau/screens/splash_screen.dart';
 import 'package:anisphere/modules/noyau/services/local_storage_service.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
@@ -34,6 +33,7 @@ import 'package:anisphere/modules/noyau/models/photo_model.dart';
 import 'package:anisphere/modules/noyau/models/sync_metrics_model.dart';
 import 'package:anisphere/modules/noyau/services/offline_photo_queue.dart'
     as offline_queue;
+import 'package:anisphere/modules/noyau/models/share_history_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -65,6 +65,7 @@ void main() async {
     Hive.registerAdapter(PhotoModelAdapter());
     Hive.registerAdapter(SyncMetricsModelAdapter());
     Hive.registerAdapter(offline_queue.PhotoTaskAdapter());
+    Hive.registerAdapter(ShareHistoryModelAdapter());
     await LocalStorageService.init();
     assert(() {
       debugPrint("📦 Hive initialized successfully!");

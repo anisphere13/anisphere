@@ -1,25 +1,35 @@
 library;
-// TODO: ajouter test
 
 import 'package:flutter/foundation.dart';
-import 'package:hive/hive.dart';
+
+import '../models/share_history_model.dart';
+import 'share_history_service.dart';
 
 class LocalSharingService {
-  static const String _boxName = 'local_sharing_queue';
+  final ShareHistoryService _historyService;
 
-  Future<void> storeShare(Map<String, dynamic> data) async {
-    final box = await Hive.openBox<Map>(_boxName);
-    await box.add(data);
-    debugPrint('📥 Donnée de partage stockée localement');
-  }
+  LocalSharingService({ShareHistoryService? historyService})
+      : _historyService = historyService ?? ShareHistoryService();
 
-  Future<List<Map<String, dynamic>>> getPendingShares() async {
-    final box = await Hive.openBox<Map>(_boxName);
-    return box.values.map((e) => Map<String, dynamic>.from(e)).toList();
-  }
-
-  Future<void> clear() async {
-    final box = await Hive.openBox<Map>(_boxName);
-    await box.clear();
+  Future<void> share(String data) async {
+    try {
+      debugPrint('📤 Partage local : $data');
+      await _historyService.addEntry(
+        ShareHistoryModel(
+          mode: 'local',
+          date: DateTime.now(),
+          success: true,
+        ),
+      );
+    } catch (e) {
+      await _historyService.addEntry(
+        ShareHistoryModel(
+          mode: 'local',
+          date: DateTime.now(),
+          success: false,
+          feedback: e.toString(),
+        ),
+      );
+    }
   }
 }

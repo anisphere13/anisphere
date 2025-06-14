@@ -5,7 +5,6 @@ import 'package:connectivity_plus_platform_interface/connectivity_plus_platform_
 import 'package:anisphere/modules/noyau/services/sharing_connectivity_manager.dart';
 import 'package:anisphere/modules/noyau/services/sharing_ia_optimizer.dart';
 import 'package:anisphere/modules/noyau/services/cloud_sharing_service.dart';
-import 'package:anisphere/modules/noyau/services/local_sharing_service.dart';
 import '../../test_config.dart';
 
 class FakeConnectivityPlatform extends ConnectivityPlatform {

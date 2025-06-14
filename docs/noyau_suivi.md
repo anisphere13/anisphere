@@ -116,6 +116,8 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 - [06/2025] Tests unitaires : `offline_gps_queue_test.dart`.
 - [06/2025] Tests unitaires : `camera_service_test.dart`, `photo_model_test.dart`, `photo_upload_queue_test.dart`.
 - [06/2025] Création du `gps_service.dart` pour la localisation et la gestion du flux de positions.
+- [06/2025] Ajout du modèle `share_history_model.dart` et de l'historique de partage Hive.
+- [06/2025] Mise à jour de `share_screen.dart` avec partage local/cloud et statut de connexion.
 ---
 
 ## 🚩 Statut actuel du noyau (05/06/2025)

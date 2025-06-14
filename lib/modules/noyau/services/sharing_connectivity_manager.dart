@@ -2,7 +2,6 @@ library;
 
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/foundation.dart';
 
 import 'cloud_sync_service.dart';
 import 'local_sharing_service.dart';
