@@ -131,10 +131,15 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 | Export & partage animal               | 🔄 En cours | share_screen, pdf_export_service, qr_service      | Non           | Export PDF à finaliser           |
 | Rôles & multi-utilisateurs            | 🔄 En cours | user_model, settings_screen                       | Non           | UI assignation rôles à finir     |
 | Sécurité avancée                      | 🔄 En cours | local_storage_service, user_service               | Non           | Chiffrement, double auth         |
+| Biométrie & PIN                       | 🔄 À démarrer | biometric_auth_service, pin_code_service, auth_lock_screen | Non           | Auth biométrique avec code PIN secours |
 | IA cloud (sync, scoring, logs)        | 🔄 À démarrer | ia_master (syncToCloud), cloud_sync_service      | Non           | Synchronisation premium          |
 | Messagerie interne                    | 🔄 À démarrer | messages_service, messaging_screen              | Non           | Structure des conversations      |
 | **Superadmin**                        | ❌ Migré  | —                                                 | —             | Maintenant module indépendant    |
 | Prise de photo & file offline         | 🔄 À démarrer | camera_service, photo_model, photo_upload_queue | Non           | Capture locale, sync différée    |
+
+### Sécurité avancée
+
+AniSphère introduit une authentification biométrique (empreinte digitale ou reconnaissance faciale) pour ouvrir l’application. En cas d’échec ou d’indisponibilité, un code PIN chiffré permet de poursuivre l’accès. Cette approche garantit la sécurité tout en restant simple et rapide pour l’utilisateur.
 
 ---
 
@@ -280,3 +285,5 @@ Responsable : Superadmin
 ---
 
 ✅ Ce document est un repère **temporaire**, en attendant que ces données puissent être gérées automatiquement (ex : via script d’init Firebase ou via IAMaster avec `createIfNotExists`).
+
+- 🧩 Synchronisation automatique du noyau le 2025-06-14
