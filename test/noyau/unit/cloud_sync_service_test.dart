@@ -94,7 +94,7 @@ void main() {
   test('pushAnimalData queues task on failure', () async {
     final mock = MockFirebaseService();
     when(mock.saveAnimal(any<AnimalModel>(),
-            forTraining: anyNamed('forTraining')))
+            forTraining: anyNamed<bool>('forTraining')))
         .thenAnswer((_) async => throw Exception('fail'));
     final service = CloudSyncService(firebaseService: mock);
     final animal = AnimalModel(
@@ -119,12 +119,12 @@ void main() {
   test('replayOfflineTasks flushes queued tasks', () async {
     final failing = MockFirebaseService();
     when(failing.saveAnimal(any<AnimalModel>(),
-            forTraining: anyNamed('forTraining')))
+            forTraining: anyNamed<bool>('forTraining')))
         .thenAnswer((_) async => throw Exception('fail'));
     when(failing.saveUser(any<UserModel>(),
-            forTraining: anyNamed('forTraining')))
+            forTraining: anyNamed<bool>('forTraining')))
         .thenAnswer((_) async => throw Exception('fail'));
-    when(failing.sendModuleData(any, any))
+    when(failing.sendModuleData(any<String>(), any<Map<String, dynamic>>()))
         .thenAnswer((_) async => throw Exception('fail'));
 
     final service = CloudSyncService(firebaseService: failing);
@@ -162,19 +162,19 @@ void main() {
     await service.pushModuleData('demo', {'v': 1});
 
     final success = MockFirebaseService();
-    when(success.saveAnimal(any<AnimalModel>(), forTraining: anyNamed('forTraining')))
+    when(success.saveAnimal(any<AnimalModel>(), forTraining: anyNamed<bool>('forTraining')))
         .thenAnswer((_) async => true);
-    when(success.saveUser(any<UserModel>(), forTraining: anyNamed('forTraining')))
+    when(success.saveUser(any<UserModel>(), forTraining: anyNamed<bool>('forTraining')))
         .thenAnswer((_) async => true);
-    when(success.sendModuleData(any, any)).thenAnswer((_) async {});
+    when(success.sendModuleData(any<String>(), any<Map<String, dynamic>>())).thenAnswer((_) async {});
 
     final replay = CloudSyncService(firebaseService: success);
     await replay.replayOfflineTasks();
 
-    verify(success.saveAnimal(any<AnimalModel>(), forTraining: anyNamed('forTraining')))
+    verify(success.saveAnimal(any<AnimalModel>(), forTraining: anyNamed<bool>('forTraining')))
         .called(1);
-    verify(success.saveUser(any<UserModel>(), forTraining: anyNamed('forTraining'))).called(1);
-    verify(success.sendModuleData('demo', any)).called(1);
+    verify(success.saveUser(any<UserModel>(), forTraining: anyNamed<bool>('forTraining'))).called(1);
+    verify(success.sendModuleData('demo', any<Map<String, dynamic>>())).called(1);
 
     final remaining = await OfflineSyncQueue.getAllTasks();
     expect(remaining.isEmpty, isTrue);
