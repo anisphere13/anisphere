@@ -3,7 +3,6 @@ import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
 import 'package:anisphere/modules/noyau/models/user_model.dart';
 import 'package:anisphere/modules/noyau/services/auth_service.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:connectivity_plus_platform_interface/connectivity_plus_platform_interface.dart';
 import '../../test_config.dart';
 import 'package:mockito/mockito.dart';
@@ -37,14 +36,15 @@ class MockAuthService extends Mock implements AuthService {}
 class MockUserService extends Mock implements UserService {}
 
 class FakeConnectivityPlatform extends ConnectivityPlatform {
-  ConnectivityResult result;
-  FakeConnectivityPlatform(this.result);
+  final List<ConnectivityResult> results;
+  FakeConnectivityPlatform(ConnectivityResult r) : results = [r];
 
   @override
-  Future<ConnectivityResult> checkConnectivity() async => result;
+  Future<List<ConnectivityResult>> checkConnectivity() async => results;
 
   @override
-  Stream<ConnectivityResult> get onConnectivityChanged => Stream.value(result);
+  Stream<List<ConnectivityResult>> get onConnectivityChanged =>
+      Stream.value(results);
 }
 
 void main() {
