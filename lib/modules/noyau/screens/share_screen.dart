@@ -50,11 +50,13 @@ class ShareScreen extends StatelessWidget {
             onPressed: () async {
               final auth = Provider.of<UserProvider>(context, listen: false).authService;
               if (!await auth.verifyBiometric()) {
+                if (!context.mounted) return;
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Vérification biométrique échouée')),
                 );
                 return;
               }
+              if (!context.mounted) return;
               // Action d'export future
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 content: Text("Export IA à venir"),
