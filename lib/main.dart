@@ -3,6 +3,7 @@
 library;
 
 import 'package:flutter/material.dart';
+import 'package:anisphere/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -138,7 +139,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: NavigationService.navigatorKey,
       title: 'AniSphère',
       debugShowCheckedModeBanner: false,
-      theme: buildAniSphereTheme(),
+      theme: appTheme,
       home: const SplashScreen(),
     );
   }
