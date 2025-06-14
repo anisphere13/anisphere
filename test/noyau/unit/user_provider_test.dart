@@ -101,8 +101,8 @@ void main() {
 
     when(mockService.init()).thenAnswer((_) async {});
     when(mockService.deleteUserLocally()).thenAnswer((_) async {});
-    when(mockService.updateUser(any<UserModel>()))
-        .thenAnswer((_) async => true);
+    when(() => mockService.updateUser(any<UserModel>()))
+        .thenAnswer((_) async => true); // FIXED: flutter analyze
     when(mockAuth.signOut()).thenAnswer((_) async {});
 
     final provider = UserProvider(mockService, mockAuth);
@@ -141,8 +141,8 @@ void main() {
 
     when(mockService.init()).thenAnswer((_) async {});
     when(mockService.deleteUserLocally()).thenAnswer((_) async {});
-    when(mockService.updateUser(any<UserModel>()))
-        .thenAnswer((_) async => true);
+    when(() => mockService.updateUser(any<UserModel>()))
+        .thenAnswer((_) async => true); // FIXED: flutter analyze
     when(mockAuth.signOut()).thenAnswer((_) async {});
 
     final provider = UserProvider(mockService, mockAuth);
