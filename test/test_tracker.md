@@ -32,6 +32,7 @@
 | test/noyau/unit/notification_feedback_service_test.dart | unit | package:anisphere/modules/noyau/services/notification_feedback_service.dart | ✅ |
 | test/noyau/unit/backup_service_test.dart | unit | package:anisphere/modules/noyau/services/backup_service.dart | ✅ |
 | test/noyau/unit/local_storage_service_test.dart | unit | package:anisphere/modules/noyau/services/local_storage_service.dart | ✅ |
+| test/noyau/unit/consent_service_test.dart | unit | package:anisphere/modules/noyau/services/consent_service.dart | ✅ |
 | test/noyau/unit/animal_service_test.dart | unit | package:anisphere/modules/noyau/services/animal_service.dart | ✅ |
 | test/noyau/unit/ia_sync_service_test.dart | unit | package:anisphere/modules/noyau/services/ia_sync_service.dart | ✅ |
 | test/noyau/unit/cloud_notification_listener_test.dart | unit | package:anisphere/modules/noyau/services/cloud_notification_listener.dart | ✅ |
@@ -77,6 +78,7 @@
 | test/noyau/widget/animal_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animal_screen.dart | ✅ |
 | test/noyau/widget/animals_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animals_screen.dart | ✅ |
 | test/noyau/widget/login_screen_test.dart | widget | package:anisphere/modules/noyau/screens/login_screen.dart | ✅ |
+| test/noyau/widget/legal_screen_test.dart | widget | package:anisphere/modules/noyau/screens/legal_screen.dart | ✅ |
 | test/noyau/widget/support_screen_test.dart | widget | package:anisphere/modules/noyau/screens/support_screen.dart | ✅ |
 | test/noyau/widget/register_screen_test.dart | widget | package:anisphere/modules/noyau/screens/register_screen.dart | ✅ |
 | test/noyau/widget/biometric_setup_screen_test.dart | widget | package:anisphere/modules/noyau/screens/biometric_setup_screen.dart | ✅ |

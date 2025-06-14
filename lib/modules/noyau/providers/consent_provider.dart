@@ -2,44 +2,35 @@ library;
 
 import 'package:flutter/foundation.dart';
 
+import '../models/consent_entry.dart';
 import '../services/consent_service.dart';
 
-/// Provider de gestion des consentements.
-/// Charge les consentements via [ConsentService]
-/// et notifie lors d'une acceptation ou révocation.
 class ConsentProvider with ChangeNotifier {
   final ConsentService _service;
-  final Map<String, bool> _consents = {};
+  List<ConsentEntry> _history = [];
 
-  /// Vue non modifiable des consentements courants.
-  Map<String, bool> get consents => Map.unmodifiable(_consents);
+  List<ConsentEntry> get history => _history;
+  ConsentEntry? get lastEntry => _history.isNotEmpty ? _history.last : null;
+
+  bool get accepted => lastEntry?.action == ConsentAction.accepted;
 
   ConsentProvider({ConsentService? service})
       : _service = service ?? ConsentService();
 
-  /// Chargement initial des consentements.
-  Future<void> loadConsents() async {
-    final loaded = await _service.loadConsents();
-    _consents
-      ..clear()
-      ..addAll(loaded);
+  Future<void> loadHistory() async {
+    _history = await _service.getHistory();
     notifyListeners();
   }
 
-  /// Retourne l'état d'un consentement donné.
-  bool isAccepted(String key) => _consents[key] ?? false;
-
-  /// Accepte un consentement et notifie les listeners.
-  Future<void> accept(String key) async {
-    await _service.saveConsent(key, true);
-    _consents[key] = true;
-    notifyListeners();
-  }
-
-  /// Révoque un consentement et notifie les listeners.
-  Future<void> revoke(String key) async {
-    await _service.saveConsent(key, false);
-    _consents[key] = false;
+  Future<void> addAction(ConsentAction action, String userId) async {
+    final entry = ConsentEntry(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      userId: userId,
+      action: action,
+      timestamp: DateTime.now(),
+    );
+    await _service.addEntry(entry);
+    _history.add(entry);
     notifyListeners();
   }
 }

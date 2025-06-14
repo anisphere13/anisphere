@@ -1,42 +1,31 @@
-import 'dart:io';
-
+// Copilot Prompt : Test automatique pour consent_service.dart (unit)
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hive/hive.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
-import 'package:anisphere/modules/noyau/services/consent_service.dart';
 import '../../test_config.dart';
+import 'package:mockito/mockito.dart';
+import 'package:hive/hive.dart';
+import 'package:anisphere/modules/noyau/services/consent_service.dart';
+import 'package:anisphere/modules/noyau/models/consent_entry.dart';
+
+class MockBox extends Mock implements Box<ConsentEntry> {}
 
 void main() {
-  const keyName = 'hive_aes_key';
-  const secureStorage = FlutterSecureStorage();
-  late Directory tempDir;
-
-  setUp(() async {
+  setUpAll(() async {
     await initTestEnv();
-    tempDir = await Directory.systemTemp.createTemp();
-    Hive.init(tempDir.path);
-    await secureStorage.delete(key: keyName);
   });
 
-  tearDown(() async {
-    await Hive.deleteBoxFromDisk('consents');
-    await tempDir.delete(recursive: true);
-    await secureStorage.delete(key: keyName);
-  });
+  test('addEntry stores entry in Hive box', () async {
+    final mockBox = MockBox();
+    final service = ConsentService(testBox: mockBox, skipHiveInit: true);
 
-  test('record and revoke consent', () async {
-    await ConsentService.recordConsent('gps', 'noyau', '1.0', 'location');
-    final has = await ConsentService.hasConsent('gps', 'noyau');
-    expect(has, isTrue);
+    final entry = ConsentEntry(
+      id: 'e1',
+      userId: 'u1',
+      action: ConsentAction.accepted,
+      timestamp: DateTime.now(),
+    );
 
-    var box = await Hive.openBox('consents');
-    expect(box.length, 1);
+    await service.addEntry(entry);
 
-    await ConsentService.revokeConsent('gps', 'noyau');
-    final hasAfter = await ConsentService.hasConsent('gps', 'noyau');
-    expect(hasAfter, isFalse);
-    box = await Hive.openBox('consents');
-    expect(box.isEmpty, true);
+    verify(mockBox.put('e1', entry)).called(1);
   });
 }
