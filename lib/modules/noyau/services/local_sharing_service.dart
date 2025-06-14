@@ -2,7 +2,6 @@ library;
 
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
@@ -61,7 +60,7 @@ class LocalSharingService {
   Future<List<Map<String, dynamic>>> getPendingShares() async {
     final box = await _openBox();
     return box.values
-        .map((e) => Map<String, dynamic>.from(e as Map))
+        .map((e) => Map<String, dynamic>.from(e))
         .toList();
   }
 
