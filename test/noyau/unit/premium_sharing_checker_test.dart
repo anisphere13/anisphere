@@ -2,11 +2,20 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:anisphere/modules/noyau/services/premium_sharing_checker.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:anisphere/modules/noyau/models/user_model.dart';
+import 'package:anisphere/modules/noyau/services/user_service.dart';
+import 'package:anisphere/modules/noyau/services/auth_service.dart';
 
 class FakeUserProvider extends UserProvider {
-  FakeUserProvider(UserModel user) : super(null, null) {
-    _user = user;
-  }
+  UserModel? _testUser;
+
+  FakeUserProvider(UserModel user)
+      : _testUser = user,
+        super(UserService(skipHiveInit: true), AuthService());
+
+  set testUser(UserModel user) => _testUser = user;
+
+  @override
+  UserModel? get user => _testUser;
 }
 
 void main() {
