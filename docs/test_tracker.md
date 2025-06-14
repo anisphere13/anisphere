@@ -92,6 +92,10 @@
 | test/messagerie/widget/chat_screen_widget_test.dart | widget | package:anisphere/modules/messagerie/screens/chat_screen.dart | ✅ |
 | test/messagerie/widget/message_list_screen_widget_test.dart | widget | package:anisphere/modules/messagerie/screens/message_list_screen.dart | ✅ |
 | test/messagerie/integration/messagerie_integration.dart | integration | package:anisphere/modules/messagerie/screens/chat_screen.dart | ✅ |
+| test/sharing/unit/local_sharing_service_test.dart | unit | package:anisphere/modules/sharing/services/local_sharing_service.dart | ✅ |
+| test/sharing/unit/cloud_sharing_service_test.dart | unit | package:anisphere/modules/sharing/services/cloud_sharing_service.dart | ✅ |
+| test/sharing/unit/sharing_ia_optimizer_test.dart | unit | package:anisphere/modules/sharing/services/sharing_ia_optimizer.dart | ✅ |
+| test/sharing/widget/share_screen_test.dart | widget | package:anisphere/modules/noyau/screens/share_screen.dart | ✅ |
 
 - ✅ Tests validés automatiquement le 2025-06-14
 | test/noyau/unit/share_history_model_test.dart | unit | package:anisphere/modules/noyau/models/share_history_model.dart | ✅ |
