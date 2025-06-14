@@ -116,7 +116,6 @@ Pour lancer les tests localement :
 
 Consultez [README_Tests.md](README_Tests.md) et [docs/test_architecture.md](docs/test_architecture.md) pour plus de détails.
 
-Rejoignez l’aventure et contribuez à créer la meilleure application de suivi animal !
 Toutes les commandes de test se lancent depuis la racine du projet :
 ```bash
 flutter pub get
@@ -128,11 +127,3 @@ Pour plus de détails, consultez [README_Tests.md](README_Tests.md) et [docs/tes
 
 Rejoignez l’aventure et contribuez à créer la meilleure application de suivi animal !
 © AniSphère 2025 — Suivez vos animaux comme jamais auparavant.
-Rejoignez l’aventure et contribuez à créer la meilleure application de suivi animal !
-
-© AniSphère 2025 — Suivez vos animaux comme jamais auparavant.
-
-## Licence
-
-Ce projet est distribué sous licence [MIT](LICENSE).
-
