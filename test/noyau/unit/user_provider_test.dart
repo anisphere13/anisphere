@@ -36,8 +36,8 @@ class MockAuthService extends Mock implements AuthService {}
 class MockUserService extends Mock implements UserService {}
 
 class FakeConnectivityPlatform extends ConnectivityPlatform {
-  final List<ConnectivityResult> results;
-  FakeConnectivityPlatform(ConnectivityResult r) : results = [r];
+  List<ConnectivityResult> results;
+  FakeConnectivityPlatform(this.results);
 
   @override
   Future<List<ConnectivityResult>> checkConnectivity() async => results;
@@ -88,7 +88,7 @@ void main() {
     expect(provider.user, isNotNull);
 
     ConnectivityPlatform.instance =
-        FakeConnectivityPlatform(ConnectivityResult.wifi);
+        FakeConnectivityPlatform([ConnectivityResult.wifi]);
     await provider.signOut();
     expect(service.initCalled, isTrue);
     expect(service.deleteCalled, isTrue);
@@ -126,7 +126,7 @@ void main() {
 
     await provider.updateUser(user);
     ConnectivityPlatform.instance =
-        FakeConnectivityPlatform(ConnectivityResult.wifi);
+        FakeConnectivityPlatform([ConnectivityResult.wifi]);
     await provider.signOut();
 
     verify(mockService.init()).called(1);
@@ -166,7 +166,7 @@ void main() {
 
     await provider.updateUser(user);
     ConnectivityPlatform.instance =
-        FakeConnectivityPlatform(ConnectivityResult.none);
+        FakeConnectivityPlatform([ConnectivityResult.none]);
     await provider.signOut();
 
     verify(mockService.init()).called(1);
