@@ -2,6 +2,10 @@
 
 part of 'storage_sync_queue.dart';
 
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
 class StorageSyncTaskAdapter extends TypeAdapter<StorageSyncTask> {
   @override
   final int typeId = 122;
@@ -17,7 +21,7 @@ class StorageSyncTaskAdapter extends TypeAdapter<StorageSyncTask> {
       targetService: fields[1] as String,
       filePath: fields[2] as String,
       priority: fields[3] as int,
-      createdAt: fields[4] as DateTime,
+      createdAt: fields[4] as DateTime?,
     );
   }
 

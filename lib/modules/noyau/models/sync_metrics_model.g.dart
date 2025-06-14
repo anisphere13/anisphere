@@ -2,6 +2,10 @@
 
 part of 'sync_metrics_model.dart';
 
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
 class SyncMetricsModelAdapter extends TypeAdapter<SyncMetricsModel> {
   @override
   final int typeId = 25;

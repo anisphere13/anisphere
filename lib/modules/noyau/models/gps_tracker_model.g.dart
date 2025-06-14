@@ -2,6 +2,10 @@
 
 part of 'gps_tracker_model.dart';
 
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
 class GpsTrackerModelAdapter extends TypeAdapter<GpsTrackerModel> {
   @override
   final int typeId = 60;

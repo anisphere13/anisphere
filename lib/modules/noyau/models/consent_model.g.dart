@@ -2,6 +2,10 @@
 
 part of 'consent_model.dart';
 
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
 class ConsentModelAdapter extends TypeAdapter<ConsentModel> {
   @override
   final int typeId = 26;

@@ -2,6 +2,10 @@
 
 part of 'offline_gps_queue.dart';
 
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
 class GpsPointAdapter extends TypeAdapter<GpsPoint> {
   @override
   final int typeId = 150;
@@ -15,7 +19,7 @@ class GpsPointAdapter extends TypeAdapter<GpsPoint> {
     return GpsPoint(
       fields[0] as double,
       fields[1] as double,
-      timestamp: fields[2] as DateTime,
+      timestamp: fields[2] as DateTime?,
     );
   }
 
@@ -54,7 +58,7 @@ class GpsBatchAdapter extends TypeAdapter<GpsBatch> {
     };
     return GpsBatch(
       points: (fields[0] as List).cast<GpsPoint>(),
-      createdAt: fields[1] as DateTime,
+      createdAt: fields[1] as DateTime?,
     );
   }
 

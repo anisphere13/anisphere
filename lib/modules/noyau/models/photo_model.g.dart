@@ -2,6 +2,10 @@
 
 part of 'photo_model.dart';
 
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
 class PhotoModelAdapter extends TypeAdapter<PhotoModel> {
   @override
   final int typeId = 50;

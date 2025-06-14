@@ -19,7 +19,7 @@ class SyncTaskAdapter extends TypeAdapter<SyncTask> {
     return SyncTask(
       type: fields[0] as String,
       data: (fields[1] as Map).cast<String, dynamic>(),
-      timestamp: fields[2] as DateTime,
+      timestamp: fields[2] as DateTime?,
       id: fields[3] as String?,
     );
   }

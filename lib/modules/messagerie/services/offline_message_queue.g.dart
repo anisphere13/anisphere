@@ -2,6 +2,10 @@
 
 part of 'offline_message_queue.dart';
 
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
 class QueuedMessageAdapter extends TypeAdapter<QueuedMessage> {
   @override
   final int typeId = 121;
@@ -14,7 +18,7 @@ class QueuedMessageAdapter extends TypeAdapter<QueuedMessage> {
     };
     return QueuedMessage(
       message: fields[0] as MessageModel,
-      timestamp: fields[1] as DateTime,
+      timestamp: fields[1] as DateTime?,
     );
   }
 

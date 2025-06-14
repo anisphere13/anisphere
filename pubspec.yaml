@@ -10,23 +10,28 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # UI
   cupertino_icons: ^1.0.8
+  flutter_local_notifications: ^19.2.1
+  webview_flutter: ^4.13.0
 
-  # 🐝 Local database
-  hive: ^2.2.3
-  hive_flutter: ^1.1.0
-
-  # 🔧 Base utils
+  # Base / stockage local
   provider: ^6.1.2
   path_provider: ^2.1.5
   flutter_secure_storage: ^10.0.0-beta.4
   connectivity_plus: ^6.1.3
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  hive_generator: ^2.0.1
+
+  # Réseau & sécurité
   http: ^1.3.0
-  flutter_image_compress: ^2.4.0
   crypto: ^3.0.3
   archive: ^3.6.1
+  flutter_image_compress: ^2.4.0
+  uuid: ^4.0.0
 
-  # 🔥 Firebase
+  # Firebase
   firebase_core: ^3.14.0
   firebase_auth: ^5.6.0
   cloud_firestore: ^5.6.9
@@ -34,28 +39,23 @@ dependencies:
   firebase_messaging: ^15.2.7
   firebase_remote_config: ^5.4.5
   firebase_data_connect: ^0.1.5+1
-  uuid: ^4.0.0
 
-  # 🔑 Auth
+  # Authentification
   google_sign_in: ^6.3.0
   sign_in_with_apple: ^7.0.1
   local_auth: ^2.3.0
 
-  # 🌐 UI / WebView / Notifications
-  webview_flutter: ^4.13.0
-  flutter_local_notifications: ^19.2.1
-
-  # ✅ Module Identité
+  # Module Identité
   qr_flutter: ^4.1.0
   google_mlkit_text_recognition: ^0.15.0
   google_mlkit_commons: ^0.11.0
   image: ^4.3.0
-  pdf: ^3.10.4
-  printing: ^5.12.0
   image_picker: ^1.0.7
   mobile_scanner: ^7.0.1
+  pdf: ^3.10.4
+  printing: ^5.12.0
 
-  # 📱 Capteurs & IA locale
+  # IA locale / capteurs
   sensors_plus: ^6.1.1
   battery_plus: ^6.2.1
   pedometer: ^4.1.1
@@ -68,15 +68,14 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mockito: ^5.4.5
-  build_runner: ^2.4.15
-  hive_test: ^1.0.0
   flutter_lints: ^6.0.0
-  fake_cloud_firestore: ^3.1.0
+  build_runner: ^2.4.15
+  mockito: ^5.4.5 # ✅ version compatible avec analyzer <7.0.0
   hive_generator: ^2.0.1
+  hive_test: ^1.0.0
+  fake_cloud_firestore: ^3.1.0
   connectivity_plus_platform_interface: ^2.0.1
 
-# ⚠️ Dépendances figées pour éviter les conflits
 dependency_overrides:
   grpc: 3.2.4
   protobuf: 3.1.0

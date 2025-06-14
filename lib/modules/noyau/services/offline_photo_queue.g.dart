@@ -2,6 +2,10 @@
 
 part of 'offline_photo_queue.dart';
 
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
 class QueuedPhotoAdapter extends TypeAdapter<QueuedPhoto> {
   @override
   final int typeId = 131;
@@ -14,7 +18,7 @@ class QueuedPhotoAdapter extends TypeAdapter<QueuedPhoto> {
     };
     return QueuedPhoto(
       photo: fields[0] as PhotoModel,
-      timestamp: fields[1] as DateTime,
+      timestamp: fields[1] as DateTime?,
     );
   }
 
@@ -55,7 +59,7 @@ class PhotoTaskAdapter extends TypeAdapter<PhotoTask> {
       userId: fields[2] as String,
       uploaded: fields[3] as bool,
       remoteUrl: fields[4] as String,
-      timestamp: fields[5] as DateTime,
+      timestamp: fields[5] as DateTime?,
     );
   }
 

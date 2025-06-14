@@ -2,6 +2,10 @@
 
 part of 'share_history_model.dart';
 
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
 class ShareHistoryModelAdapter extends TypeAdapter<ShareHistoryModel> {
   @override
   final int typeId = 30;

@@ -2,7 +2,12 @@
 
 part of 'notification_feedback_model.dart';
 
-class NotificationFeedbackModelAdapter extends TypeAdapter<NotificationFeedbackModel> {
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class NotificationFeedbackModelAdapter
+    extends TypeAdapter<NotificationFeedbackModel> {
   @override
   final int typeId = 24;
 

@@ -20,7 +20,7 @@ class ConversationModelAdapter extends TypeAdapter<ConversationModel> {
       id: fields[0] as String,
       participantIds: (fields[1] as List).cast<String>(),
       lastMessage: fields[2] as String,
-      lastTimestamp: fields[3] as DateTime,
+      lastTimestamp: fields[3] as DateTime?,
       moduleName: fields[4] as String,
     );
   }

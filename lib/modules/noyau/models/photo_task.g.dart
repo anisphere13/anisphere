@@ -2,6 +2,10 @@
 
 part of 'photo_task.dart';
 
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
 class PhotoTaskAdapter extends TypeAdapter<PhotoTask> {
   @override
   final int typeId = 6;
