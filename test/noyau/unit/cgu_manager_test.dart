@@ -35,7 +35,8 @@ void main() {
 
   setUp(() {
     mockConfig = MockRemoteConfig();
-    when(mockConfig.setDefaults(any)).thenAnswer((_) async {});
+    when(mockConfig.setDefaults(any<Map<String, dynamic>>()))
+        .thenAnswer((_) async {});
     when(mockConfig.fetchAndActivate()).thenAnswer((_) async => true);
     when(mockConfig.getString('cgu_version')).thenReturn('2');
     when(mockConfig.getString('privacy_version')).thenReturn('3');
