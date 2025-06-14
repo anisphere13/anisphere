@@ -4,6 +4,7 @@
 // Champs : nom, espèce, race, date de naissance, photo.
 // L’animal est ensuite enregistré via AnimalService (Hive + Firebase).
 library;
+// TODO: ajouter test
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -53,6 +54,7 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
     final messenger = ScaffoldMessenger.of(context);
     try {
       await _animalService.init();
+      if (!mounted) return;
 
       final userProvider = Provider.of<UserProvider>(context, listen: false);
 
