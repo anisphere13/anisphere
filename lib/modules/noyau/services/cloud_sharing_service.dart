@@ -1,26 +1,21 @@
 library;
 
-import 'dart:io';
-
+import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 import '../models/share_history_model.dart';
 import 'share_history_service.dart';
-import 'cloud_drive_service.dart';
-import 'premium_sharing_checker.dart';
+import 'cloud_sync_service.dart';
 
 class CloudSharingService {
   final ShareHistoryService _historyService;
-  final CloudDriveService _driveService;
-  final PremiumSharingChecker _checker;
+  final CloudSyncService _syncService;
 
   CloudSharingService({
     ShareHistoryService? historyService,
-    CloudDriveService? driveService,
-    PremiumSharingChecker? checker,
+    CloudSyncService? syncService,
   })  : _historyService = historyService ?? ShareHistoryService(),
-        _driveService = driveService ?? CloudDriveService(),
-        _checker = checker ?? PremiumSharingChecker();
+        _syncService = syncService ?? CloudSyncService();
 
   Future<void> share(String data, {double cost = 0}) async {
     try {
@@ -46,43 +41,30 @@ class CloudSharingService {
     }
   }
 
-  /// Upload une donnée compressée en GZip vers le cloud.
-  Future<void> uploadCompressed(List<int> gzipData) async {
-    final tmp = File(
-        '${Directory.systemTemp.path}/share_${DateTime.now().millisecondsSinceEpoch}.gz');
-    await tmp.writeAsBytes(gzipData);
-    await uploadFile(tmp, useWebDav: true);
-    await tmp.delete();
-  }
-
-  /// Upload un fichier et retourne son URL si succès.
-  Future<String?> uploadFile(File file, {bool useWebDav = false}) async {
-    if (!_checker.canUseCloudSharing()) {
-      return null;
-    }
+  Future<void> uploadCompressed(List<int> gzipData, {double cost = 0}) async {
     try {
-      final success = await _driveService.uploadFile(file);
+      final encoded = base64Encode(gzipData);
+      await _syncService.pushModuleData('sharing', {'data': encoded});
       await _historyService.addEntry(
         ShareHistoryModel(
-          mode: 'cloud_file',
+          mode: 'cloud',
           date: DateTime.now(),
-          success: success,
+          success: true,
+          cost: cost,
         ),
       );
-      if (success) {
-        final name = file.uri.pathSegments.last;
-        return 'https://example.com/$name';
-      }
+      debugPrint('☁️ Données compressées envoyées au cloud');
     } catch (e) {
       await _historyService.addEntry(
         ShareHistoryModel(
-          mode: 'cloud_file',
+          mode: 'cloud',
           date: DateTime.now(),
           success: false,
+          cost: cost,
           feedback: e.toString(),
         ),
       );
+      debugPrint('❌ [CloudShare] Upload compressed failed: $e');
     }
-    return null;
   }
 }
