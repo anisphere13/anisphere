@@ -93,8 +93,9 @@ void main() {
 
   test('pushAnimalData queues task on failure', () async {
     final mock = MockFirebaseService();
-    when(mock.saveAnimal(any<AnimalModel>(), forTraining: anyNamed('forTraining')))
-        .thenThrow(Exception('fail'));
+    when(mock.saveAnimal(any<AnimalModel>(),
+            forTraining: anyNamed('forTraining')))
+        .thenAnswer((_) async => throw Exception('fail'));
     final service = CloudSyncService(firebaseService: mock);
     final animal = AnimalModel(
       id: 'a1',
@@ -117,11 +118,14 @@ void main() {
 
   test('replayOfflineTasks flushes queued tasks', () async {
     final failing = MockFirebaseService();
-    when(failing.saveAnimal(any<AnimalModel>(), forTraining: anyNamed('forTraining')))
-        .thenThrow(Exception('fail'));
-    when(failing.saveUser(any<UserModel>(), forTraining: anyNamed('forTraining')))
-        .thenThrow(Exception('fail'));
-    when(failing.sendModuleData(any, any)).thenThrow(Exception('fail'));
+    when(failing.saveAnimal(any<AnimalModel>(),
+            forTraining: anyNamed('forTraining')))
+        .thenAnswer((_) async => throw Exception('fail'));
+    when(failing.saveUser(any<UserModel>(),
+            forTraining: anyNamed('forTraining')))
+        .thenAnswer((_) async => throw Exception('fail'));
+    when(failing.sendModuleData(any, any))
+        .thenAnswer((_) async => throw Exception('fail'));
 
     final service = CloudSyncService(firebaseService: failing);
 
