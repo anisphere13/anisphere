@@ -303,3 +303,4 @@ Responsable : Superadmin
 ✅ Ce document est un repère **temporaire**, en attendant que ces données puissent être gérées automatiquement (ex : via script d’init Firebase ou via IAMaster avec `createIfNotExists`).
 
 - 🧩 Synchronisation automatique du noyau le 2025-06-14
+- 🆕 2025-06-15 : Ajout des services LocalSharingService, CloudSharingService et PremiumSharingChecker.

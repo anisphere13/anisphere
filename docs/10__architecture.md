@@ -210,3 +210,5 @@ Version Web + API publique + dashboard admin professionnel à venir
 AniSphère repose sur une architecture modulaire, hybride et intelligente, taillée pour accompagner l’évolution constante des usages, tout en gardant un coût optimisé, une UX exceptionnelle, et une IA au cœur du pilotage.
 
 
+### Partage et synchronisation
+AniSphère dispose d'un service de partage local (Bluetooth, Wi‑Fi Direct, NFC, QR) et d'un service cloud. La détection automatique choisit le meilleur mode disponible; le partage cloud requiert un compte premium.
