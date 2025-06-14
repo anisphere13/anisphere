@@ -99,7 +99,6 @@ class UserProvider with ChangeNotifier {
   }
 
   /// 🔓 Déconnexion
-  // TODO: ajouter test
   Future<void> signOut() async {
     try {
       await _userService.init(); // Hive ready
@@ -108,8 +107,8 @@ class UserProvider with ChangeNotifier {
       }
 
       final connectivity = await Connectivity().checkConnectivity();
-      if (connectivity.contains(ConnectivityResult.wifi) ||
-          connectivity.contains(ConnectivityResult.mobile)) {
+      if (connectivity == ConnectivityResult.wifi ||
+          connectivity == ConnectivityResult.mobile) {
         await _authService.signOut();
         debugPrint("✅ Déconnexion Firebase !");
       } else {
