@@ -123,7 +123,8 @@ void main() {
         .thenAnswer((_) async => throw Exception('fail')); // FIXED: flutter analyze
     when(failing.saveUser(any<UserModel>(), forTraining: true))
         .thenAnswer((_) async => throw Exception('fail')); // FIXED: flutter analyze
-    when(failing.sendModuleData(any<String>(), any<Map<String, dynamic>>()))
+    when(failing.sendModuleData(any<String>(),
+            argThat(isA<Map<String, dynamic>>())))
         .thenAnswer((_) async => throw Exception('fail')); // FIXED: flutter analyze
 
     final service = CloudSyncService(firebaseService: failing);
@@ -166,14 +167,17 @@ void main() {
         .thenAnswer((_) async => true); // FIXED: flutter analyze
     when(success.saveUser(any<UserModel>(), forTraining: true))
         .thenAnswer((_) async => true); // FIXED: flutter analyze
-    when(success.sendModuleData(any<String>(), any<Map<String, dynamic>>())).thenAnswer((_) async {});
+    when(success.sendModuleData(any<String>(),
+            argThat(isA<Map<String, dynamic>>())))
+        .thenAnswer((_) async {});
 
     final replay = CloudSyncService(firebaseService: success);
     await replay.replayOfflineTasks();
 
     verify(success.saveAnimal(any<AnimalModel>(), forTraining: true)).called(1); // FIXED: flutter analyze
     verify(success.saveUser(any<UserModel>(), forTraining: true)).called(1); // FIXED: flutter analyze
-    verify(success.sendModuleData('demo', any<Map<String, dynamic>>())).called(1);
+    verify(success.sendModuleData('demo', argThat(isA<Map<String, dynamic>>())))
+        .called(1);
 
     final remaining = await OfflineSyncQueue.getAllTasks();
     expect(remaining.isEmpty, isTrue);
