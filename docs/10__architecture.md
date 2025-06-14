@@ -176,6 +176,8 @@ Déclenchée uniquement si nécessaire (action critique, partage, backup cloud)
 Regroupée en lots compressés pour minimiser les accès
 
 Automatiquement différée par l’IA pour éviter les pics ou coûts inutiles
+Gestion dynamique des modes de partage via `SharingConnectivityManager`
+Optimisation des envois par `SharingIaOptimizer` (compression et déduplication)
 
 Données sensibles exclues du cloud (nom, prénom, téléphone)
 

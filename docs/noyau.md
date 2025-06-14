@@ -41,6 +41,8 @@ Partage sécurisé de profils, documents, ou informations animales via QR code, 
 Export de documents : PDF, rapports de santé, arbres généalogiques.
 Traçabilité des actions utilisateur (qui a partagé quoi, quand, et comment).
 Stockage Drive/Dropbox personnel : possibilité pour l’utilisateur de lier son cloud personnel (Google Drive, OneDrive, etc.) pour les exports ou sauvegardes.
+Gestion du mode de partage (offline, local-only, cloud-ready) via `SharingConnectivityManager`.
+Batchs optimisés et compressés grâce au `SharingIaOptimizer`.
 
 f. Notifications & Alertes IA
 
