@@ -101,7 +101,7 @@ void main() {
 
     when(mockService.init()).thenAnswer((_) async {});
     when(mockService.deleteUserLocally()).thenAnswer((_) async {});
-    when(mockService.updateUser(any<UserModel>()))
+    when(mockService.updateUser(argThat(isA<UserModel>())))
         .thenAnswer((_) async => true); // FIXED: flutter analyze
     when(mockAuth.signOut()).thenAnswer((_) async {});
 
@@ -141,7 +141,7 @@ void main() {
 
     when(mockService.init()).thenAnswer((_) async {});
     when(mockService.deleteUserLocally()).thenAnswer((_) async {});
-    when(mockService.updateUser(any<UserModel>()))
+    when(mockService.updateUser(argThat(isA<UserModel>())))
         .thenAnswer((_) async => true); // FIXED: flutter analyze
     when(mockAuth.signOut()).thenAnswer((_) async {});
 
