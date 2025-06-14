@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// Application-wide theme settings.
 final ThemeData appTheme = ThemeData(
-  scaffoldBackgroundColor: const Color(0xFFF5F5F5),
+  scaffoldBackgroundColor: const Color(0xFF183153),
   colorScheme: ColorScheme.fromSeed(
     seedColor: const Color(0xFF183153),
     primary: const Color(0xFF183153),
