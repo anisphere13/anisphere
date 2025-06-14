@@ -87,14 +87,14 @@ class ConsentService {
       cguVersion: CguManager.latestVersion,
       timestamp: DateTime.now(),
     );
-    await box.put('${type}_${module}', entry);
+    await box.put('${type}_$module', entry);
     debugPrint('✅ Consent recorded: $type - $module');
   }
 
   /// Check if consent exists for given type and module.
   static Future<bool> hasConsent(String type, String module) async {
     final box = await _openBox();
-    final entry = box.get('${type}_${module}');
+    final entry = box.get('${type}_$module');
     return entry != null && entry.cguVersion == CguManager.latestVersion;
   }
 
@@ -105,7 +105,7 @@ class ConsentService {
     Future<void> Function()? onDelete,
   }) async {
     final box = await _openBox();
-    await box.delete('${type}_${module}');
+    await box.delete('${type}_$module');
     debugPrint('🚫 Consent revoked: $type - $module');
     if (onDelete != null) {
       await onDelete();
