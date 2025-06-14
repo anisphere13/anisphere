@@ -20,9 +20,10 @@ class IAContextEnricher {
     try {
       final connectivity = await sensors.getConnectivity();
       await sensors.getBatteryLevel(); // charge la valeur en cache si besoin
+      final isOffline = connectivity.contains(ConnectivityResult.none);
 
       return IAContext(
-        isOffline: connectivity == ConnectivityResult.none,
+        isOffline: isOffline,
         isFirstLaunch: base.isFirstLaunch,
         hasAnimals: base.hasAnimals,
         animalCount: base.animalCount,

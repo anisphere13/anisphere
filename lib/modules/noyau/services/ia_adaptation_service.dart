@@ -19,7 +19,7 @@ class IAAdaptationService {
     final battery = await sensors.getBatteryLevel();
     final connectivity = await sensors.getConnectivity();
     final isLowBattery = battery >= 0 && battery < 20;
-    final isOffline = connectivity == ConnectivityResult.none;
+    final isOffline = connectivity.contains(ConnectivityResult.none);
 
     return !isLowBattery && !isOffline;
   }
