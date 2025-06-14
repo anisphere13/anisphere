@@ -3,9 +3,13 @@
 /// Toutes les données modules & noyau passent ici pour apprentissage IA cloud
 /// Utilisé par IAMaster, les modules, les IA locales
 library;
-import 'package:flutter/foundation.dart';
+
 import 'dart:convert';
+import 'dart:io';
+
 import 'package:archive/archive.dart';
+import 'package:flutter/foundation.dart';
+
 import '../models/animal_model.dart';
 import '../models/user_model.dart';
 import '../models/support_ticket_model.dart';
@@ -16,8 +20,6 @@ import '../services/offline_sync_queue.dart';
 import '../services/offline_photo_queue.dart' as offline_queue;
 import '../services/offline_gps_queue.dart';
 import '../services/storage_optimizer.dart';
-import 'package:archive/archive.dart';
-import 'dart:convert';
 class CloudSyncService {
   final FirebaseService _firebaseService;
   CloudSyncService({FirebaseService? firebaseService})
