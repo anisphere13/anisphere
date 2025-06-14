@@ -18,8 +18,12 @@ void main() {
     Hive
       ..init(tempDir.path)
       ..registerAdapter(SecuritySettingsModelAdapter());
-    await Hive.openBox<SecuritySettingsModel>('securitySettings')
-        .put('settings', const SecuritySettingsModel(biometricEnabled: true, encryptedPin: '1234', protectedModules: []));
+    final box = await Hive.openBox<SecuritySettingsModel>('securitySettings');
+    await box.put(
+      'settings',
+      const SecuritySettingsModel(
+          biometricEnabled: true, encryptedPin: '1234', protectedModules: []),
+    );
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMethodCallHandler(channel, (MethodCall call) async {
       if (call.method == 'authenticate') return true;
