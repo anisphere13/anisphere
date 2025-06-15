@@ -35,16 +35,32 @@ class ModulesService {
     // 🔽 Ajouter ici les modules futurs
   ];
 
-  static List<String> get moduleNames =>
-      availableModules.map((m) => m.name).toList();
-
-  static Iterable<String> get categories =>
-      availableModules.map((m) => m.category).toSet();
-
-  static List<ModuleModel> getModulesByCategory(String category) =>
-      availableModules.where((m) => m.category == category).toList();
-
-  static List<String> get allModules => moduleNames;
+  /// 📚 Association statique des catégories vers leurs modules.
+  static const Map<String, List<Map<String, String>>> _modulesByCategory = {
+    'Santé': [
+      {
+        'id': 'sante',
+        'name': 'Santé',
+        'description': 'Suivi des vaccins, visites, soins médicaux.',
+      },
+    ],
+    'Éducation': [
+      {
+        'id': 'education',
+        'name': 'Éducation',
+        'description':
+            'Programmes éducatifs IA et routines personnalisées.',
+      },
+    ],
+    'Dressage': [
+      {
+        'id': 'dressage',
+        'name': 'Dressage',
+        'description': 'Entraînement avancé, objectifs, IA comparative.',
+      },
+    ],
+    // 🔽 Ajouter ici d'autres catégories si nécessaire
+  };
 
   /// 🔄 Récupère le statut d’un module : actif, premium, disponible
   static String getStatus(String moduleId) {
@@ -95,7 +111,12 @@ class ModulesService {
   }
 
   /// Méthode compatible IA pour activation rapide
-  Future<void> setActive(String moduleId) async {
-    await activate(moduleId);
+  Future<void> setActive(String moduleName) async {
+    await activate(moduleName);
+  }
+
+  /// 🔍 Récupère les modules d'une catégorie donnée.
+  Future<List<Map<String, String>>> getModulesByCategory(String category) async {
+    return _modulesByCategory[category] ?? [];
   }
 }
