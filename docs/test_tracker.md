@@ -100,6 +100,9 @@
 | test/voice/unit/voice_command_analyzer_test.dart | unit | package:anisphere/modules/voice/voice_command_analyzer.dart | ✅ |
 | test/voice/widget/voice_input_button_test.dart | widget | package:anisphere/modules/voice/voice_input_button.dart | ✅ |
 
-- ✅ Tests validés automatiquement le 2025-06-15
+- ✅ Tests validés automatiquement le 2025-06-16
 | test/noyau/unit/share_history_model_test.dart | unit | package:anisphere/modules/noyau/models/share_history_model.dart | ✅ |
 | test/noyau/unit/share_history_model.g_test.dart | unit | package:anisphere/modules/noyau/models/share_history_model.g.dart | ✅ |
+| test/noyau/unit/feedback_sound_service_test.dart | unit | package:anisphere/modules/noyau/services/feedback_sound_service.dart | ✅ |
+| test/noyau/unit/haptic_feedback_service_test.dart | unit | package:anisphere/modules/noyau/services/haptic_feedback_service.dart | ✅ |
+| test/noyau/unit/feedback_options_provider_test.dart | unit | package:anisphere/modules/noyau/providers/feedback_options_provider.dart | ✅ |
