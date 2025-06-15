@@ -19,7 +19,7 @@ class UserProfileScreen extends StatelessWidget {
 
     if (user == null) {
       return const Scaffold(
-        body: Center(child: Text("Aucun utilisateur connecté.")),
+        body: Center(child: CircularProgressIndicator()),
       );
     }
 
