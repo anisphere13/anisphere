@@ -7,7 +7,6 @@ library;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/user_provider.dart';
 import '../services/modules_summary_service.dart';
 import '../services/animal_service.dart';
 import '../providers/ia_context_provider.dart';
