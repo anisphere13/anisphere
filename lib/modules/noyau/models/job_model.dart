@@ -1,100 +1,73 @@
 library;
 
-import 'package:hive/hive.dart';
+/// Possible states for a scheduled job.
+enum JobStatus { pending, running, completed, failed }
 
-part 'job_model.g.dart';
-
-@HiveType(typeId: 130)
+/// Model representing a scheduled job.
 class JobModel {
-  @HiveField(0)
   final String id;
-
-  @HiveField(1)
-  final String type;
-
-  @HiveField(2)
-  final String target;
-
-  @HiveField(3)
-  final DateTime nextRun;
-
-  @HiveField(4)
-  final String status;
-
-  @HiveField(5)
-  final int attempt;
-
-  @HiveField(6)
-  final List<String> logs;
-
-  @HiveField(7)
+  final String name;
+  JobStatus status;
   final DateTime createdAt;
+  DateTime? startedAt;
+  DateTime? finishedAt;
 
-  @HiveField(8)
-  final DateTime updatedAt;
-
-  const JobModel({
+  JobModel({
     required this.id,
-    required this.type,
-    required this.target,
-    required this.nextRun,
-    this.status = 'pending',
-    this.attempt = 0,
-    this.logs = const [],
+    required this.name,
+    this.status = JobStatus.pending,
     DateTime? createdAt,
-    DateTime? updatedAt,
-  })  : createdAt = createdAt ?? DateTime.now(),
-        updatedAt = updatedAt ?? DateTime.now();
+    this.startedAt,
+    this.finishedAt,
+  }) : createdAt = createdAt ?? DateTime.now();
 
   JobModel copyWith({
     String? id,
-    String? type,
-    String? target,
-    DateTime? nextRun,
-    String? status,
-    int? attempt,
-    List<String>? logs,
+    String? name,
+    JobStatus? status,
     DateTime? createdAt,
-    DateTime? updatedAt,
+    DateTime? startedAt,
+    DateTime? finishedAt,
   }) {
     return JobModel(
       id: id ?? this.id,
-      type: type ?? this.type,
-      target: target ?? this.target,
-      nextRun: nextRun ?? this.nextRun,
+      name: name ?? this.name,
       status: status ?? this.status,
-      attempt: attempt ?? this.attempt,
-      logs: logs ?? this.logs,
       createdAt: createdAt ?? this.createdAt,
-      updatedAt: updatedAt ?? this.updatedAt,
-    );
-  }
-
-  factory JobModel.fromJson(Map<String, dynamic> json) {
-    return JobModel(
-      id: json['id'] ?? '',
-      type: json['type'] ?? '',
-      target: json['target'] ?? '',
-      nextRun: DateTime.tryParse(json['nextRun'] ?? '') ?? DateTime.now(),
-      status: json['status'] ?? 'pending',
-      attempt: json['attempt'] ?? 0,
-      logs: (json['logs'] as List?)?.cast<String>() ?? const [],
-      createdAt:
-          DateTime.tryParse(json['createdAt'] ?? '') ?? DateTime.now(),
-      updatedAt:
-          DateTime.tryParse(json['updatedAt'] ?? '') ?? DateTime.now(),
+      startedAt: startedAt ?? this.startedAt,
+      finishedAt: finishedAt ?? this.finishedAt,
     );
   }
 
   Map<String, dynamic> toJson() => {
         'id': id,
-        'type': type,
-        'target': target,
-        'nextRun': nextRun.toIso8601String(),
-        'status': status,
-        'attempt': attempt,
-        'logs': logs,
+        'name': name,
+        'status': status.name,
         'createdAt': createdAt.toIso8601String(),
-        'updatedAt': updatedAt.toIso8601String(),
+        'startedAt': startedAt?.toIso8601String(),
+        'finishedAt': finishedAt?.toIso8601String(),
       };
+
+  factory JobModel.fromJson(Map<String, dynamic> json) {
+    JobStatus parsedStatus;
+    try {
+      parsedStatus = JobStatus.values
+          .firstWhere((e) => e.name == json['status']);
+    } catch (_) {
+      parsedStatus = JobStatus.pending;
+    }
+    return JobModel(
+      id: json['id'] ?? '',
+      name: json['name'] ?? '',
+      status: parsedStatus,
+      createdAt:
+          DateTime.tryParse(json['createdAt'] ?? '') ?? DateTime.now(),
+      startedAt: json['startedAt'] != null
+          ? DateTime.tryParse(json['startedAt'])
+          : null,
+      finishedAt: json['finishedAt'] != null
+          ? DateTime.tryParse(json['finishedAt'])
+          : null,
+    );
+  }
 }

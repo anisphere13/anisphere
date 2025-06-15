@@ -12,7 +12,6 @@ import 'dart:convert';
 
 import '../models/user_model.dart';
 import '../models/animal_model.dart';
-import '../models/job_model.dart';
 
 class LocalStorageService {
   static late Box<UserModel> _userBox;

@@ -60,6 +60,7 @@
 | test/noyau/unit/user_provider_test.dart | unit | package:anisphere/modules/noyau/providers/user_provider.dart | ✅ |
 | test/noyau/unit/consent_provider_test.dart | unit | package:anisphere/modules/noyau/providers/consent_provider.dart | ✅ |
 | test/noyau/unit/animal_provider_test.dart | unit | package:anisphere/modules/noyau/providers/animal_provider.dart | ✅ |
+| test/noyau/unit/job_provider_test.dart | unit | package:anisphere/modules/noyau/providers/job_provider.dart | ✅ |
 | test/noyau/widget/ia_banner_test.dart | widget | package:anisphere/modules/noyau/widgets/ia_banner.dart | ✅ |
 | test/noyau/widget/more_menu_test.dart | widget | package:anisphere/modules/noyau/widgets/more_menu.dart | ✅ |
 | test/noyau/widget/ia_chip_test.dart | widget | package:anisphere/modules/noyau/widgets/ia_chip.dart | ✅ |
