@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:anisphere/modules/messagerie/logic/ia_message_analyzer.dart';
+import 'package:anisphere/modules/noyau/logic/ia_message_analyzer.dart';
 import '../../test_config.dart';
 
 void main() {

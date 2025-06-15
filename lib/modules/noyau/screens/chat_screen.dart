@@ -4,7 +4,7 @@ library;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../noyau/providers/user_provider.dart';
+import '../providers/user_provider.dart';
 import '../models/conversation_model.dart';
 import '../providers/messaging_provider.dart';
 

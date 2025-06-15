@@ -11,7 +11,7 @@ import '../services/notification_service.dart';
 import '../models/notification_feedback_model.dart';
 import '../logic/ia_master.dart';
 import 'navigation_service.dart';
-import '../../messagerie/screens/message_list_screen.dart';
+import '../screens/message_list_screen.dart';
 import '../screens/notifications_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

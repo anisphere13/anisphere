@@ -2,9 +2,9 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
-import 'package:anisphere/modules/messagerie/models/message_model.dart';
-import 'package:anisphere/modules/messagerie/services/messaging_service.dart';
-import 'package:anisphere/modules/messagerie/services/offline_message_queue.dart';
+import 'package:anisphere/modules/noyau/models/message_model.dart';
+import 'package:anisphere/modules/noyau/services/messaging_service.dart';
+import 'package:anisphere/modules/noyau/services/offline_message_queue.dart';
 import '../../test_config.dart';
 
 void main() {
