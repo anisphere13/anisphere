@@ -9,29 +9,42 @@ import 'package:anisphere/modules/noyau/services/local_storage_service.dart';
 import 'package:anisphere/modules/noyau/models/module_model.dart';
 
 class ModulesService {
-  static final List<ModuleModel> modules = [
+  static const List<ModuleModel> availableModules = [
     ModuleModel(
       id: 'sante',
       name: 'Santé',
-      description: 'Suivi des vaccins, visites, soins médicaux.',
-      category: 'Bien-être',
+      description: 'Suivi santé et bien-être',
+      category: 'Santé',
+      icon: '🩺',
     ),
     ModuleModel(
       id: 'education',
       name: 'Éducation',
-      description: 'Programmes éducatifs IA et routines personnalisées.',
-      category: 'Apprentissage',
+      description: 'Apprentissage et conseils',
+      category: 'Éducation',
+      icon: '📚',
     ),
     ModuleModel(
       id: 'dressage',
       name: 'Dressage',
-      description: 'Entraînement avancé, objectifs, IA comparative.',
-      category: 'Apprentissage',
+      description: 'Entraînement avancé',
+      category: 'Dressage',
+      icon: '🎯',
+      premium: true,
     ),
     // 🔽 Ajouter ici les modules futurs
   ];
 
-  static List<String> get allModules => modules.map((m) => m.id).toList();
+  static List<String> get moduleNames =>
+      availableModules.map((m) => m.name).toList();
+
+  static Iterable<String> get categories =>
+      availableModules.map((m) => m.category).toSet();
+
+  static List<ModuleModel> getModulesByCategory(String category) =>
+      availableModules.where((m) => m.category == category).toList();
+
+  static List<String> get allModules => moduleNames;
 
   /// 🔄 Récupère le statut d’un module : actif, premium, disponible
   static String getStatus(String moduleId) {
