@@ -69,11 +69,11 @@ Système de Sphères : prototype en cours (monnaie d’échange & entraide)
 Profils publics : prévu (carte interactive, filtres)
 
 Historique des échanges : prévu (réputation, avis)
-✉️ Messagerie — À démarrer
+✉️ Messagerie — En cours
 
-Conversation privée : à définir (Firestore messages)
+Conversation privée : en développement (Firestore messages)
 
-Tests module messagerie : à créer (unit/widget).
+Tests module messagerie : terminés (unit/widget/intégration).
 🔗 Partage — Suivi du module
 Partage local (QR code + export) : terminé
 Sauvegarde cloud premium : en cours
