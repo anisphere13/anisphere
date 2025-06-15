@@ -90,6 +90,14 @@ notifications/ : gestion des notifications locales et cloud.
 sharing/ : gestion du partage sécurisé et des exports.
 maintenance/ : détection des erreurs IA et maintenance automatique.
 onboarding/ : tutoriel et intégration de nouveaux utilisateurs.
+### Services transverses du noyau
+- **messagerie interne** : `lib/modules/messagerie/services/messaging_service.dart`
+- **partage local/cloud** : `lib/modules/noyau/services/local_sharing_service.dart`, `cloud_sharing_service.dart`
+- **commande vocale** : `lib/modules/voice/speech_recognition_service.dart`
+- **notifications intelligentes** : `lib/modules/noyau/services/notification_service.dart`
+- **exports / historique** : `lib/modules/noyau/services/share_history_service.dart`
+- **file de synchro offline** : `lib/modules/noyau/services/offline_sync_queue.dart`
+
  
 4. Évolutivité et modularité
 Le noyau fournit une API générique, permettant à chaque module de se connecter facilement à ses services sans avoir à gérer de logique métier spécifique.
