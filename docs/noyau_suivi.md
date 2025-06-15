@@ -139,6 +139,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 | Commandes vocales / mains libres      | 🔄 En cours | speech_recognition_service, voice_command_analyzer | Non           | Module vocal devenu service noyau |
 | **Superadmin**                        | ❌ Migré  | —                                                 | —             | Maintenant module indépendant    |
 | Prise de photo & file offline         | 🔄 À démarrer | camera_service, photo_model, photo_upload_queue | Non           | Capture locale, sync différée    |
+| Job scheduler interne                 | 🔄 En cours | job_scheduler_service, job_model, job_provider, scheduler_hooks | Oui           | Planification automatique des tâches |
 
 ### Sécurité avancée
 
@@ -310,3 +311,4 @@ Responsable : Superadmin
 - 🆕 2025-06-15 : Mise en place du module vocal initial (SpeechRecognitionService, VoiceCommandAnalyzer, UI mains-libres).
 - 🆕 2025-06-20 : Migration de la messagerie et des services de partage dans le noyau (messages_service, share_screen, LocalSharingService...).
 - 🆕 2025-06-22 : Intégration du module vocal au noyau (speech_recognition_service, voice_command_analyzer, UI mains-libres).
+- 🆕 2025-06-27 : Création du job scheduler interne (service, modèle, provider, hooks).
