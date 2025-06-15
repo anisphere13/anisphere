@@ -106,7 +106,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 
 ### **Juin 2025 — Préparation de la messagerie**
 - [06/2025] Définition de la collection `messages` (conversations, messages).
-- [06/2025] Création du dossier module `messagerie` et des premiers tests vides.
+- [06/2025] Création du dossier module `messagerie` et des premiers tests vides. *(Ce module sera intégré au noyau mi-juin 2025 — voir plus bas)*
 
 ### **Juin 2025 — Gestion photo & file offline**
 - [06/2025] Ajout du `camera_service.dart` pour la capture et le pré-traitement des images.
@@ -116,7 +116,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 - [06/2025] Tests unitaires : `offline_gps_queue_test.dart`.
 - [06/2025] Tests unitaires : `camera_service_test.dart`, `photo_model_test.dart`, `photo_upload_queue_test.dart`.
 - [06/2025] Création du `gps_service.dart` pour la localisation et la gestion du flux de positions.
-- [06/2025] Ajout du modèle `share_history_model.dart` et de l'historique de partage Hive.
+- [06/2025] Ajout du modèle `share_history_model.dart` et de l'historique de partage Hive. *(Initialement prévu dans le module partage)*
 - [06/2025] Mise à jour de `share_screen.dart` avec partage local/cloud et statut de connexion.
 ---
 
@@ -130,12 +130,13 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 | IA maîtresse locale                   | ✅ Fait   | ia_master, ia_rule_engine, ia_executor, ia_scheduler, ia_logger | Oui | Décision, exécution, logs        |
 | Notifications                         | ✅ Fait   | notification_service, notification_icon            | Oui           | Local, à étendre à FCM           |
 | Navigation, UI principale             | ✅ Fait   | main_screen, home_screen, settings_screen, etc.    | Oui           | Ergonomie validée                |
-| Export & partage animal               | 🔄 En cours | share_screen, pdf_export_service, qr_service      | Non           | Export PDF à finaliser           |
+| Export & partage animal               | 🔄 En cours | share_screen, pdf_export_service, qr_service      | Non           | Export PDF à finaliser (désormais service noyau) |
 | Rôles & multi-utilisateurs            | 🔄 En cours | user_model, settings_screen                       | Non           | UI assignation rôles à finir     |
 | Sécurité avancée                      | 🔄 En cours | local_storage_service, user_service               | Non           | Chiffrement, double auth         |
 | Biométrie & PIN                       | 🔄 À démarrer | biometric_auth_service, pin_code_service, auth_lock_screen | Non           | Auth biométrique avec code PIN secours |
 | IA cloud (sync, scoring, logs)        | 🔄 À démarrer | ia_master (syncToCloud), cloud_sync_service      | Non           | Synchronisation premium          |
-| Messagerie interne                    | 🔄 À démarrer | messages_service, messaging_screen              | Non           | Structure des conversations      |
+| Messagerie interne                    | 🔄 En cours | messages_service, messaging_screen              | Non           | Migrée du module vers le noyau   |
+| Commandes vocales / mains libres      | 🔄 En cours | speech_recognition_service, voice_command_analyzer | Non           | Module vocal devenu service noyau |
 | **Superadmin**                        | ❌ Migré  | —                                                 | —             | Maintenant module indépendant    |
 | Prise de photo & file offline         | 🔄 À démarrer | camera_service, photo_model, photo_upload_queue | Non           | Capture locale, sync différée    |
 
@@ -305,5 +306,7 @@ Responsable : Superadmin
 ✅ Ce document est un repère **temporaire**, en attendant que ces données puissent être gérées automatiquement (ex : via script d’init Firebase ou via IAMaster avec `createIfNotExists`).
 
 - 🧩 Synchronisation automatique du noyau le 2025-06-14
-- 🆕 2025-06-15 : Ajout des services LocalSharingService, CloudSharingService et PremiumSharingChecker.
-- 🆕 2025-06-15 : Mise en place du module vocal (SpeechRecognitionService, VoiceCommandAnalyzer, UI mains-libres).
+- 🆕 2025-06-15 : Ajout des services LocalSharingService, CloudSharingService et PremiumSharingChecker (module partage).
+- 🆕 2025-06-15 : Mise en place du module vocal initial (SpeechRecognitionService, VoiceCommandAnalyzer, UI mains-libres).
+- 🆕 2025-06-20 : Migration de la messagerie et des services de partage dans le noyau (messages_service, share_screen, LocalSharingService...).
+- 🆕 2025-06-22 : Intégration du module vocal au noyau (speech_recognition_service, voice_command_analyzer, UI mains-libres).
