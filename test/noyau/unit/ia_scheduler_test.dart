@@ -10,20 +10,20 @@ import 'package:anisphere/modules/noyau/services/modules_service.dart';
 import 'package:anisphere/modules/noyau/services/animal_service.dart';
 import 'package:anisphere/modules/noyau/models/user_model.dart';
 
+class FakeMaster extends IAMaster {
+  FakeMaster() : super.test();
+  bool called = false;
+  @override
+  Future<void> syncCloudIA(String userId) async {
+    called = true;
+  }
+}
+
 void main() {
   setUpAll(() async {
     await initTestEnv();
   });
   test('triggerNow calls syncCloudIA when premium user', () async {
-    class FakeMaster extends IAMaster {
-      FakeMaster() : super.test();
-      bool called = false;
-      @override
-      Future<void> syncCloudIA(String userId) async {
-        called = true;
-      }
-    }
-
     final scheduler = IAScheduler(
       executor: IAExecutor(
         iaMaster: FakeMaster(),
