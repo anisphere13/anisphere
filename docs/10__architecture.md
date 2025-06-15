@@ -92,7 +92,7 @@ L'intelligence artificielle locale est déployée dans le noyau selon un systèm
 * **ia\_logger.dart** : journalise les actions IA
 * **ia\_flag.dart / ia\_channel.dart / ia\_config.dart** : configuration, canaux, drapeaux IA
 
-L'appel principal se fait dans **main.dart > SplashScreen**, avec le Provider **IAContextProvider**.
+L'appel principal se fait dans **main.dart > MainScreen**, avec le Provider **IAContextProvider**.
 
 ## 📦 Modules externes (identite/, à venir : sante/, education/...)
 
