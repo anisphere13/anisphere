@@ -35,7 +35,8 @@ void main() {
 
   setUp(() {
     mockConfig = MockRemoteConfig();
-    when(mockConfig.setDefaults(argThat(isA<Map<String, dynamic>>())))
+    // ignore: invalid_use_of_null_value
+    when(mockConfig.setDefaults(any<Map<String, dynamic>>()))
         .thenAnswer((_) async {});
     when(mockConfig.fetchAndActivate()).thenAnswer((_) async => true);
     when(mockConfig.getString('cgu_version')).thenReturn('2');

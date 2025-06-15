@@ -101,8 +101,9 @@ void main() {
 
     when(mockService.init()).thenAnswer((_) async {});
     when(mockService.deleteUserLocally()).thenAnswer((_) async {});
-    when(mockService.updateUser(argThat(isA<UserModel>())))
-        .thenAnswer((_) async => true); // FIXED: flutter analyze
+    // ignore: invalid_use_of_null_value
+    when(mockService.updateUser(any<UserModel>(that: isA<UserModel>())))
+        .thenAnswer((_) async => true);
     when(mockAuth.signOut()).thenAnswer((_) async {});
 
     final provider = UserProvider(mockService, mockAuth);
@@ -141,8 +142,9 @@ void main() {
 
     when(mockService.init()).thenAnswer((_) async {});
     when(mockService.deleteUserLocally()).thenAnswer((_) async {});
-    when(mockService.updateUser(argThat(isA<UserModel>())))
-        .thenAnswer((_) async => true); // FIXED: flutter analyze
+    // ignore: invalid_use_of_null_value
+    when(mockService.updateUser(any<UserModel>(that: isA<UserModel>())))
+        .thenAnswer((_) async => true);
     when(mockAuth.signOut()).thenAnswer((_) async {});
 
     final provider = UserProvider(mockService, mockAuth);

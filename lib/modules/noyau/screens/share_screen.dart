@@ -29,8 +29,7 @@ class _ShareScreenState extends State<ShareScreen> {
   void initState() {
     super.initState();
     _historyFuture = _historyService.getEntries();
-    _connectivityFuture =
-        Connectivity().checkConnectivity().then((r) => [r]);
+    _connectivityFuture = Connectivity().checkConnectivity();
   }
 
   Future<void> _refreshHistory() async {
