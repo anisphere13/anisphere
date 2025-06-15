@@ -37,13 +37,13 @@ class ModulesSummaryService {
     final List<ModuleSummary> summaries = [];
 
     final animals = await animalService.getAllAnimals();
-    final statuses = await ModulesService.getAllModulesStatus(); // ✅ Correction : await ajouté
+    final statuses = await ModulesService.getAllModulesStatus();
 
-    for (final module in ModulesService.allModules) {
-      final status = statuses[module] ?? "disponible";
+    for (final module in ModulesService.modules) {
+      final status = statuses[module.id] ?? "disponible";
 
       if (status == "actif") {
-        switch (module) {
+        switch (module.name) {
           case "Santé":
             summaries.add(
               ModuleSummary(
@@ -87,7 +87,7 @@ class ModulesSummaryService {
           default:
             summaries.add(
               ModuleSummary(
-                moduleName: module,
+                moduleName: module.name,
                 summary: "Résumé IA non défini",
                 icon: "✨",
                 isPremium: false,

@@ -10,11 +10,12 @@ void main() {
     await initTestEnv();
   });
 
-  testWidgets('renders without AppBar', (tester) async {
+  testWidgets('renders modules grouped by category', (tester) async {
     await tester.pumpWidget(const MaterialApp(home: ModulesScreen()));
     await tester.pumpAndSettle();
 
     expect(find.byType(AppBar), findsNothing);
     expect(find.text('Santé'), findsOneWidget);
+    expect(find.text('Bien-être'), findsOneWidget);
   });
 }
