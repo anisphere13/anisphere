@@ -74,4 +74,8 @@ class _ModulesScreenState extends State<ModulesScreen> {
       ),
     );
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> codex/ajouter-widget-module_card
 }
