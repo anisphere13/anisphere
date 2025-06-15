@@ -67,6 +67,10 @@ dependencies:
   speech_to_text: ^7.0.0
   google_speech: ^2.0.0
 
+  # Retour sonores & haptiques
+  audioplayers: ^5.2.1
+  vibration: ^1.8.4
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
