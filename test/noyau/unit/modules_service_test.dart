@@ -24,24 +24,24 @@ void main() {
     await tempDir.delete(recursive: true);
   });
 
-  test('allModules contains Santé', () {
-    expect(ModulesService.allModules, contains('Santé'));
+  test('allModules contains sante', () {
+    expect(ModulesService.allModules, contains('sante'));
   });
 
   test('activate and getStatus', () async {
-    await ModulesService.activate('Santé');
-    expect(ModulesService.getStatus('Santé'), 'actif');
+    await ModulesService.activate('sante');
+    expect(ModulesService.getStatus('sante'), 'actif');
   });
 
   test('markPremium updates status', () async {
-    await ModulesService.markPremium('Éducation');
-    expect(ModulesService.getStatus('Éducation'), 'premium');
+    await ModulesService.markPremium('education');
+    expect(ModulesService.getStatus('education'), 'premium');
   });
 
   test('resetAllStatuses resets to disponible', () async {
-    await ModulesService.activate('Dressage');
+    await ModulesService.activate('dressage');
     await ModulesService.resetAllStatuses();
-    expect(ModulesService.getStatus('Dressage'), 'disponible');
+    expect(ModulesService.getStatus('dressage'), 'disponible');
   });
 
   test('getAllModulesStatus returns all modules', () async {
@@ -51,8 +51,8 @@ void main() {
 
   test('getAllStatuses and setActive', () async {
     final service = ModulesService();
-    await service.setActive('Santé');
+    await service.setActive('sante');
     final statuses = await service.getAllStatuses();
-    expect(statuses['Santé'], 'actif');
+    expect(statuses['sante'], 'actif');
   });
 }

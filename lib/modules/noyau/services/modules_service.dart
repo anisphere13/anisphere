@@ -35,6 +35,13 @@ class ModulesService {
     // 🔽 Ajouter ici les modules futurs
   ];
 
+  /// Liste statique des modules disponibles.
+  static List<ModuleModel> get modules => availableModules;
+
+  /// Liste statique des identifiants de modules.
+  static List<String> get allModules =>
+      modules.map((m) => m.id).toList();
+
   /// 📦 Liste détaillée des modules par catégorie.
   static const Map<String, List<Map<String, String>>> modulesByCategory = {
     'Général': [
@@ -113,10 +120,5 @@ class ModulesService {
   /// Méthode compatible IA pour activation rapide
   Future<void> setActive(String moduleName) async {
     await activate(moduleName);
-  }
-
-  /// 🔍 Récupère les modules d'une catégorie donnée.
-  Future<List<Map<String, String>>> getModulesByCategory(String category) async {
-    return _modulesByCategory[category] ?? [];
   }
 }
