@@ -1,14 +1,29 @@
 // Copilot Prompt : Test automatique généré pour consent_provider.dart (unit)
 import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
+import 'package:anisphere/modules/noyau/providers/consent_provider.dart';
+import 'package:anisphere/modules/noyau/services/consent_service.dart';
+import 'package:anisphere/modules/noyau/models/consent_entry.dart';
 
 void main() {
   setUpAll(() async {
     await initTestEnv();
   });
 
-  test('consent_provider fonctionne (test auto)', () {
-    // TODO : compléter le test pour consent_provider.dart
-    expect(true, isTrue); // À remplacer par un vrai test
+  test('addAction stores entry in history', () async {
+    class FakeService extends ConsentService {
+      List<ConsentEntry> entries = [];
+      @override
+      Future<List<ConsentEntry>> getHistory() async => entries;
+      @override
+      Future<void> addEntry(ConsentEntry entry) async {
+        entries.add(entry);
+      }
+    }
+
+    final provider = ConsentProvider(service: FakeService());
+    await provider.addAction(ConsentAction.accepted, 'u1');
+    expect(provider.history.length, 1);
+    expect(provider.accepted, isTrue);
   });
 }
