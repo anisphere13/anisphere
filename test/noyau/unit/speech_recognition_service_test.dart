@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:anisphere/modules/voice/speech_recognition_service.dart';
+import 'package:anisphere/modules/noyau/services/speech_recognition_service.dart';
 
 class FakeSpeechToText {
   bool initialized = false;

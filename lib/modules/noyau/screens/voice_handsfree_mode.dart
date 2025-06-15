@@ -2,8 +2,8 @@
 library;
 
 import 'package:flutter/material.dart';
-import 'speech_recognition_service.dart';
-import 'voice_input_button.dart';
+import '../services/speech_recognition_service.dart';
+import '../widgets/voice_input_button.dart';
 
 class VoiceHandsfreeMode extends StatefulWidget {
   const VoiceHandsfreeMode({super.key});

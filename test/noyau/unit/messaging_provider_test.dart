@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:anisphere/modules/messagerie/providers/messaging_provider.dart';
-import 'package:anisphere/modules/messagerie/models/message_model.dart';
-import 'package:anisphere/modules/messagerie/services/messaging_service.dart';
+import 'package:anisphere/modules/noyau/providers/messaging_provider.dart';
+import 'package:anisphere/modules/noyau/models/message_model.dart';
+import 'package:anisphere/modules/noyau/services/messaging_service.dart';
 
 class _FakeService extends MessagingService {
   List<MessageModel> sent = [];

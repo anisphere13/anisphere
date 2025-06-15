@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
-import 'package:anisphere/modules/messagerie/screens/chat_screen.dart';
-import 'package:anisphere/modules/messagerie/models/conversation_model.dart';
-import 'package:anisphere/modules/messagerie/providers/messaging_provider.dart';
-import 'package:anisphere/modules/messagerie/services/messaging_service.dart';
-import 'package:anisphere/modules/messagerie/models/message_model.dart';
+import 'package:anisphere/modules/noyau/screens/chat_screen.dart';
+import 'package:anisphere/modules/noyau/models/conversation_model.dart';
+import 'package:anisphere/modules/noyau/providers/messaging_provider.dart';
+import 'package:anisphere/modules/noyau/services/messaging_service.dart';
+import 'package:anisphere/modules/noyau/models/message_model.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:anisphere/modules/noyau/models/user_model.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';

@@ -18,7 +18,7 @@ import '../models/photo_model.dart';
 import '../models/notification_feedback_model.dart';
 import 'ia_photo_analyzer.dart';
 import 'dart:io';
-import '../../messagerie/logic/ia_message_analyzer.dart';
+import 'ia_message_analyzer.dart';
 import 'ia_logger.dart';
 import 'ia_flag.dart';
 import 'ia_channel.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:anisphere/modules/voice/voice_command_analyzer.dart';
+import 'package:anisphere/modules/noyau/logic/voice_command_analyzer.dart';
 
 void main() {
   test('analyze detects addReminder', () {
