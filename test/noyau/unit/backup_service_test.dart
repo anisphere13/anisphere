@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
 import 'dart:io';
 import 'package:hive/hive.dart';
-import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:anisphere/modules/noyau/services/backup_service.dart';
 import 'package:anisphere/modules/noyau/services/animal_service.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
