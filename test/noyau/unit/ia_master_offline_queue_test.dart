@@ -30,8 +30,10 @@ void main() {
     await Hive.openBox<SyncTask>('offline_sync_queue');
     await Hive.openBox<offline_queue.PhotoTask>('offline_photo_queue');
     mockCloud = MockCloudSyncService();
-    when(mockCloud.pushAnimalData(any<AnimalModel>())).thenAnswer((_) async {});
-    when(mockCloud.pushPhotoData(any<PhotoModel>())).thenAnswer((_) async {});
+    when(mockCloud.pushAnimalData(any<AnimalModel>(that: isA<AnimalModel>())))
+        .thenAnswer((_) async {});
+    when(mockCloud.pushPhotoData(any<PhotoModel>(that: isA<PhotoModel>())))
+        .thenAnswer((_) async {});
   });
 
   tearDown(() async {
@@ -77,8 +79,10 @@ void main() {
 
     await master.processOfflineQueue();
 
-    verify(mockCloud.pushAnimalData(any<AnimalModel>())).called(1);
-    verify(mockCloud.pushPhotoData(any<PhotoModel>())).called(1);
+    verify(mockCloud.pushAnimalData(any<AnimalModel>(that: isA<AnimalModel>())))
+        .called(1);
+    verify(mockCloud.pushPhotoData(any<PhotoModel>(that: isA<PhotoModel>())))
+        .called(1);
 
     final tasks = await OfflineSyncQueue.getAllTasks();
     final photoBox = await Hive.openBox<offline_queue.PhotoTask>('offline_photo_queue');
