@@ -32,13 +32,13 @@
 | test/noyau/unit/notification_feedback_service_test.dart | unit | package:anisphere/modules/noyau/services/notification_feedback_service.dart | ✅ |
 | test/noyau/unit/backup_service_test.dart | unit | package:anisphere/modules/noyau/services/backup_service.dart | ✅ |
 | test/noyau/unit/local_storage_service_test.dart | unit | package:anisphere/modules/noyau/services/local_storage_service.dart | ✅ |
+| test/noyau/unit/consent_service_test.dart | unit | package:anisphere/modules/noyau/services/consent_service.dart | ✅ |
 | test/noyau/unit/animal_service_test.dart | unit | package:anisphere/modules/noyau/services/animal_service.dart | ✅ |
 | test/noyau/unit/ia_sync_service_test.dart | unit | package:anisphere/modules/noyau/services/ia_sync_service.dart | ✅ |
 | test/noyau/unit/cloud_notification_listener_test.dart | unit | package:anisphere/modules/noyau/services/cloud_notification_listener.dart | ✅ |
 | test/noyau/unit/offline_sync_queue_test.dart | unit | package:anisphere/modules/noyau/services/offline_sync_queue.dart | ✅ |
 | test/noyau/unit/storage_sync_queue_test.dart | unit | package:anisphere/modules/noyau/storage/storage_sync_queue.dart | ✅ |
 | test/noyau/unit/firebase_service_test.dart | unit | package:anisphere/modules/noyau/services/firebase_service.dart | ✅ |
-| test/noyau/unit/cgu_manager_test.dart | unit | package:anisphere/modules/noyau/services/cgu_manager.dart | ✅ |
 | test/noyau/unit/cloud_sync_service_test.dart | unit | package:anisphere/modules/noyau/services/cloud_sync_service.dart | ✅ |
 | test/noyau/unit/cloud_drive_service_test.dart | unit | package:anisphere/modules/noyau/services/cloud_drive_service.dart | ✅ |
 | test/noyau/unit/consent_service_test.dart | unit | package:anisphere/modules/noyau/services/consent_service.dart | ✅ |
@@ -74,12 +74,13 @@
 | test/noyau/widget/user_profile_screen_test.dart | widget | package:anisphere/modules/noyau/screens/user_profile_screen.dart | ✅ |
 | test/noyau/widget/animal_form_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animal_form_screen.dart | ✅ |
 | test/noyau/widget/home_screen_test.dart | widget | package:anisphere/modules/noyau/screens/home_screen.dart | ✅ |
-| test/noyau/widget/splash_screen_test.dart | widget | package:anisphere/modules/noyau/screens/main_screen.dart | ✅ |
+| test/noyau/widget/splash_screen_test.dart | widget | package:anisphere/modules/noyau/screens/splash_screen.dart | ✅ |
 | test/noyau/widget/share_screen_test.dart | widget | package:anisphere/modules/noyau/screens/share_screen.dart | ✅ |
 | test/noyau/widget/qr_screen_test.dart | widget | package:anisphere/modules/noyau/screens/qr_screen.dart | ✅ |
 | test/noyau/widget/animal_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animal_screen.dart | ✅ |
 | test/noyau/widget/animals_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animals_screen.dart | ✅ |
 | test/noyau/widget/login_screen_test.dart | widget | package:anisphere/modules/noyau/screens/login_screen.dart | ✅ |
+| test/noyau/widget/legal_screen_test.dart | widget | package:anisphere/modules/noyau/screens/legal_screen.dart | ✅ |
 | test/noyau/widget/support_screen_test.dart | widget | package:anisphere/modules/noyau/screens/support_screen.dart | ✅ |
 | test/noyau/widget/register_screen_test.dart | widget | package:anisphere/modules/noyau/screens/register_screen.dart | ✅ |
 | test/noyau/widget/biometric_setup_screen_test.dart | widget | package:anisphere/modules/noyau/screens/biometric_setup_screen.dart | ✅ |
@@ -93,6 +94,7 @@
 | test/noyau/widget/chat_screen_widget_test.dart | widget | package:anisphere/modules/noyau/screens/chat_screen.dart | ✅ |
 | test/noyau/widget/message_list_screen_widget_test.dart | widget | package:anisphere/modules/noyau/screens/message_list_screen.dart | ✅ |
 | test/noyau/integration/messagerie_integration.dart | integration | package:anisphere/modules/noyau/screens/chat_screen.dart | ✅ |
+| test/noyau/widget/consent_hooks_test.dart | widget | package:anisphere/modules/noyau/hooks/consent_hooks.dart | ✅ |
 | test/noyau/unit/local_sharing_service_test.dart | unit | package:anisphere/modules/noyau/services/local_sharing_service.dart | ✅ |
 | test/noyau/unit/cloud_sharing_service_test.dart | unit | package:anisphere/modules/noyau/services/cloud_sharing_service.dart | ✅ |
 | test/noyau/unit/sharing_ia_optimizer_test.dart | unit | package:anisphere/modules/noyau/services/sharing_ia_optimizer.dart | ✅ |
@@ -101,16 +103,6 @@
 | test/noyau/unit/voice_command_analyzer_test.dart | unit | package:anisphere/modules/noyau/logic/voice_command_analyzer.dart | ✅ |
 | test/noyau/widget/voice_input_button_test.dart | widget | package:anisphere/modules/noyau/widgets/voice_input_button.dart | ✅ |
 | test/noyau/unit/job_scheduler_settings_test.dart | unit | package:anisphere/modules/noyau/services/job_scheduler_settings_service.dart | ✅ |
-
-- ✅ Tests validés automatiquement le 2025-06-15
-| test/noyau/unit/share_history_model_test.dart | unit | package:anisphere/modules/noyau/models/share_history_model.dart | ✅ |
-| test/noyau/unit/share_history_model.g_test.dart | unit | package:anisphere/modules/noyau/models/share_history_model.g.dart | ✅ |
-| test/noyau/unit/feedback_sound_service_test.dart | unit | package:anisphere/modules/noyau/services/feedback_sound_service.dart | ❌ |
-| test/noyau/unit/haptic_feedback_service_test.dart | unit | package:anisphere/modules/noyau/services/haptic_feedback_service.dart | ❌ |
-| test/noyau/unit/feedback_options_provider_test.dart | unit | package:anisphere/modules/noyau/providers/feedback_options_provider.dart | ❌ |
-| test/noyau/widget/feedback_settings_screen_test.dart | widget | package:anisphere/modules/noyau/screens/feedback_settings_screen.dart | ❌ |
-
-- [ ] Ajouter `FeedbackSoundService` pour les sons de confirmation
-- [ ] Ajouter `HapticFeedbackService` pour les vibrations
-- [ ] Créer `FeedbackOptionsProvider` pour activer/désactiver ces retours
-- [ ] Créer `FeedbackSettingsScreen` pour personnaliser les options
+| test/noyau/unit/module_model_test.dart | unit | package:anisphere/modules/noyau/models/module_model.dart | ✅ |
+| test/noyau/widget/modules_by_category_screen_test.dart | widget | package:anisphere/modules/noyau/screens/modules_by_category_screen.dart | ✅ |
+\n- ✅ Tests validés automatiquement le 2025-06-15
