@@ -8,7 +8,8 @@ void main() {
       name: 'Santé',
       category: 'Bien-être',
       description: 'Suivi santé',
-      isPremium: false,
+      icon: '🩺',
+      premium: true,
     );
 
     test('toMap returns expected map', () {
@@ -17,7 +18,8 @@ void main() {
         'name': 'Santé',
         'category': 'Bien-être',
         'description': 'Suivi santé',
-        'isPremium': false,
+        'icon': '🩺',
+        'premium': true,
       });
     });
 
@@ -27,7 +29,8 @@ void main() {
       expect(restored.name, module.name);
       expect(restored.category, module.category);
       expect(restored.description, module.description);
-      expect(restored.isPremium, module.isPremium);
+      expect(restored.icon, module.icon);
+      expect(restored.premium, module.premium);
     });
   });
 }
