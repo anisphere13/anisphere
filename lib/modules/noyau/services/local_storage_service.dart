@@ -12,6 +12,7 @@ import 'dart:convert';
 
 import '../models/user_model.dart';
 import '../models/animal_model.dart';
+import '../models/job_model.dart';
 
 class LocalStorageService {
   static late Box<UserModel> _userBox;
@@ -42,6 +43,7 @@ class LocalStorageService {
       final cipher = await _getCipher();
       Hive.registerAdapter(UserModelAdapter());
       Hive.registerAdapter(AnimalModelAdapter());
+      Hive.registerAdapter(JobModelAdapter());
       _userBox = await Hive.openBox<UserModel>('users', encryptionCipher: cipher);
       _animalBox = await Hive.openBox<AnimalModel>('animals', encryptionCipher: cipher);
       _settingsBox = await Hive.openBox('settings', encryptionCipher: cipher);
