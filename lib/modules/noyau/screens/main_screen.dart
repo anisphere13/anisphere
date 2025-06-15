@@ -154,8 +154,6 @@ class MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.pets), label: 'Mes Animaux'),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color(0xFF183153), // ✅ Bleu branding
-        unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
       ),
     );

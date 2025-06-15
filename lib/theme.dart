@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// TODO: ajouter test
 
 final Color primaryBlue = const Color(0xFF183153);
 final Color backgroundGray = const Color(0xFFF5F5F5); // ✅ gris clair Samsung Health
@@ -17,7 +18,7 @@ final ThemeData appTheme = ThemeData(
   highlightColor: Colors.transparent,
   splashFactory: NoSplash.splashFactory,
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    backgroundColor: Colors.white,
+    backgroundColor: backgroundGray,
     selectedItemColor: primaryBlue,
     unselectedItemColor: Colors.grey,
     showUnselectedLabels: true,
