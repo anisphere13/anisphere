@@ -2,18 +2,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
-import 'package:anisphere/modules/noyau/screens/splash_screen.dart';
+import 'package:anisphere/modules/noyau/screens/main_screen.dart';
 import 'package:anisphere/theme.dart';
 
 void main() {
   setUpAll(() async {
     await initTestEnv();
   });
-  testWidgets('splash screen uses yellow ripple', (tester) async {
+  testWidgets('main screen uses yellow ripple', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
         theme: appTheme,
-        home: const SplashScreen(),
+        home: const MainScreen(),
       ),
     );
 

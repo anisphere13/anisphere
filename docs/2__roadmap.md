@@ -14,7 +14,7 @@ Stockage local (Hive) + synchronisation Firebase (animaux, utilisateur)
 
 Connexion et reconnexion automatique hors ligne
 
-Interface de base (Splash / Login / Home / Paramètres)
+Interface de base (Login / MainScreen / Paramètres)
 
 Structure modulaire activable
 

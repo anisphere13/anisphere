@@ -73,7 +73,7 @@
 | test/noyau/widget/user_profile_screen_test.dart | widget | package:anisphere/modules/noyau/screens/user_profile_screen.dart | ✅ |
 | test/noyau/widget/animal_form_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animal_form_screen.dart | ✅ |
 | test/noyau/widget/home_screen_test.dart | widget | package:anisphere/modules/noyau/screens/home_screen.dart | ✅ |
-| test/noyau/widget/splash_screen_test.dart | widget | package:anisphere/modules/noyau/screens/splash_screen.dart | ✅ |
+| test/noyau/widget/splash_screen_test.dart | widget | package:anisphere/modules/noyau/screens/main_screen.dart | ✅ |
 | test/noyau/widget/share_screen_test.dart | widget | package:anisphere/modules/noyau/screens/share_screen.dart | ✅ |
 | test/noyau/widget/qr_screen_test.dart | widget | package:anisphere/modules/noyau/screens/qr_screen.dart | ✅ |
 | test/noyau/widget/animal_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animal_screen.dart | ✅ |
