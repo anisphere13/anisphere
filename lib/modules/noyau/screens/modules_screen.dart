@@ -6,6 +6,7 @@ library;
 import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/services/modules_service.dart';
 import 'package:anisphere/modules/noyau/widgets/module_card.dart';
+import 'package:anisphere/modules/noyau/models/module_model.dart';
 
 class ModulesScreen extends StatefulWidget {
   const ModulesScreen({super.key});
