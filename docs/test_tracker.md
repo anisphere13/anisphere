@@ -106,4 +106,5 @@
 | test/noyau/unit/job_scheduler_settings_test.dart | unit | package:anisphere/modules/noyau/services/job_scheduler_settings_service.dart | ✅ |
 | test/noyau/unit/module_model_test.dart | unit | package:anisphere/modules/noyau/models/module_model.dart | ✅ |
 | test/noyau/widget/modules_by_category_screen_test.dart | widget | package:anisphere/modules/noyau/screens/modules_by_category_screen.dart | ✅ |
+| test/noyau/unit/ia_master_offline_queue_test.dart | unit | package:anisphere/modules/noyau/logic/ia_master.dart | ✅ |
 \n- ✅ Tests validés automatiquement le 2025-06-15

@@ -29,14 +29,16 @@ class IAMaster {
   static const String _iaLogsKey = "ia_logs";
   static const String _lastSyncKey = "last_ia_sync";
 
-  final CloudSyncService _cloudSyncService = CloudSyncService();
+  final CloudSyncService _cloudSyncService;
   final NotificationFeedbackService _notificationFeedbackService =
       NotificationFeedbackService();
 
-  IAMaster._internal();
+  IAMaster._internal({CloudSyncService? cloudSyncService})
+      : _cloudSyncService = cloudSyncService ?? CloudSyncService();
   /// Constructor accessible for testing purposes.
   @visibleForTesting
-  IAMaster.test() : this._internal();
+  IAMaster.test({CloudSyncService? cloudSyncService})
+      : this._internal(cloudSyncService: cloudSyncService);
 
   /// 🧠 Initialisation IA (au lancement)
   Future<void> initialize() async {
