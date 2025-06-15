@@ -1,9 +1,10 @@
 library;
 
 import 'package:flutter/material.dart';
+import '../models/module_model.dart';
 
 class ModuleCard extends StatelessWidget {
-  final Map<String, String> module;
+  final ModuleModel module;
   final String status;
   final VoidCallback? onActivate;
 
@@ -37,7 +38,7 @@ class ModuleCard extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    module['name']!,
+                    module.name,
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -56,7 +57,7 @@ class ModuleCard extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              module['description']!,
+              module.description,
               style: const TextStyle(color: Color(0xFF3A3A3A)),
             ),
             const SizedBox(height: 12),
