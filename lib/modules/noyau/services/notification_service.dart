@@ -8,6 +8,8 @@ library;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/foundation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:vibration/vibration.dart';
 import '../models/notification_feedback_model.dart';
 import '../logic/ia_master.dart';
 
@@ -61,6 +63,15 @@ class NotificationService {
     const NotificationDetails platformDetails = NotificationDetails(android: androidDetails);
 
     await _notificationsPlugin.show(id, title, body, platformDetails);
+    if (await Vibration.hasVibrator() ?? false) {
+      Vibration.vibrate(duration: 100);
+    }
+    final player = AudioPlayer();
+    try {
+      await player.play(AssetSource('sounds/notification.mp3'));
+    } catch (_) {
+      // Ignore if asset missing
+    }
     debugPrint("📨 Notification affichée : $title");
   }
 
