@@ -10,13 +10,11 @@ void main() {
   test('JobModel copyWith keeps values', () {
     final job = JobModel(
       id: '1',
-      type: 'sync',
-      target: 'animals',
-      nextRun: DateTime.now(),
+      name: 'sync animals',
     );
-    final copy = job.copyWith(status: 'done');
+    final copy = job.copyWith(status: JobStatus.completed);
     expect(copy.id, job.id);
-    expect(copy.type, job.type);
-    expect(copy.status, 'done');
+    expect(copy.name, job.name);
+    expect(copy.status, JobStatus.completed);
   });
 }

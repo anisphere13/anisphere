@@ -1,15 +1,41 @@
 library;
 
+import 'package:hive/hive.dart';
+
+part 'job_model.g.dart';
+
 /// Possible states for a scheduled job.
-enum JobStatus { pending, running, completed, failed }
+@HiveType(typeId: 129)
+enum JobStatus {
+  @HiveField(0)
+  pending,
+  @HiveField(1)
+  running,
+  @HiveField(2)
+  completed,
+  @HiveField(3)
+  failed
+}
 
 /// Model representing a scheduled job.
+@HiveType(typeId: 130)
 class JobModel {
+  @HiveField(0)
   final String id;
+
+  @HiveField(1)
   final String name;
+
+  @HiveField(2)
   JobStatus status;
+
+  @HiveField(3)
   final DateTime createdAt;
+
+  @HiveField(4)
   DateTime? startedAt;
+
+  @HiveField(5)
   DateTime? finishedAt;
 
   JobModel({

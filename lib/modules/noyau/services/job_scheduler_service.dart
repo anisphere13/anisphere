@@ -1,6 +1,7 @@
 library;
 
 import 'package:flutter/foundation.dart';
+import '../models/job_model.dart';
 
 /// Simple service de planification de tâches.
 /// Permet d'enregistrer des rappels locaux et de les annuler.
@@ -24,6 +25,17 @@ class JobSchedulerService {
 
   /// Vérifie si un job existe.
   bool hasJob(String id) => _jobs.containsKey(id);
+
+  /// Retourne la liste des jobs planifiés.
+  Future<List<JobModel>> getJobs() async {
+    return _jobs.entries
+        .map((e) => JobModel(
+              id: e.key,
+              name: e.value.message,
+              createdAt: e.value.time,
+            ))
+        .toList();
+  }
 }
 
 class _Job {
