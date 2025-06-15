@@ -50,7 +50,6 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Mes animaux")),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color(0xFF183153),
         foregroundColor: Colors.white,

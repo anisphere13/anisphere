@@ -78,10 +78,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Accueil'), // ✅ même format que les autres onglets
-        automaticallyImplyLeading: false,
-      ),
       body: SafeArea(
         child: loadingSummaries
             ? const Center(child: CircularProgressIndicator())

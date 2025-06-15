@@ -57,7 +57,6 @@ class _ModulesScreenState extends State<ModulesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Modules")),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
         itemCount: _modulesInfo.length,

@@ -45,7 +45,6 @@ class _ShareScreenState extends State<ShareScreen> {
     final isPremium = user?.iaPremium ?? false;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Partage')),
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [
