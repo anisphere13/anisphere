@@ -54,11 +54,11 @@ class _FeedbackSettingsScreenState extends State<FeedbackSettingsScreen> {
             const Divider(),
             const Text('Modules',
                 style: TextStyle(fontWeight: FontWeight.bold)),
-            ...ModulesService.allModules.map(
+            ...ModulesService.modules.map(
               (m) => CheckboxListTile(
-                title: Text(m),
-                value: options.moduleToggles[m] ?? true,
-                onChanged: (v) => options.toggleModule(m, v ?? true),
+                title: Text(m.name),
+                value: options.moduleToggles[m.id] ?? true,
+                onChanged: (v) => options.toggleModule(m.id, v ?? true),
               ),
             ),
           ],

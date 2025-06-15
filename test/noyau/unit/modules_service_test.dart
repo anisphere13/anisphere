@@ -7,7 +7,10 @@ void main() {
   setUpAll(() async {
     await initTestEnv();
   });
-  test('allModules contains Santé', () {
-    expect(ModulesService.allModules, contains('Santé'));
+  test('modules list contains Santé module', () {
+    expect(
+      ModulesService.modules.any((m) => m.name == 'Santé'),
+      isTrue,
+    );
   });
 }

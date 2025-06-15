@@ -92,11 +92,11 @@ class _SecuritySettingsScreenState extends State<SecuritySettingsScreen> {
           ),
           const Divider(),
           const Text('Modules protégés'),
-          ...ModulesService.allModules.map(
+          ...ModulesService.modules.map(
             (m) => CheckboxListTile(
-              title: Text(m),
-              value: _protected.contains(m),
-              onChanged: (v) => _toggleModule(m, v ?? false),
+              title: Text(m.name),
+              value: _protected.contains(m.id),
+              onChanged: (v) => _toggleModule(m.id, v ?? false),
             ),
           ),
         ],

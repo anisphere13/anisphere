@@ -6,28 +6,47 @@
 library;
 
 import 'package:anisphere/modules/noyau/services/local_storage_service.dart';
+import 'package:anisphere/modules/noyau/models/module_model.dart';
 
 class ModulesService {
-  static const List<String> allModules = [
-    "Santé",
-    "Éducation",
-    "Dressage",
+  static final List<ModuleModel> modules = [
+    ModuleModel(
+      id: 'sante',
+      name: 'Santé',
+      description: 'Suivi des vaccins, visites, soins médicaux.',
+      category: 'Bien-être',
+    ),
+    ModuleModel(
+      id: 'education',
+      name: 'Éducation',
+      description: 'Programmes éducatifs IA et routines personnalisées.',
+      category: 'Apprentissage',
+    ),
+    ModuleModel(
+      id: 'dressage',
+      name: 'Dressage',
+      description: 'Entraînement avancé, objectifs, IA comparative.',
+      category: 'Apprentissage',
+    ),
     // 🔽 Ajouter ici les modules futurs
   ];
 
+  static List<String> get allModules => modules.map((m) => m.id).toList();
+
   /// 🔄 Récupère le statut d’un module : actif, premium, disponible
-  static String getStatus(String moduleName) {
-    return LocalStorageService.get("module_status_$moduleName", defaultValue: "disponible");
+  static String getStatus(String moduleId) {
+    return LocalStorageService.get("module_status_$moduleId",
+        defaultValue: "disponible");
   }
 
   /// ✅ Active un module (accessible immédiatement)
-  static Future<void> activate(String moduleName) async {
-    await LocalStorageService.set("module_status_$moduleName", "actif");
+  static Future<void> activate(String moduleId) async {
+    await LocalStorageService.set("module_status_$moduleId", "actif");
   }
 
   /// 💎 Marque un module comme premium (IA avancée ou payante)
-  static Future<void> markPremium(String moduleName) async {
-    await LocalStorageService.set("module_status_$moduleName", "premium");
+  static Future<void> markPremium(String moduleId) async {
+    await LocalStorageService.set("module_status_$moduleId", "premium");
   }
 
   /// 🧼 Réinitialise tous les statuts (utile en debug ou réinitialisation)
@@ -63,7 +82,7 @@ class ModulesService {
   }
 
   /// Méthode compatible IA pour activation rapide
-  Future<void> setActive(String moduleName) async {
-    await activate(moduleName);
+  Future<void> setActive(String moduleId) async {
+    await activate(moduleId);
   }
 }
