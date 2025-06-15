@@ -5,7 +5,6 @@ import 'package:connectivity_plus_platform_interface/connectivity_plus_platform_
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:anisphere/modules/noyau/logic/job_context_helper.dart';
 import '../../test_config.dart';
-import 'package:mockito/mockito.dart';
 
 class FakeBattery extends Fake implements Battery {
   final int level;

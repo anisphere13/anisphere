@@ -18,39 +18,30 @@ class JobModelAdapter extends TypeAdapter<JobModel> {
     };
     return JobModel(
       id: fields[0] as String,
-      type: fields[1] as String,
-      target: fields[2] as String,
-      nextRun: fields[3] as DateTime,
-      status: fields[4] as String,
-      attempt: fields[5] as int,
-      logs: (fields[6] as List).cast<String>(),
-      createdAt: fields[7] as DateTime,
-      updatedAt: fields[8] as DateTime,
+      name: fields[1] as String,
+      status: fields[2] as JobStatus,
+      createdAt: fields[3] as DateTime,
+      startedAt: fields[4] as DateTime?,
+      finishedAt: fields[5] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, JobModel obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.type)
+      ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.target)
-      ..writeByte(3)
-      ..write(obj.nextRun)
-      ..writeByte(4)
       ..write(obj.status)
-      ..writeByte(5)
-      ..write(obj.attempt)
-      ..writeByte(6)
-      ..write(obj.logs)
-      ..writeByte(7)
+      ..writeByte(3)
       ..write(obj.createdAt)
-      ..writeByte(8)
-      ..write(obj.updatedAt);
+      ..writeByte(4)
+      ..write(obj.startedAt)
+      ..writeByte(5)
+      ..write(obj.finishedAt);
   }
 
   @override
@@ -60,6 +51,55 @@ class JobModelAdapter extends TypeAdapter<JobModel> {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is JobModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class JobStatusAdapter extends TypeAdapter<JobStatus> {
+  @override
+  final int typeId = 129;
+
+  @override
+  JobStatus read(BinaryReader reader) {
+    switch (reader.readByte()) {
+      case 0:
+        return JobStatus.pending;
+      case 1:
+        return JobStatus.running;
+      case 2:
+        return JobStatus.completed;
+      case 3:
+        return JobStatus.failed;
+      default:
+        return JobStatus.pending;
+    }
+  }
+
+  @override
+  void write(BinaryWriter writer, JobStatus obj) {
+    switch (obj) {
+      case JobStatus.pending:
+        writer.writeByte(0);
+        break;
+      case JobStatus.running:
+        writer.writeByte(1);
+        break;
+      case JobStatus.completed:
+        writer.writeByte(2);
+        break;
+      case JobStatus.failed:
+        writer.writeByte(3);
+        break;
+    }
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is JobStatusAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
