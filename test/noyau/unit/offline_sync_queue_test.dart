@@ -20,11 +20,20 @@ void main() {
   });
 
   test('addTask stores task in Hive box', () async {
-    final task = SyncTask(id: 't1', type: 'test', data: {'v': 1});
+    final task = SyncTask(
+      id: 't1',
+      type: 'test',
+      data: {'v': 1},
+      filePath: '/tmp/file',
+      priority: 2,
+    );
     await OfflineSyncQueue.addTask(task);
     final box = await Hive.openBox<SyncTask>('offline_sync_queue');
     expect(box.length, 1);
-    expect(box.get('t1')?.type, 'test');
+    final stored = box.get('t1');
+    expect(stored?.type, 'test');
+    expect(stored?.filePath, '/tmp/file');
+    expect(stored?.priority, 2);
   });
 
   test('processQueue processes tasks and clears box', () async {
