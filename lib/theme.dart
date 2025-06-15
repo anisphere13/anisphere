@@ -1,21 +1,34 @@
 import 'package:flutter/material.dart';
 
-/// Application-wide theme settings.
+final Color primaryBlue = const Color(0xFF183153);
+final Color backgroundWhite = Colors.white;
+
 final ThemeData appTheme = ThemeData(
-  scaffoldBackgroundColor: const Color(0xFF183153),
-  colorScheme: ColorScheme.fromSeed(
-    seedColor: const Color(0xFF183153),
-    primary: const Color(0xFF183153),
-    secondary: const Color(0xFFFBC02D),
-  ),
-  useMaterial3: true,
-  highlightColor: const Color(0xFFFBC02D),
-  splashColor: const Color(0xFFFBC02D),
-  appBarTheme: const AppBarTheme(
-    backgroundColor: Color(0xFF183153),
+  brightness: Brightness.light,
+  scaffoldBackgroundColor: backgroundWhite,
+  primaryColor: primaryBlue,
+  appBarTheme: AppBarTheme(
+    backgroundColor: primaryBlue,
     foregroundColor: Colors.white,
+    elevation: 0,
   ),
+  splashColor: Colors.transparent, // 👈 empêche les halos jaunes
+  highlightColor: Colors.transparent, // 👈 idem pour les clics longs
+  splashFactory: NoSplash.splashFactory, // 👈 désactive complètement les effets
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    backgroundColor: backgroundWhite,
+    selectedItemColor: primaryBlue,
+    unselectedItemColor: Colors.grey,
+    showUnselectedLabels: true,
+    type: BottomNavigationBarType.fixed,
+  ),
+  iconTheme: IconThemeData(color: primaryBlue),
   textTheme: const TextTheme(
-    bodyMedium: TextStyle(color: Color(0xFF3A3A3A)),
+    bodyLarge: TextStyle(fontSize: 16),
+    bodyMedium: TextStyle(fontSize: 14),
+  ),
+  colorScheme: ColorScheme.fromSwatch().copyWith(
+    primary: primaryBlue,
+    secondary: primaryBlue,
   ),
 );
