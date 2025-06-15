@@ -23,6 +23,12 @@ class UserProvider with ChangeNotifier {
 
   UserProvider(this._userService, this._authService);
 
+  /// Met à jour l'utilisateur actuel et notifie les listeners.
+  void setUser(UserModel user) {
+    _user = user;
+    notifyListeners();
+  }
+
   /// 📦 Chargement local ou distant
   Future<void> loadUser() async {
     try {
@@ -31,7 +37,11 @@ class UserProvider with ChangeNotifier {
 
       if (currentUser != null) {
         _user = await _fetchUser(currentUser.uid);
+        debugPrint('[loadUser] Chargement utilisateur depuis Hive : $_user');
         _logAndNotifyUserState(_user, "chargé");
+        if (_user == null) {
+          notifyListeners();
+        }
 
         // ✅ Synchronisation IA si premium
         if (_user?.iaPremium == true) {
@@ -39,6 +49,7 @@ class UserProvider with ChangeNotifier {
         }
       } else {
         debugPrint("⚠️ Aucun utilisateur connecté.");
+        notifyListeners();
       }
     } catch (e) {
       _logError("loadUser", e);
