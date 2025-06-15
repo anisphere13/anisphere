@@ -18,23 +18,27 @@ class ModulesScreen extends StatefulWidget {
 class _ModulesScreenState extends State<ModulesScreen> {
   final ModulesService _modulesService = ModulesService();
 
-  final List<ModuleModel> _modulesInfo = const [
-    ModuleModel(
-      id: 'sante',
-      name: 'Santé',
-      description: 'Suivi des vaccins, visites, soins médicaux.',
-    ),
-    ModuleModel(
-      id: 'education',
-      name: 'Éducation',
-      description: 'Programmes éducatifs IA et routines personnalisées.',
-    ),
-    ModuleModel(
-      id: 'dressage',
-      name: 'Dressage',
-      description: 'Entraînement avancé, objectifs, IA comparative.',
-    ),
-  ];
+  final Map<String, List<Map<String, String>>> _modulesByCategory = {
+    'Bien-être': [
+      {
+        "id": "sante",
+        "name": "Santé",
+        "description": "Suivi des vaccins, visites, soins médicaux.",
+      },
+      {
+        "id": "dressage",
+        "name": "Dressage",
+        "description": "Entraînement avancé, objectifs, IA comparative.",
+      },
+    ],
+    'Apprentissage': [
+      {
+        "id": "education",
+        "name": "Éducation",
+        "description": "Programmes éducatifs IA et routines personnalisées.",
+      },
+    ],
+  };
 
   Map<String, String> _statuses = {};
 
@@ -61,16 +65,39 @@ class _ModulesScreenState extends State<ModulesScreen> {
     return Scaffold(
       body: ListView(
         padding: const EdgeInsets.all(16),
-        itemCount: _modulesInfo.length,
-        itemBuilder: (context, index) {
-          final module = _modulesInfo[index];
-          final status = _statuses[module.id] ?? 'disponible';
-          return ModuleCard(
-            module: module,
-            status: status,
-            onActivate: () => _activate(module.id),
+        children: _modulesByCategory.entries.map((entry) {
+          final modules = entry.value;
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                entry.key,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8),
+              SizedBox(
+                height: 200,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: modules.length,
+                  itemBuilder: (context, idx) {
+                    final module = modules[idx];
+                    final id = module['id']!;
+                    final status = _statuses[id] ?? 'disponible';
+                    return SizedBox(
+                      width: 220,
+                      child: _buildModuleCard(module, status),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 24),
+            ],
           );
-        },
+        }).toList(),
       ),
     );
   }

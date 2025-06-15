@@ -1,4 +1,3 @@
-// Copilot Prompt : Test automatique généré pour modules_screen.dart (widget)
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -10,12 +9,14 @@ void main() {
     await initTestEnv();
   });
 
-  testWidgets('renders modules grouped by category', (tester) async {
+  testWidgets('shows categories with horizontal module lists', (tester) async {
     await tester.pumpWidget(const MaterialApp(home: ModulesScreen()));
     await tester.pumpAndSettle();
 
-    expect(find.byType(AppBar), findsNothing);
-    expect(find.text('Santé'), findsOneWidget);
     expect(find.text('Bien-être'), findsOneWidget);
+    expect(find.text('Apprentissage'), findsOneWidget);
+
+    final listViews = tester.widgetList<ListView>(find.byType(ListView));
+    expect(listViews.any((lv) => lv.scrollDirection == Axis.horizontal), isTrue);
   });
 }

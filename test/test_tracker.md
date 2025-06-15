@@ -103,3 +103,5 @@
 | test/noyau/unit/voice_command_analyzer_test.dart | unit | package:anisphere/modules/noyau/logic/voice_command_analyzer.dart | ✅ |
 | test/noyau/widget/voice_input_button_test.dart | widget | package:anisphere/modules/noyau/widgets/voice_input_button.dart | ✅ |
 | test/noyau/unit/job_scheduler_settings_test.dart | unit | package:anisphere/modules/noyau/services/job_scheduler_settings_service.dart | ✅ |
+| test/noyau/unit/module_model_test.dart | unit | package:anisphere/modules/noyau/models/module_model.dart | ✅ |
+| test/noyau/widget/modules_by_category_screen_test.dart | widget | package:anisphere/modules/noyau/screens/modules_by_category_screen.dart | ✅ |
