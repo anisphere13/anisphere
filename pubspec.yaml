@@ -64,7 +64,7 @@ dependencies:
   flutter_blue_plus: ^1.35.5
   nearby_connections: ^4.3.0
   webdav_client: ^1.2.2
-  speech_to_text: ^6.6.0
+  speech_to_text: ^7.0.0
   google_speech: ^2.0.0
 
 dev_dependencies:
