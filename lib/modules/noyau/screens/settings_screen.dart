@@ -7,6 +7,7 @@ import '../services/local_storage_service.dart';
 import '../services/backup_service.dart';
 import '../providers/user_provider.dart';
 import '../services/animal_service.dart';
+import 'feedback_settings_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -118,6 +119,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
             subtitle: const Text("Recevoir des alertes intelligentes"),
             value: iaNotifications,
             onChanged: (val) => _updatePreference("ia_notifications", val),
+          ),
+          ListTile(
+            leading: const Icon(Icons.vibration, color: Color(0xFF183153)),
+            title: const Text('Feedback audio/haptique'),
+            subtitle: const Text('Configurer les sons et vibrations'),
+            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (_) => const FeedbackSettingsScreen()),
+              );
+            },
           ),
           const Divider(),
           const Text("Sauvegarde & restauration", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF183153))),
