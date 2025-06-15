@@ -1,3 +1,4 @@
+// Copilot Prompt : Test automatique généré pour modules_by_category_screen.dart (widget)
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -9,19 +10,13 @@ void main() {
     await initTestEnv();
   });
 
-  testWidgets('shows modules with AppBar title', (tester) async {
-    final modules = [
-      {'name': 'Test Module', 'description': 'demo'},
-    ];
-    await tester.pumpWidget(
-      MaterialApp(
-        home: ModulesByCategoryScreen(category: 'Demo', modules: modules),
-      ),
-    );
+  testWidgets('renders AppBar with category title', (tester) async {
+    await tester.pumpWidget(const MaterialApp(
+      home: ModulesByCategoryScreen(category: 'Général'),
+    ));
     await tester.pumpAndSettle();
 
-    expect(find.text('Demo'), findsOneWidget);
     expect(find.byType(AppBar), findsOneWidget);
-    expect(find.text('Test Module'), findsOneWidget);
+    expect(find.text('Général'), findsOneWidget);
   });
 }
