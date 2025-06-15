@@ -22,18 +22,18 @@ class QueuedEvent {
 class EventQueue {
   static const String _boxName = 'event_queue';
 
-  static Future<void> addEvent(EventModel event) async {
+  Future<void> addEvent(EventModel event) async {
     final box = await Hive.openBox<QueuedEvent>(_boxName);
     await box.add(QueuedEvent(event: event));
     debugPrint('📥 Événement ajouté à la file offline : ${event.type}');
   }
 
-  static Future<List<QueuedEvent>> getAll() async {
+  Future<List<QueuedEvent>> getAll() async {
     final box = await Hive.openBox<QueuedEvent>(_boxName);
     return box.values.toList();
   }
 
-  static Future<void> clear() async {
+  Future<void> clear() async {
     final box = await Hive.openBox<QueuedEvent>(_boxName);
     await box.clear();
     debugPrint('🧹 File d\'événements offline vidée.');

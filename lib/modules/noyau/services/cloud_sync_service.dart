@@ -205,40 +205,41 @@ class CloudSyncService {
       switch (task.type) {
         case "animal":
           await _firebaseService.saveAnimal(
-            AnimalModel.fromJson(task.data),
+            AnimalModel.fromJson(task.data ?? {}),
             forTraining: true,
           );
           break;
         case "user":
           await _firebaseService.saveUser(
-            UserModel.fromJson(task.data),
+            UserModel.fromJson(task.data ?? {}),
             forTraining: true,
           );
           break;
         case "ia_feedback":
-          await _firebaseService.sendIAFeedback(task.data);
+          await _firebaseService.sendIAFeedback(task.data ?? {});
           break;
         case 'ia_logs':
-          final userId = task.data['userId'] as String;
-          final logs = (task.data['logs'] as List).cast<String>();
+          final userId = task.data?['userId'] as String? ?? '';
+          final logs = (task.data?['logs'] as List?)?.cast<String>() ?? [];
           await syncFullIA(userId, logs);
           break;
         case "support":
-          await _firebaseService.sendModuleData('support', task.data);
+          await _firebaseService.sendModuleData('support', task.data ?? {});
           break;
         case 'photo':
-          await _firebaseService.sendModuleData('photos', task.data);
+          await _firebaseService.sendModuleData('photos', task.data ?? {});
           break;
         case OfflineSyncQueue.taskNotificationFeedback:
-          await _firebaseService.sendNotificationFeedback(task.data);
+          await _firebaseService.sendNotificationFeedback(task.data ?? {});
           break;
         default:
           if (task.type.startsWith("module:")) {
             final moduleName = task.type.split(":").last;
-            await _firebaseService.sendModuleData(moduleName, task.data);
+            await _firebaseService.sendModuleData(moduleName, task.data ?? {});
           } else if (task.type.startsWith("message:")) {
             final convoId = task.type.split(":").last;
-            await _firebaseService.sendModuleData('messaging/$convoId', task.data);
+            await _firebaseService
+                .sendModuleData('messaging/$convoId', task.data ?? {});
           }
       }
     });

@@ -190,15 +190,17 @@ class IAMaster {
     await OfflineSyncQueue.processQueue((task) async {
       switch (task.type) {
         case "animal":
-          await _cloudSyncService.pushAnimalData(AnimalModel.fromJson(task.data));
+          await _cloudSyncService
+              .pushAnimalData(AnimalModel.fromJson(task.data ?? {}));
           break;
         case "user":
-          await _cloudSyncService.pushUserData(UserModel.fromJson(task.data));
+          await _cloudSyncService
+              .pushUserData(UserModel.fromJson(task.data ?? {}));
           break;
         default:
           if (task.type.startsWith('message:')) {
             final convoId = task.type.split(':').last;
-            await _cloudSyncService.pushMessagingData(convoId, task.data);
+            await _cloudSyncService.pushMessagingData(convoId, task.data ?? {});
           } else {
             debugPrint("❓ Type de tâche non géré : ${task.type}");
           }
