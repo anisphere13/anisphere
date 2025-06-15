@@ -59,6 +59,7 @@ class AuthService {
       );
 
       await _userService.saveUserToFirebase(newUser);
+      await _userService.saveUserLocally(newUser);
       return newUser;
     } catch (e) {
       _logError("signUpWithEmail", e);
