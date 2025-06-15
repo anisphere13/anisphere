@@ -10,23 +10,30 @@ part 'offline_sync_queue.g.dart';
 @HiveType(typeId: 100)
 class SyncTask {
   @HiveField(0)
-  final String type; // "animal", "user", "module", etc.
+  final String type; // module or service identifier
 
   @HiveField(1)
-  final Map<String, dynamic> data;
+  final Map<String, dynamic>? data;
 
   @HiveField(2)
   final DateTime timestamp;
 
-  // Unique id to allow easy deletion and merging with previous implementation
   @HiveField(3)
   final String id;
 
+  @HiveField(4)
+  final String? filePath;
+
+  @HiveField(5)
+  final int priority;
+
   SyncTask({
     required this.type,
-    required this.data,
+    this.data,
     DateTime? timestamp,
     String? id,
+    this.filePath,
+    this.priority = 0,
   })  : timestamp = timestamp ?? DateTime.now(),
         id = id ?? const Uuid().v4();
 }
@@ -41,6 +48,9 @@ class OfflineSyncQueue {
     debugPrint("📥 Tâche ajoutée à la file offline : ${task.type}");
   }
 
+  /// Alias kept for backward compatibility
+  static Future<void> enqueue(SyncTask task) => addTask(task);
+
   static Future<void> removeTask(String id) async {
     final box = await Hive.openBox<SyncTask>(_boxName);
     await box.delete(id);
@@ -49,7 +59,18 @@ class OfflineSyncQueue {
 
   static Future<List<SyncTask>> getAllTasks() async {
     final box = await Hive.openBox<SyncTask>(_boxName);
-    return box.values.toList();
+    final tasks = box.values.toList();
+    tasks.sort((a, b) => b.priority.compareTo(a.priority));
+    return tasks;
+  }
+
+  static Future<SyncTask?> dequeue() async {
+    final box = await Hive.openBox<SyncTask>(_boxName);
+    if (box.isEmpty) return null;
+    final tasks = await getAllTasks();
+    final task = tasks.first;
+    await box.delete(task.id);
+    return task;
   }
 
   static Future<void> clearQueue() async {
@@ -60,7 +81,7 @@ class OfflineSyncQueue {
 
   static Future<void> processQueue(Function(SyncTask) process) async {
     final box = await Hive.openBox<SyncTask>(_boxName);
-    final tasks = box.values.toList();
+    final tasks = await getAllTasks();
     final failedTasks = <SyncTask>[];
     for (final task in tasks) {
       try {

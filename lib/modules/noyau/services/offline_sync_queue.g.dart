@@ -18,16 +18,18 @@ class SyncTaskAdapter extends TypeAdapter<SyncTask> {
     };
     return SyncTask(
       type: fields[0] as String,
-      data: (fields[1] as Map).cast<String, dynamic>(),
+      data: (fields[1] as Map?)?.cast<String, dynamic>(),
       timestamp: fields[2] as DateTime?,
       id: fields[3] as String?,
+      filePath: fields[4] as String?,
+      priority: fields[5] as int? ?? 0,
     );
   }
 
   @override
   void write(BinaryWriter writer, SyncTask obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.type)
       ..writeByte(1)
@@ -35,7 +37,11 @@ class SyncTaskAdapter extends TypeAdapter<SyncTask> {
       ..writeByte(2)
       ..write(obj.timestamp)
       ..writeByte(3)
-      ..write(obj.id);
+      ..write(obj.id)
+      ..writeByte(4)
+      ..write(obj.filePath)
+      ..writeByte(5)
+      ..write(obj.priority);
   }
 
   @override
