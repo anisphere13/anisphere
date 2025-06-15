@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 
 final Color primaryBlue = const Color(0xFF183153);
-final Color backgroundWhite = Colors.white;
+final Color backgroundGray = const Color(0xFFF5F5F5); // ✅ gris clair Samsung Health
 
 final ThemeData appTheme = ThemeData(
   brightness: Brightness.light,
-  scaffoldBackgroundColor: backgroundWhite,
+  scaffoldBackgroundColor: backgroundGray, // ✅ fond global de tous les écrans
+  cardColor: Colors.white, // ✅ toutes les Card par défaut
   primaryColor: primaryBlue,
   appBarTheme: AppBarTheme(
     backgroundColor: primaryBlue,
     foregroundColor: Colors.white,
     elevation: 0,
   ),
-  splashColor: Colors.transparent, // 👈 empêche les halos jaunes
-  highlightColor: Colors.transparent, // 👈 idem pour les clics longs
-  splashFactory: NoSplash.splashFactory, // 👈 désactive complètement les effets
+  splashColor: Colors.transparent, // pas de halo jaune
+  highlightColor: Colors.transparent,
+  splashFactory: NoSplash.splashFactory,
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    backgroundColor: backgroundWhite,
+    backgroundColor: Colors.white,
     selectedItemColor: primaryBlue,
     unselectedItemColor: Colors.grey,
     showUnselectedLabels: true,

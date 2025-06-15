@@ -117,8 +117,6 @@ Pour lancer les tests localement :
 1. Copiez `assets/credentials.json.example` vers `assets/credentials.json`.
 2. Exécutez `flutter test --coverage`.
 
-Consultez [README_Tests.md](README_Tests.md) et [docs/test_architecture.md](docs/test_architecture.md) pour plus de détails.
-
 Toutes les commandes de test se lancent depuis la racine du projet :
 ```bash
 flutter pub get
