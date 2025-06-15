@@ -103,6 +103,12 @@
 - ✅ Tests validés automatiquement le 2025-06-16
 | test/noyau/unit/share_history_model_test.dart | unit | package:anisphere/modules/noyau/models/share_history_model.dart | ✅ |
 | test/noyau/unit/share_history_model.g_test.dart | unit | package:anisphere/modules/noyau/models/share_history_model.g.dart | ✅ |
-| test/noyau/unit/feedback_sound_service_test.dart | unit | package:anisphere/modules/noyau/services/feedback_sound_service.dart | ✅ |
-| test/noyau/unit/haptic_feedback_service_test.dart | unit | package:anisphere/modules/noyau/services/haptic_feedback_service.dart | ✅ |
-| test/noyau/unit/feedback_options_provider_test.dart | unit | package:anisphere/modules/noyau/providers/feedback_options_provider.dart | ✅ |
+| test/noyau/unit/feedback_sound_service_test.dart | unit | package:anisphere/modules/noyau/services/feedback_sound_service.dart | ❌ |
+| test/noyau/unit/haptic_feedback_service_test.dart | unit | package:anisphere/modules/noyau/services/haptic_feedback_service.dart | ❌ |
+| test/noyau/unit/feedback_options_provider_test.dart | unit | package:anisphere/modules/noyau/providers/feedback_options_provider.dart | ❌ |
+| test/noyau/widget/feedback_settings_screen_test.dart | widget | package:anisphere/modules/noyau/screens/feedback_settings_screen.dart | ❌ |
+
+- [ ] Ajouter `FeedbackSoundService` pour les sons de confirmation
+- [ ] Ajouter `HapticFeedbackService` pour les vibrations
+- [ ] Créer `FeedbackOptionsProvider` pour activer/désactiver ces retours
+- [ ] Créer `FeedbackSettingsScreen` pour personnaliser les options
