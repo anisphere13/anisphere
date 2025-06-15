@@ -8,7 +8,7 @@ void main() {
     await initTestEnv();
   });
   test('IAContext.empty has default values', () {
-    const ctx = IAContext.empty();
+    final ctx = IAContext.empty();
     expect(ctx.isFirstLaunch, isTrue);
     expect(ctx.animalCount, 0);
   });
