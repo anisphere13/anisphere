@@ -103,10 +103,20 @@ class MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AniSphère'),
+        backgroundColor: const Color(0xFFF5F5F5),
+        foregroundColor: const Color(0xFF183153),
+        elevation: 0,
+        title: const Text(
+          'AniSphère',
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 20,
+            color: Color(0xFF183153),
+          ),
+        ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.qr_code),
+            icon: const Icon(Icons.qr_code, color: Color(0xFF183153)),
             onPressed: () {
               Navigator.push(
                 context,
@@ -124,6 +134,7 @@ class MainScreenState extends State<MainScreen> {
             },
           ),
           PopupMenuButton<String>(
+            icon: const Icon(Icons.more_vert, color: Color(0xFF183153)),
             onSelected: _handleMenuSelection,
             itemBuilder: (context) => const [
               PopupMenuItem(value: 'profile', child: Text('Mon Profil')),
