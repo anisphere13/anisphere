@@ -4,7 +4,7 @@ library;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../services/modules_service.dart';
+import 'package:anisphere/modules/noyau/services/modules_service.dart';
 import '../providers/feedback_options_provider.dart';
 
 class FeedbackSettingsScreen extends StatefulWidget {

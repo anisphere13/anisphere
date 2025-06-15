@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 import '../models/security_settings_model.dart';
-import '../services/modules_service.dart';
+import 'package:anisphere/modules/noyau/services/modules_service.dart';
 
 class SecuritySettingsScreen extends StatefulWidget {
   const SecuritySettingsScreen({super.key});

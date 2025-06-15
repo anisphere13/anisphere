@@ -15,51 +15,42 @@ class ModulesService {
       name: 'Santé',
       description: 'Suivi santé et bien-être',
       category: 'Santé',
-      icon: '🩺',
     ),
     ModuleModel(
       id: 'education',
       name: 'Éducation',
       description: 'Apprentissage et conseils',
       category: 'Éducation',
-      icon: '📚',
     ),
     ModuleModel(
       id: 'dressage',
       name: 'Dressage',
       description: 'Entraînement avancé',
       category: 'Dressage',
-      icon: '🎯',
-      premium: true,
+      isPremium: true,
     ),
     // 🔽 Ajouter ici les modules futurs
   ];
 
+  /// Getter exposant la liste des modules disponibles.
+  static List<ModuleModel> get modules => List.unmodifiable(availableModules);
+
+  /// Liste des identifiants de modules utilisée pour le stockage local.
+  static List<String> get allModules =>
+      modules.map((m) => m.id).toList(growable: false);
+
   /// 📦 Liste détaillée des modules par catégorie.
-  static const Map<String, List<Map<String, String>>> modulesByCategory = {
-    'Général': [
-      {
-        'id': 'sante',
-        'name': 'Santé',
-        'description': 'Suivi des vaccins, visites, soins médicaux.',
-      },
-      {
-        'id': 'education',
-        'name': 'Éducation',
-        'description': 'Programmes éducatifs IA et routines personnalisées.',
-      },
-      {
-        'id': 'dressage',
-        'name': 'Dressage',
-        'description': 'Entraînement avancé, objectifs, IA comparative.',
-      },
-    ],
-  };
+  static Map<String, List<ModuleModel>> get modulesByCategory {
+    final Map<String, List<ModuleModel>> result = {};
+    for (final module in modules) {
+      result.putIfAbsent(module.category, () => []).add(module);
+    }
+    return result;
+  }
 
   /// 🔍 Retourne la liste des modules pour une catégorie donnée.
-  static Future<List<Map<String, String>>> getModulesByCategory(
-      String category) async {
-    return modulesByCategory[category] ?? <Map<String, String>>[];
+  static List<ModuleModel> getModulesByCategory(String category) {
+    return modulesByCategory[category] ?? <ModuleModel>[];
   }
 
   /// 🔄 Récupère le statut d’un module : actif, premium, disponible
@@ -115,8 +106,4 @@ class ModulesService {
     await activate(moduleName);
   }
 
-  /// 🔍 Récupère les modules d'une catégorie donnée.
-  Future<List<Map<String, String>>> getModulesByCategory(String category) async {
-    return _modulesByCategory[category] ?? [];
-  }
 }

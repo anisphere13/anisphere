@@ -16,34 +16,16 @@ class ModulesScreen extends StatefulWidget {
 
 class _ModulesScreenState extends State<ModulesScreen> {
   final ModulesService _modulesService = ModulesService();
-
-  final Map<String, List<Map<String, String>>> _modulesByCategory = {
-    'Bien-être': [
-      {
-        "id": "sante",
-        "name": "Santé",
-        "description": "Suivi des vaccins, visites, soins médicaux.",
-      },
-      {
-        "id": "dressage",
-        "name": "Dressage",
-        "description": "Entraînement avancé, objectifs, IA comparative.",
-      },
-    ],
-    'Apprentissage': [
-      {
-        "id": "education",
-        "name": "Éducation",
-        "description": "Programmes éducatifs IA et routines personnalisées.",
-      },
-    ],
-  };
+  final Map<String, List<ModuleModel>> _modulesByCategory = {};
 
   Map<String, String> _statuses = {};
 
   @override
   void initState() {
     super.initState();
+    for (final m in ModulesService.modules) {
+      _modulesByCategory.putIfAbsent(m.category, () => []).add(m);
+    }
     _loadStatuses();
   }
 
@@ -84,11 +66,15 @@ class _ModulesScreenState extends State<ModulesScreen> {
                   itemCount: modules.length,
                   itemBuilder: (context, idx) {
                     final module = modules[idx];
-                    final id = module['id']!;
+                    final id = module.id;
                     final status = _statuses[id] ?? 'disponible';
                     return SizedBox(
                       width: 220,
-                      child: _buildModuleCard(module, status),
+                      child: ModuleCard(
+                        module: module,
+                        status: status,
+                        onActivate: () => _activate(id),
+                      ),
                     );
                   },
                 ),
@@ -98,15 +84,6 @@ class _ModulesScreenState extends State<ModulesScreen> {
           );
         }).toList(),
       ),
-    );
-  }
-
-  Widget _buildModuleCard(Map<String, String> module, String status) {
-    return ModuleCard(
-      module: module,
-      status: status,
-      onActivate:
-          status == 'disponible' ? () => _activate(module['id']!) : null,
     );
   }
 }
