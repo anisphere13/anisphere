@@ -10,7 +10,7 @@ void main() {
     await initTestEnv();
   });
   testWidgets('App launches to MainScreen', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(MyApp());
 
     expect(find.byType(MainScreen), findsOneWidget);
   });
