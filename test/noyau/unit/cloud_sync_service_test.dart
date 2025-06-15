@@ -114,7 +114,7 @@ void main() {
     final tasks = await OfflineSyncQueue.getAllTasks();
     expect(tasks.length, 1);
     expect(tasks.first.type, 'animal');
-    expect(tasks.first.data['id'], 'a1');
+    expect(tasks.first.data?['id'], 'a1');
   });
 
   test('replayOfflineTasks flushes queued tasks', () async {
@@ -210,6 +210,6 @@ void main() {
     final tasks = await OfflineSyncQueue.getAllTasks();
     expect(tasks.length, 1);
     expect(tasks.first.type, 'ia_logs');
-    expect(tasks.first.data['userId'], 'user321');
+    expect(tasks.first.data?['userId'], 'user321');
   });
 }
