@@ -98,3 +98,6 @@
 | test/sharing/unit/cloud_sharing_service_test.dart | unit | package:anisphere/modules/sharing/services/cloud_sharing_service.dart | ✅ |
 | test/sharing/unit/sharing_ia_optimizer_test.dart | unit | package:anisphere/modules/sharing/services/sharing_ia_optimizer.dart | ✅ |
 | test/sharing/widget/share_screen_test.dart | widget | package:anisphere/modules/noyau/screens/share_screen.dart | ✅ |
+| test/voice/unit/speech_recognition_service_test.dart | unit | package:anisphere/modules/voice/speech_recognition_service.dart | ✅ |
+| test/voice/unit/voice_command_analyzer_test.dart | unit | package:anisphere/modules/voice/voice_command_analyzer.dart | ✅ |
+| test/voice/widget/voice_input_button_test.dart | widget | package:anisphere/modules/voice/voice_input_button.dart | ✅ |

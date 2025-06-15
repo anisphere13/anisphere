@@ -306,3 +306,4 @@ Responsable : Superadmin
 
 - 🧩 Synchronisation automatique du noyau le 2025-06-14
 - 🆕 2025-06-15 : Ajout des services LocalSharingService, CloudSharingService et PremiumSharingChecker.
+- 🆕 2025-06-15 : Mise en place du module vocal (SpeechRecognitionService, VoiceCommandAnalyzer, UI mains-libres).
