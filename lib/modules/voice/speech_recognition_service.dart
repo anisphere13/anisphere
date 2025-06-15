@@ -1,24 +1,24 @@
 // Copilot: Service Flutter pour reconnaissance vocale offline-first avec fallback Google Speech
 library;
 
-import 'package:speech_to_text/speech_to_text.dart';
-import 'package:google_speech/google_speech.dart';
+import 'package:speech_to_text/speech_to_text.dart' as stt;
+import 'package:google_speech/google_speech.dart' as gs;
 
 /// Service de reconnaissance vocale pour AniSphère.
 /// Utilise `speech_to_text` en priorité pour une reconnaissance locale.
 /// En cas d'échec ou d'indisponibilité, bascule sur l'API Google Speech.
 class SpeechRecognitionService {
-  final SpeechToText _speechToText;
-  final SpeechToText _googleFallback;
+  final stt.SpeechToText _speechToText;
+  final gs.SpeechToText _googleFallback; // ignore: unused_field
   bool _isInitialized = false;
   bool _isListening = false;
   String _transcription = '';
 
   SpeechRecognitionService({
-    SpeechToText? speechToText,
-    SpeechToText? googleFallback,
-  })  : _speechToText = speechToText ?? SpeechToText(),
-        _googleFallback = googleFallback ?? SpeechToText();
+    stt.SpeechToText? speechToText,
+    gs.SpeechToText? googleFallback,
+  })  : _speechToText = speechToText ?? stt.SpeechToText(),
+        _googleFallback = googleFallback ?? gs.SpeechToText();
 
   /// Initialise la reconnaissance locale si nécessaire.
   Future<void> _init() async {
