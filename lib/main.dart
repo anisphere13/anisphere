@@ -88,8 +88,10 @@ void main() async {
   CloudNotificationListener.initialize();
   // Demande de permission notifications Android (intégré proprement ici)
   final plugin = FlutterLocalNotificationsPlugin();
-  final androidPlugin = plugin.resolvePlatformSpecificImplementation<
-      AndroidFlutterLocalNotificationsPlugin>();
+  final androidPlugin = plugin
+      .resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin
+      >();
   await androidPlugin?.requestNotificationsPermission();
   assert(() {
     debugPrint("🧠 Initialisation services IA terminée !");
@@ -112,21 +114,11 @@ void main() async {
         ChangeNotifierProvider(
           create: (_) => UserProvider(userService, authService),
         ),
-        ChangeNotifierProvider(
-          create: (_) => AnimalProvider()..init(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => IAContextProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => SupportProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => MessagingProvider()..init(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => PhotoProvider()..init(),
-        ),
+        ChangeNotifierProvider(create: (_) => AnimalProvider()..init()),
+        ChangeNotifierProvider(create: (_) => IAContextProvider()),
+        ChangeNotifierProvider(create: (_) => SupportProvider()),
+        ChangeNotifierProvider(create: (_) => MessagingProvider()..init()),
+        ChangeNotifierProvider(create: (_) => PhotoProvider()..init()),
         ChangeNotifierProvider(
           create: (_) => FeedbackOptionsProvider()..load(),
         ),
@@ -137,7 +129,7 @@ void main() async {
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
