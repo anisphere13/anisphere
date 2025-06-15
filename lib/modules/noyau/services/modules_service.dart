@@ -15,6 +15,33 @@ class ModulesService {
     // 🔽 Ajouter ici les modules futurs
   ];
 
+  /// 📦 Liste détaillée des modules par catégorie.
+  static const Map<String, List<Map<String, String>>> modulesByCategory = {
+    'Général': [
+      {
+        'id': 'sante',
+        'name': 'Santé',
+        'description': 'Suivi des vaccins, visites, soins médicaux.',
+      },
+      {
+        'id': 'education',
+        'name': 'Éducation',
+        'description': 'Programmes éducatifs IA et routines personnalisées.',
+      },
+      {
+        'id': 'dressage',
+        'name': 'Dressage',
+        'description': 'Entraînement avancé, objectifs, IA comparative.',
+      },
+    ],
+  };
+
+  /// 🔍 Retourne la liste des modules pour une catégorie donnée.
+  static Future<List<Map<String, String>>> getModulesByCategory(
+      String category) async {
+    return modulesByCategory[category] ?? <Map<String, String>>[];
+  }
+
   /// 🔄 Récupère le statut d’un module : actif, premium, disponible
   static String getStatus(String moduleName) {
     return LocalStorageService.get("module_status_$moduleName", defaultValue: "disponible");
