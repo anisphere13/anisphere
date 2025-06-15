@@ -5,7 +5,6 @@
 library;
 import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/services/modules_service.dart';
-import 'package:anisphere/modules/noyau/models/module_model.dart';
 import 'package:anisphere/modules/noyau/widgets/module_card.dart';
 
 class ModulesScreen extends StatefulWidget {
@@ -101,8 +100,13 @@ class _ModulesScreenState extends State<ModulesScreen> {
       ),
     );
   }
-<<<<<<< HEAD
-=======
 
->>>>>>> codex/ajouter-widget-module_card
+  Widget _buildModuleCard(Map<String, String> module, String status) {
+    return ModuleCard(
+      module: module,
+      status: status,
+      onActivate:
+          status == 'disponible' ? () => _activate(module['id']!) : null,
+    );
+  }
 }
