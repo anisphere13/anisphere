@@ -16,7 +16,7 @@ class _TestUserProvider extends UserProvider {
             AuthService(firebaseAuth: FakeFirebaseAuth(), userService: UserService(skipHiveInit: true)));
 
   @override
-  UserModel? get user => const UserModel(
+  UserModel? get user => UserModel(
         id: 'u1',
         name: 'Test',
         email: 'test@test.com',

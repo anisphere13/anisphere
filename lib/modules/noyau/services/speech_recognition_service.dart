@@ -18,7 +18,10 @@ class SpeechRecognitionService {
     stt.SpeechToText? speechToText,
     gs.SpeechToText? googleFallback,
   })  : _speechToText = speechToText ?? stt.SpeechToText(),
-        _googleFallback = googleFallback ?? gs.SpeechToText();
+        _googleFallback = googleFallback ??
+            gs.SpeechToText.viaServiceAccount(
+              gs.ServiceAccount.fromString('{}'),
+            );
 
   /// Initialise la reconnaissance locale si nécessaire.
   Future<void> _init() async {

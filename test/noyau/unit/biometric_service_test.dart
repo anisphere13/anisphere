@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
 import 'package:anisphere/modules/noyau/services/biometric_service.dart';
 import 'package:local_auth/local_auth.dart';
-import 'package:mockito/mockito.dart';
 
 class FakeAuth extends Fake implements LocalAuthentication {
   @override

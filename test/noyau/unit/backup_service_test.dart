@@ -8,8 +8,7 @@ import 'package:anisphere/modules/noyau/services/animal_service.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
 import 'package:anisphere/modules/noyau/models/user_model.dart';
-import 'package:anisphere/modules/noyau/models/animal_model.g.dart';
-import 'package:anisphere/modules/noyau/models/user_model.g.dart';
+import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import '../../helpers/test_fakes.dart';
 
 void main() {
@@ -25,7 +24,7 @@ void main() {
     final animalService =
         AnimalService(testBox: animalBox, skipHiveInit: true);
     final userService = UserService(
-      firestore: FakeFirestore(),
+      firestore: FakeFirebaseFirestore(),
       skipHiveInit: true,
       testBox: await Hive.openBox<UserModel>('users'),
     );
@@ -33,7 +32,7 @@ void main() {
     final backup = BackupService(
       userService: userService,
       animalService: animalService,
-      firebaseService: FakeFirebaseService(FakeFirestore()),
+      firebaseService: FakeFirebaseService(FakeFirebaseFirestore()),
     );
 
     final result = await backup.performBackup();

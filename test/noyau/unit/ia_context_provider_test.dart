@@ -2,7 +2,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
 import 'package:anisphere/modules/noyau/providers/ia_context_provider.dart';
-import 'package:anisphere/modules/noyau/logic/ia_context.dart';
 
 void main() {
   setUpAll(() async {

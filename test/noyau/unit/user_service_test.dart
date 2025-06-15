@@ -6,7 +6,6 @@ import 'package:hive/hive.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
 import 'package:anisphere/modules/noyau/models/user_model.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
-import 'package:anisphere/modules/noyau/models/user_model.g.dart';
 
 void main() {
   setUpAll(() async {
@@ -17,7 +16,7 @@ void main() {
     Hive.init(dir.path);
     Hive.registerAdapter(UserModelAdapter());
     final box = await Hive.openBox<UserModel>('users');
-    final service = UserService(testBox: box, firestore: FakeFirestore(), skipHiveInit: true);
+    final service = UserService(testBox: box, firestore: FakeFirebaseFirestore(), skipHiveInit: true);
     final user = UserModel(
       id: 'u1',
       name: 'n',
