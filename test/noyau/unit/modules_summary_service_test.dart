@@ -39,9 +39,9 @@ void main() {
     tempDir = await Directory.systemTemp.createTemp();
     Hive.init(tempDir.path);
     await LocalStorageService.init();
-    await LocalStorageService.set('module_status_Santé', 'actif');
-    await LocalStorageService.set('module_status_Éducation', 'actif');
-    await LocalStorageService.set('module_status_Dressage', 'actif');
+    await LocalStorageService.set('module_status_sante', 'actif');
+    await LocalStorageService.set('module_status_education', 'actif');
+    await LocalStorageService.set('module_status_dressage', 'actif');
   });
 
   tearDownAll(() async {

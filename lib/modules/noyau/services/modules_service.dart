@@ -32,12 +32,12 @@ class ModulesService {
     // 🔽 Ajouter ici les modules futurs
   ];
 
-  /// Getter exposant la liste des modules disponibles.
-  static List<ModuleModel> get modules => List.unmodifiable(availableModules);
+  /// Liste statique des modules disponibles.
+  static List<ModuleModel> get modules => availableModules;
 
-  /// Liste des identifiants de modules utilisée pour le stockage local.
+  /// Liste statique des identifiants de modules.
   static List<String> get allModules =>
-      modules.map((m) => m.id).toList(growable: false);
+      modules.map((m) => m.id).toList();
 
   /// 📦 Liste détaillée des modules par catégorie.
   static Map<String, List<ModuleModel>> get modulesByCategory {
@@ -105,5 +105,4 @@ class ModulesService {
   Future<void> setActive(String moduleName) async {
     await activate(moduleName);
   }
-
 }
