@@ -38,6 +38,12 @@ class PaymentProvider extends ChangeNotifier {
   /// Active subscription identifiers for the current user.
   List<String> get subscriptions => List.unmodifiable(_subscriptions);
 
+  /// Stream des mises à jour d'abonnements provenant du service.
+  Stream<List<String>> get subscriptionUpdates => _service.subscriptionUpdates;
+
+  /// Retourne les abonnements actifs depuis le service.
+  Future<List<String>> getActiveSubscriptions() => _service.getActiveSubscriptions();
+
   /// Initializes the provider by loading current subscriptions and
   /// listening to updates from [PaymentService].
   Future<void> init() async {
