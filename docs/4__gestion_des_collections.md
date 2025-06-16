@@ -113,6 +113,23 @@ messages (collection)
              ├── sentAt: timestamp
              └── readBy: [string]
 
+💳 Collection subscriptions
+
+🔹 Objectif
+
+Gérer les abonnements premium ou pro des utilisateurs.
+
+🔹 Structure
+
+subscriptions (collection)
+ └── [subscriptionId] (document)
+     ├── userId: string
+     ├── type: string
+     ├── startDate: timestamp
+     ├── expiryDate: timestamp
+     ├── status: string (active, expired, cancelled)
+     └── lastSync: timestamp (optionnelle)
+
 
 🗂️ Compléments prévus
 
