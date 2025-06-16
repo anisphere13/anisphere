@@ -78,7 +78,7 @@ Organisation stricte en 6 sous-dossiers principaux :
 * **services/** : logique metier et accès Hive/Firebase (user\_service, auth\_service, offline\_sync\_queue, firebase\_service...)
 * **screens/** : écrans principaux et secondaires du noyau (login\_screen, main\_screen, splash\_screen, settings\_screen, etc.)
 * **logic/** : logique IA locale (ia\_master, ia\_executor, ia\_rule\_engine, ia\_flag, etc.)
-* **providers/** : state management avec Provider (user\_provider, animal\_provider, ia\_context\_provider)
+* **providers/** : state management avec Provider (user\_provider, animal\_provider, ia\_context\_provider, **theme\_provider**)
 * **widgets/** : composants visuels réutilisables (ia\_banner, ia\_chip, ia\_log\_viewer, notification\_icon, etc.)
 * **storage/** : fichiers partagés ou intermodulaires (ex : stockage IA modulaire)
 

@@ -36,7 +36,8 @@ Icône paramètres / mon compte (roue crantée)
 
 Slide Up (écran d’accueil)
 
-Accès rapide : ajouter un animal, note santé, photo, activité...
+Bouton d’action flottant ouvrant un panneau d’actions rapides :
+ajouter un animal, note santé, photo ou activité.
 
 📇 Carte d’identité et widgets modulaires
 
