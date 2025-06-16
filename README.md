@@ -26,6 +26,10 @@ Photos et souvenirs : journal visuel, partage optimisé, identification visuelle
 
 Fiches animales interactives : historiques, modules activés, IA dédiée
 
+Tableau de bord personnalisable avec carte identité et widgets par module issus des modules activés
+
+Animations de célébration et suggestions IA contextuelles
+
 Notifications IA : rappels, alertes urgentes, suggestions intelligentes
 
 Mode hors-ligne & synchronisation différée
