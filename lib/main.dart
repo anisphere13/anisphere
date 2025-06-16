@@ -18,6 +18,7 @@ import 'package:anisphere/modules/noyau/providers/animal_provider.dart';
 import 'package:anisphere/modules/noyau/providers/ia_context_provider.dart';
 import 'package:anisphere/modules/noyau/providers/support_provider.dart';
 import 'package:anisphere/modules/noyau/providers/messaging_provider.dart';
+import 'package:anisphere/modules/noyau/providers/theme_provider.dart';
 import 'package:anisphere/modules/noyau/services/notification_service.dart';
 import 'package:anisphere/modules/noyau/services/offline_sync_queue.dart';
 import 'package:anisphere/modules/noyau/logic/ia_metrics_collector.dart';
@@ -115,6 +116,7 @@ void main() async {
         ChangeNotifierProvider(
           create: (_) => UserProvider(userService, authService),
         ),
+        ChangeNotifierProvider(create: (_) => ThemeProvider()..load()),
         ChangeNotifierProvider(create: (_) => AnimalProvider()..init()),
         ChangeNotifierProvider(create: (_) => IAContextProvider()),
         ChangeNotifierProvider(create: (_) => SupportProvider()),
@@ -154,6 +156,8 @@ class _MyAppState extends State<MyApp> {
       title: 'AniSphère',
       debugShowCheckedModeBanner: false,
       theme: appTheme,
+      darkTheme: darkTheme,
+      themeMode: context.watch<ThemeProvider>().themeMode,
       home: const MainScreen(),
     );
   }

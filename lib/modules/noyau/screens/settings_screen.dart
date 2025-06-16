@@ -7,6 +7,7 @@ import '../services/local_storage_service.dart';
 import '../services/backup_service.dart';
 import '../providers/user_provider.dart';
 import '../services/animal_service.dart';
+import '../providers/theme_provider.dart';
 import 'feedback_settings_screen.dart';
 import '../providers/payment_provider.dart';
 import 'iap_screen.dart';
@@ -38,16 +39,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _loadPreferences() async {
-
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    await themeProvider.load();
     setState(() {
-      darkMode = LocalStorageService.get("dark_mode", defaultValue: false);
+      darkMode = themeProvider.isDarkMode;
       iaSuggestions = LocalStorageService.get("ia_suggestions", defaultValue: true);
       iaNotifications = LocalStorageService.get("ia_notifications", defaultValue: true);
     });
   }
 
   Future<void> _updatePreference(String key, dynamic value) async {
-    await LocalStorageService.set(key, value);
+    if (key == "dark_mode") {
+      await Provider.of<ThemeProvider>(context, listen: false).setDarkMode(value);
+    } else {
+      await LocalStorageService.set(key, value);
+    }
     await _loadPreferences();
   }
 
