@@ -26,9 +26,9 @@ git pull origin main
 
 echo ""
 echo "📚 📊 Mise à jour des suivis AniSphère..."
-dart scripts/update_test_tracker.dart
-dart scripts/update_suivi_taches.dart
-dart scripts/update_noyau_suivi.dart
+flutter pub run scripts/update_test_tracker.dart
+flutter pub run scripts/update_suivi_taches.dart
+flutter pub run scripts/update_noyau_suivi.dart
 echo "✅ Suivis Markdown mis à jour."
 
 echo ""
