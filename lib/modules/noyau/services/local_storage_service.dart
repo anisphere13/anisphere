@@ -13,10 +13,12 @@ import 'dart:convert';
 import '../models/user_model.dart';
 import '../models/animal_model.dart';
 import '../models/job_model.dart';
+import '../models/subscription_model.dart';
 
 class LocalStorageService {
   static late Box<UserModel> _userBox;
   static late Box<AnimalModel> _animalBox;
+  static late Box<SubscriptionModel> _subscriptionBox;
   static late Box _settingsBox;
   static const _secureKeyName = 'hive_aes_key';
   static const _secureStorage = FlutterSecureStorage();
@@ -44,8 +46,12 @@ class LocalStorageService {
       Hive.registerAdapter(UserModelAdapter());
       Hive.registerAdapter(AnimalModelAdapter());
       Hive.registerAdapter(JobModelAdapter());
+      Hive.registerAdapter(SubscriptionStatusAdapter());
+      Hive.registerAdapter(SubscriptionModelAdapter());
       _userBox = await Hive.openBox<UserModel>('users', encryptionCipher: cipher);
       _animalBox = await Hive.openBox<AnimalModel>('animals', encryptionCipher: cipher);
+      _subscriptionBox =
+          await Hive.openBox<SubscriptionModel>('subscriptions', encryptionCipher: cipher);
       _settingsBox = await Hive.openBox('settings', encryptionCipher: cipher);
       debugPrint("✅ Hive local storage initialized!");
     } catch (e) {
@@ -90,6 +96,44 @@ class LocalStorageService {
     } catch (e) {
       debugPrint("❌ Erreur getAnimal : $e");
       return null;
+    }
+  }
+
+  /// 💾 Sauvegarder un abonnement
+  static Future<void> saveSubscription(SubscriptionModel sub) async {
+    try {
+      await _subscriptionBox.put(sub.id, sub);
+      debugPrint("✅ Abonnement sauvegardé : ${sub.type}");
+    } catch (e) {
+      debugPrint("❌ Erreur saveSubscription : $e");
+    }
+  }
+
+  /// 🔄 Lire un abonnement
+  static SubscriptionModel? getSubscription(String subId) {
+    try {
+      return _subscriptionBox.get(subId);
+    } catch (e) {
+      debugPrint("❌ Erreur getSubscription : $e");
+      return null;
+    }
+  }
+
+  /// 📝 Mettre à jour un abonnement
+  static Future<void> updateSubscription(SubscriptionModel sub) async {
+    try {
+      await _subscriptionBox.put(sub.id, sub);
+    } catch (e) {
+      debugPrint("❌ Erreur updateSubscription : $e");
+    }
+  }
+
+  /// ❌ Supprimer un abonnement
+  static Future<void> deleteSubscription(String subId) async {
+    try {
+      await _subscriptionBox.delete(subId);
+    } catch (e) {
+      debugPrint("❌ Erreur deleteSubscription : $e");
     }
   }
 

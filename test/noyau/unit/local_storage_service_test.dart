@@ -26,6 +26,7 @@ void main() {
     await Hive.deleteBoxFromDisk('users');
     await Hive.deleteBoxFromDisk('animals');
     await Hive.deleteBoxFromDisk('settings');
+    await Hive.deleteBoxFromDisk('subscriptions');
     await tempDir.delete(recursive: true);
     await secureStorage.delete(key: keyName);
   });

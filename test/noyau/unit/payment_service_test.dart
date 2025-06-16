@@ -5,6 +5,7 @@ import 'package:hive/hive.dart';
 
 import '../../test_config.dart';
 import 'package:anisphere/modules/noyau/models/payment_plan.dart';
+import 'package:anisphere/modules/noyau/models/subscription_model.dart';
 import 'package:anisphere/modules/noyau/services/payment_service.dart';
 import 'package:anisphere/modules/noyau/services/local_storage_service.dart';
 import 'package:anisphere/modules/noyau/logic/ia_logger.dart';
@@ -24,6 +25,7 @@ void main() {
     await Hive.deleteBoxFromDisk('users');
     await Hive.deleteBoxFromDisk('animals');
     await Hive.deleteBoxFromDisk('settings');
+    await Hive.deleteBoxFromDisk('subscriptions');
     await tempDir.delete(recursive: true);
   });
 
@@ -45,6 +47,9 @@ void main() {
     expect(await service.getActiveSubscriptions(), ['premium']);
     final logs = IALogger.getLogs();
     expect(logs.any((l) => l.contains('IAP_PURCHASED')), isTrue);
+    final sub = LocalStorageService.getSubscription('premium');
+    expect(sub, isNotNull);
+    expect(sub!.status, SubscriptionStatus.active);
   });
 
   test('dispose closes stream controller', () async {

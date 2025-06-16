@@ -4,11 +4,13 @@ import 'dart:async';
 
 import '../logic/ia_logger.dart';
 import '../models/payment_plan.dart';
+import '../models/subscription_model.dart';
+import 'local_storage_service.dart';
 
 /// États possibles d'un achat in-app.
 enum PurchaseState { initial, purchased, expired, cancelled }
 
-/// Gère la mise à jour du statut d'achat et journalise les changements.
+/// Gère les achats in-app et la persistance des abonnements.
 class PaymentService {
   PurchaseState _state = PurchaseState.initial;
   final List<String> _subscriptions = [];
@@ -41,15 +43,31 @@ class PaymentService {
     }
   }
 
-  /// Stream emitting active subscription identifiers when they change.
-  Stream<List<String>> get subscriptionUpdates => const Stream.empty();
+  /// Lance le processus d'achat pour le plan fourni.
+  Future<void> purchaseItem(PaymentPlan plan) async {
+    if (_controller.isClosed) {
+      throw StateError('PaymentService disposed');
+    }
+    await updateState(PurchaseState.purchased);
+    if (!_subscriptions.contains(plan.id)) {
+      _subscriptions.add(plan.id);
+    }
+    _controller.add(List.unmodifiable(_subscriptions));
 
-  /// Returns the list of currently active subscription identifiers.
-  Future<List<String>> getActiveSubscriptions() async => const [];
+    final now = DateTime.now();
+    final sub = SubscriptionModel(
+      id: plan.id,
+      userId: 'local',
+      type: plan.id,
+      startDate: now,
+      expiryDate: now.add(const Duration(days: 30)),
+      status: SubscriptionStatus.active,
+    );
+    await LocalStorageService.saveSubscription(sub);
+  }
 
-  /// Initiates the purchase flow for the given plan.
-  Future<void> purchaseItem(PaymentPlan plan) async {}
-
-  /// Cleans up any resources held by the service.
-  void dispose() {}
+  /// Libère les ressources détenues par le service.
+  void dispose() {
+    _controller.close();
+  }
 }

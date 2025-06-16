@@ -321,3 +321,5 @@ Responsable : Superadmin
 - 🧩 Ajout du PaymentValidator (`payment_validator.dart`) avec tests le 2025-06-15
 - 🧩 Nouvelle interface PaymentScreen (`payment_screen.dart`) couverte par tests le 2025-06-15
 - 🧩 Mise à jour de `ia_logger.dart` pour tracer les paiements, tests à jour le 2025-06-15
+- 🆕 2025-07-01 : Ouverture de la boîte Hive `subscriptions` et helpers CRUD
+  dans `local_storage_service.dart` avec mise à jour de `payment_service.dart`.
