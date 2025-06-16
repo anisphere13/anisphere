@@ -8,6 +8,8 @@ import '../services/backup_service.dart';
 import '../providers/user_provider.dart';
 import '../services/animal_service.dart';
 import 'feedback_settings_screen.dart';
+import '../providers/payment_provider.dart';
+import 'iap_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -130,6 +132,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 context,
                 MaterialPageRoute(
                     builder: (_) => const FeedbackSettingsScreen()),
+              );
+            },
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.workspace_premium, color: Color(0xFF183153)),
+            title: const Text('Passer Premium'),
+            subtitle: const Text('Débloquez toutes les fonctionnalités'),
+            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            onTap: () {
+              final paymentProvider =
+                  Provider.of<PaymentProvider>(context, listen: false);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => ChangeNotifierProvider.value(
+                    value: paymentProvider,
+                    child: const IAPScreen(),
+                  ),
+                ),
               );
             },
           ),
