@@ -7,6 +7,7 @@ import '../logic/ia_logger.dart';
 import '../logic/ia_channel.dart';
 import '../models/payment_plan.dart';
 import 'stripe_checkout_service.dart';
+import 'local_storage_service.dart';
 
 /// États possibles d'un achat in-app.
 enum PurchaseState { initial, purchased, expired, cancelled }
