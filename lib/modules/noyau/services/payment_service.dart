@@ -1,9 +1,13 @@
 library;
 
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 
 import '../logic/ia_logger.dart';
+import '../logic/ia_channel.dart';
 import '../models/payment_plan.dart';
+import 'iap_validator.dart';
+import 'local_storage_service.dart';
 
 /// États possibles d'un achat in-app.
 enum PurchaseState { initial, purchased, expired, cancelled }
@@ -41,15 +45,33 @@ class PaymentService {
     }
   }
 
-  /// Stream emitting active subscription identifiers when they change.
-  Stream<List<String>> get subscriptionUpdates => const Stream.empty();
+  /// Démarre l'achat pour [plan].
+  /// Un [receipt] peut être fourni pour validation.
+  Future<void> purchaseItem(PaymentPlan plan, {String? receipt}) async {
+    if (receipt != null) {
+      final valid = await IapValidator().validate(receipt);
+      if (!valid) {
+        await IALogger.log(
+          message: 'IAP_INVALID',
+          channel: IAChannel.system,
+        );
+        await LocalStorageService.set('iap_locked', true);
+        debugPrint('❌ Achat refusé pour ${plan.id}');
+        return;
+      }
+    }
 
-  /// Returns the list of currently active subscription identifiers.
-  Future<List<String>> getActiveSubscriptions() async => const [];
+    await updateState(PurchaseState.purchased);
+    if (!_subscriptions.contains(plan.id)) {
+      _subscriptions.add(plan.id);
+      _controller.add(List.unmodifiable(_subscriptions));
+    } else {
+      _controller.add(List.unmodifiable(_subscriptions));
+    }
+  }
 
-  /// Initiates the purchase flow for the given plan.
-  Future<void> purchaseItem(PaymentPlan plan) async {}
-
-  /// Cleans up any resources held by the service.
-  void dispose() {}
+  /// Libère les ressources détenues par le service.
+  void dispose() {
+    _controller.close();
+  }
 }

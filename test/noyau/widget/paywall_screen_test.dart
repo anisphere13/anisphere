@@ -12,8 +12,9 @@ import '../../test_config.dart';
 
 class _TestPaymentService extends PaymentService {
   bool called = false;
+
   @override
-  Future<void> purchaseItem(PaymentPlan plan) async {
+  Future<void> purchaseItem(PaymentPlan plan, {String? receipt}) async {
     called = true;
   }
 }
