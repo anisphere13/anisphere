@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 // TODO: ajouter test
 
-final Color primaryBlue = const Color(0xFF183153);
-final Color backgroundGray = const Color(0xFFF5F5F5); // ✅ gris clair Samsung Health
+const Color primaryBlue = Color(0xFF183153);
+const Color backgroundGray = Color(0xFFF5F5F5); // ✅ gris clair Samsung Health
 
 const Color accentYellow = Color(0xFFFBC02D);
 
