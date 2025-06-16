@@ -10,19 +10,19 @@ import 'ia_channel.dart';
 
 /// Types d'événements enregistrés dans le journal IA.
 enum IALogEvent {
-  IAP_PURCHASED,
-  IAP_EXPIRED,
-  IAP_CANCELLED,
+  iapPurchased,
+  iapExpired,
+  iapCancelled,
 }
 
 extension IALogEventName on IALogEvent {
   String get name {
     switch (this) {
-      case IALogEvent.IAP_PURCHASED:
+      case IALogEvent.iapPurchased:
         return 'IAP_PURCHASED';
-      case IALogEvent.IAP_EXPIRED:
+      case IALogEvent.iapExpired:
         return 'IAP_EXPIRED';
-      case IALogEvent.IAP_CANCELLED:
+      case IALogEvent.iapCancelled:
         return 'IAP_CANCELLED';
     }
   }
@@ -61,7 +61,7 @@ class IALogger {
   /// 🎟️ Enregistre un achat in-app réussi
   static Future<void> logIAPPurchased() async {
     await log(
-      message: IALogEvent.IAP_PURCHASED.name,
+      message: IALogEvent.iapPurchased.name,
       channel: IAChannel.system,
     );
   }
@@ -69,7 +69,7 @@ class IALogger {
   /// ⏰ Enregistre l'expiration d'un achat in-app
   static Future<void> logIAPExpired() async {
     await log(
-      message: IALogEvent.IAP_EXPIRED.name,
+      message: IALogEvent.iapExpired.name,
       channel: IAChannel.system,
     );
   }
@@ -77,7 +77,7 @@ class IALogger {
   /// ❌ Enregistre l'annulation d'un achat in-app
   static Future<void> logIAPCancelled() async {
     await log(
-      message: IALogEvent.IAP_CANCELLED.name,
+      message: IALogEvent.iapCancelled.name,
       channel: IAChannel.system,
     );
   }
