@@ -38,6 +38,8 @@ Export PDF brut
 
 Interface guidée au lancement
 
+`home_screen.dart` sert de tableau de bord. Il récupère la liste des modules actifs pour afficher leurs widgets de résumé. Chaque module expose un `SummaryCard` dans `lib/modules/<module>/widgets/`. Les utilisateurs peuvent réordonner ces cartes et l’ordre est sauvegardé localement via Hive.
+
 🧩 Modules indépendants et connectés
 
 Chaque module est développé comme un composant autonome :
