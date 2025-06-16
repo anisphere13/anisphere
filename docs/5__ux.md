@@ -68,6 +68,12 @@ Tutoriels adaptés au rôle (pro, particulier...).
 
 Suggestions IA contextuelles : heure, météo, habitude, module utilisé récemment.
 
+ia_suggestion_card widgets apparaissant sur l’accueil ou dans un module, contenant un conseil IA personnalisé.
+
+Possibilité de les rejeter par swipe, ce qui alimente l’IA.
+
+ia_chip courts rappels intégrés dans les listes, tap pour voir l’explication IA.
+
 Translucidité IA : chaque recommandation peut être cliquée pour afficher le raisonnement de l'IA (transparence et pédagogie).
 
 📊 Écrans interactifs et ergonomie visuelle
