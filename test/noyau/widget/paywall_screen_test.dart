@@ -24,9 +24,11 @@ void main() {
   });
 
   testWidgets('renders plans list', (tester) async {
+    final provider = PaymentProvider();
+    await provider.init();
     await tester.pumpWidget(
       ChangeNotifierProvider(
-        create: (_) => PaymentProvider(),
+        create: (_) => provider,
         child: const MaterialApp(home: PaywallScreen()),
       ),
     );
@@ -34,13 +36,17 @@ void main() {
 
     expect(find.text('Premium Individuel'), findsOneWidget);
     expect(find.text('Pro / Éducateur'), findsOneWidget);
+
+    provider.dispose();
   });
 
   testWidgets('purchase button calls service', (tester) async {
     final service = _TestPaymentService();
+    final provider = PaymentProvider(service: service);
+    await provider.init();
     await tester.pumpWidget(
       ChangeNotifierProvider(
-        create: (_) => PaymentProvider(service: service),
+        create: (_) => provider,
         child: const MaterialApp(home: PaywallScreen()),
       ),
     );
@@ -50,5 +56,7 @@ void main() {
     await tester.pump();
 
     expect(service.called, isTrue);
+
+    provider.dispose();
   });
 }
