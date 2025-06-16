@@ -38,6 +38,16 @@ Slide Up (écran d’accueil)
 
 Accès rapide : ajouter un animal, note santé, photo, activité...
 
+📇 Carte d’identité et widgets modulaires
+
+Carte d’identité de l’animal sélectionné affichée en haut de l’accueil, avec changement rapide d’animal.
+
+Liste verticale de widgets pour chaque module actif, couleurs propres à chaque module.
+
+Réagencement ou masquage des widgets via un menu dédié.
+
+Un tap sur un widget ouvre l’accueil du module correspondant.
+
 ☀️ / 🌙 Thèmes et personnalisation
 
 Mode clair / sombre natif, sélection automatique ou forcée.
