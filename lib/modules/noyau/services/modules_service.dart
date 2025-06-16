@@ -27,7 +27,7 @@ class ModulesService {
       name: 'Dressage',
       description: 'Entraînement avancé',
       category: 'Dressage',
-      isPremium: true,
+      premium: true,
     ),
     // 🔽 Ajouter ici les modules futurs
   ];
