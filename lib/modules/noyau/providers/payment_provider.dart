@@ -38,6 +38,12 @@ class PaymentProvider extends ChangeNotifier {
   /// Flux des abonnements actifs pour l'utilisateur courant.
   Stream<List<String>> get subscriptions => _service.subscriptionUpdates;
 
+  /// Stream des mises à jour d'abonnements provenant du service.
+  Stream<List<String>> get subscriptionUpdates => _service.subscriptionUpdates;
+
+  /// Retourne les abonnements actifs depuis le service.
+  Future<List<String>> getActiveSubscriptions() => _service.getActiveSubscriptions();
+
   /// Initializes the provider by loading current subscriptions and
   /// listening to updates from [PaymentService].
   Future<void> init() async {

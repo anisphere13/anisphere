@@ -31,6 +31,9 @@ dependencies:
   flutter_image_compress: ^2.4.0
   uuid: ^4.0.0
 
+  # Paiement & achats intégrés
+  in_app_purchase: ^3.2.3 # Gestion des IAP
+
   # Firebase
   firebase_core: ^3.14.0
   firebase_auth: ^5.6.0
