@@ -44,5 +44,7 @@ void main() {
 
     expect(provider.isPremium, isTrue);
     expect(provider.subscriptions, ['premium']);
+
+    provider.dispose();
   });
 }

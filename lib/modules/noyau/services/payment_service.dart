@@ -1,6 +1,7 @@
 library;
 
 import '../logic/ia_logger.dart';
+import '../models/payment_plan.dart';
 
 /// États possibles d'un achat in-app.
 enum PurchaseState { initial, purchased, expired, cancelled }
@@ -27,4 +28,16 @@ class PaymentService {
         break;
     }
   }
+
+  /// Stream emitting active subscription identifiers when they change.
+  Stream<List<String>> get subscriptionUpdates => const Stream.empty();
+
+  /// Returns the list of currently active subscription identifiers.
+  Future<List<String>> getActiveSubscriptions() async => const [];
+
+  /// Initiates the purchase flow for the given plan.
+  Future<void> purchaseItem(PaymentPlan plan) async {}
+
+  /// Cleans up any resources held by the service.
+  void dispose() {}
 }
