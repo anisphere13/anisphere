@@ -1,9 +1,9 @@
-// Copilot Prompt : Test automatique généré pour paywall_screen.dart (widget)
+// Copilot Prompt : Test automatique généré pour iap_screen.dart (widget)
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 
-import 'package:anisphere/modules/noyau/screens/paywall_screen.dart';
+import 'package:anisphere/modules/noyau/screens/iap_screen.dart';
 import 'package:anisphere/modules/noyau/providers/payment_provider.dart';
 import 'package:anisphere/modules/noyau/services/payment_service.dart';
 import 'package:anisphere/modules/noyau/models/payment_plan.dart';
@@ -29,7 +29,7 @@ void main() {
     await tester.pumpWidget(
       ChangeNotifierProvider(
         create: (_) => provider,
-        child: const MaterialApp(home: PaywallScreen()),
+        child: const MaterialApp(home: IapScreen()),
       ),
     );
     await tester.pump();
@@ -47,7 +47,7 @@ void main() {
     await tester.pumpWidget(
       ChangeNotifierProvider(
         create: (_) => provider,
-        child: const MaterialApp(home: PaywallScreen()),
+        child: const MaterialApp(home: IapScreen()),
       ),
     );
     await tester.pump();
