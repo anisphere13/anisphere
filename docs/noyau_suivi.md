@@ -315,3 +315,9 @@ Responsable : Superadmin
 - 🆕 2025-06-30 : Ajout de l’EventBus interne (services, provider, hooks et queue offline).
 
 - 🧩 Synchronisation automatique du noyau le 2025-06-15
+- 🧩 Création du PaymentService (`payment_service.dart`) avec tests unitaires le 2025-06-15
+- 🧩 Mise en place du SubscriptionModel (`subscription_model.dart`) couvert par tests le 2025-06-15
+- 🧩 Ajout du SubscriptionProvider (`subscription_provider.dart`) avec tests le 2025-06-15
+- 🧩 Ajout du PaymentValidator (`payment_validator.dart`) avec tests le 2025-06-15
+- 🧩 Nouvelle interface PaymentScreen (`payment_screen.dart`) couverte par tests le 2025-06-15
+- 🧩 Mise à jour de `ia_logger.dart` pour tracer les paiements, tests à jour le 2025-06-15
