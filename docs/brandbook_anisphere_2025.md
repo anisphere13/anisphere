@@ -263,6 +263,14 @@ Progression visible dans chaque module (XP, suivi, badges visuels)
 
 Présence d’un assistant IA contextuel discret (aide, suggestion, alerte)
 
+Micro‑interactions recommandées :
+
+Utiliser des animations courtes (confettis, transitions douces) pour célébrer les succès
+
+Retour haptique léger sur actions clés
+
+Prévoir une option pour réduire ces effets (mode accessibilité)
+
 
 
 
