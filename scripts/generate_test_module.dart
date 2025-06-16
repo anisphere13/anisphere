@@ -1,9 +1,13 @@
+// 🛠 Génère la structure de test pour un module.
+// À exécuter avec : `flutter pub run scripts/generate_test_module.dart <nom>`
+// (Pour un environnement pur Dart, utilisez `package:firebase_dart` puis
+//  lancez : `dart run scripts/generate_test_module.dart <nom>`.)
 import 'dart:io';
 
 void main(List<String> args) {
   if (args.isEmpty) {
     stderr.writeln('❌ Merci de fournir un nom de module :');
-    stderr.writeln('   Exemple : dart run scripts/generate_test_module.dart sante');
+    stderr.writeln('   Exemple : flutter pub run scripts/generate_test_module.dart sante');
     exit(1);
   }
 

@@ -32,7 +32,7 @@ test/
 | (à venir) dressage | `test/dressage/` |
 | (à venir) communaute | `test/communaute/` |
 
-Lorsqu’un nouveau module est créé, on lance `dart run scripts/generate_test_module.dart <nom>` pour générer automatiquement la hiérarchie.
+Lorsqu’un nouveau module est créé, on lance `flutter pub run scripts/generate_test_module.dart <nom>` pour générer automatiquement la hiérarchie. Un équivalent pur Dart est possible en utilisant `package:firebase_dart`.
 
 ## 3. Fichiers clés
 
@@ -54,7 +54,7 @@ Lorsqu’un nouveau module est créé, on lance `dart run scripts/generate_test_
    ```bash
    flutter test --coverage
    ```
-5. Exécuter `dart scripts/update_test_tracker.dart` pour mettre à jour le suivi local.
+5. Exécuter `flutter pub run scripts/update_test_tracker.dart` pour mettre à jour le suivi local.
 
 ## 5. Intégration GitHub
 
