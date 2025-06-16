@@ -1,86 +1,153 @@
-// Script Dart CLI pour vérifier et réparer automatiquement les collections Firestore d’AniSphère
-// ⚠️ Ce script IGNORE les collections `users` et `animals` comme demandé
-// À utiliser depuis `scripts/firestore_verification.dart`
-// Exécution recommandée : `dart run scripts/firestore_verification.dart`
+// @dart=3.4
+// 🔎 Script de vérification de l'initialisation Firestore pour AniSphère.
+// Il contrôle que les collections et documents indispensables sont présents
+// comme décrit dans docs/noyau_suivi.md.
+
+import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/widgets.dart';
+
 import 'package:anisphere/firebase_options.dart';
-import 'package:flutter/material.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  final firestore = FirebaseFirestore.instance;
+  final verifier = _FirestoreVerifier(FirebaseFirestore.instance);
+  final success = await verifier.run();
 
-  final categories = ['sante', 'education', 'dressage', 'communaute'];
-
-  // 1. Consentement RGPD global
-  final consentDoc = firestore.collection('consents').doc('global');
-  final consentSnap = await consentDoc.get();
-  if (!consentSnap.exists) {
-    await consentDoc.set({
-      'current_version': 1,
-      'last_update': Timestamp.now(),
-      'description': 'Consentement RGPD pour synchronisation IA (anonymisée)',
-      'required': true,
-    });
-    print('✅ Créé : consents/global');
+  if (success) {
+    stdout.writeln('🎉 Firestore correctement initialisé.');
   } else {
-    print('🔹 Existe déjà : consents/global');
+    stderr.writeln('❌ Firestore incomplet. Voir les erreurs ci-dessus.');
+    exit(1);
+  }
+}
+
+class _FirestoreVerifier {
+  final FirebaseFirestore firestore;
+  _FirestoreVerifier(this.firestore);
+
+  Future<bool> run() async {
+    var ok = true;
+    if (!await _checkIaCategories()) ok = false;
+    if (!await _checkLogs()) ok = false;
+    if (!await _checkConsents()) ok = false;
+    if (!await _checkSuperadmin()) ok = false;
+    return ok;
   }
 
-  // 2. Superadmin → Flags d’activation IA cloud
-  final flagsDoc = firestore.collection('superadmin').doc('flags');
-  final flagsSnap = await flagsDoc.get();
-  if (!flagsSnap.exists) {
-    await flagsDoc.set({
-      for (final c in categories) 'start_training_$c': false,
-    });
-    print('✅ Créé : superadmin/flags');
-  } else {
-    final updates = <String, dynamic>{};
-    for (final c in categories) {
-      final key = 'start_training_$c';
-      if (!flagsSnap.data()!.containsKey(key)) updates[key] = false;
-    }
-    if (updates.isNotEmpty) {
-      await flagsDoc.update(updates);
-      print('✅ Champs ajoutés à superadmin/flags : $updates');
-    } else {
-      print('🔹 superadmin/flags à jour');
-    }
-  }
+  Future<bool> _checkIaCategories() async {
+    const cats = ['sante', 'education', 'dressage', 'communaute'];
+    const subs = ['uploads', 'models', 'feedbacks'];
+    var ok = true;
 
-  // 3. Catégories IA (structure Firestore IA cloud)
-  for (final cat in categories) {
-    final catDoc = firestore.collection('ia_categories').doc(cat);
-    final docSnap = await catDoc.get();
-    if (!docSnap.exists) {
-      await catDoc.set({'createdAt': Timestamp.now()});
-      print('✅ Créé : ia_categories/$cat');
-    }
-
-    for (final sub in ['uploads', 'models', 'feedbacks']) {
-      final subPath = catDoc.collection(sub).doc('init_check');
-      if (!(await subPath.get()).exists) {
-        await subPath.set({'createdAt': Timestamp.now()});
-        print('✅ Créé : ia_categories/$cat/$sub/init_check');
+    for (final cat in cats) {
+      final docRef = firestore.collection('ia_categories').doc(cat);
+      final doc = await docRef.get();
+      if (!doc.exists) {
+        _ko('ia_categories/$cat manquant');
+        ok = false;
+        continue;
+      }
+      _ok('ia_categories/$cat');
+      final collections = await docRef.listCollections();
+      final names = {for (final c in collections) c.id};
+      for (final sub in subs) {
+        if (names.contains(sub)) {
+          _ok('ia_categories/$cat/$sub');
+        } else {
+          _ko('ia_categories/$cat/$sub manquant');
+          ok = false;
+        }
       }
     }
+
+    return ok;
   }
 
-  // 4. Logs IA (pour chaque catégorie)
-  for (final cat in categories) {
-    final doc = firestore.collection('logs_ia').doc(cat);
-    if (!(await doc.get()).exists) {
-      await doc.set({'createdAt': Timestamp.now()});
-      print('✅ Créé : logs_ia/$cat');
+  Future<bool> _checkLogs() async {
+    const cats = ['sante', 'education', 'dressage', 'communaute'];
+    var ok = true;
+    for (final cat in cats) {
+      final doc = await firestore.collection('logs_ia').doc(cat).get();
+      if (doc.exists) {
+        _ok('logs_ia/$cat');
+      } else {
+        _ko('logs_ia/$cat manquant');
+        ok = false;
+      }
     }
+    return ok;
   }
 
-  print('\n✅ Firestore AniSphère — Vérification complète terminée (hors users & animals).');
+  Future<bool> _checkConsents() async {
+    final doc = await firestore.collection('consents').doc('global').get();
+    if (!doc.exists) {
+      _ko('consents/global manquant');
+      return false;
+    }
+    final data = doc.data() ?? <String, dynamic>{};
+    var ok = true;
+
+    if (data['current_version'] == 1) {
+      _ok('consents/global.current_version');
+    } else {
+      _ko('consents/global.current_version');
+      ok = false;
+    }
+
+    if (data.containsKey('last_update')) {
+      _ok('consents/global.last_update');
+    } else {
+      _ko('consents/global.last_update');
+      ok = false;
+    }
+
+    if (data['description'] is String) {
+      _ok('consents/global.description');
+    } else {
+      _ko('consents/global.description');
+      ok = false;
+    }
+
+    if (data['required'] == true) {
+      _ok('consents/global.required');
+    } else {
+      _ko('consents/global.required');
+      ok = false;
+    }
+
+    return ok;
+  }
+
+  Future<bool> _checkSuperadmin() async {
+    final doc = await firestore.collection('superadmin').doc('flags').get();
+    if (!doc.exists) {
+      _ko('superadmin/flags manquant');
+      return false;
+    }
+    final data = doc.data() ?? <String, dynamic>{};
+    var ok = true;
+    const fields = [
+      'start_training_sante',
+      'start_training_education',
+      'start_training_dressage',
+      'start_training_communaute',
+    ];
+    for (final f in fields) {
+      if (data[f] == false) {
+        _ok('superadmin/flags.$f');
+      } else {
+        _ko('superadmin/flags.$f');
+        ok = false;
+      }
+    }
+    return ok;
+  }
+
+  void _ok(String msg) => stdout.writeln('✅ $msg');
+  void _ko(String msg) => stderr.writeln('❌ $msg');
 }
