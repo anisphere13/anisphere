@@ -13,8 +13,8 @@ class PaywallScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<PaymentProvider>(context);
-    final plans = provider.plans;
+    final PaymentProvider provider = Provider.of<PaymentProvider>(context);
+    final List<PaymentPlan> plans = provider.plans;
 
     return Scaffold(
       appBar: AppBar(
@@ -23,7 +23,7 @@ class PaywallScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: plans.length,
         itemBuilder: (context, index) {
-          final plan = plans[index];
+          final PaymentPlan plan = plans[index];
           return Card(
             margin: const EdgeInsets.all(12),
             child: ListTile(
