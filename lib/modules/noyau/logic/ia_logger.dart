@@ -8,6 +8,26 @@ import '../services/local_storage_service.dart';
 import 'ia_config.dart';
 import 'ia_channel.dart';
 
+/// Types d'événements enregistrés dans le journal IA.
+enum IALogEvent {
+  IAP_PURCHASED,
+  IAP_EXPIRED,
+  IAP_CANCELLED,
+}
+
+extension IALogEventName on IALogEvent {
+  String get name {
+    switch (this) {
+      case IALogEvent.IAP_PURCHASED:
+        return 'IAP_PURCHASED';
+      case IALogEvent.IAP_EXPIRED:
+        return 'IAP_EXPIRED';
+      case IALogEvent.IAP_CANCELLED:
+        return 'IAP_CANCELLED';
+    }
+  }
+}
+
 class IALogger {
   static const String _key = "ia_logs";
 
@@ -36,6 +56,30 @@ class IALogger {
   static Future<void> clearLogs() async {
     await LocalStorageService.set(_key, <String>[]);
     await log(message: "CLEAR_LOGS", channel: IAChannel.system);
+  }
+
+  /// 🎟️ Enregistre un achat in-app réussi
+  static Future<void> logIAPPurchased() async {
+    await log(
+      message: IALogEvent.IAP_PURCHASED.name,
+      channel: IAChannel.system,
+    );
+  }
+
+  /// ⏰ Enregistre l'expiration d'un achat in-app
+  static Future<void> logIAPExpired() async {
+    await log(
+      message: IALogEvent.IAP_EXPIRED.name,
+      channel: IAChannel.system,
+    );
+  }
+
+  /// ❌ Enregistre l'annulation d'un achat in-app
+  static Future<void> logIAPCancelled() async {
+    await log(
+      message: IALogEvent.IAP_CANCELLED.name,
+      channel: IAChannel.system,
+    );
   }
 
   /// 🧹 Si trop de logs, on garde uniquement les plus récents
