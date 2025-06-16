@@ -6,18 +6,21 @@ import 'package:flutter/foundation.dart';
 import '../logic/ia_logger.dart';
 import '../logic/ia_channel.dart';
 import '../models/payment_plan.dart';
-import 'iap_validator.dart';
-import 'local_storage_service.dart';
+import 'stripe_checkout_service.dart';
 
 /// États possibles d'un achat in-app.
 enum PurchaseState { initial, purchased, expired, cancelled }
 
 /// Gère la mise à jour du statut d'achat et journalise les changements.
 class PaymentService {
+  final StripeCheckoutService _stripeService;
   PurchaseState _state = PurchaseState.initial;
   final List<String> _subscriptions = [];
   final StreamController<List<String>> _controller =
       StreamController<List<String>>.broadcast();
+
+  PaymentService({StripeCheckoutService? stripeService})
+      : _stripeService = stripeService ?? const StripeCheckoutService();
 
   PurchaseState get state => _state;
 
@@ -51,18 +54,33 @@ class PaymentService {
     }
   }
 
-  /// Achète [plan] et notifie les abonnements actifs.
+  /// Indique si le package `in_app_purchase` peut être utilisé sur la plateforme
+  /// courante.
+  @visibleForTesting
+  bool get isIapSupported => !kIsWeb &&
+      (defaultTargetPlatform == TargetPlatform.android ||
+          defaultTargetPlatform == TargetPlatform.iOS);
+
+  /// Lance le flux d'achat pour [plan]. Si `in_app_purchase` n'est pas supporté
+  /// (ex. Web), un écran de paiement Stripe s'ouvre dans une WebView.
   Future<void> purchaseItem(PaymentPlan plan) async {
-    await updateState(PurchaseState.purchased);
-    if (!_subscriptions.contains(plan.id)) {
-      _subscriptions.add(plan.id);
-      if (!_controller.isClosed) {
-        _controller.add(List.unmodifiable(_subscriptions));
-      }
+    if (_controller.isClosed) {
+      throw StateError('PaymentService is disposed');
     }
+
+    if (isIapSupported) {
+      // TODO: intégrer le flux réel via le package in_app_purchase
+      await Future<void>.delayed(const Duration(milliseconds: 100));
+    } else {
+      await _stripeService.openCheckout(plan);
+    }
+
+    _subscriptions.add(plan.id);
+    _controller.add(List.unmodifiable(_subscriptions));
+    await updateState(PurchaseState.purchased);
   }
 
-  /// Ferme le flux interne.
+  /// Libère les ressources détenues par le service.
   void dispose() {
     _controller.close();
   }
