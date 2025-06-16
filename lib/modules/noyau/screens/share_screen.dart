@@ -70,7 +70,7 @@ class _ShareScreenState extends State<ShareScreen> {
             ),
             ElevatedButton(
               onPressed: () {
-                NavigationService.push(const IapScreen());
+                NavigationService.push(const IAPScreen());
               },
               child: const Text('Passer Premium'),
             ),
