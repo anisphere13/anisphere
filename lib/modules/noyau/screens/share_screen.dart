@@ -12,6 +12,8 @@ import '../models/share_history_model.dart';
 import '../services/local_sharing_service.dart';
 import '../services/cloud_sharing_service.dart';
 import '../services/share_history_service.dart';
+import '../services/navigation_service.dart';
+import 'iap_screen.dart';
 
 class ShareScreen extends StatefulWidget {
   const ShareScreen({super.key});
@@ -58,7 +60,7 @@ class _ShareScreenState extends State<ShareScreen> {
               return Text('Statut connexion : $status');
             },
           ),
-          if (!isPremium)
+          if (!isPremium) ...[
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 8),
               child: Text(
@@ -66,6 +68,13 @@ class _ShareScreenState extends State<ShareScreen> {
                 style: TextStyle(color: Colors.red),
               ),
             ),
+            ElevatedButton(
+              onPressed: () {
+                NavigationService.push(const IapScreen());
+              },
+              child: const Text('Passer Premium'),
+            ),
+          ],
           const Divider(),
           ElevatedButton(
             onPressed: () async {
