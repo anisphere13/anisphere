@@ -96,13 +96,12 @@ Mode professionnel : affichage condensé, filtres rapides, vue fiche médicale p
 
 🏅 Gamification et engagement utilisateur
 
-Système de badges, niveaux, récompenses visuelles.
-
-Journée de l’animal : moment hebdomadaire avec rappels affectifs, statistiques, photos souvenirs.
-
-Widget quotidien / notification inspirante : "Aujourd’hui est parfait pour une sortie éducative avec Max !"
-
-Rétroaction IA : "Bravo, vous avez complété tous les rappels cette semaine. Pensez à synchroniser un nouveau vaccin."
+Système de récompenses par jalons : chaque étape majeure débloque un badge conservé dans une galerie de trophées.
+Lors du déblocage, une pluie de confettis et une vibration courte marquent l’événement.
+Ces animations demeurent brèves et peuvent être désactivées depuis les paramètres.
+Journée de l’animal : moment hebdomadaire avec rappels affectifs, statistiques, photos souvenirs.
+Widget quotidien / notification inspirante : « Aujourd’hui est parfait pour une sortie éducative avec Max ! »
+Rétroaction IA : « Bravo, vous avez complété tous les rappels cette semaine. Pensez à synchroniser un nouveau vaccin. »
 
 🔁 Checklist & accroche quotidienne
 
