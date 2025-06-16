@@ -134,5 +134,21 @@ Les tests Firebase nécessitent de copier `assets/credentials.json.example` vers
 Ce fichier reste en dehors du suivi Git grâce à `.gitignore`. Gardez donc vos identifiants uniquement en local.
 Pour plus de détails, consultez [README_Tests.md](README_Tests.md) et [docs/test_architecture.md](docs/test_architecture.md).
 
+## 📂 Firestore initialization
+
+Avant la première exécution de l’application, vérifiez que votre projet Firebase
+contient les collections indispensables décrites dans
+[docs/noyau_suivi.md](docs/noyau_suivi.md).
+
+Un script est fourni pour valider automatiquement cette configuration :
+
+```bash
+flutter pub run scripts/firestore_verification.dart
+```
+
+Le script contrôle la présence des documents `ia_categories/*`, `logs_ia/*`,
+`consents/global` et `superadmin/flags`. Les éléments manquants sont listés dans
+la console.
+
 Rejoignez l’aventure et contribuez à créer la meilleure application de suivi animal !
 © AniSphère 2025 — Suivez vos animaux comme jamais auparavant.
