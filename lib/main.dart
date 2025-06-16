@@ -35,6 +35,7 @@ import 'package:anisphere/modules/noyau/services/offline_photo_queue.dart'
     as offline_queue;
 import 'package:anisphere/modules/noyau/models/share_history_model.dart';
 import 'package:anisphere/modules/noyau/providers/feedback_options_provider.dart';
+import 'package:anisphere/modules/noyau/providers/payment_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -122,6 +123,7 @@ void main() async {
         ChangeNotifierProvider(
           create: (_) => FeedbackOptionsProvider()..load(),
         ),
+        ChangeNotifierProvider(create: (_) => PaymentProvider()..init()),
       ],
       child: MyApp(),
     ),
