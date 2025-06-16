@@ -1,19 +1,25 @@
 library;
 
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 
 import '../logic/ia_logger.dart';
 import '../models/payment_plan.dart';
+import 'stripe_checkout_service.dart';
 
 /// États possibles d'un achat in-app.
 enum PurchaseState { initial, purchased, expired, cancelled }
 
 /// Gère la mise à jour du statut d'achat et journalise les changements.
 class PaymentService {
+  final StripeCheckoutService _stripeService;
   PurchaseState _state = PurchaseState.initial;
   final List<String> _subscriptions = [];
   final StreamController<List<String>> _controller =
       StreamController<List<String>>.broadcast();
+
+  PaymentService({StripeCheckoutService? stripeService})
+      : _stripeService = stripeService ?? const StripeCheckoutService();
 
   PurchaseState get state => _state;
 
@@ -41,15 +47,34 @@ class PaymentService {
     }
   }
 
-  /// Stream emitting active subscription identifiers when they change.
-  Stream<List<String>> get subscriptionUpdates => const Stream.empty();
+  /// Indique si le package `in_app_purchase` peut être utilisé sur la plateforme
+  /// courante.
+  @visibleForTesting
+  bool get isIapSupported => !kIsWeb &&
+      (defaultTargetPlatform == TargetPlatform.android ||
+          defaultTargetPlatform == TargetPlatform.iOS);
 
-  /// Returns the list of currently active subscription identifiers.
-  Future<List<String>> getActiveSubscriptions() async => const [];
+  /// Lance le flux d'achat pour [plan]. Si `in_app_purchase` n'est pas supporté
+  /// (ex. Web), un écran de paiement Stripe s'ouvre dans une WebView.
+  Future<void> purchaseItem(PaymentPlan plan) async {
+    if (_controller.isClosed) {
+      throw StateError('PaymentService is disposed');
+    }
 
-  /// Initiates the purchase flow for the given plan.
-  Future<void> purchaseItem(PaymentPlan plan) async {}
+    if (isIapSupported) {
+      // TODO: intégrer le flux réel via le package in_app_purchase
+      await Future<void>.delayed(const Duration(milliseconds: 100));
+    } else {
+      await _stripeService.openCheckout(plan);
+    }
 
-  /// Cleans up any resources held by the service.
-  void dispose() {}
+    _subscriptions.add(plan.id);
+    _controller.add(List.unmodifiable(_subscriptions));
+    await updateState(PurchaseState.purchased);
+  }
+
+  /// Libère les ressources détenues par le service.
+  void dispose() {
+    _controller.close();
+  }
 }
