@@ -1,29 +1,11 @@
-// Copilot Prompt : PaymentService stub for AniSphère.
-// Provides subscription updates for premium features.
 library;
 
-import 'dart:async';
+import 'package:flutter/foundation.dart';
+import '../models/payment_plan.dart';
 
-/// Simple in-memory payment service for tests.
 class PaymentService {
-  final StreamController<List<String>> _controller =
-      StreamController<List<String>>.broadcast();
-  List<String> _subscriptions = [];
-
-  /// Stream of active subscription identifiers.
-  Stream<List<String>> get subscriptionUpdates => _controller.stream;
-
-  /// Current active subscriptions.
-  Future<List<String>> getActiveSubscriptions() async => _subscriptions;
-
-  /// Updates the active subscriptions and notifies listeners.
-  void updateSubscriptions(List<String> subs) {
-    _subscriptions = List.unmodifiable(subs);
-    _controller.add(_subscriptions);
-  }
-
-  /// Dispose the internal controller.
-  void dispose() {
-    _controller.close();
+  Future<void> purchaseItem(PaymentPlan plan) async {
+    debugPrint('\u{1F4B3} purchaseItem: ${plan.id}');
+    await Future.delayed(const Duration(milliseconds: 100));
   }
 }
