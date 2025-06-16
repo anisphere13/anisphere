@@ -30,7 +30,7 @@ void main() {
     await tester.pumpWidget(
       ChangeNotifierProvider(
         create: (_) => provider,
-        child: const MaterialApp(home: IapScreen()),
+        child: const MaterialApp(home: IAPScreen()),
       ),
     );
     await tester.pump();
@@ -48,7 +48,7 @@ void main() {
     await tester.pumpWidget(
       ChangeNotifierProvider(
         create: (_) => provider,
-        child: const MaterialApp(home: IapScreen()),
+        child: const MaterialApp(home: IAPScreen()),
       ),
     );
     await tester.pump();
