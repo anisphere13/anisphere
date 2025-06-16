@@ -4,7 +4,6 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 import '../logic/ia_logger.dart';
-import '../logic/ia_channel.dart';
 import '../models/payment_plan.dart';
 import 'stripe_checkout_service.dart';
 import 'local_storage_service.dart';
