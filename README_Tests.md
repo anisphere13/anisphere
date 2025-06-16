@@ -110,6 +110,19 @@ Chaque nouveau module doit intégrer **dès le départ** :
 
 ---
 
+## 🔐 Configuration Firebase locale
+
+Certains tests reposent sur Firebase. Pour les exécuter en local, téléchargez un
+**compte de service** depuis la console Firebase :
+
+1. Ouvrez *Paramètres du projet* → *Comptes de service*.
+2. Cliquez sur **Générer une nouvelle clé privée** et récupérez le fichier JSON.
+3. Enregistrez-le dans `assets/credentials.json`.
+
+Ce fichier est ignoré par Git et sert uniquement pour vos tests locaux.
+
+---
+
 ## ✅ Pour lancer tous les tests :
 
 ```bash
