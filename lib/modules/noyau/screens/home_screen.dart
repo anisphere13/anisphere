@@ -10,6 +10,8 @@ import 'package:provider/provider.dart';
 import '../services/modules_summary_service.dart';
 import '../services/animal_service.dart';
 import '../providers/ia_context_provider.dart';
+import '../widgets/quick_actions_sheet.dart';
+import 'animal_form_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,6 +23,28 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<ModuleSummary> summaries = [];
   bool loadingSummaries = true;
+
+  void _showQuickActions() {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (_) => QuickActionsSheet(
+        onAddAnimal: () async {
+          Navigator.pop(context);
+          await Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const AnimalFormScreen()),
+          );
+          _loadSummaries();
+        },
+        onAddHealthNote: () {},
+        onAddPhoto: () {},
+        onAddActivity: () {},
+      ),
+    );
+  }
 
   @override
   void initState() {
@@ -113,6 +137,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color(0xFF183153),
+        onPressed: _showQuickActions,
+        child: const Icon(Icons.add),
       ),
     );
   }

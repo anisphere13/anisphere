@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 final Color primaryBlue = const Color(0xFF183153);
 final Color backgroundGray = const Color(0xFFF5F5F5); // ✅ gris clair Samsung Health
 
+const Color accentYellow = Color(0xFFFBC02D);
+
 final ThemeData appTheme = ThemeData(
   brightness: Brightness.light,
   scaffoldBackgroundColor: backgroundGray, // ✅ fond global de tous les écrans
@@ -14,8 +16,8 @@ final ThemeData appTheme = ThemeData(
     foregroundColor: Colors.white,
     elevation: 0,
   ),
-  splashColor: Colors.transparent, // pas de halo jaune
-  highlightColor: Colors.transparent,
+  splashColor: accentYellow,
+  highlightColor: accentYellow,
   splashFactory: NoSplash.splashFactory,
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     backgroundColor: backgroundGray,
@@ -30,6 +32,28 @@ final ThemeData appTheme = ThemeData(
     bodyMedium: TextStyle(fontSize: 14),
   ),
   colorScheme: ColorScheme.fromSwatch().copyWith(
+    primary: primaryBlue,
+    secondary: primaryBlue,
+  ),
+);
+
+final ThemeData darkTheme = ThemeData.dark().copyWith(
+  primaryColor: primaryBlue,
+  splashColor: accentYellow,
+  highlightColor: accentYellow,
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Color(0xFF183153),
+    foregroundColor: Colors.white,
+    elevation: 0,
+  ),
+  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    backgroundColor: Color(0xFF1E1E1E),
+    selectedItemColor: accentYellow,
+    unselectedItemColor: Colors.grey,
+    showUnselectedLabels: true,
+    type: BottomNavigationBarType.fixed,
+  ),
+  colorScheme: const ColorScheme.dark(
     primary: primaryBlue,
     secondary: primaryBlue,
   ),
