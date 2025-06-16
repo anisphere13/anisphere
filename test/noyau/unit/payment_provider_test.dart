@@ -39,11 +39,12 @@ void main() {
 
     expect(provider.isPremium, isFalse);
 
+    final first = provider.subscriptions.first;
     service.emit(['premium']);
-    await Future<void>.delayed(Duration.zero);
+    final subs = await first;
 
     expect(provider.isPremium, isTrue);
-    expect(provider.subscriptions, ['premium']);
+    expect(subs, ['premium']);
 
     provider.dispose();
   });

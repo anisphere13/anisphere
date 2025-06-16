@@ -35,8 +35,8 @@ class PaymentProvider extends ChangeNotifier {
   /// Returns `true` if the user currently has an active premium subscription.
   bool get isPremium => _isPremium;
 
-  /// Active subscription identifiers for the current user.
-  List<String> get subscriptions => List.unmodifiable(_subscriptions);
+  /// Flux des abonnements actifs pour l'utilisateur courant.
+  Stream<List<String>> get subscriptions => _service.subscriptionUpdates;
 
   /// Initializes the provider by loading current subscriptions and
   /// listening to updates from [PaymentService].

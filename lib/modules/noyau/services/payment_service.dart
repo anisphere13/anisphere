@@ -41,15 +41,15 @@ class PaymentService {
     }
   }
 
-  /// Stream emitting active subscription identifiers when they change.
-  Stream<List<String>> get subscriptionUpdates => const Stream.empty();
-
-  /// Returns the list of currently active subscription identifiers.
-  Future<List<String>> getActiveSubscriptions() async => const [];
-
   /// Initiates the purchase flow for the given plan.
-  Future<void> purchaseItem(PaymentPlan plan) async {}
+  Future<void> purchaseItem(PaymentPlan plan) async {
+    _subscriptions.add(plan.id);
+    _controller.add(List.unmodifiable(_subscriptions));
+    await updateState(PurchaseState.purchased);
+  }
 
   /// Cleans up any resources held by the service.
-  void dispose() {}
+  void dispose() {
+    _controller.close();
+  }
 }
