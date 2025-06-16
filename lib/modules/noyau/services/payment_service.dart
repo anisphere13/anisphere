@@ -51,32 +51,18 @@ class PaymentService {
     }
   }
 
-  /// Démarre l'achat pour [plan].
-  /// Un [receipt] peut être fourni pour validation.
-  Future<void> purchaseItem(PaymentPlan plan, {String? receipt}) async {
-    if (receipt != null) {
-      final valid = await IapValidator().validate(receipt);
-      if (!valid) {
-        await IALogger.log(
-          message: 'IAP_INVALID',
-          channel: IAChannel.system,
-        );
-        await LocalStorageService.set('iap_locked', true);
-        debugPrint('❌ Achat refusé pour ${plan.id}');
-        return;
-      }
-    }
-
+  /// Achète [plan] et notifie les abonnements actifs.
+  Future<void> purchaseItem(PaymentPlan plan) async {
     await updateState(PurchaseState.purchased);
     if (!_subscriptions.contains(plan.id)) {
       _subscriptions.add(plan.id);
-      _controller.add(List.unmodifiable(_subscriptions));
-    } else {
-      _controller.add(List.unmodifiable(_subscriptions));
+      if (!_controller.isClosed) {
+        _controller.add(List.unmodifiable(_subscriptions));
+      }
     }
   }
 
-  /// Libère les ressources détenues par le service.
+  /// Ferme le flux interne.
   void dispose() {
     _controller.close();
   }

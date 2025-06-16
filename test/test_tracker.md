@@ -108,3 +108,4 @@
 | test/noyau/unit/payment_provider_test.dart | unit | package:anisphere/modules/noyau/providers/payment_provider.dart | ✅ |
 | test/noyau/unit/ia_master_offline_queue_test.dart | unit | package:anisphere/modules/noyau/logic/ia_master.dart | ✅ |
 | test/noyau/unit/payment_service_test.dart | unit | package:anisphere/modules/noyau/services/payment_service.dart | ✅ |
+| test/noyau/unit/iap_validator_test.dart | unit | package:anisphere/modules/noyau/services/iap_validator.dart | ✅ |
