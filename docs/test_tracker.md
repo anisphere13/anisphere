@@ -108,4 +108,5 @@
 | test/noyau/widget/modules_by_category_screen_test.dart | widget | package:anisphere/modules/noyau/screens/modules_by_category_screen.dart | ✅ |
 | test/noyau/unit/payment_provider_test.dart | unit | package:anisphere/modules/noyau/providers/payment_provider.dart | ✅ |
 | test/noyau/unit/ia_master_offline_queue_test.dart | unit | package:anisphere/modules/noyau/logic/ia_master.dart | ✅ |
-\n- ✅ Tests validés automatiquement le 2025-06-15
+| test/noyau/unit/payment_service_test.dart | unit | package:anisphere/modules/noyau/services/payment_service.dart | ✅ |
+\n- ✅ Tests validés automatiquement le 2025-06-16
