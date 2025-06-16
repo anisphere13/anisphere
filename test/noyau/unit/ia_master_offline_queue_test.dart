@@ -30,8 +30,10 @@ void main() {
     await Hive.openBox<SyncTask>('offline_sync_queue');
     await Hive.openBox<offline_queue.PhotoTask>('offline_photo_queue');
     mockCloud = MockCloudSyncService();
+    // ignore: invalid_use_of_null_value
     when(mockCloud.pushAnimalData(any<AnimalModel>(that: isA<AnimalModel>())))
         .thenAnswer((_) async {});
+    // ignore: invalid_use_of_null_value
     when(mockCloud.pushPhotoData(any<PhotoModel>(that: isA<PhotoModel>())))
         .thenAnswer((_) async {});
   });
@@ -79,8 +81,10 @@ void main() {
 
     await master.processOfflineQueue();
 
+    // ignore: invalid_use_of_null_value
     verify(mockCloud.pushAnimalData(any<AnimalModel>(that: isA<AnimalModel>())))
         .called(1);
+    // ignore: invalid_use_of_null_value
     verify(mockCloud.pushPhotoData(any<PhotoModel>(that: isA<PhotoModel>())))
         .called(1);
 
