@@ -114,7 +114,7 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => I18nProvider()),
+        ChangeNotifierProvider(create: (_) => I18nProvider()..load()),
         ChangeNotifierProvider(
           create: (_) => UserProvider(userService, authService),
         ),
