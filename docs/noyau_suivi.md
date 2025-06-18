@@ -210,6 +210,15 @@ AniSphère introduit une authentification biométrique (empreinte digitale ou re
 | lib/modules/noyau/models/security_settings_model.dart | Stockage local des choix de sécurité et de consentement |
 | lib/modules/noyau/screens/security_settings_screen.dart | Interface pour modifier ou révoquer son consentement |
 
+### ✅ Multilingue (i18n)
+- 📁 `lib/modules/noyau/i18n/`
+- Fichiers : `i18n_service.dart`, `i18n_provider.dart`, `app_localizations.dart`
+- 📁 Traductions : `lib/l10n/app_xx.arb` (fr, en, es, it, de, pt, ar, zh, ru, ja…)
+- Fonction : Gère automatiquement la langue globale de l'application
+- Intégration : `MaterialApp(locale: ...)`, `AppLocalizations.of(context)`
+- Modules : Tous les modules utilisent automatiquement ce système sans duplication
+- Exports PDF & QR utilisent la langue active via `i18n_service`
+
 ---
 
 ## 🗂️ Annexes & liens

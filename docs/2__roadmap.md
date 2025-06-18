@@ -25,6 +25,7 @@ Statut :
 ✅ Gestion compte utilisateur : OK
 ✅ Architecture des modules : OK
 🔄 En cours : synchronisation automatique animaux (local + cloud)
+✅ Multilingue activé (i18n) — fichiers `.arb` gérés, langue utilisateur sélectionnable dans les paramètres
 
 🧠 Phase 2 — IA maîtresse & automatisations
 
