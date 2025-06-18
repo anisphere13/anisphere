@@ -28,8 +28,24 @@ class BehaviorAnalysisService {
   /// Exemple d’analyse basique.
   Future<double> analyzeSteps() async {
     await init();
-    // TODO: utiliser les capteurs et le modèle TFLite
-    return 0.0;
+    try {
+      final event =
+          await sensors.pedometerStream.first.timeout(const Duration(seconds: 1));
+      final input = [
+        [event.steps.toDouble()]
+      ];
+      final output = [
+        [0.0]
+      ];
+      if (_interpreter != null) {
+        _interpreter!.run(input, output);
+        return output.first.first;
+      }
+      return input.first.first;
+    } catch (e) {
+      _log('Erreur analyseSteps : $e');
+      return 0.0;
+    }
   }
 
   void _log(String message) {
