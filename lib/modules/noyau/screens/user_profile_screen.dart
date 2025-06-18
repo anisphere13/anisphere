@@ -3,7 +3,6 @@
 // UX fluide inspirée Samsung Health, sections bien définies.
 // IA-ready, QR, export, stats, confidentialité préparés.
 
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
@@ -17,15 +16,11 @@ class UserProfileScreen extends StatelessWidget {
     final user = Provider.of<UserProvider>(context).user;
 
     if (user == null) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Mon Profil"),
-      ),
+      appBar: AppBar(title: const Text("Mon Profil")),
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [
@@ -41,10 +36,12 @@ class UserProfileScreen extends StatelessWidget {
             spacing: 8,
             runSpacing: 6,
             children: user.moduleRoles.keys
-                .map((module) => Chip(
-                      label: Text(module),
-                      backgroundColor: const Color(0xFFF5F5F5),
-                    ))
+                .map(
+                  (module) => Chip(
+                    label: Text(module),
+                    backgroundColor: const Color(0xFFF5F5F5),
+                  ),
+                )
                 .toList(),
           ),
           const SizedBox(height: 24),
@@ -52,10 +49,11 @@ class UserProfileScreen extends StatelessWidget {
           _sectionTitle("IA & Abonnement"),
           _profileRow("IA Premium", user.iaPremium ? "Oui ✅" : "Non ❌"),
           _profileRow(
-              "Dernière sync IA",
-              user.lastIASync != null
-                  ? "${user.lastIASync!.day}/${user.lastIASync!.month}/${user.lastIASync!.year}"
-                  : "Jamais"),
+            "Dernière sync IA",
+            user.lastIASync != null
+                ? "${user.lastIASync!.day}/${user.lastIASync!.month}/${user.lastIASync!.year}"
+                : "Jamais",
+          ),
 
           const SizedBox(height: 24),
           _sectionTitle("QR d'identification"),
@@ -84,7 +82,8 @@ class UserProfileScreen extends StatelessWidget {
                   action: () {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
-                          content: Text("Fonction export bientôt disponible.")),
+                        content: Text("Fonction export bientôt disponible."),
+                      ),
                     );
                   },
                 ),
@@ -96,8 +95,8 @@ class UserProfileScreen extends StatelessWidget {
                   action: () {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
-                          content:
-                              Text("Paramètres confidentialité à venir.")),
+                        content: Text("Paramètres confidentialité à venir."),
+                      ),
                     );
                   },
                 ),
@@ -127,8 +126,10 @@ class UserProfileScreen extends StatelessWidget {
               ),
               onPressed: () async {
                 final navigator = Navigator.of(context);
-                await Provider.of<UserProvider>(context, listen: false)
-                    .signOut();
+                await Provider.of<UserProvider>(
+                  context,
+                  listen: false,
+                ).signOut();
                 if (context.mounted) {
                   navigator.popUntil((route) => route.isFirst);
                 }
@@ -170,7 +171,7 @@ class UserProfileScreen extends StatelessWidget {
           Expanded(
             child: Text(
               value.isNotEmpty ? value : "Non renseigné",
-              style: const TextStyle(color: Color(0xFF3A3A3A)),
+              style: const TextStyle(color: Colors.black),
             ),
           ),
         ],

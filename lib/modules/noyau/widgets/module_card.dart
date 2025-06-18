@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../models/module_model.dart';
 
@@ -57,7 +56,7 @@ class ModuleCard extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               module.description,
-              style: const TextStyle(color: Color(0xFF3A3A3A)),
+              style: const TextStyle(color: Colors.black),
             ),
             const SizedBox(height: 12),
             Align(

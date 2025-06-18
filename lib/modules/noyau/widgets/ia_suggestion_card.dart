@@ -25,9 +25,7 @@ class IASuggestionCard extends StatelessWidget {
     return Card(
       elevation: 2,
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -40,19 +38,14 @@ class IASuggestionCard extends StatelessWidget {
                 Text(
                   title,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: const Color(0xFF183153),
-                        fontWeight: FontWeight.bold,
-                      ),
+                    color: const Color(0xFF183153),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
             const SizedBox(height: 12),
-            Text(
-              message,
-              style: const TextStyle(
-                color: Color(0xFF3A3A3A),
-              ),
-            ),
+            Text(message, style: const TextStyle(color: Colors.black)),
             if (onAction != null && actionLabel != null)
               Align(
                 alignment: Alignment.centerRight,
