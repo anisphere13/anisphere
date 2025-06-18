@@ -1,17 +1,16 @@
 module.exports = {
   env: {
     node: true,
-    es2020: true,
+    es2022: true,
   },
   extends: [
-    "eslint:recommended"
+    "eslint:recommended",
   ],
   parserOptions: {
-    ecmaVersion: 2020,
+    ecmaVersion: 2022,
   },
   rules: {
-    // Personnalise ici si besoin :
     "no-unused-vars": "warn",
-    "no-console": "off",
+    "no-console": "warn",
   },
 };
