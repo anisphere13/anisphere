@@ -171,6 +171,8 @@ Backend API IA cloud par catégorie (API REST, batch endpoints, ML pipeline)
 Stockage Firestore ou BigQuery par catégorie 
 
 Scripts d’apprentissage, retrain, déploiement modèles 
+- Scripts Python (scripts/ia/) : `fetch_firestore_data.py`, `prepare_dataset.py`, `train_model.py`, `evaluate_model.py`, `run_training_pipeline.py`
+  (utilise `scripts/serviceAccountKey.json` pour se connecter à Firestore)
 
  
  
