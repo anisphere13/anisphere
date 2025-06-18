@@ -205,11 +205,12 @@ Tests & Explicabilité : chaque décision IA doit être traçable et testable 
 
 8. Roadmap & Suivi 
 
-Déploiement de l’IA cloud “Santé” et “Éducation” en priorité (roadmap phase 4) 
+Déploiement de l’IA cloud “Santé” et “Éducation” en priorité (roadmap phase 4)
 
-Ajout progressif des pipelines d’analyse, recommandations, scoring pour chaque catégorie 
+Ajout progressif des pipelines d’analyse, recommandations, scoring pour chaque catégorie
+Mise en place du **système de recommandation IA** (locale vs cloud) dans `lib/modules/noyau/ia_recommendation/`
 
-Au lancement, stockage cloud sans apprentissage IA — activation manuelle par superadmin, puis apprentissage régulier quand la rentabilité est assurée (abonnements actifs) 
+Au lancement, stockage cloud sans apprentissage IA — activation manuelle par superadmin, puis apprentissage régulier quand la rentabilité est assurée (abonnements actifs)
 
 Activation progressive de la descente IA premium sur demande ou par abonnement 
 

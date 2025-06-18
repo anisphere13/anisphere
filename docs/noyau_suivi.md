@@ -193,6 +193,7 @@ AniSphère introduit une authentification biométrique (empreinte digitale ou re
 | engagement_score_model.dart | Modèle scoring engagement IA | ⬜ à faire |
 | ia_adaptation_service.dart | Priorisation/ajustement IA selon contexte | ⬜ à faire |
 | behavior_dashboard_screen.dart | UI historique et recommandations | ⬜ à faire |
+| ia_recommendation/ (nouveau dossier) | Système de recommandation IA locale/cloud | ✅ fait |
 
 ### Sécurité biométrique
 | Fichier | Statut |
