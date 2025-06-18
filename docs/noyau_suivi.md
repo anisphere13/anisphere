@@ -107,6 +107,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 ### **Juin 2025 — Préparation de la messagerie**
 - [06/2025] Définition de la collection `messages` (conversations, messages).
 - [06/2025] Création du dossier module `messagerie` et des premiers tests vides. *(Ce module sera intégré au noyau mi-juin 2025 — voir plus bas)*
+- [06/2025] Correction du crash au démarrage lorsque `currentUser` était `null`.
 
 ### **Juin 2025 — Gestion photo & file offline**
 - [06/2025] Ajout du `camera_service.dart` pour la capture et le pré-traitement des images.
