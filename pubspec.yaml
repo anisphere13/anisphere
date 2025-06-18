@@ -100,3 +100,5 @@ flutter:
   assets:
     - assets/logo/anisphere_logo.png
     - assets/models/behavior.tflite
+    - assets/models/image.tflite
+    - assets/models/education.tflite

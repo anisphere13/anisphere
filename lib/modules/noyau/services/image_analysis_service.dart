@@ -3,6 +3,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 
+import '../ia_local/ia_model_loader.dart';
+
 /// Analyse d’image locale via TFLite.
 class ImageAnalysisService {
   Interpreter? _interpreter;
@@ -10,9 +12,11 @@ class ImageAnalysisService {
   /// Initialise le modèle.
   Future<void> init() async {
     try {
-      _interpreter ??= await Interpreter.fromAsset('models/image.tflite');
+      if (_interpreter != null) return;
+      final file = await IaModelLoader.loadModel('models/image.tflite');
+      _interpreter = await Interpreter.fromFile(file);
     } catch (e) {
-      _log('Erreur init modèle image : \\$e');
+      _log('Erreur init modèle image : $e');
     }
   }
 
@@ -29,4 +33,3 @@ class ImageAnalysisService {
     }
   }
 }
-

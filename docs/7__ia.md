@@ -163,6 +163,8 @@ modules/[module]/logic/
 
 IA locale de chaque module (TFLite, rules, analyzers)
 - Ex. `BehaviorAnalysisService` pour interpréter les pas et la posture
+- Dossier `lib/modules/noyau/ia_local/` : prédicteurs génériques (`IaPredictor`),
+  chargement de modèles (`IaModelLoader`) et prédicteur éducation (`EducationIaPredictor`)
 
 cloud/ (non versionné ici)  
 
