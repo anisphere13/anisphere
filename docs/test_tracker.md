@@ -79,12 +79,12 @@
 | test/noyau/widget/animal_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animal_screen.dart | ✅ |
 | test/noyau/widget/animals_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animals_screen.dart | ✅ |
 | test/noyau/widget/login_screen_test.dart | widget | package:anisphere/modules/noyau/screens/login_screen.dart | ✅ |
+| test/noyau/widget/legal_screen_test.dart | widget | package:anisphere/modules/noyau/screens/legal_screen.dart | ✅ |
 | test/noyau/widget/support_screen_test.dart | widget | package:anisphere/modules/noyau/screens/support_screen.dart | ✅ |
 | test/noyau/widget/register_screen_test.dart | widget | package:anisphere/modules/noyau/screens/register_screen.dart | ✅ |
 | test/noyau/widget/biometric_setup_screen_test.dart | widget | package:anisphere/modules/noyau/screens/biometric_setup_screen.dart | ✅ |
 | test/noyau/widget/notifications_screen_test.dart | widget | package:anisphere/modules/noyau/screens/notifications_screen.dart | ✅ |
 | test/noyau/widget/settings_screen_test.dart | widget | package:anisphere/modules/noyau/screens/settings_screen.dart | ✅ |
-| test/noyau/widget/legal_screen_test.dart | widget | package:anisphere/modules/noyau/screens/legal_screen.dart | ✅ |
 | test/noyau/unit/sync_metrics_model_test.dart | unit | package:anisphere/modules/noyau/models/sync_metrics_model.dart | ✅ |
 | test/noyau/unit/messaging_service_test.dart | unit | package:anisphere/modules/noyau/services/messaging_service.dart | ✅ |
 | test/noyau/unit/offline_message_queue_test.dart | unit | package:anisphere/modules/noyau/services/offline_message_queue.dart | ✅ |
