@@ -271,6 +271,8 @@ flutter_tests.yml → GitHub Actions : lance les tests à chaque push
 update_test_tracker.yml → GitHub Actions : met à jour la checklist à chaque push
 firestore_verification.dart → Vérifie la connexion Firestore
 seed_firestore.dart → Insère des données de démonstration (support, messages, subscriptions)
+train_ia_pipeline.py → Entraîne les modèles IA localement et produit un package .zip
+upload_model_to_functions.sh → Copie le package dans `functions/` pour déploiement Firebase
 
 ### Exécution des scripts Firestore
 

@@ -107,7 +107,7 @@ Chaque module a son dossier dans /test/[module]/
 - UI onglet Partage : à démarrer
 - Tests module partage : à créer
 
-Les scripts : generate_test_module.dart, update_test_tracker.dart, sync_docs.sh
+Les scripts : generate_test_module.dart, update_test_tracker.dart, sync_docs.sh, train_ia_pipeline.py, upload_model_to_functions.sh
 
 📅 Mise à jour continue
 

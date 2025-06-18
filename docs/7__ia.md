@@ -168,9 +168,13 @@ cloud/ (non versionné ici)
 
 Backend API IA cloud par catégorie (API REST, batch endpoints, ML pipeline) 
 
-Stockage Firestore ou BigQuery par catégorie 
+Stockage Firestore ou BigQuery par catégorie
 
-Scripts d’apprentissage, retrain, déploiement modèles 
+Scripts d’apprentissage, retrain, déploiement modèles
+train_ia_pipeline.py : entraîne les modèles localement et exporte un fichier .tflite
+upload_model_to_functions.sh : envoie le package généré vers Firebase Functions
+
+Les modèles sont donc entraînés localement, puis le package est copié dans `functions/` pour être déployé via Firebase Functions.
 
  
  
