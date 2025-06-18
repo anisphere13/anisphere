@@ -7,6 +7,7 @@ Ce document récapitule les pratiques IA actuelles. L'IA privilégie l'exécutio
 - **IA locale avant tout** : TFLite et Hive assurent le fonctionnement hors connexion.
 - **Collecte de métriques** : `metrics_collector.dart` centralise les scores et retours utilisateur.
 - **File de synchronisation offline** : `offline_sync_queue.dart` stocke les logs jusqu'à la prochaine connexion.
+- **Anonymisation systématique** : `AnonymizationService` hache les identifiants avant l'envoi cloud (voir `7__ia.md`).
 - **Fonctionnalités cloud premium** : recommandations et modèles IA complets accessibles via abonnement.
 
 ## État actuel et suites prévues

@@ -117,17 +117,22 @@ IAMaster gère la descente, applique ou notifie les modules concernés
 
 4. Sécurité, RGPD & Coût 
 
-Aucune donnée sensible ne transite dans l’IA cloud (tout est anonymisé dès la collecte) 
+Aucune donnée sensible ne transite dans l’IA cloud (tout est anonymisé dès la collecte)
+L'anonymisation est réalisée par le service `AnonymizationService` qui hache les identifiants avant tout envoi (voir ci-dessous).
 
-Sync batch différée et compressée pour optimiser les coûts Firebase 
+Sync batch différée et compressée pour optimiser les coûts Firebase
 
 Logs, consentements, et scorings toujours versionnés et consultables 
 
 Sync descendante réservée au premium (freemium IA) 
 
-IAMaster assure l’explicabilité IA (toutes les décisions IA doivent être traçables) 
+IAMaster assure l’explicabilité IA (toutes les décisions IA doivent être traçables)
 
-Maîtrise totale des coûts IA cloud : apprentissage déclenché uniquement manuellement par le superadmin au lancement, puis progressivement selon le business model (abonnements/usage) 
+Maîtrise totale des coûts IA cloud : apprentissage déclenché uniquement manuellement par le superadmin au lancement, puis progressivement selon le business model (abonnements/usage)
+
+### Anonymisation des données
+
+Le service `AnonymizationService` prépare les modèles avant leur synchronisation. Il retire ou hache les identifiants personnels (IDs, email, téléphone) pour qu'aucune information sensible ne soit stockée dans le cloud ou dans les files offline.
 
  
  
