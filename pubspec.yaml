@@ -100,3 +100,4 @@ flutter:
   assets:
     - assets/logo/anisphere_logo.png
     - assets/models/behavior.tflite
+    # Add new .tflite or .pkl models here so Flutter bundles them

@@ -27,6 +27,14 @@ pour éviter toute incompatibilité.
 Les fonctions Firebase reposent sur **Node.js 20**. Installez cette version ou
 une version compatible avant d'exécuter ou de développer les Cloud Functions en
 local.
+
+### Gestion des modèles IA
+
+Placez tous les modèles `.tflite` ou `.pkl` dans `assets/models/` et ajoutez
+leurs chemins dans `pubspec.yaml` sous `flutter/assets`. Exécutez ensuite
+`flutter pub get` pour que Flutter prenne ces fichiers en compte. Lorsque
+`IaModelUpdater` télécharge un modèle au démarrage, ce dossier sert de chemin de
+secours.
 ℹ️ Notes d’utilisation du module Partage pour les contributeurs
 - Testez toujours le partage local hors connexion avant de valider une mise à jour.
 - Les fonctions cloud nécessitent un compte Premium de test ; utilisez `lib/core/sharing` pour simuler la synchro.
