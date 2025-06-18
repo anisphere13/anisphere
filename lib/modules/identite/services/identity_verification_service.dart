@@ -7,7 +7,7 @@ library;
 import 'dart:io';
 import 'package:anisphere/modules/identite/models/identity_model.dart';
 import 'package:anisphere/modules/identite/services/identity_service.dart';
-import 'package:anisphere/modules/identite/services/photo_verification_service.dart';
+import '../logic/ia_local_analyzer.dart';
 
 /// IdentityVerificationService pour AniSphère.
 /// Valide automatiquement une fiche identité si la photo est nette, la puce présente,
@@ -15,11 +15,11 @@ import 'package:anisphere/modules/identite/services/photo_verification_service.d
 
 class IdentityVerificationService {
   final IdentityService identityService;
-  final PhotoVerificationService photoVerificationService;
+  final IdentityLocalAnalyzer analyzer;
 
   IdentityVerificationService({
     required this.identityService,
-    required this.photoVerificationService,
+    required this.analyzer,
   });
 
   Future<void> verifyIdentityAutomatically({
@@ -38,7 +38,9 @@ class IdentityVerificationService {
       return;
     }
 
-    final score = await photoVerificationService.scorePhoto(photoFile);
+    final analysis = await analyzer
+        .analyze(IdentityAnalysisInput(photo: photoFile));
+    final score = (analysis['photoScore'] as double?) ?? 0.0;
     final isPhotoValid = score >= 0.6;
 
     if (isPhotoValid) {
