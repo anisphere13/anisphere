@@ -118,6 +118,24 @@ class IAMaster {
     }
   }
 
+  /// 🔁 Envoie de données brutes pour une catégorie IA
+  Future<void> pushCategoryData(String category, Map<String, dynamic> data) async {
+    try {
+      await _cloudSyncService.pushCategoryData(category, data);
+      await IALogger.log(
+        message: 'CATEGORY_$category',
+        channel: IAChannel.sync,
+      );
+    } catch (e) {
+      await OfflineSyncQueue.addTask(SyncTask(
+        type: 'category:$category',
+        data: data,
+        timestamp: DateTime.now(),
+      ));
+      debugPrint('⚠️ pushCategoryData offline for $category');
+    }
+  }
+
   /// 📸 Analyse locale d'une photo puis envoi ou mise en attente.
   Future<void> analyzeAndPushPhoto(File file) async {
     final analysis = await IAPhotoAnalyzer().analyze(file);

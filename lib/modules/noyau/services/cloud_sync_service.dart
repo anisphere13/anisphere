@@ -8,6 +8,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
 
 import '../models/animal_model.dart';
 import '../models/user_model.dart';
@@ -22,13 +23,12 @@ import '../services/storage_optimizer.dart';
 import 'anonymization_service.dart';
 class CloudSyncService {
   final FirebaseService _firebaseService;
-  final AnonymizationService _anonymizer;
-
-  CloudSyncService({
-    FirebaseService? firebaseService,
-    AnonymizationService? anonymizer,
-  })  : _firebaseService = firebaseService ?? FirebaseService(),
-        _anonymizer = anonymizer ?? const AnonymizationService();
+  final http.Client httpClient;
+  static const String _functionsBaseUrl =
+      'https://REGION-PROJECT.cloudfunctions.net/iaApi';
+  CloudSyncService({FirebaseService? firebaseService, http.Client? client})
+      : _firebaseService = firebaseService ?? FirebaseService(),
+        httpClient = client ?? http.Client();
   /// 🔁 Envoie les données d’un animal pour apprentissage IA
   Future<void> pushAnimalData(AnimalModel animal) async {
     final sanitized = _anonymizer.anonymizeAnimal(animal);
@@ -53,6 +53,54 @@ class CloudSyncService {
       await OfflineSyncQueue.addTask(
         SyncTask(type: 'user', data: sanitized.toJson(), timestamp: DateTime.now()),
       );
+    }
+  }
+
+  /// 🔁 Envoie un batch pour une catégorie IA vers la fonction cloud
+  Future<void> pushCategoryData(String category, Map<String, dynamic> data) async {
+    try {
+      final uri = Uri.parse('$_functionsBaseUrl/ia_categories/$category/uploads');
+      final res = await httpClient.post(
+        uri,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'items': [data]}),
+      );
+      if (res.statusCode >= 200 && res.statusCode < 300) {
+        debugPrint('☁️ Données IA $category envoyées.');
+        return;
+      }
+      throw HttpException('status ${res.statusCode}');
+    } catch (e) {
+      debugPrint('❌ [CloudSync] Erreur pushCategoryData : $e');
+      await OfflineSyncQueue.addTask(SyncTask(
+        type: 'category:$category',
+        data: data,
+        timestamp: DateTime.now(),
+      ));
+    }
+  }
+
+  /// 🔁 Envoie un batch pour une catégorie IA vers la fonction cloud
+  Future<void> pushCategoryData(String category, Map<String, dynamic> data) async {
+    try {
+      final uri = Uri.parse('$_functionsBaseUrl/ia_categories/$category/uploads');
+      final res = await httpClient.post(
+        uri,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'items': [data]}),
+      );
+      if (res.statusCode >= 200 && res.statusCode < 300) {
+        debugPrint('☁️ Données IA $category envoyées.');
+        return;
+      }
+      throw HttpException('status ${res.statusCode}');
+    } catch (e) {
+      debugPrint('❌ [CloudSync] Erreur pushCategoryData : $e');
+      await OfflineSyncQueue.addTask(SyncTask(
+        type: 'category:$category',
+        data: data,
+        timestamp: DateTime.now(),
+      ));
     }
   }
   /// 🔁 Envoie de données spécifiques à un module (format libre)
@@ -273,6 +321,9 @@ class CloudSyncService {
             final convoId = task.type.split(":").last;
             await _firebaseService
                 .sendModuleData('messaging/$convoId', task.data ?? {});
+          } else if (task.type.startsWith('category:')) {
+            final cat = task.type.split(':').last;
+            await pushCategoryData(cat, task.data ?? {});
           }
       }
     });

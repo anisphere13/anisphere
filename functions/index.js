@@ -28,3 +28,4 @@ exports.storeSensitiveUserData = functions.https.onCall(async (data, context) =>
 exports.dailyCleanup = require('./scheduler').dailyCleanup;
 exports.dailyRelaunch = require('./scheduler').dailyRelaunch;
 exports.processSupportQueue = require('./supportQueue').processSupportQueue;
+exports.iaApi = functions.https.onRequest(require('./ia').router);
