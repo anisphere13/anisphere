@@ -4,7 +4,6 @@
 // Utilise le widget AnimalCard. Prévu pour accueil type Samsung Health.
 // Préparé pour intégration IA contextuelle future par animal.
 
-library;
 
 import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/screens/animal_form_screen.dart';

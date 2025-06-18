@@ -1,7 +1,6 @@
 // Copilot Prompt : Service permettant de stocker des fichiers dans Google Drive, OneDrive ou Dropbox.
 // Gère l'authentification simple via token OAuth et l'upload de fichiers.
 // Fournit aussi des helpers pour vérifier l'espace disponible et connaître le service actif.
-library;
 
 import 'dart:convert';
 import 'dart:io';

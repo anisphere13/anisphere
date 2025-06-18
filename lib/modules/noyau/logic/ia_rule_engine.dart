@@ -4,7 +4,6 @@
 // Retourne des suggestions IA, alertes ou actions à exécuter
 // Copilot Prompt : "IARuleEngine analyzes AnimalModel list and IAContext to generate smart actions"
 
-library;
 
 import '../models/animal_model.dart';
 import 'ia_rules.dart';

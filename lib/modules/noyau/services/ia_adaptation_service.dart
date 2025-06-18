@@ -1,7 +1,6 @@
 // Copilot Prompt : Service qui ajuste les priorités IA (analyses, notifications, sync) selon l’état réseau/batterie, l’heure et les habitudes
 // Peut désactiver ou retarder analyses si batterie faible/réseau mauvais
 // TODO: IA adaptative premium
-library;
 
 import 'package:flutter/foundation.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';

@@ -1,7 +1,6 @@
 // Copilot Prompt : SupportService AniSphère
 // Gère les retours utilisateurs (bug, idée, contact) avec Hive et CloudSync.
 // Sauvegarde locale offline-first, puis envoi cloud via CloudSyncService.
-library;
 
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';

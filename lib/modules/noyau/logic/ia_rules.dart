@@ -2,7 +2,6 @@
 /// Contient les règles d’analyse comportementale, UX et alertes IA
 /// Appelé par IARuleEngine, IAMaster et les modules IA
 
-library;
 
 import '../models/animal_model.dart';
 

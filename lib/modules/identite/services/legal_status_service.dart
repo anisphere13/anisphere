@@ -2,7 +2,6 @@
 // Permet de déclarer ou modifier le statut (chien d’assistance, travail, élevage...).
 // Gère les validations IA, l’enregistrement local et la traçabilité historique.
 
-library;
 
 import 'package:anisphere/modules/identite/models/identity_model.dart';
 import 'identity_service.dart';

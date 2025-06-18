@@ -2,7 +2,6 @@
 // Gère le stockage local (Hive), la synchro Firebase, les ajouts/suppressions.
 // IA-compatible, testable, optimisé offline-first.
 
-library;
 
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';

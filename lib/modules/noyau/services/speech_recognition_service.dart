@@ -1,5 +1,4 @@
 // Copilot: Service Flutter pour reconnaissance vocale offline-first avec fallback Google Speech
-library;
 
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:google_speech/google_speech.dart' as gs;

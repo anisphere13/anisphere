@@ -1,7 +1,6 @@
 // Copilot Prompt : Service IdentityService pour AniSphère.
 // Gère l’enregistrement, la mise à jour, l’historique et la synchronisation locale/cloud
 // des fiches d’identité animale (QR, statut, photo, badge IA).
-library;
 import 'package:hive/hive.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/identity_model.dart';

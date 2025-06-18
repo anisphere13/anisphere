@@ -2,7 +2,6 @@
 // Intègre les widgets IA dynamiques : IABanner, IAChip, IASuggestionCard, IALogViewer.
 // Affiche les résumés IA des modules actifs via ModulesSummaryService.
 
-library;
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

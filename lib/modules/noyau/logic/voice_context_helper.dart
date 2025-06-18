@@ -1,5 +1,4 @@
 // Copilot: Helper pour déterminer le contexte vocal (promenade, dressage, santé)
-library;
 
 /// Contextes possibles pour un message vocal
 enum VoiceContext { promenade, dressage, sante, inconnu }

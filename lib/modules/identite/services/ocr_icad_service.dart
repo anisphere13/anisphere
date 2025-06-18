@@ -2,7 +2,6 @@
 // Analyse les documents I-CAD, LOF, carnet papier.
 // Extrait puce, nom, race, dates, identifiants via OCR (Tesseract + RegEx).
 
-library;
 
 import 'dart:io';
 import 'package:flutter/foundation.dart';  // Pour kDebugMode

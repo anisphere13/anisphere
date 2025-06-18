@@ -1,5 +1,4 @@
 // Copilot Prompt : Vérifie si l'utilisateur peut utiliser le partage cloud.
-library;
 
 import '../providers/user_provider.dart';
 

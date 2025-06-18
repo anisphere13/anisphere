@@ -1,4 +1,3 @@
-library;
 
 /// Analyseur de messages simple pour déterminer l'intention utilisateur
 /// et fournir un retour automatique.

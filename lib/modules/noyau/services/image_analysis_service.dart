@@ -1,5 +1,4 @@
 // Copilot Prompt : Service IA local TFLite dédié à l’analyse d’image/photo prise par l’utilisateur : posture, anomalie, maladie visible, type d’activité
-library;
 
 import 'package:flutter/foundation.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';

@@ -1,7 +1,6 @@
 // Copilot Prompt : IAPhotoAnalyzer pour AniSphère.
 // Analyse rapide d'une photo locale (qualité, hash) avant upload.
 
-library;
 
 import 'dart:io';
 import 'package:anisphere/modules/identite/services/photo_verification_service.dart';

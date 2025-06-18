@@ -1,7 +1,6 @@
 // Copilot Prompt : écran GPS pour AniSphère.
 // Affiche les traces enregistrées sur une carte interne
 // avec options pour la synchronisation et les logs IA.
-library;
 
 import 'package:flutter/material.dart';
 

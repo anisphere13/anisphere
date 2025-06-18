@@ -2,7 +2,6 @@
 // Valide automatiquement une fiche identité si la photo est nette, la puce présente,
 // et les données cohérentes. Active le badge IA “Identité vérifiée”.
 
-library;
 
 import 'dart:io';
 import 'package:anisphere/modules/identite/models/identity_model.dart';

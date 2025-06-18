@@ -1,5 +1,4 @@
 // Copilot: Page mains-libres affichant l'état d'écoute vocale
-library;
 
 import 'package:flutter/material.dart';
 import '../services/speech_recognition_service.dart';

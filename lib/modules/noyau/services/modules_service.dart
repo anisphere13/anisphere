@@ -3,7 +3,6 @@
 // Persiste les statuts avec LocalStorageService.
 // Utilisé par ModulesScreen et IA pour déterminer les accès.
 
-library;
 
 import 'package:anisphere/modules/noyau/services/local_storage_service.dart';
 import 'package:anisphere/modules/noyau/models/module_model.dart';

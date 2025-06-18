@@ -1,6 +1,5 @@
 // Copilot Prompt : Service qui enrichit en temps réel le contexte IA avec les données des capteurs (heure, batterie, réseau, habitudes…)
 // Fournit un objet contextuel complet pour chaque décision IA
-library;
 
 import 'package:flutter/foundation.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';

@@ -1,4 +1,3 @@
-library;
 
 import '../services/job_scheduler_service.dart';
 

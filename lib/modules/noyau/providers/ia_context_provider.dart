@@ -3,7 +3,6 @@
 /// Se base sur l’utilisateur, les animaux, la connectivité, la date de sync.
 /// Prompt Copilot : "IAContextProvider builds and updates the IAContext for use across AniSphère"
 
-library;
 
 import 'package:flutter/foundation.dart';
 import '../logic/ia_context.dart';

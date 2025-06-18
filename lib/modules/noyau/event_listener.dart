@@ -1,4 +1,3 @@
-library;
 
 import 'models/event_model.dart';
 

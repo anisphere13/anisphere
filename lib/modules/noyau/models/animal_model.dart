@@ -3,7 +3,6 @@
 // Champs : identité, espèce, race, image, date de naissance, propriétaire, timestamps.
 // Utilisé dans le noyau pour la gestion des animaux.
 
-library;
 
 import 'package:hive/hive.dart';
 

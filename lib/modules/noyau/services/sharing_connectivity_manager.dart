@@ -1,4 +1,3 @@
-library;
 // TODO: ajouter test
 
 import 'dart:async';

@@ -1,6 +1,5 @@
 // Copilot Prompt : Service d'authentification biométrique pour AniSphère.
 // Utilise le plugin local_auth pour vérifier et lancer l'authentification.
-library;
 
 import 'package:flutter/foundation.dart';
 import 'package:local_auth/local_auth.dart';

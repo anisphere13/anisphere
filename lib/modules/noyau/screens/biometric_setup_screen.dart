@@ -1,5 +1,4 @@
 // Copilot Prompt : Écran pour activer l'authentification biométrique dans AniSphère.
-library;
 
 import 'package:flutter/material.dart';
 import '../services/biometric_service.dart';

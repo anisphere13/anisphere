@@ -1,4 +1,3 @@
-library;
 
 class TestResultModel {
   final String id;

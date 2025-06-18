@@ -1,7 +1,6 @@
 /// Service d'authentification pour AniSphère.
 /// Gère email/password, Google, Apple, création, reset, logout.
 /// Intègre Firebase Auth et Firebase Firestore (via UserService).
-library;
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';

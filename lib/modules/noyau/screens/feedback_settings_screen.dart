@@ -1,5 +1,4 @@
 // Copilot Prompt: "FeedbackSettingsScreen allows users to configure audio and haptic feedback for each module."
-library;
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

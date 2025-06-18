@@ -2,7 +2,6 @@
 // Affiche une bannière contextuelle IA en haut d’un écran.
 // Peut signaler un état IA actif (mode onboarding, offline, alerte santé).
 // Discret, mais visible et réutilisable dans tous les modules.
-library;
 import 'package:flutter/material.dart';
 
 class IABanner extends StatelessWidget {

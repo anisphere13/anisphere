@@ -1,5 +1,4 @@
 /// Écran complet des paramètres AniSphère avec sauvegarde
-library;
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

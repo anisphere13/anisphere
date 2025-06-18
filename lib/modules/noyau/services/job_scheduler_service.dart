@@ -1,4 +1,3 @@
-library;
 
 import 'package:flutter/foundation.dart';
 import '../models/job_model.dart';

@@ -1,5 +1,4 @@
 // Copilot Prompt : Service d’authentification biométrique Flutter...
-library;
 
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';

@@ -3,7 +3,6 @@
 // Intègre des sections IA (actions personnalisées, stats), modules actifs,
 // et une future timeline (santé, éducation, dressage, etc.).
 // Prêt pour évolutions IA cloud + formations IA premium.
-library;
 
 import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';

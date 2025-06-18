@@ -4,7 +4,6 @@
 // Compatible avec IAContext, AnimalService, UserService.
 // Optimisé offline-first, sécurisé, gestion erreurs propre.
 
-library;
 
 import 'package:flutter/foundation.dart';
 import 'package:anisphere/modules/noyau/services/firebase_service.dart';

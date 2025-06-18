@@ -1,6 +1,5 @@
 // Copilot Prompt : Service de gestion des consentements utilisateur.
 // Stocke simplement chaque consentement dans LocalStorageService.
-library;
 
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';

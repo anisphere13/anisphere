@@ -2,7 +2,6 @@
 // Lit les versions depuis le stockage local ou Firebase Remote Config.
 // Forcera l'affichage de LegalScreen si l'utilisateur n'a pas accepté
 // la dernière version disponible.
-library;
 
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';

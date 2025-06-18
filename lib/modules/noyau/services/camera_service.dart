@@ -2,7 +2,6 @@
 // Initialise la caméra, gère les permissions et permet de prendre des photos.
 // Utilise image_picker pour simplifier la capture.
 
-library;
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';

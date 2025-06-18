@@ -1,6 +1,5 @@
 // fix: update file handling for FlutterImageCompress (XFile -> File)
 // and remove unused imports.
-library;
 
 import 'dart:io';
 

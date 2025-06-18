@@ -2,7 +2,6 @@
 // Vérifie si la dernière MAJ de l’identité animale dépasse 12 mois.
 // Déclenche une notification IA discrète via IA maîtresse.
 
-library;
 
 import 'package:flutter/foundation.dart';  // Ajout de cet import pour kDebugMode
 import 'package:anisphere/modules/identite/models/identity_model.dart';

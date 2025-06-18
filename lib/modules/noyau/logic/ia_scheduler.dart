@@ -4,7 +4,6 @@
 // Déclenche automatiquement la synchronisation IA cloud si nécessaire
 // Copilot Prompt : "IAScheduler triggers IAExecutor and calls IAMaster.syncCloudIA if premium"
 
-library;
 
 import 'dart:async';
 import 'package:flutter/foundation.dart';

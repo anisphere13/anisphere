@@ -1,5 +1,4 @@
 // Copilot Prompt : Service d'analyse GPS avec compression et détection d'anomalies.
-library;
 
 import 'dart:math';
 

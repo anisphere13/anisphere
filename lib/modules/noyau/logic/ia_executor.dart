@@ -4,7 +4,6 @@
 // Utilisé à l’accueil, au démarrage et lors des triggers IA
 // Copilot Prompt : "IAExecutor exécute les décisions IA contextuelles et active IAMaster flags ou services associés"
 
-library;
 
 import 'package:flutter/foundation.dart';
 

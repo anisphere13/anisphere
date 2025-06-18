@@ -4,7 +4,6 @@
 // Optimisé sans coût : batch, différé, sans doublon, sans surcharge.
 // Utilise CloudSyncService en arrière-plan. Journalise localement via IALogger.
 
-library;
 
 import 'package:flutter/foundation.dart';
 

@@ -2,7 +2,6 @@
 // Produit un document stylisé multilingue (nom, puce, photo, statut, QR, historique)
 // réservé aux utilisateurs premium. Export PDF prêt à partager.
 // TODO: Export PDF premium
-library;
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:pdf/widgets.dart' as pw;

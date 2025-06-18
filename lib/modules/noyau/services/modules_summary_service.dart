@@ -3,7 +3,6 @@
 /// Utilisé sur l’écran d’accueil IA pour afficher une vue synthétique.
 /// Dépend de IAContext, AnimalService et ModulesService.
 
-library;
 
 import 'package:anisphere/modules/noyau/services/modules_service.dart';
 import 'package:anisphere/modules/noyau/services/animal_service.dart';

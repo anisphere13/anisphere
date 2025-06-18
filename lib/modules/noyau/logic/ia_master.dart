@@ -4,7 +4,6 @@
 // Utilisé au démarrage, dans les exécuteurs IA et la logique UX
 // Copilot Prompt : "IAMaster manages local IA logic and triggers CloudSyncService when needed"
 
-library;
 
 import 'package:flutter/foundation.dart';
 import '../services/local_storage_service.dart';
