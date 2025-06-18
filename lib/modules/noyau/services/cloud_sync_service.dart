@@ -19,43 +19,55 @@ import '../services/offline_sync_queue.dart';
 import '../services/offline_photo_queue.dart' as offline_queue;
 import '../services/offline_gps_queue.dart';
 import '../services/storage_optimizer.dart';
+import 'anonymization_service.dart';
 class CloudSyncService {
   final FirebaseService _firebaseService;
-  CloudSyncService({FirebaseService? firebaseService})
-      : _firebaseService = firebaseService ?? FirebaseService();
+  final AnonymizationService _anonymizer;
+
+  CloudSyncService({
+    FirebaseService? firebaseService,
+    AnonymizationService? anonymizer,
+  })  : _firebaseService = firebaseService ?? FirebaseService(),
+        _anonymizer = anonymizer ?? const AnonymizationService();
   /// 🔁 Envoie les données d’un animal pour apprentissage IA
   Future<void> pushAnimalData(AnimalModel animal) async {
+    final sanitized = _anonymizer.anonymizeAnimal(animal);
     try {
-      await _firebaseService.saveAnimal(animal, forTraining: true);
-      debugPrint("☁️ Données animal envoyées au cloud pour IA : ${animal.name}");
+      await _firebaseService.saveAnimal(sanitized, forTraining: true);
+      debugPrint('☁️ Données animal envoyées au cloud pour IA : ${animal.name}');
     } catch (e) {
-      debugPrint("❌ [CloudSync] Erreur pushAnimalData : $e");
+      debugPrint('❌ [CloudSync] Erreur pushAnimalData : $e');
       await OfflineSyncQueue.addTask(
-        SyncTask(type: "animal", data: animal.toJson(), timestamp: DateTime.now()),
+        SyncTask(type: 'animal', data: sanitized.toJson(), timestamp: DateTime.now()),
       );
     }
   }
   /// 🔁 Envoie les données d’un utilisateur pour IA (profil, préférences)
   Future<void> pushUserData(UserModel user) async {
+    final sanitized = _anonymizer.anonymizeUser(user);
     try {
-      await _firebaseService.saveUser(user, forTraining: true);
-      debugPrint("☁️ Données utilisateur envoyées au cloud pour IA : ${user.email}");
+      await _firebaseService.saveUser(sanitized, forTraining: true);
+      debugPrint('☁️ Données utilisateur envoyées au cloud pour IA : ${user.email}');
     } catch (e) {
-      debugPrint("❌ [CloudSync] Erreur pushUserData : $e");
+      debugPrint('❌ [CloudSync] Erreur pushUserData : $e');
       await OfflineSyncQueue.addTask(
-        SyncTask(type: "user", data: user.toJson(), timestamp: DateTime.now()),
+        SyncTask(type: 'user', data: sanitized.toJson(), timestamp: DateTime.now()),
       );
     }
   }
   /// 🔁 Envoie de données spécifiques à un module (format libre)
   Future<void> pushModuleData(String moduleName, Map<String, dynamic> data) async {
+    final sanitized = _anonymizer.anonymizeMap(
+      data,
+      const ['userId', 'animalId', 'ownerId', 'email', 'phone'],
+    );
     try {
-      await _firebaseService.sendModuleData(moduleName, data);
-      debugPrint("☁️ Données module $moduleName envoyées au cloud.");
+      await _firebaseService.sendModuleData(moduleName, sanitized);
+      debugPrint('☁️ Données module $moduleName envoyées au cloud.');
     } catch (e) {
-      debugPrint("❌ [CloudSync] Erreur pushModuleData ($moduleName) : $e");
+      debugPrint('❌ [CloudSync] Erreur pushModuleData ($moduleName) : $e');
       await OfflineSyncQueue.addTask(
-        SyncTask(type: "module:$moduleName", data: data, timestamp: DateTime.now()),
+        SyncTask(type: 'module:$moduleName', data: sanitized, timestamp: DateTime.now()),
       );
     }
   }
@@ -68,27 +80,39 @@ class CloudSyncService {
         final optimizedPaths = await StorageOptimizer.optimizePaths(feedback.attachments);
         optimized = feedback.copyWith(attachments: optimizedPaths);
       }
-      await _firebaseService.sendModuleData('support', optimized.toJson());
+      final sanitized = _anonymizer.anonymizeMap(
+        optimized.toJson(),
+        const ['userId', 'email', 'phone'],
+      );
+      await _firebaseService.sendModuleData('support', sanitized);
       debugPrint('☁️ Feedback support envoyé au cloud.');
     } catch (e) {
       debugPrint('❌ [CloudSync] Erreur pushSupportData : $e');
+      final sanitized = _anonymizer.anonymizeMap(
+        feedback.toJson(),
+        const ['userId', 'email', 'phone'],
+      );
       await OfflineSyncQueue.addTask(
-        SyncTask(type: 'support', data: feedback.toJson(), timestamp: DateTime.now()),
+        SyncTask(type: 'support', data: sanitized, timestamp: DateTime.now()),
       );
     }
   }
 
   /// 🔁 Envoie un retour suite à une notification
   Future<void> pushNotificationFeedback(NotificationFeedbackModel feedback) async {
+    final sanitized = _anonymizer.anonymizeMap(
+      feedback.toJson(),
+      const ['userId'],
+    );
     try {
-      await _firebaseService.sendNotificationFeedback(feedback.toJson());
+      await _firebaseService.sendNotificationFeedback(sanitized);
       debugPrint('☁️ Feedback notification envoyé au cloud.');
     } catch (e) {
       debugPrint('❌ [CloudSync] Erreur pushNotificationFeedback : $e');
       await OfflineSyncQueue.addTask(
         SyncTask(
           type: OfflineSyncQueue.taskNotificationFeedback,
-          data: feedback.toJson(),
+          data: sanitized,
           timestamp: DateTime.now(),
         ),
       );
@@ -98,15 +122,19 @@ class CloudSyncService {
   /// 🔁 Envoie d'un message analysé pour apprentissage IA
   Future<void> pushMessagingData(
       String conversationId, Map<String, dynamic> data) async {
+    final sanitized = _anonymizer.anonymizeMap(
+      data,
+      const ['userId', 'animalId', 'ownerId', 'email', 'phone'],
+    );
     try {
-      await _firebaseService.sendModuleData('messaging/$conversationId', data);
+      await _firebaseService.sendModuleData('messaging/$conversationId', sanitized);
       debugPrint('☁️ Données messagerie envoyées pour $conversationId.');
     } catch (e) {
       debugPrint('❌ [CloudSync] Erreur pushMessagingData : $e');
       await OfflineSyncQueue.addTask(
         SyncTask(
           type: 'message:$conversationId',
-          data: data,
+          data: sanitized,
           timestamp: DateTime.now(),
         ),
       );
@@ -115,31 +143,36 @@ class CloudSyncService {
 
   /// 📊 Envoie d’un retour IA local (métriques, logs, feedbacks)
   Future<void> pushIAFeedback(Map<String, dynamic> metrics) async {
+    final sanitized = _anonymizer.anonymizeMap(
+      metrics,
+      const ['userId', 'animalId', 'ownerId', 'email', 'phone'],
+    );
     try {
-      await _firebaseService.sendIAFeedback(metrics);
-      debugPrint("☁️ Feedback IA locale envoyé au cloud.");
+      await _firebaseService.sendIAFeedback(sanitized);
+      debugPrint('☁️ Feedback IA locale envoyé au cloud.');
     } catch (e) {
-      debugPrint("❌ [CloudSync] Erreur pushIAFeedback : $e");
+      debugPrint('❌ [CloudSync] Erreur pushIAFeedback : $e');
       await OfflineSyncQueue.addTask(
-        SyncTask(type: "ia_feedback", data: metrics, timestamp: DateTime.now()),
+        SyncTask(type: 'ia_feedback', data: sanitized, timestamp: DateTime.now()),
       );
     }
   }
 
   /// 🖼️ Envoie une photo pour apprentissage IA ou la met en attente.
   Future<void> pushPhotoData(PhotoModel photo) async {
+    final sanitized = _anonymizer.anonymizePhoto(photo);
     try {
-      await _firebaseService.sendModuleData('photos', photo.toJson());
+      await _firebaseService.sendModuleData('photos', sanitized.toJson());
       debugPrint('☁️ Photo ${photo.id} envoyée au cloud.');
     } catch (e) {
       debugPrint('❌ [CloudSync] Erreur pushPhotoData : $e');
       await offline_queue.OfflinePhotoQueue.addTask(
         offline_queue.PhotoTask(
-          photo: photo,
-          animalId: photo.animalId,
-          userId: photo.userId,
-          uploaded: photo.uploaded,
-          remoteUrl: photo.remoteUrl ?? '',
+          photo: sanitized,
+          animalId: sanitized.animalId,
+          userId: sanitized.userId,
+          uploaded: sanitized.uploaded,
+          remoteUrl: sanitized.remoteUrl ?? '',
         ),
       );
     }
@@ -147,14 +180,14 @@ class CloudSyncService {
 
   // Copilot: envoie un batch GPS et le met en attente si besoin
   Future<void> pushGPSData(GpsBatch batch) async {
+    final data = batch.points
+        .map((p) => {
+              'lat': p.lat,
+              'lon': p.lon,
+              'timestamp': p.timestamp.toIso8601String(),
+            })
+        .toList();
     try {
-      final data = batch.points
-          .map((p) => {
-                'lat': p.lat,
-                'lon': p.lon,
-                'timestamp': p.timestamp.toIso8601String(),
-              })
-          .toList();
       await _firebaseService.sendModuleData('gps', {'batch': data});
       debugPrint('☁️ Batch GPS envoyé (${batch.points.length} entrées).');
     } catch (e) {

@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'dart:convert';
+import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:anisphere/modules/noyau/services/cloud_sync_service.dart';
@@ -29,6 +31,8 @@ class FailingFirebaseService extends FirebaseService {
 }
 
 class MockFirebaseService extends Mock implements FirebaseService {}
+
+String h(String input) => sha256.convert(utf8.encode(input)).toString();
 
 void main() {
   late Directory tempDir;
@@ -65,8 +69,9 @@ void main() {
 
     await service.pushPhotoData(photo);
 
-    final doc = await firestore.collection('photos').doc('p1').get();
-    expect(doc.data()?['id'], 'p1');
+    final hashed = h('p1');
+    final doc = await firestore.collection('photos').doc(hashed).get();
+    expect(doc.data()?['id'], hashed);
   });
 
   test('pushPhotoData queues photo on failure', () async {
@@ -88,7 +93,7 @@ void main() {
       processed.add(pt);
     });
     expect(processed.length, 1);
-    expect(processed.first.photo.id, 'p2');
+    expect(processed.first.photo.id, h('p2'));
   });
 
   test('pushAnimalData queues task on failure', () async {
@@ -114,7 +119,7 @@ void main() {
     final tasks = await OfflineSyncQueue.getAllTasks();
     expect(tasks.length, 1);
     expect(tasks.first.type, 'animal');
-    expect(tasks.first.data?['id'], 'a1');
+    expect(tasks.first.data?['id'], h('a1'));
   });
 
   test('replayOfflineTasks flushes queued tasks', () async {
