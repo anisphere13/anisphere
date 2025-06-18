@@ -224,7 +224,7 @@ AniSphère dispose d'un service de partage local (Bluetooth, Wi‑Fi Direct, NFC
 Le noyau met à disposition plusieurs services communs accessibles par tous les modules :
 - **Messagerie interne** : `lib/modules/messagerie/services/messaging_service.dart` et sa file d'attente `offline_message_queue.dart`.
 - **Partage local et cloud** : `lib/modules/noyau/services/local_sharing_service.dart` et `cloud_sharing_service.dart`, avec suivi via `share_history_service.dart`.
-- **Commande vocale** : `lib/modules/voice/speech_recognition_service.dart` et `voice_command_analyzer.dart` pour déclencher rapidement des actions.
+- **Commande vocale** : `lib/modules/noyau/services/speech_recognition_service.dart` et `voice_command_analyzer.dart` pour déclencher rapidement des actions.
 - **Notifications intelligentes** : `lib/modules/noyau/services/notification_service.dart` connectée à l'IA maîtresse.
 - **Exports et historiques** : `lib/modules/noyau/noyau_module.dart` ainsi que `share_history_service.dart` pour générer des PDF ou archives.
 - **File de synchronisation offline** : `lib/modules/noyau/services/offline_sync_queue.dart`.

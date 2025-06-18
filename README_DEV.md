@@ -63,7 +63,7 @@ Tous les textes des modules doivent passer par `AppLocalizations.of(context)` et
 ### Services transverses du noyau
 - Messagerie : `lib/modules/messagerie/services/messaging_service.dart`
 - Partage local/cloud : `lib/modules/noyau/services/local_sharing_service.dart`, `cloud_sharing_service.dart`
-- Voix : `lib/modules/voice/speech_recognition_service.dart`
+- Voix : `lib/modules/noyau/services/speech_recognition_service.dart`
 - Notifications : `lib/modules/noyau/services/notification_service.dart`
 - Exports : `lib/modules/noyau/services/share_history_service.dart`
 - File offline : `lib/modules/noyau/services/offline_sync_queue.dart`
