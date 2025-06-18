@@ -9,6 +9,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:anisphere/firebase_options.dart';
 import 'package:anisphere/modules/noyau/screens/main_screen.dart';
+import 'package:anisphere/modules/noyau/screens/splash_screen.dart';
 import 'package:anisphere/modules/noyau/services/local_storage_service.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
 import 'package:anisphere/modules/noyau/services/auth_service.dart';
@@ -153,6 +154,10 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    final user = context.watch<UserProvider>().user;
+    if (user == null) {
+      return const SplashScreen();
+    }
     return MaterialApp(
       navigatorKey: NavigationService.navigatorKey,
       title: AppLocalizations.of(context)!.appTitle,

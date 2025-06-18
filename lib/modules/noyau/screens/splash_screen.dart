@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:anisphere/modules/noyau/screens/main_screen.dart'; // adapte le chemin si nécessaire
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -36,13 +35,8 @@ class _SplashScreenState extends State<SplashScreen>
 
     _controller.forward();
 
-    Future.delayed(const Duration(seconds: 2), () {
-      if (!mounted) return;
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const MainScreen()),
-      );
-    });
+    // Removed auto-navigation; the screen is now used as a loading placeholder
+    // while the app determines if a user is present.
   }
 
   @override
