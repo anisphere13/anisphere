@@ -6,7 +6,7 @@ import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../lib/firebase_options.dart';
+import 'package:anisphere/firebase_options.dart';
 
 Future<void> main() async {
   await Firebase.initializeApp(

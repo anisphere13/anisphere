@@ -7,6 +7,19 @@ import 'package:anisphere/modules/noyau/services/behavior_analysis_service.dart'
 import 'package:anisphere/modules/noyau/services/device_sensors_service.dart';
 
 class MockDeviceSensorsService extends Mock implements DeviceSensorsService {}
+class FakeStepCount implements StepCount {
+  @override
+  final int steps;
+
+  @override
+  final DateTime timeStamp;
+
+  FakeStepCount(this.steps, this.timeStamp);
+
+  @override
+  String toString() => 'Steps taken: ' + steps.toString() + ' at ' + timeStamp.toIso8601String();
+}
+
 
 void main() {
   setUpAll(() async {
@@ -16,7 +29,7 @@ void main() {
   test('analyzeSteps returns pedometer value when no interpreter', () async {
     final sensors = MockDeviceSensorsService();
     when(sensors.pedometerStream)
-        .thenAnswer((_) => Stream.value(StepCount(10, DateTime.now())));
+        .thenAnswer((_) => Stream.value(FakeStepCount(10, DateTime.now())));
     final service = BehaviorAnalysisService(sensors: sensors);
 
     final result = await service.analyzeSteps();

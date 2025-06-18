@@ -21,14 +21,20 @@ import '../services/offline_photo_queue.dart' as offline_queue;
 import '../services/offline_gps_queue.dart';
 import '../services/storage_optimizer.dart';
 import 'anonymization_service.dart';
+
 class CloudSyncService {
   final FirebaseService _firebaseService;
   final http.Client httpClient;
+  final AnonymizationService _anonymizer;
   static const String _functionsBaseUrl =
       'https://REGION-PROJECT.cloudfunctions.net/iaApi';
-  CloudSyncService({FirebaseService? firebaseService, http.Client? client})
-      : _firebaseService = firebaseService ?? FirebaseService(),
-        httpClient = client ?? http.Client();
+  CloudSyncService({
+    FirebaseService? firebaseService,
+    http.Client? client,
+    AnonymizationService? anonymizer,
+  })  : _firebaseService = firebaseService ?? FirebaseService(),
+        httpClient = client ?? http.Client(),
+        _anonymizer = anonymizer ?? const AnonymizationService();
   /// 🔁 Envoie les données d’un animal pour apprentissage IA
   Future<void> pushAnimalData(AnimalModel animal) async {
     final sanitized = _anonymizer.anonymizeAnimal(animal);
@@ -56,31 +62,6 @@ class CloudSyncService {
     }
   }
 
-  /// 🔁 Envoie un batch pour une catégorie IA vers la fonction cloud
-  Future<void> pushCategoryData(String category, Map<String, dynamic> data) async {
-    try {
-      final uri = Uri.parse('$_functionsBaseUrl/ia_categories/$category/uploads');
-      final res = await httpClient.post(
-        uri,
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'items': [data]}),
-      );
-      if (res.statusCode >= 200 && res.statusCode < 300) {
-        debugPrint('☁️ Données IA $category envoyées.');
-        return;
-      }
-      throw HttpException('status ${res.statusCode}');
-    } catch (e) {
-      debugPrint('❌ [CloudSync] Erreur pushCategoryData : $e');
-      await OfflineSyncQueue.addTask(SyncTask(
-        type: 'category:$category',
-        data: data,
-        timestamp: DateTime.now(),
-      ));
-    }
-  }
-
-  /// 🔁 Envoie un batch pour une catégorie IA vers la fonction cloud
   Future<void> pushCategoryData(String category, Map<String, dynamic> data) async {
     try {
       final uri = Uri.parse('$_functionsBaseUrl/ia_categories/$category/uploads');

@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
 import 'package:anisphere/modules/identite/models/identity_model.dart';
 import 'package:anisphere/modules/identite/services/identity_verification_service.dart';
-import 'package:anisphere/modules/identite/logic/ia_local_analyzer.dart';
 import 'package:mockito/mockito.dart';
 import 'mock_services.mocks.dart';
 

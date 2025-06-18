@@ -111,3 +111,4 @@
 | test/noyau/unit/iap_validator_test.dart | unit | package:anisphere/modules/noyau/services/iap_validator.dart | ✅ |
 
 - ✅ Tests validés automatiquement le 2025-06-18
+- ✅ Tests validés automatiquement le 2025-06-19
