@@ -1,5 +1,4 @@
 // Copilot Prompt : Modèle d'abonnement utilisateur pour AniSphère.
-library;
 
 import 'package:hive/hive.dart';
 

@@ -1,7 +1,6 @@
 // PhotoScreen de debug pour AniSphère.
 // Affiche les photos locales enregistrées via PhotoProvider.
 
-library;
 
 import 'dart:io';
 import 'package:flutter/material.dart';

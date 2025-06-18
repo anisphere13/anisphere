@@ -1,4 +1,3 @@
-library;
 
 /// Base interface for all module analyzers.
 abstract class ModuleAnalyzer<I, O> {

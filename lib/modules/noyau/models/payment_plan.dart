@@ -1,4 +1,3 @@
-library;
 
 class PaymentPlan {
   final String id;

@@ -1,6 +1,5 @@
 // Copilot Prompt: Helper fournissant le contexte des tâches planifiées.
 // Récupère le niveau de batterie, létat de la connectivité et détermine les périodes d'inactivité ou de nuit.
-library;
 
 import 'package:battery_plus/battery_plus.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';

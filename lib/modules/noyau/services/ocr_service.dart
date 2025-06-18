@@ -1,7 +1,6 @@
 // Copilot Prompt : OCRService générique pour AniSphère.
 // Utilise Google ML Kit pour extraire le texte d'une image locale.
 
-library;
 
 import 'dart:io';
 import 'package:flutter/foundation.dart';

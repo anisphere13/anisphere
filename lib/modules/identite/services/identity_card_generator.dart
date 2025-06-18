@@ -2,7 +2,6 @@
 // Crée un PDF format CB (85x54 mm) avec nom, puce, photo, QR code.
 // Utilise `pdf` pour génération, preview ou export via un autre service.
 // TODO: Export PDF premium
-library;
 import 'dart:io';
 import 'dart:typed_data'; // ✅ Nécessaire pour Uint8List
 import 'package:pdf/widgets.dart' as pw;

@@ -1,7 +1,6 @@
 // Copilot Prompt : Widget IAChip pour AniSphère.
 // Affiche un petit badge (Chip) représentant un état IA ou un tag intelligent.
 // Utilisé dans les dashboards, listes d’animaux ou en haut des écrans IA.
-library;
 import 'package:flutter/material.dart';
 
 class IAChip extends StatelessWidget {

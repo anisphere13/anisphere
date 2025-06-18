@@ -1,7 +1,6 @@
 // Copilot Prompt : Service de validation d'achats in-app pour AniSphère.
 // Vérifie les jetons localement et marque les déblocages suspects.
 // Utilise LocalStorageService pour verrouiller si la validation échoue.
-library;
 
 import 'package:flutter/foundation.dart';
 

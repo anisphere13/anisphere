@@ -1,5 +1,4 @@
 // Copilot Prompt : OfflineGpsQueue to store GPS tracks when offline, with IA analysis before upload and retry on failure.
-library;
 
 import 'package:hive/hive.dart';
 import 'package:flutter/foundation.dart';

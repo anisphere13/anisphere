@@ -1,5 +1,4 @@
 // Copilot Prompt : Écran de visualisation temps réel ou historique des scores IA, contextes, alertes comportementales ou recommandations
-library;
 
 import 'package:flutter/material.dart';
 

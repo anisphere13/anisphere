@@ -1,7 +1,6 @@
 // Copilot Prompt : PhotoProvider pour AniSphère.
 // Gère les photos locales via Hive et la mise en file d'attente pour l'upload.
 
-library;
 
 import 'package:flutter/material.dart';
 import '../models/photo_model.dart';

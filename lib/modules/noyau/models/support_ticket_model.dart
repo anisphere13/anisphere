@@ -1,7 +1,6 @@
 // Copilot Prompt : Modèle de support et feedback pour AniSphère.
 // Permet à l'utilisateur de signaler un bug, proposer une idée ou contacter l'équipe.
 // Compatible Hive et Firebase.
-library;
 
 import 'package:hive/hive.dart';
 

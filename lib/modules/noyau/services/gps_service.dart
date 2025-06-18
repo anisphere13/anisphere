@@ -1,6 +1,5 @@
 // Copilot Prompt : Service de localisation GPS pour AniSphère.
 // Gère l'autorisation de localisation et le flux de positions en continu.
-library;
 
 import 'dart:async';
 import 'package:flutter/foundation.dart';

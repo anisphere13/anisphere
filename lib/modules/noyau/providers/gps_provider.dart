@@ -1,5 +1,4 @@
 // Copilot: Exemple d'utilisation
-library;
 
 import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';

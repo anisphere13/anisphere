@@ -1,5 +1,4 @@
 // 🔧 Fix applied automatically via Codex on 2025-06-11 (flutter analyze)
-library;
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

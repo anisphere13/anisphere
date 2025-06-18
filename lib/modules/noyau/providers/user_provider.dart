@@ -4,7 +4,6 @@
 // la synchronisation Firebase/Hive et les notifications UI.
 // Copilot Prompt : "UserProvider gère l’utilisateur, la connexion, et déclenche la synchro IA cloud si premium"
 
-library;
 
 import 'package:flutter/material.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';

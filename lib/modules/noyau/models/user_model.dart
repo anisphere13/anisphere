@@ -3,7 +3,6 @@
 // Prévu pour une app IA, offline-first, multi-rôle et multi-module.
 // TODO: Badges IA payants
 
-library;
 
 import 'package:hive/hive.dart';
 

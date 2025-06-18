@@ -1,6 +1,5 @@
 // Copilot Prompt : MainScreen avec navigation sécurisée et IAScheduler.
 // Comporte 4 onglets dynamiques.
-library;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'home_screen.dart';

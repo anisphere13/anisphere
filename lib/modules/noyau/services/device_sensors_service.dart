@@ -1,7 +1,6 @@
 // Copilot Prompt : Service Flutter pour accès et gestion des capteurs smartphone (GPS, mouvement, podomètre, batterie, réseau, orientation…)
 // Expose des streams pour chaque type de donnée (distance, temps activité, changement position…)
 // Récupère l’état batterie, la puissance réseau, l’heure système
-library;
 
 import 'package:battery_plus/battery_plus.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';

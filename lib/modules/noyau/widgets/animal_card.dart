@@ -2,7 +2,6 @@
 // Affiche un animal sous forme de carte élégante avec image, nom, espèce.
 // Utilisé dans la liste des animaux, l'accueil et les modules IA.
 
-library;
 
 import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';

@@ -3,7 +3,6 @@
 // Intègre un bouton “Identité” vers `IdentityScreen` avec `IdentityService`.
 // Préparé pour afficher les modules IA, l’historique, et la fiche publique.
 // Suivi du branding AniSphère et UX à la Samsung Health.
-library;
 
 import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';

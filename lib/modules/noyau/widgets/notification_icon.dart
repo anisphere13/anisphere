@@ -2,7 +2,6 @@
 // Affiche une cloche avec un badge rouge si des notifications non lues sont présentes.
 // S'intègre dans l'AppBar de `MainScreen`.
 
-library;
 
 import 'package:flutter/material.dart';
 

@@ -3,7 +3,6 @@
 // UX fluide inspirée Samsung Health, sections bien définies.
 // IA-ready, QR, export, stats, confidentialité préparés.
 
-library;
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

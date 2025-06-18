@@ -1,5 +1,4 @@
 // Copilot Prompt : Modèle simple pour point GPS (latitude, longitude, timestamp).
-library;
 
 class GPSPoint {
   final double lat;

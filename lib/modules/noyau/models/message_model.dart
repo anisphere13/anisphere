@@ -1,4 +1,3 @@
-library;
 // TODO: ajouter test
 
 import 'package:hive/hive.dart';

@@ -1,5 +1,4 @@
 // Deprecated screen kept for backward compatibility. Redirects to [IAPScreen].
-library;
 
 import 'package:flutter/material.dart';
 

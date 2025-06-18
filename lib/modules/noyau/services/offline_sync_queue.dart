@@ -1,5 +1,4 @@
 // Copilot Prompt : OfflineSyncQueue handles buffered sync for AniSphère when offline. Uses Hive to store temporary data and flushes on reconnect.
-library;
 
 import 'package:hive/hive.dart';
 import 'package:flutter/foundation.dart';

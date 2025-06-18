@@ -3,7 +3,6 @@
 // Affiche les notifications via NotificationService.
 // À intégrer dans l'initialisation de l'application.
 
-library;
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';

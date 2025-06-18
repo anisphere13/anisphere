@@ -4,7 +4,6 @@
 // Utilisé par IAExecutor, IAScheduler, IAMaster.
 // IAContext peut être enrichi avec d'autres signaux (modules actifs, version app...)
 
-library;
 
 class IAContext {
   final bool isOffline;

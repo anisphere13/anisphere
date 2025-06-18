@@ -1,5 +1,4 @@
 // Copilot: Service d'analyse des commandes vocales pour AniSphère
-library;
 
 /// Actions vocales possibles
 enum VoiceAction { addReminder, showHealth, startWalk, unknown }

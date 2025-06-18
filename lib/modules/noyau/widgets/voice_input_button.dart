@@ -1,5 +1,4 @@
 // Copilot: Widget bouton microphone pour lancer l'écoute vocale
-library;
 
 import 'package:flutter/material.dart';
 

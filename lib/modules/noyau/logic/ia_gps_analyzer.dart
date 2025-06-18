@@ -1,4 +1,3 @@
-library;
 
 import 'dart:math';
 import '../services/offline_gps_queue.dart';
