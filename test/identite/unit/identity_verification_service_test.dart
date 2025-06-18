@@ -1,8 +1,8 @@
-import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
 import 'package:anisphere/modules/identite/models/identity_model.dart';
 import 'package:anisphere/modules/identite/services/identity_verification_service.dart';
+import 'package:anisphere/modules/identite/logic/ia_local_analyzer.dart';
 import 'package:mockito/mockito.dart';
 import 'mock_services.mocks.dart';
 
@@ -19,13 +19,12 @@ void main() {
     );
 
     final mockIdentityService = MockIdentityService();
-    final mockPhotoVerifier = MockPhotoVerificationService();
-    // ignore: invalid_use_of_null_value
-    when(mockPhotoVerifier.scorePhoto(any<File>(that: isA<File>())))
-        .thenAnswer((_) async => 0.8);
+    final mockAnalyzer = MockIdentityLocalAnalyzer();
+    when(mockAnalyzer.analyze(any))
+        .thenAnswer((_) async => {'photoScore': 0.8});
     final service = IdentityVerificationService(
       identityService: mockIdentityService,
-      photoVerificationService: mockPhotoVerifier,
+      analyzer: mockAnalyzer,
     );
 
     await service.verifyIdentityAutomatically(identity: identity, animalName: 'Luna');
