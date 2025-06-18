@@ -69,7 +69,6 @@
 | test/noyau/widget/ia_suggestion_card_test.dart | widget | package:anisphere/modules/noyau/widgets/ia_suggestion_card.dart | ✅ |
 | test/noyau/widget/notification_icon_test.dart | widget | package:anisphere/modules/noyau/widgets/notification_icon.dart | ✅ |
 | test/noyau/widget/modules_screen_test.dart | widget | package:anisphere/modules/noyau/screens/modules_screen.dart | ✅ |
-| test/noyau/widget/modules_by_category_screen_test.dart | widget | package:anisphere/modules/noyau/screens/modules_by_category_screen.dart | ✅ |
 | test/noyau/widget/main_screen_test.dart | widget | package:anisphere/modules/noyau/screens/main_screen.dart | ✅ |
 | test/noyau/widget/animal_profile_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animal_profile_screen.dart | ✅ |
 | test/noyau/widget/user_profile_screen_test.dart | widget | package:anisphere/modules/noyau/screens/user_profile_screen.dart | ✅ |
@@ -110,4 +109,5 @@
 | test/noyau/unit/ia_master_offline_queue_test.dart | unit | package:anisphere/modules/noyau/logic/ia_master.dart | ✅ |
 | test/noyau/unit/payment_service_test.dart | unit | package:anisphere/modules/noyau/services/payment_service.dart | ✅ |
 | test/noyau/unit/iap_validator_test.dart | unit | package:anisphere/modules/noyau/services/iap_validator.dart | ✅ |
-\n- ✅ Tests validés automatiquement le 2025-06-16
+
+- ✅ Tests validés automatiquement le 2025-06-18
