@@ -38,6 +38,8 @@ L’interface est claire, animée, inspirée de Samsung Health
 
 Tous les textes, choix et graphismes doivent être accessibles et lisibles
 
+L’application est multilingue et toutes les traductions sont centralisées dans le noyau
+
 🧠 Architecture IA
 
 L’IA est découpée en 2 niveaux :

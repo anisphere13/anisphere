@@ -324,3 +324,4 @@ Responsable : Superadmin
 - 🧩 Mise à jour de `ia_logger.dart` pour tracer les paiements, tests à jour le 2025-06-15
 
 - 🧩 Synchronisation automatique du noyau le 2025-06-18
+- 🆕 Multilingue : i18n_service, i18n_provider, fichiers .arb

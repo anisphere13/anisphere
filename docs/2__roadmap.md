@@ -117,6 +117,7 @@ Ajout rapide d’un animal via action rapide (slide up)
 Statut :
 
 🔲 À développer à partir des composants de base
+✅ internationalisation activée
 
 🌍 Phase 6 — Site compagnon & synchronisation
 
