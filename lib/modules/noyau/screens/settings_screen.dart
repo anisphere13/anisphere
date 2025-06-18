@@ -10,6 +10,7 @@ import '../providers/theme_provider.dart';
 import 'feedback_settings_screen.dart';
 import '../providers/payment_provider.dart';
 import 'iap_screen.dart';
+import '../i18n/language_selector_widget.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -111,6 +112,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
             subtitle: const Text("Thème sombre automatique"),
             value: darkMode,
             onChanged: (val) => _updatePreference("dark_mode", val),
+          ),
+          ListTile(
+            leading: const Icon(Icons.language, color: Color(0xFF183153)),
+            title: const Text('Langue'),
+            trailing: const LanguageSelectorWidget(),
           ),
           const Divider(),
           const Text("Intelligence Artificielle", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF183153))),
