@@ -15,7 +15,7 @@ final ThemeData appTheme = ThemeData(
     backgroundColor: backgroundGray,
     foregroundColor: Colors.black,
     elevation: 0,
-    iconTheme: const IconThemeData(color: Colors.black),
+    iconTheme: IconThemeData(color: Colors.black),
   ),
   splashColor: accentYellow,
   highlightColor: accentYellow,
