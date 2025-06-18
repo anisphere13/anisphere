@@ -111,10 +111,10 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 ### **Juin 2025 — Gestion photo & file offline**
 - [06/2025] Ajout du `camera_service.dart` pour la capture et le pré-traitement des images.
 - [06/2025] Création du modèle `photo_model.dart` (métadonnées, stockage Hive).
-- [06/2025] Mise en place de `photo_upload_queue.dart` pour la synchronisation différée hors ligne.
+- [06/2025] Mise en place de `offline_photo_queue.dart` (ex `photo_upload_queue.dart`) pour la synchronisation différée des clichés et pré-analyse IA.
 - [06/2025] Ajout de `offline_gps_queue.dart` pour enregistrer les traces GPS hors ligne et analyse IA.
-- [06/2025] Tests unitaires : `offline_gps_queue_test.dart`.
-- [06/2025] Tests unitaires : `camera_service_test.dart`, `photo_model_test.dart`, `photo_upload_queue_test.dart`.
+- [06/2025] Tests unitaires : `offline_photo_queue_test.dart`, `offline_gps_queue_test.dart`.
+- [06/2025] Tests unitaires : `camera_service_test.dart`, `photo_model_test.dart`.
 - [06/2025] Création du `gps_service.dart` pour la localisation et la gestion du flux de positions.
 - [06/2025] Ajout du modèle `share_history_model.dart` et de l'historique de partage Hive. *(Initialement prévu dans le module partage)*
 - [06/2025] Mise à jour de `share_screen.dart` avec partage local/cloud et statut de connexion.
@@ -138,7 +138,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 | Messagerie interne                    | 🔄 En cours | messages_service, messaging_screen              | Non           | Migrée du module vers le noyau   |
 | Commandes vocales / mains libres      | 🔄 En cours | speech_recognition_service, voice_command_analyzer | Non           | Module vocal devenu service noyau |
 | **Superadmin**                        | ❌ Migré  | —                                                 | —             | Maintenant module indépendant    |
-| Prise de photo & file offline         | 🔄 À démarrer | camera_service, photo_model, photo_upload_queue | Non           | Capture locale, sync différée    |
+| Prise de photo & file offline         | 🔄 À démarrer | camera_service, photo_model, offline_photo_queue, offline_gps_queue | Non           | Capture locale, sync différée    |
 | Job scheduler interne                 | 🔄 En cours | job_scheduler_service, job_model, job_provider, scheduler_hooks | Oui           | Planification automatique des tâches |
 
 ### Sécurité avancée
@@ -154,8 +154,8 @@ AniSphère introduit une authentification biométrique (empreinte digitale ou re
 - `animal_model.dart`, `animal_service.dart`, `animal_provider.dart`
 - `main_screen.dart`, `home_screen.dart`, `modules_screen.dart`, `settings_screen.dart`, `share_screen.dart`, `animal_form_screen.dart`, `animal_profile_screen.dart`
 - `notification_service.dart`, `notification_icon.dart`
-- `camera_service.dart`, `photo_model.dart`, `photo_upload_queue.dart`
-- `gps_provider.dart`
+- `camera_service.dart`, `photo_model.dart`, `offline_photo_queue.dart`
+- `gps_provider.dart`, `offline_gps_queue.dart`
 - `ia_master.dart`, `ia_rule_engine.dart`, `ia_executor.dart`, `ia_scheduler.dart`, `ia_logger.dart`
 - **Tests** dans `test/noyau/`
 - **Scripts d’automatisation** : `generate_test_module.dart`, `update_noyau_suivi.dart`
@@ -180,7 +180,7 @@ AniSphère introduit une authentification biométrique (empreinte digitale ou re
 - Poursuivre l’automatisation des tests (unit/widget/intégration) pour toute nouvelle brique
 - Rafraîchir le suivi Markdown et la documentation à chaque étape (script `update_noyau_suivi.dart`)
 - Créer le module indépendant `superadmin` (lib/modules/superadmin/), suivi dédié
-- Finaliser l’intégration de `camera_service` et de la `photo_upload_queue`
+- Finaliser l’intégration de `camera_service` et de la `offline_photo_queue`
 
 ### Nouveaux services IA & capteurs
 | Élément | Description | Statut |
@@ -218,6 +218,7 @@ AniSphère introduit une authentification biométrique (empreinte digitale ou re
 - [3__suivi_taches.md](3__suivi_taches.md) — Suivi macro projet
 - [test_tracker.md](test_tracker.md) — Couverture et état des tests
 - [10__architecture.md](10__architecture.md) — Architecture technique
+- [7__ia.md](7__ia.md) — Architecture IA et files offline
 - [suivi_superadmin.md](suivi_superadmin.md) — Module Superadmin
 
 ---
@@ -226,7 +227,7 @@ AniSphère introduit une authentification biométrique (empreinte digitale ou re
 
 - **05/06/2025** : Extraction Superadmin → module sécurisé indépendant. Nettoyage du noyau.
 - **05/2025** : Préparation IA cloud, priorité sécurité, modularité renforcée.
-- **06/2025** : Introduction du `camera_service`, de `photo_model` et de la `photo_upload_queue` pour gérer la prise de vue hors ligne.
+- **06/2025** : Introduction du `camera_service`, de `photo_model` et de la `offline_photo_queue` pour gérer la prise de vue hors ligne, ainsi que `offline_gps_queue` pour stocker les traces GPS.
 - **04–05/2025** : Finalisation IA locale, navigation, automatisation test/suivi.
 - **03–04/2024** : Création de la structure modulaire, bases IA, stockage optimisé, automatisation du suivi.
 

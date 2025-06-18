@@ -151,7 +151,11 @@ ia_scheduler.dart : planification et déclenchements périodiques
 
 metrics_collector.dart : collecte, structuration et upload des métriques IA 
 
-offline_sync_queue.dart : stockage différé des logs/metrics 
+offline_sync_queue.dart : stockage différé des logs/metrics
+offline_photo_queue.dart : file d'attente des photos hors ligne (pré-analyse IA puis upload différé)
+offline_gps_queue.dart : stockage des traces GPS offline, analyse comportementale et sync différée
+
+Ces files offline assurent la capture hors ligne et permettent une pré-analyse IA locale avant l'upload batch au cloud. 
 
 cloud_sync_service.dart : upload batch vers la bonne IA cloud de catégorie 
 
