@@ -11,17 +11,13 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  intl: ^0.20.2
+  intl: ^0.19.0
 
   # in_app_purchase: ^x.x.x  # uncomment when implementing IAP
   # UI
   cupertino_icons: ^1.0.8
   flutter_local_notifications: ^19.2.1
-  webview_flutter: ^4.13.0
-  flutter_localizations:
-    sdk: flutter
-  intl: ^0.18.1
-
+  webview_flutter: ^4.7.0
   # Base / stockage local
   provider: ^6.1.2
   path_provider: ^2.1.5
@@ -39,7 +35,7 @@ dependencies:
   uuid: ^4.0.0
 
   # Paiement & achats intégrés
-  in_app_purchase: ^3.2.3 # Gestion des IAP
+  in_app_purchase: ^3.2.0 # Gestion des IAP
 
   # Firebase
   firebase_core: ^3.14.0
@@ -48,10 +44,10 @@ dependencies:
   firebase_storage: ^12.4.7
   firebase_messaging: ^15.2.7
   firebase_remote_config: ^5.4.5
-  firebase_data_connect: ^0.1.5+1
+  firebase_data_connect: 0.1.5
 
   # Authentification
-  google_sign_in: ^6.3.0
+  google_sign_in: ^6.2.1
   sign_in_with_apple: ^7.0.1
   local_auth: ^2.3.0
 
@@ -61,7 +57,7 @@ dependencies:
   google_mlkit_commons: ^0.11.0
   image: ^4.3.0
   image_picker: ^1.0.7
-  mobile_scanner: ^7.0.1
+  mobile_scanner: ^6.0.0
   pdf: ^3.10.4
   printing: ^5.12.0
 
@@ -69,7 +65,7 @@ dependencies:
   sensors_plus: ^6.1.1
   battery_plus: ^6.2.1
   pedometer: ^4.1.1
-  geolocator: ^14.0.1
+  geolocator: ^13.0.2
   tflite_flutter: ^0.11.0
   flutter_blue_plus: ^1.35.5
   nearby_connections: ^4.3.0
@@ -86,9 +82,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^6.0.0
-  build_runner: ^2.4.15
-  mockito: ^5.4.5 # ✅ version compatible avec analyzer <7.0.0
+  flutter_lints: ^4.0.0
+  build_runner: ^2.4.11
+  mockito: ^5.4.4 # ✅ version compatible avec analyzer <7.0.0
   hive_test: ^1.0.0
   fake_cloud_firestore: ^3.1.0
   connectivity_plus_platform_interface: ^2.0.1
