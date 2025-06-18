@@ -141,6 +141,38 @@ medias (images, vidéos, tri automatique IA)
 
 historique (actions IA ou utilisateur)
 
+📊 Collection logs_ia
+
+🔹 Objectif
+
+Centraliser tous les logs IA envoyés par l'application pour analyse ou apprentissage.
+
+🔹 Structure
+
+logs_ia (collection)
+ └── [logId] (document)
+     ├── module: string
+     ├── type: string
+     ├── userId: string
+     ├── animalId: string
+     ├── data: map (optionnelle)
+     ├── metadata: map (optionnelle)
+     └── timestamp: timestamp
+
+Exemple de document :
+
+```json
+{
+  "module": "education",
+  "type": "exercise_completed",
+  "userId": "u123",
+  "animalId": "a456",
+  "data": {"exerciseId": "sit", "score": 95},
+  "metadata": {"appVersion": "1.2.0"},
+  "timestamp": "2025-06-12T16:45:00Z"
+}
+```
+
 📌 Recommandations Firebase
 
 Minimiser les lectures avec whereEqualTo, limit, startAfter...
