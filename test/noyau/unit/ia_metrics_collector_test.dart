@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
-import 'package:anisphere/modules/noyau/logic/ia_metrics_collector.dart';
+import 'package:anisphere/services/ia/ia_metrics_collector.dart';
 import '../../test_config.dart';
 
 void main() {
