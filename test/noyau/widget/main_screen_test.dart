@@ -8,10 +8,10 @@ import 'package:anisphere/modules/noyau/providers/ia_context_provider.dart';
 import 'package:anisphere/modules/noyau/services/auth_service.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
 import 'package:anisphere/modules/noyau/screens/main_screen.dart';
-import 'package:anisphere/main.dart';
 import 'package:anisphere/modules/noyau/screens/splash_screen.dart';
-import 'package:anisphere/modules/noyau/i18n/i18n_provider.dart';
+import 'package:anisphere/main.dart';
 import 'package:anisphere/modules/noyau/providers/theme_provider.dart';
+import 'package:anisphere/modules/noyau/i18n/i18n_provider.dart';
 
 import '../../test_config.dart';
 
@@ -23,8 +23,42 @@ class _NullUserProvider extends UserProvider {
   _NullUserProvider() : super(UserService(skipHiveInit: true), AuthService());
 
   @override
-  Future<void> loadUser() async {
-    // Intentionally do nothing to keep user null
+  Future<void> loadUser() async {}
+}
+
+class _FakeI18nProvider with ChangeNotifier implements I18nProvider {
+  Locale _locale = const Locale('en');
+
+  @override
+  Locale get locale => _locale;
+
+  @override
+  Future<void> load() async {}
+
+  @override
+  Future<void> setLocale(Locale locale) async {
+    _locale = locale;
+    notifyListeners();
+  }
+}
+
+class _FakeThemeProvider with ChangeNotifier implements ThemeProvider {
+  bool _isDarkMode = false;
+
+  @override
+  bool get isDarkMode => _isDarkMode;
+
+  @override
+  ThemeMode get themeMode =>
+      _isDarkMode ? ThemeMode.dark : ThemeMode.light;
+
+  @override
+  Future<void> load() async {}
+
+  @override
+  Future<void> setDarkMode(bool value) async {
+    _isDarkMode = value;
+    notifyListeners();
   }
 }
 
@@ -67,18 +101,18 @@ void main() {
     await tester.pumpWidget(
       MultiProvider(
         providers: [
+          ChangeNotifierProvider<I18nProvider>(create: (_) => _FakeI18nProvider()),
+          ChangeNotifierProvider<ThemeProvider>(create: (_) => _FakeThemeProvider()),
           ChangeNotifierProvider<UserProvider>(create: (_) => _NullUserProvider()),
-          ChangeNotifierProvider<I18nProvider>(create: (_) => I18nProvider()),
-          ChangeNotifierProvider<ThemeProvider>(create: (_) => ThemeProvider()),
         ],
         child: const MyApp(),
       ),
     );
 
-    await tester.pumpAndSettle();
+    await tester.pump();
 
-    expect(find.byType(SplashScreen), findsOneWidget);
     expect(find.byType(MainScreen), findsNothing);
+    expect(find.byType(SplashScreen), findsOneWidget);
   });
 }
 
