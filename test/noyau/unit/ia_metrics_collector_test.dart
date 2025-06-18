@@ -21,16 +21,29 @@ void main() {
     await tempDir.delete(recursive: true);
   });
 
-  test('addMetric stores metric and can be retrieved', () async {
-    await IAMetricsCollector.addMetric('score', 5);
+  test('logEducationEvent stores metric with module context', () async {
+    await IAMetricsCollector.logEducationEvent(
+      type: 'lesson_completed',
+      animalId: 'a1',
+      userId: 'u1',
+      data: {'score': 5},
+    );
     final metrics = await IAMetricsCollector.getAllMetrics();
     expect(metrics.length, 1);
-    expect(metrics.first.name, 'score');
-    expect(metrics.first.value, 5);
+    final metric = metrics.first;
+    expect(metric.module, 'education');
+    expect(metric.type, 'lesson_completed');
+    expect(metric.animalId, 'a1');
+    expect(metric.userId, 'u1');
+    expect(metric.data?['score'], 5);
   });
 
   test('clearMetrics removes stored metrics', () async {
-    await IAMetricsCollector.addMetric('temp', 1);
+    await IAMetricsCollector.logEducationEvent(
+      type: 'temp',
+      animalId: 'a1',
+      userId: 'u1',
+    );
     await IAMetricsCollector.clearMetrics();
     final metrics = await IAMetricsCollector.getAllMetrics();
     expect(metrics, isEmpty);
