@@ -33,7 +33,6 @@
 | test/noyau/unit/backup_service_test.dart | unit | package:anisphere/modules/noyau/services/backup_service.dart | ✅ |
 | test/noyau/unit/camera_service_test.dart | unit | package:anisphere/modules/noyau/services/camera_service.dart | ✅ |
 | test/noyau/unit/local_storage_service_test.dart | unit | package:anisphere/modules/noyau/services/local_storage_service.dart | ✅ |
-| test/noyau/unit/consent_service_test.dart | unit | package:anisphere/modules/noyau/services/consent_service.dart | ✅ |
 | test/noyau/unit/animal_service_test.dart | unit | package:anisphere/modules/noyau/services/animal_service.dart | ✅ |
 | test/noyau/unit/ia_sync_service_test.dart | unit | package:anisphere/modules/noyau/services/ia_sync_service.dart | ✅ |
 | test/noyau/unit/cloud_notification_listener_test.dart | unit | package:anisphere/modules/noyau/services/cloud_notification_listener.dart | ✅ |
@@ -76,7 +75,6 @@
 | test/noyau/widget/animal_form_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animal_form_screen.dart | ✅ |
 | test/noyau/widget/home_screen_test.dart | widget | package:anisphere/modules/noyau/screens/home_screen.dart | ✅ |
 | test/noyau/widget/splash_screen_test.dart | widget | package:anisphere/modules/noyau/screens/splash_screen.dart | ✅ |
-| test/noyau/widget/share_screen_test.dart | widget | package:anisphere/modules/noyau/screens/share_screen.dart | ✅ |
 | test/noyau/widget/qr_screen_test.dart | widget | package:anisphere/modules/noyau/screens/qr_screen.dart | ✅ |
 | test/noyau/widget/animal_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animal_screen.dart | ✅ |
 | test/noyau/widget/animals_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animals_screen.dart | ✅ |
@@ -87,7 +85,6 @@
 | test/noyau/widget/biometric_setup_screen_test.dart | widget | package:anisphere/modules/noyau/screens/biometric_setup_screen.dart | ✅ |
 | test/noyau/widget/notifications_screen_test.dart | widget | package:anisphere/modules/noyau/screens/notifications_screen.dart | ✅ |
 | test/noyau/widget/settings_screen_test.dart | widget | package:anisphere/modules/noyau/screens/settings_screen.dart | ✅ |
-| test/noyau/widget/legal_screen_test.dart | widget | package:anisphere/modules/noyau/screens/legal_screen.dart | ✅ |
 | test/noyau/unit/sync_metrics_model_test.dart | unit | package:anisphere/modules/noyau/models/sync_metrics_model.dart | ✅ |
 | test/noyau/unit/messaging_service_test.dart | unit | package:anisphere/modules/noyau/services/messaging_service.dart | ✅ |
 | test/noyau/unit/offline_message_queue_test.dart | unit | package:anisphere/modules/noyau/services/offline_message_queue.dart | ✅ |
