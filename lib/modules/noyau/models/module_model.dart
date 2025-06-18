@@ -27,6 +27,7 @@ class ModuleModel {
       description: map['description'] as String,
       icon: map['icon'] as String? ?? '',
       premium: premium,
+      // ignore: deprecated_member_use_from_same_package
       isPremium: premium,
     );
   }

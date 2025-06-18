@@ -3,7 +3,7 @@
 // des fiches d’identité animale (QR, statut, photo, badge IA).
 import 'package:hive/hive.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:anisphere/modules/noyau/logic/ia_metrics_collector.dart';
+import 'package:anisphere/services/ia/ia_metrics_collector.dart';
 import '../models/identity_model.dart';
 
 /// Service IdentityService pour AniSphère.

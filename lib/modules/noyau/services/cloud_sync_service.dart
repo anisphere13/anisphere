@@ -1,7 +1,7 @@
-/// ☁️ CloudSyncService — AniSphère
-/// Service central de synchronisation cloud (Firebase ou autre backend)
-/// Toutes les données modules & noyau passent ici pour apprentissage IA cloud
-/// Utilisé par IAMaster, les modules, les IA locales
+// ☁️ CloudSyncService — AniSphère
+// Service central de synchronisation cloud (Firebase ou autre backend)
+// Toutes les données modules & noyau passent ici pour apprentissage IA cloud
+// Utilisé par IAMaster, les modules, les IA locales
 
 import 'dart:convert';
 import 'dart:io';

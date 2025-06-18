@@ -124,3 +124,4 @@ suivi_[module].md → suivi fin par module
 - ✅ Mise à jour automatique des tâches le 2025-06-19
 
 - ✅ Mise à jour automatique des tâches le 2025-06-18
+- ✅ Mise à jour automatique des tâches le 2025-06-20

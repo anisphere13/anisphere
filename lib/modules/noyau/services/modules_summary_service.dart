@@ -1,7 +1,7 @@
-/// 🧠 modules_summary_service.dart — AniSphère
-/// Génère dynamiquement des résumés IA pour les modules actifs.
-/// Utilisé sur l’écran d’accueil IA pour afficher une vue synthétique.
-/// Dépend de IAContext, AnimalService et ModulesService.
+// 🧠 modules_summary_service.dart — AniSphère
+// Génère dynamiquement des résumés IA pour les modules actifs.
+// Utilisé sur l’écran d’accueil IA pour afficher une vue synthétique.
+// Dépend de IAContext, AnimalService et ModulesService.
 
 
 import 'package:anisphere/modules/noyau/services/modules_service.dart';

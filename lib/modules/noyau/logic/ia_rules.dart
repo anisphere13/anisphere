@@ -1,6 +1,6 @@
-/// 📐 IARules — Règles métiers IA pour AniSphère
-/// Contient les règles d’analyse comportementale, UX et alertes IA
-/// Appelé par IARuleEngine, IAMaster et les modules IA
+// 📐 IARules — Règles métiers IA pour AniSphère
+// Contient les règles d’analyse comportementale, UX et alertes IA
+// Appelé par IARuleEngine, IAMaster et les modules IA
 
 
 import '../models/animal_model.dart';

@@ -1,5 +1,5 @@
-/// 🛠 Script Dart pour corriger tous les imports du noyau après réorganisation
-/// À exécuter avec : dart scripts/fix_imports_noyau.dart
+// 🛠 Script Dart pour corriger tous les imports du noyau après réorganisation
+// À exécuter avec : dart scripts/fix_imports_noyau.dart
 
 import 'dart:io';
 

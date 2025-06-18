@@ -1,6 +1,6 @@
-/// 🧠 IALogger — Journal IA local pour AniSphère
-/// Permet de tracer les événements IA localement dans Hive
-/// Compatible avec la stratégie IA cloud et le nettoyage automatique
+// 🧠 IALogger — Journal IA local pour AniSphère
+// Permet de tracer les événements IA localement dans Hive
+// Compatible avec la stratégie IA cloud et le nettoyage automatique
 import 'package:flutter/foundation.dart';
 
 import '../services/local_storage_service.dart';

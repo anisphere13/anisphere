@@ -1,7 +1,7 @@
-/// Service de maintenance automatique pour le noyau AniSphère.
-/// Gère le nettoyage des logs, la purge Hive, la réinitialisation IA.
-/// Appelé périodiquement par le noyau ou à chaque lancement si besoin.
-/// Peut déclencher une sync IA ou une relance utilisateur.
+// Service de maintenance automatique pour le noyau AniSphère.
+// Gère le nettoyage des logs, la purge Hive, la réinitialisation IA.
+// Appelé périodiquement par le noyau ou à chaque lancement si besoin.
+// Peut déclencher une sync IA ou une relance utilisateur.
 
 
 import 'package:flutter/foundation.dart';

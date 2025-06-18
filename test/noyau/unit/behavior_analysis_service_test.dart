@@ -17,7 +17,7 @@ class FakeStepCount implements StepCount {
   FakeStepCount(this.steps, this.timeStamp);
 
   @override
-  String toString() => 'Steps taken: ' + steps.toString() + ' at ' + timeStamp.toIso8601String();
+  String toString() => 'Steps taken: $steps at ${timeStamp.toIso8601String()}';
 }
 
 
