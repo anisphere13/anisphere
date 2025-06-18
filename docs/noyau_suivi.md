@@ -299,7 +299,7 @@ Responsable : Superadmin
 
 ## 📌 Où suivre l'avancement de cette configuration ?
 
-➞ Mise à jour **manuelle** dans ce document : `firestore_structure_initiale.md`
+➞ Mise à jour **manuelle** dans ce document : [docs/firestore_setup.md](docs/firestore_setup.md)
 ➞ Synthèse globale à reporter dans : `docs/noyau_suivi.md` (section "Préparation Firestore IA") et `3__suivi_taches.md` (section noyau)
 
 ---

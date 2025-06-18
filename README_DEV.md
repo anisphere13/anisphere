@@ -22,6 +22,7 @@ pour éviter toute incompatibilité.
 - Les fonctions cloud nécessitent un compte Premium de test ; utilisez `lib/core/sharing` pour simuler la synchro.
 - Documentez les évolutions dans `docs/3__suivi_taches.md` et `docs/0__instructions.md`.
 - Téléchargez `GoogleService-Info.plist` depuis la console Firebase et placez ce fichier dans `ios/Runner/`. Un gabarit est disponible sous `ios/Runner/GoogleService-Info.plist.example`. Comme ce fichier contient des identifiants sensibles, il doit rester local et ne pas être commité.
+- Suivez [docs/firestore_setup.md](docs/firestore_setup.md) pour préparer manuellement les collections Firestore et lancer le script de vérification.
 
 🗂️ Chapitre 2 — Structure du projet Flutter
 
