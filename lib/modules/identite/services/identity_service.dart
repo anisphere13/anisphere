@@ -4,6 +4,7 @@
 library;
 import 'package:hive/hive.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:anisphere/modules/noyau/logic/ia_metrics_collector.dart';
 import '../models/identity_model.dart';
 
 /// Service IdentityService pour AniSphère.
@@ -31,6 +32,7 @@ class IdentityService {
     required String animalId,
     required String field,
     required String newValue,
+    required String userId,
   }) async {
     final identity = localBox.get(animalId);
     if (identity == null) return;
@@ -56,6 +58,12 @@ class IdentityService {
     );
 
     await saveIdentityLocally(updatedModel);
+    await IAMetricsCollector.logIdentityEvent(
+      type: 'update_field',
+      animalId: animalId,
+      userId: userId,
+      data: {'field': field, 'newValue': newValue},
+    );
   }
 
   Future<void> syncToFirestore(IdentityModel model) async {

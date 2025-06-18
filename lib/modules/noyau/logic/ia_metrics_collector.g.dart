@@ -17,21 +17,33 @@ class IAMetricAdapter extends TypeAdapter<IAMetric> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return IAMetric(
-      name: fields[0] as String,
-      value: fields[1] as dynamic,
-      timestamp: fields[2] as DateTime,
+      module: fields[0] as String,
+      type: fields[1] as String,
+      animalId: fields[2] as String,
+      userId: fields[3] as String,
+      data: (fields[4] as Map?)?.cast<String, dynamic>(),
+      metadata: (fields[5] as Map?)?.cast<String, dynamic>(),
+      timestamp: fields[6] as DateTime,
     );
   }
 
   @override
   void write(BinaryWriter writer, IAMetric obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(7)
       ..writeByte(0)
-      ..write(obj.name)
+      ..write(obj.module)
       ..writeByte(1)
-      ..write(obj.value)
+      ..write(obj.type)
       ..writeByte(2)
+      ..write(obj.animalId)
+      ..writeByte(3)
+      ..write(obj.userId)
+      ..writeByte(4)
+      ..write(obj.data)
+      ..writeByte(5)
+      ..write(obj.metadata)
+      ..writeByte(6)
       ..write(obj.timestamp);
   }
 
