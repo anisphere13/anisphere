@@ -254,6 +254,14 @@ update_test_tracker.dart → Met à jour la checklist de couverture de tests (te
 flutter_tests.yml → GitHub Actions : lance les tests à chaque push
 
 update_test_tracker.yml → GitHub Actions : met à jour la checklist à chaque push
+firestore_verification.dart → Vérifie la connexion Firestore
+seed_firestore.dart → Insère des données de démonstration (support, messages, subscriptions)
+
+### Exécution des scripts Firestore
+
+Assure-toi d'avoir configuré Firebase (`flutterfire configure`).
+Lance ensuite : `dart run scripts/seed_firestore.dart`
+
 
 🚀 Outils à ajouter (roadmap IA & Dev)
 
