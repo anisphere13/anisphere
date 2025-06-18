@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:anisphere/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import '../providers/i18n_provider.dart';
+import 'i18n_provider.dart';
 
 /// Dropdown widget allowing users to switch application language.
 class LanguageSelectorWidget extends StatelessWidget {

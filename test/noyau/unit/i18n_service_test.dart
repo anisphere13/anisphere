@@ -4,10 +4,7 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 
-import 'package:anisphere/modules/noyau/services/i18n_service.dart'
-    as hive_service;
-import 'package:anisphere/modules/noyau/i18n/i18n_service.dart'
-    as i18n_service;
+import 'package:anisphere/modules/noyau/i18n/i18n_service.dart';
 import 'package:anisphere/modules/noyau/services/local_storage_service.dart';
 import '../../test_config.dart';
 
@@ -16,18 +13,11 @@ void main() {
     await initTestEnv();
   });
 
-  test('saveLocale stores the locale and loadLocale retrieves it', () async {
-    final dir = await Directory.systemTemp.createTemp();
-    Hive.init(dir.path);
-    final box = await Hive.openBox('settings');
-    final service = hive_service.I18nService(testBox: box);
-
-    await service.saveLocale('fr');
-    expect(box.get('locale'), 'fr');
-    expect(service.loadLocale(), 'fr');
-
-    await box.deleteFromDisk();
-    await dir.delete(recursive: true);
+  test('setLocale stores the locale and getCurrentLocale retrieves it', () async {
+    await LocalStorageService.init();
+    await I18nService.setLocale(const Locale('fr'));
+    final locale = I18nService.getCurrentLocale();
+    expect(locale.languageCode, 'fr');
   });
 
   test('getCurrentLocale returns default when none saved', () async {
@@ -38,7 +28,7 @@ void main() {
     // Ensure no locale is stored
     await LocalStorageService.remove('locale');
 
-    final locale = i18n_service.I18nService.getCurrentLocale();
+    final locale = I18nService.getCurrentLocale();
     expect(locale.languageCode, 'en');
 
     await Hive.deleteBoxFromDisk('users');

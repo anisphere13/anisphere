@@ -112,4 +112,4 @@
 | test/noyau/unit/behavior_analysis_service_test.dart | unit | package:anisphere/modules/noyau/services/behavior_analysis_service.dart | ✅ |
 | test/noyau/unit/i18n_service_test.dart | unit | package:anisphere/modules/noyau/i18n/i18n_service.dart | ✅ |
 | test/noyau/widget/i18n_widget_test.dart | widget | package:anisphere/modules/noyau/i18n/i18n_service.dart | ✅ |
-| test/noyau/widget/language_selector_widget_test.dart | widget | package:anisphere/modules/noyau/providers/i18n_provider.dart | ✅ |
+| test/noyau/widget/language_selector_widget_test.dart | widget | package:anisphere/modules/noyau/i18n/i18n_provider.dart | ✅ |

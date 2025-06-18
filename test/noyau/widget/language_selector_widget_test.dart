@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 
-import 'package:anisphere/modules/noyau/providers/i18n_provider.dart';
+import 'package:anisphere/modules/noyau/i18n/i18n_provider.dart';
 import '../../test_config.dart';
 
 class _LanguageSelectorWidget extends StatelessWidget {

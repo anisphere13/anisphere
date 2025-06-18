@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart' as l10n;
+import 'package:anisphere/l10n/app_localizations.dart' as l10n;
 
 class AppLocalizations {
   static l10n.AppLocalizations of(BuildContext context) {

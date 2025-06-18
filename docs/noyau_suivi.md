@@ -326,3 +326,4 @@ Responsable : Superadmin
 - 🧩 Synchronisation automatique du noyau le 2025-06-18
 - 🆕 Multilingue : i18n_service, i18n_provider, fichiers .arb
 - 🆕 Support complet de **10 langues** grâce à `i18n_service.dart` et aux fichiers `.arb` localisés
+- 🛠️ 2025-06-30 : Correction des imports i18n (`AppLocalizations`, `I18nProvider`) et mise à jour des tests associés
