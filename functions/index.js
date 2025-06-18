@@ -42,3 +42,8 @@ exports.storeSensitiveUserData = functions.https.onCall(async (data, context) =>
 
   return { status: "success", message: "Données utilisateur stockées." };
 });
+
+// Scheduled tasks and queue processors
+exports.dailyCleanup = require('./scheduler').dailyCleanup;
+exports.dailyRelaunch = require('./scheduler').dailyRelaunch;
+exports.processSupportQueue = require('./supportQueue').processSupportQueue;

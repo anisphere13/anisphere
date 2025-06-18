@@ -249,6 +249,8 @@ Voici une liste d’outils, scripts et automatismes à mettre en place progressi
 
 generate_test_module.dart → Génère les tests automatiquement (unit/widget/integration)
 
+seed_scheduler_config.dart → Crée la configuration de planification dans Firestore
+
 update_test_tracker.dart → Met à jour la checklist de couverture de tests (test_tracker.md)
 
 flutter_tests.yml → GitHub Actions : lance les tests à chaque push
