@@ -157,19 +157,23 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     final user = context.watch<UserProvider>().user;
+    final locale =
+        context.watch<I18nProvider?>()?.locale ?? const Locale('en');
+    final mode =
+        context.watch<ThemeProvider?>()?.themeMode ?? ThemeMode.light; // TODO: ajouter test
     if (user == null) {
       return const SplashScreen();
     }
     return MaterialApp(
       navigatorKey: NavigationService.navigatorKey,
       title: AppLocalizations.of(context)?.appTitle ?? 'AniSphère',
-      locale: context.watch<I18nProvider>().locale,
+      locale: locale,
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       debugShowCheckedModeBanner: false,
       theme: appTheme,
       darkTheme: darkTheme,
-      themeMode: context.watch<ThemeProvider>().themeMode,
+      themeMode: mode,
       home: const MainScreen(),
     );
   }
