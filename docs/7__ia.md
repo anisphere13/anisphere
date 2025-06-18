@@ -168,18 +168,15 @@ IA locale de chaque module (TFLite, rules, analyzers)
 
 cloud/ (non versionné ici)  
 
-Backend API IA cloud par catégorie (API REST, batch endpoints, ML pipeline) 
+Backend API IA cloud par catégorie (API REST, batch endpoints, ML pipeline)
 
 Stockage Firestore ou BigQuery par catégorie
 
-Scripts d’apprentissage, retrain, déploiement modèles
-<<<<<<< HEAD
-train_ia_pipeline.py : entraîne les modèles localement et exporte un fichier .tflite
-upload_model_to_functions.sh : envoie le package généré vers Firebase Functions
-
-Les modèles sont donc entraînés localement, puis le package est copié dans `functions/` pour être déployé via Firebase Functions.
-=======
->>>>>>> codex/add-subsection-sur-modèles-ia-locaux
+Scripts d’apprentissage, retrain et déploiement des modèles : `train_ia_pipeline.py`
+entraîne les modèles localement et produit un fichier `.tflite`. Le script
+`upload_model_to_functions.sh` copie ensuite le package généré dans le dossier
+`functions/` pour déploiement via Firebase Functions. Les modèles sont donc
+préparés en local avant leur mise à disposition dans le cloud.
 
 ### Gestion des modèles IA locaux
 
