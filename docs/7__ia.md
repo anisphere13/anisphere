@@ -164,7 +164,7 @@ modules/[module]/logic/
 IA locale de chaque module (TFLite, rules, analyzers)
 - Ex. `BehaviorAnalysisService` pour interpréter les pas et la posture
 - Dossier `lib/modules/noyau/ia_local/` : prédicteurs génériques (`IaPredictor`),
-  chargement de modèles (`IaModelLoader`) et prédicteur éducation (`EducationIaPredictor`)
+  chargement de modèles (`IaModelLoader`, copie des fichiers) et prédicteur éducation (`EducationIaPredictor`)
 
 cloud/ (non versionné ici)  
 
@@ -173,20 +173,19 @@ Backend API IA cloud par catégorie (API REST, batch endpoints, ML pipeline)
 Stockage Firestore ou BigQuery par catégorie
 
 Scripts d’apprentissage, retrain, déploiement modèles
-<<<<<<< HEAD
 train_ia_pipeline.py : entraîne les modèles localement et exporte un fichier .tflite
 upload_model_to_functions.sh : envoie le package généré vers Firebase Functions
 
 Les modèles sont donc entraînés localement, puis le package est copié dans `functions/` pour être déployé via Firebase Functions.
-=======
->>>>>>> codex/add-subsection-sur-modèles-ia-locaux
 
 ### Gestion des modèles IA locaux
 
 Les modèles embarqués sont rangés dans `lib/modules/noyau/ia_local/`. Ce dossier
 contient une sous-arborescence par type de modèle (OCR, comportement, etc.).
 Chaque modèle est téléchargé puis stocké dans `ApplicationDocumentsDirectory` à
-travers le service `IaModelLoader`. L’utilitaire `IaModelUpdater` vérifie
+puis chargé dans l’application via le service `IaModelLoader`. Ce dernier se
+contente de copier le fichier localement, tandis que `IaInterpreterLoader`
+instancie l’interpréteur TFLite pour l’utiliser. L’utilitaire `IaModelUpdater` vérifie
 périodiquement Firebase Storage pour récupérer la dernière version disponible.
 Si la connexion échoue ou qu’aucun modèle n’est publié, l’application continue
 d’utiliser la version locale déjà enregistrée ou celle embarquée par défaut.

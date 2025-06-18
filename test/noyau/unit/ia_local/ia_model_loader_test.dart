@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:anisphere/modules/noyau/services/ia_model_loader.dart';
+import 'package:anisphere/modules/noyau/services/ia_interpreter_loader.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 
 import '../../../test_config.dart';
@@ -16,7 +16,7 @@ void main() {
   });
 
   test('load returns true with valid interpreter', () async {
-    final loader = IaModelLoader(modelPath: 'models/dummy.tflite', creator: _mockCreator);
+    final loader = IaInterpreterLoader(modelPath: 'models/dummy.tflite', creator: _mockCreator);
 
     final result = await loader.load();
 
@@ -25,7 +25,7 @@ void main() {
   });
 
   test('load returns false when model missing', () async {
-    final loader = IaModelLoader(modelPath: 'missing.tflite', creator: _throwingCreator);
+    final loader = IaInterpreterLoader(modelPath: 'missing.tflite', creator: _throwingCreator);
 
     final result = await loader.load();
 
@@ -39,7 +39,7 @@ void main() {
       final output = invocation.positionalArguments[1] as List;
       (output.first as List)[0] = 3.14;
     });
-    final loader = IaModelLoader(modelPath: 'models/dummy.tflite', creator: (_) async => mock);
+    final loader = IaInterpreterLoader(modelPath: 'models/dummy.tflite', creator: (_) async => mock);
     await loader.load();
 
     final result = await loader.predict([1.0]);

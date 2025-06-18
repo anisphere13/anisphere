@@ -1,12 +1,12 @@
 import 'package:tflite_flutter/tflite_flutter.dart';
 
-/// Utility class to load and run local TensorFlow Lite models.
-class IaModelLoader {
+/// Utility class to load and run local TensorFlow Lite interpreters.
+class IaInterpreterLoader {
   final String modelPath;
   final Future<Interpreter> Function(String path) _creator;
   Interpreter? _interpreter;
 
-  IaModelLoader({required this.modelPath, Future<Interpreter> Function(String path)? creator})
+  IaInterpreterLoader({required this.modelPath, Future<Interpreter> Function(String path)? creator})
       : _creator = creator ?? Interpreter.fromAsset;
 
   /// Loaded interpreter instance.
