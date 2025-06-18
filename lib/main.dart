@@ -155,7 +155,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: NavigationService.navigatorKey,
-      title: AppLocalizations.of(context)!.appTitle,
+      title: AppLocalizations.of(context)?.appTitle ?? 'AniSphère',
       locale: context.watch<I18nProvider>().locale,
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,

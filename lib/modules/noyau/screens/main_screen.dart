@@ -107,7 +107,7 @@ class MainScreenState extends State<MainScreen> {
         foregroundColor: const Color(0xFF183153),
         elevation: 0,
         title: Text(
-          AppLocalizations.of(context)!.mainScreenTitle,
+          AppLocalizations.of(context)?.mainScreenTitle ?? 'Home',
           style: const TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 20,

@@ -38,7 +38,7 @@ void main() {
     expect(appBar.foregroundColor, const Color(0xFF183153));
     expect(appBar.elevation, 0);
 
-    final title = tester.widget<Text>(find.text('AniSphère'));
+    final title = tester.widget<Text>(find.text('Home'));
     expect(title.style?.fontWeight, FontWeight.w600);
     expect(title.style?.fontSize, 20);
     expect(title.style?.color, const Color(0xFF183153));
