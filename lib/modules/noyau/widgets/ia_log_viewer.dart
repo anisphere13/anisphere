@@ -28,13 +28,13 @@ class _IALogViewerState extends State<IALogViewer> {
       title: Text(
         "🧠 Journaux IA",
         style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: const Color(0xFF183153),
-              fontWeight: FontWeight.bold,
-            ),
+          color: const Color(0xFF183153),
+          fontWeight: FontWeight.bold,
+        ),
       ),
       subtitle: Text(
         "${logs.length} événement(s)",
-        style: const TextStyle(color: Color(0xFF3A3A3A)),
+        style: const TextStyle(color: Colors.black),
       ),
       childrenPadding: const EdgeInsets.symmetric(horizontal: 16),
       children: [
@@ -51,7 +51,10 @@ class _IALogViewerState extends State<IALogViewer> {
               separatorBuilder: (_, __) => const Divider(height: 1),
               itemBuilder: (context, index) => ListTile(
                 dense: true,
-                leading: const Icon(Icons.chevron_right, color: Color(0xFF183153)),
+                leading: const Icon(
+                  Icons.chevron_right,
+                  color: Color(0xFF183153),
+                ),
                 title: Text(logs[index]),
               ),
             ),
