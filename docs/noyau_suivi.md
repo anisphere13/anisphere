@@ -188,12 +188,14 @@ AniSphère introduit une authentification biométrique (empreinte digitale ou re
 | device_sensors_service.dart | Accès centralisé à tous les capteurs | ⬜ à faire |
 | gps_provider.dart | Flux position + connexion | ✅ fait |
 | ia_context_enricher.dart | Contexte IA enrichi temps réel | ⬜ à faire |
-| behavior_analysis_service.dart | Analyse comportementale IA (TFLite/capteurs) | ⬜ à faire |
+| behavior_analysis_service.dart | Analyse comportementale IA (TFLite/capteurs) | ✅ fait |
 | image_analysis_service.dart | IA analyse images/photo (TFLite) | ⬜ à faire |
 | engagement_score_model.dart | Modèle scoring engagement IA | ⬜ à faire |
 | ia_adaptation_service.dart | Priorisation/ajustement IA selon contexte | ⬜ à faire |
 | behavior_dashboard_screen.dart | UI historique et recommandations | ⬜ à faire |
 | ia_recommendation/ (nouveau dossier) | Système de recommandation IA locale/cloud | ✅ fait |
+
+- [06/2025] Tests unitaires : `behavior_analysis_service_test.dart`.
 
 ### Sécurité biométrique
 | Fichier | Statut |
