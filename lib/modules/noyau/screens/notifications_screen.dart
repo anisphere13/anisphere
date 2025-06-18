@@ -4,6 +4,7 @@
 // Prévu pour une extension IA intelligente (filtrage, urgences…).
 
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});
@@ -45,7 +46,7 @@ class NotificationsScreen extends StatelessWidget {
               moduleName,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: Colors.deepPurple,
+                    color: primaryBlue,
                   ),
             ),
             children: moduleNotifications.map((notif) {
