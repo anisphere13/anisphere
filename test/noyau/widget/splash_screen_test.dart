@@ -9,7 +9,7 @@ void main() {
   setUpAll(() async {
     await initTestEnv();
   });
-  testWidgets('main screen uses yellow ripple', (tester) async {
+  testWidgets('buttons use transparent overlay without splash', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
         theme: appTheme,
@@ -20,7 +20,18 @@ void main() {
     final materialApp = tester.widget<MaterialApp>(find.byType(MaterialApp));
     final theme = materialApp.theme!;
 
-    expect(theme.highlightColor, const Color(0xFFFBC02D));
-    expect(theme.splashColor, const Color(0xFFFBC02D));
+    final overlayColor = theme.textButtonTheme.style?.overlayColor?.resolve({});
+    expect(overlayColor, Colors.transparent);
+
+    expect(theme.splashColor, isNot(const Color(0xFFFBC02D)));
+    expect(theme.highlightColor, isNot(const Color(0xFFFBC02D)));
+
+    final elevatedOverlay =
+        theme.elevatedButtonTheme.style?.overlayColor?.resolve({});
+    expect(elevatedOverlay, Colors.transparent);
+
+    final outlinedOverlay =
+        theme.outlinedButtonTheme.style?.overlayColor?.resolve({});
+    expect(outlinedOverlay, Colors.transparent);
   });
 }

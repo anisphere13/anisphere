@@ -17,9 +17,25 @@ final ThemeData appTheme = ThemeData(
     elevation: 0,
     iconTheme: IconThemeData(color: Colors.black),
   ),
-  splashColor: accentYellow,
-  highlightColor: accentYellow,
   splashFactory: NoSplash.splashFactory,
+  textButtonTheme: TextButtonThemeData(
+    style: ButtonStyle(
+      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      splashFactory: NoSplash.splashFactory,
+    ),
+  ),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    style: ButtonStyle(
+      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      splashFactory: NoSplash.splashFactory,
+    ),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ButtonStyle(
+      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      splashFactory: NoSplash.splashFactory,
+    ),
+  ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     backgroundColor: backgroundGray,
     selectedItemColor: primaryBlue,
@@ -40,8 +56,6 @@ final ThemeData appTheme = ThemeData(
 
 final ThemeData darkTheme = ThemeData.dark().copyWith(
   primaryColor: primaryBlue,
-  splashColor: accentYellow,
-  highlightColor: accentYellow,
   appBarTheme: const AppBarTheme(
     backgroundColor: backgroundGray,
     foregroundColor: Colors.black,
@@ -54,6 +68,24 @@ final ThemeData darkTheme = ThemeData.dark().copyWith(
     unselectedItemColor: Colors.grey,
     showUnselectedLabels: true,
     type: BottomNavigationBarType.fixed,
+  ),
+  textButtonTheme: TextButtonThemeData(
+    style: ButtonStyle(
+      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      splashFactory: NoSplash.splashFactory,
+    ),
+  ),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    style: ButtonStyle(
+      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      splashFactory: NoSplash.splashFactory,
+    ),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ButtonStyle(
+      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      splashFactory: NoSplash.splashFactory,
+    ),
   ),
   textTheme: const TextTheme(
     bodyLarge: TextStyle(fontSize: 16, color: Colors.black),
