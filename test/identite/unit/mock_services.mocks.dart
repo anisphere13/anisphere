@@ -4,13 +4,11 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i6;
-import 'dart:io' as _i8;
 
 import 'package:anisphere/modules/identite/models/identity_model.dart' as _i5;
 import 'package:anisphere/modules/identite/services/identity_service.dart'
     as _i4;
-import 'package:anisphere/modules/identite/services/photo_verification_service.dart'
-    as _i7;
+import 'package:anisphere/modules/identite/logic/ia_local_analyzer.dart' as _i7;
 import 'package:cloud_firestore/cloud_firestore.dart' as _i3;
 import 'package:hive/hive.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
@@ -136,21 +134,24 @@ class MockIdentityService extends _i1.Mock implements _i4.IdentityService {
       ) as _i6.Future<_i5.IdentityModel?>);
 }
 
-/// A class which mocks [PhotoVerificationService].
+/// A class which mocks [IdentityLocalAnalyzer].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockPhotoVerificationService extends _i1.Mock
-    implements _i7.PhotoVerificationService {
-  MockPhotoVerificationService() {
+class MockIdentityLocalAnalyzer extends _i1.Mock
+    implements _i7.IdentityLocalAnalyzer {
+  MockIdentityLocalAnalyzer() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i6.Future<double> scorePhoto(_i8.File? file) => (super.noSuchMethod(
+  _i6.Future<Map<String, dynamic>> analyze(
+    _i7.IdentityAnalysisInput? input,
+  ) =>
+      (super.noSuchMethod(
         Invocation.method(
-          #scorePhoto,
-          [file],
+          #analyze,
+          [input],
         ),
-        returnValue: _i6.Future<double>.value(0.0),
-      ) as _i6.Future<double>);
+        returnValue: _i6.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+      ) as _i6.Future<Map<String, dynamic>>);
 }

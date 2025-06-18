@@ -155,7 +155,11 @@ cloud_sync_service.dart : upload batch vers la bonne IA cloud de catégorie
 
 modules/[module]/logic/  
 
-IA locale de chaque module (TFLite, rules, analyzers) 
+IA locale de chaque module (TFLite, rules, analyzers)
+Chaque analyseur implémente l'interface `ModuleAnalyzer`
+(`lib/modules/noyau/logic/module_analyzer.dart`).
+Exemple : `lib/modules/identite/logic/ia_local_analyzer.dart`
+regroupe l'OCR et le scoring photo du module Identité.
 
 cloud/ (non versionné ici)  
 
