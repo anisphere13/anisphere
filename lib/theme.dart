@@ -12,9 +12,10 @@ final ThemeData appTheme = ThemeData(
   cardColor: Colors.white, // ✅ toutes les Card par défaut
   primaryColor: primaryBlue,
   appBarTheme: AppBarTheme(
-    backgroundColor: primaryBlue,
-    foregroundColor: Colors.white,
+    backgroundColor: backgroundGray,
+    foregroundColor: Colors.black,
     elevation: 0,
+    iconTheme: const IconThemeData(color: Colors.black),
   ),
   splashColor: accentYellow,
   highlightColor: accentYellow,
@@ -26,10 +27,10 @@ final ThemeData appTheme = ThemeData(
     showUnselectedLabels: true,
     type: BottomNavigationBarType.fixed,
   ),
-  iconTheme: IconThemeData(color: primaryBlue),
+  iconTheme: const IconThemeData(color: primaryBlue),
   textTheme: const TextTheme(
-    bodyLarge: TextStyle(fontSize: 16),
-    bodyMedium: TextStyle(fontSize: 14),
+    bodyLarge: TextStyle(fontSize: 16, color: Colors.black),
+    bodyMedium: TextStyle(fontSize: 14, color: Colors.black),
   ),
   colorScheme: ColorScheme.fromSwatch().copyWith(
     primary: primaryBlue,
@@ -42,9 +43,10 @@ final ThemeData darkTheme = ThemeData.dark().copyWith(
   splashColor: accentYellow,
   highlightColor: accentYellow,
   appBarTheme: const AppBarTheme(
-    backgroundColor: Color(0xFF183153),
-    foregroundColor: Colors.white,
+    backgroundColor: backgroundGray,
+    foregroundColor: Colors.black,
     elevation: 0,
+    iconTheme: IconThemeData(color: Colors.black),
   ),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: Color(0xFF1E1E1E),
@@ -52,6 +54,10 @@ final ThemeData darkTheme = ThemeData.dark().copyWith(
     unselectedItemColor: Colors.grey,
     showUnselectedLabels: true,
     type: BottomNavigationBarType.fixed,
+  ),
+  textTheme: const TextTheme(
+    bodyLarge: TextStyle(fontSize: 16, color: Colors.black),
+    bodyMedium: TextStyle(fontSize: 14, color: Colors.black),
   ),
   colorScheme: const ColorScheme.dark(
     primary: primaryBlue,
