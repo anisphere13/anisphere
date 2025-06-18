@@ -109,6 +109,8 @@
 | test/noyau/unit/ia_master_offline_queue_test.dart | unit | package:anisphere/modules/noyau/logic/ia_master.dart | ✅ |
 | test/noyau/unit/payment_service_test.dart | unit | package:anisphere/modules/noyau/services/payment_service.dart | ✅ |
 | test/noyau/unit/iap_validator_test.dart | unit | package:anisphere/modules/noyau/services/iap_validator.dart | ✅ |
+| test/noyau/unit/behavior_analysis_service_test.dart | unit | package:anisphere/modules/noyau/services/behavior_analysis_service.dart | ✅ |
+| test/noyau/unit/i18n_service_test.dart | unit | package:anisphere/modules/noyau/services/i18n_service.dart | ✅ |
+| test/noyau/widget/i18n_widget_test.dart | widget | package:anisphere/modules/noyau/services/i18n_service.dart | ✅ |
 
 - ✅ Tests validés automatiquement le 2025-06-18
-- ✅ Tests validés automatiquement le 2025-06-19
