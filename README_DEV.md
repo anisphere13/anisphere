@@ -17,6 +17,12 @@ Le développement d'AniSphère s'appuie sur **Flutter&nbsp;3.32.x** et **Dart&nb
 Les scripts de CI (GitHub Actions) utilisent cette version pour lancer
 les tests et la compilation. Veillez à utiliser la même version en local
 pour éviter toute incompatibilité.
+
+📌 Version Node.js requise
+
+Les fonctions Firebase reposent sur **Node.js 20**. Installez cette version ou
+une version compatible avant d'exécuter ou de développer les Cloud Functions en
+local.
 ℹ️ Notes d’utilisation du module Partage pour les contributeurs
 - Testez toujours le partage local hors connexion avant de valider une mise à jour.
 - Les fonctions cloud nécessitent un compte Premium de test ; utilisez `lib/core/sharing` pour simuler la synchro.
