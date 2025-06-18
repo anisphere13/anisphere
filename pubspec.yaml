@@ -96,3 +96,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/logo/anisphere_logo.png
+    - assets/models/behavior.tflite

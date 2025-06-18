@@ -21,7 +21,9 @@ a. IA locale (TFLite/OpenCV/Logique Flutter)
 
 1 IA locale par module  
 
-Fonctions : OCR, détection d’image, UX intelligente, scoring, analyse comportementale, suggestions, gestion offline, etc. 
+Fonctions : OCR, détection d’image, UX intelligente, scoring, analyse comportementale, suggestions, gestion offline, etc.
+Un service local (`BehaviorAnalysisService`) récupère les données des capteurs et
+exécute un petit modèle TFLite pour suivre l'activité et la posture.
 
 Implémentée en Dart (logic/), ou embarquée via TFLite ou plugin natif 
 
@@ -150,7 +152,8 @@ cloud_sync_service.dart : upload batch vers la bonne IA cloud de catégorie
 
 modules/[module]/logic/  
 
-IA locale de chaque module (TFLite, rules, analyzers) 
+IA locale de chaque module (TFLite, rules, analyzers)
+- Ex. `BehaviorAnalysisService` pour interpréter les pas et la posture
 
 cloud/ (non versionné ici)  
 
