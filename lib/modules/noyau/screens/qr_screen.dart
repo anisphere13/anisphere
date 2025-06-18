@@ -51,8 +51,6 @@ class _QRScreenState extends State<QRScreen> with SingleTickerProviderStateMixin
     return Scaffold(
       appBar: AppBar(
         title: const Text("QR Sync"),
-        backgroundColor: const Color(0xFF183153),
-        foregroundColor: Colors.white,
         bottom: TabBar(
           controller: _tabController,
           tabs: const [

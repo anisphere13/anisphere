@@ -11,9 +11,9 @@ final ThemeData appTheme = ThemeData(
   scaffoldBackgroundColor: backgroundGray, // ✅ fond global de tous les écrans
   cardColor: Colors.white, // ✅ toutes les Card par défaut
   primaryColor: primaryBlue,
-  appBarTheme: AppBarTheme(
-    backgroundColor: primaryBlue,
-    foregroundColor: Colors.white,
+  appBarTheme: const AppBarTheme(
+    backgroundColor: backgroundGray,
+    foregroundColor: Colors.black,
     elevation: 0,
   ),
   splashColor: accentYellow,
