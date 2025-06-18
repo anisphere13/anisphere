@@ -11,6 +11,7 @@ Centraliser les bonnes pratiques, automatisations, et outils
 Servir de passerelle entre le code, l’IA et les fichiers de suivi (test, roadmap, modules)
 
 Il est mis à jour automatiquement à chaque évolution majeure du projet.
+AniSphère est maintenant multilingue grâce au système de traduction centralisé du noyau.
 📌 Version Flutter/Dart requise
 
 Le développement d'AniSphère s'appuie sur **Flutter&nbsp;3.32.x** et **Dart&nbsp;3.4+**.

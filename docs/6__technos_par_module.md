@@ -30,6 +30,10 @@ shared_preferences : Gestion des préférences utilisateur (thème, vues, tutori
 
 firebase_crashlytics : Suivi des erreurs en production.
 
+Intl : Traductions et formats localisés.
+
+flutter_localizations : Localisations officielles Flutter.
+
 🩺 Module Santé
 
 Tesseract / TFLite : OCR carnet santé (ordonnances, vaccins).
