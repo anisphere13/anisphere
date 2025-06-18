@@ -25,6 +25,7 @@ TFLite : IA locale pour OCR et détection embarquée.
 OpenCV (via native plugin) : Analyse d’image, tri IA, reconnaissance.
 
 flutter_secure_storage : Stockage local chiffré de données sensibles.
+path : Gestion des chemins et manipulations de fichiers.
 
 shared_preferences : Gestion des préférences utilisateur (thème, vues, tutoriels) et stockage local de la langue choisie.
 
