@@ -84,14 +84,10 @@ class _IdentityScreenState extends State<IdentityScreen> {
               decoration: const InputDecoration(labelText: 'Statut'),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _save,
-              child: const Text('Sauvegarder'),
-            ),
+            ElevatedButton(onPressed: _save, child: const Text('Sauvegarder')),
           ],
         ),
       ),
     );
   }
 }
-//       title: const Text("AniSphère - Identité de l’animal"),
