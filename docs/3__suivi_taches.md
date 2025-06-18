@@ -95,6 +95,8 @@ Tracker de tests : terminé (fichier + mise à jour auto)
 
 GitHub Actions : prévu (lancement auto des tests)
 
+- [x] Création du pipeline d'entraînement IA local en Python (`train_ia_pipeline.py`)
+
 📝 UI / UX / Docs — En amélioration continue
 
 README.md : terminé (présentation publique enrichie)
@@ -130,3 +132,4 @@ suivi_[module].md → suivi fin par module
 - ✅ Mise à jour automatique des tâches le 2025-06-18
 - ✅ Mise à jour automatique des tâches le 2025-06-20
 - ✅ Mise à jour automatique des tâches le 2025-06-30 (correctifs i18n)
+- ✅ Mise à jour automatique des tâches le 2025-07-10 (pipeline IA Python)
