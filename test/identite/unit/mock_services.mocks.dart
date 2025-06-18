@@ -97,6 +97,7 @@ class MockIdentityService extends _i1.Mock implements _i4.IdentityService {
     required String? animalId,
     required String? field,
     required String? newValue,
+    required String? userId,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -106,6 +107,7 @@ class MockIdentityService extends _i1.Mock implements _i4.IdentityService {
             #animalId: animalId,
             #field: field,
             #newValue: newValue,
+            #userId: userId,
           },
         ),
         returnValue: _i6.Future<void>.value(),
