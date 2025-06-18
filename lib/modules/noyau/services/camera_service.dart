@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CameraService {
-  final ImagePicker _picker = ImagePicker();
+  final ImagePicker _picker;
+
+  CameraService({ImagePicker? picker}) : _picker = picker ?? ImagePicker();
 
   /// Vérifie et demande la permission d'accès à la caméra si nécessaire.
   Future<bool> _ensurePermission() async {
