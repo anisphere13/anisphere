@@ -321,3 +321,5 @@ Responsable : Superadmin
 - 🧩 Ajout du PaymentValidator (`payment_validator.dart`) avec tests le 2025-06-15
 - 🧩 Nouvelle interface PaymentScreen (`payment_screen.dart`) couverte par tests le 2025-06-15
 - 🧩 Mise à jour de `ia_logger.dart` pour tracer les paiements, tests à jour le 2025-06-15
+
+- 🧩 Synchronisation automatique du noyau le 2025-06-18
