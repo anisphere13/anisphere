@@ -124,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             style:
                                 Theme.of(context).textTheme.titleLarge?.copyWith(
                                       fontWeight: FontWeight.bold,
-                                      color: const Color(0xFF183153),
+                                      color: Colors.black,
                                     ),
                           ),
                         ),

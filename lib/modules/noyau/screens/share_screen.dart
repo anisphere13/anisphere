@@ -64,7 +64,7 @@ class _ShareScreenState extends State<ShareScreen> {
               padding: EdgeInsets.symmetric(vertical: 8),
               child: Text(
                 'Partage cloud réservé aux comptes premium',
-                style: TextStyle(color: Colors.red),
+                style: TextStyle(color: Colors.black),
               ),
             ),
             ElevatedButton(

@@ -95,7 +95,7 @@ class AnimalScreen extends StatelessWidget {
                 const SizedBox(height: 30),
                 const Divider(),
                 const Text("Modules IA à venir...",
-                    style: TextStyle(color: Colors.grey)),
+                    style: TextStyle(color: Colors.black)),
               ],
             ),
           ),
@@ -114,7 +114,7 @@ class AnimalScreen extends StatelessWidget {
             "$label : ",
             style: const TextStyle(
               fontWeight: FontWeight.bold,
-              color: Color(0xFF183153),
+              color: Colors.black,
             ),
           ),
           Expanded(child: Text(value)),

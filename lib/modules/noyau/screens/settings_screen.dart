@@ -105,7 +105,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [
-          const Text("Préférences générales", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF183153))),
+          const Text("Préférences générales", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
           const SizedBox(height: 8),
           SwitchListTile(
             title: const Text("Mode sombre"),
@@ -119,7 +119,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             trailing: const LanguageSelectorWidget(),
           ),
           const Divider(),
-          const Text("Intelligence Artificielle", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF183153))),
+          const Text("Intelligence Artificielle", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
           const SizedBox(height: 8),
           SwitchListTile(
             title: const Text("Suggestions IA"),
@@ -167,7 +167,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             },
           ),
           const Divider(),
-          const Text("Sauvegarde & restauration", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF183153))),
+          const Text("Sauvegarde & restauration", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
           const SizedBox(height: 8),
           ListTile(
             leading: const Icon(Icons.backup, color: Color(0xFF183153)),

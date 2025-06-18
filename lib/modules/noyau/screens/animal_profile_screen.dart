@@ -70,12 +70,12 @@ class AnimalProfileScreen extends StatelessWidget {
           const SizedBox(height: 24),
           const Text(
             "Historique (à venir)",
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
           ),
           const SizedBox(height: 4),
           const Text(
             "Cette section affichera bientôt les événements santé, entraînements, alertes IA, etc.",
-            style: TextStyle(fontSize: 12, color: Colors.grey),
+            style: TextStyle(fontSize: 12, color: Colors.black),
           ),
         ],
       ),
