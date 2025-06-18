@@ -13,6 +13,7 @@ fi
 
 # Liste des scripts à exécuter
 scripts=(
+  "scripts/seed_scheduler_config.dart"
   "scripts/update_test_tracker.dart"
   "scripts/update_suivi_taches.dart"
   "scripts/update_noyau_suivi.dart"
