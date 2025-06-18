@@ -173,15 +173,27 @@ Backend API IA cloud par catégorie (API REST, batch endpoints, ML pipeline)
 Stockage Firestore ou BigQuery par catégorie
 
 Scripts d’apprentissage, retrain, déploiement modèles
+<<<<<<< HEAD
 train_ia_pipeline.py : entraîne les modèles localement et exporte un fichier .tflite
 upload_model_to_functions.sh : envoie le package généré vers Firebase Functions
 
 Les modèles sont donc entraînés localement, puis le package est copié dans `functions/` pour être déployé via Firebase Functions.
+=======
+>>>>>>> codex/add-subsection-sur-modèles-ia-locaux
 
- 
- 
+### Gestion des modèles IA locaux
 
-6. Structure Firestore / Backend recommandée 
+Les modèles embarqués sont rangés dans `lib/modules/noyau/ia_local/`. Ce dossier
+contient une sous-arborescence par type de modèle (OCR, comportement, etc.).
+Chaque modèle est téléchargé puis stocké dans `ApplicationDocumentsDirectory` à
+travers le service `IaModelLoader`. L’utilitaire `IaModelUpdater` vérifie
+périodiquement Firebase Storage pour récupérer la dernière version disponible.
+Si la connexion échoue ou qu’aucun modèle n’est publié, l’application continue
+d’utiliser la version locale déjà enregistrée ou celle embarquée par défaut.
+Les modèles sont donc versionnés pour assurer la compatibilité lors des mises à
+jour.
+
+6. Structure Firestore / Backend recommandée
 
 /ia_categories/{categorie}/uploads 
 /ia_categories/{categorie}/models 
