@@ -5,7 +5,6 @@
 *.swp
 .DS_Store
 .atom/
-.analyze_log.txt
 .buildlog/
 .history
 .svn/
@@ -52,5 +51,7 @@ coverage/
 # Logs
 firepit-log.txt
 .analyze_log.txt
+.error_files.txt
+scripts/serviceAccountKey.json
 
 ios/Runner/GoogleService-Info.plist
