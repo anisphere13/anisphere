@@ -277,6 +277,13 @@ seed_firestore.dart → Insère des données de démonstration (support, message
 Assure-toi d'avoir configuré Firebase (`flutterfire configure`).
 Lance ensuite : `dart run scripts/seed_firestore.dart`
 
+### Scripts IA Python
+Installez les dépendances : `pip install firebase-admin pandas scikit-learn`.
+Ce fichier requiert une clef de service Firebase dans `scripts/serviceAccountKey.json`.
+Lancez ensuite :
+`python scripts/ia/run_training_pipeline.py <categorie> --service-account scripts/serviceAccountKey.json`
+
+
 
 🚀 Outils à ajouter (roadmap IA & Dev)
 
