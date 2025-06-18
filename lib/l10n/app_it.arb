@@ -3,5 +3,7 @@
   "settings_language": "Lingua",
   "confirm": "Confermare",
   "cancel": "Cancellare",
-  "change_language_success": "La lingua è cambiata con successo"
+  "change_language_success": "La lingua è cambiata con successo",
+  "appTitle": "AniSphère",
+  "mainScreenTitle": "Casa"
 }

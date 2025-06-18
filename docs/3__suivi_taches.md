@@ -34,6 +34,7 @@ Notifications globales : à venir (IA + catégories par module)
 - [x] Modèle `security_settings_model.dart`
 - [x] Écran `security_settings_screen.dart`
 - [x] Correction du chemin `l10n` (fichiers de localisation dans `lib/l10n`)
+- [x] Ajout des clés `appTitle` et `mainScreenTitle` pour la localisation
 
 🩺 Santé — Activation prévue (Roadmap Phase 4)
 

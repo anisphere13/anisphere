@@ -3,5 +3,7 @@
   "settings_language": "لغة",
   "confirm": "يتأكد",
   "cancel": "يلغي",
-  "change_language_success": "تغيرت اللغة بنجاح"
+  "change_language_success": "تغيرت اللغة بنجاح",
+  "appTitle": "AniSphère",
+  "mainScreenTitle": "بيت"
 }
