@@ -5,6 +5,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 
+import '../ia_local/ia_model_loader.dart';
 import 'device_sensors_service.dart';
 
 /// Analyse comportementale IA locale.
@@ -13,14 +14,16 @@ class BehaviorAnalysisService {
   Interpreter? _interpreter;
 
   BehaviorAnalysisService({DeviceSensorsService? sensors})
-      : sensors = sensors ?? DeviceSensorsService();
+    : sensors = sensors ?? DeviceSensorsService();
 
   /// Initialise les modèles TFLite.
   Future<void> init() async {
     try {
-      _interpreter ??= await Interpreter.fromAsset('models/behavior.tflite');
+      if (_interpreter != null) return;
+      final file = await IaModelLoader.loadModel('models/behavior.tflite');
+      _interpreter = await Interpreter.fromFile(file);
     } catch (e) {
-      _log('Erreur init TFLite : \\$e');
+      _log('Erreur init TFLite : $e');
     }
   }
 
@@ -28,13 +31,14 @@ class BehaviorAnalysisService {
   Future<double> analyzeSteps() async {
     await init();
     try {
-      final event =
-          await sensors.pedometerStream.first.timeout(const Duration(seconds: 1));
+      final event = await sensors.pedometerStream.first.timeout(
+        const Duration(seconds: 1),
+      );
       final input = [
-        [event.steps.toDouble()]
+        [event.steps.toDouble()],
       ];
       final output = [
-        [0.0]
+        [0.0],
       ];
       if (_interpreter != null) {
         _interpreter!.run(input, output);
@@ -53,4 +57,3 @@ class BehaviorAnalysisService {
     }
   }
 }
-

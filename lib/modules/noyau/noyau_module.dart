@@ -14,4 +14,9 @@ export 'screens/register_screen.dart';
 export 'screens/splash_screen.dart';
 export 'screens/user_profile_screen.dart';
 
+export 'ia_local/education_ia_predictor.dart';
+export 'ia_local/ia_predictor.dart';
+export 'ia_local/ia_result.dart';
+export 'services/ia_local_predictors.dart';
+
 // widgets et logic seront ajoutés au fur et à mesure
