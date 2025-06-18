@@ -1,6 +1,7 @@
 // Copilot Prompt : MainScreen avec navigation sécurisée et IAScheduler.
 // Comporte 4 onglets dynamiques.
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'home_screen.dart';
 import 'share_screen.dart';
@@ -105,9 +106,9 @@ class MainScreenState extends State<MainScreen> {
         backgroundColor: const Color(0xFFF5F5F5),
         foregroundColor: const Color(0xFF183153),
         elevation: 0,
-        title: const Text(
-          'AniSphère',
-          style: TextStyle(
+        title: Text(
+          AppLocalizations.of(context)!.mainScreenTitle,
+          style: const TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 20,
             color: Color(0xFF183153),
