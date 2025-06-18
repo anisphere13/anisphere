@@ -64,6 +64,9 @@ class UserModel {
   @HiveField(17)
   final DateTime? syncedAt;
 
+  @HiveField(18)
+  final String? langue;
+
   const UserModel({
     required this.id,
     required this.name,
@@ -83,6 +86,7 @@ class UserModel {
     this.lastIASync,
     this.iaTrained = false,
     this.syncedAt,
+    this.langue,
   });
 
   Map<String, dynamic> toJson() => {
@@ -104,6 +108,7 @@ class UserModel {
         'lastIASync': lastIASync?.toIso8601String(),
         'iaTrained': iaTrained,
         'syncedAt': syncedAt?.toIso8601String(),
+        'langue': langue,
       };
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -130,6 +135,7 @@ class UserModel {
       syncedAt: json['syncedAt'] != null
           ? DateTime.tryParse(json['syncedAt'])
           : null,
+      langue: json['langue'],
     );
   }
 
@@ -152,6 +158,7 @@ class UserModel {
     DateTime? lastIASync,
     bool? iaTrained,
     DateTime? syncedAt,
+    String? langue,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -172,6 +179,7 @@ class UserModel {
       lastIASync: lastIASync ?? this.lastIASync,
       iaTrained: iaTrained ?? this.iaTrained,
       syncedAt: syncedAt ?? this.syncedAt,
+      langue: langue ?? this.langue,
     );
   }
 }
