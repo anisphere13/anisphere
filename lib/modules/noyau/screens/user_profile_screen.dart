@@ -148,7 +148,7 @@ class UserProfileScreen extends StatelessWidget {
         style: const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
-          color: Color(0xFF183153),
+          color: Colors.black,
         ),
       ),
     );
@@ -164,7 +164,7 @@ class UserProfileScreen extends StatelessWidget {
             "$label : ",
             style: const TextStyle(
               fontWeight: FontWeight.bold,
-              color: Color(0xFF183153),
+              color: Colors.black,
             ),
           ),
           Expanded(

@@ -90,7 +90,7 @@ class RegisterScreenState extends State<RegisterScreen> {
             if (_errorMessage != null)
               Text(
                 _errorMessage!,
-                style: const TextStyle(color: Colors.red),
+                style: const TextStyle(color: Colors.black),
               ),
             const SizedBox(height: 20),
             _isLoading

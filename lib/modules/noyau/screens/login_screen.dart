@@ -159,7 +159,7 @@ class LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 10),
             if (_errorMessage != null)
-              Text(_errorMessage!, style: const TextStyle(color: Colors.red)),
+              Text(_errorMessage!, style: const TextStyle(color: Colors.black)),
             const SizedBox(height: 20),
             _isLoading
                 ? const CircularProgressIndicator()
