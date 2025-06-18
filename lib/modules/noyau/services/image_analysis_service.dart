@@ -14,7 +14,7 @@ class ImageAnalysisService {
     try {
       if (_interpreter != null) return;
       final file = await IaModelLoader.loadModel('models/image.tflite');
-      _interpreter = await Interpreter.fromFile(file);
+      _interpreter = Interpreter.fromFile(file);
     } catch (e) {
       _log('Erreur init modèle image : $e');
     }

@@ -2,7 +2,6 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 
 import '../models/animal_model.dart';
 import '../services/device_sensors_service.dart';
-import 'feature_builder.dart';
 import 'recommendation_result.dart';
 import 'ia_cloud_api.dart';
 import 'ia_local_engine.dart';

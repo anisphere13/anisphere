@@ -12,7 +12,7 @@ class EducationIaPredictor extends IaPredictor {
     if (_interpreter != null) return;
     try {
       final file = await IaModelLoader.loadModel('models/education.tflite');
-      _interpreter = await Interpreter.fromFile(file);
+      _interpreter = Interpreter.fromFile(file);
     } catch (_) {
       _interpreter = null;
     }

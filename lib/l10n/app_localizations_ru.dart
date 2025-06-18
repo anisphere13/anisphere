@@ -22,4 +22,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get change_language_success => 'Язык успешно изменился';
+
+  @override
+  String get appTitle => 'AniSphère';
+
+  @override
+  String get mainScreenTitle => 'Дом';
 }

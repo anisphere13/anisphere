@@ -22,4 +22,10 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get change_language_success => '语言成功改变了';
+
+  @override
+  String get appTitle => 'AniSphère';
+
+  @override
+  String get mainScreenTitle => '家';
 }

@@ -6,7 +6,6 @@ import 'package:anisphere/modules/noyau/ia_recommendation/recommendation_result.
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
 import 'package:anisphere/modules/noyau/services/device_sensors_service.dart';
 import 'package:connectivity_plus_platform_interface/connectivity_plus_platform_interface.dart';
-import 'package:mockito/mockito.dart';
 import '../../test_config.dart';
 
 class FakeLocalEngine extends IaLocalEngine {

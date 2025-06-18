@@ -22,4 +22,10 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get change_language_success => 'La langue a changé avec succès';
+
+  @override
+  String get appTitle => 'AniSphère';
+
+  @override
+  String get mainScreenTitle => 'Maison';
 }
