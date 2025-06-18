@@ -15,6 +15,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_local_notifications: ^19.2.1
   webview_flutter: ^4.13.0
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.18.1
 
   # Base / stockage local
   provider: ^6.1.2
@@ -93,6 +96,7 @@ dependency_overrides:
   googleapis_auth: 1.6.0
 
 flutter:
+  generate: true
   uses-material-design: true
   assets:
     - assets/logo/anisphere_logo.png

@@ -36,6 +36,8 @@ import 'package:anisphere/modules/noyau/services/offline_photo_queue.dart'
 import 'package:anisphere/modules/noyau/models/share_history_model.dart';
 import 'package:anisphere/modules/noyau/providers/feedback_options_provider.dart';
 import 'package:anisphere/modules/noyau/providers/payment_provider.dart';
+import 'package:anisphere/modules/noyau/providers/i18n_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -112,6 +114,7 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => I18nProvider()),
         ChangeNotifierProvider(
           create: (_) => UserProvider(userService, authService),
         ),
@@ -152,7 +155,10 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: NavigationService.navigatorKey,
-      title: 'AniSphère',
+      title: AppLocalizations.of(context)!.appTitle,
+      locale: context.watch<I18nProvider>().locale,
+      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
       debugShowCheckedModeBanner: false,
       theme: appTheme,
       darkTheme: darkTheme,
