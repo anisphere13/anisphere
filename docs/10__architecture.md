@@ -96,6 +96,8 @@ L'intelligence artificielle locale est déployée dans le noyau selon un systèm
 
 L'appel principal se fait dans **main.dart > MainScreen**, avec le Provider **IAContextProvider**.
 
+La gestion des fichiers de modèles est détaillée dans la section **Gestion des modèles IA locaux** de [7__ia.md](7__ia.md).
+
 ## 📦 Modules externes (identite/, à venir : sante/, education/...)
 
 Chaque module suit la même architecture que noyau/ :

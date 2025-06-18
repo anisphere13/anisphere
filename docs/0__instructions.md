@@ -56,6 +56,8 @@ L’IA maîtresse est dans le noyau → elle oriente les décisions clés (stock
 
 Chaque module peut avoir sa propre IA dédiée (OCR, apprentissage, prédiction...)
 
+Voir aussi la sous-section **Gestion des modèles IA locaux** dans [7__ia.md](7__ia.md) pour le chargement et la mise à jour des modèles.
+
 💾 Stockage optimisé
 
 Utilisation de Hive en local pour toutes les données sensibles ou souvent consultées
