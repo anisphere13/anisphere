@@ -103,8 +103,6 @@ class MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF5F5F5),
-        foregroundColor: const Color(0xFF183153),
         elevation: 0,
         title: Text(
           AppLocalizations.of(context)?.mainScreenTitle ?? 'Home',
