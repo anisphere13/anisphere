@@ -141,7 +141,7 @@ Le service `AnonymizationService` prépare les modèles avant leur synchronisati
 
 5. Implémentation technique 
 
-lib/logic/  
+lib/modules/noyau/logic/
 
 ia_master.dart : superviseur général 
 
@@ -149,7 +149,7 @@ ia_executor.dart : exécution locale des décisions IA
 
 ia_scheduler.dart : planification et déclenchements périodiques 
 
-metrics_collector.dart : collecte, structuration et upload des métriques IA 
+lib/services/ia/ia_metrics_collector.dart : collecte, structuration et upload des métriques IA
 
 offline_sync_queue.dart : stockage différé des logs/metrics
 offline_photo_queue.dart : file d'attente des photos hors ligne (pré-analyse IA puis upload différé)

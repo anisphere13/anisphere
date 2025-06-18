@@ -66,7 +66,7 @@ Missions / professionnels
 
 Chaque module embarque sa propre IA et son propre système de données.
 
-**Services transverses du noyau** : messagerie (`lib/modules/messagerie/services/messaging_service.dart`), partage (`lib/modules/noyau/services/local_sharing_service.dart`), commande vocale (`lib/modules/voice/speech_recognition_service.dart`), notifications (`lib/modules/noyau/services/notification_service.dart`), exports (`lib/modules/noyau/services/share_history_service.dart`).
+**Services transverses du noyau** : messagerie (`lib/modules/messagerie/services/messaging_service.dart`), partage (`lib/modules/noyau/services/local_sharing_service.dart`), commande vocale (`lib/modules/voice/speech_recognition_service.dart`), notifications (`lib/modules/noyau/services/notification_service.dart`), exports (`lib/modules/noyau/services/share_history_service.dart`), métriques IA (`lib/services/ia/ia_metrics_collector.dart`).
 
 🔒 Sécurité et confidentialité
 

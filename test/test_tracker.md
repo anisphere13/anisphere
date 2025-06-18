@@ -44,13 +44,13 @@
 | test/noyau/unit/consent_service_test.dart | unit | package:anisphere/modules/noyau/services/consent_service.dart | ✅ |
 | test/noyau/unit/biometric_service_test.dart | unit | package:anisphere/modules/noyau/services/biometric_service.dart | ✅ |
 | test/noyau/unit/ia_executor_test.dart | unit | package:anisphere/modules/noyau/logic/ia_executor.dart | ✅ |
-| test/noyau/unit/ia_metrics_collector_test.dart | unit | package:anisphere/modules/noyau/logic/ia_metrics_collector.dart | ✅ |
+| test/noyau/unit/ia_metrics_collector_test.dart | unit | package:anisphere/services/ia/ia_metrics_collector.dart | ✅ |
 | test/noyau/unit/ia_config_test.dart | unit | package:anisphere/modules/noyau/logic/ia_config.dart | ✅ |
 | test/noyau/unit/ia_flag_test.dart | unit | package:anisphere/modules/noyau/logic/ia_flag.dart | ✅ |
 | test/noyau/unit/ia_context_test.dart | unit | package:anisphere/modules/noyau/logic/ia_context.dart | ✅ |
 | test/noyau/unit/ia_scheduler_test.dart | unit | package:anisphere/modules/noyau/logic/ia_scheduler.dart | ✅ |
 | test/noyau/unit/ia_rules_test.dart | unit | package:anisphere/modules/noyau/logic/ia_rules.dart | ✅ |
-| test/noyau/unit/ia_metrics_collector.g_test.dart | unit | package:anisphere/modules/noyau/logic/ia_metrics_collector.g.dart | ✅ |
+| test/noyau/unit/ia_metrics_collector.g_test.dart | unit | package:anisphere/services/ia/ia_metrics_collector.g.dart | ✅ |
 | test/noyau/unit/ia_rule_engine_test.dart | unit | package:anisphere/modules/noyau/logic/ia_rule_engine.dart | ✅ |
 | test/noyau/unit/ia_channel_test.dart | unit | package:anisphere/modules/noyau/logic/ia_channel.dart | ✅ |
 | test/noyau/unit/ia_logger_test.dart | unit | package:anisphere/modules/noyau/logic/ia_logger.dart | ✅ |

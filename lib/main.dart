@@ -20,7 +20,7 @@ import 'package:anisphere/modules/noyau/providers/messaging_provider.dart';
 import 'package:anisphere/modules/noyau/providers/theme_provider.dart';
 import 'package:anisphere/modules/noyau/services/notification_service.dart';
 import 'package:anisphere/modules/noyau/services/offline_sync_queue.dart';
-import 'package:anisphere/modules/noyau/logic/ia_metrics_collector.dart';
+import 'package:anisphere/services/ia/ia_metrics_collector.dart';
 import 'package:anisphere/modules/noyau/services/cloud_notification_listener.dart';
 import 'package:anisphere/modules/noyau/services/navigation_service.dart';
 import 'package:anisphere/modules/noyau/logic/ia_master.dart';
