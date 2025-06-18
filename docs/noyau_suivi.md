@@ -111,7 +111,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 ### **Juin 2025 — Gestion photo & file offline**
 - [06/2025] Ajout du `camera_service.dart` pour la capture et le pré-traitement des images.
 - [06/2025] Création du modèle `photo_model.dart` (métadonnées, stockage Hive).
-- [06/2025] Mise en place de `offline_photo_queue.dart` (ex `photo_upload_queue.dart`) pour la synchronisation différée des clichés et pré-analyse IA.
+- [06/2025] Mise en place de `offline_photo_queue.dart` pour la synchronisation différée des clichés et pré-analyse IA.
 - [06/2025] Ajout de `offline_gps_queue.dart` pour enregistrer les traces GPS hors ligne et analyse IA.
 - [06/2025] Tests unitaires : `offline_photo_queue_test.dart`, `offline_gps_queue_test.dart`.
 - [06/2025] Tests unitaires : `camera_service_test.dart`, `photo_model_test.dart`.
