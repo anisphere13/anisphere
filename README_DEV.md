@@ -34,6 +34,7 @@ local.
 - Pour l'appel des fonctions cloud, consultez `docs/firebase_function_examples.md`.
 - Téléchargez `GoogleService-Info.plist` depuis la console Firebase et placez ce fichier dans `ios/Runner/`. Un gabarit est disponible sous `ios/Runner/GoogleService-Info.plist.example`. Comme ce fichier contient des identifiants sensibles, il doit rester local et ne pas être commité.
 - Suivez [docs/firestore_setup.md](docs/firestore_setup.md) pour préparer manuellement les collections Firestore et lancer le script de vérification.
+- Consultez [docs/4__gestion_des_collections.md](docs/4__gestion_des_collections.md#collection-logs_ia) pour le format détaillé des logs IA.
 
 🗂️ Chapitre 2 — Structure du projet Flutter
 
