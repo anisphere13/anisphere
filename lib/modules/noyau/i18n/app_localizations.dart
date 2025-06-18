@@ -6,6 +6,6 @@ class AppLocalizations {
     return l10n.AppLocalizations.of(context)!;
   }
 
-  static const LocalizationsDelegate<l10n.AppLocalizations> delegate =
+  static final LocalizationsDelegate<l10n.AppLocalizations> delegate =
       l10n.AppLocalizations.delegate;
 }

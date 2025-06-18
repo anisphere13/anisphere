@@ -33,6 +33,7 @@ Notifications globales : à venir (IA + catégories par module)
 - [x] Document `ia_policy.md` sur le consentement RGPD
 - [x] Modèle `security_settings_model.dart`
 - [x] Écran `security_settings_screen.dart`
+- [x] Correction du chemin `l10n` (fichiers de localisation dans `lib/l10n`)
 
 🩺 Santé — Activation prévue (Roadmap Phase 4)
 
