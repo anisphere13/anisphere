@@ -8,11 +8,24 @@ import 'package:anisphere/modules/noyau/providers/ia_context_provider.dart';
 import 'package:anisphere/modules/noyau/services/auth_service.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
 import 'package:anisphere/modules/noyau/screens/main_screen.dart';
+import 'package:anisphere/main.dart';
+import 'package:anisphere/modules/noyau/screens/splash_screen.dart';
+import 'package:anisphere/modules/noyau/i18n/i18n_provider.dart';
+import 'package:anisphere/modules/noyau/providers/theme_provider.dart';
 
 import '../../test_config.dart';
 
 class _TestUserProvider extends UserProvider {
   _TestUserProvider() : super(UserService(skipHiveInit: true), AuthService());
+}
+
+class _NullUserProvider extends UserProvider {
+  _NullUserProvider() : super(UserService(skipHiveInit: true), AuthService());
+
+  @override
+  Future<void> loadUser() async {
+    // Intentionally do nothing to keep user null
+  }
 }
 
 void main() {
@@ -48,6 +61,24 @@ void main() {
 
     final menuIcon = tester.widget<Icon>(find.widgetWithIcon(PopupMenuButton<String>, Icons.more_vert));
     expect(menuIcon.color, const Color(0xFF183153));
+  });
+
+  testWidgets('shows SplashScreen when user is null', (tester) async {
+    await tester.pumpWidget(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider<UserProvider>(create: (_) => _NullUserProvider()),
+          ChangeNotifierProvider<I18nProvider>(create: (_) => I18nProvider()),
+          ChangeNotifierProvider<ThemeProvider>(create: (_) => ThemeProvider()),
+        ],
+        child: const MyApp(),
+      ),
+    );
+
+    await tester.pumpAndSettle();
+
+    expect(find.byType(SplashScreen), findsOneWidget);
+    expect(find.byType(MainScreen), findsNothing);
   });
 }
 
