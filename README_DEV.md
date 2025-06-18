@@ -12,6 +12,9 @@ Servir de passerelle entre le code, l’IA et les fichiers de suivi (test, roadm
 
 Il est mis à jour automatiquement à chaque évolution majeure du projet.
 AniSphère est maintenant multilingue grâce au système de traduction centralisé du noyau.
+* Tous les textes doivent être appelés via `AppLocalizations.of(context)` pour permettre la traduction automatique.
+* Les fichiers `.arb` sont regroupés dans `lib/l10n/` et générés ou traduits via script.
+* Le service central `lib/modules/noyau/i18n/` gère la langue globale pour tous les modules.
 📌 Version Flutter/Dart requise
 
 Le développement d'AniSphère s'appuie sur **Flutter&nbsp;3.32.x** et **Dart&nbsp;3.4+**.
@@ -45,6 +48,7 @@ Chaque module dispose de son propre dossier dans lib/modules/[nom_du_module]
 Le noyau est toujours accessible depuis les modules, mais les modules ne doivent jamais l’altérer
 
 Tous les tests sont regroupés dans /test et suivent la même hiérarchie que lib/
+Tous les textes des modules doivent passer par `AppLocalizations.of(context)` et les services utilisent `I18nService` pour la langue active. Aucune ressource `.arb` ne doit être créée dans les modules.
 
 ### Services transverses du noyau
 - Messagerie : `lib/modules/messagerie/services/messaging_service.dart`

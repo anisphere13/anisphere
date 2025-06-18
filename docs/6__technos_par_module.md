@@ -26,13 +26,12 @@ OpenCV (via native plugin) : Analyse d’image, tri IA, reconnaissance.
 
 flutter_secure_storage : Stockage local chiffré de données sensibles.
 
-shared_preferences : Gestion des préférences utilisateur (thème, vues, tutoriels).
+shared_preferences : Gestion des préférences utilisateur (thème, vues, tutoriels) et stockage local de la langue choisie.
 
 firebase_crashlytics : Suivi des erreurs en production.
 
-Intl : Traductions et formats localisés.
-
-flutter_localizations : Localisations officielles Flutter.
+intl, flutter_localizations : Gestion du multilingue Flutter.
+Tous les modules utilisent `AppLocalizations` pour les textes, aucun système i18n n'est redéclaré.
 
 🩺 Module Santé
 

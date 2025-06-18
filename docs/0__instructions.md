@@ -40,6 +40,9 @@ Tous les textes, choix et graphismes doivent être accessibles et lisibles
 
 L’application est multilingue et toutes les traductions sont centralisées dans le noyau
 L’interface prend en charge **10 langues** grâce au fichier `i18n_service.dart` et aux ressources `.arb`
+Tous les textes doivent passer par `AppLocalizations.of(context)` pour permettre la traduction automatique selon la langue choisie.
+Les fichiers `.arb` se trouvent dans `lib/l10n/` et sont générés automatiquement ou traduits via script.
+Le système multilingue est centralisé dans `lib/modules/noyau/i18n/`.
 
 🧠 Architecture IA
 
