@@ -29,7 +29,7 @@ class GenealogyModel {
   @HiveField(7)
   final String? originCountry;
 
-  const GenealogyModel({
+  GenealogyModel({
     required this.animalId,
     this.fatherName,
     this.motherName,
