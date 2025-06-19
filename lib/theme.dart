@@ -20,19 +20,19 @@ final ThemeData appTheme = ThemeData(
   splashFactory: NoSplash.splashFactory,
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
-      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       splashFactory: NoSplash.splashFactory,
     ),
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: ButtonStyle(
-      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       splashFactory: NoSplash.splashFactory,
     ),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
-      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       splashFactory: NoSplash.splashFactory,
     ),
   ),
@@ -71,19 +71,19 @@ final ThemeData darkTheme = ThemeData.dark().copyWith(
   ),
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
-      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       splashFactory: NoSplash.splashFactory,
     ),
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: ButtonStyle(
-      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       splashFactory: NoSplash.splashFactory,
     ),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
-      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       splashFactory: NoSplash.splashFactory,
     ),
   ),
