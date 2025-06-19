@@ -1,10 +1,8 @@
 import 'package:hive/hive.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 part 'genealogy_model.g.dart';
 
-/// Hive model storing genealogy information for an animal.
-/// Includes parents IDs, breeder affix, litter number and LOF name.
+/// Simple model representing animal genealogy relations.
 @HiveType(typeId: 42)
 class GenealogyModel {
   @HiveField(0)
@@ -17,36 +15,21 @@ class GenealogyModel {
   final String? motherId;
 
   @HiveField(3)
-  final String? affixe;
+  final List<String> siblingsIds;
 
-  @HiveField(4)
-  final String? litterNumber;
-
-  @HiveField(5)
-  final String? lofName;
-
-  @HiveField(6)
-  final DateTime lastUpdate;
-
-  GenealogyModel({
+  const GenealogyModel({
     required this.animalId,
     this.fatherId,
     this.motherId,
-    this.affixe,
-    this.litterNumber,
-    this.lofName,
-    DateTime? lastUpdate,
-  }) : lastUpdate = lastUpdate ?? DateTime.now();
+    this.siblingsIds = const [],
+  });
 
   factory GenealogyModel.fromMap(Map<String, dynamic> map) {
     return GenealogyModel(
       animalId: map['animalId'] ?? '',
       fatherId: map['fatherId'],
       motherId: map['motherId'],
-      affixe: map['affixe'],
-      litterNumber: map['litterNumber'],
-      lofName: map['lofName'],
-      lastUpdate: (map['lastUpdate'] as Timestamp?)?.toDate() ?? DateTime.now(),
+      siblingsIds: List<String>.from(map['siblingsIds'] ?? []),
     );
   }
 
@@ -55,10 +38,7 @@ class GenealogyModel {
       'animalId': animalId,
       'fatherId': fatherId,
       'motherId': motherId,
-      'affixe': affixe,
-      'litterNumber': litterNumber,
-      'lofName': lofName,
-      'lastUpdate': Timestamp.fromDate(lastUpdate),
+      'siblingsIds': siblingsIds,
     };
   }
 }
