@@ -31,8 +31,8 @@ void main() {
   test('extractGenealogyData parses pdf OCR output', () async {
     final service = GenealogyPdfOcrService();
     final result = await service.extractGenealogyData(tempFile);
-    expect(result['fatherId'], 'F123');
-    expect(result['motherId'], 'M456');
+    expect(result['fatherName'], 'F123');
+    expect(result['motherName'], 'M456');
     expect(result['affixe'], 'AFF');
     expect(result['litterNumber'], 'L99');
     expect(log.any((c) => c.method == 'extractText'), isTrue);
