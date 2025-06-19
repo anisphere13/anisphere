@@ -9,6 +9,7 @@ import 'user_service.dart';
 import 'firebase_service.dart';
 
 class ProValidationService {
+  // ignore: unused_field
   final UserService _userService;
   final FirebaseService _firebaseService;
   final fns.HttpsCallable? _storeSensitiveUserData;
