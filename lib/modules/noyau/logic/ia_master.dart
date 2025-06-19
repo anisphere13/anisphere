@@ -21,6 +21,8 @@ import 'ia_message_analyzer.dart';
 import 'ia_logger.dart';
 import 'ia_flag.dart';
 import 'ia_channel.dart';
+import 'premium_trial_trigger.dart';
+import '../services/premium_trial_manager.dart';
 
 class IAMaster {
   static final IAMaster instance = IAMaster._internal();
@@ -292,5 +294,12 @@ class IAMaster {
     if (isFirstLaunch) return "onboarding_mode";
     if (!hasAnimals) return "empty_state";
     return "normal_mode";
+  }
+
+  /// Vérifie l'éligibilité à l'essai Premium et déclenche si nécessaire.
+  Future<void> checkAndTriggerPremiumTrial(
+      UserModel user, AnimalModel animal) async {
+    await PremiumTrialManager.deactivateIfExpired(user);
+    await PremiumTrialTrigger.check(user, animal);
   }
 }

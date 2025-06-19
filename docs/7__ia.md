@@ -249,3 +249,10 @@ Performance, confidentialité, évolutivité, optimisation des coûts
 Facilité d’extension pour de futurs modules ou catégories IA 
 
 Contrôle total sur le lancement, la montée en charge et la rentabilité de l’IA cloud 
+## 🧪 Déclencheur automatique IA Premium (essai gratuit)
+Une fois que l’IA locale connaît bien l’animal (critères définis), l’utilisateur gratuit peut recevoir une proposition de test gratuit du Premium :
+- 30 ou 60 jours
+- IA cloud activée automatiquement
+- Comparatif visible par l’utilisateur
+- Une seule fois, non renouvelable
+

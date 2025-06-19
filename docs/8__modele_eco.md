@@ -149,3 +149,10 @@ Et plus les revenus sont stables, plus AniSphère peut évoluer rapidement et bi
 
 AniSphère devient ainsi une plateforme intelligente d’accompagnement animal, pilotée par une IA raisonnée, rentable et bienveillante.
 
+
+### 🎁 Essai Premium intelligent
+Le passage au Premium est déclenché automatiquement par l’IA locale si :
+- L’animal est bien connu (analyse locale suffisante)
+- L’utilisateur est actif mais encore gratuit
+→ Activation d’un test IA cloud de 30 à 60 jours, avec notification personnalisée
+

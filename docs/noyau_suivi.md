@@ -327,6 +327,7 @@ Responsable : Superadmin
 - 🆕 2025-06-22 : Intégration du module vocal au noyau (speech_recognition_service, voice_command_analyzer, UI mains-libres).
 - 🆕 2025-06-27 : Création du job scheduler interne (service, modèle, provider, hooks).
 - 🆕 2025-06-30 : Ajout de l’EventBus interne (services, provider, hooks et queue offline).
+- [06/2025] Ajout système IA de déclenchement intelligent d’essai Premium. Fichiers créés : `premium_trial_manager.dart`, `premium_trial_trigger.dart`, `premium_trial_notifier.dart`. Critères IA définis dans `ia_metrics_collector.dart`. Comparatif activé.
 
 - 🧩 Synchronisation automatique du noyau le 2025-06-15
 - 🧩 Création du PaymentService (`payment_service.dart`) avec tests unitaires le 2025-06-15
