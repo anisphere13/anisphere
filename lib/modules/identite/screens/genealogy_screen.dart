@@ -6,10 +6,12 @@ class GenealogyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final t = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: Text(t.genealogy_title)),
-      body: Center(child: Text(t.genealogy_screen_text)),
+      appBar: AppBar(title: Text(l10n.genealogy_title)),
+      body: const Center(
+        child: Text('Arbre généalogique en préparation'),
+      ),
     );
   }
 }

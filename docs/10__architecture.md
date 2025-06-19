@@ -67,8 +67,7 @@ Fugue (photo d’identification, alerte automatique, page publique)
 ### lib/modules/
 
 * **noyau/** : coeur de l'application (auth, IA, services globaux, synchronisation, UI commune)
-* **identite/** : module identité animal (OCR, badge, éleveur, QR, documents)
-* **genealogie/** : module arbre généalogique et pedigree
+* **identite/** : identité animale et généalogie (OCR, pedigree, QR, documents)
 * à venir : **sante**, **education**, **dressage**, **communaute**, etc.
 
 ### lib/modules/noyau
@@ -100,7 +99,7 @@ L'appel principal se fait dans **main.dart > MainScreen**, avec le Provider **IA
 
 La gestion des fichiers de modèles est détaillée dans la section **Gestion des modèles IA locaux** de [7__ia.md](7__ia.md).
 
-## 📦 Modules externes (identite/, genealogie/, à venir : sante/, education/...)
+## 📦 Modules externes (identite/, sante/, education/...)
 
 Chaque module suit la même architecture que noyau/ :
 

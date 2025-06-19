@@ -145,14 +145,14 @@ Assurer à chaque animal une fiche unique, fiable, partageable et intelligente, 
 - Compatible Hive et conversion map via `GenealogyMapper`
 - Date : 2025-05-20
 
-### ⏳ genealogy_service.dart
-- 📁 `lib/modules/genealogie/services/genealogy_service.dart`
+### ✅ genealogy_service.dart
+- 📁 `lib/modules/identite/services/genealogy_service.dart`
 - Sauvegarde locale des noeuds et récupération rapide
 - Synchronisation différée prévue
 - Date : 2025-05-20
 
-### ⏳ genealogy_screen.dart
-- 📁 `lib/modules/genealogie/screens/genealogy_screen.dart`
+### ✅ genealogy_screen.dart
+- 📁 `lib/modules/identite/screens/genealogy_screen.dart`
 - Écran simple listant l'arbre (placeholder)
 - Accès depuis la fiche identité via un bouton
 - Date : 2025-05-20
