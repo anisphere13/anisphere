@@ -114,6 +114,7 @@
 | test/noyau/unit/ia_local/ia_model_loader_test.dart | unit | package:anisphere/modules/noyau/services/ia_interpreter_loader.dart | ✅ |
 | test/identite/unit/genealogy_model_test.dart | unit | package:anisphere/modules/identite/models/genealogy_model.dart | ✅ |
 | test/identite/unit/genealogy_ocr_service_test.dart | unit | package:anisphere/modules/identite/services/genealogy_ocr_service.dart | ✅ |
+| test/identite/unit/genealogy_pdf_ocr_service_test.dart | unit | package:anisphere/modules/identite/services/genealogy_pdf_ocr_service.dart | ✅ |
 | test/identite/unit/genealogy_mapper_test.dart | unit | package:anisphere/modules/identite/services/genealogy_mapper.dart | ✅ |
 | test/identite/widget/genealogy_screen_test.dart | widget | package:anisphere/modules/identite/screens/genealogy_screen.dart | ✅ |
 | test/identite/widget/genealogy_summary_card_test.dart | widget | package:anisphere/modules/identite/screens/genealogy_summary_card.dart | ✅ |
