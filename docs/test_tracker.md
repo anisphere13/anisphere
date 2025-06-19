@@ -114,5 +114,9 @@
 | test/noyau/unit/ia_local/ia_model_loader_test.dart | unit | package:anisphere/modules/noyau/services/ia_interpreter_loader.dart | ✅ |
 | test/noyau/unit/pro_validation_service_test.dart | unit | package:anisphere/modules/noyau/services/pro_validation_service.dart | ✅ |
 | test/noyau/widget/user_profile_summary_card_test.dart | widget | package:anisphere/modules/noyau/widgets/user_profile_summary_card.dart | ✅ |
+| test/noyau/unit/video_analysis_config_test.dart | unit | package:anisphere/modules/noyau/services/video_analysis_config.dart | ✅ |
+| test/noyau/unit/video_model_test.dart | unit | package:anisphere/modules/noyau/models/video_model.dart | ✅ |
+| test/noyau/unit/video_analysis_service_test.dart | unit | package:anisphere/modules/noyau/services/video_analysis_service.dart | ✅ |
+| test/noyau/unit/video_logs_collector_test.dart | unit | package:anisphere/modules/noyau/services/video_logs_collector.dart | ✅ |
 
 - ✅ Tests validés automatiquement le 2025-06-20
