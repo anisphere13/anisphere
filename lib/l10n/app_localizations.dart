@@ -173,6 +173,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Update'**
   String get profile_update_button;
+
+  /// No description provided for @genealogy_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Genealogy'**
+  String get genealogy_title;
+
+  /// No description provided for @father.
+  ///
+  /// In en, this message translates to:
+  /// **'Father'**
+  String get father;
+
+  /// No description provided for @mother.
+  ///
+  /// In en, this message translates to:
+  /// **'Mother'**
+  String get mother;
+
+  /// No description provided for @breeder_affixe.
+  ///
+  /// In en, this message translates to:
+  /// **'Affix'**
+  String get breeder_affixe;
+
+  /// No description provided for @litter_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Litter Number'**
+  String get litter_number;
+
+  /// No description provided for @lof_name.
+  ///
+  /// In en, this message translates to:
+  /// **'LOF Name'**
+  String get lof_name;
+
+  /// No description provided for @identity_public_profile_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Public Profile'**
+  String get identity_public_profile_title;
+
+  /// No description provided for @identity_summary_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Identity'**
+  String get identity_summary_title;
+
+  /// No description provided for @breeder_section_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Breeder'**
+  String get breeder_section_title;
+
+  /// No description provided for @microchip_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Microchip'**
+  String get microchip_number;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// No description provided for @legal_status.
+  ///
+  /// In en, this message translates to:
+  /// **'Legal status'**
+  String get legal_status;
 }
 
 class _AppLocalizationsDelegate
