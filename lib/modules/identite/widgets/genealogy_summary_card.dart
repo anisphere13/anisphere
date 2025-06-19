@@ -21,8 +21,8 @@ class GenealogySummaryCard extends StatelessWidget {
             Text(l10n.genealogy_title,
                 style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(height: 8),
-            _row(l10n.father, genealogy.fatherId ?? '-'),
-            _row(l10n.mother, genealogy.motherId ?? '-'),
+            _row(l10n.father, genealogy.fatherName ?? '-'),
+            _row(l10n.mother, genealogy.motherName ?? '-'),
             if (genealogy.affixe != null)
               _row(l10n.breeder_affixe, genealogy.affixe!),
             if (genealogy.litterNumber != null)

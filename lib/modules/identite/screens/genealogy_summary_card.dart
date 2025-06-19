@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class GenealogySummaryCard extends StatelessWidget {
   final String animalId;
-  final String? fatherId;
-  final String? motherId;
+  final String? fatherName;
+  final String? motherName;
   const GenealogySummaryCard({
     super.key,
     required this.animalId,
-    this.fatherId,
-    this.motherId,
+    this.fatherName,
+    this.motherName,
   });
 
   @override
@@ -16,7 +16,8 @@ class GenealogySummaryCard extends StatelessWidget {
     return Card(
       child: ListTile(
         title: Text('Genealogy of $animalId'),
-        subtitle: Text('Father: ${fatherId ?? '-'}, Mother: ${motherId ?? '-'}'),
+        subtitle:
+            Text('Father: ${fatherName ?? '-'}, Mother: ${motherName ?? '-'}'),
       ),
     );
   }

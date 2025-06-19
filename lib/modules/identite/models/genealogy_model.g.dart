@@ -14,25 +14,26 @@ class GenealogyModelAdapter extends TypeAdapter<GenealogyModel> {
     };
     return GenealogyModel(
       animalId: fields[0] as String,
-      fatherId: fields[1] as String?,
-      motherId: fields[2] as String?,
+      fatherName: fields[1] as String?,
+      motherName: fields[2] as String?,
       affixe: fields[3] as String?,
       litterNumber: fields[4] as String?,
       lofName: fields[5] as String?,
       lastUpdate: fields[6] as DateTime?,
+      originCountry: fields[7] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, GenealogyModel obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.animalId)
       ..writeByte(1)
-      ..write(obj.fatherId)
+      ..write(obj.fatherName)
       ..writeByte(2)
-      ..write(obj.motherId)
+      ..write(obj.motherName)
       ..writeByte(3)
       ..write(obj.affixe)
       ..writeByte(4)
@@ -40,7 +41,9 @@ class GenealogyModelAdapter extends TypeAdapter<GenealogyModel> {
       ..writeByte(5)
       ..write(obj.lofName)
       ..writeByte(6)
-      ..write(obj.lastUpdate);
+      ..write(obj.lastUpdate)
+      ..writeByte(7)
+      ..write(obj.originCountry);
   }
 
   @override

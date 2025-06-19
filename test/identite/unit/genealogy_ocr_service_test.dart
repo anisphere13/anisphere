@@ -7,12 +7,12 @@ void main() {
     await initTestEnv();
   });
 
-  test('parseText extracts father and mother ids', () {
+  test('parseText extracts father and mother names', () {
     final service = GenealogyOCRService();
-    const sample = 'Father ID: F123\nSome text\nMother ID: M456';
+    const sample = 'Father: F123\nSome text\nMother: M456';
     final result = service.parseText(sample);
-    expect(result['fatherId'], 'F123');
-    expect(result['motherId'], 'M456');
+    expect(result['fatherName'], 'F123');
+    expect(result['motherName'], 'M456');
     service.dispose();
   });
 }

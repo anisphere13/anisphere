@@ -10,8 +10,8 @@ void main() {
   test('GenealogyModel toMap/fromMap round trip', () {
     final model = GenealogyModel(
       animalId: 'ani1',
-      fatherId: 'dad1',
-      motherId: 'mom1',
+      fatherName: 'dad1',
+      motherName: 'mom1',
       affixe: 'Affix',
       litterNumber: 'L1',
       lofName: 'LOF123',
@@ -20,8 +20,8 @@ void main() {
     final map = model.toMap();
     final from = GenealogyModel.fromMap(map);
     expect(from.animalId, equals('ani1'));
-    expect(from.fatherId, equals('dad1'));
-    expect(from.motherId, equals('mom1'));
+    expect(from.fatherName, equals('dad1'));
+    expect(from.motherName, equals('mom1'));
     expect(from.affixe, equals('Affix'));
     expect(from.litterNumber, equals('L1'));
     expect(from.lofName, equals('LOF123'));

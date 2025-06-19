@@ -15,13 +15,13 @@ class GenealogyOCRService {
   /// Visible for testing
   Map<String, String> parseText(String text) {
     final Map<String, String> data = {};
-    final father = RegExp(r'Father ID[:\s]*([\w-]+)', caseSensitive: false)
-        .firstMatch(text);
-    final mother = RegExp(r'Mother ID[:\s]*([\w-]+)', caseSensitive: false)
-        .firstMatch(text);
+    final father =
+        RegExp(r'Father[:\s]*([\w\s-]+)', caseSensitive: false).firstMatch(text);
+    final mother =
+        RegExp(r'Mother[:\s]*([\w\s-]+)', caseSensitive: false).firstMatch(text);
 
-    if (father != null) data['fatherId'] = father.group(1)!;
-    if (mother != null) data['motherId'] = mother.group(1)!;
+    if (father != null) data['fatherName'] = father.group(1)!.trim();
+    if (mother != null) data['motherName'] = mother.group(1)!.trim();
     return data;
   }
 

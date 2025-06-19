@@ -9,10 +9,10 @@ class GenealogyModel {
   final String animalId;
 
   @HiveField(1)
-  final String? fatherId;
+  final String? fatherName;
 
   @HiveField(2)
-  final String? motherId;
+  final String? motherName;
 
   @HiveField(3)
   final String? affixe;
@@ -26,24 +26,29 @@ class GenealogyModel {
   @HiveField(6)
   final DateTime lastUpdate;
 
+  @HiveField(7)
+  final String? originCountry;
+
   const GenealogyModel({
     required this.animalId,
-    this.fatherId,
-    this.motherId,
+    this.fatherName,
+    this.motherName,
     this.affixe,
     this.litterNumber,
     this.lofName,
+    this.originCountry,
     DateTime? lastUpdate,
   }) : lastUpdate = lastUpdate ?? DateTime.now();
 
   factory GenealogyModel.fromMap(Map<String, dynamic> map) {
     return GenealogyModel(
       animalId: map['animalId'] ?? '',
-      fatherId: map['fatherId'],
-      motherId: map['motherId'],
+      fatherName: map['fatherName'] ?? map['fatherId'],
+      motherName: map['motherName'] ?? map['motherId'],
       affixe: map['affixe'],
       litterNumber: map['litterNumber'],
       lofName: map['lofName'],
+      originCountry: map['originCountry'],
       lastUpdate: map['lastUpdate'] is DateTime
           ? map['lastUpdate'] as DateTime
           : DateTime.tryParse(map['lastUpdate'] ?? '') ?? DateTime.now(),
@@ -53,11 +58,12 @@ class GenealogyModel {
   Map<String, dynamic> toMap() {
     return {
       'animalId': animalId,
-      'fatherId': fatherId,
-      'motherId': motherId,
+      'fatherName': fatherName,
+      'motherName': motherName,
       'affixe': affixe,
       'litterNumber': litterNumber,
       'lofName': lofName,
+      'originCountry': originCountry,
       'lastUpdate': lastUpdate.toIso8601String(),
     };
   }
