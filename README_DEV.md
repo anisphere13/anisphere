@@ -21,6 +21,9 @@ Le développement d'AniSphère s'appuie sur **Flutter&nbsp;3.32.x** et **Dart&nb
 Les scripts de CI (GitHub Actions) utilisent cette version pour lancer
 les tests et la compilation. Veillez à utiliser la même version en local
 pour éviter toute incompatibilité.
+Ces versions sont indispensables pour exécuter les tests et le script
+`generate_test_module.dart`. Une fois le code d'analyse vidéo ajouté,
+pensez à lancer `flutter test` dès que ces outils sont disponibles.
 
 📌 Version Node.js requise
 
