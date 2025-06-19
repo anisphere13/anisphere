@@ -122,6 +122,8 @@ class UserProfileModel extends UserModel {
         'proValidated': proValidated,
       };
 
+  // TODO: ajouter test
+  @override
   UserProfileModel copyWith({
     String? lastName,
     String? firstName,
