@@ -41,7 +41,8 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get genealogy_title => 'Généalogie';
-@override
+
+  @override
   String get genealogy_screen_text => 'Écran de généalogie';
 
   @override
