@@ -180,6 +180,12 @@ abstract class AppLocalizations {
   /// **'Genealogy'**
   String get genealogy_title;
 
+  /// No description provided for @genealogy_screen_text.
+  ///
+  /// In en, this message translates to:
+  /// **'Genealogy Screen'**
+  String get genealogy_screen_text;
+
   /// No description provided for @father.
   ///
   /// In en, this message translates to:
