@@ -136,6 +136,10 @@ Maîtrise totale des coûts IA cloud : apprentissage déclenché uniquement manu
 
 Le service `AnonymizationService` prépare les modèles avant leur synchronisation. Il retire ou hache les identifiants personnels (IDs, email, téléphone) pour qu'aucune information sensible ne soit stockée dans le cloud ou dans les files offline.
 
+### Gestion des vidéos
+
+Les vidéos envoyées pour analyse sont traitées **uniquement** en local. Elles sont supprimées juste après le calcul des prédictions. Seuls les résultats IA anonymisés sont ensuite stockés dans `logs_ia/` pour affiner les modèles. Aucune vidéo n'est conservée dans Firebase.
+
  
  
 

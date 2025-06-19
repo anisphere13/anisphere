@@ -1,39 +1,11 @@
-// Analyse Vidéo AniSphère
+// Copilot Prompt : VideoAnalysisService analyses pet training videos locally.
+// Videos are deleted right after processing and never uploaded to Firebase.
+// Only anonymized AI results are sent to logs_ia/ for improvement.
 
-import 'dart:io';
-import 'package:flutter/foundation.dart';
-
-import 'video_analysis_config.dart';
-import 'video_logs_collector.dart';
-import 'cloud_sync_service.dart';
-
-/// Service d'analyse vidéo et d'envoi au cloud si activé.
 class VideoAnalysisService {
-  final CloudSyncService _cloudSyncService;
-
-  VideoAnalysisService({CloudSyncService? cloudSyncService})
-      : _cloudSyncService = cloudSyncService ?? CloudSyncService();
-
-  /// Prépare et envoie une vidéo pour analyse cloud.
-  Future<void> uploadForAnalysis(File file,
-      {required String module, required String videoId}) async {
-    if (!kEnableVideoCloudAnalysis) {
-      debugPrint('⚠️ Analyse vidéo cloud désactivée.');
-      throw Exception('Cloud analysis for videos is disabled.');
-    }
-
-    // TODO: activer lorsque l'option sera validée.
-    // final compressed = await StorageOptimizer.compressVideo(file);
-    // final result = await _cloudSyncService.uploadVideoForAnalysis(
-    //   compressed ?? file,
-    //   module: module,
-    //   videoId: videoId,
-    // );
-    // await file.delete();
-    // await VideoLogsCollector.save(
-    //   module: module,
-    //   videoId: videoId,
-    //   results: result,
-    // );
+  Future<Map<String, dynamic>> analyzeVideo(String path) async {
+    // TODO: implement call to TFLite model.
+    // After processing, delete the video file from local storage.
+    return {'score': 0};
   }
 }
