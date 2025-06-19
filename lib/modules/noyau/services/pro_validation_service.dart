@@ -1,17 +1,16 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_functions_interop/firebase_functions_interop.dart' as fns;
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
 import '../models/user_profile_model.dart';
-import '../models/user_model.dart';
 import 'user_service.dart';
 import 'firebase_service.dart';
 
 class ProValidationService {
   final UserService _userService;
   final FirebaseService _firebaseService;
-  final fns.HttpsCallable? _storeSensitiveUserData;
+  final FirebaseFunctions _functions = FirebaseFunctions.instance;
+  final HttpsCallable? _storeSensitiveUserData;
 
   static const String _profileBox = 'user_profile_data';
   Box<UserProfileModel>? _box;
@@ -19,11 +18,13 @@ class ProValidationService {
   ProValidationService({
     UserService? userService,
     FirebaseService? firebaseService,
-    fns.HttpsCallable? storeSensitiveUserData,
+    HttpsCallable? storeSensitiveUserData,
     Box<UserProfileModel>? testBox,
   })  : _userService = userService ?? UserService(),
         _firebaseService = firebaseService ?? FirebaseService(),
-        _storeSensitiveUserData = storeSensitiveUserData {
+        _storeSensitiveUserData =
+            storeSensitiveUserData ??
+            _functions.httpsCallable('storeSensitiveUserData') {
     if (testBox != null) {
       _box = testBox;
     }
