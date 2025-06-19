@@ -41,6 +41,8 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get genealogy_title => 'Genealogy';
+@override
+  String get genealogy_screen_text => 'Genealogy Screen';
 
   @override
   String get father => 'Father';
