@@ -33,7 +33,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get profile_incomplete_title => 'Неполный профиль';
 
   @override
-  String get profile_incomplete_message => 'Обновите телефон, адрес или профессию.';
+  String get profile_incomplete_message =>
+      'Обновите телефон, адрес или профессию.';
 
   @override
   String get profile_update_button => 'Обновить';

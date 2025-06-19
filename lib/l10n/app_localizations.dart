@@ -156,8 +156,22 @@ abstract class AppLocalizations {
   /// **'Home'**
   String get mainScreenTitle;
 
+  /// No description provided for @profile_incomplete_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile incomplete'**
   String get profile_incomplete_title;
+
+  /// No description provided for @profile_incomplete_message.
+  ///
+  /// In en, this message translates to:
+  /// **'Please update your phone, address or profession.'**
   String get profile_incomplete_message;
+
+  /// No description provided for @profile_update_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Update'**
   String get profile_update_button;
 }
 

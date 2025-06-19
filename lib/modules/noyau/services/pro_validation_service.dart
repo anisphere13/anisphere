@@ -75,7 +75,7 @@ class ProValidationService {
     await saveProfile(validated);
     if (_storeSensitiveUserData != null) {
       try {
-        await _storeSensitiveUserData!.call(validated.toJson());
+        await _storeSensitiveUserData.call(validated.toJson());
       } catch (e) {
         debugPrint('❌ [ProValidation] cloud function error: \$e');
       }

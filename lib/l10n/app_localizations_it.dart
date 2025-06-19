@@ -33,7 +33,8 @@ class AppLocalizationsIt extends AppLocalizations {
   String get profile_incomplete_title => 'Profilo incompleto';
 
   @override
-  String get profile_incomplete_message => 'Aggiorna telefono, indirizzo o professione.';
+  String get profile_incomplete_message =>
+      'Aggiorna telefono, indirizzo o professione.';
 
   @override
   String get profile_update_button => 'Aggiorna';
