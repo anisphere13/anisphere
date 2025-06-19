@@ -40,17 +40,38 @@ class AppLocalizationsFr extends AppLocalizations {
   String get profile_update_button => 'Mettre à jour';
 
   @override
-  String get identity_updated => 'Identité mise à jour';
+  String get genealogy_title => 'Généalogie';
 
   @override
-  String get identity_screen_title => 'Identité de l\u2019animal';
+  String get father => 'Père';
 
   @override
-  String get microchip_label => 'Numéro de puce';
+  String get mother => 'Mère';
 
   @override
-  String get status_label => 'Statut';
+  String get breeder_affixe => 'Affixe';
 
   @override
-  String get save_button => 'Sauvegarder';
+  String get litter_number => 'Numéro de portée';
+
+  @override
+  String get lof_name => 'Nom LOF';
+
+  @override
+  String get identity_public_profile_title => 'Profil public';
+
+  @override
+  String get identity_summary_title => 'Identité';
+
+  @override
+  String get breeder_section_title => 'Éleveur';
+
+  @override
+  String get microchip_number => 'Numéro de puce';
+
+  @override
+  String get status => 'Statut';
+
+  @override
+  String get legal_status => 'Statut juridique';
 }

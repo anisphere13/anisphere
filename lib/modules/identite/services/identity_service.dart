@@ -5,6 +5,7 @@ import 'package:hive/hive.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:anisphere/services/ia/ia_metrics_collector.dart';
 import '../models/identity_model.dart';
+import '../models/genealogy_model.dart';
 
 /// Service IdentityService pour AniSphère.
 /// Gère l’enregistrement, la mise à jour, l’historique et la synchronisation locale/cloud
@@ -12,10 +13,12 @@ import '../models/identity_model.dart';
 
 class IdentityService {
   final Box<IdentityModel> localBox;
+  final Box<GenealogyModel>? genealogyBox;
   final FirebaseFirestore firestore;
 
   IdentityService({
     required this.localBox,
+    this.genealogyBox,
     FirebaseFirestore? firestoreInstance,
   }) : firestore = firestoreInstance ?? FirebaseFirestore.instance;
 
@@ -69,10 +72,30 @@ class IdentityService {
     await firestore.collection('identities').doc(model.animalId).set(model.toMap());
   }
 
+  Future<void> syncGenealogyToFirestore(GenealogyModel model) async {
+    await firestore.collection('genealogies').doc(model.animalId).set(model.toMap());
+  }
+
   Future<IdentityModel?> fetchFromFirestore(String animalId) async {
     final snapshot = await firestore.collection('identities').doc(animalId).get();
     if (!snapshot.exists) return null;
 
     return IdentityModel.fromMap(snapshot.data()!);
+  }
+
+  Future<GenealogyModel?> fetchGenealogyFromFirestore(String animalId) async {
+    final snapshot = await firestore.collection('genealogies').doc(animalId).get();
+    if (!snapshot.exists) return null;
+    final model = GenealogyModel.fromMap(snapshot.data()!);
+    await genealogyBox?.put(animalId, model);
+    return model;
+  }
+
+  Future<void> saveGenealogyLocally(GenealogyModel model) async {
+    await genealogyBox?.put(model.animalId, model);
+  }
+
+  GenealogyModel? getGenealogyLocally(String animalId) {
+    return genealogyBox?.get(animalId);
   }
 }
