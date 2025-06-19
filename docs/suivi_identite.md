@@ -21,6 +21,14 @@ Ce document suit le développement du module Identité animale pour AniSphère. 
 - [ ] Tests unitaires (modèle, service, IA photo)
 - [ ] Tests widget (fiche identité, édition, QR)
 - [ ] Tests d’intégration (ajout + lecture + partage QR)
+- - -
+- **Généalogie**
+- [ ] Dossier `lib/modules/genealogie/` créé
+- [ ] Modèle `genealogy_model.dart` défini
+- [ ] Service `genealogy_service.dart` initialisé
+- [ ] Écran `genealogy_screen.dart` créé
+- [ ] Export de l’arbre généalogique (PDF/PNG)
+- [ ] Partage public du pedigree (QR / lien)
 
 ### Technologies utilisées
 - Flutter, Hive, Firebase, qr_flutter
@@ -129,5 +137,23 @@ Assurer à chaque animal une fiche unique, fiable, partageable et intelligente, 
 - Utilise le vrai `AnimalModel` pour afficher les données
 - Redirige vers `IdentityScreen` via `IdentityService` Hive
 - UX fluide, couleurs branding appliquées, navigation fonctionnelle
+- Date : 2025-05-20
+
+### ⏳ genealogy_model.dart
+- 📁 `lib/modules/genealogie/models/genealogy_model.dart`
+- Modèle minimal d'arbre généalogique (`GenealogyNode`)
+- Stockage Hive préparé pour les liens parent/enfant
+- Date : 2025-05-20
+
+### ⏳ genealogy_service.dart
+- 📁 `lib/modules/genealogie/services/genealogy_service.dart`
+- Sauvegarde locale des noeuds et récupération rapide
+- Synchronisation différée prévue
+- Date : 2025-05-20
+
+### ⏳ genealogy_screen.dart
+- 📁 `lib/modules/genealogie/screens/genealogy_screen.dart`
+- Écran simple listant l'arbre (placeholder)
+- Accès depuis la fiche identité via un bouton
 - Date : 2025-05-20
 
