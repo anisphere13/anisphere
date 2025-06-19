@@ -9,7 +9,10 @@ import 'package:provider/provider.dart';
 import '../services/modules_summary_service.dart';
 import '../services/animal_service.dart';
 import '../providers/ia_context_provider.dart';
+import '../providers/user_provider.dart';
+import '../services/pro_validation_service.dart';
 import '../widgets/quick_actions_sheet.dart';
+import '../widgets/user_profile_summary_card.dart';
 import 'animal_form_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -22,6 +25,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<ModuleSummary> summaries = [];
   bool loadingSummaries = true;
+  bool proValidated = true;
 
   void _showQuickActions() {
     showModalBottomSheet(
@@ -49,6 +53,17 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _loadSummaries();
+    _loadProfile();
+  }
+
+  Future<void> _loadProfile() async {
+    final service = ProValidationService();
+    final profile = await service.getProfile();
+    if (mounted) {
+      setState(() {
+        proValidated = profile?.proValidated ?? false;
+      });
+    }
   }
 
   Future<void> _loadSummaries() async {
@@ -100,6 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
       body: SafeArea(
         child: loadingSummaries
@@ -116,6 +132,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
                 : CustomScrollView(
                     slivers: [
+                      if (user != null)
+                        SliverToBoxAdapter(
+                          child: UserProfileSummaryCard(
+                            user: user,
+                            proValidated: proValidated,
+                          ),
+                        ),
                       SliverToBoxAdapter(
                         child: Padding(
                           padding: const EdgeInsets.all(16),

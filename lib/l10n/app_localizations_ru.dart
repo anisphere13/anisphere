@@ -28,4 +28,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get mainScreenTitle => 'Дом';
+
+  @override
+  String get profile_incomplete_title => 'Неполный профиль';
+
+  @override
+  String get profile_incomplete_message => 'Обновите телефон, адрес или профессию.';
+
+  @override
+  String get profile_update_button => 'Обновить';
 }

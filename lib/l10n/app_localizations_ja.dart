@@ -28,4 +28,13 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get mainScreenTitle => '家';
+
+  @override
+  String get profile_incomplete_title => 'プロフィール未完成';
+
+  @override
+  String get profile_incomplete_message => '電話、住所、職業を更新してください。';
+
+  @override
+  String get profile_update_button => '更新';
 }

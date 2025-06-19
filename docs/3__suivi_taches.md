@@ -5,6 +5,7 @@ Ce fichier est une vue d’ensemble condensée du projet AniSphère. Il permet d
 ⚠️ Ce fichier sera mis à jour automatiquement à chaque avancement significatif via les outils internes (sync_docs.sh, update_tracker, etc.)
 
 - [ ] Créer les `*SummaryCard` pour chaque module actif (santé, dressage, éducation, communauté, etc.) à afficher dans `home_screen.dart`
+- [ ] Ajout widget profil utilisateur
 
 
 🔰 Statut actuel

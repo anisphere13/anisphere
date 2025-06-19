@@ -6,4 +6,7 @@
   "change_language_success": "Language changed successfully",
   "appTitle": "AniSphère",
   "mainScreenTitle": "Home"
+  ,"profile_incomplete_title": "Profile incomplete"
+  ,"profile_incomplete_message": "Please update your phone, address or profession."
+  ,"profile_update_button": "Update"
 }

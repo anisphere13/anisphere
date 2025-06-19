@@ -155,6 +155,10 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Home'**
   String get mainScreenTitle;
+
+  String get profile_incomplete_title;
+  String get profile_incomplete_message;
+  String get profile_update_button;
 }
 
 class _AppLocalizationsDelegate

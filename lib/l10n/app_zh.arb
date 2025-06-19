@@ -6,4 +6,7 @@
   "change_language_success": "语言成功改变了",
   "appTitle": "AniSphère",
   "mainScreenTitle": "家"
+  ,"profile_incomplete_title": "资料不完整"
+  ,"profile_incomplete_message": "请更新电话、地址或职业。"
+  ,"profile_update_button": "更新"
 }

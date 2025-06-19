@@ -112,5 +112,7 @@
 | test/noyau/widget/i18n_widget_test.dart | widget | package:anisphere/modules/noyau/i18n/i18n_service.dart | ✅ |
 | test/noyau/widget/language_selector_widget_test.dart | widget | package:anisphere/modules/noyau/i18n/i18n_provider.dart | ✅ |
 | test/noyau/unit/ia_local/ia_model_loader_test.dart | unit | package:anisphere/modules/noyau/services/ia_interpreter_loader.dart | ✅ |
+| test/noyau/unit/pro_validation_service_test.dart | unit | package:anisphere/modules/noyau/services/pro_validation_service.dart | ✅ |
+| test/noyau/widget/user_profile_summary_card_test.dart | widget | package:anisphere/modules/noyau/widgets/user_profile_summary_card.dart | ✅ |
 
 - ✅ Tests validés automatiquement le 2025-06-18

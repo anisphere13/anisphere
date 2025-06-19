@@ -6,4 +6,7 @@
   "change_language_success": "تغيرت اللغة بنجاح",
   "appTitle": "AniSphère",
   "mainScreenTitle": "بيت"
+  ,"profile_incomplete_title": "الملف الشخصي غير مكتمل"
+  ,"profile_incomplete_message": "يرجى تحديث الهاتف أو العنوان أو المهنة."
+  ,"profile_update_button": "تحديث"
 }

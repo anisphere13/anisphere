@@ -28,4 +28,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get mainScreenTitle => 'بيت';
+
+  @override
+  String get profile_incomplete_title => 'الملف الشخصي غير مكتمل';
+
+  @override
+  String get profile_incomplete_message => 'يرجى تحديث الهاتف أو العنوان أو المهنة.';
+
+  @override
+  String get profile_update_button => 'تحديث';
 }

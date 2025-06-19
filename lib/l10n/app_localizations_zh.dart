@@ -28,4 +28,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get mainScreenTitle => '家';
+
+  @override
+  String get profile_incomplete_title => '资料不完整';
+
+  @override
+  String get profile_incomplete_message => '请更新电话、地址或职业。';
+
+  @override
+  String get profile_update_button => '更新';
 }

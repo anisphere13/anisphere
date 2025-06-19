@@ -28,4 +28,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get mainScreenTitle => 'Heim';
+
+  @override
+  String get profile_incomplete_title => 'Unvollständiges Profil';
+
+  @override
+  String get profile_incomplete_message => 'Bitte aktualisieren Sie Telefon, Adresse oder Beruf.';
+
+  @override
+  String get profile_update_button => 'Aktualisieren';
 }
