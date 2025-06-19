@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 
-import '../models/genealogy_model.dart';
+import '../models/genealogy_node.dart';
 
 class GenealogyService {
   final Box<GenealogyNode> nodeBox;
