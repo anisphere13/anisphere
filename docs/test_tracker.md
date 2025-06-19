@@ -112,12 +112,9 @@
 | test/noyau/widget/i18n_widget_test.dart | widget | package:anisphere/modules/noyau/i18n/i18n_service.dart | ✅ |
 | test/noyau/widget/language_selector_widget_test.dart | widget | package:anisphere/modules/noyau/i18n/i18n_provider.dart | ✅ |
 | test/noyau/unit/ia_local/ia_model_loader_test.dart | unit | package:anisphere/modules/noyau/services/ia_interpreter_loader.dart | ✅ |
-| test/noyau/unit/pro_validation_service_test.dart | unit | package:anisphere/modules/noyau/services/pro_validation_service.dart | ✅ |
-| test/noyau/widget/user_profile_summary_card_test.dart | widget | package:anisphere/modules/noyau/widgets/user_profile_summary_card.dart | ✅ |
-| test/noyau/unit/video_analysis_config_test.dart | unit | package:anisphere/modules/noyau/services/video_analysis_config.dart | ✅ |
-| test/noyau/unit/video_model_test.dart | unit | package:anisphere/modules/noyau/models/video_model.dart | ✅ |
-| test/noyau/unit/video_analysis_service_test.dart | unit | package:anisphere/modules/noyau/services/video_analysis_service.dart | ✅ |
-| test/noyau/unit/video_logs_collector_test.dart | unit | package:anisphere/modules/noyau/services/video_logs_collector.dart | ✅ |
-| test/noyau/unit/video_analysis_service_test.dart | unit | package:anisphere/modules/noyau/services/video_analysis_service.dart | ✅ |
-| test/noyau/unit/video_upload_queue_test.dart | unit | package:anisphere/modules/noyau/services/video_upload_queue.dart | ✅ |
-- ✅ Tests validés automatiquement le 2025-06-20
+| test/identite/unit/genealogy_model_test.dart | unit | package:anisphere/modules/identite/models/genealogy_model.dart | ✅ |
+| test/identite/unit/genealogy_ocr_service_test.dart | unit | package:anisphere/modules/identite/services/genealogy_ocr_service.dart | ✅ |
+| test/identite/unit/genealogy_mapper_test.dart | unit | package:anisphere/modules/identite/services/genealogy_mapper.dart | ✅ |
+| test/identite/widget/genealogy_screen_test.dart | widget | package:anisphere/modules/identite/screens/genealogy_screen.dart | ✅ |
+| test/identite/widget/genealogy_summary_card_test.dart | widget | package:anisphere/modules/identite/screens/genealogy_summary_card.dart | ✅ |
+- ✅ Tests validés automatiquement le 2025-06-19
