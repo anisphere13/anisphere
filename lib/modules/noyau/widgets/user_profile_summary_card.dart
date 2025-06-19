@@ -3,6 +3,7 @@ import '../providers/user_provider.dart';
 import '../screens/settings_screen.dart';
 import '../i18n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import '../models/user_model.dart';
 
 /// Carte compacte rappelant de compléter son profil utilisateur.
 class UserProfileSummaryCard extends StatelessWidget {
