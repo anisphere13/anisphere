@@ -97,6 +97,9 @@ Retour haptique léger + animation fluide pour toute action significative.
 
 Accès rapide à tout moment à la fiche de l’animal sélectionné.
 
+Depuis cette fiche, un bouton **Généalogie** ouvre l’arbre familial complet.
+Un lien **Profil public** permet de partager la lignée en lecture seule.
+
 Glisser-déposer intelligent dans les listes (objectifs, rappels, tâches).
 
 Barre de recherche universelle (animaux, modules, historique, contenus).

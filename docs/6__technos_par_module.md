@@ -92,6 +92,16 @@ flutter_map_marker_cluster : Regroupement d’utilisateurs sur carte
 
 firebase_messaging + local_notifications : Notification combinée locale et cloud
 
+🌳 Module Généalogie
+
+graphview : Affichage interactif de l’arbre familial
+
+csv / gedcom : Import et export de pedigrees
+
+Hive : Stockage local des ascendances
+
+share_plus : Partage des profils publics
+
 🌐 Site compagnon (module intégré)
 
 Flutter Web : Interface web miroir
