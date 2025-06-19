@@ -10,7 +10,6 @@ class ProValidationService {
   // ignore: unused_field
   final UserService _userService;
   final FirebaseService _firebaseService;
-  final FirebaseFunctions _functions = FirebaseFunctions.instance;
   final HttpsCallable? _storeSensitiveUserData;
 
   static const String _profileBox = 'user_profile_data';
@@ -25,7 +24,8 @@ class ProValidationService {
         _firebaseService = firebaseService ?? FirebaseService(),
         _storeSensitiveUserData =
             storeSensitiveUserData ??
-            _functions.httpsCallable('storeSensitiveUserData') {
+                FirebaseFunctions.instance
+                    .httpsCallable('storeSensitiveUserData') {
     if (testBox != null) {
       _box = testBox;
     }

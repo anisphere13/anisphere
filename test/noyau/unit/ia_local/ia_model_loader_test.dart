@@ -35,10 +35,11 @@ void main() {
 
   test('predict uses interpreter', () async {
     final mock = MockInterpreter();
-    when(() => mock.run(any(), any())).thenAnswer(
+    when(() => mock.run(any<dynamic>(), any<dynamic>())).thenAnswer(
       (invocation) {
         final output = invocation.positionalArguments[1] as List;
         (output.first as List)[0] = 3.14;
+        return null;
       },
     );
     final loader = IaInterpreterLoader(
@@ -50,6 +51,6 @@ void main() {
     final result = await loader.predict([1.0]);
 
     expect(result, [3.14]);
-    verify(() => mock.run(any(), any())).called(1);
+    verify(() => mock.run(any<dynamic>(), any<dynamic>())).called(1);
   });
 }

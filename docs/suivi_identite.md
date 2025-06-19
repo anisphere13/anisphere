@@ -23,8 +23,8 @@ Ce document suit le développement du module Identité animale pour AniSphère. 
 - [ ] Tests d’intégration (ajout + lecture + partage QR)
 - - -
 - **Généalogie**
-- [ ] Dossier `lib/modules/genealogie/` créé
-- [ ] Modèle `genealogy_model.dart` défini
+- [x] Dossier `lib/modules/identite/` créé
+- [x] Modèle `genealogy_model.dart` défini
 - [ ] Service `genealogy_service.dart` initialisé
 - [ ] Écran `genealogy_screen.dart` créé
 - [ ] Export de l’arbre généalogique (PDF/PNG)
@@ -139,10 +139,10 @@ Assurer à chaque animal une fiche unique, fiable, partageable et intelligente, 
 - UX fluide, couleurs branding appliquées, navigation fonctionnelle
 - Date : 2025-05-20
 
-### ⏳ genealogy_model.dart
-- 📁 `lib/modules/genealogie/models/genealogy_model.dart`
-- Modèle minimal d'arbre généalogique (`GenealogyNode`)
-- Stockage Hive préparé pour les liens parent/enfant
+### ✅ genealogy_model.dart
+- 📁 `lib/modules/identite/models/genealogy_model.dart`
+- Modèle complet de généalogie (affixe, numéro de portée, LOF, mise à jour)
+- Compatible Hive et conversion map via `GenealogyMapper`
 - Date : 2025-05-20
 
 ### ⏳ genealogy_service.dart

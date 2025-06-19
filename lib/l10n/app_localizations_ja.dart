@@ -73,4 +73,19 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get legal_status => 'Legal status';
+
+  @override
+  String get identity_updated => 'Identity updated';
+
+  @override
+  String get identity_screen_title => 'Identity';
+
+  @override
+  String get microchip_label => 'Microchip number';
+
+  @override
+  String get status_label => 'Status';
+
+  @override
+  String get save_button => 'Save';
 }

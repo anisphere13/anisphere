@@ -15,21 +15,38 @@ class GenealogyModel {
   final String? motherId;
 
   @HiveField(3)
-  final List<String> siblingsIds;
+  final String? affixe;
+
+  @HiveField(4)
+  final String? litterNumber;
+
+  @HiveField(5)
+  final String? lofName;
+
+  @HiveField(6)
+  final DateTime lastUpdate;
 
   const GenealogyModel({
     required this.animalId,
     this.fatherId,
     this.motherId,
-    this.siblingsIds = const [],
-  });
+    this.affixe,
+    this.litterNumber,
+    this.lofName,
+    DateTime? lastUpdate,
+  }) : lastUpdate = lastUpdate ?? DateTime.now();
 
   factory GenealogyModel.fromMap(Map<String, dynamic> map) {
     return GenealogyModel(
       animalId: map['animalId'] ?? '',
       fatherId: map['fatherId'],
       motherId: map['motherId'],
-      siblingsIds: List<String>.from(map['siblingsIds'] ?? []),
+      affixe: map['affixe'],
+      litterNumber: map['litterNumber'],
+      lofName: map['lofName'],
+      lastUpdate: map['lastUpdate'] is DateTime
+          ? map['lastUpdate'] as DateTime
+          : DateTime.tryParse(map['lastUpdate'] ?? '') ?? DateTime.now(),
     );
   }
 
@@ -38,7 +55,10 @@ class GenealogyModel {
       'animalId': animalId,
       'fatherId': fatherId,
       'motherId': motherId,
-      'siblingsIds': siblingsIds,
+      'affixe': affixe,
+      'litterNumber': litterNumber,
+      'lofName': lofName,
+      'lastUpdate': lastUpdate.toIso8601String(),
     };
   }
 }

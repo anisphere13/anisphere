@@ -21,4 +21,9 @@
   ,"microchip_number": "Numéro de puce"
   ,"status": "Statut"
   ,"legal_status": "Statut juridique"
+  ,"identity_updated": "Identité mise à jour"
+  ,"identity_screen_title": "Identité"
+  ,"microchip_label": "Numéro de puce"
+  ,"status_label": "Statut"
+  ,"save_button": "Enregistrer"
 }

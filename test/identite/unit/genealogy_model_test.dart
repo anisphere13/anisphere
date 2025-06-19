@@ -12,13 +12,18 @@ void main() {
       animalId: 'ani1',
       fatherId: 'dad1',
       motherId: 'mom1',
-      siblingsIds: ['sib1', 'sib2'],
+      affixe: 'Affix',
+      litterNumber: 'L1',
+      lofName: 'LOF123',
+      lastUpdate: DateTime(2024, 1, 1),
     );
     final map = model.toMap();
     final from = GenealogyModel.fromMap(map);
     expect(from.animalId, equals('ani1'));
     expect(from.fatherId, equals('dad1'));
     expect(from.motherId, equals('mom1'));
-    expect(from.siblingsIds, equals(['sib1', 'sib2']));
+    expect(from.affixe, equals('Affix'));
+    expect(from.litterNumber, equals('L1'));
+    expect(from.lofName, equals('LOF123'));
   });
 }

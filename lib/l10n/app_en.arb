@@ -21,4 +21,9 @@
   ,"microchip_number": "Microchip"
   ,"status": "Status"
   ,"legal_status": "Legal status"
+  ,"identity_updated": "Identity updated"
+  ,"identity_screen_title": "Identity"
+  ,"microchip_label": "Microchip number"
+  ,"status_label": "Status"
+  ,"save_button": "Save"
 }

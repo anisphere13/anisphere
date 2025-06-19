@@ -245,6 +245,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Legal status'**
   String get legal_status;
+
+  /// No description provided for @identity_updated.
+  ///
+  /// In en, this message translates to:
+  /// **'Identity updated'**
+  String get identity_updated;
+
+  /// No description provided for @identity_screen_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Identity'**
+  String get identity_screen_title;
+
+  /// No description provided for @microchip_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Microchip number'**
+  String get microchip_label;
+
+  /// No description provided for @status_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get status_label;
+
+  /// No description provided for @save_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save_button;
 }
 
 class _AppLocalizationsDelegate
