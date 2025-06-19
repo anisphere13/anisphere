@@ -38,4 +38,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile_update_button => 'Update';
+
+  @override
+  String get identity_updated => 'Identity updated';
+
+  @override
+  String get identity_screen_title => 'Animal identity';
+
+  @override
+  String get microchip_label => 'Microchip number';
+
+  @override
+  String get status_label => 'Status';
+
+  @override
+  String get save_button => 'Save';
 }

@@ -9,4 +9,9 @@
   ,"profile_incomplete_title": "资料不完整"
   ,"profile_incomplete_message": "请更新电话、地址或职业。"
   ,"profile_update_button": "更新"
+  ,"identity_updated": "身份已更新"
+  ,"identity_screen_title": "动物身份"
+  ,"microchip_label": "芯片号"
+  ,"status_label": "状态"
+  ,"save_button": "保存"
 }

@@ -38,4 +38,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get profile_update_button => 'تحديث';
+
+  @override
+  String get identity_updated => 'تم تحديث الهوية';
+
+  @override
+  String get identity_screen_title => 'هوية الحيوان';
+
+  @override
+  String get microchip_label => 'رقم الشريحة';
+
+  @override
+  String get status_label => 'الحالة';
+
+  @override
+  String get save_button => 'حفظ';
 }

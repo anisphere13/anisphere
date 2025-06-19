@@ -38,4 +38,19 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get profile_update_button => 'Обновить';
+
+  @override
+  String get identity_updated => 'Идентификация обновлена';
+
+  @override
+  String get identity_screen_title => 'Идентичность животного';
+
+  @override
+  String get microchip_label => 'Номер микрочипа';
+
+  @override
+  String get status_label => 'Статус';
+
+  @override
+  String get save_button => 'Сохранить';
 }

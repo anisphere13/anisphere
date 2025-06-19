@@ -9,4 +9,9 @@
   ,"profile_incomplete_title": "Profile incomplete"
   ,"profile_incomplete_message": "Please update your phone, address or profession."
   ,"profile_update_button": "Update"
+  ,"identity_updated": "Identity updated"
+  ,"identity_screen_title": "Animal identity"
+  ,"microchip_label": "Microchip number"
+  ,"status_label": "Status"
+  ,"save_button": "Save"
 }

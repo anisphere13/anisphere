@@ -9,4 +9,9 @@
   ,"profile_incomplete_title": "الملف الشخصي غير مكتمل"
   ,"profile_incomplete_message": "يرجى تحديث الهاتف أو العنوان أو المهنة."
   ,"profile_update_button": "تحديث"
+  ,"identity_updated": "تم تحديث الهوية"
+  ,"identity_screen_title": "هوية الحيوان"
+  ,"microchip_label": "رقم الشريحة"
+  ,"status_label": "الحالة"
+  ,"save_button": "حفظ"
 }

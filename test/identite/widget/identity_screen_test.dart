@@ -5,6 +5,7 @@ import 'package:anisphere/modules/identite/screens/identity_screen.dart';
 import 'package:anisphere/modules/identite/services/identity_service.dart';
 import 'package:anisphere/modules/identite/models/identity_model.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
+import 'package:anisphere/l10n/app_localizations.dart';
 
 import 'package:hive/hive.dart';
 import 'package:mockito/mockito.dart';
@@ -28,6 +29,9 @@ void main() {
       updatedAt: DateTime.now(),
     );
     await tester.pumpWidget(MaterialApp(
+      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      locale: const Locale('fr'),
       home: IdentityScreen(animal: animal, service: service),
     ));
 

@@ -37,4 +37,19 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get profile_update_button => '更新';
+
+  @override
+  String get identity_updated => 'IDが更新されました';
+
+  @override
+  String get identity_screen_title => '動物のID';
+
+  @override
+  String get microchip_label => 'マイクロチップ番号';
+
+  @override
+  String get status_label => 'ステータス';
+
+  @override
+  String get save_button => '保存';
 }

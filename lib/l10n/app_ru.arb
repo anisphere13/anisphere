@@ -9,4 +9,9 @@
   ,"profile_incomplete_title": "Неполный профиль"
   ,"profile_incomplete_message": "Обновите телефон, адрес или профессию."
   ,"profile_update_button": "Обновить"
+  ,"identity_updated": "Идентификация обновлена"
+  ,"identity_screen_title": "Идентичность животного"
+  ,"microchip_label": "Номер микрочипа"
+  ,"status_label": "Статус"
+  ,"save_button": "Сохранить"
 }

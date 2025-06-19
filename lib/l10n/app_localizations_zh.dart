@@ -37,4 +37,19 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get profile_update_button => '更新';
+
+  @override
+  String get identity_updated => '身份已更新';
+
+  @override
+  String get identity_screen_title => '动物身份';
+
+  @override
+  String get microchip_label => '芯片号';
+
+  @override
+  String get status_label => '状态';
+
+  @override
+  String get save_button => '保存';
 }

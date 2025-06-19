@@ -9,4 +9,9 @@
   ,"profile_incomplete_title": "プロフィール未完成"
   ,"profile_incomplete_message": "電話、住所、職業を更新してください。"
   ,"profile_update_button": "更新"
+  ,"identity_updated": "IDが更新されました"
+  ,"identity_screen_title": "動物のID"
+  ,"microchip_label": "マイクロチップ番号"
+  ,"status_label": "ステータス"
+  ,"save_button": "保存"
 }

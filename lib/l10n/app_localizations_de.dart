@@ -38,4 +38,19 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get profile_update_button => 'Aktualisieren';
+
+  @override
+  String get identity_updated => 'Identität aktualisiert';
+
+  @override
+  String get identity_screen_title => 'Tieridentität';
+
+  @override
+  String get microchip_label => 'Mikrochip-Nummer';
+
+  @override
+  String get status_label => 'Status';
+
+  @override
+  String get save_button => 'Speichern';
 }

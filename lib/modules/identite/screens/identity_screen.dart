@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
+import 'package:anisphere/l10n/app_localizations.dart';
 import '../services/identity_service.dart';
 import '../models/identity_model.dart';
 
@@ -59,7 +60,7 @@ class _IdentityScreenState extends State<IdentityScreen> {
     if (!mounted) return;
 
     messenger.showSnackBar(
-      const SnackBar(content: Text("Identité mise à jour")),
+      SnackBar(content: Text(AppLocalizations.of(context)!.identity_updated)),
     );
 
     setState(() => identity = updated);
@@ -69,22 +70,24 @@ class _IdentityScreenState extends State<IdentityScreen> {
   Widget build(BuildContext context) {
     if (loading) return const Center(child: CircularProgressIndicator());
 
+    final t = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: const Text("Identité de l’animal")),
+      appBar: AppBar(title: Text(t.identity_screen_title)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextField(
               controller: microchipController,
-              decoration: const InputDecoration(labelText: 'Numéro de puce'),
+              decoration: InputDecoration(labelText: t.microchip_label),
             ),
             TextField(
               controller: statusController,
-              decoration: const InputDecoration(labelText: 'Statut'),
+              decoration: InputDecoration(labelText: t.status_label),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(onPressed: _save, child: const Text('Sauvegarder')),
+            ElevatedButton(onPressed: _save, child: Text(t.save_button)),
           ],
         ),
       ),
