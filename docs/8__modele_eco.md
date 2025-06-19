@@ -62,7 +62,9 @@ Reconnaissance comportementale par IA cloud
 Sauvegarde étendue (médias, historique longue durée)
 
 Tous ces services sont débloqués via achat unique ou abonnement simple.
+🔬 Analyse Vidéo IA (à venir)
 
+Une option premium permettra d'envoyer les vidéos de dressage ou d'exercices dans le cloud pour une analyse avancée. L'infrastructure (`video_analysis_service.dart`, `video_upload_queue.dart`, `cloud_video_analyzer.dart`) est en place mais restera désactivée tant que le modèle économique n'est pas validé.
 📦 Abonnements disponibles
 
 Gratuit : accès complet aux fonctions locales, modules de base, IA embarquée

@@ -118,5 +118,6 @@
 | test/noyau/unit/video_model_test.dart | unit | package:anisphere/modules/noyau/models/video_model.dart | ✅ |
 | test/noyau/unit/video_analysis_service_test.dart | unit | package:anisphere/modules/noyau/services/video_analysis_service.dart | ✅ |
 | test/noyau/unit/video_logs_collector_test.dart | unit | package:anisphere/modules/noyau/services/video_logs_collector.dart | ✅ |
-
+| test/noyau/unit/video_analysis_service_test.dart | unit | package:anisphere/modules/noyau/services/video_analysis_service.dart | ✅ |
+| test/noyau/unit/video_upload_queue_test.dart | unit | package:anisphere/modules/noyau/services/video_upload_queue.dart | ✅ |
 - ✅ Tests validés automatiquement le 2025-06-20

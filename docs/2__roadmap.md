@@ -133,6 +133,7 @@ Page publique animal perdu (reliée à QR code)
 Statistiques anonymisées & communauté
 
 Synchronisation dynamique avec l’app
+- Activation possible de l’analyse vidéo IA dans le cloud une fois le modèle économique validé
 
 Statut :
 

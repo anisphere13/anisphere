@@ -55,10 +55,12 @@ Réception des données anonymisées de tous les modules de la catégorie
 
 Descente des recommandations, plans, modèles IA à tous les utilisateurs de la catégorie (premium ou sur demande) 
 
-Techno : Python (FastAPI, Flask), Node.js, Firebase Functions, Vertex AI, TensorFlow, PyTorch, etc. 
+Techno : Python (FastAPI, Flask), Node.js, Firebase Functions, Vertex AI, TensorFlow, PyTorch, etc.
+### IA cloud Éducation / Dressage
 
-c. IAMaster (noyau, local + cloud) 
+Un service d'analyse vidéo permettra d'évaluer automatiquement les exercices filmés. Les fichiers prévus (`video_analysis_service.dart`, `video_upload_queue.dart`, `cloud_video_analyzer.dart`) existent déjà mais demeurent désactivés tant que le modèle économique n'est pas validé.
 
+c. IAMaster (noyau, local + cloud)
 Superviseur général de l’IA  
 
 Orchestration des échanges module/local ↔ cloud ↔ utilisateur 

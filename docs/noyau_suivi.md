@@ -120,7 +120,7 @@ Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolu
 - [06/2025] Ajout du modèle `share_history_model.dart` et de l'historique de partage Hive. *(Initialement prévu dans le module partage)*
 - [06/2025] Mise à jour de `share_screen.dart` avec partage local/cloud et statut de connexion.
 ---
-
+- [06/2025] Préparation de l'infrastructure d'analyse vidéo (`video_analysis_service.dart`, `video_upload_queue.dart`) — *désactivée par défaut*.
 ## 🚩 Statut actuel du noyau (05/06/2025)
 
 | Fonction / Phase                      | Statut   | Fichiers clés                                     | Tests         | Commentaire                      |
