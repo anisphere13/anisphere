@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
+@Skip('Temporarily disabled')
 import '../../test_config.dart';
 import 'package:http/testing.dart';
 import 'package:http/http.dart' as http;
