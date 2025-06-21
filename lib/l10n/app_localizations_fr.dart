@@ -201,14 +201,4 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get myAnimals_title => 'Mes Animaux';
-
-  @override
-
-  @override
-
-  @override
-
-  @override
-
-  @override
 }

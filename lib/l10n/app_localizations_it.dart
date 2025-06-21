@@ -202,14 +202,4 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get myAnimals_title => 'I miei animali';
-
-  @override
-
-  @override
-
-  @override
-
-  @override
-
-  @override
 }

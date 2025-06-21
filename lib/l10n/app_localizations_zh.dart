@@ -200,14 +200,4 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get myAnimals_title => '我的动物';
-
-  @override
-
-  @override
-
-  @override
-
-  @override
-
-  @override
 }

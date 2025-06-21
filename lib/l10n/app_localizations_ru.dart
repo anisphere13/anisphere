@@ -202,14 +202,4 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get myAnimals_title => 'Мои животные';
-
-  @override
-
-  @override
-
-  @override
-
-  @override
-
-  @override
 }

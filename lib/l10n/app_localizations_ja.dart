@@ -200,14 +200,4 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get myAnimals_title => '私の動物';
-
-  @override
-
-  @override
-
-  @override
-
-  @override
-
-  @override
 }
