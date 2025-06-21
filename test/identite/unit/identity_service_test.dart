@@ -32,12 +32,26 @@ void main() {
       status: 'ok',
       legalStatus: 'dog',
     );
-    when(mockBox.put(any, any)).thenAnswer((_) async {});
+    when(
+      mockBox.put(
+        any,
+        any<IdentityModel>(
+          defaultValue: IdentityModel(animalId: 'id'),
+        ),
+      ),
+    ).thenAnswer((_) async {});
 
     final score = await service.computeCompletionScore(model);
 
-    final saved =
-        verify(mockBox.put('a1', captureAny)).captured.single as IdentityModel;
+    final saved = verify(
+      mockBox.put(
+        'a1',
+        captureAny<IdentityModel>(
+          that: isA<IdentityModel>(),
+          defaultValue: IdentityModel(animalId: 'id'),
+        ),
+      ),
+    ).captured.single as IdentityModel;
     expect(saved.aiScore, closeTo(1.0, 0.01));
     expect(score, closeTo(1.0, 0.01));
   });
@@ -52,12 +66,26 @@ void main() {
     when(mockBox.values).thenReturn([existing]);
     final service = IdentityService(localBox: mockBox, signatureSecret: 'secret');
     final model = IdentityModel(animalId: 'new', microchipNumber: 'dup');
-    when(mockBox.put(any, any)).thenAnswer((_) async {});
+    when(
+      mockBox.put(
+        any,
+        any<IdentityModel>(
+          defaultValue: IdentityModel(animalId: 'id'),
+        ),
+      ),
+    ).thenAnswer((_) async {});
 
     final result = await service.detectSiblingDuplicates(model);
 
-    final saved =
-        verify(mockBox.put('new', captureAny)).captured.single as IdentityModel;
+    final saved = verify(
+      mockBox.put(
+        'new',
+        captureAny<IdentityModel>(
+          that: isA<IdentityModel>(),
+          defaultValue: IdentityModel(animalId: 'id'),
+        ),
+      ),
+    ).captured.single as IdentityModel;
     expect(saved.verifiedBreed, isTrue);
     expect(result, isTrue);
   });
