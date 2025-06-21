@@ -68,6 +68,7 @@
 | test/noyau/widget/animal_card_test.dart | widget | package:anisphere/modules/noyau/widgets/animal_card.dart | ✅ |
 | test/noyau/widget/ia_suggestion_card_test.dart | widget | package:anisphere/modules/noyau/widgets/ia_suggestion_card.dart | ✅ |
 | test/noyau/widget/notification_icon_test.dart | widget | package:anisphere/modules/noyau/widgets/notification_icon.dart | ✅ |
+| test/noyau/widget/important_notifications_widget_test.dart | widget | package:anisphere/modules/noyau/widgets/important_notifications_widget.dart | ✅ |
 | test/noyau/widget/modules_screen_test.dart | widget | package:anisphere/modules/noyau/screens/modules_screen.dart | ✅ |
 | test/noyau/widget/main_screen_test.dart | widget | package:anisphere/modules/noyau/screens/main_screen.dart | ✅ |
 | test/noyau/widget/animal_profile_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animal_profile_screen.dart | ✅ |
