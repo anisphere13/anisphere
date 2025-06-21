@@ -7,6 +7,7 @@
 | test/identite/unit/identity_reminder_service_test.dart | unit | package:anisphere/modules/identite/services/identity_reminder_service.dart | ✅ |
 | test/identite/unit/legal_status_service_test.dart | unit | package:anisphere/modules/identite/services/legal_status_service.dart | ✅ |
 | test/identite/unit/identity_service_test.dart | unit | package:anisphere/modules/identite/services/identity_service.dart | ✅ |
+| test/identite/unit/identity_signature_service_test.dart | unit | package:anisphere/modules/identite/services/identity_signature_service.dart | ✅ |
 | test/identite/unit/identity_verification_service_test.dart | unit | package:anisphere/modules/identite/services/identity_verification_service.dart | ✅ |
 | test/identite/unit/qr_generator_service_test.dart | unit | package:anisphere/modules/identite/services/qr_generator_service.dart | ✅ |
 | test/identite/unit/ocr_icad_service_test.dart | unit | package:anisphere/modules/identite/services/ocr_icad_service.dart | ✅ |

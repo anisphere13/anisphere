@@ -26,13 +26,15 @@ class IdentityModelAdapter extends TypeAdapter<IdentityModel> {
       history: (fields[6] as List).cast<IdentityChange>(),
       hasPublicQR: fields[7] as bool,
       lastUpdate: fields[8] as DateTime?,
+      aiScore: fields[9] as double,
+      verifiedBreed: fields[10] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, IdentityModel obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(11)
       ..writeByte(0)
       ..write(obj.animalId)
       ..writeByte(1)
@@ -50,7 +52,11 @@ class IdentityModelAdapter extends TypeAdapter<IdentityModel> {
       ..writeByte(7)
       ..write(obj.hasPublicQR)
       ..writeByte(8)
-      ..write(obj.lastUpdate);
+      ..write(obj.lastUpdate)
+      ..writeByte(9)
+      ..write(obj.aiScore)
+      ..writeByte(10)
+      ..write(obj.verifiedBreed);
   }
 
   @override

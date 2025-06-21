@@ -37,6 +37,12 @@ class IdentityModel {
   @HiveField(8)
   final DateTime lastUpdate;
 
+  @HiveField(9)
+  final double aiScore;
+
+  @HiveField(10)
+  final bool verifiedBreed;
+
   IdentityModel({
     required this.animalId,
     this.microchipNumber,
@@ -47,6 +53,8 @@ class IdentityModel {
     this.history = const [],
     this.hasPublicQR = false,
     DateTime? lastUpdate,
+    this.aiScore = 0.0,
+    this.verifiedBreed = false,
   }) : lastUpdate = lastUpdate ?? DateTime.now();
 
   factory IdentityModel.fromMap(Map<String, dynamic> map) {
@@ -62,6 +70,8 @@ class IdentityModel {
           .toList(),
       hasPublicQR: map['hasPublicQR'] ?? false,
       lastUpdate: (map['lastUpdate'] as Timestamp?)?.toDate() ?? DateTime.now(),
+      aiScore: (map['aiScore'] as num?)?.toDouble() ?? 0.0,
+      verifiedBreed: map['verifiedBreed'] ?? false,
     );
   }
 
@@ -76,6 +86,8 @@ class IdentityModel {
       'history': history.map((e) => e.toMap()).toList(),
       'hasPublicQR': hasPublicQR,
       'lastUpdate': Timestamp.fromDate(lastUpdate),
+      'aiScore': aiScore,
+      'verifiedBreed': verifiedBreed,
     };
   }
 }
