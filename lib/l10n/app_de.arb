@@ -29,4 +29,9 @@
   ,"save_button": "Save"
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
+  ,"settings_title": "Settings"
+  ,"backup_success": "Backup completed successfully."
+  ,"backup_error": "Error during backup."
+  ,"restore_success": "Restore successful."
+  ,"restore_error": "Error during restore."
 }

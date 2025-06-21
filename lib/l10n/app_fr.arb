@@ -29,4 +29,9 @@
   ,"save_button": "Enregistrer"
   ,"identityModuleTitle": "Identité"
   ,"identityModuleDescription": "Gérer l'identité de l'animal"
+  ,"settings_title": "Paramètres"
+  ,"backup_success": "Sauvegarde effectuée avec succès."
+  ,"backup_error": "Erreur lors de la sauvegarde."
+  ,"restore_success": "Restauration réussie."
+  ,"restore_error": "Erreur lors de la restauration."
 }

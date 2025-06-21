@@ -7,6 +7,7 @@ import '../services/backup_service.dart';
 import '../providers/user_provider.dart';
 import '../services/animal_service.dart';
 import '../providers/theme_provider.dart';
+import 'package:anisphere/l10n/app_localizations.dart';
 import 'feedback_settings_screen.dart';
 import '../providers/payment_provider.dart';
 import 'iap_screen.dart';
@@ -64,11 +65,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     if (success) {
       await _loadLastBackup();
       messenger.showSnackBar(
-        const SnackBar(content: Text("Sauvegarde effectuée avec succès.")),
+        SnackBar(content: Text(t.backup_success)),
       );
     } else {
       messenger.showSnackBar(
-        const SnackBar(content: Text("Erreur lors de la sauvegarde.")),
+        SnackBar(content: Text(t.backup_error)),
       );
     }
   }
@@ -81,11 +82,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final success = await backupService.restoreBackup(user.id);
     if (success) {
       messenger.showSnackBar(
-        const SnackBar(content: Text("Restauration réussie.")),
+        SnackBar(content: Text(t.restore_success)),
       );
     } else {
       messenger.showSnackBar(
-        const SnackBar(content: Text("Erreur lors de la restauration.")),
+        SnackBar(content: Text(t.restore_error)),
       );
     }
   }
@@ -100,8 +101,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: const Text("Paramètres")),
+      appBar: AppBar(title: Text(t.settings_title)),
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [
