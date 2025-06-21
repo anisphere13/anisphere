@@ -32,7 +32,7 @@ void main() {
       status: 'ok',
       legalStatus: 'dog',
     );
-    when(mockBox.put(any, any)).thenAnswer((_) async {});
+    when(mockBox.put(any, any<IdentityModel>())).thenAnswer((_) async {});
 
     final score = await service.computeCompletionScore(model);
 
@@ -52,7 +52,7 @@ void main() {
     when(mockBox.values).thenReturn([existing]);
     final service = IdentityService(localBox: mockBox, signatureSecret: 'secret');
     final model = IdentityModel(animalId: 'new', microchipNumber: 'dup');
-    when(mockBox.put(any, any)).thenAnswer((_) async {});
+    when(mockBox.put(any, any<IdentityModel>())).thenAnswer((_) async {});
 
     final result = await service.detectSiblingDuplicates(model);
 
