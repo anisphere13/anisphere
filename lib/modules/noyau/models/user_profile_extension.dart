@@ -3,6 +3,7 @@
 /// Si l’IA locale connaît bien l’animal, propose un test gratuit de l’IA cloud.
 /// 1 essai maximum. IA cloud activée automatiquement puis désactivée.
 /// Rentabilisation progressive avec forte valeur perçue.
+library;
 
 import 'package:hive/hive.dart';
 

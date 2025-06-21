@@ -3,6 +3,7 @@
 /// Si l’IA locale connaît bien l’animal, propose un test gratuit de l’IA cloud.
 /// 1 essai maximum. IA cloud activée automatiquement puis désactivée.
 /// Rentabilisation progressive avec forte valeur perçue.
+library;
 
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,7 @@ class PremiumTrialBanner extends StatelessWidget {
           ),
           TextButton(
             onPressed: onActivate,
-            child: const Text('Activer l\’essai gratuit'),
+            child: const Text('Activer l’essai gratuit'),
           ),
         ],
       ),
