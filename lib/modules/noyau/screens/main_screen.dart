@@ -86,7 +86,7 @@ class MainScreenState extends State<MainScreen> {
         elevation: 0,
         title: const Text(
           'Maison',
-          style: const TextStyle(
+          style: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 20,
             color: Color(0xFF183153),
