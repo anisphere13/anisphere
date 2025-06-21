@@ -7,6 +7,7 @@ import '../services/backup_service.dart';
 import '../providers/user_provider.dart';
 import '../services/animal_service.dart';
 import '../providers/theme_provider.dart';
+import 'package:anisphere/l10n/app_localizations.dart';
 import 'feedback_settings_screen.dart';
 import 'package:anisphere/l10n/app_localizations.dart';
 import '../providers/payment_provider.dart';
@@ -65,12 +66,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
     if (success) {
       await _loadLastBackup();
       messenger.showSnackBar(
+<<<<<<< HEAD
         SnackBar(
             content: Text(AppLocalizations.of(context)!.backup_success)),
       );
     } else {
       messenger.showSnackBar(
         SnackBar(content: Text(AppLocalizations.of(context)!.backup_error)),
+=======
+        SnackBar(content: Text(t.backup_success)),
+      );
+    } else {
+      messenger.showSnackBar(
+        SnackBar(content: Text(t.backup_error)),
+>>>>>>> codex/mettre-à-jour-docs/suivi_noyau.md
       );
     }
   }
@@ -83,11 +92,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final success = await backupService.restoreBackup(user.id);
     if (success) {
       messenger.showSnackBar(
+<<<<<<< HEAD
         SnackBar(content: Text(AppLocalizations.of(context)!.restore_success)),
       );
     } else {
       messenger.showSnackBar(
         SnackBar(content: Text(AppLocalizations.of(context)!.restore_error)),
+=======
+        SnackBar(content: Text(t.restore_success)),
+      );
+    } else {
+      messenger.showSnackBar(
+        SnackBar(content: Text(t.restore_error)),
+>>>>>>> codex/mettre-à-jour-docs/suivi_noyau.md
       );
     }
   }
@@ -102,8 +119,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: const Text("Paramètres")),
+      appBar: AppBar(title: Text(t.settings_title)),
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [

@@ -100,6 +100,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get identityModuleDescription => 'Manage your animal\'s identity';
 
   @override
+<<<<<<< HEAD
   String get identitiesRegistered => 'identità registrate';
 
   @override
@@ -125,4 +126,19 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get noActiveModule => 'Nessun modulo attivo';
+=======
+  String get settings_title => 'Settings';
+
+  @override
+  String get backup_success => 'Backup completed successfully.';
+
+  @override
+  String get backup_error => 'Error during backup.';
+
+  @override
+  String get restore_success => 'Restore successful.';
+
+  @override
+  String get restore_error => 'Error during restore.';
+>>>>>>> codex/mettre-à-jour-docs/suivi_noyau.md
 }

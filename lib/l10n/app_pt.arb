@@ -29,6 +29,7 @@
   ,"save_button": "Save"
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
+<<<<<<< HEAD
   ,"export_feature_coming": "Recurso de exportação em breve."
   ,"privacy_settings_coming": "Configurações de privacidade em breve."
   ,"stats_coming": "Estatísticas em breve."
@@ -45,4 +46,11 @@
   ,"restore_success": "Restauração concluída."
   ,"restore_error": "Erro durante a restauração."
   ,"qr_scanned": "QR escaneado: {result}"
+=======
+  ,"settings_title": "Settings"
+  ,"backup_success": "Backup completed successfully."
+  ,"backup_error": "Error during backup."
+  ,"restore_success": "Restore successful."
+  ,"restore_error": "Error during restore."
+>>>>>>> codex/mettre-à-jour-docs/suivi_noyau.md
 }

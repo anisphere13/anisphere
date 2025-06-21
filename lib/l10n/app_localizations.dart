@@ -294,6 +294,7 @@ abstract class AppLocalizations {
   /// **'Manage your animal\'s identity'**
   String get identityModuleDescription;
 
+<<<<<<< HEAD
   /// No description provided for @identitiesRegistered.
   ///
   /// In en, this message translates to:
@@ -347,6 +348,37 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No active module'**
   String get noActiveModule;
+=======
+  /// No description provided for @settings_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings_title;
+
+  /// No description provided for @backup_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup completed successfully.'**
+  String get backup_success;
+
+  /// No description provided for @backup_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error during backup.'**
+  String get backup_error;
+
+  /// No description provided for @restore_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore successful.'**
+  String get restore_success;
+
+  /// No description provided for @restore_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error during restore.'**
+  String get restore_error;
+>>>>>>> codex/mettre-à-jour-docs/suivi_noyau.md
 }
 
 class _AppLocalizationsDelegate
