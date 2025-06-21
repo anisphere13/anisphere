@@ -40,4 +40,10 @@ void main() {
     await NotificationService.cancelAll();
     expect(log.any((c) => c.method == 'cancelAll'), isTrue);
   });
+
+  test('fetchPendingNotifications returns list', () async {
+    final service = NotificationService();
+    final pending = await service.fetchPendingNotifications();
+    expect(pending, isNotEmpty);
+  });
 }

@@ -13,10 +13,13 @@ import '../services/pro_validation_service.dart';
 import '../widgets/quick_actions_sheet.dart';
 import '../widgets/user_profile_summary_card.dart';
 import '../widgets/important_notifications_widget.dart';
+import '../services/notification_service.dart';
 import 'animal_form_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final NotificationService notificationService;
+
+  const HomeScreen({super.key, required this.notificationService});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -93,15 +96,17 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  void _loadImportantNotifications() {
-    // TODO: replace with real data from notifications service
-    setState(() {
-      importantNotifications = [
-        'Rappel vermifuge dans 3 jours',
-        'Nouvelle mise à jour disponible',
-        'Votre profil est incomplet'
-      ];
-    });
+  Future<void> _loadImportantNotifications() async {
+    try {
+      final pending = await widget.notificationService.fetchPendingNotifications();
+      if (mounted) {
+        setState(() {
+          importantNotifications = pending;
+        });
+      }
+    } catch (e) {
+      debugPrint('❌ Erreur chargement notifications : $e');
+    }
   }
 
   Widget _buildModuleCard(ModuleSummary summary) {

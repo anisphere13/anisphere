@@ -6,6 +6,7 @@ Ce fichier est une vue d’ensemble condensée du projet AniSphère. Il permet d
 
 - [ ] Créer les `*SummaryCard` pour chaque module actif (santé, dressage, éducation, communauté, etc.) à afficher dans `home_screen.dart`
 - [x] Ajout widget profil utilisateur
+- [x] Intégration de `NotificationService` dans `HomeScreen`
 
 
 🔰 Statut actuel
@@ -139,3 +140,4 @@ suivi_[module].md → suivi fin par module
 
 - ✅ Mise à jour automatique des tâches le 2025-06-21
 - 📝 2025-07-20 : désactivation temporaire du support multilingue. L'application reste en français uniquement; les ressources `lib/l10n/` sont conservées pour une réactivation ultérieure.
+- ✅ Mise à jour automatique des tâches le 2025-07-21 (NotificationService intégré)

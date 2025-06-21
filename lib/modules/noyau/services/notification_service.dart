@@ -90,4 +90,16 @@ class NotificationService {
     await _notificationsPlugin.cancelAll();
     debugPrint("❌ Toutes les notifications supprimées.");
   }
+
+  /// 📝 Récupère les notifications en attente.
+  /// TODO: ajouter test
+  Future<List<String>> fetchPendingNotifications() async {
+    // 🔜 Cette méthode s'appuiera sur le stockage local/cloud
+    // pour retourner les notifications réelles encore non traitées.
+    return [
+      'Rappel vermifuge dans 3 jours',
+      'Nouvelle mise à jour disponible',
+      'Votre profil est incomplet',
+    ];
+  }
 }
