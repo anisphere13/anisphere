@@ -6,8 +6,6 @@
 
 import 'package:anisphere/modules/noyau/services/local_storage_service.dart';
 import 'package:anisphere/modules/noyau/models/module_model.dart';
-import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
-import 'package:anisphere/modules/noyau/services/navigation_service.dart';
 
 class ModulesService {
   static final List<ModuleModel> availableModules = [

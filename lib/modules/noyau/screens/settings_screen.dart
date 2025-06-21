@@ -7,7 +7,7 @@ import '../services/backup_service.dart';
 import '../providers/user_provider.dart';
 import '../services/animal_service.dart';
 import '../providers/theme_provider.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
+import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
 import 'feedback_settings_screen.dart';
 import '../providers/payment_provider.dart';
 import 'iap_screen.dart';

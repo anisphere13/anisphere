@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
 import 'package:anisphere/modules/noyau/providers/photo_provider.dart';
 import 'package:anisphere/modules/noyau/services/local_storage_service.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
+import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import '../services/identity_service.dart';
 import '../models/identity_model.dart';

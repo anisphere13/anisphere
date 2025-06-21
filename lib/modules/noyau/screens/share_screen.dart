@@ -6,7 +6,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
+import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
 import '../providers/user_provider.dart';
 import '../models/share_history_model.dart';
 import '../services/local_sharing_service.dart';

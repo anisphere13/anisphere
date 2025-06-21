@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 
 import 'package:anisphere/modules/noyau/services/qr_service.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
+import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
 
 class QRScreen extends StatefulWidget {
   const QRScreen({super.key});
