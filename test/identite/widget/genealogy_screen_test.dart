@@ -9,7 +9,7 @@ void main() {
     await initTestEnv();
   });
 
-  testWidgets('GenealogyScreen shows title', (WidgetTester tester) async {
+  testWidgets('GenealogyScreen shows import button', (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -18,6 +18,6 @@ void main() {
     ));
     await tester.pump();
     expect(find.text('Généalogie'), findsOneWidget);
-    expect(find.text('Écran de généalogie'), findsOneWidget);
+    expect(find.text('Importer PDF'), findsOneWidget);
   });
 }

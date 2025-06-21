@@ -63,7 +63,7 @@ class AnimalScreen extends StatelessWidget {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) => IdentityScreen(
-                              animal: animal,
+                              animals: [animal],
                               service: identityService,
                             ),
                           ),

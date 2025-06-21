@@ -34,4 +34,11 @@
   ,"backup_error": "Error during backup."
   ,"restore_success": "Restore successful."
   ,"restore_error": "Error during restore."
+  ,"ai_score": "AI score"
+  ,"badge_state": "Badge"
+  ,"timeline_photos": "Timeline photos"
+  ,"import_icad": "Express I-CAD import"
+  ,"import_pdf": "Import PDF"
+  ,"duplicate_alert": "Possible duplicate detected"
+  ,"identity_onboarding_message": "Manage your animal identity here. Swipe to change animal."
 }

@@ -34,4 +34,11 @@
   ,"backup_error": "Erreur lors de la sauvegarde."
   ,"restore_success": "Restauration réussie."
   ,"restore_error": "Erreur lors de la restauration."
+  ,"ai_score": "Score IA"
+  ,"badge_state": "Badge"
+  ,"timeline_photos": "Photos chronologiques"
+  ,"import_icad": "Import I-CAD express"
+  ,"import_pdf": "Importer PDF"
+  ,"duplicate_alert": "Doublon potentiel détecté"
+  ,"identity_onboarding_message": "Gérez l'identité de votre animal ici. Glissez pour changer d'animal."
 }
