@@ -114,6 +114,37 @@ class _ModulesScreenState extends State<ModulesScreen> {
     );
   }
 
+  Future<void> _handleTap(ModuleModel module) async {
+    if (module.id != 'identite') return;
+
+    try {
+      final animals = await AnimalService().getAllAnimals();
+      if (animals.isEmpty) {
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Aucun animal enregistré')),
+        );
+        return;
+      }
+
+      final identityBox = Hive.box<IdentityModel>('identityBox');
+      final identityService = IdentityService(localBox: identityBox);
+
+      if (!mounted) return;
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) =>
+              IdentityScreen(animal: animals.first, service: identityService),
+        ),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Erreur d'accès à l'identité.")),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,6 +181,13 @@ class _ModulesScreenState extends State<ModulesScreen> {
                         module: module,
                         status: status,
                         onActivate: () => _activate(id),
+                        onTap: () => _handleTap(module),
+                        badge: module.premium
+                            ? null
+                            : const Text(
+                                'Gratuit',
+                                style: TextStyle(color: Colors.green),
+                              ),
                       ),
                     );
                   },
