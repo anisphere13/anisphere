@@ -4,7 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:anisphere/modules/noyau/screens/modules_screen.dart';
 import 'package:anisphere/modules/noyau/services/modules_service.dart';
 import 'package:anisphere/modules/identite/screens/identity_screen.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
 import '../../test_config.dart';
 
 void main() {

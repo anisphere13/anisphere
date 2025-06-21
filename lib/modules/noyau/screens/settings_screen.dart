@@ -112,12 +112,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
             value: darkMode,
             onChanged: (val) => _updatePreference("dark_mode", val),
           ),
-          // Language selection disabled temporarily
-          // ListTile(
-          //   leading: const Icon(Icons.language, color: Color(0xFF183153)),
-          //   title: const Text('Langue'),
-          //   trailing: const LanguageSelectorWidget(),
-          // ),
           const Divider(),
           const Text("Intelligence Artificielle", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
           const SizedBox(height: 8),
