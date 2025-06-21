@@ -4,23 +4,23 @@ Ce document suit le développement du module Identité animale pour AniSphère. 
 
 ### Statut : 
 - [x] Cahier des charges validé
-- [ ] Dossier `lib/modules/identite/` créé
-- [ ] Modèle `identity_model.dart` défini
-- [ ] Service `identity_service.dart` initialisé
-- [ ] UI écran identité (consultation + édition) créé
-- [ ] Intégration OCR documents (I-CAD, LOF, carnet papier)
-- [ ] IA de validation photo (sélection + vérification automatique)
-- [ ] Génération QR code identité + page publique
-- [ ] Historique des modifications (propriétaire, statut…)
-- [ ] Détection automatique des doublons
-- [ ] Génération mini-carte PDF (format CB)
-- [ ] Rappel IA annuel de mise à jour
-- [ ] Ajout d’un statut juridique optionnel (chien d’assistance, etc.)
-- [ ] Badge "Identité vérifiée" IA (photo + données cohérentes)
-- [ ] Export passeport visuel (premium, désactivé pour l’instant)
-- [ ] Tests unitaires (modèle, service, IA photo)
-- [ ] Tests widget (fiche identité, édition, QR)
-- [ ] Tests d’intégration (ajout + lecture + partage QR)
+- [x] Dossier `lib/modules/identite/` créé
+- [x] Modèle `identity_model.dart` défini
+- [x] Service `identity_service.dart` initialisé
+- [x] UI écran identité (consultation + édition) créé
+- [x] Intégration OCR documents (I-CAD, LOF, carnet papier)
+- [x] IA de validation photo (sélection + vérification automatique)
+- [x] Génération QR code identité + page publique
+- [x] Historique des modifications (propriétaire, statut…)
+- [ ] Détection automatique des doublons (en cours)
+- [x] Génération mini-carte PDF (format CB)
+- [x] Rappel IA annuel de mise à jour
+- [x] Ajout d’un statut juridique optionnel (chien d’assistance, etc.)
+- [x] Badge "Identité vérifiée" IA (photo + données cohérentes)
+- [x] Export passeport visuel (premium, désactivé pour l’instant)
+- [x] Tests unitaires (modèle, service, IA photo)
+- [x] Tests widget (fiche identité, édition, QR)
+- [x] Tests d’intégration (ajout + lecture + partage QR)
 - - -
 - **Généalogie**
 - [x] Dossier `lib/modules/identite/` créé

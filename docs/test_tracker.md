@@ -1,4 +1,6 @@
 # Test Tracker AniSphère
+Ajoutez vos nouvelles entrées dans `test/test_tracker.md` puis lancez `dart scripts/update_test_tracker.dart` pour mettre à jour ce tableau.
+
 | Fichier test | Type | Source | Statut |
 |--------------|------|--------|--------|
 | test/identite/unit/identity_model.g_test.dart | unit | package:anisphere/modules/identite/models/identity_model.g.dart | ✅ |
@@ -127,3 +129,8 @@
 | test/identite/widget/identity_score_widget_test.dart | widget | package:anisphere/modules/identite/widgets/identity_score_widget.dart | ✅ |
 | test/identite/widget/identity_onboarding_tutorial_test.dart | widget | package:anisphere/modules/identite/widgets/identity_onboarding_tutorial.dart | ✅ |
 - ✅ Tests validés automatiquement le 2025-06-21 (main_screen_test, user_profile_summary_card_test, i18n_widget_test mis à jour)
+| test/noyau/unit/biometric_auth_service_test.dart | unit | package:anisphere/modules/noyau/services/biometric_auth_service.dart | ✅ |
+| test/noyau/unit/gps_provider_test.dart | unit | package:anisphere/modules/noyau/services/gps_provider.dart | ✅ |
+| test/noyau/unit/video_analysis_service_test.dart | unit | package:anisphere/modules/noyau/services/video_analysis_service.dart | ✅ |
+| test/noyau/widget/biometric_guard_test.dart | widget | package:anisphere/modules/noyau/widgets/biometric_guard.dart | ✅ |
+| test/noyau/widget/gps_screen_test.dart | widget | package:anisphere/modules/noyau/screens/gps_screen.dart | ✅ |
