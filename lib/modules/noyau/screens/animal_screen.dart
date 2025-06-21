@@ -5,6 +5,7 @@
 // Suivi du branding AniSphère et UX à la Samsung Health.
 
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
 import 'package:anisphere/modules/identite/screens/identity_screen.dart';
 import 'package:anisphere/modules/identite/services/identity_service.dart';
@@ -38,7 +39,7 @@ class AnimalScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Center(
-                  child: Icon(Icons.pets, size: 80, color: Color(0xFF183153)),
+                  child: Icon(Icons.pets, size: 80, color: primaryBlue),
                 ),
                 const SizedBox(height: 20),
                 _buildRow("Nom", animal.name),
@@ -83,7 +84,7 @@ class AnimalScreen extends StatelessWidget {
                     icon: const Icon(Icons.badge),
                     label: const Text("Identité"),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF183153),
+                      backgroundColor: primaryBlue,
                       foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(
                           horizontal: 24, vertical: 12),

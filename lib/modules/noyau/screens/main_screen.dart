@@ -2,6 +2,7 @@
 // Comporte 4 onglets dynamiques.
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../theme.dart';
 import 'home_screen.dart';
 import 'share_screen.dart';
 import 'modules_screen.dart';
@@ -89,12 +90,12 @@ class MainScreenState extends State<MainScreen> {
           style: TextStyle( // Codex: Correction automatique flutter analyze
             fontWeight: FontWeight.w600,
             fontSize: 20,
-            color: Color(0xFF183153),
+            color: primaryBlue,
           ),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.qr_code, color: Color(0xFF183153)),
+            icon: const Icon(Icons.qr_code, color: primaryBlue),
             onPressed: () {
               Navigator.push(
                 context,
@@ -112,7 +113,7 @@ class MainScreenState extends State<MainScreen> {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.person, color: Color(0xFF183153)),
+            icon: const Icon(Icons.person, color: primaryBlue),
             onPressed: () {
               Navigator.push(
                 context,
@@ -121,7 +122,7 @@ class MainScreenState extends State<MainScreen> {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.settings, color: Color(0xFF183153)),
+            icon: const Icon(Icons.settings, color: primaryBlue),
             onPressed: () {
               Navigator.push(
                 context,
@@ -130,7 +131,7 @@ class MainScreenState extends State<MainScreen> {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.help_outline, color: Color(0xFF183153)),
+            icon: const Icon(Icons.help_outline, color: primaryBlue),
             onPressed: () {
               Navigator.push(
                 context,

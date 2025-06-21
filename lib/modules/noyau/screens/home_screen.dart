@@ -188,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xFF183153),
+        backgroundColor: primaryBlue,
         onPressed: _showQuickActions,
         child: const Icon(Icons.add),
       ),

@@ -16,7 +16,7 @@ class IABanner extends StatelessWidget {
     required this.message,
     this.icon = Icons.info_outline,
     this.background = backgroundGray,
-    this.textColor = const Color(0xFF183153),  // Bleu nuit
+    this.textColor = primaryBlue,  // Bleu nuit
   });
 
   @override

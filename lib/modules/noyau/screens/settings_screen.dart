@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../theme.dart';
 import '../services/local_storage_service.dart';
 import '../services/backup_service.dart';
 import '../providers/user_provider.dart';
@@ -128,7 +129,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onChanged: (val) => _updatePreference("ia_notifications", val),
           ),
           ListTile(
-            leading: const Icon(Icons.vibration, color: Color(0xFF183153)),
+            leading: const Icon(Icons.vibration, color: primaryBlue),
             title: const Text('Feedback audio/haptique'),
             subtitle: const Text('Configurer les sons et vibrations'),
             trailing: const Icon(Icons.arrow_forward_ios, size: 16),
@@ -142,7 +143,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           const Divider(),
           ListTile(
-            leading: const Icon(Icons.workspace_premium, color: Color(0xFF183153)),
+            leading: const Icon(Icons.workspace_premium, color: primaryBlue),
             title: const Text('Passer Premium'),
             subtitle: const Text('Débloquez toutes les fonctionnalités'),
             trailing: const Icon(Icons.arrow_forward_ios, size: 16),
@@ -164,13 +165,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const Text("Sauvegarde & restauration", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
           const SizedBox(height: 8),
           ListTile(
-            leading: const Icon(Icons.backup, color: Color(0xFF183153)),
+            leading: const Icon(Icons.backup, color: primaryBlue),
             title: const Text("Effectuer une sauvegarde"),
             subtitle: Text(lastBackup != null ? "Dernière : ${lastBackup!.toLocal()}" : "Aucune sauvegarde"),
             onTap: _performBackup,
           ),
           ListTile(
-            leading: const Icon(Icons.restore, color: Color(0xFF183153)),
+            leading: const Icon(Icons.restore, color: primaryBlue),
             title: const Text("Restaurer une sauvegarde"),
             subtitle: const Text("Restaurez vos données depuis le cloud."),
             onTap: _restoreBackup,

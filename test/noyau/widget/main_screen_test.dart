@@ -11,6 +11,7 @@ import 'package:anisphere/modules/noyau/screens/main_screen.dart';
 import 'package:anisphere/modules/noyau/screens/splash_screen.dart';
 import 'package:anisphere/main.dart';
 import 'package:anisphere/modules/noyau/providers/theme_provider.dart';
+import 'package:anisphere/theme.dart';
 
 import '../../test_config.dart';
 
@@ -70,34 +71,34 @@ void main() {
     await tester.pumpAndSettle();
 
     final appBar = tester.widget<AppBar>(find.byType(AppBar));
-    expect(appBar.backgroundColor, const Color(0xFFF5F5F5));
-    expect(appBar.foregroundColor, const Color(0xFF183153));
+    expect(appBar.backgroundColor, const backgroundGray);
+    expect(appBar.foregroundColor, const primaryBlue);
     expect(appBar.elevation, 0);
 
     final title = tester.widget<Text>(find.text('Maison'));
     expect(title.style?.fontWeight, FontWeight.w600);
     expect(title.style?.fontSize, 20);
-    expect(title.style?.color, const Color(0xFF183153));
+    expect(title.style?.color, const primaryBlue);
 
     final qrIcon = tester.widget<Icon>(
       find.widgetWithIcon(IconButton, Icons.qr_code),
     );
-    expect(qrIcon.color, const Color(0xFF183153));
+    expect(qrIcon.color, const primaryBlue);
 
     final profileIcon = tester.widget<Icon>(
       find.widgetWithIcon(IconButton, Icons.person),
     );
-    expect(profileIcon.color, const Color(0xFF183153));
+    expect(profileIcon.color, const primaryBlue);
 
     final settingsIcon = tester.widget<Icon>(
       find.widgetWithIcon(IconButton, Icons.settings),
     );
-    expect(settingsIcon.color, const Color(0xFF183153));
+    expect(settingsIcon.color, const primaryBlue);
 
     final supportIcon = tester.widget<Icon>(
       find.widgetWithIcon(IconButton, Icons.help_outline),
     );
-    expect(supportIcon.color, const Color(0xFF183153));
+    expect(supportIcon.color, const primaryBlue);
   });
 
   testWidgets('shows SplashScreen when user is null', (tester) async {
