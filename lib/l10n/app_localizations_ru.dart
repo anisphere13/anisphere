@@ -219,5 +219,9 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get restore_error => 'Error during restore.';
+<<<<<<< HEAD
 >>>>>>> codex/mettre-à-jour-les-clés-de-localisation
+=======
+>>>>>>> 8ac19094 (Add localization keys for navigation)
+>>>>>>> c0f6c366 (Add localization keys for navigation)
 }

@@ -616,7 +616,11 @@ abstract class AppLocalizations {
 
   /// No description provided for @stats_coming.
   String get stats_coming;
+<<<<<<< HEAD
 >>>>>>> codex/mettre-à-jour-les-clés-de-localisation
+=======
+>>>>>>> 8ac19094 (Add localization keys for navigation)
+>>>>>>> c0f6c366 (Add localization keys for navigation)
 }
 
 class _AppLocalizationsDelegate
