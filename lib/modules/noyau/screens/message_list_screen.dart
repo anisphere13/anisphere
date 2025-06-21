@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../models/conversation_model.dart';
 import '../providers/messaging_provider.dart';
 import 'chat_screen.dart';
+import '../widgets/anisphere_app_bar.dart';
 
 class MessageListScreen extends StatefulWidget {
   const MessageListScreen({super.key});
@@ -29,7 +30,7 @@ class _MessageListScreenState extends State<MessageListScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Messagerie')),
+      appBar: const AniSphereAppBar(title: 'Messagerie'),
       body: ListView(
         children: grouped.entries.expand((entry) {
           final module = entry.key;

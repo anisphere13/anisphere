@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import '../widgets/anisphere_app_bar.dart';
 
 class LegalScreen extends StatelessWidget {
   final String consentType;
@@ -8,7 +9,7 @@ class LegalScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Consentement')),
+      appBar: const AniSphereAppBar(title: 'Consentement'),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

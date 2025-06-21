@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import '../services/biometric_service.dart';
+import '../widgets/anisphere_app_bar.dart';
 
 class BiometricSetupScreen extends StatefulWidget {
   const BiometricSetupScreen({super.key});
@@ -39,12 +40,12 @@ class _BiometricSetupScreenState extends State<BiometricSetupScreen> {
   Widget build(BuildContext context) {
     if (!_available) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Biométrie')),
+        appBar: const AniSphereAppBar(title: 'Biométrie'),
         body: const Center(child: Text('Biométrie non disponible')),
       );
     }
     return Scaffold(
-      appBar: AppBar(title: const Text('Biométrie')),
+      appBar: const AniSphereAppBar(title: 'Biométrie'),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

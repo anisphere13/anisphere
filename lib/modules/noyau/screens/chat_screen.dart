@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../providers/user_provider.dart';
 import '../models/conversation_model.dart';
 import '../providers/messaging_provider.dart';
+import '../widgets/anisphere_app_bar.dart';
 
 class ChatScreen extends StatefulWidget {
   final ConversationModel conversation;
@@ -32,7 +33,7 @@ class _ChatScreenState extends State<ChatScreen> {
         Provider.of<UserProvider>(context, listen: false).user?.id ?? '';
     final messages = provider.messagesFor(widget.conversation.id);
     return Scaffold(
-      appBar: AppBar(title: Text(widget.conversation.moduleName)),
+      appBar: AniSphereAppBar(title: widget.conversation.moduleName),
       body: Column(
         children: [
           Expanded(

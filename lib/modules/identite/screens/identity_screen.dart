@@ -9,6 +9,7 @@ import '../services/identity_service.dart';
 import '../models/identity_model.dart';
 import '../widgets/identity_score_widget.dart';
 import '../widgets/identity_breeder_section.dart';
+import '../../noyau/widgets/anisphere_app_bar.dart';
 
 /// Écran IdentityScreen pour AniSphère.
 /// Affiche la fiche d'identité de l’animal (photo, puce, statut, QR),
@@ -126,7 +127,7 @@ class _IdentityScreenState extends State<IdentityScreen> {
     const timelinePhotos = 'Photos chronologiques';
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Identit\u00E9')),
+      appBar: const AniSphereAppBar(title: 'Identit\u00E9'),
       body: PageView.builder(
         controller: _pageController,
         onPageChanged: (i) {

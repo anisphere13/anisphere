@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import '../services/local_storage_service.dart';
 import '../widgets/ia_log_viewer.dart';
 import 'package:anisphere/theme.dart';
+import '../widgets/anisphere_app_bar.dart';
 
 class GpsScreen extends StatefulWidget {
   const GpsScreen({super.key});
@@ -57,7 +58,7 @@ class _GpsScreenState extends State<GpsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Traces GPS')),
+      appBar: const AniSphereAppBar(title: 'Traces GPS'),
       body: Column(
         children: [
           SwitchListTile(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/user_provider.dart';
+import '../widgets/anisphere_app_bar.dart';
 
 class UserEditScreen extends StatefulWidget {
   const UserEditScreen({super.key});
@@ -58,7 +59,7 @@ class _UserEditScreenState extends State<UserEditScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Modifier mon compte')),
+      appBar: const AniSphereAppBar(title: 'Modifier mon compte'),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Form(

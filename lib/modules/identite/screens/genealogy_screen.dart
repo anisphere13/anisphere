@@ -3,6 +3,7 @@ import '../../../theme.dart';
 import 'dart:io';
 import '../services/genealogy_pdf_ocr_service.dart';
 import '../models/genealogy_model.dart';
+import '../../noyau/widgets/anisphere_app_bar.dart';
 
 class GenealogyScreen extends StatefulWidget {
   const GenealogyScreen({super.key});
@@ -18,7 +19,7 @@ class _GenealogyScreenState extends State<GenealogyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Généalogie')),
+      appBar: const AniSphereAppBar(title: 'Généalogie'),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

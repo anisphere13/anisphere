@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
 import 'package:anisphere/modules/noyau/widgets/ia_chip.dart';
 import 'package:anisphere/modules/noyau/widgets/ia_suggestion_card.dart';
+import '../widgets/anisphere_app_bar.dart';
 
 class AnimalProfileScreen extends StatelessWidget {
   final AnimalModel animal;
@@ -17,9 +18,7 @@ class AnimalProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(animal.name),
-      ),
+      appBar: AniSphereAppBar(title: animal.name),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [

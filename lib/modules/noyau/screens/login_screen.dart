@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import '../providers/user_provider.dart';
 import 'register_screen.dart';
 import 'package:anisphere/modules/noyau/screens/main_screen.dart';
+import '../widgets/anisphere_app_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -141,7 +142,7 @@ class LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Connexion")),
+      appBar: const AniSphereAppBar(title: 'Connexion'),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import 'package:anisphere/modules/noyau/services/modules_service.dart';
 import '../providers/feedback_options_provider.dart';
+import '../widgets/anisphere_app_bar.dart';
 
 class FeedbackSettingsScreen extends StatefulWidget {
   const FeedbackSettingsScreen({super.key});
@@ -26,7 +27,7 @@ class _FeedbackSettingsScreenState extends State<FeedbackSettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Feedback')),
+      appBar: const AniSphereAppBar(title: 'Feedback'),
       body: Consumer<FeedbackOptionsProvider>(
         builder: (context, options, _) => ListView(
           padding: const EdgeInsets.all(24),

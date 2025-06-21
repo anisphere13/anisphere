@@ -10,6 +10,7 @@ import 'package:anisphere/modules/noyau/models/animal_model.dart';
 import 'package:anisphere/modules/identite/screens/identity_screen.dart';
 import 'package:anisphere/modules/identite/services/identity_service.dart';
 import 'package:anisphere/modules/identite/models/identity_model.dart';
+import '../widgets/anisphere_app_bar.dart';
 import 'package:hive/hive.dart';
 
 class AnimalScreen extends StatelessWidget {
@@ -23,9 +24,7 @@ class AnimalScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Profil de l’animal"),
-      ),
+      appBar: const AniSphereAppBar(title: 'Profil de l’animal'),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Card(

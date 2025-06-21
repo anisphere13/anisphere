@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/user_provider.dart';
 import 'package:anisphere/modules/noyau/screens/main_screen.dart';
+import '../widgets/anisphere_app_bar.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -59,7 +60,7 @@ class RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Inscription")),
+      appBar: const AniSphereAppBar(title: 'Inscription'),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(

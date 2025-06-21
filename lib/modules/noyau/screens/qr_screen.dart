@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 
 import 'package:anisphere/modules/noyau/services/qr_service.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
+import '../widgets/anisphere_app_bar.dart';
 
 class QRScreen extends StatefulWidget {
   const QRScreen({super.key});
@@ -51,8 +52,8 @@ class _QRScreenState extends State<QRScreen> with SingleTickerProviderStateMixin
     final user = Provider.of<UserProvider>(context).user;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("QR Sync"),
+      appBar: AniSphereAppBar(
+        title: 'QR Sync',
         bottom: TabBar(
           controller: _tabController,
           tabs: const [

@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../widgets/anisphere_app_bar.dart';
+
 import '../models/payment_plan.dart';
 import 'navigation_service.dart';
 
@@ -26,7 +28,7 @@ class _StripeCheckoutPage extends StatelessWidget {
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..loadRequest(Uri.parse(url));
     return Scaffold(
-      appBar: AppBar(title: const Text('Paiement sécurisé')),
+      appBar: const AniSphereAppBar(title: 'Paiement sécurisé'),
       body: WebViewWidget(controller: controller),
     );
   }

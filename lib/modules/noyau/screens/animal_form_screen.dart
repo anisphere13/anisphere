@@ -14,6 +14,7 @@ import '../providers/user_provider.dart';
 
 import '../models/animal_model.dart';
 import '../services/animal_service.dart';
+import '../widgets/anisphere_app_bar.dart';
 
 class AnimalFormScreen extends StatefulWidget {
   const AnimalFormScreen({super.key});
@@ -88,7 +89,7 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Ajouter un animal")),
+      appBar: const AniSphereAppBar(title: 'Ajouter un animal'),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Form(

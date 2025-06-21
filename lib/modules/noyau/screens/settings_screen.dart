@@ -11,6 +11,7 @@ import '../providers/theme_provider.dart';
 import 'feedback_settings_screen.dart';
 import '../providers/payment_provider.dart';
 import 'iap_screen.dart';
+import '../widgets/anisphere_app_bar.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -101,7 +102,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Paramètres')),
+      appBar: const AniSphereAppBar(title: 'Paramètres'),
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../theme.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
+import '../widgets/anisphere_app_bar.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'user_edit_screen.dart';
 
@@ -22,7 +23,7 @@ class UserProfileScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Mon Profil")),
+      appBar: const AniSphereAppBar(title: 'Mon Profil'),
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [

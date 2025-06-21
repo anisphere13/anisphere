@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../providers/support_provider.dart';
 import '../providers/user_provider.dart';
 import '../models/support_ticket_model.dart';
+import '../widgets/anisphere_app_bar.dart';
 
 class SupportScreen extends StatefulWidget {
   const SupportScreen({super.key});
@@ -41,7 +42,7 @@ class _SupportScreenState extends State<SupportScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Support')),
+      appBar: const AniSphereAppBar(title: 'Support'),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

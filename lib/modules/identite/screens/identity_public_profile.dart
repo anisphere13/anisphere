@@ -3,6 +3,7 @@ import '../models/identity_model.dart';
 import '../models/genealogy_model.dart';
 import '../widgets/identity_summary_widget.dart';
 import '../widgets/genealogy_summary_card.dart';
+import '../../noyau/widgets/anisphere_app_bar.dart';
 
 /// Public profile screen used when displaying the QR code page.
 class IdentityPublicProfile extends StatelessWidget {
@@ -17,7 +18,7 @@ class IdentityPublicProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Profil public')),
+      appBar: const AniSphereAppBar(title: 'Profil public'),
       body: ListView(
         children: [
           IdentitySummaryWidget(identity: identity),

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import '../services/speech_recognition_service.dart';
 import '../widgets/voice_input_button.dart';
+import '../widgets/anisphere_app_bar.dart';
 
 class VoiceHandsfreeMode extends StatefulWidget {
   const VoiceHandsfreeMode({super.key});
@@ -17,7 +18,7 @@ class _VoiceHandsfreeModeState extends State<VoiceHandsfreeMode> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Mode vocal')),
+      appBar: const AniSphereAppBar(title: 'Mode vocal'),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,

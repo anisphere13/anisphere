@@ -5,6 +5,7 @@
 
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
+import '../widgets/anisphere_app_bar.dart';
 
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});
@@ -33,9 +34,7 @@ class NotificationsScreen extends StatelessWidget {
     final notifications = getSampleNotifications();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Notifications"),
-      ),
+      appBar: const AniSphereAppBar(title: 'Notifications'),
       body: ListView(
         children: notifications.entries.map((entry) {
           final moduleName = entry.key;
