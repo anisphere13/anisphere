@@ -1,5 +1,5 @@
 @Skip('Temporarily disabled')
-library message_model_test;
+library;
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';

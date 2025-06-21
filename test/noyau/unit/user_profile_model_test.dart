@@ -1,5 +1,5 @@
 @Skip('Temporarily disabled')
-library user_profile_model_test;
+library;
 import 'package:flutter_test/flutter_test.dart';
 import '../../test_config.dart';
 import 'package:anisphere/modules/noyau/models/user_profile_model.dart';
