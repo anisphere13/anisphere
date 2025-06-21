@@ -168,6 +168,27 @@ Ajouter dans le fichier noyau_suivi.md ou suivi_taches.md la ligne correspondant
 
 Cette méthode te permet de garder une vision claire de l’avancement et de minimiser les oublis tout en profitant des automatisations.
 
+
+🔙 Récupérer une version précédente
+---------------------------------
+Pour revenir à un commit spécifique (par exemple `9934dbf9`) ou créer une branche à partir de celui‑ci :
+
+- Réinitialiser votre dépôt local :
+  ```bash
+  git reset --hard 9934dbf9
+  ```
+  *Attention : toutes les modifications plus récentes seront perdues.*
+- Créer une nouvelle branche depuis ce commit :
+  ```bash
+  git checkout -b reprise-9934dbf9 9934dbf9
+  ```
+  Vous pourrez ainsi expérimenter sans toucher à la branche actuelle.
+
+Avant ces actions, assurez‑vous d’avoir ajouté le dépôt d’origine et récupéré tout l’historique :
+```bash
+git remote add origin https://github.com/anisphere13/anisphere.git
+git fetch --unshallow    # si le dépôt était cloné en mode shallow
+```
 ⚡️ Chapitre 6 — Connecter ton IA de développement
 
 L’IA de développement dans AniSphère est un ensemble d’outils intelligents conçus pour automatiser, surveiller, corriger et enrichir ton travail en temps réel.
