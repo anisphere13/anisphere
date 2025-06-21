@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
 import '../models/genealogy_model.dart';
 
 /// Card displaying a short summary of genealogy information.
@@ -9,7 +8,7 @@ class GenealogySummaryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    const title = 'Généalogie';
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -18,17 +17,17 @@ class GenealogySummaryCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(l10n.genealogy_title,
+            Text(title,
                 style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(height: 8),
-            _row(l10n.father, genealogy.fatherName ?? '-'),
-            _row(l10n.mother, genealogy.motherName ?? '-'),
+            _row('Père', genealogy.fatherName ?? '-'),
+            _row('Mère', genealogy.motherName ?? '-'),
             if (genealogy.affixe != null)
-              _row(l10n.breeder_affixe, genealogy.affixe!),
+              _row('Affixe', genealogy.affixe!),
             if (genealogy.litterNumber != null)
-              _row(l10n.litter_number, genealogy.litterNumber!),
+              _row('Numéro de portée', genealogy.litterNumber!),
             if (genealogy.lofName != null)
-              _row(l10n.lof_name, genealogy.lofName!),
+              _row('Nom LOF', genealogy.lofName!),
             if (genealogy.originCountry != null)
               _row('Origin', genealogy.originCountry!),
           ],

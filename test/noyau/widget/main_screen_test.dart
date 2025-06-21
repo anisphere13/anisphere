@@ -79,9 +79,6 @@ void main() {
           ),
         ],
         child: const MaterialApp(
-          supportedLocales: AppLocalizations.supportedLocales,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          locale: Locale('en'),
           home: MainScreen(),
         ),
       ),
@@ -94,9 +91,7 @@ void main() {
     expect(appBar.foregroundColor, const Color(0xFF183153));
     expect(appBar.elevation, 0);
 
-    final context = tester.element(find.byType(AppBar));
-    final expectedTitle = AppLocalizations.of(context)!.mainScreenTitle;
-    final title = tester.widget<Text>(find.text(expectedTitle));
+    final title = tester.widget<Text>(find.text('Maison'));
     expect(title.style?.fontWeight, FontWeight.w600);
     expect(title.style?.fontSize, 20);
     expect(title.style?.color, const Color(0xFF183153));
@@ -126,9 +121,6 @@ void main() {
     await tester.pumpWidget(
       MultiProvider(
         providers: [
-          ChangeNotifierProvider<I18nProvider>(
-            create: (_) => _FakeI18nProvider(),
-          ),
           ChangeNotifierProvider<ThemeProvider>(
             create: (_) => _FakeThemeProvider(),
           ),

@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:anisphere/modules/noyau/widgets/more_menu.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
 import '../../test_config.dart';
 
 void main() {
@@ -11,11 +10,8 @@ void main() {
   });
   testWidgets('shows menu items when tapped', (tester) async {
     await tester.pumpWidget(
-      MaterialApp(
-        supportedLocales: AppLocalizations.supportedLocales,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        locale: const Locale('fr'),
-        home: const Scaffold(body: MoreMenuButton()),
+      const MaterialApp(
+        home: Scaffold(body: MoreMenuButton()),
       ),
     );
     await tester.tap(find.byType(MoreMenuButton));

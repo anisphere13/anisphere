@@ -7,11 +7,9 @@ import '../services/backup_service.dart';
 import '../providers/user_provider.dart';
 import '../services/animal_service.dart';
 import '../providers/theme_provider.dart';
-import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
 import 'feedback_settings_screen.dart';
 import '../providers/payment_provider.dart';
 import 'iap_screen.dart';
-import '../i18n/language_selector_widget.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -65,11 +63,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     if (success) {
       await _loadLastBackup();
       messenger.showSnackBar(
-        SnackBar(content: Text(AppLocalizations.of(context)!.backup_success)),
+        const SnackBar(content: Text('Sauvegarde effectuée avec succès.')),
       );
     } else {
       messenger.showSnackBar(
-        SnackBar(content: Text(AppLocalizations.of(context)!.backup_error)),
+        const SnackBar(content: Text('Erreur lors de la sauvegarde.')),
       );
     }
   }
@@ -82,11 +80,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final success = await backupService.restoreBackup(user.id);
     if (success) {
       messenger.showSnackBar(
-        SnackBar(content: Text(AppLocalizations.of(context)!.restore_success)),
+        const SnackBar(content: Text('Restauration réussie.')),
       );
     } else {
       messenger.showSnackBar(
-        SnackBar(content: Text(AppLocalizations.of(context)!.restore_error)),
+        const SnackBar(content: Text('Erreur lors de la restauration.')),
       );
     }
   }
@@ -101,9 +99,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final t = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: Text(t.settings_title)),
+      appBar: AppBar(title: const Text('Paramètres')),
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [
@@ -115,11 +112,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
             value: darkMode,
             onChanged: (val) => _updatePreference("dark_mode", val),
           ),
-          ListTile(
-            leading: const Icon(Icons.language, color: Color(0xFF183153)),
-            title: const Text('Langue'),
-            trailing: const LanguageSelectorWidget(),
-          ),
+          // Language selection disabled temporarily
+          // ListTile(
+          //   leading: const Icon(Icons.language, color: Color(0xFF183153)),
+          //   title: const Text('Langue'),
+          //   trailing: const LanguageSelectorWidget(),
+          // ),
           const Divider(),
           const Text("Intelligence Artificielle", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
           const SizedBox(height: 8),

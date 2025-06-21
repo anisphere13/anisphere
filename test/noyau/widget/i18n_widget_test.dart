@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
 import '../../test_config.dart';
 
 void main() {
@@ -8,25 +7,15 @@ void main() {
     await initTestEnv();
   });
 
-  testWidgets('renders translated title', (tester) async {
+  testWidgets('renders french title', (tester) async {
     await tester.pumpWidget(
-      MaterialApp(
-        locale: const Locale('fr'),
-        supportedLocales: AppLocalizations.supportedLocales,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        home: Builder(
-          builder: (context) => Text(
-            AppLocalizations.of(context)!.home_title,
-            textDirection: TextDirection.ltr,
-          ),
-        ),
+      const MaterialApp(
+        home: Text('Maison', textDirection: TextDirection.ltr),
       ),
     );
 
     await tester.pumpAndSettle();
 
-    final context = tester.element(find.byType(Text));
-    final expected = AppLocalizations.of(context)!.home_title;
-    expect(find.text(expected), findsOneWidget);
+    expect(find.text('Maison'), findsOneWidget);
   });
 }

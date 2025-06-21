@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
 import 'package:anisphere/modules/noyau/providers/photo_provider.dart';
 import 'package:anisphere/modules/noyau/services/local_storage_service.dart';
-import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import '../services/identity_service.dart';
 import '../models/identity_model.dart';
@@ -53,15 +52,16 @@ class _IdentityScreenState extends State<IdentityScreen> {
     final done = await LocalStorageService.getBool('identity_onboarding_done');
     if (!done) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        final t = AppLocalizations.of(context)!;
+        const tConfirm = 'Confirmer';
+        const onboardingMsg = "G\u00E9rez l'identit\u00E9 de votre animal ici. Glissez pour changer d'animal.";
         showDialog(
           context: context,
           builder: (_) => AlertDialog(
-            content: Text(t.identity_onboarding_message),
+            content: Text(onboardingMsg),
             actions: [
               TextButton(
                 onPressed: () => Navigator.of(context).pop(),
-                child: Text(t.confirm),
+                child: const Text(tConfirm),
               ),
             ],
           ),
@@ -96,16 +96,15 @@ class _IdentityScreenState extends State<IdentityScreen> {
     if (!mounted) return;
 
     messenger.showSnackBar(
-      SnackBar(content: Text(AppLocalizations.of(context)!.identity_updated)),
+      const SnackBar(content: Text('Identit\u00E9 mise \u00E0 jour')),
     );
 
     setState(() => identity = updated);
   }
 
   Future<void> _importICad() async {
-    final t = AppLocalizations.of(context)!;
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('${t.import_icad}...')),
+      const SnackBar(content: Text('Import I-CAD express...')),
     );
     final fetched =
         await widget.service.fetchFromFirestore(widget.animals[_currentIndex].id);
@@ -119,10 +118,15 @@ class _IdentityScreenState extends State<IdentityScreen> {
   Widget build(BuildContext context) {
     if (loading) return const Center(child: CircularProgressIndicator());
 
-    final t = AppLocalizations.of(context)!;
+    const badgeState = 'Badge';
+    const confirm = 'Confirmer';
+    const cancel = 'Annuler';
+    const microchipLabel = 'Num\u00E9ro de puce';
+    const statusLabel = 'Statut';
+    const timelinePhotos = 'Photos chronologiques';
 
     return Scaffold(
-      appBar: AppBar(title: Text(t.identity_screen_title)),
+      appBar: AppBar(title: const Text('Identit\u00E9')),
       body: PageView.builder(
         controller: _pageController,
         onPageChanged: (i) {
@@ -149,7 +153,7 @@ class _IdentityScreenState extends State<IdentityScreen> {
                           score: identity?.verifiedByIA == true ? 100 : 50),
                       const SizedBox(height: 8),
                       Text(
-                          '${t.badge_state}: ${identity?.verifiedByIA == true ? t.confirm : t.cancel}'),
+                          '${badgeState}: ${identity?.verifiedByIA == true ? confirm : cancel}'),
                       const SizedBox(height: 12),
                       IdentityBreederSection(
                           genealogy:
@@ -157,14 +161,14 @@ class _IdentityScreenState extends State<IdentityScreen> {
                       const SizedBox(height: 12),
                       TextField(
                         controller: microchipController,
-                        decoration: InputDecoration(labelText: t.microchip_label),
+                        decoration: const InputDecoration(labelText: microchipLabel),
                       ),
                       TextField(
                         controller: statusController,
-                        decoration: InputDecoration(labelText: t.status_label),
+                        decoration: const InputDecoration(labelText: statusLabel),
                       ),
                       const SizedBox(height: 8),
-                      Text(t.timeline_photos,
+                      Text(timelinePhotos,
                           style: Theme.of(context).textTheme.titleMedium),
                       const SizedBox(height: 4),
                       SizedBox(
@@ -193,10 +197,10 @@ class _IdentityScreenState extends State<IdentityScreen> {
                       ),
                       const SizedBox(height: 20),
                       ElevatedButton(
-                          onPressed: _save, child: Text(t.save_button)),
+                          onPressed: _save, child: const Text('Enregistrer')),
                       const SizedBox(height: 8),
                       ElevatedButton(
-                          onPressed: _importICad, child: Text(t.import_icad)),
+                          onPressed: _importICad, child: const Text('Import I-CAD express')),
                     ],
                   ),
                 );

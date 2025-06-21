@@ -1,6 +1,8 @@
+// Service retained for potential future internationalization logic.
 import 'package:flutter/material.dart';
 import '../services/local_storage_service.dart';
 
+/// Utility class to persist the selected locale.
 class I18nService {
   static const _key = 'locale';
 

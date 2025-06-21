@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import '../i18n/app_localizations.dart';
 import 'user_edit_screen.dart';
 
 class UserProfileScreen extends StatelessWidget {
@@ -83,9 +82,8 @@ class UserProfileScreen extends StatelessWidget {
                   subtitle: "Télécharger un fichier complet de vos données.",
                   action: () {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content:
-                            Text(AppLocalizations.of(context)!.export_feature_coming),
+                      const SnackBar(
+                        content: Text('Fonction d\'export bientôt disponible'),
                       ),
                     );
                   },
@@ -97,9 +95,8 @@ class UserProfileScreen extends StatelessWidget {
                   subtitle: "Configurer vos préférences de confidentialité.",
                   action: () {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(AppLocalizations.of(context)!
-                            .privacy_settings_coming),
+                      const SnackBar(
+                        content: Text('Paramètres de confidentialité bientôt disponibles'),
                       ),
                     );
                   },
@@ -111,8 +108,8 @@ class UserProfileScreen extends StatelessWidget {
                   subtitle: "Voir les statistiques détaillées d'utilisation.",
                   action: () {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(AppLocalizations.of(context)!.stats_coming),
+                      const SnackBar(
+                        content: Text('Statistiques bientôt disponibles'),
                       ),
                     );
                   },
@@ -140,7 +137,7 @@ class UserProfileScreen extends StatelessWidget {
           Center(
             child: ElevatedButton.icon(
               icon: const Icon(Icons.logout),
-              label: Text(AppLocalizations.of(context)!.logout),
+              label: const Text('Se déconnecter'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF183153),
                 foregroundColor: Colors.white,

@@ -1,7 +1,6 @@
 // Copilot Prompt : MainScreen avec navigation sécurisée et IAScheduler.
 // Comporte 4 onglets dynamiques.
 import 'package:flutter/material.dart';
-import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'home_screen.dart';
 import 'share_screen.dart';
@@ -82,8 +81,8 @@ class MainScreenState extends State<MainScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Text(
-          AppLocalizations.of(context)?.mainScreenTitle ?? 'Home',
+        title: const Text(
+          'Maison',
           style: const TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 20,
@@ -143,19 +142,19 @@ class MainScreenState extends State<MainScreen> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: const Icon(Icons.home),
-            label: AppLocalizations.of(context)?.home_title ?? 'Accueil',
+            label: 'Maison',
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.share),
-            label: AppLocalizations.of(context)?.share_title ?? 'Partage',
+            label: 'Partage',
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.apps),
-            label: AppLocalizations.of(context)?.modules_title ?? 'Modules',
+            label: 'Modules',
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.pets),
-            label: AppLocalizations.of(context)?.myAnimals_title ?? 'Mes Animaux',
+            label: 'Mes Animaux',
           ),
         ],
         currentIndex: _selectedIndex,

@@ -7,7 +7,6 @@
 import 'package:anisphere/modules/noyau/services/modules_service.dart';
 import 'package:anisphere/modules/noyau/services/animal_service.dart';
 import 'package:anisphere/modules/noyau/logic/ia_context.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
 
 class ModuleSummary {
   final String moduleName;
@@ -26,12 +25,10 @@ class ModuleSummary {
 class ModulesSummaryService {
   final AnimalService animalService;
   final IAContext context;
-  final AppLocalizations l10n;
 
   ModulesSummaryService({
     required this.animalService,
     required this.context,
-    required this.l10n,
   });
 
   /// 📦 Récupère les résumés IA pour les modules actifs.
@@ -51,8 +48,8 @@ class ModulesSummaryService {
               ModuleSummary(
                 moduleName: "Santé",
                 summary: animals.isEmpty
-                    ? l10n.noHealthTracking
-                    : "${animals.length} ${l10n.healthTrackingSummary}",
+                    ? 'Aucun suivi de santé en cours'
+                    : "${animals.length} animaux suivis en santé",
                 icon: "🩺",
                 isPremium: false,
               ),
@@ -64,8 +61,8 @@ class ModulesSummaryService {
               ModuleSummary(
                 moduleName: "Éducation",
                 summary: context.animalCount == 0
-                    ? l10n.noTrainingStarted
-                    : "${context.animalCount} ${l10n.trainingInProgress}",
+                    ? 'Aucun apprentissage lancé'
+                    : "${context.animalCount} animaux en apprentissage",
                 icon: "📚",
                 isPremium: false,
               ),
@@ -77,8 +74,8 @@ class ModulesSummaryService {
               ModuleSummary(
                 moduleName: "Dressage",
                 summary: context.hasAnimals
-                    ? "${l10n.trainingAvailableFor} ${context.animalCount}"
-                    : l10n.noAnimalForTraining,
+                    ? "Dressage disponible pour ${context.animalCount}"
+                    : 'Aucun animal enregistré pour le dressage',
                 icon: "🎯",
                 isPremium: true,
               ),
@@ -88,10 +85,10 @@ class ModulesSummaryService {
           case "Identité":
             summaries.add(
               ModuleSummary(
-                moduleName: l10n.identityModuleTitle,
+                moduleName: 'Identité',
                 summary: context.animalCount == 0
-                    ? l10n.identityModuleDescription
-                    : "${context.animalCount} ${l10n.identitiesRegistered}",
+                    ? "Gérer l'identité de l'animal"
+                    : "${context.animalCount} identités enregistrées",
                 icon: "🆔",
                 isPremium: false,
               ),
@@ -103,7 +100,7 @@ class ModulesSummaryService {
             summaries.add(
               ModuleSummary(
                 moduleName: module.name,
-                summary: l10n.aiSummaryUndefined,
+                summary: 'Résumé IA non défini',
                 icon: "✨",
                 isPremium: false,
               ),
@@ -119,7 +116,7 @@ class ModulesSummaryService {
   Future<String> generateSummaryText() async {
     final summaries = await generateSummaries();
     if (summaries.isEmpty) {
-      return l10n.noActiveModule;
+      return 'Aucun module actif';
     }
     return summaries
         .map((s) => '${s.moduleName}: ${s.summary}')

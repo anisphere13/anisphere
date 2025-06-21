@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
 import '../models/identity_model.dart';
 
 /// Widget displaying main identity information.
@@ -9,7 +8,7 @@ class IdentitySummaryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    const title = 'Identité';
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -18,15 +17,15 @@ class IdentitySummaryWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(l10n.identity_summary_title,
+            Text(title,
                 style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(height: 8),
             if (identity.microchipNumber != null)
-              _row(l10n.microchip_number, identity.microchipNumber!),
+              _row('Numéro de puce', identity.microchipNumber!),
             if (identity.status != null)
-              _row(l10n.status, identity.status!),
+              _row('Statut', identity.status!),
             if (identity.legalStatus != null)
-              _row(l10n.legal_status, identity.legalStatus!),
+              _row('Statut juridique', identity.legalStatus!),
           ],
         ),
       ),

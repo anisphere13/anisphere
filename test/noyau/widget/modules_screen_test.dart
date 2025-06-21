@@ -26,11 +26,8 @@ void main() {
   testWidgets('opens IdentityScreen when identite module tapped', (tester) async {
     await ModulesService.activate('identite');
     await tester.pumpWidget(
-      MaterialApp(
-        supportedLocales: AppLocalizations.supportedLocales,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        locale: const Locale('fr'),
-        home: const ModulesScreen(),
+      const MaterialApp(
+        home: ModulesScreen(),
       ),
     );
 

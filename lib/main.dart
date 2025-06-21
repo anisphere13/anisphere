@@ -37,8 +37,6 @@ import 'package:anisphere/modules/noyau/services/offline_photo_queue.dart'
 import 'package:anisphere/modules/noyau/models/share_history_model.dart';
 import 'package:anisphere/modules/noyau/providers/feedback_options_provider.dart';
 import 'package:anisphere/modules/noyau/providers/payment_provider.dart';
-import 'package:anisphere/modules/noyau/i18n/i18n_provider.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -117,7 +115,6 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => I18nProvider()..load()),
         ChangeNotifierProvider(
           create: (_) => UserProvider(userService, authService),
         ),
@@ -157,27 +154,13 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     final user = context.watch<UserProvider>().user;
-    final locale =
-        context.watch<I18nProvider?>()?.locale ?? const Locale('en');
     final mode =
         context.watch<ThemeProvider?>()?.themeMode ?? ThemeMode.light; // TODO: ajouter test
     final home = user == null ? const SplashScreen() : const MainScreen();
     return MaterialApp(
       navigatorKey: NavigationService.navigatorKey,
-      title: AppLocalizations.of(context)?.appTitle ?? 'AniSphère',
-      locale: locale,
-      supportedLocales: AppLocalizations.supportedLocales,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      localeResolutionCallback:
-          (Locale? locale, Iterable<Locale> supportedLocales) {
-        if (locale == null) return const Locale('en');
-        for (final supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale.languageCode) {
-            return supportedLocale;
-          }
-        }
-        return const Locale('en');
-      },
+      title: 'AniSphère',
+      locale: const Locale('fr'),
       debugShowCheckedModeBanner: false,
       theme: appTheme,
       darkTheme: darkTheme,
