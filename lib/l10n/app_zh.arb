@@ -29,7 +29,6 @@
   ,"save_button": "Save"
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
-<<<<<<< HEAD
   ,"export_feature_coming": "导出功能即将推出。"
   ,"privacy_settings_coming": "隐私设置即将推出。"
   ,"stats_coming": "统计即将推出。"
@@ -46,11 +45,15 @@
   ,"restore_success": "恢复完成。"
   ,"restore_error": "恢复失败。"
   ,"qr_scanned": "扫描到的QR：{result}"
-=======
-  ,"settings_title": "Settings"
-  ,"backup_success": "Backup completed successfully."
-  ,"backup_error": "Error during backup."
-  ,"restore_success": "Restore successful."
-  ,"restore_error": "Error during restore."
->>>>>>> codex/mettre-à-jour-docs/suivi_noyau.md
+  ,"ai_score": "AI得分"
+  ,"breeder_name": "繁育者姓名"
+  ,"breeder_email": "繁育者邮箱"
+  ,"breeder_phone": "繁育者电话"
+  ,"onboarding_title": "欢迎使用AniSphère"
+  ,"onboarding_subtitle": "让我们设置您的动物"
+  ,"onboarding_skip": "跳过"
+  ,"onboarding_next": "下一步"
+  ,"duplicate_animal_warning": "动物已存在"
+  ,"duplicate_photo_warning": "照片已存在"
+  ,"photo_timeline_title": "照片时间线"
 }
