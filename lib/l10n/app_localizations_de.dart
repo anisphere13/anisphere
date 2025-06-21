@@ -100,6 +100,73 @@ class AppLocalizationsDe extends AppLocalizations {
   String get identityModuleDescription => 'Manage your animal\'s identity';
 
   @override
+  String get settings_title => 'Settings';
+
+  @override
+  String get backup_success => 'Backup completed successfully.';
+
+  @override
+  String get backup_error => 'Error during backup.';
+
+  @override
+  String get restore_success => 'Restore successful.';
+
+  @override
+  String get restore_error => 'Error during restore.';
+
+  @override
+  String get ai_score => 'AI Score';
+
+  @override
+  String get badge_state => 'Badge';
+
+  @override
+  String get timeline_photos => 'Timeline photos';
+
+  @override
+  String get import_icad => 'Express I-CAD import';
+
+  @override
+  String get import_pdf => 'Import PDF';
+
+  @override
+  String get duplicate_alert => 'Possible duplicate detected';
+
+  @override
+  String get identity_onboarding_message =>
+      'Manage your animal identity here. Swipe to change animal.';
+
+  @override
+  String get breeder_name => 'Breeder name';
+
+  @override
+  String get breeder_email => 'Breeder email';
+
+  @override
+  String get breeder_phone => 'Breeder phone';
+
+  @override
+  String get onboarding_title => 'Welcome to AniSphäre';
+
+  @override
+  String get onboarding_subtitle => 'Let\'s set up your animal';
+
+  @override
+  String get onboarding_skip => 'Skip';
+
+  @override
+  String get onboarding_next => 'Next';
+
+  @override
+  String get duplicate_animal_warning => 'Animal already exists';
+
+  @override
+  String get duplicate_photo_warning => 'Photo already exists';
+
+  @override
+  String get photo_timeline_title => 'Photo Timeline';
+
+  @override
   String get identitiesRegistered => 'registrierte Identitäten';
 
   @override
@@ -125,19 +192,4 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get noActiveModule => 'Kein aktives Modul';
-
-  @override
-  String get settings_title => 'Settings';
-
-  @override
-  String get backup_success => 'Backup completed successfully.';
-
-  @override
-  String get backup_error => 'Error during backup.';
-
-  @override
-  String get restore_success => 'Restore successful.';
-
-  @override
-  String get restore_error => 'Error during restore.';
 }

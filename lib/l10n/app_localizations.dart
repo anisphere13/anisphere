@@ -294,6 +294,138 @@ abstract class AppLocalizations {
   /// **'Manage your animal\'s identity'**
   String get identityModuleDescription;
 
+  /// No description provided for @settings_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings_title;
+
+  /// No description provided for @backup_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup completed successfully.'**
+  String get backup_success;
+
+  /// No description provided for @backup_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error during backup.'**
+  String get backup_error;
+
+  /// No description provided for @restore_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore successful.'**
+  String get restore_success;
+
+  /// No description provided for @restore_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error during restore.'**
+  String get restore_error;
+
+  /// No description provided for @ai_score.
+  ///
+  /// In en, this message translates to:
+  /// **'AI score'**
+  String get ai_score;
+
+  /// No description provided for @badge_state.
+  ///
+  /// In en, this message translates to:
+  /// **'Badge'**
+  String get badge_state;
+
+  /// No description provided for @timeline_photos.
+  ///
+  /// In en, this message translates to:
+  /// **'Timeline photos'**
+  String get timeline_photos;
+
+  /// No description provided for @import_icad.
+  ///
+  /// In en, this message translates to:
+  /// **'Express I-CAD import'**
+  String get import_icad;
+
+  /// No description provided for @import_pdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Import PDF'**
+  String get import_pdf;
+
+  /// No description provided for @duplicate_alert.
+  ///
+  /// In en, this message translates to:
+  /// **'Possible duplicate detected'**
+  String get duplicate_alert;
+
+  /// No description provided for @identity_onboarding_message.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage your animal identity here. Swipe to change animal.'**
+  String get identity_onboarding_message;
+
+  /// No description provided for @breeder_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Breeder name'**
+  String get breeder_name;
+
+  /// No description provided for @breeder_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Breeder email'**
+  String get breeder_email;
+
+  /// No description provided for @breeder_phone.
+  ///
+  /// In en, this message translates to:
+  /// **'Breeder phone'**
+  String get breeder_phone;
+
+  /// No description provided for @onboarding_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to AniSphère'**
+  String get onboarding_title;
+
+  /// No description provided for @onboarding_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s set up your animal'**
+  String get onboarding_subtitle;
+
+  /// No description provided for @onboarding_skip.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get onboarding_skip;
+
+  /// No description provided for @onboarding_next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get onboarding_next;
+
+  /// No description provided for @duplicate_animal_warning.
+  ///
+  /// In en, this message translates to:
+  /// **'Animal already exists'**
+  String get duplicate_animal_warning;
+
+  /// No description provided for @duplicate_photo_warning.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo already exists'**
+  String get duplicate_photo_warning;
+
+  /// No description provided for @photo_timeline_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo Timeline'**
+  String get photo_timeline_title;
+
   /// No description provided for @identitiesRegistered.
   ///
   /// In en, this message translates to:
@@ -347,123 +479,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No active module'**
   String get noActiveModule;
-
-  /// No description provided for @settings_title.
-  ///
-  /// In en, this message translates to:
-  /// **'Settings'**
-  String get settings_title;
-
-  /// No description provided for @backup_success.
-  ///
-  /// In en, this message translates to:
-  /// **'Backup completed successfully.'**
-  String get backup_success;
-
-  /// No description provided for @backup_error.
-  ///
-  /// In en, this message translates to:
-  /// **'Error during backup.'**
-  String get backup_error;
-
-  /// No description provided for @restore_success.
-  ///
-  /// In en, this message translates to:
-  /// **'Restore successful.'**
-  String get restore_success;
-
-  /// No description provided for @restore_error.
-  ///
-  /// In en, this message translates to:
-  /// **'Error during restore.'**
-  String get restore_error;
-
-  /// No description provided for @ai_score.
-  String get ai_score;
-
-  /// No description provided for @badge_state.
-  String get badge_state;
-
-  /// No description provided for @timeline_photos.
-  String get timeline_photos;
-
-  /// No description provided for @import_icad.
-  String get import_icad;
-
-  /// No description provided for @import_pdf.
-  String get import_pdf;
-
-  /// No description provided for @duplicate_alert.
-  String get duplicate_alert;
-
-  /// No description provided for @identity_onboarding_message.
-  String get identity_onboarding_message;
-
-  /// No description provided for @breeder_name.
-  String get breeder_name;
-
-  /// No description provided for @breeder_email.
-  String get breeder_email;
-
-  /// No description provided for @breeder_phone.
-  String get breeder_phone;
-
-  /// No description provided for @onboarding_title.
-  String get onboarding_title;
-
-  /// No description provided for @onboarding_subtitle.
-  String get onboarding_subtitle;
-
-  /// No description provided for @onboarding_skip.
-  String get onboarding_skip;
-
-  /// No description provided for @onboarding_next.
-  String get onboarding_next;
-
-  /// No description provided for @duplicate_animal_warning.
-  String get duplicate_animal_warning;
-
-  /// No description provided for @duplicate_photo_warning.
-  String get duplicate_photo_warning;
-
-  /// No description provided for @photo_timeline_title.
-  String get photo_timeline_title;
-
-  /// No description provided for @local_share_success.
-  String get local_share_success;
-
-  /// No description provided for @cloud_share_success.
-  String get cloud_share_success;
-
-  /// No description provided for @identity_access_error.
-  String get identity_access_error;
-
-  /// No description provided for @no_animal_available.
-  String get no_animal_available;
-
-  /// No description provided for @no_animal_recorded.
-  String get no_animal_recorded;
-
-  /// No description provided for @save_error.
-  String get save_error;
-
-  /// No description provided for @generic_error.
-  String get generic_error;
-
-  /// No description provided for @ocr_feature_coming.
-  String get ocr_feature_coming;
-
-  /// No description provided for @export_feature_coming.
-  String get export_feature_coming;
-
-  /// No description provided for @qr_scanned.
-  String get qr_scanned;
-
-  /// No description provided for @privacy_settings_coming.
-  String get privacy_settings_coming;
-
-  /// No description provided for @stats_coming.
-  String get stats_coming;
 }
 
 class _AppLocalizationsDelegate

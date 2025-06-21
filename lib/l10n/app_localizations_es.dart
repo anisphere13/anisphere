@@ -100,6 +100,73 @@ class AppLocalizationsEs extends AppLocalizations {
   String get identityModuleDescription => 'Manage your animal\'s identity';
 
   @override
+  String get settings_title => 'Settings';
+
+  @override
+  String get backup_success => 'Backup completed successfully.';
+
+  @override
+  String get backup_error => 'Error during backup.';
+
+  @override
+  String get restore_success => 'Restore successful.';
+
+  @override
+  String get restore_error => 'Error during restore.';
+
+  @override
+  String get ai_score => 'Puntuación IA';
+
+  @override
+  String get badge_state => 'Badge';
+
+  @override
+  String get timeline_photos => 'Timeline photos';
+
+  @override
+  String get import_icad => 'Express I-CAD import';
+
+  @override
+  String get import_pdf => 'Import PDF';
+
+  @override
+  String get duplicate_alert => 'Possible duplicate detected';
+
+  @override
+  String get identity_onboarding_message =>
+      'Manage your animal identity here. Swipe to change animal.';
+
+  @override
+  String get breeder_name => 'Nombre del criador';
+
+  @override
+  String get breeder_email => 'Correo del criador';
+
+  @override
+  String get breeder_phone => 'Teléfono del criador';
+
+  @override
+  String get onboarding_title => 'Bienvenido a AniSphère';
+
+  @override
+  String get onboarding_subtitle => 'Configuremos tu animal';
+
+  @override
+  String get onboarding_skip => 'Saltar';
+
+  @override
+  String get onboarding_next => 'Siguiente';
+
+  @override
+  String get duplicate_animal_warning => 'El animal ya existe';
+
+  @override
+  String get duplicate_photo_warning => 'La foto ya existe';
+
+  @override
+  String get photo_timeline_title => 'Cronología de fotos';
+
+  @override
   String get identitiesRegistered => 'identidades registradas';
 
   @override

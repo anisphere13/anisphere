@@ -100,6 +100,73 @@ class AppLocalizationsFr extends AppLocalizations {
   String get identityModuleDescription => 'Gérer l\'identité de l\'animal';
 
   @override
+  String get settings_title => 'Paramètres';
+
+  @override
+  String get backup_success => 'Sauvegarde effectuée avec succès.';
+
+  @override
+  String get backup_error => 'Erreur lors de la sauvegarde.';
+
+  @override
+  String get restore_success => 'Restauration réussie.';
+
+  @override
+  String get restore_error => 'Erreur lors de la restauration.';
+
+  @override
+  String get ai_score => 'Score IA';
+
+  @override
+  String get badge_state => 'Badge';
+
+  @override
+  String get timeline_photos => 'Photos chronologiques';
+
+  @override
+  String get import_icad => 'Import I-CAD express';
+
+  @override
+  String get import_pdf => 'Importer PDF';
+
+  @override
+  String get duplicate_alert => 'Doublon potentiel détecté';
+
+  @override
+  String get identity_onboarding_message =>
+      'Gérez l\'identité de votre animal ici. Glissez pour changer d\'animal.';
+
+  @override
+  String get breeder_name => 'Nom de l\'éleveur';
+
+  @override
+  String get breeder_email => 'Email de l\'éleveur';
+
+  @override
+  String get breeder_phone => 'Téléphone de l\'éleveur';
+
+  @override
+  String get onboarding_title => 'Bienvenue sur AniSphère';
+
+  @override
+  String get onboarding_subtitle => 'Configurons votre animal';
+
+  @override
+  String get onboarding_skip => 'Passer';
+
+  @override
+  String get onboarding_next => 'Suivant';
+
+  @override
+  String get duplicate_animal_warning => 'L\'animal existe déjà';
+
+  @override
+  String get duplicate_photo_warning => 'La photo existe déjà';
+
+  @override
+  String get photo_timeline_title => 'Timeline photo';
+
+  @override
   String get identitiesRegistered => 'identités enregistrées';
 
   @override
@@ -125,19 +192,4 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get noActiveModule => 'Aucun module actif';
-
-  @override
-  String get settings_title => 'Paramètres';
-
-  @override
-  String get backup_success => 'Sauvegarde effectuée avec succès.';
-
-  @override
-  String get backup_error => 'Erreur lors de la sauvegarde.';
-
-  @override
-  String get restore_success => 'Restauration réussie.';
-
-  @override
-  String get restore_error => 'Erreur lors de la restauration.';
 }

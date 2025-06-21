@@ -99,6 +99,73 @@ class AppLocalizationsZh extends AppLocalizations {
   String get identityModuleDescription => 'Manage your animal\'s identity';
 
   @override
+  String get settings_title => 'Settings';
+
+  @override
+  String get backup_success => '备份成功完成。';
+
+  @override
+  String get backup_error => '备份失败。';
+
+  @override
+  String get restore_success => '恢复完成。';
+
+  @override
+  String get restore_error => '恢复失败。';
+
+  @override
+  String get ai_score => 'AI得分';
+
+  @override
+  String get badge_state => 'Badge';
+
+  @override
+  String get timeline_photos => 'Timeline photos';
+
+  @override
+  String get import_icad => 'Express I-CAD import';
+
+  @override
+  String get import_pdf => 'Import PDF';
+
+  @override
+  String get duplicate_alert => 'Possible duplicate detected';
+
+  @override
+  String get identity_onboarding_message =>
+      'Manage your animal identity here. Swipe to change animal.';
+
+  @override
+  String get breeder_name => '繁育者姓名';
+
+  @override
+  String get breeder_email => '繁育者邮箱';
+
+  @override
+  String get breeder_phone => '繁育者电话';
+
+  @override
+  String get onboarding_title => '欢迎使用AniSphère';
+
+  @override
+  String get onboarding_subtitle => '让我们设置您的动物';
+
+  @override
+  String get onboarding_skip => '跳过';
+
+  @override
+  String get onboarding_next => '下一步';
+
+  @override
+  String get duplicate_animal_warning => '动物已存在';
+
+  @override
+  String get duplicate_photo_warning => '照片已存在';
+
+  @override
+  String get photo_timeline_title => '照片时间线';
+
+  @override
   String get identitiesRegistered => '已登记身份';
 
   @override
@@ -124,19 +191,4 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get noActiveModule => '没有激活的模块';
-
-  @override
-  String get settings_title => 'Settings';
-
-  @override
-  String get backup_success => 'Backup completed successfully.';
-
-  @override
-  String get backup_error => 'Error during backup.';
-
-  @override
-  String get restore_success => 'Restore successful.';
-
-  @override
-  String get restore_error => 'Error during restore.';
 }
