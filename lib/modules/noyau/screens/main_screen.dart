@@ -9,7 +9,6 @@ import 'modules_screen.dart';
 import 'animals_screen.dart';
 import 'settings_screen.dart';
 import 'user_profile_screen.dart';
-import 'login_screen.dart';
 import 'notifications_screen.dart';
 import 'qr_screen.dart';
 import 'support_screen.dart';
@@ -23,15 +22,17 @@ import 'package:anisphere/modules/noyau/services/modules_service.dart';
 import 'package:anisphere/modules/noyau/logic/ia_master.dart';
 import 'package:anisphere/modules/noyau/services/notification_service.dart';
 import 'package:anisphere/modules/noyau/providers/ia_context_provider.dart';
+
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
   @override
   MainScreenState createState() => MainScreenState();
 }
+
 class MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   IAScheduler? _scheduler;
-  static final List<Widget> _pages = <Widget>[ 
+  static final List<Widget> _pages = <Widget>[
     const HomeScreen(),
     const ShareScreen(),
     const ModulesScreen(),
@@ -42,42 +43,17 @@ class MainScreenState extends State<MainScreen> {
       _selectedIndex = index;
     });
   }
-  void _handleMenuSelection(String value) {
-    switch (value) {
-      case 'profile':
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => const UserProfileScreen()),
-        );
-        break;
-      case 'settings':
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => const SettingsScreen()),
-        );
-        break;
-      case 'support':
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => const SupportScreen()),
-        );
-        break;
-      case 'logout':
-        Provider.of<UserProvider>(context, listen: false).signOut();
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (_) => const LoginScreen()),
-        );
-        break;
-    }
-  }
+
   @override
   void initState() {
     super.initState();
     // ⚙️ Planification IA dès que le widget est monté
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final user = Provider.of<UserProvider>(context, listen: false).user;
-      final contextIA = Provider.of<IAContextProvider>(context, listen: false).context;
+      final contextIA = Provider.of<IAContextProvider>(
+        context,
+        listen: false,
+      ).context;
       if (user != null) {
         final executor = IAExecutor(
           iaMaster: IAMaster.instance,
@@ -94,11 +70,13 @@ class MainScreenState extends State<MainScreen> {
       }
     });
   }
+
   @override
   void dispose() {
     _scheduler?.stop();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,15 +109,32 @@ class MainScreenState extends State<MainScreen> {
               );
             },
           ),
-          PopupMenuButton<String>(
-            icon: const Icon(Icons.more_vert, color: Color(0xFF183153)),
-            onSelected: _handleMenuSelection,
-            itemBuilder: (context) => const [
-              PopupMenuItem(value: 'profile', child: Text('Mon Profil')),
-              PopupMenuItem(value: 'settings', child: Text('Paramètres')),
-              PopupMenuItem(value: 'support', child: Text('Support')),
-              PopupMenuItem(value: 'logout', child: Text('Se déconnecter')),
-            ],
+          IconButton(
+            icon: const Icon(Icons.person, color: Color(0xFF183153)),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const UserProfileScreen()),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.settings, color: Color(0xFF183153)),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const SettingsScreen()),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.help_outline, color: Color(0xFF183153)),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const SupportScreen()),
+              );
+            },
           ),
         ],
       ),
