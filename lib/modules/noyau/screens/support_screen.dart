@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../providers/support_provider.dart';
 import '../providers/user_provider.dart';
 import '../models/support_ticket_model.dart';
+import '../widgets/more_menu.dart';
 
 class SupportScreen extends StatefulWidget {
   const SupportScreen({super.key});
@@ -41,7 +42,10 @@ class _SupportScreenState extends State<SupportScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Support')),
+      appBar: AppBar(
+        title: const Text('Support'),
+        actions: const [MoreMenuButton()],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
