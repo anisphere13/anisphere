@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import '../../test_config.dart';
 import 'package:anisphere/modules/noyau/hooks/consent_hooks.dart';
 import 'package:anisphere/modules/noyau/screens/legal_screen.dart';

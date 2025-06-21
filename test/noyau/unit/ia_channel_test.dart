@@ -1,6 +1,5 @@
 // Copilot Prompt : Test automatique généré pour ia_channel.dart (unit)
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import '../../test_config.dart';
 import 'package:anisphere/modules/noyau/logic/ia_channel.dart';
 

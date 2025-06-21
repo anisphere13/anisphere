@@ -1,6 +1,5 @@
 // Copilot Prompt : Test automatique généré pour ia_suggestion_card.dart (widget)
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import '../../test_config.dart';
 
 void main() {

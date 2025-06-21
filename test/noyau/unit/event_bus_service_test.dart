@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import 'package:hive/hive.dart';
 import 'package:anisphere/modules/noyau/services/event_bus_service.dart';
 import 'package:anisphere/modules/noyau/models/event_model.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import 'package:provider/provider.dart';
 import 'package:anisphere/modules/noyau/screens/user_edit_screen.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';

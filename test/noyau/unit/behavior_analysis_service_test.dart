@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import 'package:mockito/mockito.dart';
 import 'package:pedometer/pedometer.dart';
 

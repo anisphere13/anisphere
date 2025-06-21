@@ -1,7 +1,6 @@
 // Test for theme colors
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import 'package:anisphere/theme.dart';
 
 void main() {

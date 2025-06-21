@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import 'package:hive/hive.dart';
 import 'package:anisphere/modules/noyau/services/biometric_auth_service.dart';
 import 'package:anisphere/modules/noyau/models/security_settings_model.dart';

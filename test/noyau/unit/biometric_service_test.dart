@@ -1,6 +1,5 @@
 // Copilot Prompt : Test automatique généré pour biometric_service.dart (unit)
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import '../../test_config.dart';
 import 'package:anisphere/modules/noyau/services/biometric_service.dart';
 import 'package:local_auth/local_auth.dart';
