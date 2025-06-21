@@ -98,4 +98,28 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get identityModuleDescription => 'Manage your animal\'s identity';
+
+  @override
+  String get home => 'Casa';
+
+  @override
+  String get share => 'Condividi';
+
+  @override
+  String get modules => 'Moduli';
+
+  @override
+  String get myAnimals => 'I miei animali';
+
+  @override
+  String get profile => 'Il mio profilo';
+
+  @override
+  String get settings => 'Impostazioni';
+
+  @override
+  String get notifications => 'Notifiche';
+
+  @override
+  String get about => 'Informazioni';
 }

@@ -98,4 +98,28 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get identityModuleDescription => 'Manage your animal\'s identity';
+
+  @override
+  String get home => 'Дом';
+
+  @override
+  String get share => 'Поделиться';
+
+  @override
+  String get modules => 'Модули';
+
+  @override
+  String get myAnimals => 'Мои животные';
+
+  @override
+  String get profile => 'Мой профиль';
+
+  @override
+  String get settings => 'Настройки';
+
+  @override
+  String get notifications => 'Уведомления';
+
+  @override
+  String get about => 'О программе';
 }

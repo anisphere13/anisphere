@@ -97,4 +97,28 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get identityModuleDescription => 'Manage your animal\'s identity';
+
+  @override
+  String get home => '家';
+
+  @override
+  String get share => '共有';
+
+  @override
+  String get modules => 'モジュール';
+
+  @override
+  String get myAnimals => '私の動物';
+
+  @override
+  String get profile => '私のプロフィール';
+
+  @override
+  String get settings => '設定';
+
+  @override
+  String get notifications => '通知';
+
+  @override
+  String get about => '約';
 }

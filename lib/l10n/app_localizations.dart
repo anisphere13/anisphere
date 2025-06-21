@@ -293,6 +293,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Manage your animal\'s identity'**
   String get identityModuleDescription;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @share.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get share;
+
+  /// No description provided for @modules.
+  ///
+  /// In en, this message translates to:
+  /// **'Modules'**
+  String get modules;
+
+  /// No description provided for @myAnimals.
+  ///
+  /// In en, this message translates to:
+  /// **'My Animals'**
+  String get myAnimals;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'My profile'**
+  String get profile;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @notifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notifications;
+
+  /// No description provided for @about.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get about;
 }
 
 class _AppLocalizationsDelegate

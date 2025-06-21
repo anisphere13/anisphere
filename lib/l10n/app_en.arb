@@ -29,4 +29,12 @@
   ,"save_button": "Save"
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
+  ,"home": "Home"
+  ,"share": "Share"
+  ,"modules": "Modules"
+  ,"myAnimals": "My Animals"
+  ,"profile": "My profile"
+  ,"settings": "Settings"
+  ,"notifications": "Notifications"
+  ,"about": "About"
 }

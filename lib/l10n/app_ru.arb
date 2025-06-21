@@ -29,4 +29,12 @@
   ,"save_button": "Save"
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
+  ,"home": "Дом"
+  ,"share": "Поделиться"
+  ,"modules": "Модули"
+  ,"myAnimals": "Мои животные"
+  ,"profile": "Мой профиль"
+  ,"settings": "Настройки"
+  ,"notifications": "Уведомления"
+  ,"about": "О программе"
 }

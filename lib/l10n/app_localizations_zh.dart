@@ -97,4 +97,28 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get identityModuleDescription => 'Manage your animal\'s identity';
+
+  @override
+  String get home => '家';
+
+  @override
+  String get share => '分享';
+
+  @override
+  String get modules => '模块';
+
+  @override
+  String get myAnimals => '我的动物';
+
+  @override
+  String get profile => '我的资料';
+
+  @override
+  String get settings => '设置';
+
+  @override
+  String get notifications => '通知';
+
+  @override
+  String get about => '关于';
 }
