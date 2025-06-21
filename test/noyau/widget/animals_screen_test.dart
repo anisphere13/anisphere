@@ -25,8 +25,12 @@ void main() {
     await tempDir.delete(recursive: true);
   });
 
-  testWidgets('renders without AppBar', (tester) async {
+  testWidgets('shows loading then IA suggestion when no animals', (tester) async {
     await tester.pumpWidget(const MaterialApp(home: AnimalsScreen()));
+
+    // Initial loading indicator
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
+
     await tester.pumpAndSettle();
 
     expect(find.byType(AppBar), findsNothing);
