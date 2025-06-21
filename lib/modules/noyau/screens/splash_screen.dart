@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -48,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF183153), // bleu foncé branding
+      backgroundColor: primaryBlue, // bleu foncé branding
       body: Center(
         child: FadeTransition(
           opacity: _opacityAnimation,

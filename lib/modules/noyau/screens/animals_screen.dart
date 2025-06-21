@@ -6,6 +6,7 @@
 
 
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import 'package:anisphere/modules/noyau/screens/animal_form_screen.dart';
 import 'package:anisphere/modules/noyau/screens/animal_profile_screen.dart';
 import 'package:anisphere/modules/noyau/services/animal_service.dart';
@@ -65,7 +66,7 @@ class _AnimalsScreenState extends State<AnimalsScreen> {
 
         return Scaffold(
           floatingActionButton: FloatingActionButton(
-            backgroundColor: const Color(0xFF183153),
+            backgroundColor: primaryBlue,
             foregroundColor: Colors.white,
             onPressed: () async {
               await Navigator.push(

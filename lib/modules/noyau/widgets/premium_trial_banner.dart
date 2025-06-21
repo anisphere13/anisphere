@@ -23,7 +23,7 @@ class PremiumTrialBanner extends StatelessWidget {
           const Expanded(
             child: Text(
               'Votre chien est maintenant reconnu par AniSphère. Testez gratuitement l’IA complète.',
-              style: TextStyle(color: Color(0xFF183153)),
+              style: TextStyle(color: primaryBlue),
             ),
           ),
           TextButton(

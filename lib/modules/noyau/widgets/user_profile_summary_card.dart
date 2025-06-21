@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../screens/settings_screen.dart';
 import '../models/user_model.dart';
 
@@ -20,7 +21,7 @@ class UserProfileSummaryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     if (!needsUpdate) return const SizedBox.shrink();
     return Card(
-      color: const Color(0xFF183153),
+      color: primaryBlue,
       margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(

@@ -37,7 +37,7 @@ class ImportantNotificationsWidget extends StatelessWidget {
               const Text(
                 'Notifications importantes',
                 style: TextStyle(
-                  color: Color(0xFF183153),
+                  color: primaryBlue,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -47,7 +47,7 @@ class ImportantNotificationsWidget extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 2),
                   child: Text(
                     '• $n',
-                    style: const TextStyle(color: Color(0xFF183153)),
+                    style: const TextStyle(color: primaryBlue),
                   ),
                 ),
             ],

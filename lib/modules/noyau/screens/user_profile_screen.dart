@@ -5,6 +5,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../theme.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'user_edit_screen.dart';
@@ -40,7 +41,7 @@ class UserProfileScreen extends StatelessWidget {
                 .map(
                   (module) => Chip(
                     label: Text(module),
-                    backgroundColor: const Color(0xFFF5F5F5),
+                    backgroundColor: backgroundGray,
                   ),
                 )
                 .toList(),
@@ -139,7 +140,7 @@ class UserProfileScreen extends StatelessWidget {
               icon: const Icon(Icons.logout),
               label: const Text('Se déconnecter'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF183153),
+                backgroundColor: primaryBlue,
                 foregroundColor: Colors.white,
               ),
               onPressed: () async {
@@ -205,7 +206,7 @@ class UserProfileScreen extends StatelessWidget {
     required VoidCallback action,
   }) {
     return ListTile(
-      leading: Icon(icon, color: const Color(0xFF183153)),
+      leading: Icon(icon, color: primaryBlue),
       title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
       subtitle: Text(subtitle),
       trailing: const Icon(Icons.arrow_forward_ios, size: 16),

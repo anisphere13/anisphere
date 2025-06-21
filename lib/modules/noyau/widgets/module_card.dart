@@ -21,7 +21,7 @@ class ModuleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color chipColor = switch (status) {
-      'actif' => const Color(0xFF183153),
+      'actif' => const primaryBlue,
       'disponible' => Colors.grey,
       'premium' => primaryBlue,
       _ => Colors.grey,
@@ -58,7 +58,7 @@ class ModuleCard extends StatelessWidget {
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFF183153),
+                              color: primaryBlue,
                             ),
                           ),
                         ),
@@ -89,7 +89,7 @@ class ModuleCard extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: (status == 'disponible') ? onActivate : null,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF183153),
+                    backgroundColor: primaryBlue,
                     foregroundColor: Colors.white,
                     disabledBackgroundColor: Colors.grey.shade300,
                   ),

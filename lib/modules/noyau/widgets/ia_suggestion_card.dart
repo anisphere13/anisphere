@@ -34,12 +34,12 @@ class IASuggestionCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                Icon(icon, color: const Color(0xFF183153)),
+                Icon(icon, color: primaryBlue),
                 const SizedBox(width: 10),
                 Text(
                   title,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: const Color(0xFF183153),
+                    color: primaryBlue,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

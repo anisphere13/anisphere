@@ -23,14 +23,14 @@ class IAChip extends StatelessWidget {
         label,
         style: const TextStyle(
           fontWeight: FontWeight.w500,
-          color: Color(0xFF183153), // Texte = bleu nuit
+          color: primaryBlue, // Texte = bleu nuit
         ),
       ),
-      avatar: Icon(icon, size: 18, color: const Color(0xFF183153)),
+      avatar: Icon(icon, size: 18, color: primaryBlue),
       backgroundColor: backgroundColor ?? backgroundGray,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
-        side: const BorderSide(color: Color(0xFF183153)), // Bordure bleu nuit
+        side: const BorderSide(color: primaryBlue), // Bordure bleu nuit
       ),
     );
   }

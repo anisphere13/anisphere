@@ -3,6 +3,7 @@
 // Sert au debug, à la maintenance, ou au retour utilisateur avancé.
 // Peut être affiché dans une page "À propos", "Debug", ou panneau IA.
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../logic/ia_logger.dart';
 
 class IALogViewer extends StatefulWidget {
@@ -28,7 +29,7 @@ class _IALogViewerState extends State<IALogViewer> {
       title: Text(
         "🧠 Journaux IA",
         style: Theme.of(context).textTheme.titleMedium?.copyWith(
-          color: const Color(0xFF183153),
+          color: primaryBlue,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -53,7 +54,7 @@ class _IALogViewerState extends State<IALogViewer> {
                 dense: true,
                 leading: const Icon(
                   Icons.chevron_right,
-                  color: Color(0xFF183153),
+                  color: primaryBlue,
                 ),
                 title: Text(logs[index]),
               ),
