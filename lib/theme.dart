@@ -1,19 +1,12 @@
 import 'package:flutter/material.dart';
 
-<<<<<<< HEAD
-// TODO: ajouter test
-=======
 const Color primaryBlue = Color(0xFF183153);
-const Color backgroundGray = Color(0xFFF5F5F5); // ✅ gris clair Samsung Health
->>>>>>> codex/modifier-backgroundgray-et-références-de-couleur
-
-const Color primaryBlue = Color(0xFF183153);
-const Color backgroundGray = Color(0xFFF5F5F5); // ✅ gris clair Samsung Health
+const Color backgroundGray = Color(0xFFF5F5F5); // light gray like Samsung Health
 
 final ThemeData appTheme = ThemeData(
   brightness: Brightness.light,
-  scaffoldBackgroundColor: backgroundGray, // ✅ fond global de tous les écrans
-  cardColor: Colors.white, // ✅ toutes les Card par défaut
+  scaffoldBackgroundColor: backgroundGray, // global background color
+  cardColor: Colors.white, // default color for cards
   primaryColor: primaryBlue,
   appBarTheme: const AppBarTheme(
     backgroundColor: primaryBlue,
