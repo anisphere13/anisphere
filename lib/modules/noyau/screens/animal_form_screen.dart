@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:anisphere/l10n/app_localizations.dart';
 import 'dart:io';
 import 'package:uuid/uuid.dart';
 import 'package:provider/provider.dart';
@@ -71,18 +72,19 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
 
       final success = await _animalService.saveAnimal(newAnimal);
 
-      if (success && mounted) {
-        navigator.pop();
-      } else {
-        messenger.showSnackBar(
-          const SnackBar(content: Text("Erreur lors de l’enregistrement.")),
-        );
-      }
+        if (success && mounted) {
+          navigator.pop();
+        } else {
+          messenger.showSnackBar(
+            SnackBar(
+                content: Text(AppLocalizations.of(context)!.save_error)),
+          );
+        }
     } catch (e) {
       debugPrint("❌ Erreur _saveAnimal : $e");
-      messenger.showSnackBar(
-        const SnackBar(content: Text("Une erreur est survenue.")),
-      );
+        messenger.showSnackBar(
+          SnackBar(content: Text(AppLocalizations.of(context)!.generic_error)),
+        );
     }
   }
 
@@ -113,11 +115,13 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
                   backgroundColor: const Color(0xFFEDE7F6),
                   foregroundColor: const Color(0xFF4B2991),
                 ),
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text("Fonction OCR à venir..."),
-                  ));
-                },
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                          content: Text(AppLocalizations.of(context)!
+                              .ocr_feature_coming)),
+                    );
+                  },
               ),
               const SizedBox(height: 24),
               ElevatedButton.icon(

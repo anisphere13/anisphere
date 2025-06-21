@@ -8,6 +8,7 @@ import '../providers/user_provider.dart';
 import '../services/animal_service.dart';
 import '../providers/theme_provider.dart';
 import 'feedback_settings_screen.dart';
+import 'package:anisphere/l10n/app_localizations.dart';
 import '../providers/payment_provider.dart';
 import 'iap_screen.dart';
 import '../i18n/language_selector_widget.dart';
@@ -64,11 +65,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
     if (success) {
       await _loadLastBackup();
       messenger.showSnackBar(
-        const SnackBar(content: Text("Sauvegarde effectuée avec succès.")),
+        SnackBar(
+            content: Text(AppLocalizations.of(context)!.backup_success)),
       );
     } else {
       messenger.showSnackBar(
-        const SnackBar(content: Text("Erreur lors de la sauvegarde.")),
+        SnackBar(content: Text(AppLocalizations.of(context)!.backup_error)),
       );
     }
   }
@@ -81,11 +83,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final success = await backupService.restoreBackup(user.id);
     if (success) {
       messenger.showSnackBar(
-        const SnackBar(content: Text("Restauration réussie.")),
+        SnackBar(content: Text(AppLocalizations.of(context)!.restore_success)),
       );
     } else {
       messenger.showSnackBar(
-        const SnackBar(content: Text("Erreur lors de la restauration.")),
+        SnackBar(content: Text(AppLocalizations.of(context)!.restore_error)),
       );
     }
   }

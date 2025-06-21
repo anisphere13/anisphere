@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 
 import 'package:anisphere/modules/noyau/services/qr_service.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
+import 'package:anisphere/l10n/app_localizations.dart';
 
 class QRScreen extends StatefulWidget {
   const QRScreen({super.key});
@@ -31,7 +32,10 @@ class _QRScreenState extends State<QRScreen> with SingleTickerProviderStateMixin
     if (result != _scanResult) {
       setState(() => _scanResult = result);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("QR scanné : $result")),
+        SnackBar(
+          content:
+              Text(AppLocalizations.of(context)!.qr_scanned.replaceFirst('{result}', result)),
+        ),
       );
       // Ici : synchronisation IA ou traitement personnalisé
     }
