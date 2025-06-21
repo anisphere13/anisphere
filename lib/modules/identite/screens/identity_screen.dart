@@ -152,8 +152,7 @@ class _IdentityScreenState extends State<IdentityScreen> {
                       IdentityScoreWidget(
                           score: identity?.verifiedByIA == true ? 100 : 50),
                       const SizedBox(height: 8),
-                      Text(
-                          '${badgeState}: ${identity?.verifiedByIA == true ? confirm : cancel}'),
+                      Text('$badgeState: ${identity?.verifiedByIA == true ? confirm : cancel}'),
                       const SizedBox(height: 12),
                       IdentityBreederSection(
                           genealogy:
