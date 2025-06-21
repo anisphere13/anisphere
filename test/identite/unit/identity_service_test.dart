@@ -13,7 +13,7 @@ void main() {
   });
   test('saveIdentityLocally should store model by animalId', () async {
     final mockBox = MockBox();
-    final service = IdentityService(localBox: mockBox);
+    final service = IdentityService(localBox: mockBox, signatureSecret: 'secret');
 
     final identity = IdentityModel(animalId: 'abc123');
 
@@ -24,7 +24,7 @@ void main() {
 
   test('computeCompletionScore stores aiScore in model', () async {
     final mockBox = MockBox();
-    final service = IdentityService(localBox: mockBox);
+    final service = IdentityService(localBox: mockBox, signatureSecret: 'secret');
     final model = IdentityModel(
       animalId: 'a1',
       microchipNumber: '1',
@@ -50,7 +50,7 @@ void main() {
       microchipNumber: 'dup',
     );
     when(mockBox.values).thenReturn([existing]);
-    final service = IdentityService(localBox: mockBox);
+    final service = IdentityService(localBox: mockBox, signatureSecret: 'secret');
     final model = IdentityModel(animalId: 'new', microchipNumber: 'dup');
     when(mockBox.put(any, any)).thenAnswer((_) async {});
 

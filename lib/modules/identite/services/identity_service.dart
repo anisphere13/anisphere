@@ -10,6 +10,7 @@ import '../models/genealogy_model.dart';
 import '../../noyau/services/storage_optimizer.dart';
 import 'identity_signature_service.dart';
 import 'dart:typed_data';
+import 'dart:convert';
 
 /// Service IdentityService pour AniSphère.
 /// Gère l’enregistrement, la mise à jour, l’historique et la synchronisation locale/cloud
@@ -19,11 +20,13 @@ class IdentityService {
   final Box<IdentityModel> localBox;
   final Box<GenealogyModel>? genealogyBox;
   final FirebaseFirestore firestore;
+  final String signatureSecret;
 
   IdentityService({
     required this.localBox,
     this.genealogyBox,
     FirebaseFirestore? firestoreInstance,
+    required this.signatureSecret,
   }) : firestore = firestoreInstance ?? FirebaseFirestore.instance;
 
   Future<void> saveIdentityLocally(IdentityModel model) async {
@@ -166,8 +169,12 @@ class IdentityService {
   }
 
   Future<Uint8List> signIdentityPdf(Uint8List pdfData, String signerId) async {
-    final signer = IdentitySignatureService();
-    return signer.signPdf(pdfData, signerId);
+    final signer = IdentitySignatureService(signatureSecret);
+    final dataToSign =
+        Uint8List.fromList([...pdfData, ...utf8.encode(signerId)]);
+    final sig = signer.sign(dataToSign);
+    final appendix = utf8.encode('\nSignedBy:$signerId:$sig');
+    return Uint8List.fromList([...pdfData, ...appendix]);
   }
 
   Future<String?> _computePhotoHash(String? path) async {

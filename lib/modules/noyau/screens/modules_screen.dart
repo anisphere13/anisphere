@@ -67,7 +67,8 @@ class _ModulesScreenState extends State<ModulesScreen> {
       }
       final animal = box.values.first;
       final identityBox = Hive.box<IdentityModel>('identityBox');
-      final identityService = IdentityService(localBox: identityBox);
+      final identityService =
+          IdentityService(localBox: identityBox, signatureSecret: 'secret');
       if (!mounted) return;
       Navigator.of(context).push(
         MaterialPageRoute(
@@ -134,7 +135,8 @@ class _ModulesScreenState extends State<ModulesScreen> {
       }
 
       final identityBox = Hive.box<IdentityModel>('identityBox');
-      final identityService = IdentityService(localBox: identityBox);
+      final identityService =
+          IdentityService(localBox: identityBox, signatureSecret: 'secret');
 
       if (!mounted) return;
       Navigator.of(context).push(
