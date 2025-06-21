@@ -33,7 +33,7 @@ class UserProfileSummaryCard extends StatelessWidget {
                 children: [
                   const Text(
                     'Profil incomplet',
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
