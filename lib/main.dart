@@ -1,4 +1,4 @@
-// Copilot Prompt : Entrée principale AniSphère.
+// Copilot Prompt : Entree principale AniSphere.
 // Initialise Firebase, Hive avec adapters IA, providers, IA, et lance l'app.
 
 import 'package:flutter/material.dart';
@@ -58,7 +58,7 @@ void main() async {
   }
   try {
     await Hive.initFlutter();
-    // Enregistrement des adapters Hive nécessaires
+    // Enregistrement des adapters Hive necessaires
     Hive.registerAdapter(SyncTaskAdapter());
     Hive.registerAdapter(IAMetricAdapter());
     Hive.registerAdapter(SupportTicketTypeAdapter());
@@ -90,7 +90,7 @@ void main() async {
   }());
   await NotificationService.initialize();
   CloudNotificationListener.initialize();
-  // Demande de permission notifications Android (intégré proprement ici)
+  // Demande de permission notifications Android (integre proprement ici)
   final plugin = FlutterLocalNotificationsPlugin();
   final androidPlugin = plugin
       .resolvePlatformSpecificImplementation<
