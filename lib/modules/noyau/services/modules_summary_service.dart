@@ -51,8 +51,8 @@ class ModulesSummaryService {
               ModuleSummary(
                 moduleName: "Santé",
                 summary: animals.isEmpty
-                    ? "Aucun suivi de santé en cours"
-                    : "${animals.length} animaux suivis en santé",
+                    ? l10n.noHealthTracking
+                    : "${animals.length} ${l10n.healthTrackingSummary}",
                 icon: "🩺",
                 isPremium: false,
               ),
@@ -64,8 +64,8 @@ class ModulesSummaryService {
               ModuleSummary(
                 moduleName: "Éducation",
                 summary: context.animalCount == 0
-                    ? "Aucun apprentissage lancé"
-                    : "${context.animalCount} animaux en apprentissage",
+                    ? l10n.noTrainingStarted
+                    : "${context.animalCount} ${l10n.trainingInProgress}",
                 icon: "📚",
                 isPremium: false,
               ),
@@ -77,8 +77,8 @@ class ModulesSummaryService {
               ModuleSummary(
                 moduleName: "Dressage",
                 summary: context.hasAnimals
-                    ? "Dressage disponible pour ${context.animalCount} animaux"
-                    : "Aucun animal enregistré pour le dressage",
+                    ? "${l10n.trainingAvailableFor} ${context.animalCount}"
+                    : l10n.noAnimalForTraining,
                 icon: "🎯",
                 isPremium: true,
               ),
@@ -91,7 +91,7 @@ class ModulesSummaryService {
                 moduleName: l10n.identityModuleTitle,
                 summary: context.animalCount == 0
                     ? l10n.identityModuleDescription
-                    : "${context.animalCount} identités enregistrées",
+                    : "${context.animalCount} ${l10n.identitiesRegistered}",
                 icon: "🆔",
                 isPremium: false,
               ),
@@ -103,7 +103,7 @@ class ModulesSummaryService {
             summaries.add(
               ModuleSummary(
                 moduleName: module.name,
-                summary: "Résumé IA non défini",
+                summary: l10n.aiSummaryUndefined,
                 icon: "✨",
                 isPremium: false,
               ),
@@ -119,7 +119,7 @@ class ModulesSummaryService {
   Future<String> generateSummaryText() async {
     final summaries = await generateSummaries();
     if (summaries.isEmpty) {
-      return 'Aucun module actif';
+      return l10n.noActiveModule;
     }
     return summaries
         .map((s) => '${s.moduleName}: ${s.summary}')

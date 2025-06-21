@@ -294,53 +294,59 @@ abstract class AppLocalizations {
   /// **'Manage your animal\'s identity'**
   String get identityModuleDescription;
 
-  /// No description provided for @home.
+  /// No description provided for @identitiesRegistered.
   ///
   /// In en, this message translates to:
-  /// **'Home'**
-  String get home;
+  /// **'identities registered'**
+  String get identitiesRegistered;
 
-  /// No description provided for @share.
+  /// No description provided for @noHealthTracking.
   ///
   /// In en, this message translates to:
-  /// **'Share'**
-  String get share;
+  /// **'No health tracking in progress'**
+  String get noHealthTracking;
 
-  /// No description provided for @modules.
+  /// No description provided for @healthTrackingSummary.
   ///
   /// In en, this message translates to:
-  /// **'Modules'**
-  String get modules;
+  /// **'animals tracked for health'**
+  String get healthTrackingSummary;
 
-  /// No description provided for @myAnimals.
+  /// No description provided for @noTrainingStarted.
   ///
   /// In en, this message translates to:
-  /// **'My Animals'**
-  String get myAnimals;
+  /// **'No training started'**
+  String get noTrainingStarted;
 
-  /// No description provided for @profile.
+  /// No description provided for @trainingInProgress.
   ///
   /// In en, this message translates to:
-  /// **'My profile'**
-  String get profile;
+  /// **'animals in training'**
+  String get trainingInProgress;
 
-  /// No description provided for @settings.
+  /// No description provided for @trainingAvailableFor.
   ///
   /// In en, this message translates to:
-  /// **'Settings'**
-  String get settings;
+  /// **'Training available for'**
+  String get trainingAvailableFor;
 
-  /// No description provided for @notifications.
+  /// No description provided for @noAnimalForTraining.
   ///
   /// In en, this message translates to:
-  /// **'Notifications'**
-  String get notifications;
+  /// **'No animal registered for training'**
+  String get noAnimalForTraining;
 
-  /// No description provided for @about.
+  /// No description provided for @aiSummaryUndefined.
   ///
   /// In en, this message translates to:
-  /// **'About'**
-  String get about;
+  /// **'AI summary not defined'**
+  String get aiSummaryUndefined;
+
+  /// No description provided for @noActiveModule.
+  ///
+  /// In en, this message translates to:
+  /// **'No active module'**
+  String get noActiveModule;
 }
 
 class _AppLocalizationsDelegate

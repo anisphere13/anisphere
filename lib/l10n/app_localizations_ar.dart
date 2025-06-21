@@ -100,26 +100,29 @@ class AppLocalizationsAr extends AppLocalizations {
   String get identityModuleDescription => 'Manage your animal\'s identity';
 
   @override
-  String get home => 'بيت';
+  String get identitiesRegistered => 'الهويات المسجلة';
 
   @override
-  String get share => 'مشاركة';
+  String get noHealthTracking => 'لا يوجد تتبع صحي جارٍ';
 
   @override
-  String get modules => 'الوحدات';
+  String get healthTrackingSummary => 'حيوانات تحت المتابعة الصحية';
 
   @override
-  String get myAnimals => 'حيواناتي';
+  String get noTrainingStarted => 'لم يبدأ أي تدريب';
 
   @override
-  String get profile => 'ملفي الشخصي';
+  String get trainingInProgress => 'حيوانات قيد التدريب';
 
   @override
-  String get settings => 'الإعدادات';
+  String get trainingAvailableFor => 'التدريب متاح لـ';
 
   @override
-  String get notifications => 'الإشعارات';
+  String get noAnimalForTraining => 'لا يوجد حيوان مسجل للتدريب';
 
   @override
-  String get about => 'حول';
+  String get aiSummaryUndefined => 'ملخص الذكاء الاصطناعي غير محدد';
+
+  @override
+  String get noActiveModule => 'لا توجد وحدة نشطة';
 }

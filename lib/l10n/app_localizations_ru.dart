@@ -100,26 +100,30 @@ class AppLocalizationsRu extends AppLocalizations {
   String get identityModuleDescription => 'Manage your animal\'s identity';
 
   @override
-  String get home => 'Дом';
+  String get identitiesRegistered => 'зарегистрированные идентичности';
 
   @override
-  String get share => 'Поделиться';
+  String get noHealthTracking => 'Отсутствует отслеживание здоровья';
 
   @override
-  String get modules => 'Модули';
+  String get healthTrackingSummary => 'животных под наблюдением здоровья';
 
   @override
-  String get myAnimals => 'Мои животные';
+  String get noTrainingStarted => 'Тренировка не начата';
 
   @override
-  String get profile => 'Мой профиль';
+  String get trainingInProgress => 'животных на тренировке';
 
   @override
-  String get settings => 'Настройки';
+  String get trainingAvailableFor => 'Дрессировка доступна для';
 
   @override
-  String get notifications => 'Уведомления';
+  String get noAnimalForTraining =>
+      'Нет животных, зарегистрированных для дрессировки';
 
   @override
-  String get about => 'О программе';
+  String get aiSummaryUndefined => 'ИИ-резюме не определено';
+
+  @override
+  String get noActiveModule => 'Нет активных модулей';
 }

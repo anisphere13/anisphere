@@ -99,26 +99,29 @@ class AppLocalizationsZh extends AppLocalizations {
   String get identityModuleDescription => 'Manage your animal\'s identity';
 
   @override
-  String get home => '家';
+  String get identitiesRegistered => '已登记身份';
 
   @override
-  String get share => '分享';
+  String get noHealthTracking => '没有进行健康跟踪';
 
   @override
-  String get modules => '模块';
+  String get healthTrackingSummary => '只动物健康跟踪中';
 
   @override
-  String get myAnimals => '我的动物';
+  String get noTrainingStarted => '尚未开始训练';
 
   @override
-  String get profile => '我的资料';
+  String get trainingInProgress => '只动物训练中';
 
   @override
-  String get settings => '设置';
+  String get trainingAvailableFor => '可训练数量';
 
   @override
-  String get notifications => '通知';
+  String get noAnimalForTraining => '没有登记用于训练的动物';
 
   @override
-  String get about => '关于';
+  String get aiSummaryUndefined => 'AI 摘要未定义';
+
+  @override
+  String get noActiveModule => '没有激活的模块';
 }

@@ -100,26 +100,29 @@ class AppLocalizationsFr extends AppLocalizations {
   String get identityModuleDescription => 'Gérer l\'identité de l\'animal';
 
   @override
-  String get home => 'Accueil';
+  String get identitiesRegistered => 'identités enregistrées';
 
   @override
-  String get share => 'Partage';
+  String get noHealthTracking => 'Aucun suivi de santé en cours';
 
   @override
-  String get modules => 'Modules';
+  String get healthTrackingSummary => 'animaux suivis en santé';
 
   @override
-  String get myAnimals => 'Mes Animaux';
+  String get noTrainingStarted => 'Aucun apprentissage lancé';
 
   @override
-  String get profile => 'Mon profil';
+  String get trainingInProgress => 'animaux en apprentissage';
 
   @override
-  String get settings => 'Paramètres';
+  String get trainingAvailableFor => 'Dressage disponible pour';
 
   @override
-  String get notifications => 'Notifications';
+  String get noAnimalForTraining => 'Aucun animal enregistré pour le dressage';
 
   @override
-  String get about => 'À propos';
+  String get aiSummaryUndefined => 'Résumé IA non défini';
+
+  @override
+  String get noActiveModule => 'Aucun module actif';
 }

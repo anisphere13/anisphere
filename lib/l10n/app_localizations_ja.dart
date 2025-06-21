@@ -99,26 +99,29 @@ class AppLocalizationsJa extends AppLocalizations {
   String get identityModuleDescription => 'Manage your animal\'s identity';
 
   @override
-  String get home => '家';
+  String get identitiesRegistered => '登録された識別';
 
   @override
-  String get share => '共有';
+  String get noHealthTracking => '健康追跡は行われていません';
 
   @override
-  String get modules => 'モジュール';
+  String get healthTrackingSummary => '匹が健康追跡中';
 
   @override
-  String get myAnimals => '私の動物';
+  String get noTrainingStarted => 'トレーニングが開始されていません';
 
   @override
-  String get profile => '私のプロフィール';
+  String get trainingInProgress => '匹がトレーニング中';
 
   @override
-  String get settings => '設定';
+  String get trainingAvailableFor => 'トレーニング可能数';
 
   @override
-  String get notifications => '通知';
+  String get noAnimalForTraining => 'トレーニング用の登録動物がいません';
 
   @override
-  String get about => '約';
+  String get aiSummaryUndefined => 'AI概要が未定義';
+
+  @override
+  String get noActiveModule => '有効なモジュールがありません';
 }
