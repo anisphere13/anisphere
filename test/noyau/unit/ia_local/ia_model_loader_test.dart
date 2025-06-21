@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import 'package:mockito/mockito.dart';
 import 'package:anisphere/modules/noyau/services/ia_interpreter_loader.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';

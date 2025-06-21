@@ -1,7 +1,6 @@
 // Copilot Prompt : Test automatique généré pour splash_screen.dart (widget)
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import '../../test_config.dart';
 import 'package:anisphere/modules/noyau/screens/main_screen.dart';
 import 'package:anisphere/theme.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import 'package:anisphere/modules/noyau/ia_local/education_ia_predictor.dart';
 import '../../../test_config.dart';
 

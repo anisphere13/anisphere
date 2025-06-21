@@ -1,6 +1,5 @@
 // Copilot Prompt : Test automatique généré pour auth_service.dart (unit)
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import '../../test_config.dart';
 import 'package:anisphere/modules/noyau/services/auth_service.dart';
 import '../../helpers/test_fakes.dart';

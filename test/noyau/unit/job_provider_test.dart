@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import '../../test_config.dart';
 import 'package:anisphere/modules/noyau/providers/job_provider.dart';
 import 'package:anisphere/modules/noyau/models/job_model.dart';

@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import 'package:hive/hive.dart';
 import 'package:mockito/mockito.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';

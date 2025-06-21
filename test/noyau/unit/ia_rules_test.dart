@@ -1,6 +1,5 @@
 // Copilot Prompt : Test automatique généré pour ia_rules.dart (unit)
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import '../../test_config.dart';
 import 'package:anisphere/modules/noyau/logic/ia_rules.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';

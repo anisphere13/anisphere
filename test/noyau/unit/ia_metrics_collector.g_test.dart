@@ -1,6 +1,5 @@
 // Copilot Prompt : Test automatique généré pour ia_metrics_collector.g.dart (unit)
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import '../../test_config.dart';
 import 'package:anisphere/services/ia/ia_metrics_collector.dart';
 

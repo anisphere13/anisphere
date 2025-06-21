@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:hive/hive.dart';
 import 'package:anisphere/modules/noyau/services/pro_validation_service.dart';

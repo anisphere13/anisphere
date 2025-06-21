@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import 'package:anisphere/modules/noyau/screens/modules_by_category_screen.dart';
 import 'package:anisphere/modules/noyau/models/module_model.dart';
 

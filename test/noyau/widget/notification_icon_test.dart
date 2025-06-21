@@ -1,6 +1,5 @@
 // Copilot Prompt : Test automatique généré pour notification_icon.dart (widget)
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/widgets/notification_icon.dart';
 import '../../test_config.dart';

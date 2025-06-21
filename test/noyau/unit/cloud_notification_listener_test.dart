@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import 'package:anisphere/modules/noyau/services/cloud_notification_listener.dart';
 import 'package:anisphere/modules/noyau/services/navigation_service.dart';
 import 'package:flutter/material.dart';

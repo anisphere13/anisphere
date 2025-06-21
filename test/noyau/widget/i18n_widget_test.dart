@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 <<<<<<< HEAD
-@Skip('Temporarily disabled')
 import 'package:anisphere/l10n/app_localizations.dart';
 =======
 >>>>>>> codex/modifier-la-gestion-de-la-langue-pour-le-français

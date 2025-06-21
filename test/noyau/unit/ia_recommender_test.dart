@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import 'package:anisphere/modules/noyau/ia_recommendation/ia_recommender.dart';
 import 'package:anisphere/modules/noyau/ia_recommendation/ia_local_engine.dart';
 import 'package:anisphere/modules/noyau/ia_recommendation/ia_cloud_api.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import 'package:anisphere/modules/noyau/services/feedback_sound_service.dart';
 import '../../test_config.dart';
 

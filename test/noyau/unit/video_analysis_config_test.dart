@@ -1,6 +1,5 @@
 // Copilot Prompt : Test automatique généré pour video_analysis_config.dart (unit)
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import '../../test_config.dart';
 
 class VideoAnalysisConfig {

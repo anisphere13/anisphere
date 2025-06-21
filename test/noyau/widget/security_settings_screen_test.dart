@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import 'package:hive/hive.dart';
 import 'package:anisphere/modules/noyau/screens/security_settings_screen.dart';
 import 'package:anisphere/modules/noyau/models/security_settings_model.dart';
