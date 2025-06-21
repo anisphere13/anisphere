@@ -43,7 +43,7 @@ Ce document suit le développement du module Identité animale pour AniSphère. 
 ### Objectif :
 Assurer à chaque animal une fiche unique, fiable, partageable et intelligente, avec OCR, IA, QR code, historique et compatibilité complète AniSphère.
 
-> Dernière mise à jour : [À compléter à chaque étape]
+> Dernière mise à jour : 2025-06-21
 ### ✅ identity_model.dart
 - 📁 `lib/modules/identite/models/identity_model.dart`
 - Modèle complet de fiche identité animale (puce, statut, photo, historique, QR)
@@ -168,4 +168,20 @@ Assurer à chaque animal une fiche unique, fiable, partageable et intelligente, 
 - Widget affichant les informations principales de généalogie
 - Utilisé dans `GenealogyScreen`, test widget validé
 - Date : 2025-05-20
+
+### ✅ modules_screen.dart (accès Identité)
+- 📁 `lib/modules/noyau/screens/modules_screen.dart`
+- Ajout d'une section "Communauté" avec le module Identité activable
+- Navigation directe vers `IdentityScreen`
+- Date : 2025-06-21
+
+### ✅ module_card.dart
+- 📁 `lib/modules/noyau/widgets/module_card.dart`
+- Carte cliquable ouvrant l'écran du module sélectionné (Identité compris)
+- Date : 2025-06-21
+
+### ✅ Localisations Identity
+- 📁 `lib/l10n/app_xx.arb`
+- Nouvelles clés `identityModuleTitle` et `identityModuleDescription` pour toutes les langues
+- Date : 2025-06-21
 
