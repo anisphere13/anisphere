@@ -28,6 +28,12 @@ class ModulesService {
       category: 'Dressage',
       premium: true,
     ),
+    ModuleModel(
+      id: 'identite',
+      name: 'Identité',
+      description: 'Fiches d\'identité et QR',
+      category: 'Communauté',
+    ),
     // 🔽 Ajouter ici les modules futurs
   ];
 
@@ -56,6 +62,11 @@ class ModulesService {
   static String getStatus(String moduleId) {
     return LocalStorageService.get("module_status_$moduleId",
         defaultValue: "disponible");
+  }
+
+  /// 🚦 Vérifie si un module est actif
+  static bool isActive(String moduleId) {
+    return getStatus(moduleId) == 'actif';
   }
 
   /// ✅ Active un module (accessible immédiatement)

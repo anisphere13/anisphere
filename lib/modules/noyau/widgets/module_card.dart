@@ -5,12 +5,14 @@ class ModuleCard extends StatelessWidget {
   final ModuleModel module;
   final String status;
   final VoidCallback? onActivate;
+  final VoidCallback? onTap;
 
   const ModuleCard({
     super.key,
     required this.module,
     required this.status,
     this.onActivate,
+    this.onTap,
   });
 
   @override
@@ -22,15 +24,17 @@ class ModuleCard extends StatelessWidget {
       _ => Colors.grey,
     };
 
-    return Card(
-      margin: const EdgeInsets.only(bottom: 16),
-      color: Colors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      elevation: 2,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    return InkWell(
+      onTap: onTap,
+      child: Card(
+        margin: const EdgeInsets.only(bottom: 16),
+        color: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        elevation: 2,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
