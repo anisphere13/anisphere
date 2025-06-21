@@ -71,7 +71,7 @@ void main() async {
     Hive.registerAdapter(SyncMetricsModelAdapter());
     Hive.registerAdapter(offline_queue.PhotoTaskAdapter());
     Hive.registerAdapter(ShareHistoryModelAdapter());
-    await LocalStorageService.init();
+    await LocalStorageService.init(openIdentityBox: true);
     assert(() {
       debugPrint("📦 Hive initialized successfully!");
       return true;

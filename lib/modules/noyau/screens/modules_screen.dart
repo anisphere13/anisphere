@@ -38,6 +38,7 @@ class _ModulesScreenState extends State<ModulesScreen> {
 
   Future<void> _loadStatuses() async {
     final status = await _modulesService.getAllStatuses();
+    if (!mounted) return;
     setState(() {
       _statuses = status;
     });
@@ -64,6 +65,9 @@ class _ModulesScreenState extends State<ModulesScreen> {
         return;
       }
       final animal = box.values.first;
+      if (!Hive.isBoxOpen('identityBox')) {
+        await Hive.openBox<IdentityModel>('identityBox');
+      }
       final identityBox = Hive.box<IdentityModel>('identityBox');
       final identityService =
           IdentityService(localBox: identityBox, signatureSecret: 'secret');
@@ -131,6 +135,9 @@ class _ModulesScreenState extends State<ModulesScreen> {
               content: const Text('Aucun animal enregistré')), 
         );
         return;
+      }
+      if (!Hive.isBoxOpen('identityBox')) {
+        await Hive.openBox<IdentityModel>('identityBox');
       }
 
       final identityBox = Hive.box<IdentityModel>('identityBox');
