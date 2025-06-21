@@ -37,8 +37,10 @@ class _ModulesScreenState extends State<ModulesScreen> {
   }
 
   Future<void> _activate(String id) async {
-    await _modulesService.setActive(id);
-    _loadStatuses();
+    if (!ModulesService.isActive(id)) {
+      await _modulesService.setActive(id);
+      _loadStatuses();
+    }
   }
 
   @override

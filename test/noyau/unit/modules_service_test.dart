@@ -33,6 +33,11 @@ void main() {
     expect(ModulesService.getStatus('sante'), 'actif');
   });
 
+  test('isActive returns true when module is actif', () async {
+    await ModulesService.activate('education');
+    expect(ModulesService.isActive('education'), isTrue);
+  });
+
   test('markPremium updates status', () async {
     await ModulesService.markPremium('education');
     expect(ModulesService.getStatus('education'), 'premium');

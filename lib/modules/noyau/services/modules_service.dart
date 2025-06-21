@@ -58,6 +58,11 @@ class ModulesService {
         defaultValue: "disponible");
   }
 
+  /// 🔎 Retourne `true` si le module est actif
+  static bool isActive(String moduleId) {
+    return getStatus(moduleId) == "actif";
+  }
+
   /// ✅ Active un module (accessible immédiatement)
   static Future<void> activate(String moduleId) async {
     await LocalStorageService.set("module_status_$moduleId", "actif");
