@@ -27,12 +27,10 @@ OpenCV (via native plugin) : Analyse d’image, tri IA, reconnaissance.
 flutter_secure_storage : Stockage local chiffré de données sensibles.
 path : Gestion des chemins et manipulations de fichiers.
 
-shared_preferences : Gestion des préférences utilisateur (thème, vues, tutoriels) et stockage local de la langue choisie.
+shared_preferences : Gestion des préférences utilisateur (thème, vues, tutoriels).
 
 firebase_crashlytics : Suivi des erreurs en production.
 
-intl, flutter_localizations : Gestion du multilingue Flutter.
-Tous les modules utilisent `AppLocalizations` pour les textes, aucun système i18n n'est redéclaré.
 
 🩺 Module Santé
 
@@ -132,7 +130,7 @@ Image Picker : Ajout de photos (santé, profil, activité)
 
 Path_provider : Gestion du cache, documents, export
 
-Intl : Traductions, formats de date, langues
+Intl : Formats de date et nombres
 
 Compression : Réduction de poids avant envoi (images, fichiers)
 
