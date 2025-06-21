@@ -12,6 +12,7 @@ import 'package:anisphere/modules/noyau/screens/splash_screen.dart';
 import 'package:anisphere/main.dart';
 import 'package:anisphere/modules/noyau/providers/theme_provider.dart';
 import 'package:anisphere/theme.dart';
+import 'package:anisphere/modules/noyau/widgets/more_menu.dart';
 
 import '../../test_config.dart';
 
@@ -85,20 +86,7 @@ void main() {
     );
     expect(qrIcon.color, primaryBlue);
 
-    final profileIcon = tester.widget<Icon>(
-      find.widgetWithIcon(IconButton, Icons.person),
-    );
-    expect(profileIcon.color, primaryBlue);
-
-    final settingsIcon = tester.widget<Icon>(
-      find.widgetWithIcon(IconButton, Icons.settings),
-    );
-    expect(settingsIcon.color, primaryBlue);
-
-    final supportIcon = tester.widget<Icon>(
-      find.widgetWithIcon(IconButton, Icons.help_outline),
-    );
-    expect(supportIcon.color, primaryBlue);
+    expect(find.byType(MoreMenuButton), findsOneWidget);
   });
 
   testWidgets('shows SplashScreen when user is null', (tester) async {

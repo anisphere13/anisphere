@@ -7,11 +7,10 @@ import 'home_screen.dart';
 import 'share_screen.dart';
 import 'modules_screen.dart';
 import 'animals_screen.dart';
-import 'settings_screen.dart';
-import 'user_profile_screen.dart';
 import 'notifications_screen.dart';
 import 'qr_screen.dart';
-import 'support_screen.dart';
+
+import 'package:anisphere/modules/noyau/widgets/more_menu.dart';
 
 import 'package:anisphere/modules/noyau/widgets/notification_icon.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
@@ -112,33 +111,7 @@ class MainScreenState extends State<MainScreen> {
               );
             },
           ),
-          IconButton(
-            icon: const Icon(Icons.person, color: primaryBlue),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const UserProfileScreen()),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.settings, color: primaryBlue),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const SettingsScreen()),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.help_outline, color: primaryBlue),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const SupportScreen()),
-              );
-            },
-          ),
+          const MoreMenuButton(),
         ],
       ),
       body: _pages[_selectedIndex],
