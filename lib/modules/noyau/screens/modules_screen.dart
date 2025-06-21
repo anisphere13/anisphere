@@ -8,6 +8,7 @@ import 'package:anisphere/modules/noyau/widgets/module_card.dart';
 import 'package:anisphere/modules/noyau/models/module_model.dart';
 import 'package:anisphere/modules/noyau/services/animal_service.dart';
 import 'package:anisphere/modules/identite/screens/identity_screen.dart';
+import 'package:anisphere/l10n/app_localizations.dart';
 import 'package:anisphere/modules/identite/services/identity_service.dart';
 import 'package:anisphere/modules/identite/models/identity_model.dart';
 import 'package:hive/hive.dart';
@@ -57,7 +58,9 @@ class _ModulesScreenState extends State<ModulesScreen> {
       if (box.isEmpty) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Aucun animal disponible")),
+            SnackBar(
+                content: Text(AppLocalizations.of(context)!
+                    .no_animal_available)),
           );
         }
         return;
@@ -122,7 +125,9 @@ class _ModulesScreenState extends State<ModulesScreen> {
       if (animals.isEmpty) {
         if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Aucun animal enregistré')),
+          SnackBar(
+              content:
+                  Text(AppLocalizations.of(context)!.no_animal_recorded)),
         );
         return;
       }
@@ -140,7 +145,9 @@ class _ModulesScreenState extends State<ModulesScreen> {
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Erreur d'accès à l'identité.")),
+        SnackBar(
+            content:
+                Text(AppLocalizations.of(context)!.identity_access_error)),
       );
     }
   }

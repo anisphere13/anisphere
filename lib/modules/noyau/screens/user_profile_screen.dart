@@ -9,6 +9,7 @@ import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import '../i18n/app_localizations.dart';
 import 'user_edit_screen.dart';
+import 'package:anisphere/l10n/app_localizations.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
@@ -83,8 +84,9 @@ class UserProfileScreen extends StatelessWidget {
                   subtitle: "Télécharger un fichier complet de vos données.",
                   action: () {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text("Fonction export bientôt disponible."),
+                      SnackBar(
+                        content:
+                            Text(AppLocalizations.of(context)!.export_feature_coming),
                       ),
                     );
                   },
@@ -96,8 +98,9 @@ class UserProfileScreen extends StatelessWidget {
                   subtitle: "Configurer vos préférences de confidentialité.",
                   action: () {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text("Paramètres confidentialité à venir."),
+                      SnackBar(
+                        content: Text(AppLocalizations.of(context)!
+                            .privacy_settings_coming),
                       ),
                     );
                   },
@@ -109,7 +112,9 @@ class UserProfileScreen extends StatelessWidget {
                   subtitle: "Voir les statistiques détaillées d'utilisation.",
                   action: () {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Statistiques à venir.")),
+                      SnackBar(
+                        content: Text(AppLocalizations.of(context)!.stats_coming),
+                      ),
                     );
                   },
                 ),
