@@ -120,4 +120,9 @@
 | test/identite/unit/genealogy_mapper_test.dart | unit | package:anisphere/modules/identite/services/genealogy_mapper.dart | ✅ |
 | test/identite/widget/genealogy_screen_test.dart | widget | package:anisphere/modules/identite/screens/genealogy_screen.dart | ✅ |
 | test/identite/widget/genealogy_summary_card_test.dart | widget | package:anisphere/modules/identite/widgets/genealogy_summary_card.dart | ✅ |
+| test/identite/unit/identity_photo_selection_service_test.dart | unit | package:anisphere/modules/identite/services/identity_photo_selection_service.dart | ✅ |
+| test/identite/unit/identity_signature_service_test.dart | unit | package:anisphere/modules/identite/services/identity_signature_service.dart | ✅ |
+| test/identite/unit/identity_stats_service_test.dart | unit | package:anisphere/modules/identite/services/identity_stats_service.dart | ✅ |
+| test/identite/widget/identity_score_widget_test.dart | widget | package:anisphere/modules/identite/widgets/identity_score_widget.dart | ✅ |
+| test/identite/widget/identity_onboarding_tutorial_test.dart | widget | package:anisphere/modules/identite/widgets/identity_onboarding_tutorial.dart | ✅ |
 - ✅ Tests validés automatiquement le 2025-06-21 (main_screen_test, user_profile_summary_card_test, i18n_widget_test mis à jour)

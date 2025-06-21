@@ -11,7 +11,7 @@ void main() {
   });
 
   testWidgets('GenealogySummaryCard displays parent ids', (WidgetTester tester) async {
-    final model = GenealogyModel(animalId: 'a1', fatherName: 'f1', motherName: 'm1');
+    final model = GenealogyModel(animalId: 'a1', fatherName: 'f1', motherName: 'm1', originCountry: 'FR');
     await tester.pumpWidget(MaterialApp(
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -24,5 +24,6 @@ void main() {
     expect(find.text('Genealogy'), findsOneWidget);
     expect(find.textContaining('Father: f1'), findsOneWidget);
     expect(find.textContaining('Mother: m1'), findsOneWidget);
+    expect(find.textContaining('Origin'), findsOneWidget);
   });
 }

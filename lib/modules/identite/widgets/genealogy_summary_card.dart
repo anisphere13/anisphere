@@ -29,6 +29,8 @@ class GenealogySummaryCard extends StatelessWidget {
               _row(l10n.litter_number, genealogy.litterNumber!),
             if (genealogy.lofName != null)
               _row(l10n.lof_name, genealogy.lofName!),
+            if (genealogy.originCountry != null)
+              _row('Origin', genealogy.originCountry!),
           ],
         ),
       ),
