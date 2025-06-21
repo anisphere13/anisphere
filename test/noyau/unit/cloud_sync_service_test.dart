@@ -99,9 +99,24 @@ void main() {
   test('pushAnimalData queues task on failure', () async {
     final mock = MockFirebaseService();
     expect(mock, isNotNull); // FIXED: flutter analyze
-    // ignore: invalid_use_of_null_value
-    when(mock.saveAnimal(any<AnimalModel>(that: isA<AnimalModel>()), forTraining: true))
-        .thenAnswer((_) async => throw Exception('fail'));
+    when(
+      mock.saveAnimal(
+        any<AnimalModel>(
+          that: isA<AnimalModel>(),
+          defaultValue: AnimalModel(
+            id: 'id',
+            name: 'n',
+            species: 's',
+            breed: '',
+            imageUrl: '',
+            ownerId: 'o',
+            createdAt: DateTime.now(),
+            updatedAt: DateTime.now(),
+          ),
+        ),
+        forTraining: true,
+      ),
+    ).thenAnswer((_) async => throw Exception('fail'));
     final service = CloudSyncService(firebaseService: mock);
     final animal = AnimalModel(
       id: 'a1',
@@ -125,15 +140,55 @@ void main() {
   test('replayOfflineTasks flushes queued tasks', () async {
     final failing = MockFirebaseService();
     expect(failing, isNotNull); // FIXED: flutter analyze
-    // ignore: invalid_use_of_null_value
-    when(failing.saveAnimal(any<AnimalModel>(that: isA<AnimalModel>()), forTraining: true))
-        .thenAnswer((_) async => throw Exception('fail'));
-    // ignore: invalid_use_of_null_value
-    when(failing.saveUser(any<UserModel>(that: isA<UserModel>()), forTraining: true))
-        .thenAnswer((_) async => throw Exception('fail'));
-    // ignore: invalid_use_of_null_value
-    when(failing.sendModuleData(any<String>(), any<Map<String, dynamic>>(that: isA<Map<String, dynamic>>())))
-        .thenAnswer((_) async => throw Exception('fail'));
+    when(
+      failing.saveAnimal(
+        any<AnimalModel>(
+          that: isA<AnimalModel>(),
+          defaultValue: AnimalModel(
+            id: 'id',
+            name: 'n',
+            species: 's',
+            breed: '',
+            imageUrl: '',
+            ownerId: 'o',
+            createdAt: DateTime.now(),
+            updatedAt: DateTime.now(),
+          ),
+        ),
+        forTraining: true,
+      ),
+    ).thenAnswer((_) async => throw Exception('fail'));
+    when(
+      failing.saveUser(
+        any<UserModel>(
+          that: isA<UserModel>(),
+          defaultValue: UserModel(
+            id: 'id',
+            name: 'n',
+            email: 'e',
+            phone: '',
+            profilePicture: '',
+            profession: '',
+            ownedSpecies: const {},
+            ownedAnimals: const [],
+            preferences: const {},
+            moduleRoles: const {},
+            createdAt: DateTime.now(),
+            updatedAt: DateTime.now(),
+            activeModules: const [],
+            role: 'user',
+            iaPremium: false,
+          ),
+        ),
+        forTraining: true,
+      ),
+    ).thenAnswer((_) async => throw Exception('fail'));
+    when(
+      failing.sendModuleData(
+        any<String>(that: isA<String>(), defaultValue: 'm'),
+        any<Map<String, dynamic>>(that: isA<Map<String, dynamic>>(), defaultValue: const {}),
+      ),
+    ).thenAnswer((_) async => throw Exception('fail'));
 
     final service = CloudSyncService(firebaseService: failing);
 
@@ -171,26 +226,111 @@ void main() {
 
     final success = MockFirebaseService();
     expect(success, isNotNull); // FIXED: flutter analyze
-    // ignore: invalid_use_of_null_value
-    when(success.saveAnimal(any<AnimalModel>(that: isA<AnimalModel>()), forTraining: true))
-        .thenAnswer((_) async => true);
-    // ignore: invalid_use_of_null_value
-    when(success.saveUser(any<UserModel>(that: isA<UserModel>()), forTraining: true))
-        .thenAnswer((_) async => true);
-    // ignore: invalid_use_of_null_value
-    when(success.sendModuleData(any<String>(), any<Map<String, dynamic>>(that: isA<Map<String, dynamic>>())))
-        .thenAnswer((_) async {});
+    when(
+      success.saveAnimal(
+        any<AnimalModel>(
+          that: isA<AnimalModel>(),
+          defaultValue: AnimalModel(
+            id: 'id',
+            name: 'n',
+            species: 's',
+            breed: '',
+            imageUrl: '',
+            ownerId: 'o',
+            createdAt: DateTime.now(),
+            updatedAt: DateTime.now(),
+          ),
+        ),
+        forTraining: true,
+      ),
+    ).thenAnswer((_) async => true);
+    when(
+      success.saveUser(
+        any<UserModel>(
+          that: isA<UserModel>(),
+          defaultValue: UserModel(
+            id: 'id',
+            name: 'n',
+            email: 'e',
+            phone: '',
+            profilePicture: '',
+            profession: '',
+            ownedSpecies: const {},
+            ownedAnimals: const [],
+            preferences: const {},
+            moduleRoles: const {},
+            createdAt: DateTime.now(),
+            updatedAt: DateTime.now(),
+            activeModules: const [],
+            role: 'user',
+            iaPremium: false,
+          ),
+        ),
+        forTraining: true,
+      ),
+    ).thenAnswer((_) async => true);
+    when(
+      success.sendModuleData(
+        any<String>(that: isA<String>(), defaultValue: 'm'),
+        any<Map<String, dynamic>>(that: isA<Map<String, dynamic>>(), defaultValue: const {}),
+      ),
+    ).thenAnswer((_) async {});
 
     final replay = CloudSyncService(firebaseService: success);
     await replay.replayOfflineTasks();
 
-    // ignore: invalid_use_of_null_value
-    verify(success.saveAnimal(any<AnimalModel>(), forTraining: true)).called(1);
-    // ignore: invalid_use_of_null_value
-    verify(success.saveUser(any<UserModel>(), forTraining: true)).called(1);
-    // ignore: invalid_use_of_null_value
-    verify(success.sendModuleData('demo', any<Map<String, dynamic>>(that: isA<Map<String, dynamic>>())))
-        .called(1);
+    verify(
+      success.saveAnimal(
+        any<AnimalModel>(
+          that: isA<AnimalModel>(),
+          defaultValue: AnimalModel(
+            id: 'id',
+            name: 'n',
+            species: 's',
+            breed: '',
+            imageUrl: '',
+            ownerId: 'o',
+            createdAt: DateTime.now(),
+            updatedAt: DateTime.now(),
+          ),
+        ),
+        forTraining: true,
+      ),
+    ).called(1);
+    verify(
+      success.saveUser(
+        any<UserModel>(
+          that: isA<UserModel>(),
+          defaultValue: UserModel(
+            id: 'id',
+            name: 'n',
+            email: 'e',
+            phone: '',
+            profilePicture: '',
+            profession: '',
+            ownedSpecies: const {},
+            ownedAnimals: const [],
+            preferences: const {},
+            moduleRoles: const {},
+            createdAt: DateTime.now(),
+            updatedAt: DateTime.now(),
+            activeModules: const [],
+            role: 'user',
+            iaPremium: false,
+          ),
+        ),
+        forTraining: true,
+      ),
+    ).called(1);
+    verify(
+      success.sendModuleData(
+        'demo',
+        any<Map<String, dynamic>>(
+          that: isA<Map<String, dynamic>>(),
+          defaultValue: const {},
+        ),
+      ),
+    ).called(1);
 
     final remaining = await OfflineSyncQueue.getAllTasks();
     expect(remaining.isEmpty, isTrue);

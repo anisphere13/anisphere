@@ -28,12 +28,14 @@ void main() {
 
     await service.verifyIdentityAutomatically(identity: identity, animalName: 'Luna');
 
-    final captured =
-    
-    // ignore: invalid_use_of_null_value
-        verify(mockIdentityService.saveIdentityLocally(captureAny<IdentityModel>()))
-            .captured
-            .single as IdentityModel;
+    final captured = verify(
+      mockIdentityService.saveIdentityLocally(
+        captureAny<IdentityModel>(
+          that: isA<IdentityModel>(),
+          defaultValue: IdentityModel(animalId: 'id'),
+        ),
+      ),
+    ).captured.single as IdentityModel;
     expect(captured.verifiedByIA, isTrue);
   });
 }
