@@ -10,6 +10,7 @@ import 'package:anisphere/modules/noyau/services/animal_service.dart';
 import 'package:anisphere/modules/identite/screens/identity_screen.dart';
 import 'package:anisphere/modules/identite/services/identity_service.dart';
 import 'package:anisphere/modules/identite/models/identity_model.dart';
+import '../../../theme.dart';
 import 'package:hive/hive.dart';
 
 class ModulesScreen extends StatefulWidget {
@@ -193,7 +194,7 @@ class _ModulesScreenState extends State<ModulesScreen> {
                             ? null
                             : const Text(
                                 'Gratuit',
-                                style: TextStyle(color: Colors.green),
+                                style: TextStyle(color: primaryBlue),
                               ),
                       ),
                     );
