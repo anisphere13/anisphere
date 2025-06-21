@@ -30,6 +30,11 @@
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
   ,"home": "家"
-  ,"logout": "ログアウト"
-  ,"support": "サポート"
+  ,"share": "共有"
+  ,"modules": "モジュール"
+  ,"myAnimals": "私の動物"
+  ,"profile": "私のプロフィール"
+  ,"settings": "設定"
+  ,"notifications": "通知"
+  ,"about": "約"
 }

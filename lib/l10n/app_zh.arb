@@ -30,6 +30,11 @@
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
   ,"home": "家"
-  ,"logout": "登出"
-  ,"support": "支持"
+  ,"share": "分享"
+  ,"modules": "模块"
+  ,"myAnimals": "我的动物"
+  ,"profile": "我的资料"
+  ,"settings": "设置"
+  ,"notifications": "通知"
+  ,"about": "关于"
 }

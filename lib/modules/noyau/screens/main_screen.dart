@@ -140,11 +140,23 @@ class MainScreenState extends State<MainScreen> {
       ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Accueil'),
-          BottomNavigationBarItem(icon: Icon(Icons.share), label: 'Partage'),
-          BottomNavigationBarItem(icon: Icon(Icons.apps), label: 'Modules'),
-          BottomNavigationBarItem(icon: Icon(Icons.pets), label: 'Mes Animaux'),
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.home),
+            label: AppLocalizations.of(context)?.home ?? 'Accueil',
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.share),
+            label: AppLocalizations.of(context)?.share ?? 'Partage',
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.apps),
+            label: AppLocalizations.of(context)?.modules ?? 'Modules',
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.pets),
+            label: AppLocalizations.of(context)?.myAnimals ?? 'Mes Animaux',
+          ),
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,

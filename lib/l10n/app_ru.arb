@@ -30,6 +30,11 @@
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
   ,"home": "Дом"
-  ,"logout": "Выйти"
-  ,"support": "Поддержка"
+  ,"share": "Поделиться"
+  ,"modules": "Модули"
+  ,"myAnimals": "Мои животные"
+  ,"profile": "Мой профиль"
+  ,"settings": "Настройки"
+  ,"notifications": "Уведомления"
+  ,"about": "О программе"
 }

@@ -30,6 +30,11 @@
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
   ,"home": "بيت"
-  ,"logout": "تسجيل الخروج"
-  ,"support": "الدعم"
+  ,"share": "مشاركة"
+  ,"modules": "الوحدات"
+  ,"myAnimals": "حيواناتي"
+  ,"profile": "ملفي الشخصي"
+  ,"settings": "الإعدادات"
+  ,"notifications": "الإشعارات"
+  ,"about": "حول"
 }

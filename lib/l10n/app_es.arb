@@ -30,6 +30,11 @@
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
   ,"home": "Hogar"
-  ,"logout": "Cerrar sesión"
-  ,"support": "Soporte"
+  ,"share": "Compartir"
+  ,"modules": "Módulos"
+  ,"myAnimals": "Mis Animales"
+  ,"profile": "Mi perfil"
+  ,"settings": "Configuración"
+  ,"notifications": "Notificaciones"
+  ,"about": "Acerca de"
 }

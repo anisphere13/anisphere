@@ -98,4 +98,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get identityModuleDescription => 'Manage your animal\'s identity';
+
+  @override
+  String get home => 'بيت';
+
+  @override
+  String get share => 'مشاركة';
+
+  @override
+  String get modules => 'الوحدات';
+
+  @override
+  String get myAnimals => 'حيواناتي';
+
+  @override
+  String get profile => 'ملفي الشخصي';
+
+  @override
+  String get settings => 'الإعدادات';
+
+  @override
+  String get notifications => 'الإشعارات';
+
+  @override
+  String get about => 'حول';
 }
