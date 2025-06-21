@@ -173,6 +173,8 @@ class AuthService {
     String phone = "",
     String profilePicture = "",
     String profession = "",
+    String address = "",
+    DateTime? birthDate,
   }) {
     return UserModel(
       id: id,
@@ -181,6 +183,8 @@ class AuthService {
       phone: phone,
       profilePicture: profilePicture,
       profession: profession,
+      address: address,
+      birthDate: birthDate,
       ownedSpecies: {},
       ownedAnimals: [],
       preferences: {"theme": "light", "notifications": true},

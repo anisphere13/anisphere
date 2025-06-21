@@ -32,10 +32,10 @@ class UserProfileModelAdapter extends TypeAdapter<UserProfileModel> {
       iaTrained: fields[16] as bool,
       syncedAt: fields[17] as DateTime?,
       langue: fields[18] as String?,
-      lastName: fields[19] as String,
-      firstName: fields[20] as String,
-      address: fields[21] as String,
-      birthDate: fields[22] as DateTime?,
+      address: fields[19] as String,
+      birthDate: fields[20] as DateTime?,
+      lastName: fields[21] as String,
+      firstName: fields[22] as String,
       birthPlace: fields[23] as String,
       unit: fields[24] as String,
       company: fields[25] as String,
@@ -88,13 +88,13 @@ class UserProfileModelAdapter extends TypeAdapter<UserProfileModel> {
       ..writeByte(18)
       ..write(obj.langue)
       ..writeByte(19)
-      ..write(obj.lastName)
-      ..writeByte(20)
-      ..write(obj.firstName)
-      ..writeByte(21)
       ..write(obj.address)
-      ..writeByte(22)
+      ..writeByte(20)
       ..write(obj.birthDate)
+      ..writeByte(21)
+      ..write(obj.lastName)
+      ..writeByte(22)
+      ..write(obj.firstName)
       ..writeByte(23)
       ..write(obj.birthPlace)
       ..writeByte(24)

@@ -67,6 +67,12 @@ class UserModel {
   @HiveField(18)
   final String? langue;
 
+  @HiveField(19)
+  final String address;
+
+  @HiveField(20)
+  final DateTime? birthDate;
+
   const UserModel({
     required this.id,
     required this.name,
@@ -87,6 +93,8 @@ class UserModel {
     this.iaTrained = false,
     this.syncedAt,
     this.langue,
+    this.address = '',
+    this.birthDate,
   });
 
   Map<String, dynamic> toJson() => {
@@ -109,6 +117,8 @@ class UserModel {
         'iaTrained': iaTrained,
         'syncedAt': syncedAt?.toIso8601String(),
         'langue': langue,
+        'address': address,
+        'birthDate': birthDate?.toIso8601String(),
       };
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -136,6 +146,10 @@ class UserModel {
           ? DateTime.tryParse(json['syncedAt'])
           : null,
       langue: json['langue'],
+      address: json['address'] ?? '',
+      birthDate: json['birthDate'] != null
+          ? DateTime.tryParse(json['birthDate'])
+          : null,
     );
   }
 
@@ -159,6 +173,8 @@ class UserModel {
     bool? iaTrained,
     DateTime? syncedAt,
     String? langue,
+    String? address,
+    DateTime? birthDate,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -180,6 +196,8 @@ class UserModel {
       iaTrained: iaTrained ?? this.iaTrained,
       syncedAt: syncedAt ?? this.syncedAt,
       langue: langue ?? this.langue,
+      address: address ?? this.address,
+      birthDate: birthDate ?? this.birthDate,
     );
   }
 }

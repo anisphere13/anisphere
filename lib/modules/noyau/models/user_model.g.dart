@@ -36,13 +36,15 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       iaTrained: fields[16] as bool,
       syncedAt: fields[17] as DateTime?,
       langue: fields[18] as String?,
+      address: fields[19] as String,
+      birthDate: fields[20] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, UserModel obj) {
     writer
-      ..writeByte(19)
+      ..writeByte(21)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -80,7 +82,11 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       ..writeByte(17)
       ..write(obj.syncedAt)
       ..writeByte(18)
-      ..write(obj.langue);
+      ..write(obj.langue)
+      ..writeByte(19)
+      ..write(obj.address)
+      ..writeByte(20)
+      ..write(obj.birthDate);
   }
 
   @override

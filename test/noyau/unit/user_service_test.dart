@@ -41,4 +41,37 @@ void main() {
     await box.deleteFromDisk();
     await dir.delete(recursive: true);
   });
+
+  test('updateUserFields updates address and birthDate', () async {
+    final dir = await Directory.systemTemp.createTemp();
+    Hive.init(dir.path);
+    Hive.registerAdapter(UserModelAdapter());
+    final box = await Hive.openBox<UserModel>('users2');
+    final service =
+        UserService(testBox: box, firestore: FakeFirebaseFirestore(), skipHiveInit: true);
+    final user = UserModel(
+      id: 'u2',
+      name: 'n',
+      email: 'e',
+      phone: '',
+      profilePicture: '',
+      profession: '',
+      ownedSpecies: const {},
+      ownedAnimals: const [],
+      preferences: const {},
+      moduleRoles: const {},
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+      activeModules: const [],
+      role: 'user',
+      iaPremium: false,
+    );
+    await service.saveUserLocally(user);
+    await service.updateUserFields({'address': 'new', 'birthDate': DateTime(2020)});
+    final fetched = service.getUserFromHive();
+    expect(fetched?.address, 'new');
+    expect(fetched?.birthDate, DateTime(2020));
+    await box.deleteFromDisk();
+    await dir.delete(recursive: true);
+  });
 }
