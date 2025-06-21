@@ -32,10 +32,9 @@ class ModulesService {
     ),
     ModuleModel(
       id: 'identite',
-      name: AppLocalizations.of(NavigationService.context!)?.module_identity_name ?? 'Identité',
-      description: AppLocalizations.of(NavigationService.context!)?.module_identity_description ?? 'Gestion de l\'identité',
+      name: 'Identité',
+      description: 'Fiches d\'identité et QR',
       category: 'Communauté',
-      icon: '👤',
     ),
     // 🔽 Ajouter ici les modules futurs
   ];
@@ -63,16 +62,13 @@ class ModulesService {
 
   /// 🔄 Récupère le statut d’un module : actif, premium, disponible
   static String getStatus(String moduleId) {
-    final defaultValue = moduleId == 'identite' ? 'actif' : 'disponible';
-    return LocalStorageService.get(
-      "module_status_$moduleId",
-      defaultValue: defaultValue,
-    );
+    return LocalStorageService.get("module_status_$moduleId",
+        defaultValue: "disponible");
   }
 
-  /// 🔎 Retourne `true` si le module est actif
+  /// 🚦 Vérifie si un module est actif
   static bool isActive(String moduleId) {
-    return getStatus(moduleId) == "actif";
+    return getStatus(moduleId) == 'actif';
   }
 
   /// ✅ Active un module (accessible immédiatement)

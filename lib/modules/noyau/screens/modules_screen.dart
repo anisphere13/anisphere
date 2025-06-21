@@ -6,6 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/services/modules_service.dart';
 import 'package:anisphere/modules/noyau/widgets/module_card.dart';
 import 'package:anisphere/modules/noyau/models/module_model.dart';
+import 'package:anisphere/modules/noyau/services/animal_service.dart';
+import 'package:anisphere/modules/identite/screens/identity_screen.dart';
+import 'package:anisphere/modules/identite/services/identity_service.dart';
+import 'package:anisphere/modules/identite/models/identity_model.dart';
+import 'package:hive/hive.dart';
 
 class ModulesScreen extends StatefulWidget {
   const ModulesScreen({super.key});
@@ -26,6 +31,7 @@ class _ModulesScreenState extends State<ModulesScreen> {
     for (final m in ModulesService.modules) {
       _modulesByCategory.putIfAbsent(m.category, () => []).add(m);
     }
+    _modulesByCategory.putIfAbsent('Communauté', () => []);
     _loadStatuses();
   }
 
@@ -43,18 +49,86 @@ class _ModulesScreenState extends State<ModulesScreen> {
     }
   }
 
+  Future<void> _openIdentityScreen() async {
+    try {
+      final animalService = AnimalService();
+      await animalService.init();
+      final box = await animalService.getLocalBox();
+      if (box.isEmpty) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Aucun animal disponible")),
+          );
+        }
+        return;
+      }
+      final animal = box.values.first;
+      final identityBox = Hive.box<IdentityModel>('identityBox');
+      final identityService = IdentityService(localBox: identityBox);
+      if (!mounted) return;
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => IdentityScreen(animal: animal, service: identityService),
+        ),
+      );
+    } catch (e) {
+      debugPrint("Erreur ouverture identite: $e");
+    }
+
+  Widget _buildModulesCommunaute() {
+    final modules = _modulesByCategory['Communauté'] ?? [];
+    if (modules.isEmpty) return const SizedBox.shrink();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          "Communauté",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 8),
+        SizedBox(
+          height: 200,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: modules.length,
+            itemBuilder: (context, idx) {
+              final module = modules[idx];
+              if (module.id == 'identite' && !ModulesService.isActive('identite')) {
+                return const SizedBox.shrink();
+              }
+              final status = _statuses[module.id] ?? 'disponible';
+              return SizedBox(
+                width: 220,
+                child: ModuleCard(
+                  module: module,
+                  status: status,
+                  onActivate: () => _activate(module.id),
+                  onTap: module.id == 'identite' ? _openIdentityScreen : null,
+                ),
+              );
+            },
+          ),
+        ),
+        const SizedBox(height: 24),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
         padding: const EdgeInsets.all(16),
-        children: _modulesByCategory.entries.map((entry) {
-          final modules = entry.value;
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                entry.key,
+        children: [
+          ..._modulesByCategory.entries
+              .where((e) => e.key != 'Communauté')
+              .map((entry) {
+            final modules = entry.value;
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  entry.key,
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -84,7 +158,9 @@ class _ModulesScreenState extends State<ModulesScreen> {
               const SizedBox(height: 24),
             ],
           );
-        }).toList(),
+          }).toList(),
+          _buildModulesCommunaute(),
+        ],
       ),
     );
   }
