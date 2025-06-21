@@ -13,6 +13,7 @@ import 'package:anisphere/main.dart';
 import 'package:anisphere/modules/noyau/providers/theme_provider.dart';
 import 'package:anisphere/modules/noyau/i18n/i18n_provider.dart';
 
+import 'package:anisphere/l10n/app_localizations.dart';
 import '../../test_config.dart';
 
 class _TestUserProvider extends UserProvider {
@@ -77,7 +78,12 @@ void main() {
             create: (_) => IAContextProvider(),
           ),
         ],
-        child: const MaterialApp(home: MainScreen()),
+        child: const MaterialApp(
+          supportedLocales: AppLocalizations.supportedLocales,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          locale: Locale('en'),
+          home: MainScreen(),
+        ),
       ),
     );
 
@@ -88,7 +94,9 @@ void main() {
     expect(appBar.foregroundColor, const Color(0xFF183153));
     expect(appBar.elevation, 0);
 
-    final title = tester.widget<Text>(find.text('Home'));
+    final context = tester.element(find.byType(AppBar));
+    final expectedTitle = AppLocalizations.of(context)!.mainScreenTitle;
+    final title = tester.widget<Text>(find.text(expectedTitle));
     expect(title.style?.fontWeight, FontWeight.w600);
     expect(title.style?.fontSize, 20);
     expect(title.style?.color, const Color(0xFF183153));
