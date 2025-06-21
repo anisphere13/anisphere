@@ -71,7 +71,8 @@ class _ModulesScreenState extends State<ModulesScreen> {
       if (!mounted) return;
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (_) => IdentityScreen(animal: animal, service: identityService),
+          builder: (_) =>
+              IdentityScreen(animals: [animal], service: identityService),
         ),
       );
     } catch (e) {
@@ -139,7 +140,7 @@ class _ModulesScreenState extends State<ModulesScreen> {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) =>
-              IdentityScreen(animal: animals.first, service: identityService),
+              IdentityScreen(animals: animals, service: identityService),
         ),
       );
     } catch (e) {

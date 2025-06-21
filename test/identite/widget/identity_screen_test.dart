@@ -6,6 +6,7 @@ import 'package:anisphere/modules/identite/services/identity_service.dart';
 import 'package:anisphere/modules/identite/models/identity_model.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
 import 'package:anisphere/l10n/app_localizations.dart';
+import 'package:anisphere/modules/identite/widgets/identity_score_widget.dart';
 
 import 'package:hive/hive.dart';
 import 'package:mockito/mockito.dart';
@@ -16,7 +17,8 @@ void main() {
   setUpAll(() async {
     await initTestEnv();
   });
-  testWidgets('IdentityScreen renders input fields', (WidgetTester tester) async {
+  testWidgets('IdentityScreen displays score and import button',
+      (WidgetTester tester) async {
     final service = IdentityService(localBox: MockBox());
     final animal = AnimalModel(
       id: 'test',
@@ -32,12 +34,12 @@ void main() {
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       locale: const Locale('fr'),
-      home: IdentityScreen(animal: animal, service: service),
+      home: IdentityScreen(animals: [animal], service: service),
     ));
 
     await tester.pump(); // allow future to resolve
-
     expect(find.byType(TextField), findsNWidgets(2));
-    expect(find.text('Sauvegarder'), findsOneWidget);
+    expect(find.byType(IdentityScoreWidget), findsOneWidget);
+    expect(find.text('Import I-CAD express'), findsOneWidget);
   });
 }
