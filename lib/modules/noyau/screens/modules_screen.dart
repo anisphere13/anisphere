@@ -77,6 +77,8 @@ class _ModulesScreenState extends State<ModulesScreen> {
       debugPrint("Erreur ouverture identite: $e");
     }
 
+  }
+
   Widget _buildModulesCommunaute() {
     final modules = _modulesByCategory['Communauté'] ?? [];
     if (modules.isEmpty) return const SizedBox.shrink();
