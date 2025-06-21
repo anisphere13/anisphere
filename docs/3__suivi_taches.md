@@ -1,3 +1,6 @@
+🛑 Restauration version française native — multilingue désactivé le 21/06/2025 via reset sur 9934dbf9.
+Toute nouvelle évolution doit être documentée ici jusqu’à la réactivation du multilingue.
+
 ✅ 3__suivi_taches.md — Tableau de bord global AniSphère
 
 Ce fichier est une vue d’ensemble condensée du projet AniSphère. Il permet de suivre l’évolution par grandes étapes (noyau + modules) sans entrer dans les détails techniques. Chaque module dispose de son propre fichier de suivi détaillé. Ce tableau sert à suivre le cap général du développement.

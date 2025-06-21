@@ -1,3 +1,6 @@
+🛑 Restauration version française native — multilingue désactivé le 21/06/2025 via reset sur 9934dbf9.
+Toute nouvelle évolution doit être documentée ici jusqu’à la réactivation du multilingue.
+
 # ✅ Suivi chronologique du développement — Noyau d’AniSphère
 *Fichier mis à jour au 21/06/2025*
 

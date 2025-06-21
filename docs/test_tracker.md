@@ -1,3 +1,6 @@
+🛑 Restauration version française native — multilingue désactivé le 21/06/2025 via reset sur 9934dbf9.
+Toute nouvelle évolution doit être documentée ici jusqu’à la réactivation du multilingue.
+
 # Test Tracker AniSphère
 Ajoutez ici les nouveaux tests puis exécutez `dart scripts/update_test_tracker.dart` pour mettre à jour docs/test_tracker.md.
 
