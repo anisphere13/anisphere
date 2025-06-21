@@ -53,5 +53,8 @@
   ,"trainingAvailableFor": "トレーニング可能数"
   ,"noAnimalForTraining": "トレーニング用の登録動物がいません"
   ,"aiSummaryUndefined": "AI概要が未定義"
-  ,"noActiveModule": "有効なモジュールがありません"
+  ,"noActiveModule": "有効なモジュールがありません",
+  "share_title": "共有",
+  "modules_title": "モジュール",
+  "myAnimals_title": "私の動物"
 }

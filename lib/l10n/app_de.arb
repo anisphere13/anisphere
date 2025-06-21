@@ -53,5 +53,8 @@
   ,"trainingAvailableFor": "Training verfügbar für"
   ,"noAnimalForTraining": "Kein Tier für das Training registriert"
   ,"aiSummaryUndefined": "KI-Zusammenfassung nicht definiert"
-  ,"noActiveModule": "Kein aktives Modul"
+  ,"noActiveModule": "Kein aktives Modul",
+  "share_title": "Teilen",
+  "modules_title": "Module",
+  "myAnimals_title": "Meine Tiere"
 }

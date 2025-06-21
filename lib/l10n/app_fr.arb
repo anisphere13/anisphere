@@ -59,5 +59,8 @@
   ,"trainingAvailableFor": "Dressage disponible pour"
   ,"noAnimalForTraining": "Aucun animal enregistré pour le dressage"
   ,"aiSummaryUndefined": "Résumé IA non défini"
-  ,"noActiveModule": "Aucun module actif"
+  ,"noActiveModule": "Aucun module actif",
+  "share_title": "Partage",
+  "modules_title": "Modules",
+  "myAnimals_title": "Mes Animaux"
 }

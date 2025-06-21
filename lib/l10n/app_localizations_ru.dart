@@ -193,4 +193,31 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get noActiveModule => 'Нет активных модулей';
+<<<<<<< HEAD
+=======
+
+  @override
+  String get share_title => 'Поделиться';
+
+  @override
+  String get modules_title => 'Модули';
+
+  @override
+  String get myAnimals_title => 'Мои животные';
+
+  @override
+  String get settings_title => 'Settings';
+
+  @override
+  String get backup_success => 'Backup completed successfully.';
+
+  @override
+  String get backup_error => 'Error during backup.';
+
+  @override
+  String get restore_success => 'Restore successful.';
+
+  @override
+  String get restore_error => 'Error during restore.';
+>>>>>>> codex/mettre-à-jour-les-clés-de-localisation
 }

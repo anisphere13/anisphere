@@ -143,19 +143,19 @@ class MainScreenState extends State<MainScreen> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: const Icon(Icons.home),
-            label: AppLocalizations.of(context)?.home ?? 'Accueil',
+            label: AppLocalizations.of(context)?.home_title ?? 'Accueil',
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.share),
-            label: AppLocalizations.of(context)?.share ?? 'Partage',
+            label: AppLocalizations.of(context)?.share_title ?? 'Partage',
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.apps),
-            label: AppLocalizations.of(context)?.modules ?? 'Modules',
+            label: AppLocalizations.of(context)?.modules_title ?? 'Modules',
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.pets),
-            label: AppLocalizations.of(context)?.myAnimals ?? 'Mes Animaux',
+            label: AppLocalizations.of(context)?.myAnimals_title ?? 'Mes Animaux',
           ),
         ],
         currentIndex: _selectedIndex,

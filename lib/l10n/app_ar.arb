@@ -53,5 +53,8 @@
   ,"trainingAvailableFor": "التدريب متاح لـ"
   ,"noAnimalForTraining": "لا يوجد حيوان مسجل للتدريب"
   ,"aiSummaryUndefined": "ملخص الذكاء الاصطناعي غير محدد"
-  ,"noActiveModule": "لا توجد وحدة نشطة"
+  ,"noActiveModule": "لا توجد وحدة نشطة",
+  "share_title": "مشاركة",
+  "modules_title": "الوحدات",
+  "myAnimals_title": "حيواناتي"
 }

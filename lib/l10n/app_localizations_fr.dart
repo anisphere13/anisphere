@@ -192,4 +192,31 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get noActiveModule => 'Aucun module actif';
+<<<<<<< HEAD
+=======
+
+  @override
+  String get share_title => 'Partage';
+
+  @override
+  String get modules_title => 'Modules';
+
+  @override
+  String get myAnimals_title => 'Mes Animaux';
+
+  @override
+  String get settings_title => 'Paramètres';
+
+  @override
+  String get backup_success => 'Sauvegarde effectuée avec succès.';
+
+  @override
+  String get backup_error => 'Erreur lors de la sauvegarde.';
+
+  @override
+  String get restore_success => 'Restauration réussie.';
+
+  @override
+  String get restore_error => 'Erreur lors de la restauration.';
+>>>>>>> codex/mettre-à-jour-les-clés-de-localisation
 }

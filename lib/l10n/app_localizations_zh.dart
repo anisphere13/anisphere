@@ -191,4 +191,31 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get noActiveModule => '没有激活的模块';
+<<<<<<< HEAD
+=======
+
+  @override
+  String get share_title => '分享';
+
+  @override
+  String get modules_title => '模块';
+
+  @override
+  String get myAnimals_title => '我的动物';
+
+  @override
+  String get settings_title => 'Settings';
+
+  @override
+  String get backup_success => 'Backup completed successfully.';
+
+  @override
+  String get backup_error => 'Error during backup.';
+
+  @override
+  String get restore_success => 'Restore successful.';
+
+  @override
+  String get restore_error => 'Error during restore.';
+>>>>>>> codex/mettre-à-jour-les-clés-de-localisation
 }

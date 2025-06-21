@@ -193,4 +193,28 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get noActiveModule => 'Ningún módulo activo';
+
+  @override
+  String get share_title => 'Compartir';
+
+  @override
+  String get modules_title => 'Módulos';
+
+  @override
+  String get myAnimals_title => 'Mis Animales';
+
+  @override
+  String get settings_title => 'Settings';
+
+  @override
+  String get backup_success => 'Backup completed successfully.';
+
+  @override
+  String get backup_error => 'Error during backup.';
+
+  @override
+  String get restore_success => 'Restore successful.';
+
+  @override
+  String get restore_error => 'Error during restore.';
 }

@@ -64,5 +64,8 @@
   ,"trainingAvailableFor": "可训练数量"
   ,"noAnimalForTraining": "没有登记用于训练的动物"
   ,"aiSummaryUndefined": "AI 摘要未定义"
-  ,"noActiveModule": "没有激活的模块"
+  ,"noActiveModule": "没有激活的模块",
+  "share_title": "分享",
+  "modules_title": "模块",
+  "myAnimals_title": "我的动物"
 }
