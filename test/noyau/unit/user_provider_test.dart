@@ -101,9 +101,30 @@ void main() {
 
     when(mockService.init()).thenAnswer((_) async {});
     when(mockService.deleteUserLocally()).thenAnswer((_) async {});
-    // ignore: invalid_use_of_null_value
-    when(mockService.updateUser(any<UserModel>(that: isA<UserModel>())))
-        .thenAnswer((_) async => true);
+    when(
+      mockService.updateUser(
+        any<UserModel>(
+          that: isA<UserModel>(),
+          defaultValue: UserModel(
+            id: 'id',
+            name: 'n',
+            email: 'e',
+            phone: '',
+            profilePicture: '',
+            profession: '',
+            ownedSpecies: const {},
+            ownedAnimals: const [],
+            preferences: const {},
+            moduleRoles: const {},
+            createdAt: DateTime.now(),
+            updatedAt: DateTime.now(),
+            activeModules: const [],
+            role: 'user',
+            iaPremium: false,
+          ),
+        ),
+      ),
+    ).thenAnswer((_) async => true);
     when(mockAuth.signOut()).thenAnswer((_) async {});
 
     final provider = UserProvider(mockService, mockAuth);
@@ -142,9 +163,30 @@ void main() {
 
     when(mockService.init()).thenAnswer((_) async {});
     when(mockService.deleteUserLocally()).thenAnswer((_) async {});
-    // ignore: invalid_use_of_null_value
-    when(mockService.updateUser(any<UserModel>(that: isA<UserModel>())))
-        .thenAnswer((_) async => true);
+    when(
+      mockService.updateUser(
+        any<UserModel>(
+          that: isA<UserModel>(),
+          defaultValue: UserModel(
+            id: 'id',
+            name: 'n',
+            email: 'e',
+            phone: '',
+            profilePicture: '',
+            profession: '',
+            ownedSpecies: const {},
+            ownedAnimals: const [],
+            preferences: const {},
+            moduleRoles: const {},
+            createdAt: DateTime.now(),
+            updatedAt: DateTime.now(),
+            activeModules: const [],
+            role: 'user',
+            iaPremium: false,
+          ),
+        ),
+      ),
+    ).thenAnswer((_) async => true);
     when(mockAuth.signOut()).thenAnswer((_) async {});
 
     final provider = UserProvider(mockService, mockAuth);

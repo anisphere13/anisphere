@@ -16,7 +16,13 @@ void main() {
 
     final legalStatusService = LegalStatusService(identityService: mockService);
     await legalStatusService.updateLegalStatus(animalId: 'test', newStatus: 'chien d’assistance');
-    // ignore: invalid_use_of_null_value
-    verify(mockService.saveIdentityLocally(any<IdentityModel>())).called(1);
+    verify(
+      mockService.saveIdentityLocally(
+        any<IdentityModel>(
+          that: isA<IdentityModel>(),
+          defaultValue: IdentityModel(animalId: 'id'),
+        ),
+      ),
+    ).called(1);
   });
 }

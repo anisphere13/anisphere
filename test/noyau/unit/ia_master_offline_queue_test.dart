@@ -30,12 +30,39 @@ void main() {
     await Hive.openBox<SyncTask>('offline_sync_queue');
     await Hive.openBox<offline_queue.PhotoTask>('offline_photo_queue');
     mockCloud = MockCloudSyncService();
-    // ignore: invalid_use_of_null_value
-    when(mockCloud.pushAnimalData(any<AnimalModel>(that: isA<AnimalModel>())))
-        .thenAnswer((_) async {});
-    // ignore: invalid_use_of_null_value
-    when(mockCloud.pushPhotoData(any<PhotoModel>(that: isA<PhotoModel>())))
-        .thenAnswer((_) async {});
+    when(
+      mockCloud.pushAnimalData(
+        any<AnimalModel>(
+          that: isA<AnimalModel>(),
+          defaultValue: AnimalModel(
+            id: 'id',
+            name: 'n',
+            species: 's',
+            breed: '',
+            imageUrl: '',
+            ownerId: 'o',
+            createdAt: DateTime.now(),
+            updatedAt: DateTime.now(),
+          ),
+        ),
+      ),
+    ).thenAnswer((_) async {});
+    when(
+      mockCloud.pushPhotoData(
+        any<PhotoModel>(
+          that: isA<PhotoModel>(),
+          defaultValue: PhotoModel(
+            id: 'id',
+            userId: 'u',
+            animalId: 'a',
+            localPath: '',
+            createdAt: DateTime.now(),
+            uploaded: false,
+            remoteUrl: '',
+          ),
+        ),
+      ),
+    ).thenAnswer((_) async {});
   });
 
   tearDown(() async {
@@ -81,12 +108,39 @@ void main() {
 
     await master.processOfflineQueue();
 
-    // ignore: invalid_use_of_null_value
-    verify(mockCloud.pushAnimalData(any<AnimalModel>(that: isA<AnimalModel>())))
-        .called(1);
-    // ignore: invalid_use_of_null_value
-    verify(mockCloud.pushPhotoData(any<PhotoModel>(that: isA<PhotoModel>())))
-        .called(1);
+    verify(
+      mockCloud.pushAnimalData(
+        any<AnimalModel>(
+          that: isA<AnimalModel>(),
+          defaultValue: AnimalModel(
+            id: 'id',
+            name: 'n',
+            species: 's',
+            breed: '',
+            imageUrl: '',
+            ownerId: 'o',
+            createdAt: DateTime.now(),
+            updatedAt: DateTime.now(),
+          ),
+        ),
+      ),
+    ).called(1);
+    verify(
+      mockCloud.pushPhotoData(
+        any<PhotoModel>(
+          that: isA<PhotoModel>(),
+          defaultValue: PhotoModel(
+            id: 'id',
+            userId: 'u',
+            animalId: 'a',
+            localPath: '',
+            createdAt: DateTime.now(),
+            uploaded: false,
+            remoteUrl: '',
+          ),
+        ),
+      ),
+    ).called(1);
 
     final tasks = await OfflineSyncQueue.getAllTasks();
     final photoBox = await Hive.openBox<offline_queue.PhotoTask>('offline_photo_queue');
