@@ -2,6 +2,7 @@
 // Affiche un petit badge (Chip) représentant un état IA ou un tag intelligent.
 // Utilisé dans les dashboards, listes d’animaux ou en haut des écrans IA.
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 
 class IAChip extends StatelessWidget {
   final String label;
@@ -26,7 +27,7 @@ class IAChip extends StatelessWidget {
         ),
       ),
       avatar: Icon(icon, size: 18, color: const Color(0xFF183153)),
-      backgroundColor: backgroundColor ?? const Color(0xFFFFF8E1), // Jaune solaire très clair
+      backgroundColor: backgroundColor ?? backgroundGray,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
         side: const BorderSide(color: Color(0xFF183153)), // Bordure bleu nuit
