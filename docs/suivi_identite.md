@@ -49,6 +49,7 @@ Assurer à chaque animal une fiche unique, fiable, partageable et intelligente, 
 - Modèle complet de fiche identité animale (puce, statut, photo, historique, QR)
 - Compatible Hive + Firebase, prêt pour IA photo et vérification automatique
 - Test unitaire de sérialisation/desérialisation inclus
+- 2025-06-21 : Ajout des champs éleveur (`breederName`, `breederEmail`, `breederPhone`) et mise à jour des tests
 - Date : 2025-05-20
 
 ### ✅ identity_service.dart
@@ -183,5 +184,6 @@ Assurer à chaque animal une fiche unique, fiable, partageable et intelligente, 
 ### ✅ Localisations Identity
 - 📁 `lib/l10n/app_xx.arb`
 - Nouvelles clés `identityModuleTitle` et `identityModuleDescription` pour toutes les langues
+- Ajout des clés `ai_score`, `breeder_*`, `onboarding_*`, `duplicate_*`, `photo_timeline_title`
 - Date : 2025-06-21
 

@@ -347,5 +347,7 @@ Responsable : Superadmin
 - 🆕 2025-06-21 : Ajout du module **Identité** dans `ModulesScreen` (catégorie "Communauté") et localisation dans les fichiers `.arb`.
 - 🛠️ 2025-06-21 : `ModuleCard` devient cliquable et ouvre `IdentityScreen` via `_openIdentityScreen`.
 - ✅ 2025-06-21 : Test widget `modules_screen_test.dart` mis à jour pour vérifier l'accès à l'identité.
+- 🛠️ 2025-06-21 : Nettoyage des fichiers de localisation (`lib/l10n/*.arb`) et ajout des clés `ai_score`, `breeder_name`, `breeder_email`, `breeder_phone`, `onboarding_title`, `onboarding_subtitle`, `onboarding_skip`, `onboarding_next`, `duplicate_animal_warning`, `duplicate_photo_warning`, `photo_timeline_title`.
+- 🛠️ 2025-06-21 : Mise à jour du `identity_model.dart` (champs éleveur) avec tests.
 
 - 🧩 Synchronisation automatique du noyau le 2025-06-21
