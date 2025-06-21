@@ -6,6 +6,7 @@
 library;
 
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 
 class PremiumTrialBanner extends StatelessWidget {
   final VoidCallback onActivate;
@@ -15,7 +16,7 @@ class PremiumTrialBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xFFFFF8E1),
+      color: backgroundGray,
       padding: const EdgeInsets.all(16),
       child: Row(
         children: [

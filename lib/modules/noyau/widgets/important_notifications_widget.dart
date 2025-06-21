@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../screens/notifications_screen.dart';
 
 /// Display up to three important notifications.
@@ -19,7 +20,7 @@ class ImportantNotificationsWidget extends StatelessWidget {
 
     return Card(
       margin: const EdgeInsets.all(16),
-      color: const Color(0xFFFFF8E1),
+      color: backgroundGray,
       child: InkWell(
         onTap: () {
           Navigator.push(

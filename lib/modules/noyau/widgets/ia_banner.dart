@@ -3,6 +3,7 @@
 // Peut signaler un état IA actif (mode onboarding, offline, alerte santé).
 // Discret, mais visible et réutilisable dans tous les modules.
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 
 class IABanner extends StatelessWidget {
   final String message;
@@ -14,7 +15,7 @@ class IABanner extends StatelessWidget {
     super.key,
     required this.message,
     this.icon = Icons.info_outline,
-    this.background = const Color(0xFFFFF8E1), // Jaune solaire clair
+    this.background = backgroundGray,
     this.textColor = const Color(0xFF183153),  // Bleu nuit
   });
 
