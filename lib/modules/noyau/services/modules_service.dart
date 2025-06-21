@@ -63,8 +63,11 @@ class ModulesService {
 
   /// 🔄 Récupère le statut d’un module : actif, premium, disponible
   static String getStatus(String moduleId) {
-    return LocalStorageService.get("module_status_$moduleId",
-        defaultValue: "disponible");
+    final defaultValue = moduleId == 'identite' ? 'actif' : 'disponible';
+    return LocalStorageService.get(
+      "module_status_$moduleId",
+      defaultValue: defaultValue,
+    );
   }
 
   /// ✅ Active un module (accessible immédiatement)
