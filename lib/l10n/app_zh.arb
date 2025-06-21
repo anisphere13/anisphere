@@ -56,4 +56,13 @@
   ,"duplicate_animal_warning": "动物已存在"
   ,"duplicate_photo_warning": "照片已存在"
   ,"photo_timeline_title": "照片时间线"
+  ,"identitiesRegistered": "已登记身份"
+  ,"noHealthTracking": "没有进行健康跟踪"
+  ,"healthTrackingSummary": "只动物健康跟踪中"
+  ,"noTrainingStarted": "尚未开始训练"
+  ,"trainingInProgress": "只动物训练中"
+  ,"trainingAvailableFor": "可训练数量"
+  ,"noAnimalForTraining": "没有登记用于训练的动物"
+  ,"aiSummaryUndefined": "AI 摘要未定义"
+  ,"noActiveModule": "没有激活的模块"
 }

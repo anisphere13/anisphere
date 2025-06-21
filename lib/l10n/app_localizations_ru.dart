@@ -100,7 +100,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get identityModuleDescription => 'Manage your animal\'s identity';
 
   @override
-<<<<<<< HEAD
   String get identitiesRegistered => 'зарегистрированные идентичности';
 
   @override
@@ -127,7 +126,8 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get noActiveModule => 'Нет активных модулей';
-=======
+
+  @override
   String get settings_title => 'Settings';
 
   @override
@@ -141,5 +141,4 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get restore_error => 'Error during restore.';
->>>>>>> codex/mettre-à-jour-docs/suivi_noyau.md
 }

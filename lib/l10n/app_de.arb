@@ -45,4 +45,13 @@
   ,"duplicate_animal_warning": "Animal already exists"
   ,"duplicate_photo_warning": "Photo already exists"
   ,"photo_timeline_title": "Photo Timeline"
+  ,"identitiesRegistered": "registrierte Identitäten"
+  ,"noHealthTracking": "Kein Gesundheitstracking aktiv"
+  ,"healthTrackingSummary": "Tiere im Gesundheitstracking"
+  ,"noTrainingStarted": "Kein Training gestartet"
+  ,"trainingInProgress": "Tiere im Training"
+  ,"trainingAvailableFor": "Training verfügbar für"
+  ,"noAnimalForTraining": "Kein Tier für das Training registriert"
+  ,"aiSummaryUndefined": "KI-Zusammenfassung nicht definiert"
+  ,"noActiveModule": "Kein aktives Modul"
 }

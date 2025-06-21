@@ -34,7 +34,6 @@
   ,"backup_error": "Error during backup."
   ,"restore_success": "Restore successful."
   ,"restore_error": "Error during restore."
-<<<<<<< HEAD
   ,"ai_score": "AI score"
   ,"badge_state": "Badge"
   ,"timeline_photos": "Timeline photos"
@@ -42,8 +41,6 @@
   ,"import_pdf": "Import PDF"
   ,"duplicate_alert": "Possible duplicate detected"
   ,"identity_onboarding_message": "Manage your animal identity here. Swipe to change animal."
-=======
-  ,"ai_score": "AI Score"
   ,"breeder_name": "Breeder name"
   ,"breeder_email": "Breeder email"
   ,"breeder_phone": "Breeder phone"
@@ -54,5 +51,13 @@
   ,"duplicate_animal_warning": "Animal already exists"
   ,"duplicate_photo_warning": "Photo already exists"
   ,"photo_timeline_title": "Photo Timeline"
->>>>>>> codex/mettre-à-jour-les-fichiers-de-localisation
+  ,"identitiesRegistered": "identities registered"
+  ,"noHealthTracking": "No health tracking in progress"
+  ,"healthTrackingSummary": "animals tracked for health"
+  ,"noTrainingStarted": "No training started"
+  ,"trainingInProgress": "animals in training"
+  ,"trainingAvailableFor": "Training available for"
+  ,"noAnimalForTraining": "No animal registered for training"
+  ,"aiSummaryUndefined": "AI summary not defined"
+  ,"noActiveModule": "No active module"
 }

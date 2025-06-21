@@ -45,4 +45,13 @@
   ,"duplicate_animal_warning": "Animale già esistente"
   ,"duplicate_photo_warning": "Foto già esistente"
   ,"photo_timeline_title": "Cronologia foto"
+  ,"identitiesRegistered": "identità registrate"
+  ,"noHealthTracking": "Nessun monitoraggio della salute in corso"
+  ,"healthTrackingSummary": "animali monitorati per la salute"
+  ,"noTrainingStarted": "Nessun addestramento avviato"
+  ,"trainingInProgress": "animali in addestramento"
+  ,"trainingAvailableFor": "Addestramento disponibile per"
+  ,"noAnimalForTraining": "Nessun animale registrato per l'addestramento"
+  ,"aiSummaryUndefined": "Riepilogo IA non definito"
+  ,"noActiveModule": "Nessun modulo attivo"
 }

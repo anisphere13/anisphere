@@ -99,7 +99,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get identityModuleDescription => 'Manage your animal\'s identity';
 
   @override
-<<<<<<< HEAD
   String get identitiesRegistered => '已登记身份';
 
   @override
@@ -125,7 +124,8 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get noActiveModule => '没有激活的模块';
-=======
+
+  @override
   String get settings_title => 'Settings';
 
   @override
@@ -139,5 +139,4 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get restore_error => 'Error during restore.';
->>>>>>> codex/mettre-à-jour-docs/suivi_noyau.md
 }

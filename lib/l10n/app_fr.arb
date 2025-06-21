@@ -35,14 +35,12 @@
   ,"restore_success": "Restauration réussie."
   ,"restore_error": "Erreur lors de la restauration."
   ,"ai_score": "Score IA"
-<<<<<<< HEAD
   ,"badge_state": "Badge"
   ,"timeline_photos": "Photos chronologiques"
   ,"import_icad": "Import I-CAD express"
   ,"import_pdf": "Importer PDF"
   ,"duplicate_alert": "Doublon potentiel détecté"
   ,"identity_onboarding_message": "Gérez l'identité de votre animal ici. Glissez pour changer d'animal."
-=======
   ,"breeder_name": "Nom de l'éleveur"
   ,"breeder_email": "Email de l'éleveur"
   ,"breeder_phone": "Téléphone de l'éleveur"
@@ -53,5 +51,13 @@
   ,"duplicate_animal_warning": "L'animal existe déjà"
   ,"duplicate_photo_warning": "La photo existe déjà"
   ,"photo_timeline_title": "Timeline photo"
->>>>>>> codex/mettre-à-jour-les-fichiers-de-localisation
+  ,"identitiesRegistered": "identités enregistrées"
+  ,"noHealthTracking": "Aucun suivi de santé en cours"
+  ,"healthTrackingSummary": "animaux suivis en santé"
+  ,"noTrainingStarted": "Aucun apprentissage lancé"
+  ,"trainingInProgress": "animaux en apprentissage"
+  ,"trainingAvailableFor": "Dressage disponible pour"
+  ,"noAnimalForTraining": "Aucun animal enregistré pour le dressage"
+  ,"aiSummaryUndefined": "Résumé IA non défini"
+  ,"noActiveModule": "Aucun module actif"
 }
