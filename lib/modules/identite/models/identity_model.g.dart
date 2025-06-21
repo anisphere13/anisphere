@@ -26,13 +26,26 @@ class IdentityModelAdapter extends TypeAdapter<IdentityModel> {
       history: (fields[6] as List).cast<IdentityChange>(),
       hasPublicQR: fields[7] as bool,
       lastUpdate: fields[8] as DateTime?,
+      aiScore: fields[9] as double?,
+      verifiedBreed: fields[10] as bool,
+      photoTimeline: (fields[11] as List).cast<String>(),
+      litterNumber: fields[12] as String?,
+      lofNumber: fields[13] as String?,
+      originCountry: fields[14] as String?,
+      alias: fields[15] as String?,
+      breederName: fields[16] as String?,
+      breederAddress: fields[17] as String?,
+      breederSiret: fields[18] as String?,
+      breederEmail: fields[19] as String?,
+      breederWebsite: fields[20] as String?,
+      breederPhone: fields[21] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, IdentityModel obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(22)
       ..writeByte(0)
       ..write(obj.animalId)
       ..writeByte(1)
@@ -50,7 +63,33 @@ class IdentityModelAdapter extends TypeAdapter<IdentityModel> {
       ..writeByte(7)
       ..write(obj.hasPublicQR)
       ..writeByte(8)
-      ..write(obj.lastUpdate);
+      ..write(obj.lastUpdate)
+      ..writeByte(9)
+      ..write(obj.aiScore)
+      ..writeByte(10)
+      ..write(obj.verifiedBreed)
+      ..writeByte(11)
+      ..write(obj.photoTimeline)
+      ..writeByte(12)
+      ..write(obj.litterNumber)
+      ..writeByte(13)
+      ..write(obj.lofNumber)
+      ..writeByte(14)
+      ..write(obj.originCountry)
+      ..writeByte(15)
+      ..write(obj.alias)
+      ..writeByte(16)
+      ..write(obj.breederName)
+      ..writeByte(17)
+      ..write(obj.breederAddress)
+      ..writeByte(18)
+      ..write(obj.breederSiret)
+      ..writeByte(19)
+      ..write(obj.breederEmail)
+      ..writeByte(20)
+      ..write(obj.breederWebsite)
+      ..writeByte(21)
+      ..write(obj.breederPhone);
   }
 
   @override

@@ -3,6 +3,7 @@
 |--------------|------|--------|--------|
 | test/identite/unit/identity_model.g_test.dart | unit | package:anisphere/modules/identite/models/identity_model.g.dart | ✅ |
 | test/identite/unit/identity_model_test.dart | unit | package:anisphere/modules/identite/models/identity_model.dart | ✅ |
+| test/identite/unit/identity_model_serialization_test.dart | unit | package:anisphere/modules/identite/models/identity_model.dart | ✅ |
 | test/identite/unit/identity_card_generator_test.dart | unit | package:anisphere/modules/identite/services/identity_card_generator.dart | ✅ |
 | test/identite/unit/identity_reminder_service_test.dart | unit | package:anisphere/modules/identite/services/identity_reminder_service.dart | ✅ |
 | test/identite/unit/legal_status_service_test.dart | unit | package:anisphere/modules/identite/services/legal_status_service.dart | ✅ |
