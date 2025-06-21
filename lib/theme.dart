@@ -9,10 +9,10 @@ final ThemeData appTheme = ThemeData(
   cardColor: Colors.white, // default color for cards
   primaryColor: primaryBlue,
   appBarTheme: const AppBarTheme(
-    backgroundColor: primaryBlue,
-    foregroundColor: Colors.white,
+    backgroundColor: backgroundGray,
+    foregroundColor: primaryBlue,
     elevation: 0,
-    iconTheme: IconThemeData(color: Colors.white),
+    iconTheme: IconThemeData(color: primaryBlue),
   ),
   splashFactory: NoSplash.splashFactory,
   textButtonTheme: TextButtonThemeData(
@@ -54,10 +54,10 @@ final ThemeData appTheme = ThemeData(
 final ThemeData darkTheme = ThemeData.dark().copyWith(
   primaryColor: primaryBlue,
   appBarTheme: const AppBarTheme(
-    backgroundColor: primaryBlue,
-    foregroundColor: Colors.white,
+    backgroundColor: backgroundGray,
+    foregroundColor: primaryBlue,
     elevation: 0,
-    iconTheme: IconThemeData(color: Colors.white),
+    iconTheme: IconThemeData(color: primaryBlue),
   ),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: Color(0xFF1E1E1E),
