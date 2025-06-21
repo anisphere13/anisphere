@@ -21,92 +21,112 @@ class AnimalsScreen extends StatefulWidget {
 }
 
 class _AnimalsScreenState extends State<AnimalsScreen> {
-  List<AnimalModel> _animals = [];
   final AnimalService _animalService = AnimalService();
+  late Future<List<AnimalModel>> _animalsFuture;
 
   @override
   void initState() {
     super.initState();
-    _loadAnimals();
+    _animalsFuture = _loadAnimals();
   }
 
-  /// 📦 Charge les animaux depuis la box locale
-  Future<void> _loadAnimals() async {
+  Future<List<AnimalModel>> _loadAnimals() async {
     try {
       await _animalService.init();
       final box = await _animalService.getLocalBox();
-      setState(() {
-        _animals = box.values.toList();
-      });
+      return box.values.toList();
     } catch (e) {
       assert(() {
         debugPrint("❌ Erreur chargement animaux : $e");
         return true;
       }());
+      return [];
     }
+  }
+
+  Future<void> _refreshAnimals() async {
+    setState(() {
+      _animalsFuture = _loadAnimals();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xFF183153),
-        foregroundColor: Colors.white,
-        onPressed: () async {
-          await Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const AnimalFormScreen()),
+    return FutureBuilder<List<AnimalModel>>( 
+      future: _animalsFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState != ConnectionState.done) {
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
           );
-          await _loadAnimals();
-        },
-        child: const Icon(Icons.add),
-      ),
-      body: _animals.isEmpty
-          ? Padding(
-              padding: const EdgeInsets.all(16),
-              child: IASuggestionCard(
-                title: "Aucun animal enregistré",
-                message: "Ajoutez un animal pour commencer le suivi intelligent.",
-                icon: Icons.pets,
-                actionLabel: "Ajouter maintenant",
-                onAction: () async {
-                  await Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const AnimalFormScreen()),
-                  );
-                  await _loadAnimals();
-                },
-              ),
-            )
-          : CustomScrollView(
-              slivers: [
-                SliverPadding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  sliver: SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) {
-                        final animal = _animals[index];
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          child: AnimalCard(
-                            animal: animal,
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => AnimalProfileScreen(animal: animal),
-                                ),
-                              );
-                            },
-                          ),
-                        );
-                      },
-                      childCount: _animals.length,
-                    ),
+        }
+
+        final animals = snapshot.data ?? [];
+
+        return Scaffold(
+          floatingActionButton: FloatingActionButton(
+            backgroundColor: const Color(0xFF183153),
+            foregroundColor: Colors.white,
+            onPressed: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const AnimalFormScreen()),
+              );
+              await _refreshAnimals();
+            },
+            child: const Icon(Icons.add),
+          ),
+          body: animals.isEmpty
+              ? Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: IASuggestionCard(
+                    title: "Aucun animal enregistré",
+                    message:
+                        "Ajoutez un animal pour commencer le suivi intelligent.",
+                    icon: Icons.pets,
+                    actionLabel: "Ajouter maintenant",
+                    onAction: () async {
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const AnimalFormScreen()),
+                      );
+                      await _refreshAnimals();
+                    },
                   ),
+                )
+              : CustomScrollView(
+                  slivers: [
+                    SliverPadding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      sliver: SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                            final animal = animals[index];
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              child: AnimalCard(
+                                animal: animal,
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) =>
+                                          AnimalProfileScreen(animal: animal),
+                                    ),
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                          childCount: animals.length,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+        );
+      },
     );
   }
 }
