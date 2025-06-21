@@ -70,7 +70,7 @@ void main() {
     await tester.pumpAndSettle();
 
     final appBar = tester.widget<AppBar>(find.byType(AppBar));
-    expect(appBar.backgroundColor, const Color(0xFFF2F2F2));
+    expect(appBar.backgroundColor, const Color(0xFFF5F5F5));
     expect(appBar.foregroundColor, const Color(0xFF183153));
     expect(appBar.elevation, 0);
 
