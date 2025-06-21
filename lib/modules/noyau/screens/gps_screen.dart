@@ -1,3 +1,4 @@
+// TODO: ajouter test
 // Copilot Prompt : écran GPS pour AniSphère.
 // Affiche les traces enregistrées sur une carte interne
 // avec options pour la synchronisation et les logs IA.
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 
 import '../services/local_storage_service.dart';
 import '../widgets/ia_log_viewer.dart';
+import 'package:anisphere/theme.dart';
 
 class GpsScreen extends StatefulWidget {
   const GpsScreen({super.key});
@@ -46,7 +48,7 @@ class _GpsScreenState extends State<GpsScreen> {
       return const Center(child: Text('Aucune trace enregistrée.'));
     }
     return Container(
-      color: Colors.blueGrey.shade100,
+      color: backgroundGray,
       alignment: Alignment.center,
       child: const Text('Carte interne (placeholder)'),
     );
