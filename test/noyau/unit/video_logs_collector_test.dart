@@ -62,8 +62,7 @@ void main() {
     when(mockFirestore.collection('logs_ia')).thenReturn(mockLogs);
     when(mockLogs.doc(any)).thenReturn(mockDoc);
     when(mockDoc.collection('entries')).thenReturn(mockEntries);
-    when(mockEntries.add(any<Map<String, dynamic>>()))
-        .thenThrow(Exception('fail'));
+    when(mockEntries.add(any)).thenThrow(Exception('fail'));
 
     final collector = VideoLogsCollector(firestoreInstance: mockFirestore);
 
