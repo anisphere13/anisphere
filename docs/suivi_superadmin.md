@@ -1,3 +1,6 @@
+🛑 Restauration version française native — multilingue désactivé le 21/06/2025 via reset sur 9934dbf9.
+Toute nouvelle évolution doit être documentée ici jusqu’à la réactivation du multilingue.
+
 # Suivi du module Superadmin
 
 Les fonctionnalités dédiées au rôle **Superadmin** sont désormais déplacées dans un module indépendant.

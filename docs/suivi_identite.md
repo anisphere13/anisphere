@@ -1,3 +1,6 @@
+🛑 Restauration version française native — multilingue désactivé le 21/06/2025 via reset sur 9934dbf9.
+Toute nouvelle évolution doit être documentée ici jusqu’à la réactivation du multilingue.
+
 ## Suivi de développement — Module Identité animale
 
 Ce document suit le développement du module Identité animale pour AniSphère. Il est actif par défaut, gratuit, et constitue une base stratégique pour la sécurité, la personnalisation et la fiabilité du suivi animal. Ce module est conçu pour être 100 % fonctionnel hors ligne, avec synchronisation différée et OCR intégré.
