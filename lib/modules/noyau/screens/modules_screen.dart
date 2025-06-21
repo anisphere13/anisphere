@@ -6,6 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/services/modules_service.dart';
 import 'package:anisphere/modules/noyau/widgets/module_card.dart';
 import 'package:anisphere/modules/noyau/models/module_model.dart';
+import 'package:anisphere/modules/noyau/services/animal_service.dart';
+import 'package:anisphere/modules/identite/screens/identity_screen.dart';
+import 'package:anisphere/modules/identite/services/identity_service.dart';
+import 'package:anisphere/modules/identite/models/identity_model.dart';
+import 'package:hive/hive.dart';
 
 class ModulesScreen extends StatefulWidget {
   const ModulesScreen({super.key});
@@ -41,6 +46,37 @@ class _ModulesScreenState extends State<ModulesScreen> {
     _loadStatuses();
   }
 
+  Future<void> _handleTap(ModuleModel module) async {
+    if (module.id != 'identite') return;
+
+    try {
+      final animals = await AnimalService().getAllAnimals();
+      if (animals.isEmpty) {
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Aucun animal enregistré')),
+        );
+        return;
+      }
+
+      final identityBox = Hive.box<IdentityModel>('identityBox');
+      final identityService = IdentityService(localBox: identityBox);
+
+      if (!mounted) return;
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) =>
+              IdentityScreen(animal: animals.first, service: identityService),
+        ),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Erreur d'accès à l'identité.")),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,6 +110,13 @@ class _ModulesScreenState extends State<ModulesScreen> {
                         module: module,
                         status: status,
                         onActivate: () => _activate(id),
+                        onTap: () => _handleTap(module),
+                        badge: module.premium
+                            ? null
+                            : const Text(
+                                'Gratuit',
+                                style: TextStyle(color: Colors.green),
+                              ),
                       ),
                     );
                   },
