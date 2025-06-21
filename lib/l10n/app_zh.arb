@@ -26,5 +26,7 @@
   ,"identity_screen_title": "Identity"
   ,"microchip_label": "Microchip number"
   ,"status_label": "Status"
-  ,"save_button": "Save"
+  ,"save_button": "Save",
+  ,"module_identity_name": "身份",
+  ,"module_identity_description": "管理动物身份、芯片和血统"
 }

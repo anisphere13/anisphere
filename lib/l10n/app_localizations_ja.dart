@@ -91,4 +91,10 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get save_button => 'Save';
+
+  @override
+  String get module_identity_name => 'アイデンティティ';
+
+  @override
+  String get module_identity_description => '動物の身元、マイクロチップ、血統を管理';
 }

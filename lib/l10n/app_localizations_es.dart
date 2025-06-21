@@ -92,4 +92,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get save_button => 'Save';
+
+  @override
+  String get module_identity_name => 'Identidad';
+
+  @override
+  String get module_identity_description => 'Gestionar identidad del animal, microchip y genealogía';
 }

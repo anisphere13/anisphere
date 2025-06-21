@@ -26,5 +26,7 @@
   ,"identity_screen_title": "Identité"
   ,"microchip_label": "Numéro de puce"
   ,"status_label": "Statut"
-  ,"save_button": "Enregistrer"
+  ,"save_button": "Enregistrer",
+  ,"module_identity_name": "Identité",
+  ,"module_identity_description": "Gérer l'identité, la puce et la généalogie de l'animal"
 }

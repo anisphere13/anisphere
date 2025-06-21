@@ -6,9 +6,11 @@
 
 import 'package:anisphere/modules/noyau/services/local_storage_service.dart';
 import 'package:anisphere/modules/noyau/models/module_model.dart';
+import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
+import 'package:anisphere/modules/noyau/services/navigation_service.dart';
 
 class ModulesService {
-  static const List<ModuleModel> availableModules = [
+  static final List<ModuleModel> availableModules = [
     ModuleModel(
       id: 'sante',
       name: 'Santé',
@@ -27,6 +29,13 @@ class ModulesService {
       description: 'Entraînement avancé',
       category: 'Dressage',
       premium: true,
+    ),
+    ModuleModel(
+      id: 'identite',
+      name: AppLocalizations.of(NavigationService.context!)?.module_identity_name ?? 'Identité',
+      description: AppLocalizations.of(NavigationService.context!)?.module_identity_description ?? 'Gestion de l\'identité',
+      category: 'Communauté',
+      icon: '👤',
     ),
     // 🔽 Ajouter ici les modules futurs
   ];

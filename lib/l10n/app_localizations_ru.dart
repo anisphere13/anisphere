@@ -92,4 +92,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get save_button => 'Save';
+
+  @override
+  String get module_identity_name => 'Идентификация';
+
+  @override
+  String get module_identity_description => 'Управление данными животного, микрочипом и родословной';
 }

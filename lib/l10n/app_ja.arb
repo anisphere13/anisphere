@@ -26,5 +26,7 @@
   ,"identity_screen_title": "Identity"
   ,"microchip_label": "Microchip number"
   ,"status_label": "Status"
-  ,"save_button": "Save"
+  ,"save_button": "Save",
+  ,"module_identity_name": "アイデンティティ",
+  ,"module_identity_description": "動物の身元、マイクロチップ、血統を管理"
 }
