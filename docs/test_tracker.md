@@ -134,3 +134,4 @@ Ajoutez vos nouvelles entrées dans `test/test_tracker.md` puis lancez `dart scr
 | test/noyau/unit/video_analysis_service_test.dart | unit | package:anisphere/modules/noyau/services/video_analysis_service.dart | ✅ |
 | test/noyau/widget/biometric_guard_test.dart | widget | package:anisphere/modules/noyau/widgets/biometric_guard.dart | ✅ |
 | test/noyau/widget/gps_screen_test.dart | widget | package:anisphere/modules/noyau/screens/gps_screen.dart | ✅ |
+| test/noyau/unit/video_logs_collector_test.dart | unit | package:anisphere/modules/noyau/services/video_logs_collector.dart | ✅ |
