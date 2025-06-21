@@ -3,5 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 Future<void> initTestEnv() async {
   TestWidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  if (Firebase.apps.isEmpty) {
+    await Firebase.initializeApp();
+  }
 }
