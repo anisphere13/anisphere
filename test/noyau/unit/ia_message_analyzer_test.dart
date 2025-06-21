@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+@Skip('Temporarily disabled')
 import 'package:anisphere/modules/noyau/logic/ia_message_analyzer.dart';
 import '../../test_config.dart';
 

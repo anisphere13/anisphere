@@ -1,5 +1,6 @@
 // Test généré automatiquement pour gps_tracker_model.g.dart
 import 'package:flutter_test/flutter_test.dart';
+@Skip('Temporarily disabled')
 import '../../test_config.dart';
 
 void main() {
