@@ -132,3 +132,4 @@ Ajoutez ici les nouveaux tests puis exécutez `dart scripts/update_test_tracker.
 | test/noyau/widget/biometric_guard_test.dart | widget | package:anisphere/modules/noyau/widgets/biometric_guard.dart | ✅ |
 | test/noyau/widget/gps_screen_test.dart | widget | package:anisphere/modules/noyau/screens/gps_screen.dart | ✅ |
 | test/noyau/unit/video_logs_collector_test.dart | unit | package:anisphere/modules/noyau/services/video_logs_collector.dart | ✅ |
+| test/noyau/unit/module_export_pdf_template_test.dart | unit | package:anisphere/services/pdf/pdf_export_template.dart | ✅ |
