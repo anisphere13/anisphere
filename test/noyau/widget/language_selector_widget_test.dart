@@ -12,5 +12,4 @@ void main() {
   });
 
   testWidgets('selecting a language updates provider', (tester) async {}, skip: true);
-  });
 }
