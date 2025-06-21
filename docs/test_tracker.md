@@ -72,6 +72,7 @@
 | test/noyau/widget/main_screen_test.dart | widget | package:anisphere/modules/noyau/screens/main_screen.dart | ✅ |
 | test/noyau/widget/animal_profile_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animal_profile_screen.dart | ✅ |
 | test/noyau/widget/user_profile_screen_test.dart | widget | package:anisphere/modules/noyau/screens/user_profile_screen.dart | ✅ |
+| test/noyau/widget/user_profile_summary_card_test.dart | widget | package:anisphere/modules/noyau/widgets/user_profile_summary_card.dart | ✅ |
 | test/noyau/widget/animal_form_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animal_form_screen.dart | ✅ |
 | test/noyau/widget/home_screen_test.dart | widget | package:anisphere/modules/noyau/screens/home_screen.dart | ✅ |
 | test/noyau/widget/splash_screen_test.dart | widget | package:anisphere/modules/noyau/screens/splash_screen.dart | ✅ |
@@ -119,4 +120,4 @@
 | test/identite/unit/genealogy_mapper_test.dart | unit | package:anisphere/modules/identite/services/genealogy_mapper.dart | ✅ |
 | test/identite/widget/genealogy_screen_test.dart | widget | package:anisphere/modules/identite/screens/genealogy_screen.dart | ✅ |
 | test/identite/widget/genealogy_summary_card_test.dart | widget | package:anisphere/modules/identite/widgets/genealogy_summary_card.dart | ✅ |
-- ✅ Tests validés automatiquement le 2025-06-21 (modules_screen_test mis à jour)
+- ✅ Tests validés automatiquement le 2025-06-21 (main_screen_test, user_profile_summary_card_test, i18n_widget_test mis à jour)

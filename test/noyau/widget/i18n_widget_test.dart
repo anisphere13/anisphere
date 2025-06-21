@@ -1,57 +1,32 @@
-// Copilot Prompt : Test widget utilisant AppLocalizations fictif
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:anisphere/l10n/app_localizations.dart';
 import '../../test_config.dart';
-
-class TestLocalizations {
-  final Locale locale;
-  TestLocalizations(this.locale);
-
-  static const LocalizationsDelegate<TestLocalizations> delegate = _TestDelegate();
-  static const supportedLocales = [Locale('en'), Locale('fr')];
-
-  static Future<TestLocalizations> load(Locale locale) async => TestLocalizations(locale);
-
-  static TestLocalizations of(BuildContext context) {
-    return Localizations.of<TestLocalizations>(context, TestLocalizations)!;
-  }
-
-  String get hello => locale.languageCode == 'fr' ? 'Bonjour' : 'Hello';
-}
-
-class _TestDelegate extends LocalizationsDelegate<TestLocalizations> {
-  const _TestDelegate();
-
-  @override
-  bool isSupported(Locale locale) => ['en', 'fr'].contains(locale.languageCode);
-
-  @override
-  Future<TestLocalizations> load(Locale locale) => TestLocalizations.load(locale);
-
-  @override
-  bool shouldReload(covariant LocalizationsDelegate<TestLocalizations> old) => false;
-}
 
 void main() {
   setUpAll(() async {
     await initTestEnv();
   });
 
-  testWidgets('renders translated hello', (tester) async {
+  testWidgets('renders translated title', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
         locale: const Locale('fr'),
-        supportedLocales: TestLocalizations.supportedLocales,
-        localizationsDelegates: const [TestLocalizations.delegate],
+        supportedLocales: AppLocalizations.supportedLocales,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
         home: Builder(
-          builder: (context) => Text(TestLocalizations.of(context).hello, textDirection: TextDirection.ltr),
+          builder: (context) => Text(
+            AppLocalizations.of(context)!.home_title,
+            textDirection: TextDirection.ltr,
+          ),
         ),
       ),
     );
 
     await tester.pumpAndSettle();
 
-    expect(find.text('Bonjour'), findsOneWidget);
+    final context = tester.element(find.byType(Text));
+    final expected = AppLocalizations.of(context)!.home_title;
+    expect(find.text(expected), findsOneWidget);
   });
 }
