@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
 import 'package:anisphere/modules/identite/screens/identity_screen.dart';
 import 'package:anisphere/modules/identite/services/identity_service.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
+import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
 import 'package:anisphere/modules/identite/models/identity_model.dart';
 import 'package:hive/hive.dart';
 

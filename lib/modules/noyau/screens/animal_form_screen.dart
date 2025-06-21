@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
+import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
 import 'dart:io';
 import 'package:uuid/uuid.dart';
 import 'package:provider/provider.dart';

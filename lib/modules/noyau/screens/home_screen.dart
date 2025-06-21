@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../services/modules_summary_service.dart';
 import '../services/animal_service.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
+import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
 import '../providers/ia_context_provider.dart';
 import '../providers/user_provider.dart';
 import '../services/pro_validation_service.dart';

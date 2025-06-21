@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
+import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
 import '../models/identity_model.dart';
 import '../models/genealogy_model.dart';
 import '../widgets/identity_summary_widget.dart';

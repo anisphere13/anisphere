@@ -9,7 +9,6 @@ import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import '../i18n/app_localizations.dart';
 import 'user_edit_screen.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
