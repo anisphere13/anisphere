@@ -31,12 +31,8 @@ class MainScreen extends StatefulWidget {
 class MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   IAScheduler? _scheduler;
-  static final List<Widget> _pages = <Widget>[
-    const HomeScreen(),
-    const ShareScreen(),
-    const ModulesScreen(),
-    const AnimalsScreen(),
-  ];
+  late final NotificationService _notificationService;
+  late final List<Widget> _pages;
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -46,6 +42,13 @@ class MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
+    _notificationService = NotificationService();
+    _pages = [
+      HomeScreen(notificationService: _notificationService),
+      const ShareScreen(),
+      const ModulesScreen(),
+      const AnimalsScreen(),
+    ];
     // ⚙️ Planification IA dès que le widget est monté
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final user = Provider.of<UserProvider>(context, listen: false).user;
@@ -56,7 +59,7 @@ class MainScreenState extends State<MainScreen> {
       if (user != null) {
         final executor = IAExecutor(
           iaMaster: IAMaster.instance,
-          notificationService: NotificationService(),
+          notificationService: _notificationService,
           modulesService: ModulesService(),
           animalService: AnimalService(),
         );

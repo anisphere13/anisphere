@@ -10,11 +10,19 @@ import 'package:anisphere/modules/noyau/services/auth_service.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
 import 'package:anisphere/modules/noyau/screens/home_screen.dart';
 import 'package:anisphere/modules/noyau/widgets/important_notifications_widget.dart';
+import 'package:anisphere/modules/noyau/services/notification_service.dart';
 
 import '../../test_config.dart';
 
 class _TestUserProvider extends UserProvider {
   _TestUserProvider() : super(UserService(skipHiveInit: true), AuthService());
+}
+
+class _FakeNotificationService extends NotificationService {
+  @override
+  Future<List<String>> fetchPendingNotifications() async {
+    return ['Test'];
+  }
 }
 
 void main() {
@@ -31,7 +39,9 @@ void main() {
           ChangeNotifierProvider<IAContextProvider>(
               create: (_) => IAContextProvider()),
         ],
-        child: const MaterialApp(home: HomeScreen()),
+        child: MaterialApp(
+          home: HomeScreen(notificationService: _FakeNotificationService()),
+        ),
       ),
     );
 
@@ -50,7 +60,9 @@ void main() {
           ChangeNotifierProvider<IAContextProvider>(
               create: (_) => IAContextProvider()),
         ],
-        child: const MaterialApp(home: HomeScreen()),
+        child: MaterialApp(
+          home: HomeScreen(notificationService: _FakeNotificationService()),
+        ),
       ),
     );
 
