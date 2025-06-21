@@ -33,8 +33,9 @@ void main() {
     expect(ModulesService.getStatus('sante'), 'actif');
   });
 
-  test('getStatus identite default is actif', () {
-    expect(ModulesService.getStatus('identite'), 'actif');
+  test('isActive returns true when module is actif', () async {
+    await ModulesService.activate('education');
+    expect(ModulesService.isActive('education'), isTrue);
   });
 
   test('markPremium updates status', () async {

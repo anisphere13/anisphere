@@ -41,7 +41,7 @@ class ModulesSummaryService {
     for (final module in ModulesService.modules) {
       final status = statuses[module.id] ?? "disponible";
 
-      if (status == "actif") {
+      if (ModulesService.isActive(module.id)) {
         switch (module.name) {
           case "Santé":
             summaries.add(
