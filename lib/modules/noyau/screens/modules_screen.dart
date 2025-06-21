@@ -203,7 +203,7 @@ class _ModulesScreenState extends State<ModulesScreen> {
               const SizedBox(height: 24),
             ],
           );
-          }).toList(),
+          }),
           _buildModulesCommunaute(),
         ],
       ),
