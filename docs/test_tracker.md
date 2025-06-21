@@ -118,4 +118,4 @@
 | test/identite/unit/genealogy_mapper_test.dart | unit | package:anisphere/modules/identite/services/genealogy_mapper.dart | ✅ |
 | test/identite/widget/genealogy_screen_test.dart | widget | package:anisphere/modules/identite/screens/genealogy_screen.dart | ✅ |
 | test/identite/widget/genealogy_summary_card_test.dart | widget | package:anisphere/modules/identite/widgets/genealogy_summary_card.dart | ✅ |
-- ✅ Tests validés automatiquement le 2025-06-19
+- ✅ Tests validés automatiquement le 2025-06-21
