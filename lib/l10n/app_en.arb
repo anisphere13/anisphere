@@ -29,4 +29,13 @@
   ,"save_button": "Save"
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
+  ,"identitiesRegistered": "identities registered"
+  ,"noHealthTracking": "No health tracking in progress"
+  ,"healthTrackingSummary": "animals tracked for health"
+  ,"noTrainingStarted": "No training started"
+  ,"trainingInProgress": "animals in training"
+  ,"trainingAvailableFor": "Training available for"
+  ,"noAnimalForTraining": "No animal registered for training"
+  ,"aiSummaryUndefined": "AI summary not defined"
+  ,"noActiveModule": "No active module"
 }

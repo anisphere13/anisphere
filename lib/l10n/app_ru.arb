@@ -29,4 +29,13 @@
   ,"save_button": "Save"
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
+  ,"identitiesRegistered": "зарегистрированные идентичности"
+  ,"noHealthTracking": "Отсутствует отслеживание здоровья"
+  ,"healthTrackingSummary": "животных под наблюдением здоровья"
+  ,"noTrainingStarted": "Тренировка не начата"
+  ,"trainingInProgress": "животных на тренировке"
+  ,"trainingAvailableFor": "Дрессировка доступна для"
+  ,"noAnimalForTraining": "Нет животных, зарегистрированных для дрессировки"
+  ,"aiSummaryUndefined": "ИИ-резюме не определено"
+  ,"noActiveModule": "Нет активных модулей"
 }

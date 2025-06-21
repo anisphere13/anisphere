@@ -29,4 +29,13 @@
   ,"save_button": "Save"
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
+  ,"identitiesRegistered": "الهويات المسجلة"
+  ,"noHealthTracking": "لا يوجد تتبع صحي جارٍ"
+  ,"healthTrackingSummary": "حيوانات تحت المتابعة الصحية"
+  ,"noTrainingStarted": "لم يبدأ أي تدريب"
+  ,"trainingInProgress": "حيوانات قيد التدريب"
+  ,"trainingAvailableFor": "التدريب متاح لـ"
+  ,"noAnimalForTraining": "لا يوجد حيوان مسجل للتدريب"
+  ,"aiSummaryUndefined": "ملخص الذكاء الاصطناعي غير محدد"
+  ,"noActiveModule": "لا توجد وحدة نشطة"
 }

@@ -29,4 +29,13 @@
   ,"save_button": "Save"
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
+  ,"identitiesRegistered": "registrierte Identitäten"
+  ,"noHealthTracking": "Kein Gesundheitstracking aktiv"
+  ,"healthTrackingSummary": "Tiere im Gesundheitstracking"
+  ,"noTrainingStarted": "Kein Training gestartet"
+  ,"trainingInProgress": "Tiere im Training"
+  ,"trainingAvailableFor": "Training verfügbar für"
+  ,"noAnimalForTraining": "Kein Tier für das Training registriert"
+  ,"aiSummaryUndefined": "KI-Zusammenfassung nicht definiert"
+  ,"noActiveModule": "Kein aktives Modul"
 }

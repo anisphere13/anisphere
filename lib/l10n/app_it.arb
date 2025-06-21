@@ -29,4 +29,13 @@
   ,"save_button": "Save"
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
+  ,"identitiesRegistered": "identità registrate"
+  ,"noHealthTracking": "Nessun monitoraggio della salute in corso"
+  ,"healthTrackingSummary": "animali monitorati per la salute"
+  ,"noTrainingStarted": "Nessun addestramento avviato"
+  ,"trainingInProgress": "animali in addestramento"
+  ,"trainingAvailableFor": "Addestramento disponibile per"
+  ,"noAnimalForTraining": "Nessun animale registrato per l'addestramento"
+  ,"aiSummaryUndefined": "Riepilogo IA non definito"
+  ,"noActiveModule": "Nessun modulo attivo"
 }

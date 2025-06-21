@@ -98,4 +98,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get identityModuleDescription => 'Manage your animal\'s identity';
+
+  @override
+  String get identitiesRegistered => 'identities registered';
+
+  @override
+  String get noHealthTracking => 'No health tracking in progress';
+
+  @override
+  String get healthTrackingSummary => 'animals tracked for health';
+
+  @override
+  String get noTrainingStarted => 'No training started';
+
+  @override
+  String get trainingInProgress => 'animals in training';
+
+  @override
+  String get trainingAvailableFor => 'Training available for';
+
+  @override
+  String get noAnimalForTraining => 'No animal registered for training';
+
+  @override
+  String get aiSummaryUndefined => 'AI summary not defined';
+
+  @override
+  String get noActiveModule => 'No active module';
 }

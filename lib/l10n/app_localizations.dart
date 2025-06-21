@@ -293,6 +293,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Manage your animal\'s identity'**
   String get identityModuleDescription;
+
+  /// No description provided for @identitiesRegistered.
+  ///
+  /// In en, this message translates to:
+  /// **'identities registered'**
+  String get identitiesRegistered;
+
+  /// No description provided for @noHealthTracking.
+  ///
+  /// In en, this message translates to:
+  /// **'No health tracking in progress'**
+  String get noHealthTracking;
+
+  /// No description provided for @healthTrackingSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'animals tracked for health'**
+  String get healthTrackingSummary;
+
+  /// No description provided for @noTrainingStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'No training started'**
+  String get noTrainingStarted;
+
+  /// No description provided for @trainingInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'animals in training'**
+  String get trainingInProgress;
+
+  /// No description provided for @trainingAvailableFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Training available for'**
+  String get trainingAvailableFor;
+
+  /// No description provided for @noAnimalForTraining.
+  ///
+  /// In en, this message translates to:
+  /// **'No animal registered for training'**
+  String get noAnimalForTraining;
+
+  /// No description provided for @aiSummaryUndefined.
+  ///
+  /// In en, this message translates to:
+  /// **'AI summary not defined'**
+  String get aiSummaryUndefined;
+
+  /// No description provided for @noActiveModule.
+  ///
+  /// In en, this message translates to:
+  /// **'No active module'**
+  String get noActiveModule;
 }
 
 class _AppLocalizationsDelegate
