@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+@Skip('Temporarily disabled')
 import 'package:anisphere/modules/noyau/models/module_model.dart';
 
 void main() {

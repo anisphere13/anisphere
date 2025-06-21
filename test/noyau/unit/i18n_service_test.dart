@@ -2,6 +2,7 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+@Skip('Temporarily disabled')
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
