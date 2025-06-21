@@ -1,5 +1,5 @@
-// Copilot Prompt : Générer un modèle universel de PDF export pour AniSphère.
-// Utilisé comme template commun à tous les modules (Identité, Santé, etc.)
+// Copilot Prompt : Generer un modele universel de PDF export pour AniSphere.
+// Utilise comme template commun a tous les modules (Identite, Sante, etc.)
 
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 
-/// Champ dynamique à afficher dans une section d'export.
+/// Champ dynamique a afficher dans une section d'export.
 class ExportField {
   final String label;
   final String value;
@@ -21,9 +21,9 @@ class ExportSection {
   ExportSection({required this.title, required this.fields});
 }
 
-/// Construit un PDF commun pour l'export des modules AniSphère.
-/// [moduleName] et [moduleIcon] personnalisent l'entête.
-/// [sections] contient les données à afficher.
+/// Construit un PDF commun pour l'export des modules AniSphere.
+/// [moduleName] et [moduleIcon] personnalisent l'entete.
+/// [sections] contient les donnees a afficher.
 /// [logoBytes] et [qrCodeBytes] sont des images au format bytes.
 Future<Uint8List> buildModuleExportPdf({
   required String moduleName,
