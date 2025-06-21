@@ -7,7 +7,6 @@ import 'package:anisphere/modules/noyau/services/user_service.dart';
 import 'package:anisphere/modules/noyau/services/auth_service.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:anisphere/modules/noyau/models/user_model.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
 import '../../test_config.dart';
 import '../../helpers/test_fakes.dart';
 

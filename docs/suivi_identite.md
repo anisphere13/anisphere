@@ -181,9 +181,7 @@ Assurer à chaque animal une fiche unique, fiable, partageable et intelligente, 
 - Carte cliquable ouvrant l'écran du module sélectionné (Identité compris)
 - Date : 2025-06-21
 
-### ✅ Localisations Identity
-- 📁 `lib/l10n/app_xx.arb`
-- Nouvelles clés `identityModuleTitle` et `identityModuleDescription` pour toutes les langues
-- Ajout des clés `ai_score`, `breeder_*`, `onboarding_*`, `duplicate_*`, `photo_timeline_title`
-- Date : 2025-06-21
+### ✅ Écrans Identity finalisés en français
+Les textes sont désormais intégrés directement dans les widgets.
+Date : 2025-06-21
 

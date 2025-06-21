@@ -236,7 +236,7 @@ Export interopérable santé (API vétérinaires, PDF, Drive)
 
 Notifications IA (urgence, pertinence, prédiction)
 
-Traduction auto à l’export (multi-langue)
+Traduction auto à l’export (fonctionnalité future)
 
 🌍 Site compagnon AniSphère
 

@@ -11,7 +11,7 @@ dependencies:
 - cupertino_icons 1.0.8
 - firebase_auth 5.6.0 [firebase_auth_platform_interface firebase_auth_web firebase_core firebase_core_platform_interface flutter meta]
 - firebase_core 3.14.0 [firebase_core_platform_interface firebase_core_web flutter meta]
-- firebase_data_connect 0.1.5+1 [firebase_app_check firebase_auth firebase_core firebase_core_platform_interface flutter grpc http intl protobuf]
+- firebase_data_connect 0.1.5+1 [firebase_app_check firebase_auth firebase_core firebase_core_platform_interface flutter grpc http protobuf]
 - firebase_messaging 15.2.7 [firebase_core firebase_core_platform_interface firebase_messaging_platform_interface firebase_messaging_web flutter meta]
 - firebase_storage 12.4.7 [firebase_core firebase_core_platform_interface firebase_storage_platform_interface firebase_storage_web flutter]
 - flutter 0.0.0 [characters collection material_color_utilities meta vector_math sky_engine]
@@ -145,7 +145,6 @@ transitive dependencies:
 - image_picker_macos 0.2.1+2 [file_selector_macos file_selector_platform_interface flutter image_picker_platform_interface]
 - image_picker_platform_interface 2.10.1 [cross_file flutter http plugin_platform_interface]
 - image_picker_windows 0.2.1+1 [file_selector_platform_interface file_selector_windows flutter image_picker_platform_interface]
-- intl 0.20.2 [clock meta path]
 - io 1.0.5 [meta path string_scanner]
 - js 0.7.2
 - json_annotation 4.9.0 [meta]
