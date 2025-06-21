@@ -28,7 +28,7 @@ void main() {
 
     expect(deserialized.animalId, equals('abc123'));
     expect(deserialized.verifiedByIA, isFalse);
-    expect(deserialized.aiScore, equals(0.0));
-    expect(deserialized.verifiedBreed, isFalse);
+    expect(deserialized.aiScore, equals(0.8));
+    expect(deserialized.verifiedBreed, isTrue);
   });
 }

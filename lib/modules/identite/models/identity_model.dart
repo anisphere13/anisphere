@@ -43,6 +43,39 @@ class IdentityModel {
   @HiveField(10)
   final bool verifiedBreed;
 
+  @HiveField(11)
+  final List<String> photoTimeline;
+
+  @HiveField(12)
+  final String? litterNumber;
+
+  @HiveField(13)
+  final String? lofNumber;
+
+  @HiveField(14)
+  final String? originCountry;
+
+  @HiveField(15)
+  final String? alias;
+
+  @HiveField(16)
+  final String? breederName;
+
+  @HiveField(17)
+  final String? breederAddress;
+
+  @HiveField(18)
+  final String? breederSiret;
+
+  @HiveField(19)
+  final String? breederEmail;
+
+  @HiveField(20)
+  final String? breederWebsite;
+
+  @HiveField(21)
+  final String? breederPhone;
+
   IdentityModel({
     required this.animalId,
     this.microchipNumber,
@@ -52,7 +85,7 @@ class IdentityModel {
     this.verifiedByIA = false,
     this.history = const [],
     this.hasPublicQR = false,
-    this.aiScore,
+    this.aiScore = 0.0,
     this.verifiedBreed = false,
     this.photoTimeline = const [],
     this.litterNumber,
@@ -66,8 +99,6 @@ class IdentityModel {
     this.breederWebsite,
     this.breederPhone,
     DateTime? lastUpdate,
-    this.aiScore = 0.0,
-    this.verifiedBreed = false,
   }) : lastUpdate = lastUpdate ?? DateTime.now();
 
   factory IdentityModel.fromMap(Map<String, dynamic> map) {
@@ -82,8 +113,6 @@ class IdentityModel {
           .map((e) => IdentityChange.fromMap(Map<String, dynamic>.from(e)))
           .toList(),
       hasPublicQR: map['hasPublicQR'] ?? false,
-      aiScore: (map['aiScore'] as num?)?.toDouble(),
-      verifiedBreed: map['verifiedBreed'] ?? false,
       photoTimeline: (map['photoTimeline'] as List<dynamic>? ?? [])
           .map((e) => e.toString())
           .toList(),
@@ -116,6 +145,17 @@ class IdentityModel {
       'lastUpdate': Timestamp.fromDate(lastUpdate),
       'aiScore': aiScore,
       'verifiedBreed': verifiedBreed,
+      'photoTimeline': photoTimeline,
+      'litterNumber': litterNumber,
+      'lofNumber': lofNumber,
+      'originCountry': originCountry,
+      'alias': alias,
+      'breederName': breederName,
+      'breederAddress': breederAddress,
+      'breederSiret': breederSiret,
+      'breederEmail': breederEmail,
+      'breederWebsite': breederWebsite,
+      'breederPhone': breederPhone,
     };
   }
 }
