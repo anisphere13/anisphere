@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // TODO: ajouter test
 
 const Color primaryBlue = Color(0xFF183153);
-const Color backgroundGray = Color(0xFFF5F5F5); // ✅ gris clair Samsung Health
+const Color backgroundGray = Color(0xFFF2F2F2); // ✅ gris clair Samsung Health
 
 const Color accentYellow = Color(0xFFFBC02D);
 
@@ -64,7 +64,7 @@ final ThemeData darkTheme = ThemeData.dark().copyWith(
   ),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: Color(0xFF1E1E1E),
-    selectedItemColor: accentYellow,
+    selectedItemColor: primaryBlue,
     unselectedItemColor: Colors.grey,
     showUnselectedLabels: true,
     type: BottomNavigationBarType.fixed,

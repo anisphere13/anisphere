@@ -112,6 +112,7 @@
 | test/noyau/widget/i18n_widget_test.dart | widget | package:anisphere/modules/noyau/i18n/i18n_service.dart | ✅ |
 | test/noyau/widget/language_selector_widget_test.dart | widget | package:anisphere/modules/noyau/i18n/i18n_provider.dart | ✅ |
 | test/noyau/unit/ia_local/ia_model_loader_test.dart | unit | package:anisphere/modules/noyau/services/ia_interpreter_loader.dart | ✅ |
+| test/noyau/widget/theme_colors_test.dart | widget | package:anisphere/theme.dart | ✅ |
 | test/identite/unit/genealogy_model_test.dart | unit | package:anisphere/modules/identite/models/genealogy_model.dart | ✅ |
 | test/identite/unit/genealogy_ocr_service_test.dart | unit | package:anisphere/modules/identite/services/genealogy_ocr_service.dart | ✅ |
 | test/identite/unit/genealogy_pdf_ocr_service_test.dart | unit | package:anisphere/modules/identite/services/genealogy_pdf_ocr_service.dart | ✅ |
