@@ -49,8 +49,7 @@ class _FakeThemeProvider with ChangeNotifier implements ThemeProvider {
   bool get isDarkMode => _isDarkMode;
 
   @override
-  ThemeMode get themeMode =>
-      _isDarkMode ? ThemeMode.dark : ThemeMode.light;
+  ThemeMode get themeMode => _isDarkMode ? ThemeMode.dark : ThemeMode.light;
 
   @override
   Future<void> load() async {}
@@ -71,8 +70,12 @@ void main() {
     await tester.pumpWidget(
       MultiProvider(
         providers: [
-          ChangeNotifierProvider<UserProvider>(create: (_) => _TestUserProvider()),
-          ChangeNotifierProvider<IAContextProvider>(create: (_) => IAContextProvider()),
+          ChangeNotifierProvider<UserProvider>(
+            create: (_) => _TestUserProvider(),
+          ),
+          ChangeNotifierProvider<IAContextProvider>(
+            create: (_) => IAContextProvider(),
+          ),
         ],
         child: const MaterialApp(home: MainScreen()),
       ),
@@ -90,20 +93,40 @@ void main() {
     expect(title.style?.fontSize, 20);
     expect(title.style?.color, const Color(0xFF183153));
 
-    final qrIcon = tester.widget<Icon>(find.widgetWithIcon(IconButton, Icons.qr_code));
+    final qrIcon = tester.widget<Icon>(
+      find.widgetWithIcon(IconButton, Icons.qr_code),
+    );
     expect(qrIcon.color, const Color(0xFF183153));
 
-    final menuIcon = tester.widget<Icon>(find.widgetWithIcon(PopupMenuButton<String>, Icons.more_vert));
-    expect(menuIcon.color, const Color(0xFF183153));
+    final profileIcon = tester.widget<Icon>(
+      find.widgetWithIcon(IconButton, Icons.person),
+    );
+    expect(profileIcon.color, const Color(0xFF183153));
+
+    final settingsIcon = tester.widget<Icon>(
+      find.widgetWithIcon(IconButton, Icons.settings),
+    );
+    expect(settingsIcon.color, const Color(0xFF183153));
+
+    final supportIcon = tester.widget<Icon>(
+      find.widgetWithIcon(IconButton, Icons.help_outline),
+    );
+    expect(supportIcon.color, const Color(0xFF183153));
   });
 
   testWidgets('shows SplashScreen when user is null', (tester) async {
     await tester.pumpWidget(
       MultiProvider(
         providers: [
-          ChangeNotifierProvider<I18nProvider>(create: (_) => _FakeI18nProvider()),
-          ChangeNotifierProvider<ThemeProvider>(create: (_) => _FakeThemeProvider()),
-          ChangeNotifierProvider<UserProvider>(create: (_) => _NullUserProvider()),
+          ChangeNotifierProvider<I18nProvider>(
+            create: (_) => _FakeI18nProvider(),
+          ),
+          ChangeNotifierProvider<ThemeProvider>(
+            create: (_) => _FakeThemeProvider(),
+          ),
+          ChangeNotifierProvider<UserProvider>(
+            create: (_) => _NullUserProvider(),
+          ),
         ],
         child: const MyApp(),
       ),
@@ -115,4 +138,3 @@ void main() {
     expect(find.byType(SplashScreen), findsOneWidget);
   });
 }
-
