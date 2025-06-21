@@ -26,7 +26,7 @@ void main() {
   });
 
   testWidgets('hides widget when list is empty', (tester) async {
-    await tester.pumpWidget(const MaterialApp(
+    await tester.pumpWidget(MaterialApp(
       home: ImportantNotificationsWidget(notifications: []),
     ));
 

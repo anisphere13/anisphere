@@ -11,7 +11,7 @@ void main() {
 
   testWidgets('GenealogySummaryCard displays parent ids', (WidgetTester tester) async {
     final model = GenealogyModel(animalId: 'a1', fatherName: 'f1', motherName: 'm1', originCountry: 'FR');
-    await tester.pumpWidget(const MaterialApp(
+    await tester.pumpWidget(MaterialApp(
       home: GenealogySummaryCard(genealogy: model),
     ));
 

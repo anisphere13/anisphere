@@ -30,7 +30,7 @@ void main() {
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
     );
-    await tester.pumpWidget(const MaterialApp(
+    await tester.pumpWidget(MaterialApp(
       home: IdentityScreen(animals: [animal], service: service),
     ));
 
