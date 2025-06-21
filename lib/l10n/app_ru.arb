@@ -29,7 +29,6 @@
   ,"save_button": "Save"
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
-<<<<<<< HEAD
   ,"export_feature_coming": "Функция экспорта скоро будет доступна."
   ,"privacy_settings_coming": "Настройки конфиденциальности скоро будут."
   ,"stats_coming": "Статистика скоро появится."
@@ -46,11 +45,15 @@
   ,"restore_success": "Восстановление выполнено успешно."
   ,"restore_error": "Ошибка при восстановлении."
   ,"qr_scanned": "QR отсканирован: {result}"
-=======
-  ,"settings_title": "Settings"
-  ,"backup_success": "Backup completed successfully."
-  ,"backup_error": "Error during backup."
-  ,"restore_success": "Restore successful."
-  ,"restore_error": "Error during restore."
->>>>>>> codex/mettre-à-jour-docs/suivi_noyau.md
+  ,"ai_score": "Счёт ИИ"
+  ,"breeder_name": "Имя заводчика"
+  ,"breeder_email": "Email заводчика"
+  ,"breeder_phone": "Телефон заводчика"
+  ,"onboarding_title": "Добро пожаловать в AniSphère"
+  ,"onboarding_subtitle": "Давайте настроим ваше животное"
+  ,"onboarding_skip": "Пропустить"
+  ,"onboarding_next": "Далее"
+  ,"duplicate_animal_warning": "Животное уже существует"
+  ,"duplicate_photo_warning": "Фото уже существует"
+  ,"photo_timeline_title": "Хронология фото"
 }
