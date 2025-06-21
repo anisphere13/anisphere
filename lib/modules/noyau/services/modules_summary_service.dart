@@ -7,6 +7,7 @@
 import 'package:anisphere/modules/noyau/services/modules_service.dart';
 import 'package:anisphere/modules/noyau/services/animal_service.dart';
 import 'package:anisphere/modules/noyau/logic/ia_context.dart';
+import 'package:anisphere/l10n/app_localizations.dart';
 
 class ModuleSummary {
   final String moduleName;
@@ -25,10 +26,12 @@ class ModuleSummary {
 class ModulesSummaryService {
   final AnimalService animalService;
   final IAContext context;
+  final AppLocalizations l10n;
 
   ModulesSummaryService({
     required this.animalService,
     required this.context,
+    required this.l10n,
   });
 
   /// 📦 Récupère les résumés IA pour les modules actifs.
@@ -78,6 +81,19 @@ class ModulesSummaryService {
                     : "Aucun animal enregistré pour le dressage",
                 icon: "🎯",
                 isPremium: true,
+              ),
+            );
+            break;
+
+          case "Identité":
+            summaries.add(
+              ModuleSummary(
+                moduleName: l10n.identityModuleTitle,
+                summary: context.animalCount == 0
+                    ? l10n.identityModuleDescription
+                    : "${context.animalCount} identités enregistrées",
+                icon: "🆔",
+                isPremium: false,
               ),
             );
             break;

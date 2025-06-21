@@ -26,7 +26,7 @@
   ,"identity_screen_title": "Identity"
   ,"microchip_label": "Microchip number"
   ,"status_label": "Status"
-  ,"save_button": "Save",
-  ,"module_identity_name": "Identität",
-  ,"module_identity_description": "Verwalten von Identität, Mikrochip und Genealogie des Tieres"
+  ,"save_button": "Save"
+  ,"identityModuleTitle": "Identity"
+  ,"identityModuleDescription": "Manage your animal's identity"
 }

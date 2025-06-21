@@ -94,8 +94,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get save_button => 'Enregistrer';
 
   @override
-  String get module_identity_name => 'Identité';
+  String get identityModuleTitle => 'Identité';
 
   @override
-  String get module_identity_description => "Gérer l'identité, la puce et la généalogie de l'animal";
+  String get identityModuleDescription => "Gérer l'identité de l'animal";
 }

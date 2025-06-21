@@ -93,8 +93,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get save_button => 'Save';
 
   @override
-  String get module_identity_name => 'アイデンティティ';
+  String get identityModuleTitle => 'Identity';
 
   @override
-  String get module_identity_description => '動物の身元、マイクロチップ、血統を管理';
+  String get identityModuleDescription => 'Manage your animal\'s identity';
 }

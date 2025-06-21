@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:anisphere/l10n/app_localizations.dart';
 import '../models/module_model.dart';
 
 class ModuleCard extends StatelessWidget {
@@ -24,23 +25,29 @@ class ModuleCard extends StatelessWidget {
       _ => Colors.grey,
     };
 
-    return InkWell(
-      onTap: onTap,
-      child: Card(
-        margin: const EdgeInsets.only(bottom: 16),
-        color: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        elevation: 2,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    final l10n = AppLocalizations.of(context)!;
+    final title = module.id == 'identite'
+        ? l10n.identityModuleTitle
+        : module.name;
+    final description = module.id == 'identite'
+        ? l10n.identityModuleDescription
+        : module.description;
+
+    return Card(
+      margin: const EdgeInsets.only(bottom: 16),
+      color: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      elevation: 2,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
                 Expanded(
                   child: Text(
-                    module.name,
+                    title,
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -59,7 +66,7 @@ class ModuleCard extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              module.description,
+              description,
               style: const TextStyle(color: Colors.black),
             ),
             const SizedBox(height: 12),

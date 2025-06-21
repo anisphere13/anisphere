@@ -26,7 +26,7 @@
   ,"identity_screen_title": "Identity"
   ,"microchip_label": "Microchip number"
   ,"status_label": "Status"
-  ,"save_button": "Save",
-  ,"module_identity_name": "هوية",
-  ,"module_identity_description": "إدارة هوية الحيوان والرقاقة والنسب"
+  ,"save_button": "Save"
+  ,"identityModuleTitle": "Identity"
+  ,"identityModuleDescription": "Manage your animal's identity"
 }

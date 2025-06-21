@@ -94,8 +94,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get save_button => 'Save';
 
   @override
-  String get module_identity_name => 'هوية';
+  String get identityModuleTitle => 'Identity';
 
   @override
-  String get module_identity_description => 'إدارة هوية الحيوان والرقاقة والنسب';
+  String get identityModuleDescription => 'Manage your animal\'s identity';
 }
