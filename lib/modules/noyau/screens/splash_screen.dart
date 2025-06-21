@@ -49,16 +49,13 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: primaryBlue, // bleu foncé branding
+      backgroundColor: backgroundGray,
       body: Center(
         child: FadeTransition(
           opacity: _opacityAnimation,
           child: SlideTransition(
             position: _slideAnimation,
-            child: Image.asset(
-              'assets/logo/anisphere_logo.png',
-              width: 180,
-            ),
+            child: const CircularProgressIndicator(),
           ),
         ),
       ),
