@@ -91,4 +91,10 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get save_button => 'Save';
+
+  @override
+  String get identityModuleTitle => 'Identity';
+
+  @override
+  String get identityModuleDescription => 'Manage your animal\'s identity';
 }

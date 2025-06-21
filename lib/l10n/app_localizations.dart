@@ -281,6 +281,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Save'**
   String get save_button;
+
+  /// No description provided for @identityModuleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identity'**
+  String get identityModuleTitle;
+
+  /// No description provided for @identityModuleDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage your animal\'s identity'**
+  String get identityModuleDescription;
 }
 
 class _AppLocalizationsDelegate

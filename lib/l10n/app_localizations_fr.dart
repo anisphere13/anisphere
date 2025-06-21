@@ -92,4 +92,10 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get save_button => 'Enregistrer';
+
+  @override
+  String get identityModuleTitle => 'Identité';
+
+  @override
+  String get identityModuleDescription => "Gérer l'identité de l'animal";
 }

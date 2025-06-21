@@ -27,4 +27,6 @@
   ,"microchip_label": "Microchip number"
   ,"status_label": "Status"
   ,"save_button": "Save"
+  ,"identityModuleTitle": "Identity"
+  ,"identityModuleDescription": "Manage your animal's identity"
 }
