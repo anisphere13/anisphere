@@ -38,6 +38,8 @@ Système de recommandation IA (locale/cloud) : implémenté
 - [x] Écran `security_settings_screen.dart`
 - [x] Correction du chemin `l10n` (fichiers de localisation dans `lib/l10n`)
 - [x] Ajout des clés `appTitle` et `mainScreenTitle` pour la localisation
+- [x] Nettoyage des fichiers de localisation et ajout des clés `ai_score`, `breeder_*`, `onboarding_*`, `duplicate_*`, `photo_timeline_title`
+- [x] Extension du `identity_model.dart` avec les infos éleveur + tests
 
 🩺 Santé — Activation prévue (Roadmap Phase 4)
 
@@ -134,3 +136,5 @@ suivi_[module].md → suivi fin par module
 - ✅ Mise à jour automatique des tâches le 2025-06-20
 - ✅ Mise à jour automatique des tâches le 2025-06-30 (correctifs i18n)
 - ✅ Mise à jour automatique des tâches le 2025-07-10 (pipeline IA Python)
+
+- ✅ Mise à jour automatique des tâches le 2025-06-21

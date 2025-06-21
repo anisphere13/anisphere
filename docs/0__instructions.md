@@ -43,6 +43,7 @@ L’interface prend en charge **10 langues** grâce au fichier `i18n_service.dar
 Tous les textes doivent passer par `AppLocalizations.of(context)` pour permettre la traduction automatique selon la langue choisie.
 Les fichiers `.arb` se trouvent dans `lib/l10n/` et sont générés automatiquement ou traduits via script.
 Le système multilingue est centralisé dans `lib/modules/noyau/i18n/`.
+- Clés communes : `appTitle`, `mainScreenTitle`, `ai_score`, `breeder_name`, `breeder_email`, `breeder_phone`, `onboarding_title`, `onboarding_subtitle`, `onboarding_skip`, `onboarding_next`, `duplicate_animal_warning`, `duplicate_photo_warning`, `photo_timeline_title`.
 
 🧠 Architecture IA
 
