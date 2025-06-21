@@ -25,7 +25,7 @@ void main() {
     );
 
     await tester.pumpWidget(
-      const MaterialApp(
+      MaterialApp(
         home: Scaffold(
           body: UserProfileSummaryCard(user: user, proValidated: false),
         ),
