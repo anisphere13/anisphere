@@ -44,6 +44,7 @@ Tous les textes doivent passer par `AppLocalizations.of(context)` pour permettre
 Les fichiers `.arb` se trouvent dans `lib/l10n/` et sont générés automatiquement ou traduits via script.
 Le système multilingue est centralisé dans `lib/modules/noyau/i18n/`.
 - Clés communes : `appTitle`, `mainScreenTitle`, `ai_score`, `breeder_name`, `breeder_email`, `breeder_phone`, `onboarding_title`, `onboarding_subtitle`, `onboarding_skip`, `onboarding_next`, `duplicate_animal_warning`, `duplicate_photo_warning`, `photo_timeline_title`.
+- Tous les fichiers de localisation sont régénérés avec `flutter gen-l10n` dès qu'une clé est ajoutée.
 
 🧠 Architecture IA
 
@@ -89,6 +90,7 @@ noyau/ → gestion utilisateur, IA maîtresse, notifications, app shell
 
 modules/ → 1 dossier par module (activable indépendamment)
 Le module Superadmin est désormais séparé du noyau (voir `docs/suivi_superadmin.md`)
+Corrections sur `identity_model.dart` (ajout des informations éleveur et tests) avec régénération de `identity_model.g.dart`
 
 services/ → Firebase, Hive, IA, OCR, localisation, stockage
 

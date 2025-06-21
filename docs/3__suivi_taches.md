@@ -40,6 +40,8 @@ Système de recommandation IA (locale/cloud) : implémenté
 - [x] Ajout des clés `appTitle` et `mainScreenTitle` pour la localisation
 - [x] Nettoyage des fichiers de localisation et ajout des clés `ai_score`, `breeder_*`, `onboarding_*`, `duplicate_*`, `photo_timeline_title`
 - [x] Extension du `identity_model.dart` avec les infos éleveur + tests
+- [x] Régénération des fichiers de localisation (`flutter gen-l10n`)
+- [x] Correctifs du `identity_model.dart` (null-safety, conversions) et mise à jour des tests
 
 🩺 Santé — Activation prévue (Roadmap Phase 4)
 
