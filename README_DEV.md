@@ -15,6 +15,7 @@ AniSphère est maintenant multilingue grâce au système de traduction centralis
 * Tous les textes doivent être appelés via `AppLocalizations.of(context)` pour permettre la traduction automatique.
 * Les fichiers `.arb` sont regroupés dans `lib/l10n/` et générés ou traduits via script.
 * Le service central `lib/modules/noyau/i18n/` gère la langue globale pour tous les modules.
+* `localeResolutionCallback` dans `lib/main.dart` force la langue anglaise si la locale choisie n'est pas prise en charge.
 📌 Version Flutter/Dart requise
 
 Le développement d'AniSphère s'appuie sur **Flutter&nbsp;3.32.x** et **Dart&nbsp;3.4+**.

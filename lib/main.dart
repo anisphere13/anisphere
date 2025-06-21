@@ -168,6 +168,16 @@ class _MyAppState extends State<MyApp> {
       locale: locale,
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
+      localeResolutionCallback:
+          (Locale? locale, Iterable<Locale> supportedLocales) {
+        if (locale == null) return const Locale('en');
+        for (final supportedLocale in supportedLocales) {
+          if (supportedLocale.languageCode == locale.languageCode) {
+            return supportedLocale;
+          }
+        }
+        return const Locale('en');
+      },
       debugShowCheckedModeBanner: false,
       theme: appTheme,
       darkTheme: darkTheme,
