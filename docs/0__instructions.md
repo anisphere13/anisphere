@@ -38,10 +38,10 @@ L’interface est claire, animée, inspirée de Samsung Health
 
 Tous les textes, choix et graphismes doivent être accessibles et lisibles
 
-Le support multilingue est **désactivé temporairement** pour stabiliser la première version.
-L’application fonctionne actuellement uniquement en français mais le service `i18n_service.dart` et les ressources `.arb` dans `lib/l10n/` restent en place.
+Le support multilingue est **désactivé** pour stabiliser la première version.
+L’application fonctionne uniquement en français et les fichiers de localisation ont été retirés.
 Lorsque la traduction sera réactivée, tous les textes devront repasser par `AppLocalizations.of(context)`.
-Le système multilingue du noyau, situé dans `lib/modules/noyau/i18n/`, restera la référence.
+Le système multilingue du noyau sera recréé au besoin.
 - Clés communes : `appTitle`, `mainScreenTitle`, `ai_score`, `breeder_name`, `breeder_email`, `breeder_phone`, `onboarding_title`, `onboarding_subtitle`, `onboarding_skip`, `onboarding_next`, `duplicate_animal_warning`, `duplicate_photo_warning`, `photo_timeline_title`.
 
 🧠 Architecture IA

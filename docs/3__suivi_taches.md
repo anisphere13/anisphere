@@ -139,5 +139,5 @@ suivi_[module].md → suivi fin par module
 - ✅ Mise à jour automatique des tâches le 2025-07-10 (pipeline IA Python)
 
 - ✅ Mise à jour automatique des tâches le 2025-06-21
-- 📝 2025-07-20 : désactivation temporaire du support multilingue. L'application reste en français uniquement; les ressources `lib/l10n/` sont conservées pour une réactivation ultérieure.
+- 📝 2025-07-20 : désactivation temporaire du support multilingue. L'application reste en français uniquement.
 - ✅ Mise à jour automatique des tâches le 2025-07-21 (NotificationService intégré)
