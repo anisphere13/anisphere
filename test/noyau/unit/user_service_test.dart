@@ -33,7 +33,6 @@ void main() {
       activeModules: const [],
       role: 'user',
       iaPremium: false,
-      langue: 'fr',
     );
     await service.saveUserLocally(user);
     final fetched = service.getUserFromHive();

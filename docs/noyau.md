@@ -11,7 +11,7 @@ a. Authentification & Gestion des Comptes
 
 Authentification via email/mot de passe, Google, Apple (Firebase Auth).
 Gestion des rôles et permissions utilisateur dynamiques.
-Préférences utilisateur globales (langue, thème, accessibilité, sécurité).
+Préférences utilisateur globales (thème, accessibilité, sécurité).
 Support de l'authentification biométrique pour renforcer la sécurité.
 Le module superadmin a été déplacé et n’est plus inclus dans le noyau. Il est désormais un module sécurisé indépendant.
 

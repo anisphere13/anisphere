@@ -1,5 +1,5 @@
 // Copilot Prompt : Générateur PDF premium de passeport visuel pour AniSphère.
-// Produit un document stylisé multilingue (nom, puce, photo, statut, QR, historique)
+// Produit un document stylisé (nom, puce, photo, statut, QR, historique)
 // réservé aux utilisateurs premium. Export PDF prêt à partager.
 // TODO: Export PDF premium
 import 'dart:io';
@@ -10,7 +10,7 @@ import 'package:pdf/pdf.dart';
 import '../models/identity_model.dart';
 
 /// Générateur PDF premium de passeport visuel pour AniSphère.
-/// Produit un document stylisé multilingue (nom, puce, photo, statut, QR, historique)
+/// Produit un document stylisé (nom, puce, photo, statut, QR, historique)
 /// réservé aux utilisateurs premium. Export PDF prêt à partager.
 
 class IdentityPassportGenerator {

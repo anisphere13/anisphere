@@ -11,10 +11,7 @@ Centraliser les bonnes pratiques, automatisations, et outils
 Servir de passerelle entre le code, l’IA et les fichiers de suivi (test, roadmap, modules)
 
 Il est mis à jour automatiquement à chaque évolution majeure du projet.
-Le système multilingue est **désactivé** pour simplifier la première version ; l’application fonctionne uniquement en français.
-Les fichiers de localisation et le service `i18n` ont été retirés.
-Lorsque la traduction sera réintroduite, tous les textes devront passer par `AppLocalizations.of(context)`.
-`localeResolutionCallback` dans `lib/main.dart` force toujours la langue française.
+L’application fonctionne uniquement en français et les fichiers de localisation ont été retirés.
 📌 Version Flutter/Dart requise
 
 Le développement d'AniSphère s'appuie sur **Flutter&nbsp;3.32.x** et **Dart&nbsp;3.4+**.

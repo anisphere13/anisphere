@@ -65,12 +65,9 @@ class UserModel {
   final DateTime? syncedAt;
 
   @HiveField(18)
-  final String? langue;
-
-  @HiveField(19)
   final String address;
 
-  @HiveField(20)
+  @HiveField(19)
   final DateTime? birthDate;
 
   const UserModel({
@@ -92,7 +89,6 @@ class UserModel {
     this.lastIASync,
     this.iaTrained = false,
     this.syncedAt,
-    this.langue,
     this.address = '',
     this.birthDate,
   });
@@ -116,7 +112,6 @@ class UserModel {
         'lastIASync': lastIASync?.toIso8601String(),
         'iaTrained': iaTrained,
         'syncedAt': syncedAt?.toIso8601String(),
-        'langue': langue,
         'address': address,
         'birthDate': birthDate?.toIso8601String(),
       };
@@ -145,7 +140,6 @@ class UserModel {
       syncedAt: json['syncedAt'] != null
           ? DateTime.tryParse(json['syncedAt'])
           : null,
-      langue: json['langue'],
       address: json['address'] ?? '',
       birthDate: json['birthDate'] != null
           ? DateTime.tryParse(json['birthDate'])
@@ -172,7 +166,6 @@ class UserModel {
     DateTime? lastIASync,
     bool? iaTrained,
     DateTime? syncedAt,
-    String? langue,
     String? address,
     DateTime? birthDate,
   }) {
@@ -195,7 +188,6 @@ class UserModel {
       lastIASync: lastIASync ?? this.lastIASync,
       iaTrained: iaTrained ?? this.iaTrained,
       syncedAt: syncedAt ?? this.syncedAt,
-      langue: langue ?? this.langue,
       address: address ?? this.address,
       birthDate: birthDate ?? this.birthDate,
     );

@@ -47,7 +47,7 @@ Rappels traitements : prévu (notifications intelligentes)
 
 Statistiques santé : prévu (suivi par IA)
 
-Export PDF multilingue : prévu (partage professionnel)
+Export PDF : prévu (partage professionnel)
 
 🧠 Éducation — Activation prévue (Roadmap Phase 4)
 
@@ -135,5 +135,5 @@ suivi_[module].md → suivi fin par module
 - ✅ Mise à jour automatique des tâches le 2025-07-10 (pipeline IA Python)
 
 - ✅ Mise à jour automatique des tâches le 2025-06-21
-- 📝 2025-07-20 : désactivation temporaire du support multilingue. L'application reste en français uniquement.
+- 📝 2025-07-20 : l'application reste en français uniquement.
 - ✅ Mise à jour automatique des tâches le 2025-07-21 (NotificationService intégré)

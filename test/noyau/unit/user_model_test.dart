@@ -26,13 +26,11 @@ void main() {
       activeModules: const [],
       role: 'user',
       iaPremium: false,
-      langue: 'fr',
     );
     final json = user.toJson();
     final copy = UserModel.fromJson(json);
     expect(copy.id, 'u1');
     expect(copy.email, 'e');
-    expect(copy.langue, 'fr');
     expect(copy.address, 'addr');
     expect(copy.birthDate, DateTime(2000));
   });

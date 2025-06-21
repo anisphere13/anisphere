@@ -112,9 +112,8 @@ Assurer à chaque animal une fiche unique, fiable, partageable et intelligente, 
 - Test unitaire avec mocks des services
 - Date : 2025-05-20
 
-### ✅ identity_passport_generator.dart
 - 📁 `lib/modules/identite/services/identity_passport_generator.dart`
-- Génère un PDF premium stylisé multilingue pour fiche identité complète
+- Génère un PDF premium stylisé pour fiche identité complète
 - Exportable, partageable, réservé aux comptes premium (désactivé par défaut)
 - Test PDF validé sans photo
 - Date : 2025-05-20
