@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-<<<<<<< HEAD
-import 'package:anisphere/l10n/app_localizations.dart';
-=======
->>>>>>> codex/modifier-la-gestion-de-la-langue-pour-le-français
 import '../../test_config.dart';
 
 void main() {
