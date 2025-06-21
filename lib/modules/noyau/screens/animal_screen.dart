@@ -58,8 +58,8 @@ class AnimalScreen extends StatelessWidget {
                       try {
                         final identityBox =
                             Hive.box<IdentityModel>('identityBox');
-                        final identityService =
-                            IdentityService(localBox: identityBox);
+                        final identityService = IdentityService(
+                            localBox: identityBox, signatureSecret: 'secret');
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) => IdentityScreen(

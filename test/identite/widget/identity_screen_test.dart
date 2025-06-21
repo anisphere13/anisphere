@@ -19,7 +19,7 @@ void main() {
   });
   testWidgets('IdentityScreen displays score and import button',
       (WidgetTester tester) async {
-    final service = IdentityService(localBox: MockBox());
+    final service = IdentityService(localBox: MockBox(), signatureSecret: 'secret');
     final animal = AnimalModel(
       id: 'test',
       name: 'Test',
