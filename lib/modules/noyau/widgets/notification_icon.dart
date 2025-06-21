@@ -4,6 +4,7 @@
 
 
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 
 class NotificationIcon extends StatelessWidget {
   final int unreadCount;
@@ -31,7 +32,7 @@ class NotificationIcon extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(3),
               decoration: const BoxDecoration(
-                color: Colors.red,
+                color: primaryBlue,
                 shape: BoxShape.circle,
               ),
               constraints: const BoxConstraints(minWidth: 16, minHeight: 16),

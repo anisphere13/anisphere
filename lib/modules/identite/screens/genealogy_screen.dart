@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import 'dart:io';
 import '../services/genealogy_pdf_ocr_service.dart';
 import '../models/genealogy_model.dart';
@@ -24,8 +25,10 @@ class _GenealogyScreenState extends State<GenealogyScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (duplicateAlert)
-              const Text('Doublon potentiel détecté',
-                  style: TextStyle(color: Colors.red)),
+              const Text(
+                'Doublon potentiel détecté',
+                style: TextStyle(color: primaryBlue),
+              ),
             const SizedBox(height: 8),
             if (genealogy != null) _buildGraph(),
             const SizedBox(height: 16),
