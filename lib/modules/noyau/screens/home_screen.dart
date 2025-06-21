@@ -2,7 +2,6 @@
 // Intègre les widgets IA dynamiques : IABanner, IAChip, IASuggestionCard, IALogViewer.
 // Affiche les résumés IA des modules actifs via ModulesSummaryService.
 
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +13,7 @@ import '../providers/user_provider.dart';
 import '../services/pro_validation_service.dart';
 import '../widgets/quick_actions_sheet.dart';
 import '../widgets/user_profile_summary_card.dart';
+import '../widgets/important_notifications_widget.dart';
 import 'animal_form_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -27,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<ModuleSummary> summaries = [];
   bool loadingSummaries = true;
   bool proValidated = true;
+  List<String> importantNotifications = [];
 
   void _showQuickActions() {
     showModalBottomSheet(
@@ -55,6 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _loadSummaries();
     _loadProfile();
+    _loadImportantNotifications();
   }
 
   Future<void> _loadProfile() async {
@@ -91,6 +93,17 @@ class _HomeScreenState extends State<HomeScreen> {
       debugPrint("❌ Erreur chargement résumés modules : $e");
       setState(() => loadingSummaries = false);
     }
+  }
+
+  void _loadImportantNotifications() {
+    // TODO: replace with real data from notifications service
+    setState(() {
+      importantNotifications = [
+        'Rappel vermifuge dans 3 jours',
+        'Nouvelle mise à jour disponible',
+        'Votre profil est incomplet'
+      ];
+    });
   }
 
   Widget _buildModuleCard(ModuleSummary summary) {
@@ -141,16 +154,24 @@ class _HomeScreenState extends State<HomeScreen> {
                             proValidated: proValidated,
                           ),
                         ),
+                      if (importantNotifications.isNotEmpty)
+                        SliverToBoxAdapter(
+                          child: ImportantNotificationsWidget(
+                            notifications: importantNotifications,
+                          ),
+                        ),
                       SliverToBoxAdapter(
                         child: Padding(
                           padding: const EdgeInsets.all(16),
                           child: Text(
                             "Résumé des modules actifs",
-                            style:
-                                Theme.of(context).textTheme.titleLarge?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black,
-                                    ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
                           ),
                         ),
                       ),

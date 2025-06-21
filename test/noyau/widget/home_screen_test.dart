@@ -8,6 +8,7 @@ import 'package:anisphere/modules/noyau/providers/ia_context_provider.dart';
 import 'package:anisphere/modules/noyau/services/auth_service.dart';
 import 'package:anisphere/modules/noyau/services/user_service.dart';
 import 'package:anisphere/modules/noyau/screens/home_screen.dart';
+import 'package:anisphere/modules/noyau/widgets/important_notifications_widget.dart';
 
 import '../../test_config.dart';
 
@@ -24,8 +25,10 @@ void main() {
     await tester.pumpWidget(
       MultiProvider(
         providers: [
-          ChangeNotifierProvider<UserProvider>(create: (_) => _TestUserProvider()),
-          ChangeNotifierProvider<IAContextProvider>(create: (_) => IAContextProvider()),
+          ChangeNotifierProvider<UserProvider>(
+              create: (_) => _TestUserProvider()),
+          ChangeNotifierProvider<IAContextProvider>(
+              create: (_) => IAContextProvider()),
         ],
         child: const MaterialApp(home: HomeScreen()),
       ),
@@ -35,5 +38,23 @@ void main() {
 
     expect(find.byType(AppBar), findsNothing);
     expect(find.byIcon(Icons.more_vert), findsOneWidget);
+  });
+
+  testWidgets('displays important notifications widget', (tester) async {
+    await tester.pumpWidget(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider<UserProvider>(
+              create: (_) => _TestUserProvider()),
+          ChangeNotifierProvider<IAContextProvider>(
+              create: (_) => IAContextProvider()),
+        ],
+        child: const MaterialApp(home: HomeScreen()),
+      ),
+    );
+
+    await tester.pumpAndSettle();
+
+    expect(find.byType(ImportantNotificationsWidget), findsOneWidget);
   });
 }
