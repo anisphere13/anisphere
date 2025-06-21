@@ -40,9 +40,7 @@ Exports & données pro
 
 Génération PDF complète du carnet santé.
 
-Export en différentes langues (fonctionnalité payante hors langue native).
 
-Partage facilité vers vétérinaire, pension ou assurance.
 
 Module "Cabinet vétérinaire"
 
@@ -236,7 +234,6 @@ Export interopérable santé (API vétérinaires, PDF, Drive)
 
 Notifications IA (urgence, pertinence, prédiction)
 
-Traduction auto à l’export (multi-langue)
 
 🌍 Site compagnon AniSphère
 

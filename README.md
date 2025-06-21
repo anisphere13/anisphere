@@ -1,6 +1,7 @@
 🐾 AniSphère — Application intelligente pour le suivi de la vie animale
 
 AniSphère est une application modulaire, intuitive et évolutive qui accompagne les utilisateurs dans le suivi complet de leurs animaux. Grâce à une architecture hybride (local + cloud) et à une intelligence artificielle intégrée, AniSphère devient un véritable compagnon quotidien pour les particuliers, professionnels et associations.
+L'application fonctionne désormais exclusivement en français.
 
 🎯 Mission
 

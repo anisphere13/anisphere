@@ -4,6 +4,7 @@
 Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolution, les tests et les grandes décisions du noyau AniSphère.  
 > Toute étape validée est datée, toute fonctionnalité doit être couverte par un test associé.  
 > Les tâches Superadmin ont été supprimées du noyau et sont désormais dans un module indépendant.
+L'application fonctionne désormais exclusivement en français.
 
 ---
 
@@ -333,16 +334,12 @@ Responsable : Superadmin
 - 🧩 Mise à jour de `ia_logger.dart` pour tracer les paiements, tests à jour le 2025-06-15
 
 - 🧩 Synchronisation automatique du noyau le 2025-06-18
-- 🆕 Multilingue : i18n_service, i18n_provider, fichiers .arb
-- 🆕 Support complet de **10 langues** grâce à `i18n_service.dart` et aux fichiers `.arb` localisés
-- 🛠️ 2025-06-30 : Correction des imports i18n (`AppLocalizations`, `I18nProvider`) et mise à jour des tests associés
 - 🆕 2025-07-15 : Gestion rôles utilisateurs / validation pro via `user_profile_model.dart` et `pro_validation_service.dart`
 
 - 🧩 Synchronisation automatique du noyau le 2025-06-19
-- 🆕 2025-06-21 : Ajout du module **Identité** dans `ModulesScreen` (catégorie "Communauté") et localisation dans les fichiers `.arb`.
+- 🆕 2025-06-21 : Ajout du module **Identité** dans `ModulesScreen` (catégorie "Communauté").
 - 🛠️ 2025-06-21 : `ModuleCard` devient cliquable et ouvre `IdentityScreen` via `_openIdentityScreen`.
 - ✅ 2025-06-21 : Test widget `modules_screen_test.dart` mis à jour pour vérifier l'accès à l'identité.
-- 🛠️ 2025-06-21 : Nettoyage des fichiers de localisation (`lib/l10n/*.arb`) et ajout des clés `ai_score`, `breeder_name`, `breeder_email`, `breeder_phone`, `onboarding_title`, `onboarding_subtitle`, `onboarding_skip`, `onboarding_next`, `duplicate_animal_warning`, `duplicate_photo_warning`, `photo_timeline_title`.
 - 🛠️ 2025-06-21 : Mise à jour du `identity_model.dart` (champs éleveur) avec tests.
 
 - 🧩 Synchronisation automatique du noyau le 2025-06-21

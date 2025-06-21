@@ -62,7 +62,6 @@ Chaque module dispose de son propre dossier dans lib/modules/[nom_du_module]
 Le noyau est toujours accessible depuis les modules, mais les modules ne doivent jamais l’altérer
 
 Tous les tests sont regroupés dans /test et suivent la même hiérarchie que lib/
-Tous les textes des modules doivent passer par `AppLocalizations.of(context)` et les services utilisent `I18nService` pour la langue active. Aucune ressource `.arb` ne doit être créée dans les modules.
 
 ### Services transverses du noyau
 - Messagerie : `lib/modules/messagerie/services/messaging_service.dart`
