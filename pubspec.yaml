@@ -15,7 +15,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_local_notifications: ^19.2.1
   webview_flutter: ^4.7.0
-  intl: ^0.19.0
+  intl: ^0.20.2
   # Base / stockage local
   provider: ^6.1.2
   path_provider: ^2.1.5
