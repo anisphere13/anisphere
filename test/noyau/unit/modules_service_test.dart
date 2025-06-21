@@ -33,6 +33,10 @@ void main() {
     expect(ModulesService.getStatus('sante'), 'actif');
   });
 
+  test('getStatus identite default is actif', () {
+    expect(ModulesService.getStatus('identite'), 'actif');
+  });
+
   test('markPremium updates status', () async {
     await ModulesService.markPremium('education');
     expect(ModulesService.getStatus('education'), 'premium');
