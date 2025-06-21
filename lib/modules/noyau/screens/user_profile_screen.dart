@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'user_edit_screen.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
@@ -116,6 +117,21 @@ class UserProfileScreen extends StatelessWidget {
           ),
 
           const SizedBox(height: 32),
+          Center(
+            child: ElevatedButton.icon(
+              icon: const Icon(Icons.edit),
+              label: const Text('Modifier mon compte'),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const UserEditScreen(),
+                  ),
+                );
+              },
+            ),
+          ),
+
+          const SizedBox(height: 16),
           Center(
             child: ElevatedButton.icon(
               icon: const Icon(Icons.logout),

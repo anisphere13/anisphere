@@ -15,6 +15,8 @@ void main() {
       phone: '',
       profilePicture: '',
       profession: '',
+      address: 'addr',
+      birthDate: DateTime(2000),
       ownedSpecies: const {},
       ownedAnimals: const [],
       preferences: const {},
@@ -31,5 +33,7 @@ void main() {
     expect(copy.id, 'u1');
     expect(copy.email, 'e');
     expect(copy.langue, 'fr');
+    expect(copy.address, 'addr');
+    expect(copy.birthDate, DateTime(2000));
   });
 }

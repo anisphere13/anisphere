@@ -15,27 +15,21 @@ class UserProfileModel extends UserModel {
   final String firstName;
 
   @HiveField(21)
-  final String address;
-
-  @HiveField(22)
-  final DateTime? birthDate;
-
-  @HiveField(23)
   final String birthPlace;
 
-  @HiveField(24)
+  @HiveField(22)
   final String unit;
 
-  @HiveField(25)
+  @HiveField(23)
   final String company;
 
-  @HiveField(26)
+  @HiveField(24)
   final String group;
 
-  @HiveField(27)
+  @HiveField(25)
   final String nigend;
 
-  @HiveField(28)
+  @HiveField(26)
   final bool proValidated;
 
   const UserProfileModel({
@@ -60,8 +54,6 @@ class UserProfileModel extends UserModel {
     super.langue,
     this.lastName = '',
     this.firstName = '',
-    this.address = '',
-    this.birthDate,
     this.birthPlace = '',
     this.unit = '',
     this.company = '',
@@ -94,10 +86,6 @@ class UserProfileModel extends UserModel {
       langue: base.langue,
       lastName: json['lastName'] ?? '',
       firstName: json['firstName'] ?? '',
-      address: json['address'] ?? '',
-      birthDate: json['birthDate'] != null
-          ? DateTime.tryParse(json['birthDate'])
-          : null,
       birthPlace: json['birthPlace'] ?? '',
       unit: json['unit'] ?? '',
       company: json['company'] ?? '',
@@ -112,8 +100,6 @@ class UserProfileModel extends UserModel {
         ...super.toJson(),
         'lastName': lastName,
         'firstName': firstName,
-        'address': address,
-        'birthDate': birthDate?.toIso8601String(),
         'birthPlace': birthPlace,
         'unit': unit,
         'company': company,
@@ -127,8 +113,6 @@ class UserProfileModel extends UserModel {
   UserProfileModel copyWith({
     String? lastName,
     String? firstName,
-    String? address,
-    DateTime? birthDate,
     String? birthPlace,
     String? unit,
     String? company,
@@ -178,8 +162,6 @@ class UserProfileModel extends UserModel {
       langue: langue ?? this.langue,
       lastName: lastName ?? this.lastName,
       firstName: firstName ?? this.firstName,
-      address: address ?? this.address,
-      birthDate: birthDate ?? this.birthDate,
       birthPlace: birthPlace ?? this.birthPlace,
       unit: unit ?? this.unit,
       company: company ?? this.company,

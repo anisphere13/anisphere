@@ -129,6 +129,8 @@ class UserService {
         activeModules: List<String>.from(
             fields['activeModules'] ?? currentUser.activeModules),
         langue: fields['langue'],
+        address: fields['address'],
+        birthDate: fields['birthDate'],
         updatedAt: DateTime.now(),
       );
       await updateUser(updatedUser);
