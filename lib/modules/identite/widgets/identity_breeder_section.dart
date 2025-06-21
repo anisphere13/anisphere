@@ -1,3 +1,4 @@
+// TODO: ajouter test
 import 'package:flutter/material.dart';
 import '../models/genealogy_model.dart';
 
@@ -12,7 +13,7 @@ class IdentityBreederSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Éleveur',
           style: Theme.of(context).textTheme.titleMedium,
         ),
