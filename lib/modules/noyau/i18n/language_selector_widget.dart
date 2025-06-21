@@ -1,7 +1,7 @@
 // Widget preserved for future language selection features.
 import 'package:flutter/material.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
-import 'package:flutter_localized_locales/flutter_localized_locales.dart';
+// import 'package:anisphere/l10n/app_localizations.dart';
+// import 'package:flutter_localized_locales/flutter_localized_locales.dart';
 import 'package:provider/provider.dart';
 import 'i18n_provider.dart';
 
@@ -20,18 +20,12 @@ class LanguageSelectorWidget extends StatelessWidget {
           context.read<I18nProvider>().setLocale(newLocale);
         }
       },
-      items: AppLocalizations.supportedLocales
-          .map(
-            (locale) => DropdownMenuItem<Locale>(
-              value: locale,
-              child: Text(
-                LocaleNames.of(context)!
-                        .nameOf(locale.languageCode) ??
-                    locale.languageCode,
-              ),
-            ),
-          )
-          .toList(),
+      items: const [
+        DropdownMenuItem<Locale>(
+          value: Locale('fr'),
+          child: Text('fr'),
+        )
+      ],
     );
   }
 }
