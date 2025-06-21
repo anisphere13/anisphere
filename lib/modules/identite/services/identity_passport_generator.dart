@@ -85,7 +85,7 @@ class IdentityPassportGenerator {
                   return pw.Bullet(
                     text: "$date : ${e.field} modifié de '${e.oldValue}' → '${e.newValue}'",
                   );
-                }),
+                }).toList(), // Codex: Correction automatique flutter analyze
               ),
             ],
           ];

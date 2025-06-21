@@ -39,8 +39,7 @@ void main() {
       (invocation) {
         final output = invocation.positionalArguments[1] as List;
         (output.first as List)[0] = 3.14;
-        return null;
-      },
+      }, // Codex: Correction automatique flutter analyze
     );
     final loader = IaInterpreterLoader(
       modelPath: 'models/dummy.tflite',

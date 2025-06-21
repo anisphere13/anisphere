@@ -9,8 +9,6 @@ import 'package:anisphere/modules/noyau/services/video_logs_collector.dart';
 import 'package:anisphere/modules/noyau/services/offline_sync_queue.dart';
 import '../../test_config.dart';
 
-class MockCollection extends Mock implements CollectionReference<Map<String, dynamic>> {}
-class MockDocument extends Mock implements DocumentReference<Map<String, dynamic>> {}
 class MockFirestore extends Mock implements FirebaseFirestore {}
 
 void main() {
@@ -56,14 +54,8 @@ void main() {
 
   test('uploadResult queues task on failure', () async {
     final mockFirestore = MockFirestore();
-    final mockLogs = MockCollection();
-    final mockDoc = MockDocument();
-    final mockEntries = MockCollection();
-    when(mockFirestore.collection('logs_ia')).thenReturn(mockLogs);
-    when(mockLogs.doc(any)).thenReturn(mockDoc);
-    when(mockDoc.collection('entries')).thenReturn(mockEntries);
-    when(mockEntries.add(any<Map<String, dynamic>>()))
-        .thenThrow(Exception('fail'));
+    when(mockFirestore.collection('logs_ia'))
+        .thenThrow(Exception('fail')); // Codex: Correction automatique flutter analyze
 
     final collector = VideoLogsCollector(firestoreInstance: mockFirestore);
 

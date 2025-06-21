@@ -38,7 +38,7 @@ class ModulesByCategoryScreen extends StatelessWidget {
               const SizedBox(height: 24),
             ],
           );
-        }),
+        }).toList(), // Codex: Correction automatique flutter analyze
       ),
     );
   }

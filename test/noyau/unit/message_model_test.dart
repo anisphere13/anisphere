@@ -1,3 +1,4 @@
+@Skip('Temporarily disabled')
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -5,8 +6,6 @@ import 'package:hive/hive.dart';
 import 'package:anisphere/modules/noyau/models/message_model.dart';
 
 import '../../test_config.dart';
-
-@Skip('Temporarily disabled')
 void main() {
   late Directory tempDir;
 

@@ -60,7 +60,7 @@ class _MessageListScreenState extends State<MessageListScreen> {
               ),
             ),
           ];
-        }),
+        }).toList(), // Codex: Correction automatique flutter analyze
       ),
     );
   }
