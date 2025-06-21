@@ -59,5 +59,8 @@
   ,"trainingAvailableFor": "Training available for"
   ,"noAnimalForTraining": "No animal registered for training"
   ,"aiSummaryUndefined": "AI summary not defined"
-  ,"noActiveModule": "No active module"
+  ,"noActiveModule": "No active module",
+  "share_title": "Share",
+  "modules_title": "Modules",
+  "myAnimals_title": "My Animals"
 }

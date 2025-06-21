@@ -348,6 +348,24 @@ abstract class AppLocalizations {
   /// **'No active module'**
   String get noActiveModule;
 
+  /// No description provided for @share_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get share_title;
+
+  /// No description provided for @modules_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Modules'**
+  String get modules_title;
+
+  /// No description provided for @myAnimals_title.
+  ///
+  /// In en, this message translates to:
+  /// **'My Animals'**
+  String get myAnimals_title;
+
   /// No description provided for @settings_title.
   ///
   /// In en, this message translates to:

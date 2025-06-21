@@ -53,5 +53,8 @@
   ,"trainingAvailableFor": "Adiestramiento disponible para"
   ,"noAnimalForTraining": "Ningún animal registrado para el adiestramiento"
   ,"aiSummaryUndefined": "Resumen de IA no definido"
-  ,"noActiveModule": "Ningún módulo activo"
+  ,"noActiveModule": "Ningún módulo activo",
+  "share_title": "Compartir",
+  "modules_title": "Módulos",
+  "myAnimals_title": "Mis Animales"
 }

@@ -127,6 +127,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noActiveModule => 'لا توجد وحدة نشطة';
 
   @override
+  String get share_title => 'مشاركة';
+
+  @override
+  String get modules_title => 'الوحدات';
+
+  @override
+  String get myAnimals_title => 'حيواناتي';
+
+  @override
   String get settings_title => 'Settings';
 
   @override

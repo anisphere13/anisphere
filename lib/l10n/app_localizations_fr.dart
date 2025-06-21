@@ -127,6 +127,15 @@ class AppLocalizationsFr extends AppLocalizations {
   String get noActiveModule => 'Aucun module actif';
 
   @override
+  String get share_title => 'Partage';
+
+  @override
+  String get modules_title => 'Modules';
+
+  @override
+  String get myAnimals_title => 'Mes Animaux';
+
+  @override
   String get settings_title => 'Paramètres';
 
   @override

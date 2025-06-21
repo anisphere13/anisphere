@@ -126,6 +126,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get noActiveModule => '没有激活的模块';
 
   @override
+  String get share_title => '分享';
+
+  @override
+  String get modules_title => '模块';
+
+  @override
+  String get myAnimals_title => '我的动物';
+
+  @override
   String get settings_title => 'Settings';
 
   @override

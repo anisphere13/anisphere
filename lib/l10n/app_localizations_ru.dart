@@ -128,6 +128,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get noActiveModule => 'Нет активных модулей';
 
   @override
+  String get share_title => 'Поделиться';
+
+  @override
+  String get modules_title => 'Модули';
+
+  @override
+  String get myAnimals_title => 'Мои животные';
+
+  @override
   String get settings_title => 'Settings';
 
   @override

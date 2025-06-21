@@ -127,6 +127,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get noActiveModule => 'Nenhum módulo ativo';
 
   @override
+  String get share_title => 'Compartilhar';
+
+  @override
+  String get modules_title => 'Módulos';
+
+  @override
+  String get myAnimals_title => 'Meus Animais';
+
+  @override
   String get settings_title => 'Settings';
 
   @override

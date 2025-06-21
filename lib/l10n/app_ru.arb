@@ -64,5 +64,8 @@
   ,"trainingAvailableFor": "Дрессировка доступна для"
   ,"noAnimalForTraining": "Нет животных, зарегистрированных для дрессировки"
   ,"aiSummaryUndefined": "ИИ-резюме не определено"
-  ,"noActiveModule": "Нет активных модулей"
+  ,"noActiveModule": "Нет активных модулей",
+  "share_title": "Поделиться",
+  "modules_title": "Модули",
+  "myAnimals_title": "Мои животные"
 }
