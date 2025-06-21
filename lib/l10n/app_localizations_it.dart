@@ -100,6 +100,73 @@ class AppLocalizationsIt extends AppLocalizations {
   String get identityModuleDescription => 'Manage your animal\'s identity';
 
   @override
+  String get settings_title => 'Settings';
+
+  @override
+  String get backup_success => 'Backup completed successfully.';
+
+  @override
+  String get backup_error => 'Error during backup.';
+
+  @override
+  String get restore_success => 'Restore successful.';
+
+  @override
+  String get restore_error => 'Error during restore.';
+
+  @override
+  String get ai_score => 'Punteggio IA';
+
+  @override
+  String get badge_state => 'Badge';
+
+  @override
+  String get timeline_photos => 'Timeline photos';
+
+  @override
+  String get import_icad => 'Express I-CAD import';
+
+  @override
+  String get import_pdf => 'Import PDF';
+
+  @override
+  String get duplicate_alert => 'Possible duplicate detected';
+
+  @override
+  String get identity_onboarding_message =>
+      'Manage your animal identity here. Swipe to change animal.';
+
+  @override
+  String get breeder_name => 'Nome allevatore';
+
+  @override
+  String get breeder_email => 'Email allevatore';
+
+  @override
+  String get breeder_phone => 'Telefono allevatore';
+
+  @override
+  String get onboarding_title => 'Benvenuto in AniSphère';
+
+  @override
+  String get onboarding_subtitle => 'Configura il tuo animale';
+
+  @override
+  String get onboarding_skip => 'Salta';
+
+  @override
+  String get onboarding_next => 'Avanti';
+
+  @override
+  String get duplicate_animal_warning => 'Animale già esistente';
+
+  @override
+  String get duplicate_photo_warning => 'Foto già esistente';
+
+  @override
+  String get photo_timeline_title => 'Cronologia foto';
+
+  @override
   String get identitiesRegistered => 'identità registrate';
 
   @override
@@ -118,26 +185,12 @@ class AppLocalizationsIt extends AppLocalizations {
   String get trainingAvailableFor => 'Addestramento disponibile per';
 
   @override
-  String get noAnimalForTraining => 'Nessun animale registrato per l\'addestramento';
+  String get noAnimalForTraining =>
+      'Nessun animale registrato per l\'addestramento';
 
   @override
   String get aiSummaryUndefined => 'Riepilogo IA non definito';
 
   @override
   String get noActiveModule => 'Nessun modulo attivo';
-
-  @override
-  String get settings_title => 'Settings';
-
-  @override
-  String get backup_success => 'Backup completed successfully.';
-
-  @override
-  String get backup_error => 'Error during backup.';
-
-  @override
-  String get restore_success => 'Restore successful.';
-
-  @override
-  String get restore_error => 'Error during restore.';
 }
