@@ -1,5 +1,3 @@
-// TODO: ajouter test
-
 import 'package:hive/hive.dart';
 
 part 'message_model.g.dart';

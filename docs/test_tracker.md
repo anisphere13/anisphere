@@ -1,15 +1,15 @@
 # Test Tracker AniSphère
-Ajoutez vos nouvelles entrées dans `test/test_tracker.md` puis lancez `dart scripts/update_test_tracker.dart` pour mettre à jour ce tableau.
+Ajoutez ici les nouveaux tests puis exécutez `dart scripts/update_test_tracker.dart` pour mettre à jour docs/test_tracker.md.
 
-| Fichier test | Type | Source | Statut |
-|--------------|------|--------|--------|
+| Fichier test | Type | Source | ✅ |
+| -------------- | ------ | -------- | ✅ |
 | test/identite/unit/identity_model.g_test.dart | unit | package:anisphere/modules/identite/models/identity_model.g.dart | ✅ |
 | test/identite/unit/identity_model_test.dart | unit | package:anisphere/modules/identite/models/identity_model.dart | ✅ |
-| test/identite/unit/identity_model_serialization_test.dart | unit | package:anisphere/modules/identite/models/identity_model.dart | ✅ |
 | test/identite/unit/identity_card_generator_test.dart | unit | package:anisphere/modules/identite/services/identity_card_generator.dart | ✅ |
 | test/identite/unit/identity_reminder_service_test.dart | unit | package:anisphere/modules/identite/services/identity_reminder_service.dart | ✅ |
 | test/identite/unit/legal_status_service_test.dart | unit | package:anisphere/modules/identite/services/legal_status_service.dart | ✅ |
 | test/identite/unit/identity_service_test.dart | unit | package:anisphere/modules/identite/services/identity_service.dart | ✅ |
+| test/identite/unit/identity_signature_service_test.dart | unit | package:anisphere/modules/identite/services/identity_signature_service.dart | ✅ |
 | test/identite/unit/identity_verification_service_test.dart | unit | package:anisphere/modules/identite/services/identity_verification_service.dart | ✅ |
 | test/identite/unit/qr_generator_service_test.dart | unit | package:anisphere/modules/identite/services/qr_generator_service.dart | ✅ |
 | test/identite/unit/ocr_icad_service_test.dart | unit | package:anisphere/modules/identite/services/ocr_icad_service.dart | ✅ |
@@ -71,11 +71,13 @@ Ajoutez vos nouvelles entrées dans `test/test_tracker.md` puis lancez `dart scr
 | test/noyau/widget/animal_card_test.dart | widget | package:anisphere/modules/noyau/widgets/animal_card.dart | ✅ |
 | test/noyau/widget/ia_suggestion_card_test.dart | widget | package:anisphere/modules/noyau/widgets/ia_suggestion_card.dart | ✅ |
 | test/noyau/widget/notification_icon_test.dart | widget | package:anisphere/modules/noyau/widgets/notification_icon.dart | ✅ |
+| test/noyau/widget/important_notifications_widget_test.dart | widget | package:anisphere/modules/noyau/widgets/important_notifications_widget.dart | ✅ |
 | test/noyau/widget/modules_screen_test.dart | widget | package:anisphere/modules/noyau/screens/modules_screen.dart | ✅ |
 | test/noyau/widget/main_screen_test.dart | widget | package:anisphere/modules/noyau/screens/main_screen.dart | ✅ |
 | test/noyau/widget/animal_profile_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animal_profile_screen.dart | ✅ |
 | test/noyau/widget/user_profile_screen_test.dart | widget | package:anisphere/modules/noyau/screens/user_profile_screen.dart | ✅ |
 | test/noyau/widget/user_profile_summary_card_test.dart | widget | package:anisphere/modules/noyau/widgets/user_profile_summary_card.dart | ✅ |
+| test/noyau/widget/user_edit_screen_test.dart | widget | package:anisphere/modules/noyau/screens/user_edit_screen.dart | ✅ |
 | test/noyau/widget/animal_form_screen_test.dart | widget | package:anisphere/modules/noyau/screens/animal_form_screen.dart | ✅ |
 | test/noyau/widget/home_screen_test.dart | widget | package:anisphere/modules/noyau/screens/home_screen.dart | ✅ |
 | test/noyau/widget/splash_screen_test.dart | widget | package:anisphere/modules/noyau/screens/splash_screen.dart | ✅ |
@@ -116,21 +118,17 @@ Ajoutez vos nouvelles entrées dans `test/test_tracker.md` puis lancez `dart scr
 | test/noyau/widget/i18n_widget_test.dart | widget | package:anisphere/modules/noyau/i18n/i18n_service.dart | ✅ |
 | test/noyau/widget/language_selector_widget_test.dart | widget | package:anisphere/modules/noyau/i18n/i18n_provider.dart | ✅ |
 | test/noyau/unit/ia_local/ia_model_loader_test.dart | unit | package:anisphere/modules/noyau/services/ia_interpreter_loader.dart | ✅ |
-| test/noyau/widget/theme_colors_test.dart | widget | package:anisphere/theme.dart | ✅ |
 | test/identite/unit/genealogy_model_test.dart | unit | package:anisphere/modules/identite/models/genealogy_model.dart | ✅ |
 | test/identite/unit/genealogy_ocr_service_test.dart | unit | package:anisphere/modules/identite/services/genealogy_ocr_service.dart | ✅ |
 | test/identite/unit/genealogy_pdf_ocr_service_test.dart | unit | package:anisphere/modules/identite/services/genealogy_pdf_ocr_service.dart | ✅ |
 | test/identite/unit/genealogy_mapper_test.dart | unit | package:anisphere/modules/identite/services/genealogy_mapper.dart | ✅ |
 | test/identite/widget/genealogy_screen_test.dart | widget | package:anisphere/modules/identite/screens/genealogy_screen.dart | ✅ |
 | test/identite/widget/genealogy_summary_card_test.dart | widget | package:anisphere/modules/identite/widgets/genealogy_summary_card.dart | ✅ |
-| test/identite/unit/identity_photo_selection_service_test.dart | unit | package:anisphere/modules/identite/services/identity_photo_selection_service.dart | ✅ |
-| test/identite/unit/identity_signature_service_test.dart | unit | package:anisphere/modules/identite/services/identity_signature_service.dart | ✅ |
-| test/identite/unit/identity_stats_service_test.dart | unit | package:anisphere/modules/identite/services/identity_stats_service.dart | ✅ |
-| test/identite/widget/identity_score_widget_test.dart | widget | package:anisphere/modules/identite/widgets/identity_score_widget.dart | ✅ |
-| test/identite/widget/identity_onboarding_tutorial_test.dart | widget | package:anisphere/modules/identite/widgets/identity_onboarding_tutorial.dart | ✅ |
-- ✅ Tests validés automatiquement le 2025-06-21 (main_screen_test, user_profile_summary_card_test, i18n_widget_test mis à jour)
 | test/noyau/unit/biometric_auth_service_test.dart | unit | package:anisphere/modules/noyau/services/biometric_auth_service.dart | ✅ |
 | test/noyau/unit/gps_provider_test.dart | unit | package:anisphere/modules/noyau/services/gps_provider.dart | ✅ |
 | test/noyau/unit/video_analysis_service_test.dart | unit | package:anisphere/modules/noyau/services/video_analysis_service.dart | ✅ |
 | test/noyau/widget/biometric_guard_test.dart | widget | package:anisphere/modules/noyau/widgets/biometric_guard.dart | ✅ |
 | test/noyau/widget/gps_screen_test.dart | widget | package:anisphere/modules/noyau/screens/gps_screen.dart | ✅ |
+| test/noyau/unit/message_model_test.dart | unit | package:anisphere/modules/noyau/models/message_model.dart | ✅ |
+
+- ✅ Tests validés automatiquement le 2025-06-21
