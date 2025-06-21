@@ -46,6 +46,7 @@ et `IaInterpreterLoader` instancie l'interpréteur TFLite pour l'utiliser dans l
 - Documentez les évolutions dans `docs/3__suivi_taches.md` et `docs/0__instructions.md`.
 - Pour l'appel des fonctions cloud, consultez `docs/firebase_function_examples.md`.
 - Téléchargez `GoogleService-Info.plist` depuis la console Firebase et placez ce fichier dans `ios/Runner/`. Un gabarit est disponible sous `ios/Runner/GoogleService-Info.plist.example`. Comme ce fichier contient des identifiants sensibles, il doit rester local et ne pas être commité.
+- Exécutez `flutterfire configure` pour générer `lib/firebase_options.dart` et `android/app/google-services.json` avec les clés de votre projet. Ces fichiers peuvent rester publics mais sont nécessaires pour lancer l'app en local.
 - Suivez [docs/firestore_setup.md](docs/firestore_setup.md) pour préparer manuellement les collections Firestore et lancer le script de vérification.
 - Consultez [docs/4__gestion_des_collections.md](docs/4__gestion_des_collections.md#collection-logs_ia) pour le format détaillé des logs IA.
 
