@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-@Skip('Temporarily disabled')
 import '../../test_config.dart';
 import 'package:anisphere/modules/noyau/models/user_profile_model.dart';
 
+@Skip('Temporarily disabled')
 void main() {
   setUpAll(() async {
     await initTestEnv();
