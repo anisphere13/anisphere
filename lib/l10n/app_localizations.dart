@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_localized_locales/flutter_localized_locales.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_ar.dart';
@@ -99,7 +98,6 @@ abstract class AppLocalizations {
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
     GlobalWidgetsLocalizations.delegate,
-    LocaleNamesLocalizationsDelegate(),
   ];
 
   /// A list of this localizations delegate's supported locales.
