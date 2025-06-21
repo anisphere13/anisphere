@@ -55,9 +55,9 @@ class NotificationsScreen extends StatelessWidget {
                 title: Text(notif['title'] ?? ""),
                 subtitle: Text("📅 ${notif['date']}"),
               );
-            }).toList(),
+            }),
           );
-        }).toList(),
+        }),
       ),
     );
   }
