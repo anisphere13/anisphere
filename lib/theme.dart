@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// TODO: ajouter test
+
 const Color primaryBlue = Color(0xFF183153);
 const Color backgroundGray = Color(0xFFF2F2F2); // ✅ gris clair Samsung Health
 
@@ -11,10 +13,10 @@ final ThemeData appTheme = ThemeData(
   cardColor: Colors.white, // ✅ toutes les Card par défaut
   primaryColor: primaryBlue,
   appBarTheme: const AppBarTheme(
-    backgroundColor: backgroundGray,
-    foregroundColor: Colors.black,
+    backgroundColor: primaryBlue,
+    foregroundColor: Colors.white,
     elevation: 0,
-    iconTheme: IconThemeData(color: Colors.black),
+    iconTheme: IconThemeData(color: Colors.white),
   ),
   splashFactory: NoSplash.splashFactory,
   textButtonTheme: TextButtonThemeData(
@@ -56,10 +58,10 @@ final ThemeData appTheme = ThemeData(
 final ThemeData darkTheme = ThemeData.dark().copyWith(
   primaryColor: primaryBlue,
   appBarTheme: const AppBarTheme(
-    backgroundColor: backgroundGray,
-    foregroundColor: Colors.black,
+    backgroundColor: primaryBlue,
+    foregroundColor: Colors.white,
     elevation: 0,
-    iconTheme: IconThemeData(color: Colors.black),
+    iconTheme: IconThemeData(color: Colors.white),
   ),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: Color(0xFF1E1E1E),
