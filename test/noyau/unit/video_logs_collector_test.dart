@@ -1,17 +1,12 @@
 // Tests for VideoLogsCollector
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
-<<<<<<< HEAD
-@Skip('Temporarily disabled')
 import 'package:hive/hive.dart';
 import 'package:mockito/mockito.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:anisphere/modules/noyau/services/video_logs_collector.dart';
 import 'package:anisphere/modules/noyau/services/offline_sync_queue.dart';
-
-=======
->>>>>>> codex/réviser-et-résoudre-les-tests-@skip
 import '../../test_config.dart';
 
 class MockCollection extends Mock implements CollectionReference<Map<String, dynamic>> {}
