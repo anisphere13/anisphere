@@ -97,5 +97,5 @@ class AppLocalizationsFr extends AppLocalizations {
   String get identityModuleTitle => 'Identité';
 
   @override
-  String get identityModuleDescription => "Gérer l'identité de l'animal";
+  String get identityModuleDescription => 'Gérer l\'identité de l\'animal';
 }
