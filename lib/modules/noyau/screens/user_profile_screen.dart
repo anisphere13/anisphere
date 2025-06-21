@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import '../i18n/app_localizations.dart';
 import 'user_edit_screen.dart';
 
 class UserProfileScreen extends StatelessWidget {
@@ -135,7 +136,7 @@ class UserProfileScreen extends StatelessWidget {
           Center(
             child: ElevatedButton.icon(
               icon: const Icon(Icons.logout),
-              label: const Text("Se déconnecter"),
+              label: Text(AppLocalizations.of(context)!.logout),
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF183153),
                 foregroundColor: Colors.white,

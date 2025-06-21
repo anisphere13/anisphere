@@ -29,4 +29,7 @@
   ,"save_button": "Save"
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
+  ,"home": "Дом"
+  ,"logout": "Выйти"
+  ,"support": "Поддержка"
 }
