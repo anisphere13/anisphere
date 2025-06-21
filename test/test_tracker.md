@@ -126,9 +126,9 @@ Ajoutez ici les nouveaux tests puis exécutez `dart scripts/update_test_tracker.
 | test/identite/unit/genealogy_mapper_test.dart | unit | package:anisphere/modules/identite/services/genealogy_mapper.dart | ✅ |
 | test/identite/widget/genealogy_screen_test.dart | widget | package:anisphere/modules/identite/screens/genealogy_screen.dart | ✅ |
 | test/identite/widget/genealogy_summary_card_test.dart | widget | package:anisphere/modules/identite/widgets/genealogy_summary_card.dart | ✅ |
-| test/noyau/unit/biometric_auth_service_test.dart | unit | package:anisphere/modules/noyau/services/biometric_auth_service.dart | ✅ |
-| test/noyau/unit/gps_provider_test.dart | unit | package:anisphere/modules/noyau/services/gps_provider.dart | ✅ |
-| test/noyau/unit/video_analysis_service_test.dart | unit | package:anisphere/modules/noyau/services/video_analysis_service.dart | ✅ |
-| test/noyau/widget/biometric_guard_test.dart | widget | package:anisphere/modules/noyau/widgets/biometric_guard.dart | ✅ |
-| test/noyau/widget/gps_screen_test.dart | widget | package:anisphere/modules/noyau/screens/gps_screen.dart | ✅ |
-| test/noyau/unit/message_model_test.dart | unit | package:anisphere/modules/noyau/models/message_model.dart | ✅ |
+| test/noyau/unit/biometric_auth_service_test.dart | unit | package:anisphere/modules/noyau/services/biometric_auth_service.dart | ⏭ |
+| test/noyau/unit/gps_provider_test.dart | unit | package:anisphere/modules/noyau/services/gps_provider.dart | ⏭ |
+| test/noyau/unit/video_analysis_service_test.dart | unit | package:anisphere/modules/noyau/services/video_analysis_service.dart | ⏭ |
+| test/noyau/widget/biometric_guard_test.dart | widget | package:anisphere/modules/noyau/widgets/biometric_guard.dart | ⏭ |
+| test/noyau/widget/gps_screen_test.dart | widget | package:anisphere/modules/noyau/screens/gps_screen.dart | ⏭ |
+| test/noyau/unit/video_logs_collector_test.dart | unit | package:anisphere/modules/noyau/services/video_logs_collector.dart | ⏭ |
