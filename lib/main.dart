@@ -161,9 +161,7 @@ class _MyAppState extends State<MyApp> {
         context.watch<I18nProvider?>()?.locale ?? const Locale('en');
     final mode =
         context.watch<ThemeProvider?>()?.themeMode ?? ThemeMode.light; // TODO: ajouter test
-    if (user == null) {
-      return const SplashScreen();
-    }
+    final home = user == null ? const SplashScreen() : const MainScreen();
     return MaterialApp(
       navigatorKey: NavigationService.navigatorKey,
       title: AppLocalizations.of(context)?.appTitle ?? 'AniSphère',
@@ -174,7 +172,7 @@ class _MyAppState extends State<MyApp> {
       theme: appTheme,
       darkTheme: darkTheme,
       themeMode: mode,
-      home: const MainScreen(),
-    );
+      home: home,
+      );
   }
 }
