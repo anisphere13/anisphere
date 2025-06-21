@@ -13,7 +13,6 @@ import 'package:anisphere/main.dart';
 import 'package:anisphere/modules/noyau/providers/theme_provider.dart';
 import 'package:anisphere/modules/noyau/i18n/i18n_provider.dart';
 
-import 'package:anisphere/l10n/app_localizations.dart';
 import '../../test_config.dart';
 
 class _TestUserProvider extends UserProvider {
