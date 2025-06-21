@@ -37,47 +37,11 @@ class IdentityModel {
   @HiveField(8)
   final DateTime lastUpdate;
 
-  // Nouveaux champs pour la complétude IA et données administratives
   @HiveField(9)
-  final double? aiScore;
+  final double aiScore;
 
   @HiveField(10)
   final bool verifiedBreed;
-
-  @HiveField(11)
-  final List<String> photoTimeline;
-
-  // Données administratives
-  @HiveField(12)
-  final String? litterNumber;
-
-  @HiveField(13)
-  final String? lofNumber;
-
-  @HiveField(14)
-  final String? originCountry;
-
-  @HiveField(15)
-  final String? alias;
-
-  // Informations éleveur
-  @HiveField(16)
-  final String? breederName;
-
-  @HiveField(17)
-  final String? breederAddress;
-
-  @HiveField(18)
-  final String? breederSiret;
-
-  @HiveField(19)
-  final String? breederEmail;
-
-  @HiveField(20)
-  final String? breederWebsite;
-
-  @HiveField(21)
-  final String? breederPhone;
 
   IdentityModel({
     required this.animalId,
@@ -102,6 +66,8 @@ class IdentityModel {
     this.breederWebsite,
     this.breederPhone,
     DateTime? lastUpdate,
+    this.aiScore = 0.0,
+    this.verifiedBreed = false,
   }) : lastUpdate = lastUpdate ?? DateTime.now();
 
   factory IdentityModel.fromMap(Map<String, dynamic> map) {
@@ -132,6 +98,8 @@ class IdentityModel {
       breederWebsite: map['breederWebsite'],
       breederPhone: map['breederPhone'],
       lastUpdate: (map['lastUpdate'] as Timestamp?)?.toDate() ?? DateTime.now(),
+      aiScore: (map['aiScore'] as num?)?.toDouble() ?? 0.0,
+      verifiedBreed: map['verifiedBreed'] ?? false,
     );
   }
 
@@ -148,17 +116,6 @@ class IdentityModel {
       'lastUpdate': Timestamp.fromDate(lastUpdate),
       'aiScore': aiScore,
       'verifiedBreed': verifiedBreed,
-      'photoTimeline': photoTimeline,
-      'litterNumber': litterNumber,
-      'lofNumber': lofNumber,
-      'originCountry': originCountry,
-      'alias': alias,
-      'breederName': breederName,
-      'breederAddress': breederAddress,
-      'breederSiret': breederSiret,
-      'breederEmail': breederEmail,
-      'breederWebsite': breederWebsite,
-      'breederPhone': breederPhone,
     };
   }
 }

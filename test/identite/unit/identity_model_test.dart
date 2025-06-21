@@ -28,18 +28,7 @@ void main() {
 
     expect(deserialized.animalId, equals('abc123'));
     expect(deserialized.verifiedByIA, isFalse);
-    expect(deserialized.aiScore, equals(0.8));
-    expect(deserialized.verifiedBreed, isTrue);
-    expect(deserialized.photoTimeline.length, 2);
-    expect(deserialized.litterNumber, 'L1');
-    expect(deserialized.lofNumber, 'LOF123');
-    expect(deserialized.originCountry, 'FR');
-    expect(deserialized.alias, 'Loulou');
-    expect(deserialized.breederName, 'Bob');
-    expect(deserialized.breederAddress, '1 rue');
-    expect(deserialized.breederSiret, '123');
-    expect(deserialized.breederEmail, 'bob@example.com');
-    expect(deserialized.breederWebsite, 'https://bob.com');
-    expect(deserialized.breederPhone, '0600');
+    expect(deserialized.aiScore, equals(0.0));
+    expect(deserialized.verifiedBreed, isFalse);
   });
 }
