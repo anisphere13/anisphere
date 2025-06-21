@@ -1,5 +1,5 @@
 # ✅ Suivi chronologique du développement — Noyau d’AniSphère
-*Fichier mis à jour au 06/06/2025*
+*Fichier mis à jour au 21/06/2025*
 
 Ce fichier suit **étape par étape, dans l’ordre**, la conception, l’évolution, les tests et les grandes décisions du noyau AniSphère.  
 > Toute étape validée est datée, toute fonctionnalité doit être couverte par un test associé.  
@@ -344,3 +344,6 @@ Responsable : Superadmin
 - 🆕 2025-07-15 : Gestion rôles utilisateurs / validation pro via `user_profile_model.dart` et `pro_validation_service.dart`
 
 - 🧩 Synchronisation automatique du noyau le 2025-06-19
+- 🆕 2025-06-21 : Ajout du module **Identité** dans `ModulesScreen` (catégorie "Communauté") et localisation dans les fichiers `.arb`.
+- 🛠️ 2025-06-21 : `ModuleCard` devient cliquable et ouvre `IdentityScreen` via `_openIdentityScreen`.
+- ✅ 2025-06-21 : Test widget `modules_screen_test.dart` mis à jour pour vérifier l'accès à l'identité.
