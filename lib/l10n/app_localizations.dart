@@ -479,8 +479,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No active module'**
   String get noActiveModule;
-<<<<<<< HEAD
-=======
 
   /// No description provided for @share_title.
   ///
@@ -500,35 +498,6 @@ abstract class AppLocalizations {
   /// **'My Animals'**
   String get myAnimals_title;
 
-  /// No description provided for @settings_title.
-  ///
-  /// In en, this message translates to:
-  /// **'Settings'**
-  String get settings_title;
-
-  /// No description provided for @backup_success.
-  ///
-  /// In en, this message translates to:
-  /// **'Backup completed successfully.'**
-  String get backup_success;
-
-  /// No description provided for @backup_error.
-  ///
-  /// In en, this message translates to:
-  /// **'Error during backup.'**
-  String get backup_error;
-
-  /// No description provided for @restore_success.
-  ///
-  /// In en, this message translates to:
-  /// **'Restore successful.'**
-  String get restore_success;
-
-  /// No description provided for @restore_error.
-  ///
-  /// In en, this message translates to:
-  /// **'Error during restore.'**
-  String get restore_error;
 
   /// No description provided for @ai_score.
   String get ai_score;
@@ -616,11 +585,6 @@ abstract class AppLocalizations {
 
   /// No description provided for @stats_coming.
   String get stats_coming;
-<<<<<<< HEAD
->>>>>>> codex/mettre-à-jour-les-clés-de-localisation
-=======
->>>>>>> 8ac19094 (Add localization keys for navigation)
->>>>>>> c0f6c366 (Add localization keys for navigation)
 }
 
 class _AppLocalizationsDelegate

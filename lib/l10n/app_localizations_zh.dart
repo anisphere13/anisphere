@@ -191,8 +191,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get noActiveModule => '没有激活的模块';
-<<<<<<< HEAD
-=======
 
   @override
   String get share_title => '分享';
@@ -204,22 +202,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get myAnimals_title => '我的动物';
 
   @override
-  String get settings_title => 'Settings';
 
   @override
-  String get backup_success => 'Backup completed successfully.';
 
   @override
-  String get backup_error => 'Error during backup.';
 
   @override
-  String get restore_success => 'Restore successful.';
 
   @override
-  String get restore_error => 'Error during restore.';
-<<<<<<< HEAD
->>>>>>> codex/mettre-à-jour-les-clés-de-localisation
-=======
->>>>>>> 8ac19094 (Add localization keys for navigation)
->>>>>>> c0f6c366 (Add localization keys for navigation)
 }

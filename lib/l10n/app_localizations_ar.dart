@@ -192,8 +192,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noActiveModule => 'لا توجد وحدة نشطة';
-<<<<<<< HEAD
-=======
 
   @override
   String get share_title => 'مشاركة';
@@ -205,22 +203,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get myAnimals_title => 'حيواناتي';
 
   @override
-  String get settings_title => 'Settings';
 
   @override
-  String get backup_success => 'Backup completed successfully.';
 
   @override
-  String get backup_error => 'Error during backup.';
 
   @override
-  String get restore_success => 'Restore successful.';
 
   @override
-  String get restore_error => 'Error during restore.';
-<<<<<<< HEAD
->>>>>>> codex/mettre-à-jour-les-clés-de-localisation
-=======
->>>>>>> 8ac19094 (Add localization keys for navigation)
->>>>>>> c0f6c366 (Add localization keys for navigation)
 }
