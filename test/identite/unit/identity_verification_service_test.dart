@@ -35,7 +35,6 @@ void main() {
     final captured = verify(
       mockIdentityService.saveIdentityLocally(
         captureAny<IdentityModel>(
-          that: isA<IdentityModel>(),
           defaultValue: IdentityModel(animalId: 'id'),
         ),
       ),
