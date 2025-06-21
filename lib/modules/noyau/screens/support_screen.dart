@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../i18n/app_localizations.dart';
+
 import '../providers/support_provider.dart';
 import '../providers/user_provider.dart';
 import '../models/support_ticket_model.dart';
@@ -40,7 +42,7 @@ class _SupportScreenState extends State<SupportScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Support')),
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.support)),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

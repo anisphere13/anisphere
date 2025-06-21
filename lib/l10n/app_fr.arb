@@ -29,4 +29,7 @@
   ,"save_button": "Enregistrer"
   ,"identityModuleTitle": "Identité"
   ,"identityModuleDescription": "Gérer l'identité de l'animal"
+  ,"home": "Accueil"
+  ,"logout": "Se déconnecter"
+  ,"support": "Support"
 }

@@ -29,4 +29,7 @@
   ,"save_button": "Save"
   ,"identityModuleTitle": "Identity"
   ,"identityModuleDescription": "Manage your animal's identity"
+  ,"home": "家"
+  ,"logout": "登出"
+  ,"support": "支持"
 }

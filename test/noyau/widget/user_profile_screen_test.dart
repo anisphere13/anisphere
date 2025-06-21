@@ -7,6 +7,7 @@ import 'package:anisphere/modules/noyau/services/user_service.dart';
 import 'package:anisphere/modules/noyau/services/auth_service.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:anisphere/modules/noyau/models/user_model.dart';
+import 'package:anisphere/l10n/app_localizations.dart';
 import '../../test_config.dart';
 import '../../helpers/test_fakes.dart';
 
@@ -43,12 +44,17 @@ void main() {
     await tester.pumpWidget(
       ChangeNotifierProvider<UserProvider>(
         create: (_) => _TestUserProvider(),
-        child: const MaterialApp(home: UserProfileScreen()),
+        child: MaterialApp(
+          supportedLocales: AppLocalizations.supportedLocales,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          locale: const Locale('en'),
+          home: const UserProfileScreen(),
+        ),
       ),
     );
 
     expect(find.text('Mon Profil'), findsOneWidget);
     expect(find.text('Test'), findsOneWidget);
-    expect(find.text('Se déconnecter'), findsOneWidget);
+    expect(find.text('Log out'), findsOneWidget);
   });
 }
