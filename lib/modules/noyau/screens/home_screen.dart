@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../theme.dart';
 
 import '../services/modules_summary_service.dart';
 import '../services/animal_service.dart';
@@ -125,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         subtitle: Text(summary.summary),
         trailing: summary.isPremium
-            ? const Icon(Icons.star, color: Colors.amber)
+            ? const Icon(Icons.star, color: primaryBlue)
             : const SizedBox.shrink(),
       ),
     );

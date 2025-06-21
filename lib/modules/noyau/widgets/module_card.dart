@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 import '../models/module_model.dart';
 
 class ModuleCard extends StatelessWidget {
@@ -22,7 +23,7 @@ class ModuleCard extends StatelessWidget {
     final Color chipColor = switch (status) {
       'actif' => const Color(0xFF183153),
       'disponible' => Colors.grey,
-      'premium' => const Color(0xFFFBC02D),
+      'premium' => primaryBlue,
       _ => Colors.grey,
     };
 

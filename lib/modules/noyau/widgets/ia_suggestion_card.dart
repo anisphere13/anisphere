@@ -3,6 +3,7 @@
 // Utilisé sur l’écran d’accueil, le dashboard IA, ou dans les modules.
 // Doit être élégant, discret, mais réactif.
 import 'package:flutter/material.dart';
+import '../../../theme.dart';
 
 class IASuggestionCard extends StatelessWidget {
   final String title;
@@ -52,7 +53,7 @@ class IASuggestionCard extends StatelessWidget {
                 child: TextButton(
                   onPressed: onAction,
                   style: TextButton.styleFrom(
-                    foregroundColor: const Color(0xFFFBC02D),
+                    foregroundColor: primaryBlue,
                   ),
                   child: Text(actionLabel!),
                 ),

@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 const Color primaryBlue = Color(0xFF183153);
 const Color backgroundGray = Color(0xFFF2F2F2); // ✅ gris clair Samsung Health
 
-const Color accentYellow = Color(0xFFFBC02D);
-
 final ThemeData appTheme = ThemeData(
   brightness: Brightness.light,
   scaffoldBackgroundColor: backgroundGray, // ✅ fond global de tous les écrans
