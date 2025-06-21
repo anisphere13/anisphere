@@ -21,7 +21,7 @@ void main() {
     await tester.pumpAndSettle();
 
     final theme = Theme.of(tester.element(find.byType(BottomNavigationBar)));
-    expect(theme.scaffoldBackgroundColor, const backgroundGray);
+    expect(theme.scaffoldBackgroundColor, backgroundGray);
     expect(theme.bottomNavigationBarTheme.selectedItemColor, primaryBlue);
   });
 
