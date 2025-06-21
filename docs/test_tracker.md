@@ -1,8 +1,8 @@
 # Test Tracker AniSphère
 Ajoutez ici les nouveaux tests puis exécutez `dart scripts/update_test_tracker.dart` pour mettre à jour docs/test_tracker.md.
 
-| Fichier test | Type | Source | ✅ |
-| -------------- | ------ | -------- | ✅ |
+| Fichier test | Type | Source | À faire |
+| -------------- | ------ | -------- | À faire |
 | test/identite/unit/identity_model.g_test.dart | unit | package:anisphere/modules/identite/models/identity_model.g.dart | ✅ |
 | test/identite/unit/identity_model_test.dart | unit | package:anisphere/modules/identite/models/identity_model.dart | ✅ |
 | test/identite/unit/identity_card_generator_test.dart | unit | package:anisphere/modules/identite/services/identity_card_generator.dart | ✅ |
@@ -129,4 +129,5 @@ Ajoutez ici les nouveaux tests puis exécutez `dart scripts/update_test_tracker.
 | test/noyau/widget/biometric_guard_test.dart | widget | package:anisphere/modules/noyau/widgets/biometric_guard.dart | ✅ |
 | test/noyau/widget/gps_screen_test.dart | widget | package:anisphere/modules/noyau/screens/gps_screen.dart | ✅ |
 | test/noyau/unit/video_logs_collector_test.dart | unit | package:anisphere/modules/noyau/services/video_logs_collector.dart | ✅ |
-| test/noyau/unit/module_export_pdf_template_test.dart | unit | package:anisphere/services/pdf/pdf_export_template.dart | ✅ |
+
+- ✅ Tests validés automatiquement le 2025-06-21
