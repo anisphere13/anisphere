@@ -9,6 +9,7 @@ import '../../../theme.dart';
 import 'package:anisphere/modules/noyau/providers/user_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'user_edit_screen.dart';
+import '../widgets/more_menu.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
@@ -22,7 +23,10 @@ class UserProfileScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Mon Profil")),
+      appBar: AppBar(
+        title: const Text("Mon Profil"),
+        actions: const [MoreMenuButton()],
+      ),
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [

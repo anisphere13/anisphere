@@ -5,6 +5,7 @@
 
 import 'package:flutter/material.dart';
 import '../../../theme.dart';
+import '../widgets/more_menu.dart';
 
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});
@@ -35,6 +36,7 @@ class NotificationsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Notifications"),
+        actions: const [MoreMenuButton()],
       ),
       body: ListView(
         children: notifications.entries.map((entry) {

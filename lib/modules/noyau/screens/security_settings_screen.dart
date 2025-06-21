@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 
 import '../models/security_settings_model.dart';
 import 'package:anisphere/modules/noyau/services/modules_service.dart';
+import '../widgets/more_menu.dart';
 
 class SecuritySettingsScreen extends StatefulWidget {
   const SecuritySettingsScreen({super.key});
@@ -75,7 +76,10 @@ class _SecuritySettingsScreenState extends State<SecuritySettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Sécurité')),
+      appBar: AppBar(
+        title: const Text('Sécurité'),
+        actions: const [MoreMenuButton()],
+      ),
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [
