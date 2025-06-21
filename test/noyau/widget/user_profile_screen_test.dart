@@ -45,11 +45,8 @@ void main() {
     await tester.pumpWidget(
       ChangeNotifierProvider<UserProvider>(
         create: (_) => _TestUserProvider(),
-        child: MaterialApp(
-          supportedLocales: AppLocalizations.supportedLocales,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          locale: const Locale('en'),
-          home: const UserProfileScreen(),
+        child: const MaterialApp(
+          home: UserProfileScreen(),
         ),
       ),
     );

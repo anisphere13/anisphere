@@ -26,17 +26,12 @@ void main() {
     );
 
     await tester.pumpWidget(
-      MaterialApp(
-        supportedLocales: AppLocalizations.supportedLocales,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        locale: const Locale('fr'),
+      const MaterialApp(
         home: Scaffold(
           body: UserProfileSummaryCard(user: user, proValidated: false),
         ),
       ),
     );
-    final context = tester.element(find.byType(UserProfileSummaryCard));
-    final label = AppLocalizations.of(context)!.profile_update_button;
-    expect(find.text(label), findsOneWidget);
+    expect(find.text('Mettre à jour'), findsOneWidget);
   });
 }

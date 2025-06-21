@@ -30,10 +30,7 @@ void main() {
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
     );
-    await tester.pumpWidget(MaterialApp(
-      supportedLocales: AppLocalizations.supportedLocales,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      locale: const Locale('fr'),
+    await tester.pumpWidget(const MaterialApp(
       home: IdentityScreen(animals: [animal], service: service),
     ));
 

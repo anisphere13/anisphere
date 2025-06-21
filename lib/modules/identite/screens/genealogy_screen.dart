@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
 import '../services/genealogy_pdf_ocr_service.dart';
 import '../models/genealogy_model.dart';
 
@@ -17,22 +16,21 @@ class _GenealogyScreenState extends State<GenealogyScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.genealogy_title)),
+      appBar: AppBar(title: const Text('Généalogie')),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (duplicateAlert)
-              Text(l10n.duplicate_alert,
-                  style: const TextStyle(color: Colors.red)),
+              const Text('Doublon potentiel détecté',
+                  style: TextStyle(color: Colors.red)),
             const SizedBox(height: 8),
             if (genealogy != null) _buildGraph(),
             const SizedBox(height: 16),
             ElevatedButton(
-                onPressed: _importPdf, child: Text(l10n.import_pdf)),
+                onPressed: _importPdf, child: const Text('Importer PDF')),
           ],
         ),
       ),

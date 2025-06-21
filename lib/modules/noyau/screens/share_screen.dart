@@ -6,7 +6,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
 import '../providers/user_provider.dart';
 import '../models/share_history_model.dart';
 import '../services/local_sharing_service.dart';
@@ -81,9 +80,7 @@ class _ShareScreenState extends State<ShareScreen> {
                 await LocalSharingService().share('default');
                 if (!context.mounted) return;
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                      content: Text(AppLocalizations.of(context)!
-                          .local_share_success)),
+                  const SnackBar(content: Text('Partage local réussi')),
                 );
                 await _refreshHistory();
               },
@@ -95,9 +92,7 @@ class _ShareScreenState extends State<ShareScreen> {
                     await CloudSharingService().share('default');
                     if (!context.mounted) return;
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                          content: Text(AppLocalizations.of(context)!
-                              .cloud_share_success)),
+                      const SnackBar(content: Text('Partage cloud réussi')),
                     );
                     await _refreshHistory();
                   }

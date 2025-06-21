@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
 import '../models/identity_model.dart';
 import '../models/genealogy_model.dart';
 import '../widgets/identity_summary_widget.dart';
@@ -17,9 +16,8 @@ class IdentityPublicProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.identity_public_profile_title)),
+      appBar: AppBar(title: const Text('Profil public')),
       body: ListView(
         children: [
           IdentitySummaryWidget(identity: identity),

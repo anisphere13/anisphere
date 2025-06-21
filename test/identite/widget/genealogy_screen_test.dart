@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
 import '../../test_config.dart';
 import 'package:anisphere/modules/identite/screens/genealogy_screen.dart';
 
@@ -10,11 +9,8 @@ void main() {
   });
 
   testWidgets('GenealogyScreen shows import button', (WidgetTester tester) async {
-    await tester.pumpWidget(MaterialApp(
-      supportedLocales: AppLocalizations.supportedLocales,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      locale: const Locale('fr'),
-      home: const GenealogyScreen(),
+    await tester.pumpWidget(const MaterialApp(
+      home: GenealogyScreen(),
     ));
     await tester.pump();
     expect(find.text('Généalogie'), findsOneWidget);

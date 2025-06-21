@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
 import '../models/module_model.dart';
 
 class ModuleCard extends StatelessWidget {
@@ -27,12 +26,11 @@ class ModuleCard extends StatelessWidget {
       _ => Colors.grey,
     };
 
-    final l10n = AppLocalizations.of(context)!;
     final title = module.id == 'identite'
-        ? l10n.identityModuleTitle
+        ? 'Identité'
         : module.name;
     final description = module.id == 'identite'
-        ? l10n.identityModuleDescription
+        ? "Gérer l'identité de l'animal"
         : module.description;
 
     return InkWell(

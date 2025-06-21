@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/models/animal_model.dart';
 import 'package:anisphere/modules/identite/screens/identity_screen.dart';
 import 'package:anisphere/modules/identite/services/identity_service.dart';
-import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
 import 'package:anisphere/modules/identite/models/identity_model.dart';
 import 'package:hive/hive.dart';
 
@@ -75,9 +74,8 @@ class AnimalScreen extends StatelessWidget {
                           return true;
                         }());
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(AppLocalizations.of(context)!
-                                .identity_access_error),
+                          const SnackBar(
+                            content: Text('Erreur d\'accès à l\'identité'),
                           ),
                         );
                       }

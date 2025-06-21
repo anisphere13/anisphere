@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:anisphere/modules/noyau/screens/user_profile_screen.dart';
 import 'package:anisphere/modules/noyau/screens/settings_screen.dart';
 import 'package:anisphere/modules/noyau/screens/notifications_screen.dart';
-import 'package:anisphere/l10n/app_localizations.dart';
 
 class MoreMenuButton extends StatelessWidget {
   const MoreMenuButton({super.key});
@@ -45,24 +44,21 @@ class MoreMenuButton extends StatelessWidget {
         }
       },
       itemBuilder: (BuildContext context) => [
-        PopupMenuItem(
+        const PopupMenuItem(
           value: 'profile',
-          child:
-              Text(AppLocalizations.of(context)?.profile ?? 'Mon profil'),
+          child: Text('Mon profil'),
         ),
-        PopupMenuItem(
+        const PopupMenuItem(
           value: 'settings',
-          child:
-              Text(AppLocalizations.of(context)?.settings ?? 'Paramètres'),
+          child: Text('Paramètres'),
         ),
-        PopupMenuItem(
+        const PopupMenuItem(
           value: 'notifications',
-          child: Text(
-              AppLocalizations.of(context)?.notifications ?? 'Notifications'),
+          child: Text('Notifications'),
         ),
-        PopupMenuItem(
+        const PopupMenuItem(
           value: 'about',
-          child: Text(AppLocalizations.of(context)?.about ?? 'À propos'),
+          child: Text('À propos'),
         ),
       ],
     );

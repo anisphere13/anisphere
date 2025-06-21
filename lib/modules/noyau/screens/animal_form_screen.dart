@@ -7,7 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:anisphere/modules/noyau/i18n/app_localizations.dart';
 import 'dart:io';
 import 'package:uuid/uuid.dart';
 import 'package:provider/provider.dart';
@@ -76,14 +75,13 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
           navigator.pop();
         } else {
           messenger.showSnackBar(
-            SnackBar(
-                content: Text(AppLocalizations.of(context)!.save_error)),
+            const SnackBar(content: Text('Erreur lors de l\'enregistrement')),
           );
         }
     } catch (e) {
       debugPrint("❌ Erreur _saveAnimal : $e");
         messenger.showSnackBar(
-          SnackBar(content: Text(AppLocalizations.of(context)!.generic_error)),
+          const SnackBar(content: Text('Une erreur est survenue')),
         );
     }
   }
@@ -117,9 +115,8 @@ class _AnimalFormScreenState extends State<AnimalFormScreen> {
                 ),
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                          content: Text(AppLocalizations.of(context)!
-                              .ocr_feature_coming)),
+                      const SnackBar(
+                          content: Text('Fonction OCR bientôt disponible...')),
                     );
                   },
               ),

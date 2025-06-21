@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../screens/settings_screen.dart';
-import '../i18n/app_localizations.dart';
 import '../models/user_model.dart';
 
 /// Carte compacte rappelant de compléter son profil utilisateur.
@@ -20,7 +19,6 @@ class UserProfileSummaryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (!needsUpdate) return const SizedBox.shrink();
-    final t = AppLocalizations.of(context)!;
     return Card(
       color: const Color(0xFF183153),
       margin: const EdgeInsets.all(16),
@@ -33,17 +31,17 @@ class UserProfileSummaryCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    t.profile_incomplete_title,
+                  const Text(
+                    'Profil incomplet',
                     style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Text(
-                    t.profile_incomplete_message,
-                    style: const TextStyle(color: Colors.white),
+                  const Text(
+                    'Mettez à jour votre téléphone, adresse ou profession.',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ],
               ),
@@ -60,7 +58,7 @@ class UserProfileSummaryCard extends StatelessWidget {
               style: TextButton.styleFrom(
                 foregroundColor: Colors.white,
               ),
-              child: Text(t.profile_update_button),
+              child: const Text('Mettre à jour'),
             )
           ],
         ),
