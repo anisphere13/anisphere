@@ -21,7 +21,7 @@ class ModuleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color chipColor = switch (status) {
-      'actif' => const primaryBlue,
+      'actif' => primaryBlue,
       'disponible' => Colors.grey,
       'premium' => primaryBlue,
       _ => Colors.grey,
